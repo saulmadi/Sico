@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4F3D43B5-6B88-41AD-A21B-07451C7EF7F3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SiCo.ctrla</RootNamespace>
+    <AssemblyName>SiCo.ctrla</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ControlesBasicos\CajaTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\CajaTexto.Designer.cs">
+      <DependentUpon>CajaTexto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesBasicos\CorreoCajaTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\CorreoCajaTexto.Designer.cs">
+      <DependentUpon>CorreoCajaTexto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegados\ErroresEventsArgs.cs" />
+    <Compile Include="ControlesBasicos\Grid.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\Grid.Designer.cs">
+      <DependentUpon>Grid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegados\GridEditarEventArg.cs" />
+    <Compile Include="Delegados\GridEditarEventArgs.cs" />
+    <Compile Include="Delegados\GridEliminarEventArg.cs" />
+    <Compile Include="Delegados\GridEliminarEventArgs.cs" />
+    <Compile Include="Delegados\GridFormatoColumnas.cs" />
+    <Compile Include="ControlesBasicos\IdentidadCajaTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\IdentidadCajaTexto.Designer.cs">
+      <DependentUpon>IdentidadCajaTexto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaDesplegable.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaDesplegable.Designer.cs">
+      <DependentUpon>ListaDesplegable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\PanelAccion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\PanelAccion.Designer.cs">
+      <DependentUpon>PanelAccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Delegados\PanelAccionEventArgs.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enumeradores\TiposTexto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CapaControles.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SiCo.dtla\SiCo.dtla.csproj">
+      <Project>{D4D335B3-0AAA-44F2-A150-8263A93E53F7}</Project>
+      <Name>SiCo.dtla</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiCo.lgla\SiCo.lgla.csproj">
+      <Project>{F160B96F-7309-4701-9D61-70C68E9B517E}</Project>
+      <Name>SiCo.lgla</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiCo.sgla\SiCo.sgla.csproj">
+      <Project>{3E075547-76D4-4314-9D87-B731E265398F}</Project>
+      <Name>SiCo.sgla</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ControlesPersonalizados\PanelAccion.resx">
+      <DependentUpon>PanelAccion.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
