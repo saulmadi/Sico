@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SiCo.lgla
+{
+    public class PersonaNatural : Entidad
+    {
+
+        #region Declaraciones
+        #endregion 
+
+        #region Constructores
+
+        public PersonaNatural():base()
+        {
+            ComandoSelect = "PersonaNatural_Buscar";
+            ComandoMantenimiento = "PersonaNatural_Buscar";
+        }
+
+        #endregion
+
+        #region Propiedades
+
+        public int? Telefono
+        {
+            get;
+            set;
+        }
+
+        public string Direccion
+        {
+            get;
+            set;
+        }
+
+        public string correo
+        {
+            get;
+            set;
+        }
+
+        public int? rtn
+        {
+            get;
+            set;
+        }
+
+        public string nombre
+        {
+            get;
+            set;
+        }
+
+        public string apellidos
+        {
+            get;
+            set;
+        }
+
+        public string identidad
+        {
+            get;
+            set;
+        }
+
+        public string tipoidentidad
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Metodos
+
+        public void Guardar()
+        {   
+            bool Accion= false;  
+
+            Parametro[] parametro= { new Parametro("id",Id, System.Data.ParameterDirection.InputOutput),
+                                   new Parametro("telefono",Telefono),
+                                   new Parametro("direccion",Direccion),
+                                   new Parametro("correo",correo),
+                                   new Parametro("rtn",rtn),
+                                   new Parametro("nombre",nombre),
+                                   new Parametro("apellidos",apellidos),
+                                   new Parametro("identidad",identidad),
+                                   new Parametro("tipoidentidad",tipoidentidad),
+                                   new Parametro("usu",Usuario.Id),
+                                   new Parametro("fmodif",fmodif),
+                                   new Parametro("Accion",Accion)} ;  
+
+        }
+
+        #endregion
+
+    }
+}

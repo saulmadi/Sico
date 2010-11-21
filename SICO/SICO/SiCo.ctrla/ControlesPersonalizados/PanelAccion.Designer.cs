@@ -1,0 +1,219 @@
+﻿namespace SiCo.ctrla
+{
+    partial class PanelAccion
+    {
+        /// <summary> 
+        /// Variable del diseñador requerida.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Limpiar los recursos que se estén utilizando.
+        /// </summary>
+        /// <param name="disposing">true si los recursos administrados se deben eliminar; false en caso contrario, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Código generado por el Diseñador de componentes
+
+        /// <summary> 
+        /// Método necesario para admitir el Diseñador. No se puede modificar 
+        /// el contenido del método con el editor de código.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.BarraEstado = new System.Windows.Forms.StatusStrip();
+            this.lblEstado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.BarraProgreso = new System.Windows.Forms.ToolStripProgressBar();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.BarraEstado.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // BarraEstado
+            // 
+            this.BarraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblEstado,
+            this.BarraProgreso});
+            this.BarraEstado.Location = new System.Drawing.Point(0, 409);
+            this.BarraEstado.Name = "BarraEstado";
+            this.BarraEstado.Size = new System.Drawing.Size(604, 22);
+            this.BarraEstado.TabIndex = 1;
+            this.BarraEstado.Text = "statusStrip1";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(487, 17);
+            this.lblEstado.Spring = true;
+            this.lblEstado.Text = "lblestado";
+            this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // BarraProgreso
+            // 
+            this.BarraProgreso.Name = "BarraProgreso";
+            this.BarraProgreso.Size = new System.Drawing.Size(100, 16);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnImprimir, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnNuevo, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 2, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(604, 31);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancelar.Location = new System.Drawing.Point(527, 3);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(74, 25);
+            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.Text = "&Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnImprimir.Location = new System.Drawing.Point(447, 3);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(74, 25);
+            this.btnImprimir.TabIndex = 0;
+            this.btnImprimir.Text = "&Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEliminar.Location = new System.Drawing.Point(367, 3);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(74, 25);
+            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.Text = "&Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNuevo.Location = new System.Drawing.Point(207, 3);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(74, 25);
+            this.btnNuevo.TabIndex = 0;
+            this.btnNuevo.Text = "&Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = true;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGuardar.Location = new System.Drawing.Point(287, 3);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(74, 25);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "&Guardar ";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 378);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(604, 31);
+            this.panel1.TabIndex = 2;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panel2.Controls.Add(this.lblTitulo);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(604, 84);
+            this.panel2.TabIndex = 3;
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.ForeColor = System.Drawing.Color.White;
+            this.lblTitulo.Location = new System.Drawing.Point(31, 10);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(140, 55);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Título";
+            // 
+            // PanelAccion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.BarraEstado);
+            this.Name = "PanelAccion";
+            this.Size = new System.Drawing.Size(604, 431);
+            this.BarraEstado.ResumeLayout(false);
+            this.BarraEstado.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        protected System.Windows.Forms.ToolStripStatusLabel lblEstado;
+        protected System.Windows.Forms.ToolStripProgressBar BarraProgreso;
+        protected System.Windows.Forms.StatusStrip BarraEstado;
+        protected System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        protected System.Windows.Forms.Button btnCancelar;
+        protected System.Windows.Forms.Button btnImprimir;
+        protected System.Windows.Forms.Button btnEliminar;
+        protected System.Windows.Forms.Button btnNuevo;
+        protected System.Windows.Forms.Button btnGuardar;
+        protected System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.Panel panel2;
+        protected System.Windows.Forms.Label lblTitulo;
+    }
+}
