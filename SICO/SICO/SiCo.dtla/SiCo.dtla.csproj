@@ -66,7 +66,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BDD\SICO_bakup 20101120 2149.sql" />
+    <None Include="BDD\SICO_bakup.sql" />
     <None Include="CapaDatos.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
