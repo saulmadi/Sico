@@ -66,10 +66,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BDD\SICO_bakup 20101120 2149.sql" />
     <None Include="CapaDatos.cd" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="BDD\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
