@@ -16,7 +16,8 @@ namespace SiCo.lgla
         {
             ComandoSelect = "PersonaNatural_Buscar";
             ComandoMantenimiento = "PersonaNatural_Buscar";
-        }
+            this.CambioId += new CambioIdEventArgs(PersonaNatural_CambioId); 
+        }       
 
         #endregion
 
@@ -72,6 +73,15 @@ namespace SiCo.lgla
 
         #endregion
 
+        #region Eventos
+
+        void PersonaNatural_CambioId()
+        {
+            Buscar(this.Id.ToString(), null, null, null);
+        }
+
+        #endregion      
+
         #region Metodos
 
         public void Guardar()
@@ -106,10 +116,35 @@ namespace SiCo.lgla
             }
             if (!Accion)
             {
-                LlamadoErrores("El registro de Persona Natural no se pudo registra en el servidor");
+                LlamadoErrores("El registro de Persona Natural no se pudo registrar en el servidor");
             }
               
 
+        }
+
+        public void Buscar(string  id, string nombrecompleto, string identidad, string rtn )
+        {
+            Parametro[] parametros = { new Parametro("id",id),
+                                      new Parametro("nombrecompleto",nombrecompleto),
+                                      new Parametro("identidad",identidad),
+                                      new Parametro("rtn",rtn) };
+            LlenadoTabla(parametros);
+            this.CargadoValores();  
+ 
+        }
+
+        protected override  void CargadoValores()
+        {
+            base.CargadoValores();
+            Telefono = (int)PrimerRegistro("telefono");
+            nombre = PrimerRegistro("nombre").ToString();
+            apellidos = PrimerRegistro("apellidos").ToString();
+            identidad = PrimerRegistro("identidad").ToString();
+            Direccion = PrimerRegistro("direccion").ToString();
+            correo = PrimerRegistro ("correo").ToString();
+            rtn = (int)PrimerRegistro("RTN");
+            tipoidentidad = PrimerRegistro("TipoIdentidad").ToString ();
+ 
         }
 
         #endregion

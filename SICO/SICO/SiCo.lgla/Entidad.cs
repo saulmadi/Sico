@@ -287,6 +287,10 @@ namespace SiCo.lgla
         {
             return _Tabla.Rows[Fila][Columna];
         }
+        public object PrimerRegistro(string Columna)
+        {
+            return Registro(0, Columna); 
+        }
 
         private void LLenadoParametros(ref Parametro[] Parametros)
         {
@@ -310,7 +314,14 @@ namespace SiCo.lgla
                     } 
                 } 
             }                       
-        } 
+        }
+
+        protected  virtual void CargadoValores()
+        {
+            _Id = (int) Registro(0, "id");            
+ 
+        }
+
 
        
 
