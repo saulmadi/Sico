@@ -15,6 +15,7 @@ namespace SiCo.dtla
             [NonSerialized]private Serializador  _Serializador = new Serializador();
             [NonSerialized]private MySqlConnection _Conexion = new MySqlConnection();
             [NonSerialized]private ConexionMySql _Instancia;
+            [NonSerialized]private ClavesRegistro _ClavesRegistro = new ClavesRegistro(); 
 
             public event ErroresEventArgs Errores;
         #endregion                 

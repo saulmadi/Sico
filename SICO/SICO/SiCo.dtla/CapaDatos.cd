@@ -7,9 +7,12 @@
     </Members>
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIAAgAAkBAAAAAA=</HashCode>
+      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIABgAAkBAAAAAA=</HashCode>
       <FileName>ConexionMySql.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -31,6 +34,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAQAAABAAgAAAAAAAAAgBAAAAAA=</HashCode>
       <FileName>Serializador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.dtla.ClavesRegistro">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ClavesRegistro.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.dtla.Puertos">
