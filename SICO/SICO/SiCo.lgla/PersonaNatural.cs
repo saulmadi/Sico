@@ -89,7 +89,26 @@ namespace SiCo.lgla
                                    new Parametro("tipoidentidad",tipoidentidad),
                                    new Parametro("usu",Usuario.Id),
                                    new Parametro("fmodif",fmodif),
-                                   new Parametro("Accion",Accion)} ;  
+                                   new Parametro("Accion",Accion)} ;
+            
+            this.Mantenimiento(ref parametro);
+
+            foreach (Parametro i in parametro)
+            {
+                if (i.Nombre == "id")
+                {
+                    Id = Convert.ToInt32( i.Valor); 
+                }
+                if (i.Nombre == "Accion")
+                {
+                    Accion = Convert.ToBoolean(i.Valor);
+                }
+            }
+            if (!Accion)
+            {
+                LlamadoErrores("El registro de Persona Natural no se pudo registra en el servidor");
+            }
+              
 
         }
 

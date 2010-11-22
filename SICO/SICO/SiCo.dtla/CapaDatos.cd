@@ -9,7 +9,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIAAgAAEBAAAAAA=</HashCode>
+      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIAAgAAkBAAAAAA=</HashCode>
       <FileName>ConexionMySql.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -22,8 +22,14 @@
   </Class>
   <Class Name="SiCo.dtla.Serializador">
     <Position X="1" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAABAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAEAAQAAABAAgAAAAAAAAAgBAAAAAA=</HashCode>
       <FileName>Serializador.cs</FileName>
     </TypeIdentifier>
   </Class>
