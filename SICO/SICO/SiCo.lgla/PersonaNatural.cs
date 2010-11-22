@@ -8,6 +8,7 @@ namespace SiCo.lgla
     {
 
         #region Declaraciones
+        private TipoIdentidad _TipoIdentidad = new TipoIdentidad();
         #endregion 
 
         #region Constructores
@@ -65,10 +66,10 @@ namespace SiCo.lgla
             set;
         }
 
-        public string tipoidentidad
+        public TipoIdentidad tipoidentidad
         {
-            get;
-            set;
+            get { return _TipoIdentidad; }
+            set {_TipoIdentidad= value ;}
         }
 
         #endregion
@@ -96,7 +97,7 @@ namespace SiCo.lgla
                                    new Parametro("nombre",nombre),
                                    new Parametro("apellidos",apellidos),
                                    new Parametro("identidad",identidad),
-                                   new Parametro("tipoidentidad",tipoidentidad),
+                                   new Parametro("tipoidentidad",tipoidentidad.Valor ),
                                    new Parametro("usu",Usuario.Id),
                                    new Parametro("fmodif",fmodif),
                                    new Parametro("Accion",Accion)} ;
@@ -143,7 +144,12 @@ namespace SiCo.lgla
             Direccion = PrimerRegistro("direccion").ToString();
             correo = PrimerRegistro ("correo").ToString();
             rtn = (int)PrimerRegistro("RTN");
-            tipoidentidad = PrimerRegistro("TipoIdentidad").ToString ();
+
+            if (PrimerRegistro("TipoIdentidad").ToString()=="I" )
+                tipoidentidad = new TipoIdentidad("Identidad", PrimerRegistro("TipoIdentidad").ToString ());
+            else 
+                tipoidentidad = new TipoIdentidad("Pasaporte", PrimerRegistro("TipoIdentidad").ToString ());
+
  
         }
 

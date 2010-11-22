@@ -67,6 +67,12 @@
     <Compile Include="ControlesBasicos\CorreoCajaTexto.Designer.cs">
       <DependentUpon>CorreoCajaTexto.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesPersonalizados\crtlPersonaNatural.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtlPersonaNatural.Designer.cs">
+      <DependentUpon>crtlPersonaNatural.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delegados\ErroresEventsArgs.cs" />
     <Compile Include="ControlesBasicos\Grid.cs">
       <SubType>Component</SubType>
@@ -111,6 +117,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesPersonalizados\crtlPersonaNatural.resx">
+      <DependentUpon>crtlPersonaNatural.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\PanelAccion.resx">
       <DependentUpon>PanelAccion.cs</DependentUpon>
     </EmbeddedResource>
