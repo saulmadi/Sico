@@ -151,7 +151,10 @@ namespace SiCo.dtla
             catch( Exception ex)
             {
                 if (Errores != null)
-                Errores (ex.Message); 
+                Errores (ex.Message);
+
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n Contacte al administador de Sistema  " , ex);  
             }
             return flag;  
 
@@ -178,6 +181,9 @@ namespace SiCo.dtla
             {
                 if (Errores != null)
                 Errores (ex.Message);
+
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n Contacte al administador de Sistema  ", ex);  
             }
             return flag;
         }

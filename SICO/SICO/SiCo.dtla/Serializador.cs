@@ -58,8 +58,9 @@ namespace SiCo.dtla
             }
             catch (Exception ex)
             {
-                if(Errores!=null)
+               if(Errores!=null)
                Errores(ex.Message);
+               throw new ApplicationException(ex.Message,ex);  
 
             }
             return _Objeto;            
@@ -81,6 +82,7 @@ namespace SiCo.dtla
             {
                 if (Errores != null)
                 Errores (ex.Message);
+                throw new ApplicationException(ex.Message, ex);  
             }
         }
 

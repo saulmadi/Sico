@@ -16,7 +16,7 @@ namespace SiCo.lgla
         [NonSerialized]private SiCo.dtla.ConexionMySql _Conexion = new ConexionMySql(true);
         [NonSerialized]private MySql.Data.MySqlClient.MySqlCommand _Comando = new MySqlCommand();
         [NonSerialized]private Usuario _Usuario = new Usuario();
-        private int? _Id ;
+        protected int? _Id ;
         
         #endregion
 
@@ -129,6 +129,7 @@ namespace SiCo.lgla
 
         protected void LlamadoErrores(string Mensaje)
         {
+            if(Errores !=null)
             Errores(Mensaje);                   
         }
 
@@ -244,6 +245,7 @@ namespace SiCo.lgla
             {
                 if (Errores != null)
                Errores(ex.Message);
+                throw new ApplicationException(ex.Message, ex); 
             }
  
         }
@@ -266,6 +268,7 @@ namespace SiCo.lgla
             {
                 if (Errores != null)
                 Errores(ex.Message);
+                throw new ApplicationException(ex.Message, ex); 
             }
              
         }
@@ -295,15 +298,21 @@ namespace SiCo.lgla
  
         }
 
-        private void  LLenadoSalidaParmaetros(ref Parametro[] Parametro) 
+        private void  LLenadoParmaetrosSalida(ref Parametro[] Parametro) 
         {
             foreach (MySqlParameter i in _Comando.Parameters)
             {
- 
-            }
-
-            
+                for (int x = 0; x < Parametro.GetUpperBound(0); x++)
+                {
+                    if (Parametro[x].Nombre == i.ParameterName)
+                    {
+                        Parametro[x].Valor = i.Value; 
+                    } 
+                } 
+            }                       
         } 
+
+       
 
         #endregion             
 
