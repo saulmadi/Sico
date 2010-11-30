@@ -16,7 +16,7 @@ namespace SiCo.dtla
             {
                 RegistryKey T = Registry.LocalMachine.CreateSubKey("Software\\SicoSW", RegistryKeyPermissionCheck.ReadWriteSubTree);
                 _RegistryKey = T;
-                _RegistryKey.SetValue("Instl", " ");  
+                _RegistryKey.SetValue("Instl", System.AppDomain.CurrentDomain.BaseDirectory);  
             }
             
  

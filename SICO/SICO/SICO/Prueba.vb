@@ -11,7 +11,7 @@ Public Class Prueba
         con.Contrasena = "root"
         con.BaseDatos = "Sico"
         con.Guardar()
-
+        Dim l As New ListaDesplegable()
 
     End Sub
 
