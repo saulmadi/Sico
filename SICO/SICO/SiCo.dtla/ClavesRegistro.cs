@@ -8,22 +8,31 @@ namespace SiCo.dtla
 {
     public class ClavesRegistro
     {
+        private RegistryKey _RegistryKey; 
         public ClavesRegistro()
         {
-           
+            _RegistryKey = Registry.LocalMachine.OpenSubKey("Software\\SicoSW", RegistryKeyPermissionCheck.ReadWriteSubTree);
+            if (_RegistryKey == null)
+            {
+                RegistryKey T = Registry.LocalMachine.CreateSubKey("Software\\SicoSW", RegistryKeyPermissionCheck.ReadWriteSubTree);
+                _RegistryKey = T;
+                _RegistryKey.SetValue("Instl", " ");  
+            }
             
+ 
         }
     
         public string Instalacion
         {
             get
             {
-
-                return null;
+                
+                return  _RegistryKey.GetValue("Instl","").ToString ()    ;
                 
             }
             set
             {
+                _RegistryKey.SetValue("Instl", value); 
             }
         }
     }
