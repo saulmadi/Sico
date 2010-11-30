@@ -103,7 +103,7 @@ namespace SiCo.dtla
         {
             get
             {
-                return System.AppDomain.CurrentDomain.BaseDirectory + "Cnx.sco";
+                return _ClavesRegistro.Instalacion  + "Cnx.sco";
             }
         }
 
