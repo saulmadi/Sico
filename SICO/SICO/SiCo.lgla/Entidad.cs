@@ -15,7 +15,7 @@ namespace SiCo.lgla
         [NonSerialized]private DataTable _Tabla =new DataTable();
         [NonSerialized]private SiCo.dtla.ConexionMySql _Conexion = new ConexionMySql(true);
         [NonSerialized]private MySql.Data.MySqlClient.MySqlCommand _Comando = new MySqlCommand();
-        [NonSerialized]private Usuario _Usuario = new Usuario();
+        [NonSerialized]private Usuario _Usuario;
         protected int? _Id ;
         
         #endregion
@@ -25,6 +25,7 @@ namespace SiCo.lgla
         {
             _Conexion.Errores += new ErroresEventArgs(_Conexion_Errores);
             _Id = null;         
+            
         }
 
         #endregion
@@ -118,6 +119,7 @@ namespace SiCo.lgla
         {
             get 
             {
+                _Usuario= new Usuario(); 
                 return _Usuario;
             }
             
