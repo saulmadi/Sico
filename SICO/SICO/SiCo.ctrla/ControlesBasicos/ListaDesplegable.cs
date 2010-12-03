@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using SiCo.lgla; 
+using SiCo.lgla;
 
 
 namespace SiCo.ctrla
@@ -13,9 +13,10 @@ namespace SiCo.ctrla
     public partial class ListaDesplegable : ComboBox
     {
         #region Declaraciones
-        public event ErroresEventsArgs  Errores;
+        public event ErroresEventsHandler  Errores;
         private ListaDesplegable _ListaDesplegable ;
-        private Entidad _Entidad = new Entidad();
+        private Entidad _Entidad ;
+        private List<Parametro> _ColeccionParametro= new List<Parametro> ();
         
         #endregion
 
@@ -23,9 +24,7 @@ namespace SiCo.ctrla
 
         public ListaDesplegable()
         {
-            InitializeComponent();
-
-            InicializarDelegados();
+            InitializeComponent();          
         }
 
         public ListaDesplegable(IContainer container)
@@ -33,8 +32,6 @@ namespace SiCo.ctrla
             container.Add(this);
 
             InitializeComponent();
-
-            InicializarDelegados();
         }
 
         #endregion
@@ -54,6 +51,11 @@ namespace SiCo.ctrla
                 _ListaDesplegable.SelectedIndexChanged += new EventHandler(_ListaDesplegable_SelectedIndexChanged);
             }
         }
+        
+        public List<Parametro>  ColeccionParametroBusqueda
+        {
+            get {return  _ColeccionParametro; }            
+        }
 
         public string Comando
         {
@@ -63,20 +65,14 @@ namespace SiCo.ctrla
 
         #endregion       
 
-        public string  ParametroBusqueda
-        {
-            get;
-            set;
-        }
-
         #region Eventos
 
         void _ListaDesplegable_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-
-                _Entidad.LlenadoTabla(this.Comando, new Parametro[] {new Parametro( this.ParametroBusqueda,_ListaDesplegable.SelectedValue )}) ;
+                _Entidad = new Entidad();
+                _Entidad.LlenadoTabla(this.Comando,this.ColeccionParametroBusqueda) ;
 
                 if (_Entidad.TotalRegistros > 0)
                 {
@@ -101,12 +97,7 @@ namespace SiCo.ctrla
 
         #region Metodos
 
-        private void InicializarDelegados()
-        {
-            
-            _Entidad.Errores += new SiCo.lgla.ErroresEventsArgs(_Entidad_Errores); 
- 
-        }
+       
 
         #endregion
         

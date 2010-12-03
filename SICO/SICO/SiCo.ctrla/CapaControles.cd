@@ -10,7 +10,7 @@
   <Class Name="SiCo.ctrla.CorreoCajaTexto" Collapsed="true">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAgAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ControlesBasicos\CorreoCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -21,13 +21,13 @@
       <FileName>ControlesBasicos\IdentidadCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.ListaDesplegable">
+  <Class Name="SiCo.ctrla.ListaDesplegable" Collapsed="true">
     <Position X="5" Y="5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAADAAAIAAAACAAAACBAgAAAECQAAkAAAAAAA=</HashCode>
+      <HashCode>AAgAAAAAADAAAIAAAACAAAACAAgAAAUAQAAkAAAAAAA=</HashCode>
       <FileName>ControlesBasicos\ListaDesplegable.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -39,7 +39,7 @@
     </Compartments>
     <TypeIdentifier />
   </Class>
-  <Class Name="SiCo.ctrla.Grid">
+  <Class Name="SiCo.ctrla.Grid" Collapsed="true">
     <Position X="0.5" Y="5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABIwGQACAAAAACAQAACBgABAQAAEAAAAAASCgA=</HashCode>
@@ -89,6 +89,13 @@
       <FileName>ControlesPersonalizados\PanelAccion.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="SiCo.ctrla.ControlesPersonalizados.crtlPersonaNatural">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgAcAKCAAABAEAICAAAQCAAAAAAAIAAAgAAAAAAA=</HashCode>
+      <FileName>ControlesPersonalizados\crtlPersonaNatural.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="SiCo.ctrla.TiposTexto">
     <Position X="10" Y="5.25" Width="1.5" />
     <TypeIdentifier>
@@ -96,21 +103,21 @@
       <FileName>Enumeradores\TiposTexto.cs</FileName>
     </TypeIdentifier>
   </Enum>
-  <Delegate Name="SiCo.ctrla.ErroresEventsArgs" Collapsed="true">
-    <Position X="8.25" Y="3.75" Width="1.5" />
+  <Delegate Name="SiCo.ctrla.ErroresEventsHandler" Collapsed="true">
+    <Position X="8.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegados\ErroresEventsArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.ctrla.GridEditarEventArgs" Collapsed="true">
+  <Delegate Name="SiCo.ctrla.GridEditarEventHandler" Collapsed="true">
     <Position X="10" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Delegados\GridEditarEventArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.ctrla.GridEliminarEventArgs" Collapsed="true">
+  <Delegate Name="SiCo.ctrla.GridEliminarEventHandler" Collapsed="true">
     <Position X="8.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

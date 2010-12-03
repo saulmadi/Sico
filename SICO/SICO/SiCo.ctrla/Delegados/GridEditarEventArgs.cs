@@ -4,5 +4,5 @@ using System.Text;
 
 namespace SiCo.ctrla
 {
-    public delegate void GridEditarEventArgs(GridEditarEventArg EditarArg);
+    public delegate void GridEditarEventHandler(GridEditarEventArg EditarArg);
 }

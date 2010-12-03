@@ -12,8 +12,8 @@ namespace SiCo.ctrla
     {
         #region Declaraciones
 
-        public event GridEditarEventArgs Editar;
-        public event GridEliminarEventArgs Eliminar;
+        public event GridEditarEventHandler Editar;
+        public event GridEliminarEventHandler Eliminar;
 
         private bool _BotonEditar = false;
         private bool _BotoElimar = false;

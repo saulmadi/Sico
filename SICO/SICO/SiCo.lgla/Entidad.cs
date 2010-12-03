@@ -165,6 +165,17 @@ namespace SiCo.lgla
             EjecutarDataSet();
         }
 
+        public void LlenadoTabla(string Comando, List<Parametro> ColeccionParametros)
+        {
+            InicializarComando();
+            _Comando.CommandType = CommandType.StoredProcedure;
+            foreach (Parametro i in ColeccionParametros)  
+            {
+                _Comando.Parameters.AddWithValue(i.Nombre, i.Valor); 
+            }
+
+        } 
+
         //public void LlenadoTabla(object[] Personalizado)
         //{
         //    throw new System.NotImplementedException();
