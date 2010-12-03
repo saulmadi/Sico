@@ -8,12 +8,15 @@ namespace SiCo.lgla
     public class Parametro
     {
         #region Constructor
+        public Parametro()
+        {
+            this.TipoParametro = System.Data.ParameterDirection.Input;
+            this.Valor = null;
+            this.Nombre = string.Empty;
+        }
 
         public Parametro(string Nombre, object Valor)
-        {
-            MySqlParameter d;
-
-             
+        {                      
 
             this.Nombre = Nombre;
             this.Valor = Valor;

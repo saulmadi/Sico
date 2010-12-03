@@ -4,5 +4,5 @@ using System.Text;
 
 namespace SiCo.ctrla
 {
-    public delegate void ErroresEventsArgs(string Mensaje);
+    public delegate void ErroresEventsHandler(string Mensaje);
 }

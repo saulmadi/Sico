@@ -70,6 +70,7 @@ namespace SiCo.ctrla
             get
             {
                 bool flag = true;
+                
                 if (_Validador != null)
                 {
                     flag = _Validador.IsMatch(this.Text);
@@ -86,11 +87,11 @@ namespace SiCo.ctrla
 
         public string ExpresionValidacion
         {
-            get
+             get
             {
                 return _ExpresionValidacion;
             }
-            set
+             set
             {
                 if (value != null)
                     _Validador = new Regex(value);
@@ -124,17 +125,15 @@ namespace SiCo.ctrla
                     case TiposTexto.Alfanumerico:
                         this.Text = "";
                         this.MaxLength = 255;
-                        this.ExpresionValidacion = string.Empty;
+                       
                         break;
                     case TiposTexto.Parrafo:
                         this.Text = "";
-                        this.Multiline = true;
-                        this.ExpresionValidacion = string.Empty;
+                        this.Multiline = true;                      
                         break;
                     case TiposTexto.Entero:
                         this.MaxLength = 12; 
-                        this.Text = "0";
-                        this.ExpresionValidacion = string.Empty;
+                        this.Text = "0";                       
                         this.TextAlign = HorizontalAlignment.Right;
                         break;
                     case TiposTexto.Decimal:
@@ -159,6 +158,18 @@ namespace SiCo.ctrla
         }
 
         #endregion
+
+        public  string Texto
+        {
+            get
+            {
+                if (base.Text == string.Empty)
+                    return null;
+                else
+                    return base.Text;
+            }
+            set { base.Text = value; }
+        }
 
         #region Eventos
         void CajaTexto_TextChanged(object sender, EventArgs e)
@@ -247,15 +258,10 @@ namespace SiCo.ctrla
         {
             this.TextChanged += new EventHandler(CajaTexto_TextChanged);
             this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
-        }
-
-        
+        }     
         
 
         #endregion
-
-
-
        
     }
 }
