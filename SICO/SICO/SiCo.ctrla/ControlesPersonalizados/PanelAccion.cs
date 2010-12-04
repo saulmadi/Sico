@@ -141,7 +141,8 @@ namespace SiCo.ctrla
 
         private void PanelAccion_Load(object sender, EventArgs e)
         {
-            lblfecha.Text = DateTime.Now.ToLongDateString ();  
+            lblfecha.Text = DateTime.Now.ToLongDateString ();
+            lblUsuario.Text = _Usuario.usuario;
         }     
 
         
