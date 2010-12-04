@@ -75,14 +75,25 @@ namespace SiCo.ctrla
                 {
                     flag = _Validador.IsMatch(this.Text);
                 }
+               
+                return flag;
+            }
+        }
+
+        public bool EsVacio
+        {
+            get 
+            {
+                bool flag = false ;
                 if (EsObligatorio)
                 {
                     if (this.Text == string.Empty)
-                        flag = false;
+                        flag = true;
                 }
 
                 return flag;
             }
+            
         }
 
         public string ExpresionValidacion
@@ -157,9 +168,7 @@ namespace SiCo.ctrla
                 
         }
 
-        #endregion
-
-        public  string Texto
+        public string Texto
         {
             get
             {
@@ -170,6 +179,34 @@ namespace SiCo.ctrla
             }
             set { base.Text = value; }
         }
+
+        public int? ValorInt
+        {
+            get
+            {
+                try
+                {
+                    Int32 d=0;
+                    if (Int32.TryParse(base.Text, out d))
+                    {
+                        return d;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                catch 
+                {
+                    return null;
+                    
+                } 
+            }
+        }
+
+        public 
+
+        #endregion        
 
         #region Eventos
         void CajaTexto_TextChanged(object sender, EventArgs e)

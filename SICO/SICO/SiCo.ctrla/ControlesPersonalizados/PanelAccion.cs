@@ -20,6 +20,8 @@ namespace SiCo.ctrla
         public event PanelAccionImprimirEventArgs Imprimir;
 
         public event PanelAccionCancelarEventArgs Cancelar;
+
+        private SiCo.lgla.Usuario _Usuario = new SiCo.lgla.Usuario();  
     
         public PanelAccion()
         {
@@ -135,6 +137,11 @@ namespace SiCo.ctrla
         {
             if (this.Cancelar != null)
                 Cancelar();
+        }
+
+        private void PanelAccion_Load(object sender, EventArgs e)
+        {
+            lblfecha.Text = DateTime.Now.ToLongDateString ();  
         }     
 
         

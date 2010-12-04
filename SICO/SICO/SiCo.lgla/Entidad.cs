@@ -277,7 +277,7 @@ namespace SiCo.lgla
                 _Adapter.Fill(Tabla);
                 _Conexion.CerrarConexion();  
             }
-            catch (Exception ex)
+            catch (MySqlException  ex)
             {
                 if (Errores != null)
                 Errores(ex.Message);
