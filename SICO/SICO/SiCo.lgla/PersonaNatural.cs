@@ -42,7 +42,7 @@ namespace SiCo.lgla
             set;
         }
 
-        public int? rtn
+        public string  rtn
         {
             get;
             set;
@@ -78,7 +78,7 @@ namespace SiCo.lgla
 
         void PersonaNatural_CambioId()
         {
-            Buscar(this.Id.ToString(), null, null, null);
+            Buscar(this.Id.ToString(), string.Empty , string.Empty , string.Empty );
         }
 
         #endregion      
@@ -136,19 +136,22 @@ namespace SiCo.lgla
 
         protected override  void CargadoValores()
         {
-            base.CargadoValores();
-            Telefono = (int)PrimerRegistro("telefono");
-            nombre = PrimerRegistro("nombre").ToString();
-            apellidos = PrimerRegistro("apellidos").ToString();
-            identidad = PrimerRegistro("identidad").ToString();
-            Direccion = PrimerRegistro("direccion").ToString();
-            correo = PrimerRegistro ("correo").ToString();
-            rtn = (int)PrimerRegistro("RTN");
+            if (this.TotalRegistros > 0)
+            {
+                base.CargadoValores();
+                Telefono = (int)PrimerRegistro("telefono");
+                nombre = PrimerRegistro("nombre").ToString();
+                apellidos = PrimerRegistro("apellidos").ToString();
+                identidad = PrimerRegistro("identidad").ToString();
+                Direccion = PrimerRegistro("direccion").ToString();
+                correo = PrimerRegistro("correo").ToString();
+                rtn = (string)PrimerRegistro("RTN");
 
-            if (PrimerRegistro("TipoIdentidad").ToString()=="I" )
-                tipoidentidad = new TipoIdentidad("Identidad", PrimerRegistro("TipoIdentidad").ToString ());
-            else 
-                tipoidentidad = new TipoIdentidad("Pasaporte", PrimerRegistro("TipoIdentidad").ToString ());
+                if (PrimerRegistro("TipoIdentidad").ToString() == "I")
+                    tipoidentidad = new TipoIdentidad("Identidad", PrimerRegistro("TipoIdentidad").ToString());
+                else
+                    tipoidentidad = new TipoIdentidad("Pasaporte", PrimerRegistro("TipoIdentidad").ToString());
+            }
 
  
         }

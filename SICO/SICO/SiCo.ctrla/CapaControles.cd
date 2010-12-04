@@ -3,7 +3,7 @@
   <Class Name="SiCo.ctrla.CajaTexto" Collapsed="true">
     <Position X="1" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAQEAAACAAAAABCACACAQSAEBAQIQAAAAAAAACAQk=</HashCode>
+      <HashCode>AAAAQEAAACAAAAABCACACAQSAUBAQIQAAAAAAAACAQk=</HashCode>
       <FileName>ControlesBasicos\CajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,7 +17,7 @@
   <Class Name="SiCo.ctrla.IdentidadCajaTexto" Collapsed="true">
     <Position X="2.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAABAAAAACAAAACAAAAAAAAAQAAAAAAAAI=</HashCode>
       <FileName>ControlesBasicos\IdentidadCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -89,11 +89,18 @@
       <FileName>ControlesPersonalizados\PanelAccion.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.ControlesPersonalizados.crtlPersonaNatural">
+  <Class Name="SiCo.ctrla.ControlesPersonalizados.crtlPersonaNatural" Collapsed="true">
     <Position X="2.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACAgAcAKCAAABAEAICAAAQCAAAAAAAIAAAgAAAAAAA=</HashCode>
+      <HashCode>AACCCAIEKGAAEFAEAICAIAQCACAAAAAAACAiIAAAAQE=</HashCode>
       <FileName>ControlesPersonalizados\crtlPersonaNatural.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.ctrla.Validador">
+    <Position X="3" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAgAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validador.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.ctrla.TiposTexto">

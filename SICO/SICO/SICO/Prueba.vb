@@ -3,7 +3,7 @@ Imports SICO.lgla
 Imports SICO.ctrla
 Public Class Prueba
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim con As New ConexionMySql(False)
         con.Servidor = "Localhost"
         con.Puerto = 3306
@@ -15,4 +15,11 @@ Public Class Prueba
 
    
     
+    Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
+        Me.Pn.Cargar(1)
+    End Sub
+
+    Private Sub Pn_Errores(ByVal Mensaje As System.String) Handles Pn.Errores
+        MessageBox.Show(Mensaje)
+    End Sub
 End Class
