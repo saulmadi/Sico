@@ -3,26 +3,26 @@
   <Class Name="SiCo.ctrla.CajaTexto" Collapsed="true">
     <Position X="1" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAQEAAACAAAAABCACACAQSAUBAQIQAAAAAAAACAQk=</HashCode>
+      <HashCode>AAAAUEAAACAAAAABCACACAQSAUBAQIQAAAAAAAACAQk=</HashCode>
       <FileName>ControlesBasicos\CajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.CorreoCajaTexto" Collapsed="true">
-    <Position X="0.5" Y="2" Width="1.5" />
+    <Position X="0.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAgAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ControlesBasicos\CorreoCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.IdentidadCajaTexto" Collapsed="true">
-    <Position X="2.75" Y="2" Width="1.5" />
+    <Position X="2.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAABAAAAACAAAACAAAAAAAAAQAAAAAAAAI=</HashCode>
       <FileName>ControlesBasicos\IdentidadCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.ListaDesplegable" Collapsed="true">
-    <Position X="5" Y="5" Width="1.5" />
+    <Position X="5.5" Y="5.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -32,7 +32,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="System.Windows.Forms.ComboBox" Collapsed="true">
-    <Position X="4.5" Y="3.5" Width="2.75" />
+    <Position X="4.5" Y="4.25" Width="2.75" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -40,14 +40,14 @@
     <TypeIdentifier />
   </Class>
   <Class Name="SiCo.ctrla.Grid" Collapsed="true">
-    <Position X="0.5" Y="5" Width="2.5" />
+    <Position X="0.5" Y="6.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABIwGQACAAAAACAQAACBgABAQAAEAAAAAASCgA=</HashCode>
       <FileName>ControlesBasicos\Grid.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="System.Windows.Forms.DataGridView" Collapsed="true">
-    <Position X="1" Y="3.5" Width="1.25" />
+    <Position X="0.75" Y="5" Width="1.25" />
     <Compartments>
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -55,15 +55,15 @@
     <TypeIdentifier />
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="SiCo.ctrla.GridEditarEventArg">
+  <Class Name="SiCo.ctrla.GridEditarEventArg" Collapsed="true">
     <Position X="6.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAEgAAAAA=</HashCode>
       <FileName>Delegados\GridEditarEventArg.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.GridEliminarEventArg">
-    <Position X="10" Y="1" Width="1.5" />
+  <Class Name="SiCo.ctrla.GridEliminarEventArg" Collapsed="true">
+    <Position X="8.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegados\GridEliminarEventArg.cs</FileName>
@@ -76,7 +76,7 @@
       <FileName>Delegados\GridFormatoColumnas.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.PanelAccion">
+  <Class Name="SiCo.ctrla.PanelAccion" Collapsed="true">
     <Position X="4.5" Y="1.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -85,22 +85,29 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAACAAAAiSACIQAAACAAQEDKgFABEAACBAAJSAAADA=</HashCode>
+      <HashCode>AAAACAAAAiSACIQAAACAAQEDKwFABEAACBAANSAEADA=</HashCode>
       <FileName>ControlesPersonalizados\PanelAccion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.ControlesPersonalizados.crtlPersonaNatural" Collapsed="true">
-    <Position X="2.75" Y="2.75" Width="1.5" />
+    <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACCCAIEKGAAEFAEAICAIAQCACAAAAAAACAiIAAAAQE=</HashCode>
       <FileName>ControlesPersonalizados\crtlPersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.Validador">
-    <Position X="3" Y="4" Width="1.5" />
+  <Class Name="SiCo.ctrla.Validador" Collapsed="true">
+    <Position X="3.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAgAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Validador.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto" Collapsed="true">
+    <Position X="1.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACEAAACAAAAAAEAAAAgEAAAAAA=</HashCode>
+      <FileName>ControlesBasicos\AutoCompleteCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.ctrla.TiposTexto">
@@ -111,14 +118,14 @@
     </TypeIdentifier>
   </Enum>
   <Delegate Name="SiCo.ctrla.ErroresEventsHandler" Collapsed="true">
-    <Position X="8.25" Y="3" Width="1.5" />
+    <Position X="8.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegados\ErroresEventsArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Delegate Name="SiCo.ctrla.GridEditarEventHandler" Collapsed="true">
-    <Position X="10" Y="3.75" Width="1.5" />
+    <Position X="9.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
       <FileName>Delegados\GridEditarEventArgs.cs</FileName>
@@ -131,8 +138,8 @@
       <FileName>Delegados\GridEliminarEventArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.ctrla.PanelAccionNuevoEventArgs">
-    <Position X="6.5" Y="2.5" Width="1.5" />
+  <Delegate Name="SiCo.ctrla.PanelAccionNuevoEventArgs" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegados\PanelAccionEventArgs.cs</FileName>

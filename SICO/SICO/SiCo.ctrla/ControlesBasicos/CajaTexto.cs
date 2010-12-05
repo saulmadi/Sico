@@ -175,7 +175,7 @@ namespace SiCo.ctrla
                 if (base.Text == string.Empty)
                     return null;
                 else
-                    return base.Text;
+                    return base.Text.Trim() ;
             }
             set { base.Text = value; }
         }

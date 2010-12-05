@@ -21,7 +21,7 @@ namespace SiCo.ctrla
 
         public event PanelAccionCancelarEventArgs Cancelar;
 
-        private SiCo.lgla.Usuario _Usuario = new SiCo.lgla.Usuario();  
+        private SiCo.lgla.Usuario _Usuario ;  
     
         public PanelAccion()
         {
@@ -142,7 +142,7 @@ namespace SiCo.ctrla
         private void PanelAccion_Load(object sender, EventArgs e)
         {
             lblfecha.Text = DateTime.Now.ToLongDateString ();
-            lblUsuario.Text = _Usuario.usuario;
+            //lblUsuario.Text = _Usuario.NombreUsuario  ;
         }     
 
         

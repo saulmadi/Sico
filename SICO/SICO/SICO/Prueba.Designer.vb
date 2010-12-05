@@ -29,7 +29,7 @@ Partial Class Prueba
         '
         'Pn
         '
-        Me.Pn.Location = New System.Drawing.Point(360, 100)
+        Me.Pn.Location = New System.Drawing.Point(12, 91)
         Me.Pn.Name = "Pn"
         Me.Pn.Size = New System.Drawing.Size(497, 264)
         Me.Pn.TabIndex = 1
@@ -45,17 +45,19 @@ Partial Class Prueba
         Me.PanelAccion1.HabilitarNuevo = True
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(857, 503)
+        Me.PanelAccion1.Size = New System.Drawing.Size(621, 435)
         Me.PanelAccion1.TabIndex = 0
-        Me.PanelAccion1.Titulo = "Título"
+        Me.PanelAccion1.Titulo = "Proveedores"
         '
         'Prueba
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(857, 503)
+        Me.ClientSize = New System.Drawing.Size(621, 435)
         Me.Controls.Add(Me.Pn)
         Me.Controls.Add(Me.PanelAccion1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.MaximizeBox = False
         Me.Name = "Prueba"
         Me.Text = "Prueba"
         Me.ResumeLayout(False)
