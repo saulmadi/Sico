@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SiCo.lgla.TipoIdentidad tipoIdentidad3 = new SiCo.lgla.TipoIdentidad();
+            SiCo.lgla.TipoIdentidad tipoIdentidad1 = new SiCo.lgla.TipoIdentidad();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -126,7 +126,7 @@
             this.txtrtn.EsObligatorio = false;
             this.txtrtn.ExpresionValidacion = null;
             this.txtrtn.Location = new System.Drawing.Point(102, 236);
-            this.txtrtn.MaxLength = 14;
+            this.txtrtn.MaxLength = 255;
             this.txtrtn.MensajeError = null;
             this.txtrtn.Name = "txtrtn";
             this.txtrtn.Size = new System.Drawing.Size(380, 20);
@@ -195,6 +195,8 @@
             // 
             // txtNombre
             // 
+            this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
             this.txtNombre.ColorError = System.Drawing.Color.Red;
             this.txtNombre.EsObligatorio = true;
             this.txtNombre.ExpresionValidacion = null;
@@ -231,9 +233,9 @@
             this.txtidentifiacion.Size = new System.Drawing.Size(380, 20);
             this.txtidentifiacion.TabIndex = 2;
             this.txtidentifiacion.Texto = null;
-            tipoIdentidad3.Descripcion = "Identidad";
-            tipoIdentidad3.Valor = "I";
-            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad3;
+            tipoIdentidad1.Descripcion = "Identidad";
+            tipoIdentidad1.Valor = "I";
+            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad1;
             this.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
             // 
             // crtlPersonaNatural

@@ -58,7 +58,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Comando de Selección
         /// </summary>
-        public string ComandoSelect
+        protected string ComandoSelect
         {
             get;
             set;
@@ -67,7 +67,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Comando de Modificación
         /// </summary>
-        public string ComandoMantenimiento
+        protected string ComandoMantenimiento
         {
             get;
             set;
@@ -76,7 +76,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Comando de eliminación
         /// </summary>
-        public string ComandoDelete
+        protected string ComandoDelete
         {
             get;
             set;
@@ -94,6 +94,7 @@ namespace SiCo.lgla
             set
             {
                 _Id = value;
+                if(value>0)
                 if(CambioId!=null)
                 CambioId();
             }

@@ -48,6 +48,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
             get { return 0; }
             
         }
+
         #endregion       
 
         #region Metodos
@@ -166,6 +167,5 @@ namespace SiCo.ctrla.ControlesPersonalizados
         }
 
         #endregion
-
     }
 }

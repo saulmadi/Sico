@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlesBasicos\AutoCompleteCajaTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\AutoCompleteCajaTexto.Designer.cs">
+      <DependentUpon>AutoCompleteCajaTexto.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesBasicos\CajaTexto.cs">
       <SubType>Component</SubType>
     </Compile>

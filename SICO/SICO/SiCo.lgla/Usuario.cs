@@ -11,23 +11,22 @@ namespace SiCo.lgla
     [Serializable()]
     public class Usuario : Entidad
     {
-        private string _Usuario=string.Empty ;
+        private string _NombreUsuario=string.Empty ;
         public Usuario() :base()
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
             base.Id = 1;
-        
-        }
 
-        public string usuario
+        }
+        public string NombreUsuario
         {
-            get
+            get 
             {
-                return _Usuario;
+                return _NombreUsuario;
             }
-            set
+            set 
             {
-                _Usuario=value;
+                _NombreUsuario=value;
             }
         }
     }
