@@ -78,7 +78,7 @@ namespace SiCo.lgla
 
         void PersonaNatural_CambioId()
         {
-            Buscar(this.Id.ToString(), string.Empty , string.Empty , string.Empty );
+            Buscar(this.Id.ToString(), string.Empty , string.Empty , string.Empty,string.Empty,string.Empty  );
         }
 
         #endregion      
@@ -89,22 +89,22 @@ namespace SiCo.lgla
         {   
             bool Accion= false;  
 
-            Parametro[] parametro= { new Parametro("id",Id, System.Data.ParameterDirection.InputOutput),
-                                   new Parametro("telefono",Telefono),
-                                   new Parametro("direccion",Direccion),
-                                   new Parametro("correo",correo),
-                                   new Parametro("rtn",rtn),
-                                   new Parametro("nombre",nombre),
-                                   new Parametro("apellidos",apellidos),
-                                   new Parametro("identidad",identidad),
-                                   new Parametro("tipoidentidad",tipoidentidad.Valor ),
-                                   new Parametro("usu",Usuario.Id),
-                                   new Parametro("fmodif",fmodif),
-                                   new Parametro("Accion",Accion)} ;
+           SiCo.lgla.Parametro[] parametro= { new SiCo.lgla.Parametro("id",Id, System.Data.ParameterDirection.InputOutput),
+                                   new SiCo.lgla.Parametro("telefono",Telefono),
+                                   new SiCo.lgla.Parametro("direccion",Direccion),
+                                   new SiCo.lgla.Parametro("correo",correo),
+                                   new SiCo.lgla.Parametro("rtn",rtn),
+                                   new SiCo.lgla.Parametro("nombre",nombre),
+                                   new SiCo.lgla.Parametro("apellidos",apellidos),
+                                   new SiCo.lgla.Parametro("identidad",identidad),
+                                   new SiCo.lgla.Parametro("tipoidentidad",tipoidentidad.Valor ),
+                                   new SiCo.lgla.Parametro("usu",Usuario.Id),
+                                   new SiCo.lgla.Parametro("fmodif",fmodif),
+                                   new SiCo.lgla.Parametro("Accion",Accion)} ;
             
             this.Mantenimiento(ref parametro);
 
-            foreach (Parametro i in parametro)
+            foreach (SiCo.lgla.Parametro i in parametro)
             {
                 if (i.Nombre == "id")
                 {
@@ -123,12 +123,14 @@ namespace SiCo.lgla
 
         }
 
-        public void Buscar(string  id, string nombrecompleto, string identidad, string rtn )
+        public void Buscar(string  id, string nombrecompleto, string identidad, string rtn,string nombre,string apellidos)
         {
-            Parametro[] parametros = { new Parametro("id",id),
-                                      new Parametro("nombrecompleto",nombrecompleto),
-                                      new Parametro("identidad",identidad),
-                                      new Parametro("rtn",rtn) };
+            SiCo.lgla.Parametro[] parametros = { new SiCo.lgla.Parametro("id",id),
+                                                new SiCo.lgla.Parametro("nombrecompleto",nombrecompleto),
+                                                new SiCo.lgla.Parametro("identidad",identidad),
+                                                new SiCo.lgla.Parametro("rtn",rtn),
+                                                new SiCo.lgla.Parametro("nombre",nombre ),
+                                                new SiCo.lgla.Parametro("apellidos",apellidos)  };
             LlenadoTabla(parametros);
             this.CargadoValores();  
  

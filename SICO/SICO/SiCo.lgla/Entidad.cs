@@ -166,7 +166,7 @@ namespace SiCo.lgla
             EjecutarDataSet();
         }
 
-        public void LlenadoTabla(string Comando, List<Parametro> ColeccionParametros)
+        public void LlenadoTabla(string Comando, List<SiCo.lgla.Parametro> ColeccionParametros)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -191,7 +191,7 @@ namespace SiCo.lgla
         /// Ejecuta el comando de la propiedad con los parametros necesarios
         /// </summary>
         /// <param name="Parametro">Parametros necesarios para la ejecución del comando</param>
-        public void LlenadoTabla(Parametro[] Parametro)
+        public void LlenadoTabla(SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -218,7 +218,7 @@ namespace SiCo.lgla
         /// Modifica el registro de la entidad
         /// </summary>
         /// <param name="Parametro">Parametros Necesarios para la modificación</param>
-        protected void Mantenimiento(ref Parametro[] Parametro)
+        protected void Mantenimiento(ref SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -230,7 +230,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Elimina el registro de la entidad
         /// </summary>
-        protected void Eliminar(Parametro[] Parametro)
+        protected void Eliminar(SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -306,7 +306,7 @@ namespace SiCo.lgla
             return Registro(0, Columna); 
         }
 
-        private void LLenadoParametros(ref Parametro[] Parametros)
+        private void LLenadoParametros(ref SiCo.lgla.Parametro[] Parametros)
         {
             foreach (Parametro i in Parametros)
             {
@@ -316,7 +316,7 @@ namespace SiCo.lgla
  
         }
 
-        private void  LLenadoParmaetrosSalida(ref Parametro[] Parametro) 
+        private void LLenadoParmaetrosSalida(ref SiCo.lgla.Parametro[] Parametro) 
         {
             foreach (MySqlParameter i in _Comando.Parameters)
             {

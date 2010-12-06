@@ -15,7 +15,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
     {
         #region Declaraciones
         private lgla.PersonaNatural _PersonaNatural;
-        private List<lgla.TipoIdentidad> _ColeccionTipoIdentidad = new List<TipoIdentidad>();
+        private List<lgla.TipoIdentidad> _ColeccionTipoIdentidad = new List<lgla.TipoIdentidad>();
         public event ErroresEventsHandler Errores;
 
         #endregion       
@@ -32,6 +32,24 @@ namespace SiCo.ctrla.ControlesPersonalizados
             cmbTipoIdentidad.DataSource = this.ColeccionTipoIdentidad;
             cmbTipoIdentidad.DisplayMember = "Descripcion";
             cmbTipoIdentidad.ValueMember = "valor";
+
+            txtNombre.ColeccionParametros.Add(new Parametro("id",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("nombrecompleto",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("identidad",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("rtn",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("nombre",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
+
+
+            txtApellidos.ColeccionParametros.Add(new Parametro("id", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("nombrecompleto", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("identidad", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("nombre", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
+
+            
+
         }
 
         #endregion
@@ -140,7 +158,8 @@ namespace SiCo.ctrla.ControlesPersonalizados
         #endregion
 
         #region Eventos
-        void _PersonaNatural_CambioId()
+
+        private void _PersonaNatural_CambioId()
         {
             CargarDatos();
         }
@@ -155,17 +174,22 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 }
 
             }
-            catch (Exception ex)
+            catch 
             {
 
             }
         }
 
-        void _PersonaNatural_Errores(string Mensaje)
+        private  void _PersonaNatural_Errores(string Mensaje)
         {
 
         }
 
-        #endregion
+        private void crtlPersonaNatural_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion       
     }
 }
