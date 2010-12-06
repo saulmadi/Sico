@@ -16,7 +16,7 @@ namespace SiCo.ctrla
         public event ErroresEventsHandler  Errores;
         private ListaDesplegable _ListaDesplegable ;
         private Entidad _Entidad ;
-        private List<Parametro> _ColeccionParametro= new List<Parametro> ();
+        private List<SiCo.lgla.Parametro> _ColeccionParametro= new List<SiCo.lgla.Parametro> ();
         
         #endregion
 

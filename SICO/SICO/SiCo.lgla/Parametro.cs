@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Runtime.Serialization;
 
 namespace SiCo.lgla
 {
+    [Serializable() ]
     public class Parametro
     {
+        #region Declaraciones
+        private string _Nombre = string.Empty;
+        private object _valor = new object();
+        [NonSerialized()]private System.Data.ParameterDirection _TipoParametro = new System.Data.ParameterDirection();
+        #endregion
+
         #region Constructor
         public Parametro()
         {
@@ -34,26 +42,25 @@ namespace SiCo.lgla
         #endregion
 
         #region Propiedes
+        
         public string Nombre
         {
-            get;
-            set;
+            get { return _Nombre; }
+            set { _Nombre = value; }
         }
-
+        
         public object Valor
         {
-            get;
-            set;
+            get { return _valor; }
+            set { _valor = value;}
         }
-
+        
         public System.Data.ParameterDirection  TipoParametro
         {
-            get;
-            set;
+            get { return _TipoParametro; }
+            set { _TipoParametro = value; }
         }
         
-        #endregion
-
-        
+        #endregion        
     }
 }

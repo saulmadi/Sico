@@ -71,10 +71,6 @@
       <Project>{D4D335B3-0AAA-44F2-A150-8263A93E53F7}</Project>
       <Name>SiCo.dtla</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SiCo.sgla\SiCo.sgla.csproj">
-      <Project>{3E075547-76D4-4314-9D87-B731E265398F}</Project>
-      <Name>SiCo.sgla</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

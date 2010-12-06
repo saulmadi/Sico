@@ -21,7 +21,7 @@ namespace SiCo.ctrla
 
         public event PanelAccionCancelarEventArgs Cancelar;
 
-        private SiCo.lgla.Usuario _Usuario ;  
+        //private SiCo.lgla.Usuario _Usuario ;  
     
         public PanelAccion()
         {

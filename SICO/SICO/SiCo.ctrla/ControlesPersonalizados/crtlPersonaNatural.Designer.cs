@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SiCo.lgla.TipoIdentidad tipoIdentidad1 = new SiCo.lgla.TipoIdentidad();
+            SiCo.lgla.TipoIdentidad tipoIdentidad2 = new SiCo.lgla.TipoIdentidad();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crtlPersonaNatural));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,10 +43,10 @@
             this.txtCorreo = new SiCo.ctrla.CorreoCajaTexto(this.components);
             this.txtdireccion = new SiCo.ctrla.CajaTexto(this.components);
             this.txttelefono = new SiCo.ctrla.CajaTexto(this.components);
-            this.txtApellidos = new SiCo.ctrla.CajaTexto(this.components);
-            this.txtNombre = new SiCo.ctrla.CajaTexto(this.components);
             this.cmbTipoIdentidad = new SiCo.ctrla.ListaDesplegable(this.components);
             this.txtidentifiacion = new SiCo.ctrla.IdentidadCajaTexto(this.components);
+            this.txtNombre = new SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(this.components);
+            this.txtApellidos = new SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(this.components);
             this.SuspendLayout();
             // 
             // label1
@@ -179,36 +180,6 @@
             this.txttelefono.Texto = null;
             this.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo;
             // 
-            // txtApellidos
-            // 
-            this.txtApellidos.ColorError = System.Drawing.Color.Red;
-            this.txtApellidos.EsObligatorio = true;
-            this.txtApellidos.ExpresionValidacion = null;
-            this.txtApellidos.Location = new System.Drawing.Point(102, 32);
-            this.txtApellidos.MaxLength = 255;
-            this.txtApellidos.MensajeError = null;
-            this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(380, 20);
-            this.txtApellidos.TabIndex = 1;
-            this.txtApellidos.Texto = null;
-            this.txtApellidos.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
-            // 
-            // txtNombre
-            // 
-            this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.HistoryList;
-            this.txtNombre.ColorError = System.Drawing.Color.Red;
-            this.txtNombre.EsObligatorio = true;
-            this.txtNombre.ExpresionValidacion = null;
-            this.txtNombre.Location = new System.Drawing.Point(102, 6);
-            this.txtNombre.MaxLength = 255;
-            this.txtNombre.MensajeError = null;
-            this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(380, 20);
-            this.txtNombre.TabIndex = 0;
-            this.txtNombre.Texto = null;
-            this.txtNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
-            // 
             // cmbTipoIdentidad
             // 
             this.cmbTipoIdentidad.Comando = null;
@@ -233,21 +204,64 @@
             this.txtidentifiacion.Size = new System.Drawing.Size(380, 20);
             this.txtidentifiacion.TabIndex = 2;
             this.txtidentifiacion.Texto = null;
-            tipoIdentidad1.Descripcion = "Identidad";
-            tipoIdentidad1.Valor = "I";
-            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad1;
+            tipoIdentidad2.Descripcion = "Identidad";
+            tipoIdentidad2.Valor = "I";
+            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad2;
             this.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.AutoCompletar = true;
+            this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtNombre.CampoMostrar = "nombre";
+            this.txtNombre.CaracteresInicio = 3;
+            this.txtNombre.ColeccionParametros = ((System.Collections.Generic.List<SiCo.lgla.Parametro>)(resources.GetObject("txtNombre.ColeccionParametros")));
+            this.txtNombre.ColorError = System.Drawing.Color.Red;
+            this.txtNombre.EsObligatorio = false;
+            this.txtNombre.ExpresionValidacion = null;
+            this.txtNombre.Location = new System.Drawing.Point(102, 6);
+            this.txtNombre.MaxLength = 255;
+            this.txtNombre.MensajeError = null;
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ParameteroBusqueda = "nombre";
+            this.txtNombre.Procedimiento = "PersonaNatural_Buscar";
+            this.txtNombre.Size = new System.Drawing.Size(380, 20);
+            this.txtNombre.TabIndex = 16;
+            this.txtNombre.Texto = null;
+            this.txtNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
+            // 
+            // txtApellidos
+            // 
+            this.txtApellidos.AutoCompletar = true;
+            this.txtApellidos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.txtApellidos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.txtApellidos.CampoMostrar = "apellidos";
+            this.txtApellidos.CaracteresInicio = 3;
+            this.txtApellidos.ColeccionParametros = ((System.Collections.Generic.List<SiCo.lgla.Parametro>)(resources.GetObject("txtApellidos.ColeccionParametros")));
+            this.txtApellidos.ColorError = System.Drawing.Color.Red;
+            this.txtApellidos.EsObligatorio = false;
+            this.txtApellidos.ExpresionValidacion = null;
+            this.txtApellidos.Location = new System.Drawing.Point(102, 32);
+            this.txtApellidos.MensajeError = null;
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.ParameteroBusqueda = "apellidos";
+            this.txtApellidos.Procedimiento = "PersonaNatural_Buscar";
+            this.txtApellidos.Size = new System.Drawing.Size(380, 20);
+            this.txtApellidos.TabIndex = 17;
+            this.txtApellidos.Texto = null;
+            this.txtApellidos.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
             // 
             // crtlPersonaNatural
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.txtApellidos);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtrtn);
             this.Controls.Add(this.txtCorreo);
             this.Controls.Add(this.txtdireccion);
             this.Controls.Add(this.txttelefono);
-            this.Controls.Add(this.txtApellidos);
-            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.cmbTipoIdentidad);
             this.Controls.Add(this.txtidentifiacion);
             this.Controls.Add(this.label2);
@@ -260,6 +274,7 @@
             this.Controls.Add(this.label1);
             this.Name = "crtlPersonaNatural";
             this.Size = new System.Drawing.Size(497, 264);
+            this.Load += new System.EventHandler(this.crtlPersonaNatural_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,10 +286,8 @@
         private System.Windows.Forms.Label label2;
         private IdentidadCajaTexto txtidentifiacion;
         private ListaDesplegable cmbTipoIdentidad;
-        private CajaTexto txtNombre;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private CajaTexto txtApellidos;
         private System.Windows.Forms.Label label5;
         private CajaTexto txttelefono;
         private System.Windows.Forms.Label label6;
@@ -283,6 +296,9 @@
         private CajaTexto txtdireccion;
         private CorreoCajaTexto txtCorreo;
         private CajaTexto txtrtn;
+        
+        private SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto txtNombre;
+        private SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto txtApellidos;
 
     }
 }

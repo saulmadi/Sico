@@ -9,7 +9,7 @@ namespace SiCo.ctrla
 {
     public partial class IdentidadCajaTexto : CajaTexto
     {
-        private lgla.TipoIdentidad _TipoIdentificacion = new lgla.TipoIdentidad(); 
+        private lgla.TipoIdentidad _TipoIdentificacion = new SiCo.lgla.TipoIdentidad() ;
  
 
         public IdentidadCajaTexto()
@@ -25,8 +25,8 @@ namespace SiCo.ctrla
             InitializeComponent();
             SetValidacion();
         }
-
-        public lgla.TipoIdentidad   TipoIdentificacion
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never)]
+        public SiCo.lgla.TipoIdentidad   TipoIdentificacion
         {
             get { return _TipoIdentificacion; }
             set 
@@ -64,7 +64,7 @@ namespace SiCo.ctrla
             this.ExpresionValidacion  = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]";
             this.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232";
             this.TipoTexto = TiposTexto.Alfanumerico;
-            this.TipoIdentificacion = new lgla.TipoIdentidad("Identidad", "I");
+            this.TipoIdentificacion = new SiCo.lgla.TipoIdentidad("Identidad", "I");
         }
 
     }
