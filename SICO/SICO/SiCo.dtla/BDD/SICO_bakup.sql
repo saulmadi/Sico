@@ -35,7 +35,7 @@ CREATE TABLE `ventidades` (
   `direccion` varchar(150),
   `correo` varchar(45),
   `razonsocial` varchar(70),
-  `RTN` int(18),
+  `RTN` varchar(14),
   `espersonanatural` tinyint(1)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE `ventidadpersonajuridica` (
   `telefono` int(11),
   `direccion` varchar(150),
   `correo` varchar(45),
-  `RTN` int(18)
+  `RTN` varchar(14)
 );
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `ventidadpersonanatural` (
   `telefono` int(11),
   `direccion` varchar(150),
   `correo` varchar(45),
-  `RTN` int(18),
+  `RTN` varchar(14),
   `NombreCompleto` varchar(126),
   `TipoIdentidad` varchar(1)
 );
@@ -127,13 +127,13 @@ CREATE TABLE `entidades` (
   `direccion` varchar(150) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
   `espersonanatural` tinyint(1) NOT NULL,
-  `RTN` int(18) DEFAULT NULL,
+  `RTN` varchar(14) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `Entidades_PersonaNatural` (`id`),
   KEY `Entidades_PersonaJuridica` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `entidades`
@@ -432,7 +432,7 @@ CREATE TABLE `personanatural` (
   `identidad` varchar(45) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
-  `tipoidentidad` varchar(1) DEFAULT NULL COMMENT 'I identidad P pasaporte E extrajeria',
+  `tipoidentidad` varchar(1) DEFAULT NULL COMMENT 'I identidad P pasaporte M MenorEdad',
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_personanatural_entidades` FOREIGN KEY (`id`) REFERENCES `entidades` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -629,7 +629,7 @@ telefono int,
 direccion varchar(150),
 correo varchar (45),
 espersonanatural bool,
-rtn int(18),
+rtn varchar(18),
 usu int,
 fmodif date
 )
@@ -801,7 +801,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Buscar`(
 id nvarchar(11),
 nombrecompleto nvarchar(125),
 identidad nvarchar(45),
-rtn nvarchar(18)
+rtn nvarchar(18) ,
+nombre nvarchar(55),
+apellidos nvarchar(70)
 )
 BEGIN
 /*defiicion de consulta*/
@@ -833,6 +835,15 @@ end if;
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"´' ");
 end if;
+
+if nombre<>"" then
+  set @where = concat(@where, " and nombre like = '",nombre,"%' ");
+end if;
+
+if apellidos<>"" then
+  set @where = concat(@where, " and apellidos like = '",apellidos,"%' ");
+end if;
+
 
 
 
@@ -867,7 +878,7 @@ inout id int,
 telefono int,
 direccion varchar(150),
 correo varchar (45),
-rtn int(18),
+rtn varchar(14),
 nombre varchar(55),
 apellidos varchar(70),
 identidad varchar(45),
@@ -887,7 +898,7 @@ set @conteo =0;
 select count(PN.id) from personanatural pn where pn.id=id into @conteo;
 
 set @pj=0;
-select count(pj.id) from personajuridca pj where pj.id=id into @pj;
+select count(pj.id) from personajuridica pj where pj.id=id into @pj;
 
 if@pj=0 then
 if @conteo =0 then
