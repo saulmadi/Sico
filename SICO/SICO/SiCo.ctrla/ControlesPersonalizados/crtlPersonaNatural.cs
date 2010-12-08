@@ -14,7 +14,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
     public partial class crtlPersonaNatural : UserControl
     {
         #region Declaraciones
-        private lgla.Entidades _PersonaNatural;
+        private lgla.PersonaNatural  _PersonaNatural;
         private List<lgla.TipoIdentidad> _ColeccionTipoIdentidad = new List<lgla.TipoIdentidad>();
         public event ErroresEventsHandler Errores;
 
@@ -132,7 +132,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             if (_PersonaNatural == null)
             {
-                _PersonaNatural = new Entidades();
+                _PersonaNatural = new PersonaNatural() ;
                 _PersonaNatural.CambioId += new CambioIdEventArgs(_PersonaNatural_CambioId);
                 _PersonaNatural.Errores += new ErroresEventsArgs(_PersonaNatural_Errores);
             }
@@ -140,7 +140,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         public void NuevaPersonaNatural()
         {
-            _PersonaNatural = new Entidades();
+            _PersonaNatural = new PersonaNatural();
             CargarDatos();
         }
 

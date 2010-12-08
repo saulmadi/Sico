@@ -83,6 +83,8 @@ namespace SiCo.lgla
             this.CargadoPropiedades();             
         }
 
+        public void Guardar()
+        { }
         
         #endregion
 
