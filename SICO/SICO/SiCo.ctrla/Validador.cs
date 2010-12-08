@@ -7,22 +7,19 @@ namespace SiCo.ctrla
 {
     public class Validador
     {
+        #region Declaraciones
+        List<CajaTexto> _ColecionCajasTexto = new List<CajaTexto>();
+        #endregion
         #region Propiedades
-        public List<CajaTexto> ColecionCajasTexto
+        public  List<CajaTexto> ColecionCajasTexto
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get { return _ColecionCajasTexto; }
+            
         }
 
         public bool PermitirIngresar
         {
-            get;
-            set;
+            get { return this.Validar(); }           
         }
 
         public string MensajesError

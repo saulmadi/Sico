@@ -16,24 +16,14 @@ Public Class Prueba
    
     
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
-        Me.Pn.Cargar(1)
+        Pn.NuevaPersonaNatural()
     End Sub
 
     Private Sub Pn_Errores(ByVal Mensaje As System.String) Handles Pn.Errores
         MessageBox.Show(Mensaje)
     End Sub
 
-    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
-        If TextBox1.Text.Length = 3 Then
-            TextBox1.AutoCompleteCustomSource.Add("saul")
-            TextBox1.AutoCompleteCustomSource.Add("saul antonio")
-            TextBox1.AutoCompleteCustomSource.Add("saul antonio mayorquin")
-        Else
-            If TextBox1.Text.Length < 3 Then
-                TextBox1.AutoCompleteCustomSource.Clear()
-            End If
-
-        End If
-       
+    Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Me.Text = Pn.Id
     End Sub
 End Class

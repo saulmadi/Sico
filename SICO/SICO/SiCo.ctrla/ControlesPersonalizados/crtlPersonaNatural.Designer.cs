@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SiCo.lgla.TipoIdentidad tipoIdentidad2 = new SiCo.lgla.TipoIdentidad();
+            SiCo.lgla.TipoIdentidad tipoIdentidad1 = new SiCo.lgla.TipoIdentidad();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crtlPersonaNatural));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -92,7 +92,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Telefono";
+            this.label5.Text = "telefono";
             // 
             // label6
             // 
@@ -204,9 +204,8 @@
             this.txtidentifiacion.Size = new System.Drawing.Size(380, 20);
             this.txtidentifiacion.TabIndex = 2;
             this.txtidentifiacion.Texto = null;
-            tipoIdentidad2.Descripcion = "Identidad";
-            tipoIdentidad2.Valor = "I";
-            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad2;
+            tipoIdentidad1.Descripcion = "Identidad";
+            tipoIdentidad1.Valor = "I";            
             this.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
             // 
             // txtNombre
@@ -230,6 +229,7 @@
             this.txtNombre.TabIndex = 16;
             this.txtNombre.Texto = null;
             this.txtNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
+            this.txtNombre.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // txtApellidos
             // 
@@ -243,6 +243,7 @@
             this.txtApellidos.EsObligatorio = false;
             this.txtApellidos.ExpresionValidacion = null;
             this.txtApellidos.Location = new System.Drawing.Point(102, 32);
+            this.txtApellidos.MaxLength = 255;
             this.txtApellidos.MensajeError = null;
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.ParameteroBusqueda = "apellidos";
@@ -251,6 +252,7 @@
             this.txtApellidos.TabIndex = 17;
             this.txtApellidos.Texto = null;
             this.txtApellidos.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
+            this.txtApellidos.Leave += new System.EventHandler(this.txtNombre_Leave);
             // 
             // crtlPersonaNatural
             // 
