@@ -26,18 +26,19 @@ namespace SiCo.ctrla.ControlesBasicos
             InitializeComponent();
             InicializarComponente();
         }
+
         public AutoCompleteCajaTexto(IContainer container)
         {
             container.Add(this);
 
             InitializeComponent();
             InicializarComponente();
-
         }
 
         #endregion
        
         #region Propiedades
+
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public  System.Collections.Generic.List<SiCo.lgla.Parametro> ColeccionParametros
         {
@@ -129,7 +130,7 @@ namespace SiCo.ctrla.ControlesBasicos
                                 }
                                 
                             }
-                            if (val == 0 && this.ParameteroBusqueda.Length>0)
+                            if (val >0 && this.ParameteroBusqueda.Length>0)
                             {
                                 _Entidad.LlenadoTabla(this.Procedimiento, ColeccionParametros);
                                 if (_Entidad.TotalRegistros > 0)

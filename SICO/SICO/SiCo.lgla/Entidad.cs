@@ -24,23 +24,9 @@ namespace SiCo.lgla
         public Entidad()
         {
             _Conexion.Errores += new ErroresEventArgs(_Conexion_Errores);
-            _Id = null;         
-            
+            _Id = null;                     
         }
-
-        #endregion
-
-        #region Eventos
-
-        /// <summary>
-        /// </summary>
-        void _Conexion_Errores(string Mensaje)
-        {
-            if (Errores != null)
-            Errores(Mensaje); 
-        }
-
-        #endregion
+        #endregion       
 
         #region Propiedades
 
@@ -154,7 +140,7 @@ namespace SiCo.lgla
         /// </summary>
         /// <param name="Comando">Comando a ejecutar</param>
         /// <param name="Parametro">Parametros necesarios para la ejecución del comando</param>
-        public void LlenadoTabla(string Comando, SiCo.lgla.Parametro[] Parametro)
+        public  void LlenadoTabla(string Comando, SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -166,7 +152,7 @@ namespace SiCo.lgla
             EjecutarDataSet();
         }
 
-        public void LlenadoTabla(string Comando, List<SiCo.lgla.Parametro> ColeccionParametros)
+        public   void LlenadoTabla(string Comando, List<SiCo.lgla.Parametro> ColeccionParametros)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -176,17 +162,7 @@ namespace SiCo.lgla
             }
 
         } 
-
-        //public void LlenadoTabla(object[] Personalizado)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-
-        //public void LlenadoTabla(object[][] Personalizado)
-        //{
-        //    throw new System.NotImplementedException();
-        //}
-
+        
         /// <summary>
         /// Ejecuta el comando de la propiedad con los parametros necesarios
         /// </summary>
@@ -248,10 +224,10 @@ namespace SiCo.lgla
         private void EjecutarComando()
         {
             try
-            {
-               
+            {               
                 _Comando.Connection = _Conexion.Conexion;
-                _Conexion.AbrirConexion();                
+                _Conexion.AbrirConexion();
+                _Comando.ExecuteNonQuery(); 
                 _Conexion.CerrarConexion();  
 
             }
@@ -301,6 +277,7 @@ namespace SiCo.lgla
         {
             return _Tabla.Rows[Fila][Columna];
         }
+
         public object PrimerRegistro(string Columna)
         {
             return Registro(0, Columna); 
@@ -311,6 +288,7 @@ namespace SiCo.lgla
             foreach (Parametro i in Parametros)
             {
                 _Comando.Parameters.AddWithValue(i.Nombre, i.Valor);
+                _Comando.Parameters[i.Nombre].IsNullable = true;    
                 _Comando.Parameters[i.Nombre].Direction = i.TipoParametro; 
             }
  
@@ -330,16 +308,34 @@ namespace SiCo.lgla
             }                       
         }
 
-        protected  virtual void CargadoValores()
+        protected  virtual void CargadoPropiedades()
         {
             _Id = (int) Registro(0, "id");            
  
         }
 
-
+        public void Buscar()
+        {
+            LlenadoTabla();
+            CargadoPropiedades();
+        }
        
 
         #endregion             
+
+        #region Eventos
+
+        /// <summary>
+        /// </summary>
+        void _Conexion_Errores(string Mensaje)
+        {
+            if (Errores != null)
+                Errores(Mensaje);
+        }
+
+        #endregion
+
+        
 
     }
 }
