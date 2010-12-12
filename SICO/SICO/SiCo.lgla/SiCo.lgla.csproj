@@ -55,10 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CambioIdEventArgs.cs" />
+    <Compile Include="CargoTablaHandle.cs" />
     <Compile Include="Entidad.cs" />
     <Compile Include="ErroresEventsArgs.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="Entidades.cs" />
+    <Compile Include="PersonaJuridica.cs" />
     <Compile Include="PersonaNatural.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoIdentidad.cs" />

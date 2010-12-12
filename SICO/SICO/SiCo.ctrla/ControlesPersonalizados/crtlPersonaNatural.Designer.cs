@@ -213,7 +213,7 @@
             this.txtNombre.AutoCompletar = true;
             this.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.txtNombre.CampoMostrar = "nombre";
+            this.txtNombre.CampoMostrar = "NombreCompleto";
             this.txtNombre.CaracteresInicio = 3;
             this.txtNombre.ColeccionParametros = ((System.Collections.Generic.List<SiCo.lgla.Parametro>)(resources.GetObject("txtNombre.ColeccionParametros")));
             this.txtNombre.ColorError = System.Drawing.Color.Red;
@@ -223,7 +223,7 @@
             this.txtNombre.MaxLength = 255;
             this.txtNombre.MensajeError = null;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.ParameteroBusqueda = "nombre";
+            this.txtNombre.ParameteroBusqueda = "NombreCompleto";
             this.txtNombre.Procedimiento = "PersonaNatural_Buscar";
             this.txtNombre.Size = new System.Drawing.Size(380, 20);
             this.txtNombre.TabIndex = 16;

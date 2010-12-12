@@ -6,8 +6,9 @@ namespace SiCo.lgla
 {
     public abstract class Entidades : Entidad
     {
-
+        
         #region Declaraciones
+        protected bool _espersonanatural= true ;
 
         #endregion
 
@@ -15,7 +16,16 @@ namespace SiCo.lgla
 
         public Entidades():base()
         {
-            
+            this.ComandoMantenimiento = "Entidades_Mant";  
+
+            this.ColeccionParametrosMantenimiento.Add (new Parametro("telefono",null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("direccion", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("correo", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("espersonanatural", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("rtn", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("entidadnombre", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("identificacion", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));             
             
         }       
 
@@ -47,12 +57,15 @@ namespace SiCo.lgla
             set;
         }
 
-        #endregion
+        public bool espersonanatural
+        {
+            get
+            {
+                return _espersonanatural;
+            }
+        }
 
-        #region Eventos
-
-
-        #endregion      
+        #endregion                
 
         #region Metodos
 
@@ -60,17 +73,29 @@ namespace SiCo.lgla
         {
             if (this.TotalRegistros > 0)
             {
-                base.CargadoPropiedades();
+               
                 telefono = (int)PrimerRegistro("telefono");                
                 direccion = PrimerRegistro("direccion").ToString();
                 correo = PrimerRegistro("correo").ToString();
-                rtn = (string)PrimerRegistro("RTN");                
+                rtn = (string)PrimerRegistro("RTN");
+                base.CargadoPropiedades();
             }
+           
 
  
+        }       
+
+        public override void Guardar()
+        {
+            this.ValorParametrosMantenimiento("telefono", this.telefono);
+            this.ValorParametrosMantenimiento("direccion", this.direccion);
+            this.ValorParametrosMantenimiento("correo", this.correo);
+            this.ValorParametrosMantenimiento("rtn", this.rtn);
+            this.ValorParametrosMantenimiento("espersonanatural", this.espersonanatural);
+            base.Guardar(); 
         }
 
-        #endregion
+        #endregion       
 
     }
 }

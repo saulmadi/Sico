@@ -35,17 +35,17 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
             txtNombre.ColeccionParametros.Add(new Parametro("id",string.Empty));
             txtNombre.ColeccionParametros.Add(new Parametro("nombrecompleto",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("identidad",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("identificacion",string.Empty));
             txtNombre.ColeccionParametros.Add(new Parametro("rtn",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("nombre",string.Empty));
+            txtNombre.ColeccionParametros.Add(new Parametro("NombreCompleto",string.Empty));
             txtNombre.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
 
 
             txtApellidos.ColeccionParametros.Add(new Parametro("id", string.Empty));
             txtApellidos.ColeccionParametros.Add(new Parametro("nombrecompleto", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("identidad", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("identificacion", string.Empty));
             txtApellidos.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("nombre", string.Empty));
+            txtApellidos.ColeccionParametros.Add(new Parametro("NombreCompleto", string.Empty));
             txtApellidos.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
 
             
@@ -85,9 +85,9 @@ namespace SiCo.ctrla.ControlesPersonalizados
             Validador.ColecionCajasTexto.Add(txttelefono);
             if (Validador.PermitirIngresar)
             {
-                _PersonaNatural.nombre = txtNombre.Text;
-                _PersonaNatural.apellidos = txtApellidos.Text;
-                _PersonaNatural.identidad = txtidentifiacion.Texto;
+                _PersonaNatural.NombreCompleto = txtNombre.Text;
+                
+                _PersonaNatural.identificacion = txtidentifiacion.Texto;
                 _PersonaNatural.tipoidentidad = txtidentifiacion.TipoIdentificacion;
                 _PersonaNatural.direccion = txtdireccion.Texto;
                 _PersonaNatural.correo = txtCorreo.Texto;
@@ -133,8 +133,8 @@ namespace SiCo.ctrla.ControlesPersonalizados
             if (_PersonaNatural == null)
             {
                 _PersonaNatural = new PersonaNatural() ;
-                _PersonaNatural.CambioId += new CambioIdEventArgs(_PersonaNatural_CambioId);
-                _PersonaNatural.Errores += new ErroresEventsArgs(_PersonaNatural_Errores);
+                _PersonaNatural.CambioId += new CambioIdEventHandler(_PersonaNatural_CambioId);
+                _PersonaNatural.Errores += new ErroresEventHandler(_PersonaNatural_Errores);
             }
         }        
 
@@ -147,11 +147,11 @@ namespace SiCo.ctrla.ControlesPersonalizados
         private void CargarDatos()
         {
             InicializarPersonaNatural(); 
-            txtNombre.Text = _PersonaNatural.nombre;
-            txtApellidos.Text = _PersonaNatural.apellidos;
+            txtNombre.Text = _PersonaNatural.NombreCompleto;
+            
             txtCorreo.Text = _PersonaNatural.correo;
             txttelefono.Text = _PersonaNatural.telefono.ToString();
-            txtidentifiacion.Text = _PersonaNatural.identidad;
+            txtidentifiacion.Text = _PersonaNatural.identificacion;
             cmbTipoIdentidad.SelectedItem = _PersonaNatural.tipoidentidad;
             txtdireccion.Text = _PersonaNatural.direccion;
             txtrtn.Text = _PersonaNatural.rtn;
@@ -163,7 +163,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
             if (txtApellidos.Text != string.Empty && txtNombre.Text != string.Empty)
             {
-                _PersonaNatural.Buscar(string.Empty, string.Empty, string.Empty, string.Empty, txtNombre.Text.Trim(), txtApellidos.Text.Trim());
+                //_PersonaNatural.Buscar(string.Empty, string.Empty, string.Empty, string.Empty, txtNombre.Text.Trim(), txtApellidos.Text.Trim());
                 if (_PersonaNatural.TotalRegistros > 0)
                     CargarDatos();
             }

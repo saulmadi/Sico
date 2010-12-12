@@ -1,13 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SiCo.lgla.Entidad" Collapsed="true">
+  <Class Name="SiCo.lgla.Entidad">
     <Position X="0.5" Y="0.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Events" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>gAFCAAAASgzAAAABAAAAAgAgAAAAAiAFQBAkEAAUAUQ=</HashCode>
+      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBgkFAAUAUQ=</HashCode>
       <FileName>Entidad.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -21,46 +23,68 @@
       <FileName>Parametro.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.Usuario">
-    <Position X="6" Y="4.5" Width="1.5" />
+  <Class Name="SiCo.lgla.Usuario" Collapsed="true">
+    <Position X="4.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla.Entidades">
-    <Position X="1.25" Y="5" Width="1.5" />
+    <Position X="0.75" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAABCAAAAAAAAQAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAABCEBAAABAAQAAI=</HashCode>
       <FileName>Entidades.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla.TipoIdentidad">
-    <Position X="6" Y="2" Width="1.5" />
+    <Position X="6.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TipoIdentidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaNatural">
-    <Position X="3.25" Y="5.75" Width="1.5" />
+  <Class Name="SiCo.lgla.PersonaNatural" Collapsed="true">
+    <Position X="3.25" Y="5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAgBAAAAAAAAAAAAABAAQgIA=</HashCode>
       <FileName>PersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Delegate Name="SiCo.lgla.ErroresEventsArgs">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+  <Class Name="SiCo.lgla.PersonaJuridica" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAQAAA=</HashCode>
+      <FileName>PersonaJuridica.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="SiCo.lgla.ErroresEventHandler">
+    <Position X="4.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ErroresEventsArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.lgla.CambioIdEventArgs">
-    <Position X="6" Y="0.5" Width="1.5" />
+  <Delegate Name="SiCo.lgla.CambioIdEventHandler">
+    <Position X="6.75" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CambioIdEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SiCo.lgla.CargoTablaEventHandler">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CargoTablaHandle.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Font Name="Segoe UI" Size="9" />
