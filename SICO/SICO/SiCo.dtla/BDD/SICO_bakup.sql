@@ -22,53 +22,35 @@ CREATE DATABASE IF NOT EXISTS sico;
 USE sico;
 
 --
--- Temporary table structure for view `ventidades`
+-- Temporary table structure for view `personasjuridicas`
 --
-DROP TABLE IF EXISTS `ventidades`;
-DROP VIEW IF EXISTS `ventidades`;
-CREATE TABLE `ventidades` (
-  `id` int(11),
-  `nombre` varchar(55),
-  `apellidos` varchar(70),
-  `identidad` varchar(45),
-  `telefono` int(11),
-  `direccion` varchar(150),
-  `correo` varchar(45),
-  `razonsocial` varchar(70),
-  `RTN` varchar(14),
-  `espersonanatural` tinyint(1)
-);
-
---
--- Temporary table structure for view `ventidadpersonajuridica`
---
-DROP TABLE IF EXISTS `ventidadpersonajuridica`;
-DROP VIEW IF EXISTS `ventidadpersonajuridica`;
-CREATE TABLE `ventidadpersonajuridica` (
-  `id` int(11),
-  `razonsocial` varchar(70),
-  `telefono` int(11),
-  `direccion` varchar(150),
-  `correo` varchar(45),
-  `RTN` varchar(14)
-);
-
---
--- Temporary table structure for view `ventidadpersonanatural`
---
-DROP TABLE IF EXISTS `ventidadpersonanatural`;
-DROP VIEW IF EXISTS `ventidadpersonanatural`;
-CREATE TABLE `ventidadpersonanatural` (
-  `id` int(11),
-  `nombre` varchar(55),
-  `apellidos` varchar(70),
-  `identidad` varchar(45),
+DROP TABLE IF EXISTS `personasjuridicas`;
+DROP VIEW IF EXISTS `personasjuridicas`;
+CREATE TABLE `personasjuridicas` (
+  `RazonSocial` varchar(120),
   `telefono` int(11),
   `direccion` varchar(150),
   `correo` varchar(45),
   `RTN` varchar(14),
-  `NombreCompleto` varchar(126),
-  `TipoIdentidad` varchar(1)
+  `id` int(11)
+);
+
+--
+-- Temporary table structure for view `personasnaturales`
+--
+DROP TABLE IF EXISTS `personasnaturales`;
+DROP VIEW IF EXISTS `personasnaturales`;
+CREATE TABLE `personasnaturales` (
+  `telefono` int(11),
+  `direccion` varchar(150),
+  `correo` varchar(45),
+  `RTN` varchar(14),
+  `usu` int(11),
+  `fmodif` date,
+  `NombreCompleto` varchar(120),
+  `identificacion` varchar(20),
+  `tipoidentidad` varchar(1),
+  `id` int(11)
 );
 
 --
@@ -77,11 +59,12 @@ CREATE TABLE `ventidadpersonanatural` (
 
 DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `identidades` int(11) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `Entidad_Unica` (`identidades`),
   KEY `fk_Clientes_Entidades1` (`identidades`),
   CONSTRAINT `fk_Clientes_Entidades1` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -122,7 +105,7 @@ CREATE TABLE `departamentos` (
 
 DROP TABLE IF EXISTS `entidades`;
 CREATE TABLE `entidades` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `telefono` int(11) DEFAULT NULL,
   `direccion` varchar(150) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
@@ -130,9 +113,11 @@ CREATE TABLE `entidades` (
   `RTN` varchar(14) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
+  `entidadnombre` varchar(120) NOT NULL,
+  `identificacion` varchar(20) DEFAULT NULL,
+  `tipoidentidad` varchar(1) DEFAULT NULL COMMENT 'I identidad, P pasaporte',
   PRIMARY KEY (`id`),
-  KEY `Entidades_PersonaNatural` (`id`),
-  KEY `Entidades_PersonaJuridica` (`id`)
+  UNIQUE KEY `NombreUnico` (`entidadnombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -399,53 +384,6 @@ CREATE TABLE `municipio` (
 
 
 --
--- Definition of table `personajuridica`
---
-
-DROP TABLE IF EXISTS `personajuridica`;
-CREATE TABLE `personajuridica` (
-  `id` int(11) NOT NULL,
-  `razonsocial` varchar(70) NOT NULL,
-  `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_personajuridica_entidades` FOREIGN KEY (`id`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `personajuridica`
---
-
-/*!40000 ALTER TABLE `personajuridica` DISABLE KEYS */;
-/*!40000 ALTER TABLE `personajuridica` ENABLE KEYS */;
-
-
---
--- Definition of table `personanatural`
---
-
-DROP TABLE IF EXISTS `personanatural`;
-CREATE TABLE `personanatural` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(55) DEFAULT NULL,
-  `apellidos` varchar(70) DEFAULT NULL,
-  `identidad` varchar(45) DEFAULT NULL,
-  `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
-  `tipoidentidad` varchar(1) DEFAULT NULL COMMENT 'I identidad P pasaporte M MenorEdad',
-  PRIMARY KEY (`id`),
-  CONSTRAINT `FK_personanatural_entidades` FOREIGN KEY (`id`) REFERENCES `entidades` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `personanatural`
---
-
-/*!40000 ALTER TABLE `personanatural` DISABLE KEYS */;
-/*!40000 ALTER TABLE `personanatural` ENABLE KEYS */;
-
-
---
 -- Definition of table `productos`
 --
 
@@ -502,13 +440,15 @@ CREATE TABLE `productosimagenes` (
 DROP TABLE IF EXISTS `proveedores`;
 CREATE TABLE `proveedores` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idproveedod` int(11) NOT NULL,
+  `identidades` int(11) NOT NULL,
   `idcontacto` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `Proveedores_Entidades` (`idproveedod`),
   KEY `Contactos_Entidades` (`idcontacto`),
-  CONSTRAINT `Contactos_Entidades` FOREIGN KEY (`idcontacto`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Proveedores_Entidades` FOREIGN KEY (`idproveedod`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `Proveedores_Entidades` (`identidades`),
+  CONSTRAINT `Proveedores_Entidades` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Contactos_Entidades` FOREIGN KEY (`idcontacto`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -612,6 +552,138 @@ CREATE TABLE `tiposmotocicletas` (
 
 
 --
+-- Definition of table `usuarios`
+--
+
+DROP TABLE IF EXISTS `usuarios`;
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identidad` int(11) NOT NULL,
+  `contrasena` varchar(30) NOT NULL,
+  `idrol` int(11) NOT NULL,
+  `usuario` varchar(45) NOT NULL,
+  `estado` tinyint(1) NOT NULL,
+  `idsucursales` int(11) DEFAULT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `InicioSesion` (`usuario`),
+  UNIQUE KEY `Entidad` (`identidad`),
+  KEY `Usuarios_Entidad` (`identidad`),
+  KEY `Usuarios_Roles` (`idrol`),
+  KEY `fk_Usuarios_Sucursales1` (`idsucursales`),
+  CONSTRAINT `Usuarios_Entidad` FOREIGN KEY (`identidad`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Usuarios_Roles` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `usuarios`
+--
+
+/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
+
+
+--
+-- Definition of procedure `Clientes_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Clientes_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+identidades nvarchar(11)
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from clientes ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if identidades<>"" then
+  set @where = concat(@where, " and identidades = ",identidades," ");
+end if;
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Clientes_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Clientes_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+identidades int,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(c.id) from clientes c where c.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO clientes(identidades,usu,fmodif)
+
+  VALUES(identidades,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE clientes c set
+        c.identidades= identidades,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Entidades_Mant`
 --
 
@@ -630,6 +702,9 @@ direccion varchar(150),
 correo varchar (45),
 espersonanatural bool,
 rtn varchar(18),
+entidadnombre varchar(120),
+identificacion varchar(20),
+tipoidentidad varchar(1),
 usu int,
 fmodif date
 )
@@ -641,9 +716,9 @@ select count(e.id) from entidades E where E.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO entidades(telefono, direccion,correo,espersonanatural, RTN, usu,fmodif)
+  INSERT INTO entidades(telefono, direccion,correo,espersonanatural, RTN, usu,fmodif,entidadnombre,identificacion,tipoidentidad)
 
-  VALUES(telefono,direccion,correo,espersonanatural,rtn,usu,fmodif);
+  VALUES(telefono,direccion,correo,espersonanatural,rtn,usu,fmodif,entidadnombre,identificacion,tipoidentidad);
 
   select last_insert_id() into id;
 
@@ -656,7 +731,10 @@ else
         e.espersonanatural= espersonanatural,
         e.RTN= rtn,
         e.usu=usu,
-        e.fmodif= fmodif
+        e.fmodif= fmodif,
+        e.entidadnombre=entidadnombre,
+        e.identificacion=identificacion,
+        e.tipoidentidad=identificacion
   where e.id= id;
 
 end if;
@@ -693,7 +771,7 @@ set @sql="";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from ventidadpersonajuridica ");
+set @from= concat(@from," from personasjuridicas ");
 
 
 /*defiicion de filtros*/
@@ -724,69 +802,6 @@ END $$
 DELIMITER ;
 
 --
--- Definition of procedure `PersonaJuridica_Mant`
---
-
-DROP PROCEDURE IF EXISTS `PersonaJuridica_Mant`;
-
-DELIMITER $$
-
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaJuridica_Mant`(
-
-/*definicion de parametros*/
-
-inout id int,
-telefono int,
-direccion varchar(150),
-correo varchar (45),
-rtn int(18),
-nombre varchar(55),
-razonsocial varchar(70),
-usu int,
-fmodif date,
-inout Accion bool
-)
-BEGIN
-
-call Entidades_Mant(id,telefono,direccion,correo,false,rtn,usu,fmodif);
-
-
-set @conteo =0;
-select count(PN.id) from personajuridica pn where pn.id=id into @conteo;
-
-set @pj=0;
-select count(pj.id) from personanatural pj where pj.id=id into @pj;
-
-if @pj=0 then
-
-if @conteo =0 then
-
-  insert into personajuridica(id,razonsocial,usu,fmodif)
-  values(id,razonsocial,usu,fmodif);
-
-else
-
-  update personajuridica PJ set
-    pj.id=id,
-    pj.razonsocial=razonsocial,
-    pj.usu=usu,
-    pj.fmodif=fmodif
-  where pj.id=id;
-
-end if;
-
-select true into Accion;
-
-end if;
-
-
-END $$
-/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
-
-DELIMITER ;
-
---
 -- Definition of procedure `PersonaNatural_Buscar`
 --
 
@@ -800,10 +815,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Buscar`(
 /*defiicion de parametros*/
 id nvarchar(11),
 nombrecompleto nvarchar(125),
-identidad nvarchar(45),
-rtn nvarchar(18) ,
-nombre nvarchar(55),
-apellidos nvarchar(70)
+identificacion nvarchar(45),
+rtn nvarchar(18) 
+
 )
 BEGIN
 /*defiicion de consulta*/
@@ -816,7 +830,7 @@ set @sql="";
 set @campos= concat( @campos," * ");
 
 
-set @from= concat(@from," from ventidadpersonanatural ");
+set @from= concat(@from," from personasnaturales ");
 
 
 /*defiicion de filtros*/
@@ -828,23 +842,13 @@ if nombrecompleto<>"" then
   set @where = concat(@where, " and NombreCompleto like '",nombrecompleto, "%' ");
 end if;
 
-if identidad<>"" then
-  set @where = concat(@where, " and identidad = '",identidad,"' ");
+if identificacion<>"" then
+  set @where = concat(@where, " and identificacion = '",identificacion,"' ");
 end if;
 
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"´' ");
 end if;
-
-if nombre<>"" then
-  set @where = concat(@where, " and nombre like = '",nombre,"%' ");
-end if;
-
-if apellidos<>"" then
-  set @where = concat(@where, " and apellidos like = '",apellidos,"%' ");
-end if;
-
-
 
 
 
@@ -862,96 +866,20 @@ END $$
 DELIMITER ;
 
 --
--- Definition of procedure `PersonaNatural_Mant`
+-- Definition of view `personasjuridicas`
 --
 
-DROP PROCEDURE IF EXISTS `PersonaNatural_Mant`;
-
-DELIMITER $$
-
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Mant`(
-
-/*definicion de parametros*/
-
-inout id int,
-telefono int,
-direccion varchar(150),
-correo varchar (45),
-rtn varchar(14),
-nombre varchar(55),
-apellidos varchar(70),
-identidad varchar(45),
-tipoidentidad varchar(1),
-usu int,
-fmodif date,
-inout Accion bool
-)
-BEGIN
-
-
-/*Ingreso en las entidades*/
-call Entidades_Mant(id,telefono,direccion,correo,true,rtn,usu,fmodif);
-
-
-set @conteo =0;
-select count(PN.id) from personanatural pn where pn.id=id into @conteo;
-
-set @pj=0;
-select count(pj.id) from personajuridica pj where pj.id=id into @pj;
-
-if@pj=0 then
-if @conteo =0 then
-
-  INSERT INTO personanatural(id, nombre,apellidos,identidad,usu,fmodif,tipoidentidad)
-  VALUES(id,nombre,apellidos,identidad,usu,fmodif,tipoidentidad);
-
-else
-  UPDATE personanatural pn SET
-        pn.id=id,
-        pn.nombre=nombre,
-        pn.apellidos= apellidos,
-        pn.identidad=identidad,
-        pn.tipoidentidad=tipoidentidad,
-        pn.usu=usu,
-        pn.fmodif= fmodif
-  where pn.id= id;
-
-end if;
-
-select true into Accion;
-
-end if;
-
-
-END $$
-/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
-
-DELIMITER ;
+DROP TABLE IF EXISTS `personasjuridicas`;
+DROP VIEW IF EXISTS `personasjuridicas`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasjuridicas` AS select `entidades`.`entidadnombre` AS `RazonSocial`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`RTN` AS `RTN`,`entidades`.`id` AS `id` from `entidades` where (`entidades`.`espersonanatural` = 0);
 
 --
--- Definition of view `ventidades`
+-- Definition of view `personasnaturales`
 --
 
-DROP TABLE IF EXISTS `ventidades`;
-DROP VIEW IF EXISTS `ventidades`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidades` AS select `e`.`id` AS `id`,`pn`.`nombre` AS `nombre`,`pn`.`apellidos` AS `apellidos`,`pn`.`identidad` AS `identidad`,`e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`pj`.`razonsocial` AS `razonsocial`,`e`.`RTN` AS `RTN`,`e`.`espersonanatural` AS `espersonanatural` from ((`entidades` `e` left join `personanatural` `pn` on(((`e`.`id` = `pn`.`id`) and (`e`.`espersonanatural` = 1)))) left join `personajuridica` `pj` on(((`e`.`id` = `pj`.`id`) and (`e`.`espersonanatural` = 0))));
-
---
--- Definition of view `ventidadpersonajuridica`
---
-
-DROP TABLE IF EXISTS `ventidadpersonajuridica`;
-DROP VIEW IF EXISTS `ventidadpersonajuridica`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidadpersonajuridica` AS select `e`.`id` AS `id`,`pj`.`razonsocial` AS `razonsocial`,`e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN` from (`entidades` `e` join `personajuridica` `pj` on(((`e`.`id` = `pj`.`id`) and (`e`.`espersonanatural` = 0))));
-
---
--- Definition of view `ventidadpersonanatural`
---
-
-DROP TABLE IF EXISTS `ventidadpersonanatural`;
-DROP VIEW IF EXISTS `ventidadpersonanatural`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidadpersonanatural` AS select `e`.`id` AS `id`,`pn`.`nombre` AS `nombre`,`pn`.`apellidos` AS `apellidos`,`pn`.`identidad` AS `identidad`,`e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN`,concat(`pn`.`nombre`,' ',`pn`.`apellidos`) AS `NombreCompleto`,`pn`.`tipoidentidad` AS `TipoIdentidad` from (`entidades` `e` join `personanatural` `pn` on(((`e`.`id` = `pn`.`id`) and (`e`.`espersonanatural` = 1))));
+DROP TABLE IF EXISTS `personasnaturales`;
+DROP VIEW IF EXISTS `personasnaturales`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasnaturales` AS select `e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN`,`e`.`usu` AS `usu`,`e`.`fmodif` AS `fmodif`,`e`.`entidadnombre` AS `NombreCompleto`,`e`.`identificacion` AS `identificacion`,`e`.`tipoidentidad` AS `tipoidentidad`,`e`.`id` AS `id` from `entidades` `e` where (`e`.`espersonanatural` = 1);
 
 
 

@@ -388,14 +388,17 @@ namespace SiCo.lgla
 
         protected void ValorParametrosBusqueda(string Nombre, object valor)
         {
+            
             foreach (Parametro i in this.ColeccionParametrosBusqueda)
             {
                 if (i.Nombre.ToLower() == Nombre.ToLower())
                 {
                     i.Valor = valor;
-                    continue; 
+                    return; 
                 } 
             }
+            throw new ApplicationException("El parámetro no se encuentra en la colección") 
+            
         }
 
         protected void ValorParametrosMantenimiento(string Nombre, object valor)
@@ -405,9 +408,10 @@ namespace SiCo.lgla
                 if (i.Nombre.ToLower() == Nombre.ToLower())
                 {
                     i.Valor = valor;
-                    continue;
-                }
+                    return; 
+                } 
             }
+            throw new ApplicationException("El parámetro no se encuentra en la colección")
         }
 
         protected void NullParametrosBusqueda()
