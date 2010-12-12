@@ -11,7 +11,7 @@ namespace SiCo.ctrla.ControlesBasicos
     public partial class AutoCompleteCajaTexto : SiCo.ctrla.CajaTexto
     {
         #region Declaraciones
-        private Entidad _Entidad;
+        private EntidadInstanciable _Entidad;
         private string _ParametroBusqueda = string.Empty;
         private List<SiCo.lgla.Parametro> _ColeccionParametros= new List<SiCo.lgla.Parametro  > ();
         public event ErroresEventsHandler Errores;
@@ -100,7 +100,7 @@ namespace SiCo.ctrla.ControlesBasicos
         {
             if (_Entidad == null)
             {
-                _Entidad = new Entidad();
+                _Entidad = new EntidadInstanciable();
             }
         }
 
