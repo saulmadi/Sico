@@ -8,33 +8,31 @@ namespace SiCo.lgla
     public class PersonaNatural: Entidades
     {
         #region Declaraciones
-        private TipoIdentidad _TipoIdentidad = new TipoIdentidad(); 
+        private TipoIdentidad _TipoIdentidad = new TipoIdentidad();       
+
         #endregion
 
         #region constructor
         public PersonaNatural():base()
-        {
-            this.ComandoMantenimiento = "PersonaNatural_Mant";
-            this.ComandoSelect = "PersonaNatural_buscar";            
+        {            
+            this.ComandoSelect = "PersonaNatural_buscar";
+            this._espersonanatural = true;
+            this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompleto",null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("identificacion", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
         }
         #endregion
 
         #region Propiedades
 
-        public string nombre
+        public string NombreCompleto
         {
             get;
             set;
         }
 
-        public string apellidos
-        {
-            get;
-            set;
-        }
-
-        public string identidad
+        public string identificacion
         {
             get;
             set;
@@ -53,38 +51,37 @@ namespace SiCo.lgla
         {
             if (this.TotalRegistros > 0)
             {
-                this.nombre = this.PrimerRegistro("nombre").ToString() ;
-                this.apellidos = this.PrimerRegistro("apellidos").ToString() ;
-                this.identidad = this.PrimerRegistro("identidad").ToString();
-
+                this.NombreCompleto = this.PrimerRegistro("NombreCompleto").ToString() ;                
+                this.identificacion = this.PrimerRegistro("identificacion").ToString();
                 if (PrimerRegistro("tipo").ToString() == "I")
                     this.tipoidentidad = new TipoIdentidad("Identidad", "I");
                 else if (PrimerRegistro("tipo").ToString() == "P")
                     this.tipoidentidad = new TipoIdentidad("Pasaporte", "P");
                 else this.tipoidentidad = new TipoIdentidad("Menor de Edad", "M");
+                base.CargadoPropiedades();                
+            }            
+        }       
 
-                
-            }
-
-            base.CargadoPropiedades();
-        }
-
-        public void Buscar(string id,string nombrecompleto,string identidad,string rtn,string nombre,string apellidos )        
+        public void Buscar(string nombrecompleto,string identidad,string rtn)
         {
-            Parametro[] Parametro= {new Parametro("id",id),
-                                    new Parametro("nombrecompleto",nombrecompleto),
-                                    new Parametro("Identidad",identidad), 
-                                    new Parametro("rtn",rtn),
-                                    new Parametro("nombre",nombre),
-                                    new Parametro ("apellidos",apellidos) };
+            this.NullParametrosBusqueda();
+            this.ValorParametrosBusqueda("nombrecompleto", nombrecompleto);
+            this.ValorParametrosBusqueda("nombrecompleto", nombrecompleto);
+            this.ValorParametrosBusqueda("nombrecompleto", nombrecompleto);
 
-            LlenadoTabla(Parametro);
-
-            this.CargadoPropiedades();             
+            LlenadoTabla(this.ColeccionParametrosBusqueda); 
+            
         }
 
-        public void Guardar()
-        { }
+        public  override void  Guardar()
+        {
+            this.NullParametrosMantenimiento(); 
+            this.ValorParametrosMantenimiento("entidadnombre", this.NombreCompleto );
+            this.ValorParametrosMantenimiento("identificacion", this.identificacion );
+            this.ValorParametrosMantenimiento("tipoIdentidad", this.tipoidentidad);           
+            base.Guardar();
+        }
+        
         
         #endregion
 

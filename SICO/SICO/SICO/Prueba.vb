@@ -16,7 +16,8 @@ Public Class Prueba
    
     
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
-        Pn.NuevaPersonaNatural()
+
+
     End Sub
 
     Private Sub Pn_Errores(ByVal Mensaje As System.String) Handles Pn.Errores

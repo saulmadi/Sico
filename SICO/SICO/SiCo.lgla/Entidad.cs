@@ -7,25 +7,37 @@ using SiCo.dtla;
 
 namespace SiCo.lgla
 {
-    [Serializable()]public class Entidad
+    [Serializable()]abstract  public class Entidad
     {
         #region Declaraciones
-        public event ErroresEventsArgs Errores;
-        public event CambioIdEventArgs CambioId;
+        public event ErroresEventHandler Errores;
+        public event CambioIdEventHandler CambioId;
+
+        public event CargoTablaEventHandler CargoTabla;
+    
         [NonSerialized]private DataTable _Tabla =new DataTable();
         [NonSerialized]private SiCo.dtla.ConexionMySql _Conexion = new ConexionMySql(true);
         [NonSerialized]private MySql.Data.MySqlClient.MySqlCommand _Comando = new MySqlCommand();
         [NonSerialized]private Usuario _Usuario;
-        protected int? _Id ;
+        [NonSerialized]private List<Parametro> _ColeccionParametrosBusqueda= new List<Parametro> ();
+        [NonSerialized]protected  List<Parametro> _ColeccionParametrosMantenimiento = new List<Parametro>();
+        protected int? _Id =0;
         
         #endregion
 
         #region Construtor
         public Entidad()
         {
+            this.ColeccionParametrosBusqueda.Add(new Parametro("id", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("id", Id));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", this.Usuario.Id));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif", this.fmodif));
+
             _Conexion.Errores += new ErroresEventArgs(_Conexion_Errores);
-            _Id = null;                     
-        }
+            this.CargoTabla += new CargoTablaEventHandler(Entidad_CargoTabla);
+            this.CambioId += new CambioIdEventHandler(Entidad_CambioId);
+             
+        }          
         #endregion       
 
         #region Propiedades
@@ -68,10 +80,21 @@ namespace SiCo.lgla
             set;
         }
 
+        protected List<Parametro> ColeccionParametrosBusqueda
+        {
+            get { return _ColeccionParametrosBusqueda; }
+            set { _ColeccionParametrosBusqueda = value; }}
+
+        protected List<Parametro> ColeccionParametrosMantenimiento
+        {
+            get { return _ColeccionParametrosMantenimiento;}
+            set { _ColeccionParametrosMantenimiento = value;}        
+        }
+
         /// <summary>
         /// Id de la entidad
         /// </summary>
-        public int? Id
+        public Int32? Id
         {
             get
             {
@@ -126,7 +149,7 @@ namespace SiCo.lgla
         /// Ejecuta un comando ingresado manualmente
         /// </summary>
         /// <param name="Comando">Comando SQL con el que desea que se llene la Tabla</param>
-        public void LlenadoTabla(string Comando)
+        protected  void LlenadoTabla(string Comando)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.Text;
@@ -140,7 +163,7 @@ namespace SiCo.lgla
         /// </summary>
         /// <param name="Comando">Comando a ejecutar</param>
         /// <param name="Parametro">Parametros necesarios para la ejecución del comando</param>
-        public  void LlenadoTabla(string Comando, SiCo.lgla.Parametro[] Parametro)
+        protected void LlenadoTabla(string Comando, SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -152,7 +175,13 @@ namespace SiCo.lgla
             EjecutarDataSet();
         }
 
-        public   void LlenadoTabla(string Comando, List<SiCo.lgla.Parametro> ColeccionParametros)
+        protected void LlenadoTabla(List<SiCo.lgla.Parametro> ColeccionParametros)
+        {
+            LlenadoTabla(ComandoSelect, ColeccionParametros);
+
+        }
+
+        protected void LlenadoTabla(string Comando, List<SiCo.lgla.Parametro> ColeccionParametros)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -167,7 +196,7 @@ namespace SiCo.lgla
         /// Ejecuta el comando de la propiedad con los parametros necesarios
         /// </summary>
         /// <param name="Parametro">Parametros necesarios para la ejecución del comando</param>
-        public void LlenadoTabla(SiCo.lgla.Parametro[] Parametro)
+        protected void LlenadoTabla(SiCo.lgla.Parametro[] Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -182,7 +211,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Ejecuta el comando ingresado en la propiedad ComandoSelect
         /// </summary>
-        public void LlenadoTabla()
+        protected void LlenadoTabla()
         {
             InicializarComando();            
             _Comando.CommandType = CommandType.StoredProcedure;
@@ -194,13 +223,14 @@ namespace SiCo.lgla
         /// Modifica el registro de la entidad
         /// </summary>
         /// <param name="Parametro">Parametros Necesarios para la modificación</param>
-        protected void Mantenimiento(ref SiCo.lgla.Parametro[] Parametro)
+        protected void Mantenimiento(ref List<Parametro> Parametro)
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
             LLenadoParametros(ref Parametro);           
             _Comando.CommandText = ComandoMantenimiento;
             EjecutarComando();
+            LLenadoParametros(ref Parametro);
         }
 
         /// <summary>
@@ -225,11 +255,24 @@ namespace SiCo.lgla
         {
             try
             {               
-                _Comando.Connection = _Conexion.Conexion;
+                _Comando.Connection = _Conexion.Conexion;                
                 _Conexion.AbrirConexion();
-                _Comando.ExecuteNonQuery(); 
-                _Conexion.CerrarConexion();  
+                 MySqlTransaction Transaccion = _Conexion.Conexion.BeginTransaction();   
+                try
+                {                   
+                    _Comando.ExecuteNonQuery();
+                    Transaccion.Commit(); 
+                }
+                catch 
+                {
+                    Transaccion.Rollback();                   
+                }
+                finally
+                {
+                    _Conexion.CerrarConexion();  
+                }
 
+                
             }
             catch (Exception ex)
             {
@@ -252,7 +295,12 @@ namespace SiCo.lgla
                 MySqlDataAdapter _Adapter = new MySqlDataAdapter(_Comando);
                 _Conexion.AbrirConexion(); 
                 _Adapter.Fill(Tabla);
-                _Conexion.CerrarConexion();  
+                _Conexion.CerrarConexion();
+                if (this.TotalRegistros > 0)
+                {
+                    if (this.CargoTabla != null)
+                        this.CargoTabla();
+                }
             }
             catch (MySqlException  ex)
             {
@@ -273,36 +321,38 @@ namespace SiCo.lgla
         /// </summary>
         /// <param name="Fila">Número de fila en el que se encuentra el registro</param>
         /// <param name="Columna">Nombre de la columna en el que se encuentra el registro</param>
-        public object Registro(int Fila, String Columna)
+        protected object Registro(int Fila, String Columna)
         {
             return _Tabla.Rows[Fila][Columna];
         }
 
-        public object PrimerRegistro(string Columna)
+        protected object PrimerRegistro(string Columna)
         {
             return Registro(0, Columna); 
         }
 
-        private void LLenadoParametros(ref SiCo.lgla.Parametro[] Parametros)
+        private void LLenadoParametros(ref List<Parametro> parametro)
         {
-            foreach (Parametro i in Parametros)
+            foreach (Parametro i in parametro )
             {
                 _Comando.Parameters.AddWithValue(i.Nombre, i.Valor);
                 _Comando.Parameters[i.Nombre].IsNullable = true;    
-                _Comando.Parameters[i.Nombre].Direction = i.TipoParametro; 
+                _Comando.Parameters[i.Nombre].Direction = i.TipoParametro ; 
             }
  
         }
 
-        private void LLenadoParmaetrosSalida(ref SiCo.lgla.Parametro[] Parametro) 
+        private void LLenadoParmaetrosSalida(ref List<Parametro> parametro) 
         {
             foreach (MySqlParameter i in _Comando.Parameters)
             {
-                for (int x = 0; x < Parametro.GetUpperBound(0); x++)
+                for (int x = 0; x < parametro.Count ; x++)
                 {
-                    if (Parametro[x].Nombre == i.ParameterName)
+                    if (parametro[x].Nombre  == i.ParameterName && i.Direction!=ParameterDirection.Input)
                     {
-                        Parametro[x].Valor = i.Value; 
+                        parametro[x].Valor = i.Value;
+                        if (i.ParameterName == "id")
+                            _Id =(Int32?) i.Value;
                     } 
                 } 
             }                       
@@ -310,16 +360,72 @@ namespace SiCo.lgla
 
         protected  virtual void CargadoPropiedades()
         {
+
             _Id = (int) Registro(0, "id");            
  
         }
-
-        public void Buscar()
-        {
-            LlenadoTabla();
-            CargadoPropiedades();
-        }
        
+        public virtual void Buscar()
+        {
+            this.NullParametrosBusqueda();
+            LlenadoTabla(ComandoSelect, this.ColeccionParametrosBusqueda); 
+        }
+
+        public virtual  void Buscar(Int32? id)
+        {
+            NullParametrosBusqueda();
+            ValorParametrosBusqueda("id", id.ToString());
+            LlenadoTabla(ComandoSelect, this.ColeccionParametrosBusqueda);
+        }
+
+        public virtual void Guardar()
+        {            
+            this.ValorParametrosMantenimiento("id", this.Id);
+            this.ValorParametrosMantenimiento("usu", this.Usuario.Id );
+            this.ValorParametrosMantenimiento("fmodif", this.fmodif);
+            this.Mantenimiento(ref this._ColeccionParametrosMantenimiento);
+        }
+
+        protected void ValorParametrosBusqueda(string Nombre, object valor)
+        {
+            foreach (Parametro i in this.ColeccionParametrosBusqueda)
+            {
+                if (i.Nombre.ToLower() == Nombre.ToLower())
+                {
+                    i.Valor = valor;
+                    continue; 
+                } 
+            }
+        }
+
+        protected void ValorParametrosMantenimiento(string Nombre, object valor)
+        {
+            foreach (Parametro i in this.ColeccionParametrosMantenimiento)
+            {
+                if (i.Nombre.ToLower() == Nombre.ToLower())
+                {
+                    i.Valor = valor;
+                    continue;
+                }
+            }
+        }
+
+        protected void NullParametrosBusqueda()
+        {
+            foreach (Parametro i in _ColeccionParametrosBusqueda)
+            {
+                i.Valor = null;
+            }
+        }
+
+        protected void NullParametrosMantenimiento()
+        {
+            foreach (Parametro i in _ColeccionParametrosMantenimiento)
+            {
+                i.Valor = null;
+            }
+        }
+        
 
         #endregion             
 
@@ -327,15 +433,25 @@ namespace SiCo.lgla
 
         /// <summary>
         /// </summary>
+        /// 
         void _Conexion_Errores(string Mensaje)
         {
             if (Errores != null)
                 Errores(Mensaje);
         }
 
-        #endregion
+        void Entidad_CargoTabla()
+        {
+            this.CargadoPropiedades(); 
 
-        
+        }
+
+        void Entidad_CambioId()
+        {
+            this.Buscar(this.Id);
+        }
+
+        #endregion       
 
     }
 }

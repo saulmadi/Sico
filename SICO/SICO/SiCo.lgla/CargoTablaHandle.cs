@@ -4,5 +4,5 @@ using System.Text;
 
 namespace SiCo.lgla
 {
-    public delegate void CambioIdEventHandler();
+    public delegate void CargoTablaEventHandler();
 }
