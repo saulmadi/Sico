@@ -90,7 +90,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(3, 114);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 13);
+            this.label5.Size = new System.Drawing.Size(45, 13);
             this.label5.TabIndex = 12;
             this.label5.Text = "telefono";
             // 
@@ -205,7 +205,8 @@
             this.txtidentifiacion.TabIndex = 2;
             this.txtidentifiacion.Texto = null;
             tipoIdentidad1.Descripcion = "Identidad";
-            tipoIdentidad1.Valor = "I";            
+            tipoIdentidad1.Valor = "I";
+            this.txtidentifiacion.TipoIdentificacion = tipoIdentidad1;
             this.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
             // 
             // txtNombre
