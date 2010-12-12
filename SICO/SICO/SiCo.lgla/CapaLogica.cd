@@ -66,6 +66,22 @@
       <FileName>PersonaJuridica.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="SiCo.lgla.EntidadInstanciable">
+    <Position X="5.5" Y="5.25" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBgkFAAUAUQ=</HashCode>
+      <FileName>Entidad.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Usuario" />
+    </ShowAsAssociation>
+  </Class>
   <Delegate Name="SiCo.lgla.ErroresEventHandler">
     <Position X="4.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>

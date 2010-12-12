@@ -22,40 +22,30 @@ Partial Class Prueba
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Me.Pn = New SICO.ctrla.ControlesPersonalizados.crtlPersonaNatural
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.PanelAccion2 = New SICO.ctrla.PanelAccion
         Me.SuspendLayout()
         '
-        'Pn
+        'PanelAccion2
         '
-        Me.Pn.Location = New System.Drawing.Point(12, 91)
-        Me.Pn.Name = "Pn"
-        Me.Pn.Size = New System.Drawing.Size(497, 264)
-        Me.Pn.TabIndex = 0
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.HabilitarCancelar = True
-        Me.PanelAccion1.habilitarEliminar = True
-        Me.PanelAccion1.HabilitarGuardar = True
-        Me.PanelAccion1.habilitarImprimir = True
-        Me.PanelAccion1.HabilitarNuevo = True
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(621, 435)
-        Me.PanelAccion1.TabIndex = 1
-        Me.PanelAccion1.Titulo = "Proveedores"
+        Me.PanelAccion2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion2.EstadoMensaje = ""
+        Me.PanelAccion2.HabilitarCancelar = True
+        Me.PanelAccion2.habilitarEliminar = True
+        Me.PanelAccion2.HabilitarGuardar = True
+        Me.PanelAccion2.habilitarImprimir = True
+        Me.PanelAccion2.HabilitarNuevo = True
+        Me.PanelAccion2.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion2.Name = "PanelAccion2"
+        Me.PanelAccion2.Size = New System.Drawing.Size(621, 435)
+        Me.PanelAccion2.TabIndex = 0
+        Me.PanelAccion2.Titulo = "Título"
         '
         'Prueba
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(621, 435)
-        Me.Controls.Add(Me.Pn)
-        Me.Controls.Add(Me.PanelAccion1)
+        Me.Controls.Add(Me.PanelAccion2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
         Me.Name = "Prueba"
@@ -65,6 +55,7 @@ Partial Class Prueba
     End Sub
     Friend WithEvents PanelAccion1 As SiCo.ctrla.PanelAccion
     Friend WithEvents Pn As SICO.ctrla.ControlesPersonalizados.crtlPersonaNatural
+    Friend WithEvents PanelAccion2 As SICO.ctrla.PanelAccion
 
 
 End Class

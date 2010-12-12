@@ -15,16 +15,19 @@ Public Class Prueba
 
    
     
-    Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
+    Private Sub PanelAccion1_Nuevo()
 
+        Dim a As New PersonaNatural
 
     End Sub
 
-    Private Sub Pn_Errores(ByVal Mensaje As System.String) Handles Pn.Errores
+    Private Sub Pn_Errores(ByVal Mensaje As System.String)
         MessageBox.Show(Mensaje)
     End Sub
 
-    Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+    Private Sub PanelAccion1_Guardar()
         Me.Text = Pn.Id
     End Sub
+
+
 End Class

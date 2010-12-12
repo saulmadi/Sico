@@ -15,7 +15,7 @@ namespace SiCo.ctrla
         #region Declaraciones
         public event ErroresEventsHandler  Errores;
         private ListaDesplegable _ListaDesplegable ;
-        private Entidad _Entidad ;
+        private EntidadInstanciable _Entidad;
         private List<SiCo.lgla.Parametro> _ColeccionParametro= new List<SiCo.lgla.Parametro> ();
         
         #endregion
@@ -71,7 +71,7 @@ namespace SiCo.ctrla
         {
             try
             {
-                _Entidad = new Entidad();
+                _Entidad = new EntidadInstanciable ();
                 _Entidad.LlenadoTabla(this.Comando,this.ColeccionParametroBusqueda) ;
 
                 if (_Entidad.TotalRegistros > 0)
