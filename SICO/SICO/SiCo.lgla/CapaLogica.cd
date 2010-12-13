@@ -49,7 +49,7 @@
       <FileName>TipoIdentidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaNatural">
+  <Class Name="SiCo.lgla.PersonaNatural" Collapsed="true">
     <Position X="3.25" Y="5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />

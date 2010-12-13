@@ -397,7 +397,7 @@ namespace SiCo.lgla
                     return; 
                 } 
             }
-            throw new ApplicationException("El parámetro no se encuentra en la colección") 
+            throw new ApplicationException("El parámetro no se encuentra en la colección");
             
         }
 
@@ -411,7 +411,7 @@ namespace SiCo.lgla
                     return; 
                 } 
             }
-            throw new ApplicationException("El parámetro no se encuentra en la colección")
+            throw new ApplicationException("El parámetro no se encuentra en la colección");
         }
 
         protected void NullParametrosBusqueda()
