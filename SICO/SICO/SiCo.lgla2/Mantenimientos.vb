@@ -1,5 +1,5 @@
 ﻿Imports SiCo.lgla
-Public Class Clientes
+Public Class Mantenimientos
     Inherits SiCo.lgla.Entidad
 #Region "Declaraciones"
     Private _idEntidades As Integer
@@ -8,8 +8,6 @@ Public Class Clientes
 #Region "Construtor"
     Public Sub New()
         MyBase.New()
-
-        Me.ComandoSelect = "Clientes_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("identidades", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("identidades", Nothing))
 
@@ -31,7 +29,6 @@ Public Class Clientes
 #Region "Metodos"
 
     Public Overrides Sub Guardar()
-        Me.NullParametrosMantenimiento()
         Me.ValorParametrosMantenimiento("identidades", Me.idEntidades)
         MyBase.Guardar()
     End Sub

@@ -57,7 +57,7 @@ CREATE TABLE `personasnaturales` (
 -- Definition of table `clientes`
 --
 
-DROP TABLE IF EXISTS `clientes`;
+DROP TABLE  IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identidades` int(11) NOT NULL,
