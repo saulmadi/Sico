@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Clientes.vb" />
     <Compile Include="Departamentos.vb" />
+    <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

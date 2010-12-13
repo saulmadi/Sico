@@ -1,5 +1,5 @@
 ﻿Imports SiCo.lgla
-Public Class Mantenimientos
+Public MustInherit Class Mantenimientos
     Inherits SiCo.lgla.Entidad
 #Region "Declaraciones"
     Private _idEntidades As Integer
