@@ -16,17 +16,31 @@
     </Compartments>
     <TypeIdentifier />
   </Class>
-  <Class Name="SiCo.lgla2.Clientes" Collapsed="true">
-    <Position X="5.5" Y="0.75" Width="1.5" />
+  <Class Name="SiCo.lgla2.Clientes">
+    <Position X="5" Y="0.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Clientes.vb</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="SiCo.lgla2.TablasTipo">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAEAAgAAEAAAAAAEAAAABAAQAAA=</HashCode>
+      <FileName>TablasTipo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="SiCo.lgla2.Departamentos">
     <Position X="3.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAQAAAAAAAAAAgAAEAAAAAAAAAAAAAIQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Departamentos.vb</FileName>
     </TypeIdentifier>
   </Class>
