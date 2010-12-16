@@ -65,6 +65,25 @@
     <Compile Include="Serializador.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="BDD\Procedimientos\Clientes_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Clientes_Mant.sql" />
+    <None Include="BDD\Procedimientos\Departamentos_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Departamentos_Mant.sql" />
+    <None Include="BDD\Procedimientos\Entidades_Mant.sql" />
+    <None Include="BDD\Procedimientos\Marcas_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Marcas_Mant.sql" />
+    <None Include="BDD\Procedimientos\Modelos_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Modelos_Mant.sql" />
+    <None Include="BDD\Procedimientos\Municicipio_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Municicipio_Mant.sql" />
+    <None Include="BDD\Procedimientos\PersonaJuridica_Buscar.sql" />
+    <None Include="BDD\Procedimientos\PersonaJuridica_Mant.sql" />
+    <None Include="BDD\Procedimientos\PersonaNatural_buscar.sql" />
+    <None Include="BDD\Procedimientos\PersonaNatural_Mant.sql" />
+    <None Include="BDD\Procedimientos\TipoMotocicletas_Buscar.sql" />
+    <None Include="BDD\Procedimientos\TipoMotocicletas_Mantl.sql" />
+    <None Include="BDD\Procedimientos\TiposFacturas_Buscar.sql" />
+    <None Include="BDD\Procedimientos\TiposFacturas_Mant.sql" />
     <None Include="BDD\SICO_bakup.sql" />
     <None Include="CapaDatos.cd" />
   </ItemGroup>
