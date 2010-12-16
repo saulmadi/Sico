@@ -16,7 +16,7 @@
 
 --
 -- Create schema sico
---
+-- 
 
 CREATE DATABASE IF NOT EXISTS sico;
 USE sico;
@@ -54,10 +54,28 @@ CREATE TABLE `personasnaturales` (
 );
 
 --
+-- Temporary table structure for view `ventidades`
+--
+DROP TABLE IF EXISTS `ventidades`;
+DROP VIEW IF EXISTS `ventidades`;
+CREATE TABLE `ventidades` (
+  `IdEntidad` int(11),
+  `telefono` int(11),
+  `direccion` varchar(150),
+  `correo` varchar(45),
+  `espersonanatural` tinyint(1),
+  `rtn` varchar(14),
+  `entidadnombre` varchar(120),
+  `identificacion` varchar(20),
+  `tipoidentidad` varchar(1),
+  `id` int(11)
+);
+
+--
 -- Definition of table `clientes`
 --
 
-DROP TABLE  IF EXISTS `clientes`;
+DROP TABLE IF EXISTS `clientes`;
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identidades` int(11) NOT NULL,
@@ -84,8 +102,8 @@ CREATE TABLE `clientes` (
 DROP TABLE IF EXISTS `departamentos`;
 CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `departamento` varchar(45) NOT NULL,
-  `habilitados` tinyint(1) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
+  `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   PRIMARY KEY (`id`)
@@ -254,7 +272,7 @@ CREATE TABLE `inventario` (
 DROP TABLE IF EXISTS `marcas`;
 CREATE TABLE `marcas` (
   `id` int(11) NOT NULL,
-  `marca` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
@@ -278,12 +296,12 @@ CREATE TABLE `modelos` (
   `id` int(11) NOT NULL,
   `modelo` varchar(45) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
-  `idmarca` int(11) NOT NULL,
+  `idderivada` int(11) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Modelos_Marcas1` (`idmarca`),
-  CONSTRAINT `fk_Modelos_Marcas1` FOREIGN KEY (`idmarca`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Modelos_Marcas1` (`idderivada`),
+  CONSTRAINT `fk_Modelos_Marcas1` FOREIGN KEY (`idderivada`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -359,28 +377,28 @@ CREATE TABLE `motocicletasimagenes` (
 
 
 --
--- Definition of table `municipio`
+-- Definition of table `municipios`
 --
 
-DROP TABLE IF EXISTS `municipio`;
-CREATE TABLE `municipio` (
+DROP TABLE IF EXISTS `municipios`;
+CREATE TABLE `municipios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `municipio` varchar(45) NOT NULL,
-  `iddepartamento` int(11) NOT NULL,
+  `idderivada` int(11) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Municipio_Departamentos1` (`iddepartamento`),
-  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`iddepartamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Municipio_Departamentos1` (`idderivada`),
+  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`idderivada`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `municipio`
+-- Dumping data for table `municipios`
 --
 
-/*!40000 ALTER TABLE `municipio` DISABLE KEYS */;
-/*!40000 ALTER TABLE `municipio` ENABLE KEYS */;
+/*!40000 ALTER TABLE `municipios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `municipios` ENABLE KEYS */;
 
 
 --
@@ -447,8 +465,8 @@ CREATE TABLE `proveedores` (
   PRIMARY KEY (`id`),
   KEY `Contactos_Entidades` (`idcontacto`),
   KEY `Proveedores_Entidades` (`identidades`),
-  CONSTRAINT `Proveedores_Entidades` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Contactos_Entidades` FOREIGN KEY (`idcontacto`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Contactos_Entidades` FOREIGN KEY (`idcontacto`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Proveedores_Entidades` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -495,7 +513,7 @@ CREATE TABLE `sucursales` (
   KEY `fk_Sucursales_Usuarios1` (`idusuario`),
   KEY `fk_Sucursales_Municipio1` (`idmunicipio`),
   CONSTRAINT `fk_Sucursales_Entidades1` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Sucursales_Municipio1` FOREIGN KEY (`idmunicipio`) REFERENCES `municipio` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Sucursales_Municipio1` FOREIGN KEY (`idmunicipio`) REFERENCES `municipios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Sucursales_Usuarios1` FOREIGN KEY (`idusuario`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -514,10 +532,10 @@ CREATE TABLE `sucursales` (
 DROP TABLE IF EXISTS `tiposfacturas`;
 CREATE TABLE `tiposfacturas` (
   `id` int(11) NOT NULL,
-  `Tipo` varchar(45) DEFAULT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
   `habilitado` tinyint(1) DEFAULT NULL,
   `usu` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `fmodif` date DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -536,7 +554,7 @@ CREATE TABLE `tiposfacturas` (
 DROP TABLE IF EXISTS `tiposmotocicletas`;
 CREATE TABLE `tiposmotocicletas` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` varchar(45) NOT NULL,
@@ -572,9 +590,9 @@ CREATE TABLE `usuarios` (
   KEY `Usuarios_Entidad` (`identidad`),
   KEY `Usuarios_Roles` (`idrol`),
   KEY `fk_Usuarios_Sucursales1` (`idsucursales`),
+  CONSTRAINT `fk_Usuarios_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Usuarios_Entidad` FOREIGN KEY (`identidad`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Usuarios_Roles` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Usuarios_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `Usuarios_Roles` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -598,31 +616,42 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
-identidades nvarchar(11)
+identidades nvarchar(11),
+entidadnombre nvarchar(120),
+espersonanatural nvarchar(1)
 )
 BEGIN
 /*defiicion de consulta*/
 set @Campos="select ";
 set @from=" ";
 set @where=" where 1=1 ";
-set @orden= "order by id ";
+set @orden= "order by c.id ";
+set @join = " ";
 set @sql="";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from clientes ");
+set @from= concat(@from," from clientes c ");
 
 
 /*defiicion de filtros*/
 if id<>"" then
-  set @where= concat(@where, " and id = ", id, " ");
+  set @where= concat(@where, " and c.id = ", id, " ");
 end if;
 
 if identidades<>"" then
-  set @where = concat(@where, " and identidades = ",identidades," ");
+  set @where = concat(@where, " and c.identidades = ",identidades," ");
 end if;
 
-set @sql = concat(@campos,@from,@where,@orden);
+if entidadnombre<>"" and espersonanatural <>""  then
+  set @where = concat(@where, " and   e.entidadnombre like'",entidadnombre, "%' ");
+end if;
+
+if espersonanatural <>"" then
+  set @join= concat(@join, " inner join ventidades e on e.IdEntidad=c.identidades and espersonanatural = ",espersonanatural);
+end if;
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 /*ejecucion de consulta*/
 PREPARE stmt FROM @sql;
@@ -671,6 +700,108 @@ else
 
   UPDATE clientes c set
         c.identidades= identidades,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Departamentos_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Departamentos_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Departamentos_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from departamentos ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Departamentos_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Departamentos_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Departamentos_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from departamentos  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO departamentos(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE departamentos c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
   where e.id= id;
@@ -735,6 +866,316 @@ else
         e.entidadnombre=entidadnombre,
         e.identificacion=identificacion,
         e.tipoidentidad=identificacion
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Marcas_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Marcas_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from Marcas  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO Marcas(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE Marcas c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Marca_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Marca_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Marca_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from marcas ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Modelos_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Modelos_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from modelos ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Modelos_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Modelos_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+idderivada int,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from modelos  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO modelos(descripcion,habilitado,idderivada,usu,fmodif)
+
+  VALUES(descripcion,habilitado,idderivada,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE modelos c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.idderivada= idderivada,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Municipios_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Municipios_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from municipios ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Municipios_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Municipios_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+idderivada int,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from municipios  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO municipios(descripcion,habilitado,idderivada,usu,fmodif)
+
+  VALUES(descripcion,habilitado,idderivada,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE municipios c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.idderivada= idderivada,
+        c.usu=usu,
+        c.fmodif=fmodif
   where e.id= id;
 
 end if;
@@ -866,6 +1307,210 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `TiposFacturas_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `TiposFacturas_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from tiposfacturas ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `TiposFacturas_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `TiposFacturas_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from tiposfacturas  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO tiposfacturas(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE tiposfacturas c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `TiposMotocicletas_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `TiposMotocicletas_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from tiposmotocicletas ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `TiposMotocicletas_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `TiposMotocicletas_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado bool,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from tiposmotocicletas  where id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO tiposmotocicletas(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE tiposmotocicletas c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of view `personasjuridicas`
 --
 
@@ -880,6 +1525,14 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `personasnaturales`;
 DROP VIEW IF EXISTS `personasnaturales`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasnaturales` AS select `e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN`,`e`.`usu` AS `usu`,`e`.`fmodif` AS `fmodif`,`e`.`entidadnombre` AS `NombreCompleto`,`e`.`identificacion` AS `identificacion`,`e`.`tipoidentidad` AS `tipoidentidad`,`e`.`id` AS `id` from `entidades` `e` where (`e`.`espersonanatural` = 1);
+
+--
+-- Definition of view `ventidades`
+--
+
+DROP TABLE IF EXISTS `ventidades`;
+DROP VIEW IF EXISTS `ventidades`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidades` AS select `entidades`.`id` AS `IdEntidad`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`espersonanatural` AS `espersonanatural`,`entidades`.`RTN` AS `rtn`,`entidades`.`entidadnombre` AS `entidadnombre`,`entidades`.`identificacion` AS `identificacion`,`entidades`.`tipoidentidad` AS `tipoidentidad`,`entidades`.`id` AS `id` from `entidades`;
 
 
 

@@ -65,6 +65,7 @@
     <Compile Include="Marcas.vb" />
     <Compile Include="Modelos.vb" />
     <Compile Include="Municipios.vb" />
+    <Compile Include="Proveedores.vb" />
     <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
