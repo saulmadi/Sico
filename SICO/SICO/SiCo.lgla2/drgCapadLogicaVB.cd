@@ -16,17 +16,17 @@
     </Compartments>
     <TypeIdentifier />
   </Class>
-  <Class Name="SiCo.lgla2.Clientes">
-    <Position X="7.75" Y="1" Width="1.5" />
+  <Class Name="SiCo.lgla2.Clientes" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <InheritanceLine Type="SiCo.lgla2.Mantenimientos" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.25" Y="2.625" />
-        <Point X="7.427" Y="2.625" />
-        <Point X="7.427" Y="1.438" />
-        <Point X="7.75" Y="1.438" />
+        <Point X="6.25" Y="2.562" />
+        <Point X="7.427" Y="2.562" />
+        <Point X="7.427" Y="2.041" />
+        <Point X="7.5" Y="2.041" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -45,21 +45,21 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Departamentos" Collapsed="true">
-    <Position X="6.5" Y="7" Width="1.5" />
+    <Position X="6.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Departamentos.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Marcas" Collapsed="true">
-    <Position X="4.5" Y="7" Width="1.5" />
+    <Position X="4.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Marcas.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.TablasTipoDerivadas" Collapsed="true">
-    <Position X="2.75" Y="7.25" Width="1.5" />
+    <Position X="2.75" Y="4.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -69,7 +69,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Modelos" Collapsed="true">
-    <Position X="1.25" Y="8.75" Width="1.5" />
+    <Position X="1.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Modelos.vb</FileName>
@@ -77,38 +77,38 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Municipios" Collapsed="true">
-    <Position X="3.75" Y="9" Width="1.5" />
+    <Position X="3.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Municipios.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.TiposMotocicletas" Collapsed="true">
-    <Position X="0.5" Y="7.25" Width="1.5" />
+    <Position X="0.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>TiposMotocicletas.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.TiposFacturas" Collapsed="true">
-    <Position X="8.5" Y="7" Width="1.5" />
+    <Position X="8.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>TiposFacturas.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.Proveedores">
-    <Position X="7.75" Y="2.25" Width="1.5" />
+  <Class Name="SiCo.lgla2.Proveedores" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
     <InheritanceLine Type="SiCo.lgla2.Mantenimientos" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="6.25" Y="2.625" />
-        <Point X="7.427" Y="2.625" />
-        <Point X="7.427" Y="2.936" />
-        <Point X="7.75" Y="2.936" />
+        <Point X="6.25" Y="2.562" />
+        <Point X="7.427" Y="2.562" />
+        <Point X="7.427" Y="3.225" />
+        <Point X="7.5" Y="3.225" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAASAAA=</HashCode>
       <FileName>Proveedores.vb</FileName>
     </TypeIdentifier>
   </Class>
