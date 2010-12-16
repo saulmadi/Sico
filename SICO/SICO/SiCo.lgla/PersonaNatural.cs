@@ -22,6 +22,24 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
         }
+        public PersonaNatural(Int32 id, string NombreCompleto,TipoIdentidad TipoIdentidad, string Identificacion,string correo, string direccion, string rtn , int Telefono):base( )
+        {
+            this.ComandoSelect = "PersonaNatural_buscar";
+            this._espersonanatural = true;
+            this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompleto", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("identificacion", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null)); 
+            this._Id=id;
+            this.NombreCompleto=NombreCompleto;
+            this.identificacion = Identificacion;
+            this.tipoidentidad = TipoIdentidad;
+            this.correo = correo;
+            this.direccion = direccion;
+            this.rtn = rtn;
+            this.telefono = Telefono;
+
+
+        }
         #endregion
 
         #region Propiedades
@@ -76,7 +94,7 @@ namespace SiCo.lgla
         public  override void  Guardar()
         {
             this.NullParametrosMantenimiento(); 
-            this.ValorParametrosMantenimiento("entidadnombre", this.NombreCompleto );
+            this.ValorParametrosMantenimiento("entidadnombre", this.NombreCompleto.ToUpperInvariant());
             this.ValorParametrosMantenimiento("identificacion", this.identificacion );
             this.ValorParametrosMantenimiento("tipoIdentidad", this.tipoidentidad);           
             base.Guardar();

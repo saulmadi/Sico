@@ -21,6 +21,21 @@ namespace SiCo.lgla
             
 
         }
+        public PersonaJuridica(Int32 id, string RazonSocial,string correo, string direccion, string rtn , int Telefono):base()         
+        {
+            this.ComandoSelect = "PersonaJuridica_Buscar";
+            this._espersonanatural = false;
+
+            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
+
+            this._Id=id;
+            this.RazonSocial=RazonSocial ;            
+            this.correo = correo;
+            this.direccion = direccion;
+            this.rtn = rtn;
+            this.telefono = Telefono;
+        }
         #endregion
 
         #region Propiedades
@@ -42,7 +57,7 @@ namespace SiCo.lgla
         public override void Guardar()
         {
             this.NullParametrosMantenimiento();
-            this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial);
+            this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial.ToUpperInvariant() );
 
             base.Guardar();
         }
@@ -56,7 +71,6 @@ namespace SiCo.lgla
         }
 
         #endregion
-
         
     }
 }

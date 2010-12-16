@@ -61,5 +61,4 @@ Public MustInherit Class TablasTipo
 
 #End Region
 
-
 End Class

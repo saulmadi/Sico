@@ -6,6 +6,19 @@ namespace SiCo.lgla
 {
     public class TipoIdentidad
     {
+        public TipoIdentidad(string valor)
+        {
+            this.Valor = valor;
+            if( valor.ToUpper()=="I")
+            {
+                this.Descripcion = "Identidad";
+            }
+            else
+            {
+                this.Descripcion="Pasaporte";
+            }
+
+        }
         public TipoIdentidad()
         { 
         }

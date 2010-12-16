@@ -34,7 +34,6 @@
     <Position X="0.75" Y="4.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
@@ -49,18 +48,15 @@
       <FileName>TipoIdentidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaNatural" Collapsed="true">
+  <Class Name="SiCo.lgla.PersonaNatural">
     <Position X="3.25" Y="5" Width="1.5" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAgBAAAAAAAAAAAAABAAQgIA=</HashCode>
       <FileName>PersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaJuridica" Collapsed="true">
-    <Position X="0.5" Y="6.75" Width="1.5" />
+  <Class Name="SiCo.lgla.PersonaJuridica">
+    <Position X="0.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAQAAA=</HashCode>
       <FileName>PersonaJuridica.cs</FileName>
