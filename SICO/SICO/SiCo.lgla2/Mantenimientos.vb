@@ -11,10 +11,9 @@ Public MustInherit Class Mantenimientos
         MyBase.New()
         Me.ColeccionParametrosBusqueda.Add(New Parametro("identidades", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("identidades", Nothing))
+
         Me.ColeccionParametrosBusqueda.Add(New Parametro("entidadnombre", Nothing))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("espersonnatural", Nothing))
-
-
     End Sub
 #End Region
 
