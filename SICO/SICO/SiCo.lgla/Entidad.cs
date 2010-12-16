@@ -323,7 +323,9 @@ namespace SiCo.lgla
         /// <param name="Columna">Nombre de la columna en el que se encuentra el registro</param>
         protected object Registro(int Fila, String Columna)
         {
-            return _Tabla.Rows[Fila][Columna];
+            if (_Tabla.Rows[Fila][Columna] != DBNull.Value)
+                return _Tabla.Rows[Fila][Columna];
+            else return null;
         }
 
         protected object PrimerRegistro(string Columna)
