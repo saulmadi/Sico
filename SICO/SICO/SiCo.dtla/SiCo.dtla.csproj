@@ -81,6 +81,7 @@
     <None Include="BDD\Procedimientos\PersonaNatural_buscar.sql" />
     <None Include="BDD\Procedimientos\PersonaNatural_Mant.sql" />
     <None Include="BDD\Procedimientos\Proveedores_Buscar.sql" />
+    <None Include="BDD\Procedimientos\Proveedores_Mant.sql" />
     <None Include="BDD\Procedimientos\TipoMotocicletas_Buscar.sql" />
     <None Include="BDD\Procedimientos\TipoMotocicletas_Mantl.sql" />
     <None Include="BDD\Procedimientos\TiposFacturas_Buscar.sql" />
