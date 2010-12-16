@@ -10,7 +10,7 @@ Public MustInherit Class TablasTipoDerivadas
     Sub New()
         MyBase.New()
 
-        Me.ColeccionParametrosMantenimiento.Add(new  Parametro("idderivada",Nothing)  
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idderivada", Nothing))
     End Sub
 #End Region
 
