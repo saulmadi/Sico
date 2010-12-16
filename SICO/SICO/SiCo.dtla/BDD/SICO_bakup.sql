@@ -16,7 +16,7 @@
 
 --
 -- Create schema sico
--- 
+--
 
 CREATE DATABASE IF NOT EXISTS sico;
 USE sico;
@@ -410,14 +410,11 @@ CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(45) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
-  `idproveedor` int(11) DEFAULT NULL,
   `preciocosto` decimal(10,4) NOT NULL,
   `precioventa` decimal(10,4) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Id_Proveedor` (`idproveedor`),
-  CONSTRAINT `Id_Proveedor` FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -475,6 +472,32 @@ CREATE TABLE `proveedores` (
 
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
+
+
+--
+-- Definition of table `proveeedorproducto`
+--
+
+DROP TABLE IF EXISTS `proveeedorproducto`;
+CREATE TABLE `proveeedorproducto` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `proveedores_id` int(11) NOT NULL,
+  `productos_id` int(11) NOT NULL,
+  `preciocompra` decimal(10,4) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
+  KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
+  KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `proveeedorproducto`
+--
+
+/*!40000 ALTER TABLE `proveeedorproducto` DISABLE KEYS */;
+/*!40000 ALTER TABLE `proveeedorproducto` ENABLE KEYS */;
 
 
 --
@@ -1299,6 +1322,117 @@ set @sql = concat(@campos,@from,@where,@orden);
 PREPARE stmt FROM @sql;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Proveedores_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Proveedores_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedores_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+identidades nvarchar(11),
+entidadnombre nvarchar(120),
+espersonanatural nvarchar(1)
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by c.id ";
+set @join = " ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from proveedores c ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and c.id = ", id, " ");
+end if;
+
+if identidades<>"" then
+  set @where = concat(@where, " and c.identidades = ",identidades," ");
+end if;
+
+if entidadnombre<>"" and espersonanatural <>""  then
+  set @where = concat(@where, " and   e.entidadnombre like'",entidadnombre, "%' ");
+end if;
+
+if espersonanatural <>"" then
+  set @join= concat(@join, " inner join ventidades e on e.IdEntidad=c.identidades and espersonanatural = ",espersonanatural);
+end if;
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Proveedores_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Proveedores_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedores_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+identidades int,
+idcontacto int,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(c.id) from proveedores c where c.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO proveedores(identidades,idcontacto,usu,fmodif)
+
+  VALUES(identidades,idcontacto,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE proveedores c set
+        c.identidades= identidades,
+        c.idcontacto=idcontacto,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where e.id= id;
+
+end if;
 
 
 END $$
