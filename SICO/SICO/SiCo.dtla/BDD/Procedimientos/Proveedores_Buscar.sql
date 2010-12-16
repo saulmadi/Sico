@@ -45,7 +45,7 @@ set @sql = concat(@campos,@from,@join,@where,@orden);
 /*ejecucion de consulta*/
 PREPARE stmt FROM @sql;
 EXECUTE stmt;
-DEALLOCATE PREPARE stmt;
+DEALLOCATE PREPARE stmt; 
 
 
 END $$
