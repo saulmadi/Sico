@@ -1,0 +1,12 @@
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.lgla.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.lgla.pdb
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.lgla.xml
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.dtla.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.dtla.pdb
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\bin\Debug\SiCo.dtla.xml
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\ResolveAssemblyReference.cache
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\SiCo.lgla.Resources.resources
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\SiCo.lgla.vbproj.GenerateResource.Cache
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\SiCo.lgla.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\SiCo.lgla.xml
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.lgla\obj\Debug\SiCo.lgla.pdb
