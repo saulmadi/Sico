@@ -1,0 +1,10 @@
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\bin\Debug\SiCo.dtla.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\bin\Debug\SiCo.dtla.pdb
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\bin\Debug\SiCo.dtla.xml
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\bin\Debug\MySql.Data.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\ResolveAssemblyReference.cache
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\SiCo.dtla.Resources.resources
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\SiCo.dtla.vbproj.GenerateResource.Cache
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\SiCo.dtla.dll
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\SiCo.dtla.xml
+D:\Mis documentos\Sistemas\Colmotos\SICO\SICO\SiCo.dtla\obj\Debug\SiCo.dtla.pdb
