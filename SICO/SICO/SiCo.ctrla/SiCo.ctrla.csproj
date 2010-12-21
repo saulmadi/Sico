@@ -112,6 +112,11 @@
     <Compile Include="Delegados\PanelAccionEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Enumeradores\TiposTexto.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Validador.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +135,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\PanelAccion.resx">
       <DependentUpon>PanelAccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

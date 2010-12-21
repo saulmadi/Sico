@@ -161,7 +161,8 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.panel2.BackColor = System.Drawing.Color.Navy;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Controls.Add(this.lblUsuario);
             this.panel2.Controls.Add(this.lblfecha);
             this.panel2.Controls.Add(this.lblTitulo);
