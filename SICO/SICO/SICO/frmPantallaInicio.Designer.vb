@@ -27,6 +27,7 @@ Partial Class frmPantallaInicio
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPantallaInicio))
         Me.MainLayoutPanel = New System.Windows.Forms.TableLayoutPanel
         Me.lblAccion = New System.Windows.Forms.Label
         Me.DetailsLayoutPanel = New System.Windows.Forms.TableLayoutPanel
@@ -43,8 +44,8 @@ Partial Class frmPantallaInicio
         '
         Me.MainLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.MainLayoutPanel.ColumnCount = 2
-        Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 243.0!))
-        Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 267.0!))
+        Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 282.0!))
+        Me.MainLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228.0!))
         Me.MainLayoutPanel.Controls.Add(Me.lblAccion, 0, 1)
         Me.MainLayoutPanel.Controls.Add(Me.DetailsLayoutPanel, 1, 1)
         Me.MainLayoutPanel.Controls.Add(Me.ApplicationTitle, 1, 0)
@@ -52,8 +53,8 @@ Partial Class frmPantallaInicio
         Me.MainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill
         Me.MainLayoutPanel.Location = New System.Drawing.Point(0, 0)
         Me.MainLayoutPanel.Name = "MainLayoutPanel"
-        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 218.0!))
-        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38.0!))
+        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 247.0!))
+        Me.MainLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9.0!))
         Me.MainLayoutPanel.Size = New System.Drawing.Size(495, 306)
         Me.MainLayoutPanel.TabIndex = 0
         '
@@ -65,9 +66,9 @@ Partial Class frmPantallaInicio
         Me.lblAccion.ForeColor = System.Drawing.Color.Black
         Me.lblAccion.Location = New System.Drawing.Point(3, 268)
         Me.lblAccion.Name = "lblAccion"
-        Me.lblAccion.Size = New System.Drawing.Size(237, 38)
+        Me.lblAccion.Size = New System.Drawing.Size(276, 38)
         Me.lblAccion.TabIndex = 3
-        Me.lblAccion.Text = "Versión {0}.{1:00}"
+        Me.lblAccion.Text = "Optimizado 1024X768"
         '
         'DetailsLayoutPanel
         '
@@ -78,13 +79,13 @@ Partial Class frmPantallaInicio
         Me.DetailsLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 142.0!))
         Me.DetailsLayoutPanel.Controls.Add(Me.Version, 0, 0)
         Me.DetailsLayoutPanel.Controls.Add(Me.Copyright, 0, 1)
-        Me.DetailsLayoutPanel.Location = New System.Drawing.Point(253, 222)
+        Me.DetailsLayoutPanel.Location = New System.Drawing.Point(285, 250)
         Me.DetailsLayoutPanel.Name = "DetailsLayoutPanel"
         Me.DetailsLayoutPanel.RowCount = 3
         Me.DetailsLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.0!))
         Me.DetailsLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.0!))
         Me.DetailsLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.DetailsLayoutPanel.Size = New System.Drawing.Size(247, 79)
+        Me.DetailsLayoutPanel.Size = New System.Drawing.Size(222, 53)
         Me.DetailsLayoutPanel.TabIndex = 1
         '
         'Version
@@ -93,9 +94,9 @@ Partial Class frmPantallaInicio
         Me.Version.BackColor = System.Drawing.Color.Transparent
         Me.Version.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Version.ForeColor = System.Drawing.Color.Black
-        Me.Version.Location = New System.Drawing.Point(3, 4)
+        Me.Version.Location = New System.Drawing.Point(3, 0)
         Me.Version.Name = "Version"
-        Me.Version.Size = New System.Drawing.Size(241, 20)
+        Me.Version.Size = New System.Drawing.Size(241, 16)
         Me.Version.TabIndex = 1
         Me.Version.Text = "Versión {0}.{1:00}"
         '
@@ -105,9 +106,9 @@ Partial Class frmPantallaInicio
         Me.Copyright.BackColor = System.Drawing.Color.Transparent
         Me.Copyright.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Copyright.ForeColor = System.Drawing.Color.Black
-        Me.Copyright.Location = New System.Drawing.Point(3, 29)
+        Me.Copyright.Location = New System.Drawing.Point(3, 16)
         Me.Copyright.Name = "Copyright"
-        Me.Copyright.Size = New System.Drawing.Size(241, 29)
+        Me.Copyright.Size = New System.Drawing.Size(241, 16)
         Me.Copyright.TabIndex = 2
         Me.Copyright.Text = "Copyright"
         '
@@ -117,9 +118,9 @@ Partial Class frmPantallaInicio
         Me.ApplicationTitle.BackColor = System.Drawing.Color.Transparent
         Me.ApplicationTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 18.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ApplicationTitle.ForeColor = System.Drawing.Color.Black
-        Me.ApplicationTitle.Location = New System.Drawing.Point(253, 3)
+        Me.ApplicationTitle.Location = New System.Drawing.Point(285, 17)
         Me.ApplicationTitle.Name = "ApplicationTitle"
-        Me.ApplicationTitle.Size = New System.Drawing.Size(247, 212)
+        Me.ApplicationTitle.Size = New System.Drawing.Size(222, 212)
         Me.ApplicationTitle.TabIndex = 0
         Me.ApplicationTitle.Text = "Sistema de inventario" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "COLMOTOS"
         Me.ApplicationTitle.TextAlign = System.Drawing.ContentAlignment.BottomLeft
@@ -127,10 +128,10 @@ Partial Class frmPantallaInicio
         'PictureBox1
         '
         Me.PictureBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PictureBox1.Image = Global.SICO.My.Resources.Resources.NUEVO_LOGO_COLMOTOS
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(3, 3)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(237, 212)
+        Me.PictureBox1.Size = New System.Drawing.Size(276, 241)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 4
         Me.PictureBox1.TabStop = False
