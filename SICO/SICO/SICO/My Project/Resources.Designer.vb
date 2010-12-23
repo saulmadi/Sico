@@ -60,9 +60,16 @@ Namespace My.Resources
             End Set
         End Property
         
-        Friend ReadOnly Property splashscreen() As System.Drawing.Bitmap
+        Friend ReadOnly Property NUEVO_LOGO_COLMOTOS() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("splashscreen", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("NUEVO_LOGO_COLMOTOS", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        Friend ReadOnly Property NUEVO_LOGO_COLMOTOS_2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("NUEVO_LOGO_COLMOTOS_2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

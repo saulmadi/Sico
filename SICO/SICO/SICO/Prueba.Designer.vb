@@ -36,7 +36,7 @@ Partial Class Prueba
         Me.PanelAccion2.HabilitarNuevo = True
         Me.PanelAccion2.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion2.Name = "PanelAccion2"
-        Me.PanelAccion2.Size = New System.Drawing.Size(621, 435)
+        Me.PanelAccion2.Size = New System.Drawing.Size(702, 397)
         Me.PanelAccion2.TabIndex = 0
         Me.PanelAccion2.Titulo = "Título"
         '
@@ -44,7 +44,7 @@ Partial Class Prueba
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(621, 435)
+        Me.ClientSize = New System.Drawing.Size(702, 397)
         Me.Controls.Add(Me.PanelAccion2)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
         Me.MaximizeBox = False
