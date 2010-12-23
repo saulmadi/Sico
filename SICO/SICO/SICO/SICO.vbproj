@@ -92,6 +92,18 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\Mantenimietos\frmMarcas.Designer.vb">
+      <DependentUpon>frmMarcas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmMarcas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTiposMotocicletas.Designer.vb">
+      <DependentUpon>frmTiposMotocicletas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTiposMotocicletas.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIniciosesion.Designer.vb">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </Compile>
@@ -133,6 +145,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmMarcas.resx">
+      <DependentUpon>frmMarcas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmTiposMotocicletas.resx">
+      <DependentUpon>frmTiposMotocicletas.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIniciosesion.resx">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +204,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SiCo.ctrla2\SiCo.ctrla2.vbproj">
+      <Project>{56A757B8-A5D0-4C04-A862-9C65169A9BED}</Project>
+      <Name>SiCo.ctrla2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SiCo.ctrla\SiCo.ctrla.csproj">
       <Project>{4F3D43B5-6B88-41AD-A21B-07451C7EF7F3}</Project>
       <Name>SiCo.ctrla</Name>
@@ -204,16 +226,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NUEVO LOGO COLMOTOS.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NUEVO LOGO COLMOTOS 2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\logo transparente.png" />
+    <None Include="Resources\Logo nombre .png" />
     <Content Include="SICO.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Administrativo\Mantenimietos\" />
     <Folder Include="Clientes\" />
     <Folder Include="Factuacion\" />
     <Folder Include="Inventario\" />

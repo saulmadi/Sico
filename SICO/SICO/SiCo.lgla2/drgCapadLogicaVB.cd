@@ -21,14 +21,6 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <InheritanceLine Type="SiCo.lgla2.Mantenimientos" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="6.25" Y="2.562" />
-        <Point X="7.427" Y="2.562" />
-        <Point X="7.427" Y="2.041" />
-        <Point X="7.5" Y="2.041" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Clientes.vb</FileName>
@@ -99,14 +91,6 @@
   </Class>
   <Class Name="SiCo.lgla2.Proveedores" Collapsed="true">
     <Position X="7.5" Y="2.75" Width="1.5" />
-    <InheritanceLine Type="SiCo.lgla2.Mantenimientos" ManuallyRouted="true" FixedFromPoint="true">
-      <Path>
-        <Point X="6.25" Y="2.562" />
-        <Point X="7.427" Y="2.562" />
-        <Point X="7.427" Y="3.225" />
-        <Point X="7.5" Y="3.225" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAASAAA=</HashCode>
       <FileName>Proveedores.vb</FileName>
