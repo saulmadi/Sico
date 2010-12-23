@@ -174,27 +174,29 @@
             // 
             // lblUsuario
             // 
+            this.lblUsuario.BackColor = System.Drawing.Color.Yellow;
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuario.ForeColor = System.Drawing.Color.Black;
             this.lblUsuario.Location = new System.Drawing.Point(361, 63);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(243, 21);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Usuario";
-            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblfecha
             // 
+            this.lblfecha.BackColor = System.Drawing.Color.Red;
             this.lblfecha.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblfecha.ForeColor = System.Drawing.Color.White;
+            this.lblfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblfecha.ForeColor = System.Drawing.Color.Black;
             this.lblfecha.Location = new System.Drawing.Point(361, 0);
             this.lblfecha.Name = "lblfecha";
-            this.lblfecha.Size = new System.Drawing.Size(243, 22);
+            this.lblfecha.Size = new System.Drawing.Size(243, 25);
             this.lblfecha.TabIndex = 2;
             this.lblfecha.Text = "Fecha";
-            this.lblfecha.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.lblfecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblTitulo
             // 

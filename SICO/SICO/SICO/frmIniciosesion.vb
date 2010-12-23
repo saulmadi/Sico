@@ -9,7 +9,10 @@
     ' como el nombre de usuario, nombre para mostrar, etc.
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
+        Dim forma As New frmMenuPrincipal
+        forma.Show()
         Me.Close()
+      
     End Sub
 
     Private Sub Cancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel.Click

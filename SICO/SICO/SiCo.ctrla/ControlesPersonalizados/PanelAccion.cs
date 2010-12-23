@@ -143,7 +143,9 @@ namespace SiCo.ctrla
         {
             lblfecha.Text = DateTime.Now.ToLongDateString ();
             //lblUsuario.Text = _Usuario.NombreUsuario  ;
-        }     
+        }
+
+           
 
         
     }
