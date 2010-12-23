@@ -228,6 +228,8 @@
   <ItemGroup>
     <None Include="Resources\logo transparente.png" />
     <None Include="Resources\Logo nombre .png" />
+    <None Include="Resources\NUEVO LOGO COLMOTOS.jpg" />
+    <None Include="Resources\NUEVO LOGO COLMOTOS 2.jpg" />
     <Content Include="SICO.ico" />
   </ItemGroup>
   <ItemGroup>

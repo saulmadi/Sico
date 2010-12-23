@@ -22,6 +22,7 @@ Partial Class frmTiposMotocicletas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTiposMotocicletas))
         Me.CrtTablaTipo = New SICO.ctrla2.crtTablaTipo
         Me.SuspendLayout()
