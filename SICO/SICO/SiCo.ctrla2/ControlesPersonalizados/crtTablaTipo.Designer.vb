@@ -49,6 +49,7 @@ Partial Class crtTablaTipo
         'CrtListadoMantenimiento1
         '
         Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
         Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
         Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(316, 322)

@@ -72,6 +72,18 @@
     <Compile Include="ControlesPersonalizados\crtListadoMantenimiento.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ControlesPersonalizados\crtPersonaJuridica.Designer.vb">
+      <DependentUpon>crtPersonaJuridica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtPersonaJuridica.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtPersonaNatural.Designer.vb">
+      <DependentUpon>crtPersonaNatural.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtPersonaNatural.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ControlesPersonalizados\crtTablaTipo.Designer.vb">
       <DependentUpon>crtTablaTipo.vb</DependentUpon>
     </Compile>
@@ -103,6 +115,12 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlesPersonalizados\crtListadoMantenimiento.resx">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\crtPersonaJuridica.resx">
+      <DependentUpon>crtPersonaJuridica.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\crtPersonaNatural.resx">
+      <DependentUpon>crtPersonaNatural.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtTablaTipo.resx">
       <DependentUpon>crtTablaTipo.vb</DependentUpon>
