@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmTiposMotocicletas
+Partial Class frmMunicipios
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -23,33 +23,34 @@ Partial Class frmTiposMotocicletas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTiposMotocicletas))
-        Me.CrtTablaTipo = New SICO.ctrla2.crtTablaTipo
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMunicipios))
+        Me.CrtTablaTipoDerivada = New SICO.ctrla2.crtTablaTipoDerivada
         Me.SuspendLayout()
         '
-        'CrtTablaTipo
+        'CrtTablaTipoDerivada
         '
-        Me.CrtTablaTipo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtTablaTipo.Location = New System.Drawing.Point(0, 0)
-        Me.CrtTablaTipo.Name = "CrtTablaTipo"
-        Me.CrtTablaTipo.Size = New System.Drawing.Size(790, 527)
-        Me.CrtTablaTipo.TabIndex = 0
-        Me.CrtTablaTipo.Titulo = "Tipos Motocicletas"
+        Me.CrtTablaTipoDerivada.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtTablaTipoDerivada.Location = New System.Drawing.Point(0, 0)
+        Me.CrtTablaTipoDerivada.Name = "CrtTablaTipoDerivada"
+        Me.CrtTablaTipoDerivada.Size = New System.Drawing.Size(787, 504)
+        Me.CrtTablaTipoDerivada.TabIndex = 0
+        Me.CrtTablaTipoDerivada.Titulo = "Municipios"
+        Me.CrtTablaTipoDerivada.TituloDerivado = "Departamento"
         '
-        'frmTiposMotocicletas
+        'frmMunicipios
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(790, 527)
-        Me.Controls.Add(Me.CrtTablaTipo)
+        Me.ClientSize = New System.Drawing.Size(787, 504)
+        Me.Controls.Add(Me.CrtTablaTipoDerivada)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "frmTiposMotocicletas"
+        Me.Name = "frmMunicipios"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Tipos Motocicletas"
+        Me.Text = "Municipios"
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents CrtTablaTipo As SICO.ctrla2.crtTablaTipo
+    Friend WithEvents CrtTablaTipoDerivada As SICO.ctrla2.crtTablaTipoDerivada
 End Class

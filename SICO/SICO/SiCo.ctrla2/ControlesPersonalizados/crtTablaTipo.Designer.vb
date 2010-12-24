@@ -24,13 +24,13 @@ Partial Class crtTablaTipo
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.CrtListadoMantenimiento1 = New SiCo.ctrla2.crtListadoMantenimiento
         Me.cmbEstado = New System.Windows.Forms.ComboBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.txtDescripcion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.PanelAccion = New SiCo.ctrla.PanelAccion
-        Me.CrtListadoMantenimiento1 = New SiCo.ctrla2.crtListadoMantenimiento
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -39,12 +39,20 @@ Partial Class crtTablaTipo
         '
         Me.GroupBox1.Controls.Add(Me.CrtListadoMantenimiento1)
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 99)
+        Me.GroupBox1.Location = New System.Drawing.Point(20, 99)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(322, 341)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
+        '
+        'CrtListadoMantenimiento1
+        '
+        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(316, 322)
+        Me.CrtListadoMantenimiento1.TabIndex = 1
         '
         'cmbEstado
         '
@@ -83,7 +91,7 @@ Partial Class crtTablaTipo
         Me.GroupBox2.Controls.Add(Me.txtDescripcion)
         Me.GroupBox2.Controls.Add(Me.cmbEstado)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(340, 158)
+        Me.GroupBox2.Location = New System.Drawing.Point(366, 157)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(396, 84)
         Me.GroupBox2.TabIndex = 6
@@ -110,24 +118,11 @@ Partial Class crtTablaTipo
         Me.PanelAccion.BackColor = System.Drawing.SystemColors.Control
         Me.PanelAccion.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAccion.EstadoMensaje = ""
-        Me.PanelAccion.HabilitarCancelar = True
-        Me.PanelAccion.habilitarEliminar = True
-        Me.PanelAccion.HabilitarGuardar = True
-        Me.PanelAccion.habilitarImprimir = True
-        Me.PanelAccion.HabilitarNuevo = True
         Me.PanelAccion.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion.Name = "PanelAccion"
-        Me.PanelAccion.Size = New System.Drawing.Size(753, 510)
+        Me.PanelAccion.Size = New System.Drawing.Size(778, 510)
         Me.PanelAccion.TabIndex = 0
         Me.PanelAccion.Titulo = "Título"
-        '
-        'CrtListadoMantenimiento1
-        '
-        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(316, 322)
-        Me.CrtListadoMantenimiento1.TabIndex = 1
         '
         'crtTablaTipo
         '
@@ -137,7 +132,7 @@ Partial Class crtTablaTipo
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PanelAccion)
         Me.Name = "crtTablaTipo"
-        Me.Size = New System.Drawing.Size(753, 510)
+        Me.Size = New System.Drawing.Size(778, 510)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()

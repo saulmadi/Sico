@@ -1,4 +1,5 @@
 ﻿Public Class frmTiposMotocicletas
+
 #Region "Constructor"
     Public Sub New()
 
@@ -6,11 +7,12 @@
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        Me.CrtTablaTipo.PanelAccion.Titulo = "Tipos Motocicletas"
+
         AddHandler Me.CrtTablaTipo.PanelAccion.Cancelar, AddressOf Me.Cancelar
 
     End Sub
 #End Region
+
 #Region "Eventos"
     Private Sub Cancelar()
         Me.Close()

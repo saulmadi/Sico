@@ -92,10 +92,34 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\Mantenimietos\frmDepartamentos.Designer.vb">
+      <DependentUpon>frmDepartamentos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmDepartamentos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmMarcas.Designer.vb">
       <DependentUpon>frmMarcas.vb</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmMarcas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmModelos.Designer.vb">
+      <DependentUpon>frmModelos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmModelos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmMunicipios.Designer.vb">
+      <DependentUpon>frmMunicipios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmMunicipios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTiposFacturas.Designer.vb">
+      <DependentUpon>frmTiposFacturas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTiposFacturas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmTiposMotocicletas.Designer.vb">
@@ -145,8 +169,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmDepartamentos.resx">
+      <DependentUpon>frmDepartamentos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmMarcas.resx">
       <DependentUpon>frmMarcas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmModelos.resx">
+      <DependentUpon>frmModelos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmMunicipios.resx">
+      <DependentUpon>frmMunicipios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmTiposFacturas.resx">
+      <DependentUpon>frmTiposFacturas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmTiposMotocicletas.resx">
       <DependentUpon>frmTiposMotocicletas.vb</DependentUpon>

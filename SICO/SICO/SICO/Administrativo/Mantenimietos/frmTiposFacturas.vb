@@ -1,4 +1,5 @@
-﻿Public Class frmMarcas
+﻿Public Class frmTiposFacturas
+
 #Region "Constructor"
     Public Sub New()
 
@@ -6,15 +7,13 @@
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        AddHandler CrtTablaTipo.PanelAccion.Cancelar, AddressOf Me.Cancelar
 
-        AddHandler Me.TablaTipo.PanelAccion.Cancelar, AddressOf Cancelar
     End Sub
 #End Region
-
-#Region "eventos"
+#Region "Eventos"
     Private Sub Cancelar()
         Me.Close()
     End Sub
 #End Region
-    
 End Class
