@@ -11,6 +11,11 @@ namespace SiCo.ctrla
 {
     public partial class PanelAccion : UserControl
     {
+        #region Declaraciones
+
+        //private SiCo.lgla.Usuario _Usuario ;  
+
+
         public event PanelAccionNuevoEventArgs Nuevo;
 
         public event PanelAccionGuardarEventArgs Guardar;
@@ -21,21 +26,23 @@ namespace SiCo.ctrla
 
         public event PanelAccionCancelarEventArgs Cancelar;
 
-        //private SiCo.lgla.Usuario _Usuario ;  
-    
+        #endregion
+
+        #region Constructor
         public PanelAccion()
         {
             InitializeComponent();
             EstadoMensaje = "";
+            lblfecha .Text = DateTime.Now.ToLongDateString ();
         }
+        #endregion
 
-        
-
-        public string  EstadoMensaje
+        #region Propiedades
+        public string EstadoMensaje
         {
             get
             {
-                return lblEstado.Text ;
+                return lblEstado.Text;
             }
             set
             {
@@ -43,110 +50,107 @@ namespace SiCo.ctrla
             }
         }
 
-        public bool HabilitarNuevo
+        public Button  BotonNuevo
         {
             get
             {
-                return btnNuevo.Enabled;
+                return btnNuevo ;
             }
             set
             {
-                btnNuevo.Enabled = value;
+                btnNuevo = value;
             }
         }
 
-        public bool HabilitarGuardar
+        public Button BotonGuardar
         {
             get
             {
-                return btnGuardar.Enabled;
+                return btnGuardar ;
             }
             set
             {
-                btnGuardar.Enabled=value ;
+                btnGuardar = value;
             }
         }
 
-        public bool habilitarEliminar
+        public Button BotonEliminar
         {
             get
             {
-                return btnEliminar.Enabled;
+                return btnEliminar ;
             }
             set
             {
-                btnEliminar.Enabled=value;
+                btnEliminar = value;
             }
         }
 
-        public bool HabilitarCancelar
+        public Button BotonCancelar
         {
             get
             {
-                return btnCancelar.Enabled;
+                return btnCancelar;
             }
             set
             {
-                btnCancelar.Enabled = value;
+                btnCancelar= value;
             }
         }
 
-        public bool habilitarImprimir
+        public Button BotonImprimir
         {
             get
             {
-                return btnImprimir.Enabled;
+                return BtnImprimir;
             }
             set
             {
-                btnImprimir.Enabled=value;
+                BtnImprimir  = value;
             }
         }
 
         public string Titulo
         {
             get { return lblTitulo.Text; }
-            set { lblTitulo.Text=value ; }
+            set { lblTitulo.Text = value; }
+        }
+        #endregion
+
+        #region Eventos
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (this.Eliminar != null)
+                this.Eliminar();
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (this.Imprimir != null)
+                this.Imprimir();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             if (this.Nuevo != null)
-                Nuevo();
+                this.Nuevo();
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (this.Guardar != null)
-                Guardar();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            if (this.Eliminar != null)
-                Eliminar();
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            if (this.Imprimir != null)
-                Imprimir();
+                this.Guardar();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (this.Cancelar != null)
-                Cancelar();
+            if (this.Cancelar  != null)
+                this.Cancelar();
         }
 
-        private void PanelAccion_Load(object sender, EventArgs e)
-        {
-            lblfecha.Text = DateTime.Now.ToLongDateString ();
-            //lblUsuario.Text = _Usuario.NombreUsuario  ;
-        }
-
-           
-
+        #endregion               
         
     }
 }

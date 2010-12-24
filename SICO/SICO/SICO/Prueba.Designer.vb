@@ -29,11 +29,7 @@ Partial Class Prueba
         '
         Me.PanelAccion2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelAccion2.EstadoMensaje = ""
-        Me.PanelAccion2.HabilitarCancelar = True
-        Me.PanelAccion2.habilitarEliminar = True
-        Me.PanelAccion2.HabilitarGuardar = True
-        Me.PanelAccion2.habilitarImprimir = True
-        Me.PanelAccion2.HabilitarNuevo = True
+        
         Me.PanelAccion2.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion2.Name = "PanelAccion2"
         Me.PanelAccion2.Size = New System.Drawing.Size(702, 397)

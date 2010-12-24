@@ -34,10 +34,10 @@
             this.BarraProgreso = new System.Windows.Forms.ToolStripProgressBar();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnNuevo = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.BtnImprimir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.BarraProgreso});
             this.BarraEstado.Location = new System.Drawing.Point(0, 409);
             this.BarraEstado.Name = "BarraEstado";
-            this.BarraEstado.Size = new System.Drawing.Size(604, 22);
+            this.BarraEstado.Size = new System.Drawing.Size(782, 22);
             this.BarraEstado.TabIndex = 1;
             this.BarraEstado.Text = "statusStrip1";
             // 
@@ -68,7 +68,7 @@
             // 
             this.lblEstado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(487, 17);
+            this.lblEstado.Size = new System.Drawing.Size(665, 17);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "lblestado";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -88,22 +88,22 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.Controls.Add(this.btnCancelar, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnImprimir, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnNuevo, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnGuardar, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnNuevo, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEliminar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnImprimir, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(604, 31);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(782, 31);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCancelar.Location = new System.Drawing.Point(527, 3);
+            this.btnCancelar.Location = new System.Drawing.Point(705, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 25);
             this.btnCancelar.TabIndex = 0;
@@ -111,32 +111,21 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // btnImprimir
+            // btnGuardar
             // 
-            this.btnImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnImprimir.Location = new System.Drawing.Point(447, 3);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(74, 25);
-            this.btnImprimir.TabIndex = 0;
-            this.btnImprimir.Text = "&Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEliminar.Location = new System.Drawing.Point(367, 3);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(74, 25);
-            this.btnEliminar.TabIndex = 0;
-            this.btnEliminar.Text = "&Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnGuardar.Location = new System.Drawing.Point(625, 3);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(74, 25);
+            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.Text = "&Guardar";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnNuevo
             // 
             this.btnNuevo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnNuevo.Location = new System.Drawing.Point(207, 3);
+            this.btnNuevo.Location = new System.Drawing.Point(545, 3);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(74, 25);
             this.btnNuevo.TabIndex = 0;
@@ -144,16 +133,27 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // btnGuardar
+            // btnEliminar
             // 
-            this.btnGuardar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnGuardar.Location = new System.Drawing.Point(287, 3);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(74, 25);
-            this.btnGuardar.TabIndex = 0;
-            this.btnGuardar.Text = "&Guardar ";
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            this.btnEliminar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEliminar.Location = new System.Drawing.Point(385, 3);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(74, 25);
+            this.btnEliminar.TabIndex = 0;
+            this.btnEliminar.Text = "&Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // BtnImprimir
+            // 
+            this.BtnImprimir.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnImprimir.Location = new System.Drawing.Point(465, 3);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.Size = new System.Drawing.Size(74, 25);
+            this.BtnImprimir.TabIndex = 0;
+            this.BtnImprimir.Text = "&Imprimir";
+            this.BtnImprimir.UseVisualStyleBackColor = true;
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
             // panel1
             // 
@@ -161,7 +161,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 378);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(604, 31);
+            this.panel1.Size = new System.Drawing.Size(782, 31);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -175,7 +175,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(604, 84);
+            this.panel2.Size = new System.Drawing.Size(782, 84);
             this.panel2.TabIndex = 3;
             // 
             // lblUsuario
@@ -185,9 +185,9 @@
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.Black;
-            this.lblUsuario.Location = new System.Drawing.Point(540, 63);
+            this.lblUsuario.Location = new System.Drawing.Point(551, 63);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(64, 21);
+            this.lblUsuario.Size = new System.Drawing.Size(231, 21);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -199,9 +199,9 @@
             this.lblfecha.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblfecha.ForeColor = System.Drawing.Color.Black;
-            this.lblfecha.Location = new System.Drawing.Point(540, 0);
+            this.lblfecha.Location = new System.Drawing.Point(551, 0);
             this.lblfecha.Name = "lblfecha";
-            this.lblfecha.Size = new System.Drawing.Size(64, 25);
+            this.lblfecha.Size = new System.Drawing.Size(231, 25);
             this.lblfecha.TabIndex = 2;
             this.lblfecha.Text = "Fecha";
             this.lblfecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -209,11 +209,11 @@
             // lblTitulo
             // 
             this.lblTitulo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
             this.lblTitulo.Location = new System.Drawing.Point(88, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(452, 84);
+            this.lblTitulo.Size = new System.Drawing.Size(463, 84);
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Título";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -232,7 +232,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(1, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(85, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -248,8 +248,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.BarraEstado);
             this.Name = "PanelAccion";
-            this.Size = new System.Drawing.Size(604, 431);
-            this.Load += new System.EventHandler(this.PanelAccion_Load);
+            this.Size = new System.Drawing.Size(782, 431);
             this.BarraEstado.ResumeLayout(false);
             this.BarraEstado.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -267,18 +266,18 @@
         protected System.Windows.Forms.ToolStripStatusLabel lblEstado;
         protected System.Windows.Forms.ToolStripProgressBar BarraProgreso;
         protected System.Windows.Forms.StatusStrip BarraEstado;
-        protected System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        protected System.Windows.Forms.Button btnCancelar;
-        protected System.Windows.Forms.Button btnImprimir;
-        protected System.Windows.Forms.Button btnEliminar;
-        protected System.Windows.Forms.Button btnNuevo;
-        protected System.Windows.Forms.Button btnGuardar;
-        protected System.Windows.Forms.Panel panel1;
         protected System.Windows.Forms.Panel panel2;
         protected System.Windows.Forms.Label lblTitulo;
         protected System.Windows.Forms.Label lblUsuario;
         protected System.Windows.Forms.Label lblfecha;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        public System.Windows.Forms.Button btnCancelar;
+        public System.Windows.Forms.Button btnGuardar;
+        public System.Windows.Forms.Button btnNuevo;
+        public System.Windows.Forms.Panel panel1;
+        public System.Windows.Forms.Button btnEliminar;
+        public System.Windows.Forms.Button BtnImprimir;
     }
 }

@@ -68,7 +68,6 @@ Partial Class frmMenuPrincipal
         Me.SICOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MunicipiosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.ProveedoresToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.TiposDeFacturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.TipoDeMotocicletasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MarcasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -97,9 +96,11 @@ Partial Class frmMenuPrincipal
         '
         'MenuPrinci
         '
+        Me.MenuPrinci.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible
         Me.MenuPrinci.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FacturaciónToolStripMenuItem, Me.InventarioToolStripMenuItem, Me.ClientesToolStripMenuItem, Me.ProveedoresToolStripMenuItem, Me.AdministrativoToolStripMenuItem, Me.SesiónToolStripMenuItem})
         Me.MenuPrinci.Location = New System.Drawing.Point(0, 0)
         Me.MenuPrinci.Name = "MenuPrinci"
+        Me.MenuPrinci.ShowItemToolTips = True
         Me.MenuPrinci.Size = New System.Drawing.Size(1041, 24)
         Me.MenuPrinci.TabIndex = 9
         Me.MenuPrinci.Text = "MenuStrip1"
@@ -347,7 +348,7 @@ Partial Class frmMenuPrincipal
         '
         'SICOToolStripMenuItem
         '
-        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.ProveedoresToolStripMenuItem1, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem})
+        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem})
         Me.SICOToolStripMenuItem.Name = "SICOToolStripMenuItem"
         Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SICOToolStripMenuItem.Text = "SICO"
@@ -363,12 +364,6 @@ Partial Class frmMenuPrincipal
         Me.DepartamentosToolStripMenuItem.Name = "DepartamentosToolStripMenuItem"
         Me.DepartamentosToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.DepartamentosToolStripMenuItem.Text = "Departamentos"
-        '
-        'ProveedoresToolStripMenuItem1
-        '
-        Me.ProveedoresToolStripMenuItem1.Name = "ProveedoresToolStripMenuItem1"
-        Me.ProveedoresToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
-        Me.ProveedoresToolStripMenuItem1.Text = "Proveedores"
         '
         'TiposDeFacturaToolStripMenuItem
         '
@@ -434,6 +429,7 @@ Partial Class frmMenuPrincipal
         Me.Name = "frmMenuPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frmMenuPrincipal"
+        Me.TopMost = True
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
@@ -489,7 +485,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents EstadosDeCuentaToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SICOToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MunicipiosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ProveedoresToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TiposDeFacturaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TipoDeMotocicletasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MarcasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
