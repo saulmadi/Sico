@@ -92,6 +92,18 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\frmPersonaJuridica.Designer.vb">
+      <DependentUpon>frmPersonaJuridica.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\frmPersonaJuridica.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\frmPersonaNatural.Designer.vb">
+      <DependentUpon>frmPersonaNatural.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\frmPersonaNatural.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmDepartamentos.Designer.vb">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </Compile>
@@ -169,6 +181,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Administrativo\frmPersonaJuridica.resx">
+      <DependentUpon>frmPersonaJuridica.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\frmPersonaNatural.resx">
+      <DependentUpon>frmPersonaNatural.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmDepartamentos.resx">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </EmbeddedResource>

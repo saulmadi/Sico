@@ -14,41 +14,41 @@ namespace SiCo.ctrla.ControlesPersonalizados
     public partial class crtlPersonaNatural : UserControl
     {
         #region Declaraciones
-        private lgla.PersonaNatural  _PersonaNatural;
+        private lgla.PersonaNatural _PersonaNatural;
         private List<lgla.TipoIdentidad> _ColeccionTipoIdentidad = new List<lgla.TipoIdentidad>();
         public event ErroresEventsHandler Errores;
 
-        #endregion       
+        #endregion
 
         #region Constructor
 
         public crtlPersonaNatural()
         {
             InitializeComponent();
-            this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Identidad", "I"));
-            this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Pasaporte", "P"));
-            this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Menor de Edad", "M"));
+            //this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Identidad", "I"));
+            //this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Pasaporte", "P"));
+            //this.ColeccionTipoIdentidad.Add(new TipoIdentidad("Menor de Edad", "M"));
 
-            cmbTipoIdentidad.DataSource = this.ColeccionTipoIdentidad;
-            cmbTipoIdentidad.DisplayMember = "Descripcion";
-            cmbTipoIdentidad.ValueMember = "valor";
+            //cmbTipoIdentidad.DataSource = this.ColeccionTipoIdentidad;
+            //cmbTipoIdentidad.DisplayMember = "Descripcion";
+            //cmbTipoIdentidad.ValueMember = "valor";
 
-            txtNombre.ColeccionParametros.Add(new Parametro("id",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("nombrecompleto",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("identificacion",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("rtn",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("NombreCompleto",string.Empty));
-            txtNombre.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("id", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("nombrecompleto", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("identificacion", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("NombreCompleto", string.Empty));
+            //txtNombre.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
 
 
-            txtApellidos.ColeccionParametros.Add(new Parametro("id", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("nombrecompleto", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("identificacion", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("NombreCompleto", string.Empty));
-            txtApellidos.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("id", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("nombrecompleto", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("identificacion", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("NombreCompleto", string.Empty));
+            //txtApellidos.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
 
-            
+
 
         }
 
@@ -64,10 +64,10 @@ namespace SiCo.ctrla.ControlesPersonalizados
         public Int32 Id
         {
             get { return Guadar(); }
-            
+
         }
 
-        #endregion       
+        #endregion
 
         #region Metodos
 
@@ -75,10 +75,10 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             Int32 i = 0;
             InicializarPersonaNatural();
-            Validador Validador= new Validador() ;
+            Validador Validador = new Validador();
             Validador.ColecionCajasTexto.Add(txtNombre);
             Validador.ColecionCajasTexto.Add(txtdireccion);
-            Validador.ColecionCajasTexto.Add(txtCorreo );
+            Validador.ColecionCajasTexto.Add(txtCorreo);
             Validador.ColecionCajasTexto.Add(txtidentifiacion);
             Validador.ColecionCajasTexto.Add(txtApellidos);
             Validador.ColecionCajasTexto.Add(txtrtn);
@@ -86,7 +86,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
             if (Validador.PermitirIngresar)
             {
                 _PersonaNatural.NombreCompleto = txtNombre.Text;
-                
+
                 _PersonaNatural.identificacion = txtidentifiacion.Texto;
                 _PersonaNatural.tipoidentidad = txtidentifiacion.TipoIdentificacion;
                 _PersonaNatural.direccion = txtdireccion.Texto;
@@ -94,19 +94,19 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 _PersonaNatural.rtn = txtrtn.Texto;
                 _PersonaNatural.telefono = txttelefono.ValorInt;
                 _PersonaNatural.Guardar();
-                i =(Int32)  _PersonaNatural.Id;
+                i = (Int32)_PersonaNatural.Id;
 
             }
-            else 
+            else
             {
                 if (this.Errores != null)
                 {
-                    this.Errores(Validador.MensajesError);  
+                    this.Errores(Validador.MensajesError);
                 }
 
             }
 
-            return i ;
+            return i;
 
         }
 
@@ -115,13 +115,13 @@ namespace SiCo.ctrla.ControlesPersonalizados
             try
             {
                 InicializarPersonaNatural();
-                _PersonaNatural.Id = Id; 
+                _PersonaNatural.Id = Id;
             }
             catch (Exception ex)
             {
                 if (this.Errores != null)
                 {
-                    this.Errores(ex.Message); 
+                    this.Errores(ex.Message);
                 }
             }
 
@@ -132,11 +132,11 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             if (_PersonaNatural == null)
             {
-                _PersonaNatural = new PersonaNatural() ;
+                _PersonaNatural = new PersonaNatural();
                 _PersonaNatural.CambioId += new CambioIdEventHandler(_PersonaNatural_CambioId);
                 _PersonaNatural.Errores += new ErroresEventHandler(_PersonaNatural_Errores);
             }
-        }        
+        }
 
         public void NuevaPersonaNatural()
         {
@@ -146,9 +146,9 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         private void CargarDatos()
         {
-            InicializarPersonaNatural(); 
+            InicializarPersonaNatural();
             txtNombre.Text = _PersonaNatural.NombreCompleto;
-            
+
             txtCorreo.Text = _PersonaNatural.correo;
             txttelefono.Text = _PersonaNatural.telefono.ToString();
             txtidentifiacion.Text = _PersonaNatural.identificacion;
@@ -157,7 +157,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
             txtrtn.Text = _PersonaNatural.rtn;
         }
 
-        private void BuscarTextbox() 
+        private void BuscarTextbox()
         {
             InicializarPersonaNatural();
 
@@ -188,13 +188,13 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 }
 
             }
-            catch 
+            catch
             {
 
             }
         }
 
-        private  void _PersonaNatural_Errores(string Mensaje)
+        private void _PersonaNatural_Errores(string Mensaje)
         {
 
         }
@@ -206,8 +206,8 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         private void txtNombre_Leave(object sender, EventArgs e)
         {
-            BuscarTextbox(); 
-        }       
+            BuscarTextbox();
+        }
 
         #endregion       
 

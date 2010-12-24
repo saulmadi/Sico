@@ -3,6 +3,10 @@
 Public Class frmMenuPrincipal
 
 #Region "Eventos"
+
+#Region "Administrativo"
+
+#Region "SICO"
     Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalirToolStripMenuItem.Click
         Me.Close()
     End Sub
@@ -39,4 +43,24 @@ Public Class frmMenuPrincipal
         frm.Show()
     End Sub
 #End Region
+
+#Region "Personas"
+    Private Sub PersonasNaturlaesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PersonasNaturlaesToolStripMenuItem.Click
+        Dim frm As New frmPersonaNatural
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub PersonasJurídicasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PersonasJurídicasToolStripMenuItem.Click
+        Dim frm As New frmPersonaJuridica
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
+
+#End Region
+
+#End Region
+    
+    
 End Class

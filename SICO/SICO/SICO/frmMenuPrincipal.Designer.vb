@@ -65,6 +65,9 @@ Partial Class frmMenuPrincipal
         Me.AdministrativoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SucursalesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.UsuariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PersonasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PersonasNaturlaesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PersonasJurídicasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SICOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MunicipiosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -329,7 +332,7 @@ Partial Class frmMenuPrincipal
         '
         'AdministrativoToolStripMenuItem
         '
-        Me.AdministrativoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SucursalesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.SICOToolStripMenuItem})
+        Me.AdministrativoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SucursalesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.PersonasToolStripMenuItem, Me.SICOToolStripMenuItem})
         Me.AdministrativoToolStripMenuItem.Name = "AdministrativoToolStripMenuItem"
         Me.AdministrativoToolStripMenuItem.Size = New System.Drawing.Size(97, 20)
         Me.AdministrativoToolStripMenuItem.Text = "Administrativo"
@@ -345,6 +348,25 @@ Partial Class frmMenuPrincipal
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
         Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
+        '
+        'PersonasToolStripMenuItem
+        '
+        Me.PersonasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonasNaturlaesToolStripMenuItem, Me.PersonasJurídicasToolStripMenuItem})
+        Me.PersonasToolStripMenuItem.Name = "PersonasToolStripMenuItem"
+        Me.PersonasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PersonasToolStripMenuItem.Text = "Personas"
+        '
+        'PersonasNaturlaesToolStripMenuItem
+        '
+        Me.PersonasNaturlaesToolStripMenuItem.Name = "PersonasNaturlaesToolStripMenuItem"
+        Me.PersonasNaturlaesToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.PersonasNaturlaesToolStripMenuItem.Text = "Personas naturlaes"
+        '
+        'PersonasJurídicasToolStripMenuItem
+        '
+        Me.PersonasJurídicasToolStripMenuItem.Name = "PersonasJurídicasToolStripMenuItem"
+        Me.PersonasJurídicasToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
+        Me.PersonasJurídicasToolStripMenuItem.Text = "Personas jurídicas"
         '
         'SICOToolStripMenuItem
         '
@@ -490,5 +512,8 @@ Partial Class frmMenuPrincipal
     Friend WithEvents MarcasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ModelosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DepartamentosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PersonasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PersonasNaturlaesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PersonasJurídicasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
