@@ -57,7 +57,7 @@ Partial Class frmProductos
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 90)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(207, 204)
+        Me.GroupBox1.Size = New System.Drawing.Size(198, 204)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Imagen"
@@ -75,7 +75,7 @@ Partial Class frmProductos
         Me.GroupBox2.Controls.Add(Me.CajaTexto1)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(244, 90)
+        Me.GroupBox2.Location = New System.Drawing.Point(216, 90)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(457, 204)
         Me.GroupBox2.TabIndex = 3
@@ -88,7 +88,7 @@ Partial Class frmProductos
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(15, 297)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(686, 175)
+        Me.GroupBox3.Size = New System.Drawing.Size(658, 175)
         Me.GroupBox3.TabIndex = 4
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Proveedores"
@@ -112,7 +112,7 @@ Partial Class frmProductos
         Me.Grid1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.Grid1.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Grid1.Size = New System.Drawing.Size(680, 156)
+        Me.Grid1.Size = New System.Drawing.Size(652, 156)
         Me.Grid1.TabIndex = 0
         '
         'CrtImagen1
@@ -121,7 +121,7 @@ Partial Class frmProductos
         Me.CrtImagen1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CrtImagen1.Location = New System.Drawing.Point(3, 16)
         Me.CrtImagen1.Name = "CrtImagen1"
-        Me.CrtImagen1.Size = New System.Drawing.Size(201, 185)
+        Me.CrtImagen1.Size = New System.Drawing.Size(192, 185)
         Me.CrtImagen1.TabIndex = 1
         '
         'PanelAccion1
@@ -131,7 +131,7 @@ Partial Class frmProductos
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(717, 542)
+        Me.PanelAccion1.Size = New System.Drawing.Size(684, 542)
         Me.PanelAccion1.TabIndex = 0
         Me.PanelAccion1.Titulo = "Productos"
         '
@@ -175,7 +175,7 @@ Partial Class frmProductos
         Me.CajaTexto1.EsObligatorio = False
         Me.CajaTexto1.ExpresionValidacion = Nothing
         Me.CajaTexto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto1.Location = New System.Drawing.Point(119, 16)
+        Me.CajaTexto1.Location = New System.Drawing.Point(125, 16)
         Me.CajaTexto1.MensajeError = Nothing
         Me.CajaTexto1.Name = "CajaTexto1"
         Me.CajaTexto1.Size = New System.Drawing.Size(319, 20)
@@ -199,7 +199,7 @@ Partial Class frmProductos
         Me.CajaTexto2.EsObligatorio = False
         Me.CajaTexto2.ExpresionValidacion = Nothing
         Me.CajaTexto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto2.Location = New System.Drawing.Point(119, 42)
+        Me.CajaTexto2.Location = New System.Drawing.Point(125, 42)
         Me.CajaTexto2.MensajeError = Nothing
         Me.CajaTexto2.Name = "CajaTexto2"
         Me.CajaTexto2.Size = New System.Drawing.Size(319, 20)
@@ -213,7 +213,7 @@ Partial Class frmProductos
         Me.CajaTexto3.EsObligatorio = False
         Me.CajaTexto3.ExpresionValidacion = Nothing
         Me.CajaTexto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto3.Location = New System.Drawing.Point(119, 68)
+        Me.CajaTexto3.Location = New System.Drawing.Point(125, 68)
         Me.CajaTexto3.MensajeError = Nothing
         Me.CajaTexto3.Name = "CajaTexto3"
         Me.CajaTexto3.Size = New System.Drawing.Size(319, 20)
@@ -227,7 +227,7 @@ Partial Class frmProductos
         Me.CajaTexto4.EsObligatorio = False
         Me.CajaTexto4.ExpresionValidacion = Nothing
         Me.CajaTexto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto4.Location = New System.Drawing.Point(119, 94)
+        Me.CajaTexto4.Location = New System.Drawing.Point(125, 94)
         Me.CajaTexto4.MensajeError = Nothing
         Me.CajaTexto4.Name = "CajaTexto4"
         Me.CajaTexto4.Size = New System.Drawing.Size(319, 20)
@@ -261,9 +261,9 @@ Partial Class frmProductos
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label5.Location = New System.Drawing.Point(6, 123)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(130, 13)
+        Me.Label5.Size = New System.Drawing.Size(113, 13)
         Me.Label5.TabIndex = 8
-        Me.Label5.Text = "wAATD XGHY CVBN    I9"
+        Me.Label5.Text = "Cántidad en inventario"
         '
         'CajaTexto5
         '
@@ -271,7 +271,7 @@ Partial Class frmProductos
         Me.CajaTexto5.EsObligatorio = False
         Me.CajaTexto5.ExpresionValidacion = Nothing
         Me.CajaTexto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto5.Location = New System.Drawing.Point(119, 120)
+        Me.CajaTexto5.Location = New System.Drawing.Point(125, 120)
         Me.CajaTexto5.MensajeError = Nothing
         Me.CajaTexto5.Name = "CajaTexto5"
         Me.CajaTexto5.Size = New System.Drawing.Size(319, 20)
@@ -283,7 +283,7 @@ Partial Class frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(717, 542)
+        Me.ClientSize = New System.Drawing.Size(684, 542)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
