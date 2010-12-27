@@ -47,7 +47,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>SICO.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -57,7 +57,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>SICO.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -104,6 +104,18 @@
     <Compile Include="Administrativo\frmPersonaNatural.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Administrativo\frmSucursales.Designer.vb">
+      <DependentUpon>frmSucursales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\frmSucursales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrativo\frmUsuario.Designer.vb">
+      <DependentUpon>frmUsuario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\frmUsuario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmDepartamentos.Designer.vb">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </Compile>
@@ -140,6 +152,12 @@
     <Compile Include="Administrativo\Mantenimietos\frmTiposMotocicletas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Clientes\frmRegistroClientes.Designer.vb">
+      <DependentUpon>frmRegistroClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmRegistroClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIniciosesion.Designer.vb">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </Compile>
@@ -158,6 +176,12 @@
     <Compile Include="frmPantallaInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\frmProductos.Designer.vb">
+      <DependentUpon>frmProductos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\frmProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -173,6 +197,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Proveedores\frmRegistroProveedores.Designer.vb">
+      <DependentUpon>frmRegistroProveedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Proveedores\frmRegistroProveedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Prueba.Designer.vb">
       <DependentUpon>Prueba.vb</DependentUpon>
     </Compile>
@@ -186,6 +216,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\frmPersonaNatural.resx">
       <DependentUpon>frmPersonaNatural.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\frmSucursales.resx">
+      <DependentUpon>frmSucursales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\frmUsuario.resx">
+      <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmDepartamentos.resx">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
@@ -205,6 +241,9 @@
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmTiposMotocicletas.resx">
       <DependentUpon>frmTiposMotocicletas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmRegistroClientes.resx">
+      <DependentUpon>frmRegistroClientes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIniciosesion.resx">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </EmbeddedResource>
@@ -214,11 +253,17 @@
     <EmbeddedResource Include="frmPantallaInicio.resx">
       <DependentUpon>frmPantallaInicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\frmProductos.resx">
+      <DependentUpon>frmProductos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Proveedores\frmRegistroProveedores.resx">
+      <DependentUpon>frmRegistroProveedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prueba.resx">
       <DependentUpon>Prueba.vb</DependentUpon>
@@ -287,10 +332,7 @@
     <Content Include="SICO.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Clientes\" />
     <Folder Include="Factuacion\" />
-    <Folder Include="Inventario\" />
-    <Folder Include="Proveedores\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

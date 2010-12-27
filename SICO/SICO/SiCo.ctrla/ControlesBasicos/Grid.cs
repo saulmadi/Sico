@@ -114,7 +114,7 @@ namespace SiCo.ctrla
                 columna.UseColumnTextForButtonValue = true;
 
                 this.Columns.Add(columna);
-                _AgregadoBotonEditar = true;
+                _AgregadoBotonEliminar  = true;
  
             }
         }
@@ -150,6 +150,7 @@ namespace SiCo.ctrla
                 h.Fila = this.Rows[e.RowIndex];
                 if (CampoId != null)
                 {
+                    
                     h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].ToString());
                 }
                 else
@@ -185,6 +186,7 @@ namespace SiCo.ctrla
             this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.MultiSelect = false;
+            this.RowHeadersVisible = false;
         }
 
         private void FormatoColumnas()
@@ -248,8 +250,7 @@ namespace SiCo.ctrla
         }        
 
 
-        #endregion   
-        
+        #endregion           
 
     }
 }

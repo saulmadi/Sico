@@ -45,6 +45,7 @@ Partial Class frmModelos
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "frmModelos"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Modelos Motocicletas"
         Me.ResumeLayout(False)
 
