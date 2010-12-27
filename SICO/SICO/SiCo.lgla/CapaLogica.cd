@@ -8,6 +8,13 @@
       <Compartment Name="Events" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
+    <AssociationLine Name="Usuario" Type="SiCo.lgla.Usuario" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.75" Y="1.062" />
+        <Point X="4" Y="1.062" />
+        <Point X="4" Y="3.25" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBgkFAAUAUQ=</HashCode>
       <FileName>Entidad.cs</FileName>
@@ -16,21 +23,21 @@
       <Property Name="Usuario" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="SiCo.lgla.Parametro">
-    <Position X="3" Y="0.5" Width="1.5" />
+  <Class Name="SiCo.lgla.Parametro" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAABAAAAAgAAECAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Parametro.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla.Usuario" Collapsed="true">
-    <Position X="4.5" Y="3.5" Width="1.5" />
+    <Position X="3.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.Entidades">
+  <Class Name="SiCo.lgla.Entidades" Collapsed="true">
     <Position X="0.75" Y="4.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -48,14 +55,14 @@
       <FileName>TipoIdentidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaNatural">
+  <Class Name="SiCo.lgla.PersonaNatural" Collapsed="true">
     <Position X="3.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAAAAAAAAAgBAAAAAAAAAAAAABAAQgIA=</HashCode>
       <FileName>PersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaJuridica">
+  <Class Name="SiCo.lgla.PersonaJuridica" Collapsed="true">
     <Position X="0.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAQAAA=</HashCode>
@@ -85,22 +92,22 @@
       <FileName>Ticket.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Delegate Name="SiCo.lgla.ErroresEventHandler">
-    <Position X="4.5" Y="0.5" Width="2.25" />
+  <Delegate Name="SiCo.lgla.ErroresEventHandler" Collapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ErroresEventsArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.lgla.CambioIdEventHandler">
-    <Position X="6.75" Y="0.5" Width="2.5" />
+  <Delegate Name="SiCo.lgla.CambioIdEventHandler" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CambioIdEventArgs.cs</FileName>
     </TypeIdentifier>
   </Delegate>
-  <Delegate Name="SiCo.lgla.CargoTablaEventHandler">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+  <Delegate Name="SiCo.lgla.CargoTablaEventHandler" Collapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CargoTablaHandle.cs</FileName>

@@ -46,6 +46,7 @@ Partial Class frmTiposFacturas
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmTiposFacturas"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Tipos Factura"
         Me.ResumeLayout(False)
 

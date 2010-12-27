@@ -92,7 +92,7 @@ Partial Class crtPersonaNatural
         Me.txtrtn.ColorError = System.Drawing.Color.Red
         Me.txtrtn.EsObligatorio = False
         Me.txtrtn.ExpresionValidacion = Nothing
-        Me.txtrtn.Location = New System.Drawing.Point(102, 237)
+        Me.txtrtn.Location = New System.Drawing.Point(102, 236)
         Me.txtrtn.MaxLength = 255
         Me.txtrtn.MensajeError = Nothing
         Me.txtrtn.Name = "txtrtn"
@@ -108,7 +108,7 @@ Partial Class crtPersonaNatural
         Me.txtCorreo.ExpresionValidacion = "^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0" & _
             "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
             "9][0-9]|[1-9][0-9]|[0-9])\])$"
-        Me.txtCorreo.Location = New System.Drawing.Point(102, 210)
+        Me.txtCorreo.Location = New System.Drawing.Point(102, 138)
         Me.txtCorreo.MaxLength = 255
         Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
         Me.txtCorreo.Name = "txtCorreo"
@@ -122,7 +122,7 @@ Partial Class crtPersonaNatural
         Me.txtdireccion.ColorError = System.Drawing.Color.Red
         Me.txtdireccion.EsObligatorio = False
         Me.txtdireccion.ExpresionValidacion = Nothing
-        Me.txtdireccion.Location = New System.Drawing.Point(102, 138)
+        Me.txtdireccion.Location = New System.Drawing.Point(102, 164)
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"
@@ -186,7 +186,7 @@ Partial Class crtPersonaNatural
         'label8
         '
         Me.label8.AutoSize = True
-        Me.label8.Location = New System.Drawing.Point(3, 237)
+        Me.label8.Location = New System.Drawing.Point(3, 239)
         Me.label8.Name = "label8"
         Me.label8.Size = New System.Drawing.Size(30, 13)
         Me.label8.TabIndex = 31
@@ -195,7 +195,7 @@ Partial Class crtPersonaNatural
         'label7
         '
         Me.label7.AutoSize = True
-        Me.label7.Location = New System.Drawing.Point(3, 213)
+        Me.label7.Location = New System.Drawing.Point(3, 141)
         Me.label7.Name = "label7"
         Me.label7.Size = New System.Drawing.Size(38, 13)
         Me.label7.TabIndex = 30
@@ -204,7 +204,7 @@ Partial Class crtPersonaNatural
         'label6
         '
         Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(3, 141)
+        Me.label6.Location = New System.Drawing.Point(3, 167)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(52, 13)
         Me.label6.TabIndex = 29

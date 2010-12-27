@@ -33,7 +33,7 @@ Partial Class crtPersonaJuridica
         Me.label7 = New System.Windows.Forms.Label
         Me.label6 = New System.Windows.Forms.Label
         Me.label5 = New System.Windows.Forms.Label
-        Me.label3 = New System.Windows.Forms.Label
+        Me.lblRazonSocial = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
         'txtNombre
@@ -153,14 +153,14 @@ Partial Class crtPersonaJuridica
         Me.label5.TabIndex = 28
         Me.label5.Text = "Telefono"
         '
-        'label3
+        'lblRazonSocial
         '
-        Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(3, 11)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(68, 13)
-        Me.label3.TabIndex = 24
-        Me.label3.Text = "Razón social"
+        Me.lblRazonSocial.AutoSize = True
+        Me.lblRazonSocial.Location = New System.Drawing.Point(3, 11)
+        Me.lblRazonSocial.Name = "lblRazonSocial"
+        Me.lblRazonSocial.Size = New System.Drawing.Size(68, 13)
+        Me.lblRazonSocial.TabIndex = 24
+        Me.lblRazonSocial.Text = "Razón social"
         '
         'crtPersonaJuridica
         '
@@ -175,7 +175,7 @@ Partial Class crtPersonaJuridica
         Me.Controls.Add(Me.label7)
         Me.Controls.Add(Me.label6)
         Me.Controls.Add(Me.label5)
-        Me.Controls.Add(Me.label3)
+        Me.Controls.Add(Me.lblRazonSocial)
         Me.Name = "crtPersonaJuridica"
         Me.Size = New System.Drawing.Size(491, 193)
         Me.ResumeLayout(False)
@@ -191,6 +191,6 @@ Partial Class crtPersonaJuridica
     Private WithEvents label7 As System.Windows.Forms.Label
     Private WithEvents label6 As System.Windows.Forms.Label
     Private WithEvents label5 As System.Windows.Forms.Label
-    Private WithEvents label3 As System.Windows.Forms.Label
+    Private WithEvents lblRazonSocial As System.Windows.Forms.Label
 
 End Class

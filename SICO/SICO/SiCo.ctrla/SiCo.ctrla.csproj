@@ -25,7 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="ControlesBasicos\CorreoCajaTexto.Designer.cs">
       <DependentUpon>CorreoCajaTexto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtImagen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtImagen.Designer.cs">
+      <DependentUpon>crtImagen.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlesPersonalizados\crtlPersonaNatural.cs">
       <SubType>UserControl</SubType>
@@ -129,6 +135,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesPersonalizados\crtImagen.resx">
+      <DependentUpon>crtImagen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtlPersonaNatural.resx">
       <DependentUpon>crtlPersonaNatural.cs</DependentUpon>
       <SubType>Designer</SubType>

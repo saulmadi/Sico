@@ -184,9 +184,9 @@
             this.panel4.Controls.Add(this.lblUsuario);
             this.panel4.Controls.Add(this.lblfecha);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(503, 0);
+            this.panel4.Location = new System.Drawing.Point(468, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(225, 84);
+            this.panel4.Size = new System.Drawing.Size(260, 84);
             this.panel4.TabIndex = 5;
             // 
             // lblUsuario
@@ -198,7 +198,7 @@
             this.lblUsuario.ForeColor = System.Drawing.Color.Black;
             this.lblUsuario.Location = new System.Drawing.Point(0, 63);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(225, 21);
+            this.lblUsuario.Size = new System.Drawing.Size(260, 21);
             this.lblUsuario.TabIndex = 3;
             this.lblUsuario.Text = "Usuario";
             this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -212,7 +212,7 @@
             this.lblfecha.ForeColor = System.Drawing.Color.Black;
             this.lblfecha.Location = new System.Drawing.Point(0, 0);
             this.lblfecha.Name = "lblfecha";
-            this.lblfecha.Size = new System.Drawing.Size(225, 25);
+            this.lblfecha.Size = new System.Drawing.Size(260, 25);
             this.lblfecha.TabIndex = 2;
             this.lblfecha.Text = "Fecha";
             this.lblfecha.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

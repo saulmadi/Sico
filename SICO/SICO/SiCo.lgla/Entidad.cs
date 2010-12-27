@@ -362,9 +362,7 @@ namespace SiCo.lgla
 
         protected  virtual void CargadoPropiedades()
         {
-
-            _Id = (int) Registro(0, "id");            
- 
+            _Id = (int) Registro(0, "id");             
         }
        
         public virtual void Buscar()

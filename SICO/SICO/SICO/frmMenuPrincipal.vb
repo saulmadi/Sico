@@ -58,9 +58,41 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
+    Private Sub SucursalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SucursalesToolStripMenuItem.Click
+        Dim frm As New frmSucursales
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub UsuariosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UsuariosToolStripMenuItem.Click
+        Dim frm As New frmUsuario
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+#End Region
+
+#Region "Proveedores"
+    Private Sub RegistroDeProveedoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeProveedoresToolStripMenuItem.Click
+        Dim frm As New frmRegistroProveedores
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
+
+#Region "Clientes"
+    Private Sub RegistroDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeClientesToolStripMenuItem.Click
+        Dim frm As New frmRegistroClientes
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 #End Region
 
 #End Region
-    
-    
+
+    Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
+        Dim frm As New frmProductos
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 End Class
