@@ -88,11 +88,21 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
-#End Region
-
+#Region "Inventario"
     Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
         Dim frm As New frmProductos
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
+    Private Sub MotocicletasToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MotocicletasToolStripMenuItem1.Click
+        Dim frm As New frmMotociletas
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
+
+#End Region
+
+    
 End Class

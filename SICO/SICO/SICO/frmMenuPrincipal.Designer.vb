@@ -41,6 +41,7 @@ Partial Class frmMenuPrincipal
         Me.DevolucionesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.InventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProductosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.MotocicletasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.ComprasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.OrdenesDeCompraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ComprasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
@@ -78,7 +79,6 @@ Partial Class frmMenuPrincipal
         Me.SesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CerrarSesesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.MotocicletasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip.SuspendLayout()
         Me.MenuPrinci.SuspendLayout()
         Me.SuspendLayout()
@@ -198,6 +198,12 @@ Partial Class frmMenuPrincipal
         Me.ProductosToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
         Me.ProductosToolStripMenuItem.Text = "Productos"
         '
+        'MotocicletasToolStripMenuItem1
+        '
+        Me.MotocicletasToolStripMenuItem1.Name = "MotocicletasToolStripMenuItem1"
+        Me.MotocicletasToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
+        Me.MotocicletasToolStripMenuItem1.Text = "Motocicletas"
+        '
         'ComprasToolStripMenuItem
         '
         Me.ComprasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrdenesDeCompraToolStripMenuItem, Me.ComprasToolStripMenuItem1})
@@ -246,13 +252,13 @@ Partial Class frmMenuPrincipal
         'GlobalToolStripMenuItem
         '
         Me.GlobalToolStripMenuItem.Name = "GlobalToolStripMenuItem"
-        Me.GlobalToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.GlobalToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.GlobalToolStripMenuItem.Text = "Global"
         '
         'SucursalToolStripMenuItem
         '
         Me.SucursalToolStripMenuItem.Name = "SucursalToolStripMenuItem"
-        Me.SucursalToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SucursalToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.SucursalToolStripMenuItem.Text = "Sucursal"
         '
         'ClientesToolStripMenuItem
@@ -432,12 +438,6 @@ Partial Class frmMenuPrincipal
         Me.SalirToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'MotocicletasToolStripMenuItem1
-        '
-        Me.MotocicletasToolStripMenuItem1.Name = "MotocicletasToolStripMenuItem1"
-        Me.MotocicletasToolStripMenuItem1.Size = New System.Drawing.Size(208, 22)
-        Me.MotocicletasToolStripMenuItem1.Text = "Motocicletas"
         '
         'frmMenuPrincipal
         '
