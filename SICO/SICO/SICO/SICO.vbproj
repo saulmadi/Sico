@@ -176,6 +176,12 @@
     <Compile Include="frmPantallaInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\frmMotocicletasBusqueda.Designer.vb">
+      <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\frmMotocicletasBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventario\frmMotociletas.Designer.vb">
       <DependentUpon>frmMotociletas.vb</DependentUpon>
     </Compile>
@@ -186,6 +192,18 @@
       <DependentUpon>frmProductos.vb</DependentUpon>
     </Compile>
     <Compile Include="Inventario\frmProductos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\frmProductosBusqueda.Designer.vb">
+      <DependentUpon>frmProductosBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\frmProductosBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIParent1.Designer.vb">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MDIParent1.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -259,11 +277,20 @@
     <EmbeddedResource Include="frmPantallaInicio.resx">
       <DependentUpon>frmPantallaInicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\frmMotocicletasBusqueda.resx">
+      <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventario\frmMotociletas.resx">
       <DependentUpon>frmMotociletas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\frmProductos.resx">
       <DependentUpon>frmProductos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\frmProductosBusqueda.resx">
+      <DependentUpon>frmProductosBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

@@ -6,10 +6,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SiCo.ctrla ;
 
 namespace SiCo.ctrla
 {
-    public partial class PanelAccion : UserControl
+    public partial class PanelAccion : SiCo.ctrla.ControlesPersonalizados.crtPanelBase  
     {
         #region Declaraciones
 
@@ -110,11 +111,7 @@ namespace SiCo.ctrla
             }
         }
 
-        public string Titulo
-        {
-            get { return lblTitulo.Text; }
-            set { lblTitulo.Text = value; }
-        }
+        
         #endregion
 
         #region Eventos
