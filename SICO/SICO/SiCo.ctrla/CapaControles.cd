@@ -76,7 +76,7 @@
       <FileName>Delegados\GridFormatoColumnas.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.ctrla.PanelAccion" Collapsed="true">
+  <Class Name="SiCo.ctrla.PanelAccion">
     <Position X="4.5" Y="1.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -85,29 +85,36 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAACAAAAiSACIQAAACAAQEDKwFABEAACBAANSAEADA=</HashCode>
+      <HashCode>AAoICABAACQACIAAAACAAQEDCAFABEAICBAAJSAAADA=</HashCode>
       <FileName>ControlesPersonalizados\PanelAccion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.ControlesPersonalizados.crtlPersonaNatural" Collapsed="true">
     <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACCCAIEKGAAEFAEAICAIAQCACAAAAAAACAiIAAAAQE=</HashCode>
+      <HashCode>AACCCAIEKGAAEFAECICAIAQCACAAAAAAACAiKAAEAQE=</HashCode>
       <FileName>ControlesPersonalizados\crtlPersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.Validador" Collapsed="true">
     <Position X="3.25" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAgAgAAAAAAAAAAAAAAAAAAAEAQAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAgAgAAAAAAAAAAAAAAAIAAAEAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Validador.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto" Collapsed="true">
     <Position X="1.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACEAAACAAAAAAEAAAAgEAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQCAAAAIAAACEAgACAACAEAMAAQEgEAAABBA=</HashCode>
       <FileName>ControlesBasicos\AutoCompleteCajaTexto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.ctrla.ControlesPersonalizados.crtPanelBase" Collapsed="true">
+    <Position X="6" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAQAAACAAAACAQAAAAAAAAAAAQBEABA=</HashCode>
+      <FileName>ControlesPersonalizados\crtPanelBase.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.ctrla.TiposTexto">

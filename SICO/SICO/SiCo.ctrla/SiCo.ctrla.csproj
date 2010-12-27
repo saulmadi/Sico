@@ -85,6 +85,12 @@
     <Compile Include="ControlesPersonalizados\crtlPersonaNatural.Designer.cs">
       <DependentUpon>crtlPersonaNatural.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesPersonalizados\crtPanelBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtPanelBase.Designer.cs">
+      <DependentUpon>crtPanelBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delegados\ErroresEventsArgs.cs" />
     <Compile Include="ControlesBasicos\Grid.cs">
       <SubType>Component</SubType>
@@ -141,6 +147,9 @@
     <EmbeddedResource Include="ControlesPersonalizados\crtlPersonaNatural.resx">
       <DependentUpon>crtlPersonaNatural.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\crtPanelBase.resx">
+      <DependentUpon>crtPanelBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\PanelAccion.resx">
       <DependentUpon>PanelAccion.cs</DependentUpon>
