@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmModelos
+Partial Class frmBusquedaOrdenesCompra
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
@@ -22,35 +22,32 @@ Partial Class frmModelos
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModelos))
-        Me.CrtTablaTipoDerivada1 = New SICO.ctrla2.crtTablaTipoDerivada
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBusquedaOrdenesCompra))
+        Me.CrtPanelBusqueda1 = New SICO.ctrla2.crtPanelBusqueda
         Me.SuspendLayout()
         '
-        'CrtTablaTipoDerivada1
+        'CrtPanelBusqueda1
         '
-        Me.CrtTablaTipoDerivada1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtTablaTipoDerivada1.Location = New System.Drawing.Point(0, 0)
-        Me.CrtTablaTipoDerivada1.Name = "CrtTablaTipoDerivada1"
-        Me.CrtTablaTipoDerivada1.Size = New System.Drawing.Size(782, 524)
-        Me.CrtTablaTipoDerivada1.TabIndex = 0
-        Me.CrtTablaTipoDerivada1.Titulo = "Modelos "
-        Me.CrtTablaTipoDerivada1.TituloDerivado = "Marca"
+        Me.CrtPanelBusqueda1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
+        Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
+        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(851, 418)
+        Me.CrtPanelBusqueda1.TabIndex = 0
+        Me.CrtPanelBusqueda1.Titulo = "Ordenes de Compra"
+        Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
         '
-        'frmModelos
+        'frmBusquedaOrdenesCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(782, 524)
-        Me.Controls.Add(Me.CrtTablaTipoDerivada1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.ClientSize = New System.Drawing.Size(851, 418)
+        Me.Controls.Add(Me.CrtPanelBusqueda1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.Name = "frmModelos"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Modelos Motocicletas"
+        Me.Name = "frmBusquedaOrdenesCompra"
+        Me.Text = "Busqueda Oredenes de Compra"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents CrtTablaTipoDerivada1 As SICO.ctrla2.crtTablaTipoDerivada
+    Friend WithEvents CrtPanelBusqueda1 As SICO.ctrla2.crtPanelBusqueda
 End Class

@@ -38,7 +38,7 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.BtnImprimir = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2.SuspendLayout();
+            this.PanelPrinipal.SuspendLayout();
             this.BarraEstado.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -46,7 +46,7 @@
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(593, 84);
+            this.PanelPrinipal.Size = new System.Drawing.Size(593, 84);
             // 
             // lblTitulo
             // 
@@ -174,8 +174,8 @@
             this.Size = new System.Drawing.Size(593, 536);
             this.Controls.SetChildIndex(this.BarraEstado, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
-            this.panel2.ResumeLayout(false);
+            this.Controls.SetChildIndex(this.PanelPrinipal, 0);
+            this.PanelPrinipal.ResumeLayout(false);
             this.BarraEstado.ResumeLayout(false);
             this.BarraEstado.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

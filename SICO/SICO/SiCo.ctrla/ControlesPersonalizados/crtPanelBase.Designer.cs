@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(crtPanelBase));
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelPrinipal = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.lblfecha = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel2.SuspendLayout();
+            this.PanelPrinipal.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
+            // PanelPrinipal
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(251)))));
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.lblTitulo);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(650, 84);
-            this.panel2.TabIndex = 4;
+            this.PanelPrinipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(251)))));
+            this.PanelPrinipal.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PanelPrinipal.Controls.Add(this.panel4);
+            this.PanelPrinipal.Controls.Add(this.lblTitulo);
+            this.PanelPrinipal.Controls.Add(this.panel3);
+            this.PanelPrinipal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelPrinipal.Location = new System.Drawing.Point(0, 0);
+            this.PanelPrinipal.Name = "PanelPrinipal";
+            this.PanelPrinipal.Size = new System.Drawing.Size(650, 84);
+            this.PanelPrinipal.TabIndex = 4;
             // 
             // panel4
             // 
@@ -130,10 +130,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.PanelPrinipal);
             this.Name = "crtPanelBase";
-            this.Size = new System.Drawing.Size(650, 150);            
-            this.panel2.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(650, 150);
+            this.PanelPrinipal.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -143,7 +143,7 @@
 
         #endregion
 
-        protected System.Windows.Forms.Panel panel2;
+        protected System.Windows.Forms.Panel PanelPrinipal;
         private System.Windows.Forms.Panel panel4;
         protected System.Windows.Forms.Label lblUsuario;
         protected System.Windows.Forms.Label lblfecha;

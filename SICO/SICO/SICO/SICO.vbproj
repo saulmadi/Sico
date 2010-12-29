@@ -176,6 +176,18 @@
     <Compile Include="frmPantallaInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.Designer.vb">
+      <DependentUpon>frmBusquedaOrdenesCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmOrdenesCompra.Designer.vb">
+      <DependentUpon>frmOrdenesCompra.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmOrdenesCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventario\frmMotocicletasBusqueda.Designer.vb">
       <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>
     </Compile>
@@ -276,6 +288,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPantallaInicio.resx">
       <DependentUpon>frmPantallaInicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.resx">
+      <DependentUpon>frmBusquedaOrdenesCompra.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\frmOrdenesCompra.resx">
+      <DependentUpon>frmOrdenesCompra.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\frmMotocicletasBusqueda.resx">
       <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>

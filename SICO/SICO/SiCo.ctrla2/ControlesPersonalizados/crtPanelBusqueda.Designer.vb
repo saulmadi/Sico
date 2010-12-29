@@ -32,7 +32,7 @@ Partial Class crtPanelBusqueda
         Me.ImprimirToolStripButton = New System.Windows.Forms.ToolStripButton
         Me._GridResultados = New SiCo.ctrla.Grid(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.panel2.SuspendLayout()
+
         Me.Panel1.SuspendLayout()
         Me._BarraHerramientas.SuspendLayout()
         CType(Me._GridResultados, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -41,7 +41,7 @@ Partial Class crtPanelBusqueda
         '
         'panel2
         '
-        Me.panel2.Size = New System.Drawing.Size(878, 84)
+
         '
         'lblTitulo
         '
@@ -134,10 +134,10 @@ Partial Class crtPanelBusqueda
         Me.Controls.Add(Me.Panel1)
         Me.Name = "crtPanelBusqueda"
         Me.Size = New System.Drawing.Size(878, 433)
-        Me.Controls.SetChildIndex(Me.panel2, 0)
+
         Me.Controls.SetChildIndex(Me.Panel1, 0)
         Me.Controls.SetChildIndex(Me.GroupBox1, 0)
-        Me.panel2.ResumeLayout(False)
+
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me._BarraHerramientas.ResumeLayout(False)

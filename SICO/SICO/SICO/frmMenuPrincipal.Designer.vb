@@ -69,6 +69,7 @@ Partial Class frmMenuPrincipal
         Me.PersonasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PersonasNaturlaesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.PersonasJurídicasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator
         Me.SICOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MunicipiosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.DepartamentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -342,7 +343,7 @@ Partial Class frmMenuPrincipal
         '
         'AdministrativoToolStripMenuItem
         '
-        Me.AdministrativoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SucursalesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.PersonasToolStripMenuItem, Me.SICOToolStripMenuItem})
+        Me.AdministrativoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SucursalesToolStripMenuItem, Me.UsuariosToolStripMenuItem, Me.PersonasToolStripMenuItem, Me.ToolStripSeparator1, Me.SICOToolStripMenuItem})
         Me.AdministrativoToolStripMenuItem.Name = "AdministrativoToolStripMenuItem"
         Me.AdministrativoToolStripMenuItem.Size = New System.Drawing.Size(97, 19)
         Me.AdministrativoToolStripMenuItem.Text = "&Administrativo"
@@ -377,6 +378,11 @@ Partial Class frmMenuPrincipal
         Me.PersonasJurídicasToolStripMenuItem.Name = "PersonasJurídicasToolStripMenuItem"
         Me.PersonasJurídicasToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
         Me.PersonasJurídicasToolStripMenuItem.Text = "Personas jurídicas"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(126, 6)
         '
         'SICOToolStripMenuItem
         '
@@ -526,5 +532,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents PersonasNaturlaesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PersonasJurídicasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MotocicletasToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
 
 End Class
