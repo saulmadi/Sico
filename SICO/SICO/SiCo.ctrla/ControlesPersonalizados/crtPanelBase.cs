@@ -14,12 +14,18 @@ namespace SiCo.ctrla.ControlesPersonalizados
         public crtPanelBase()
         {
             InitializeComponent();
+            lblfecha.Text = DateTime.Now.ToLongDateString ();
         }
 
         public string Titulo
         {
             get { return lblTitulo.Text; }
             set { lblTitulo.Text = value; }
+        }
+        public bool VisiblePanelPrincipal
+        {
+            get { return PanelPrinipal.Visible; }
+            set { PanelPrinipal.Visible = value; }
         }
     }
 }

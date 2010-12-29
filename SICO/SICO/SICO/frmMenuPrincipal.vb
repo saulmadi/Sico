@@ -89,6 +89,13 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Inventario"
+#Region "ControlCompras"
+    Private Sub OrdenesDeCompraToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesDeCompraToolStripMenuItem.Click
+        Dim frm As New frmBusquedaOrdenesCompra
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
     Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
         Dim frm As New frmProductosBusqueda
         frm.MdiParent = Me
@@ -102,7 +109,16 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
+#Region "Manejo de la aplicacion"
+    Private Sub frmMenuPrincipal_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        Me.MdiChildren.GetUpperBound(0)
+        For f As Integer = 0 To Me.MdiChildren.GetUpperBound(0) - 1
+            Me.MdiChildren(f).Close()
+        Next
+    End Sub
 #End Region
 
+#End Region
     
+   
 End Class
