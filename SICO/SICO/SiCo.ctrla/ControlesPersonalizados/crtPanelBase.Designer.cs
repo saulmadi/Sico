@@ -67,7 +67,7 @@
             // 
             // lblUsuario
             // 
-            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(236)))), ((int)(((byte)(19)))));
+            this.lblUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(50)))), ((int)(((byte)(43)))));
             this.lblUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblUsuario.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,7 +81,7 @@
             // 
             // lblfecha
             // 
-            this.lblfecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(50)))), ((int)(((byte)(43)))));
+            this.lblfecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(236)))), ((int)(((byte)(19)))));
             this.lblfecha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblfecha.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblfecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

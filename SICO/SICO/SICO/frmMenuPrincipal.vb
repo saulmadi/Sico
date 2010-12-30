@@ -95,7 +95,13 @@ Public Class frmMenuPrincipal
         frm.MdiParent = Me
         frm.Show()
     End Sub
+    Private Sub ComprasToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComprasToolStripMenuItem1.Click
+        Dim frm As New frmBusquedaCompras
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 #End Region
+
     Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
         Dim frm As New frmProductosBusqueda
         frm.MdiParent = Me
@@ -121,4 +127,5 @@ Public Class frmMenuPrincipal
 #End Region
     
    
+    
 End Class

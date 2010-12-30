@@ -14,7 +14,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
         public crtPanelBase()
         {
             InitializeComponent();
-            lblfecha.Text = DateTime.Now.ToLongDateString ();
+            lblfecha.Text = DateTime.Now.ToLongDateString ();            
         }
 
         public string Titulo

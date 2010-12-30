@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SiCo.lgla.Entidad">
+  <Class Name="SiCo.lgla.Entidad" Collapsed="true">
     <Position X="0.5" Y="0.5" Width="2.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -10,8 +10,8 @@
     </Compartments>
     <AssociationLine Name="Usuario" Type="SiCo.lgla.Usuario" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="2.75" Y="1.062" />
-        <Point X="4" Y="1.062" />
+        <Point X="2.75" Y="0.687" />
+        <Point X="4" Y="0.687" />
         <Point X="4" Y="3.25" />
       </Path>
     </AssociationLine>
@@ -90,6 +90,13 @@
     <TypeIdentifier>
       <HashCode>IpkAFApMAAgCgAAHJEkoAgABgBAgAAAIAAAAEAACBAA=</HashCode>
       <FileName>Ticket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla.Generales">
+    <Position X="4.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Generales.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Delegate Name="SiCo.lgla.ErroresEventHandler" Collapsed="true">
