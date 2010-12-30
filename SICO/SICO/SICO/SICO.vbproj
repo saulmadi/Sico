@@ -176,10 +176,22 @@
     <Compile Include="frmPantallaInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\ControlCompras\frmBusquedaCompras.Designer.vb">
+      <DependentUpon>frmBusquedaCompras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmBusquedaCompras.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.Designer.vb">
       <DependentUpon>frmBusquedaOrdenesCompra.vb</DependentUpon>
     </Compile>
     <Compile Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmCompras.Designer.vb">
+      <DependentUpon>frmCompras.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\frmCompras.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Inventario\ControlCompras\frmOrdenesCompra.Designer.vb">
@@ -289,8 +301,14 @@
     <EmbeddedResource Include="frmPantallaInicio.resx">
       <DependentUpon>frmPantallaInicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\frmBusquedaCompras.resx">
+      <DependentUpon>frmBusquedaCompras.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventario\ControlCompras\frmBusquedaOrdenesCompra.resx">
       <DependentUpon>frmBusquedaOrdenesCompra.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\frmCompras.resx">
+      <DependentUpon>frmCompras.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\ControlCompras\frmOrdenesCompra.resx">
       <DependentUpon>frmOrdenesCompra.vb</DependentUpon>
