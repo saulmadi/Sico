@@ -1,8 +1,8 @@
-﻿Public Class frmBusquedaRequsicion
-    Dim WithEvents frm As New frmRequesicionProducto
+﻿Public Class frmBusquedaOrdenSalida
+    Dim WithEvents frm As New frmOrdenSalida
     Private Sub CrtPanelBusqueda1_Nuevo() Handles CrtPanelBusqueda1.Nuevo
         Me.Hide()
-        frm = New frmRequesicionProducto
+        frm = New frmOrdenSalida
         frm.MdiParent = Me.MdiParent
         frm.Show()
     End Sub

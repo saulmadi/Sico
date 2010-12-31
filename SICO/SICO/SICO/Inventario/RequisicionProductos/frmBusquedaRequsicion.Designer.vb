@@ -47,7 +47,7 @@ Partial Class frmBusquedaRequsicion
         Me.CrtPanelBusqueda1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
-        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(934, 318)
+        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(934, 625)
         Me.CrtPanelBusqueda1.TabIndex = 0
         Me.CrtPanelBusqueda1.Titulo = "Requisición de Productos"
         Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
@@ -101,7 +101,7 @@ Partial Class frmBusquedaRequsicion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(934, 318)
+        Me.ClientSize = New System.Drawing.Size(934, 625)
         Me.Controls.Add(Me.ListaDesplegable2)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.ListaDesplegable1)
