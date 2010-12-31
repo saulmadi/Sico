@@ -383,10 +383,6 @@
       <Project>{4F3D43B5-6B88-41AD-A21B-07451C7EF7F3}</Project>
       <Name>SiCo.ctrla</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SiCo.dtla\SiCo.dtla.csproj">
-      <Project>{D4D335B3-0AAA-44F2-A150-8263A93E53F7}</Project>
-      <Name>SiCo.dtla</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SiCo.lgla\SiCo.lgla.csproj">
       <Project>{F160B96F-7309-4701-9D61-70C68E9B517E}</Project>
       <Name>SiCo.lgla</Name>
