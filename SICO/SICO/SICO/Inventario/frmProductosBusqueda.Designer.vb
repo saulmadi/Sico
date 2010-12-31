@@ -37,11 +37,12 @@ Partial Class frmProductosBusqueda
         Me.PanelBusqueda.Size = New System.Drawing.Size(824, 462)
         Me.PanelBusqueda.TabIndex = 0
         Me.PanelBusqueda.Titulo = "Busqueda Productos"
+        Me.PanelBusqueda.VisiblePanelPrincipal = True
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 134)
+        Me.Label1.Location = New System.Drawing.Point(45, 130)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 13)
         Me.Label1.TabIndex = 1
@@ -52,7 +53,7 @@ Partial Class frmProductosBusqueda
         Me.CajaTexto1.ColorError = System.Drawing.Color.Red
         Me.CajaTexto1.EsObligatorio = False
         Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(81, 131)
+        Me.CajaTexto1.Location = New System.Drawing.Point(114, 127)
         Me.CajaTexto1.MaxLength = 255
         Me.CajaTexto1.MensajeError = Nothing
         Me.CajaTexto1.Name = "CajaTexto1"

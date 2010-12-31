@@ -37,11 +37,12 @@ Partial Class frmMotocicletasBusqueda
         Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(878, 262)
         Me.CrtPanelBusqueda1.TabIndex = 0
         Me.CrtPanelBusqueda1.Titulo = "Busqueda Motocicletas"
+        Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 133)
+        Me.Label1.Location = New System.Drawing.Point(58, 133)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 13)
         Me.Label1.TabIndex = 1
@@ -52,7 +53,7 @@ Partial Class frmMotocicletasBusqueda
         Me.CajaTexto1.ColorError = System.Drawing.Color.Red
         Me.CajaTexto1.EsObligatorio = False
         Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(53, 133)
+        Me.CajaTexto1.Location = New System.Drawing.Point(98, 130)
         Me.CajaTexto1.MaxLength = 255
         Me.CajaTexto1.MensajeError = Nothing
         Me.CajaTexto1.Name = "CajaTexto1"
