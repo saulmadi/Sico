@@ -224,6 +224,18 @@
     <Compile Include="Inventario\frmProductosBusqueda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\OrdenesSalida\frmBusquedaOrdenSalida.Designer.vb">
+      <DependentUpon>frmBusquedaOrdenSalida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\OrdenesSalida\frmBusquedaOrdenSalida.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\OrdenesSalida\frmOrdenSalida.Designer.vb">
+      <DependentUpon>frmOrdenSalida.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\OrdenesSalida\frmOrdenSalida.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.Designer.vb">
       <DependentUpon>frmBusquedaRequsicion.vb</DependentUpon>
     </Compile>
@@ -330,6 +342,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\frmProductosBusqueda.resx">
       <DependentUpon>frmProductosBusqueda.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\OrdenesSalida\frmBusquedaOrdenSalida.resx">
+      <DependentUpon>frmBusquedaOrdenSalida.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\OrdenesSalida\frmOrdenSalida.resx">
+      <DependentUpon>frmOrdenSalida.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.resx">
       <DependentUpon>frmBusquedaRequsicion.vb</DependentUpon>

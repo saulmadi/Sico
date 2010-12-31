@@ -13,6 +13,11 @@
         End Get
     End Property
 
+    Public ReadOnly Property SeccionParametros() As GroupBox
+        Get
+            Return _seccionParametros
+        End Get
+    End Property
 
     Private Sub NuevoToolStripButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles NuevoToolStripButton.Click
         RaiseEvent Nuevo()

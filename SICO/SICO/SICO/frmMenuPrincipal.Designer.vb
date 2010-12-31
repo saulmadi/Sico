@@ -48,6 +48,9 @@ Partial Class frmMenuPrincipal
         Me.RequisicionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.RequisicionesSalientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.RequisicionesEntrantesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.OrdenDeSalidaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.OrdenesSalientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.OrdenesEntrantesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.EstadoInventarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.GlobalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SucursalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -191,7 +194,7 @@ Partial Class frmMenuPrincipal
         '
         'InventarioToolStripMenuItem
         '
-        Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductosToolStripMenuItem, Me.MotocicletasToolStripMenuItem1, Me.ComprasToolStripMenuItem, Me.RequisicionesToolStripMenuItem, Me.EstadoInventarioToolStripMenuItem})
+        Me.InventarioToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductosToolStripMenuItem, Me.MotocicletasToolStripMenuItem1, Me.ComprasToolStripMenuItem, Me.RequisicionesToolStripMenuItem, Me.OrdenDeSalidaToolStripMenuItem, Me.EstadoInventarioToolStripMenuItem})
         Me.InventarioToolStripMenuItem.Name = "InventarioToolStripMenuItem"
         Me.InventarioToolStripMenuItem.Size = New System.Drawing.Size(72, 19)
         Me.InventarioToolStripMenuItem.Text = "&Inventario"
@@ -245,6 +248,25 @@ Partial Class frmMenuPrincipal
         Me.RequisicionesEntrantesToolStripMenuItem.Name = "RequisicionesEntrantesToolStripMenuItem"
         Me.RequisicionesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
         Me.RequisicionesEntrantesToolStripMenuItem.Text = "Requisiciones entrantes"
+        '
+        'OrdenDeSalidaToolStripMenuItem
+        '
+        Me.OrdenDeSalidaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OrdenesSalientesToolStripMenuItem, Me.OrdenesEntrantesToolStripMenuItem})
+        Me.OrdenDeSalidaToolStripMenuItem.Name = "OrdenDeSalidaToolStripMenuItem"
+        Me.OrdenDeSalidaToolStripMenuItem.Size = New System.Drawing.Size(208, 22)
+        Me.OrdenDeSalidaToolStripMenuItem.Text = "Ordenes de salida"
+        '
+        'OrdenesSalientesToolStripMenuItem
+        '
+        Me.OrdenesSalientesToolStripMenuItem.Name = "OrdenesSalientesToolStripMenuItem"
+        Me.OrdenesSalientesToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.OrdenesSalientesToolStripMenuItem.Text = "Ordenes salientes"
+        '
+        'OrdenesEntrantesToolStripMenuItem
+        '
+        Me.OrdenesEntrantesToolStripMenuItem.Name = "OrdenesEntrantesToolStripMenuItem"
+        Me.OrdenesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.OrdenesEntrantesToolStripMenuItem.Text = "Ordenes entrantes"
         '
         'EstadoInventarioToolStripMenuItem
         '
@@ -533,5 +555,8 @@ Partial Class frmMenuPrincipal
     Friend WithEvents PersonasJurídicasToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents MotocicletasToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents OrdenDeSalidaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OrdenesSalientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OrdenesEntrantesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

@@ -102,6 +102,37 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
+#Region "Requisiciones"
+
+    Private Sub RequisicionesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesSalientesToolStripMenuItem.Click
+        Dim frm As New frmBusquedaRequsicion
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub RequisicionesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesEntrantesToolStripMenuItem.Click
+        Dim frm As New frmBusquedaRequsicion
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+#End Region
+
+#Region "Ordenes de salida"
+    Private Sub OrdenesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesSalientesToolStripMenuItem.Click
+        Dim frm As New frmBusquedaOrdenSalida
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub OrdenesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesEntrantesToolStripMenuItem.Click
+        Dim frm As New frmBusquedaOrdenSalida
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+#End Region
+
     Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
         Dim frm As New frmProductosBusqueda
         frm.MdiParent = Me
@@ -124,8 +155,9 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
+
 #End Region
+  
     
    
-    
 End Class

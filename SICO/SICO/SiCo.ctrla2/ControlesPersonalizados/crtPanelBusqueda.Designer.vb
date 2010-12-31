@@ -26,21 +26,21 @@ Partial Class crtPanelBusqueda
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(crtPanelBusqueda))
         Me.Panel1 = New System.Windows.Forms.Panel
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me._GridResultados = New SiCo.ctrla.Grid(Me.components)
+        Me._seccionParametros = New System.Windows.Forms.GroupBox
         Me._BarraHerramientas = New System.Windows.Forms.ToolStrip
         Me.NuevoToolStripButton = New System.Windows.Forms.ToolStripButton
         Me.ImprimirToolStripButton = New System.Windows.Forms.ToolStripButton
-        Me._GridResultados = New SiCo.ctrla.Grid(Me.components)
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.PanelPrinipal.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me._BarraHerramientas.SuspendLayout()
-        CType(Me._GridResultados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me._GridResultados, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me._BarraHerramientas.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
@@ -56,7 +56,7 @@ Partial Class crtPanelBusqueda
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.GroupBox1)
-        Me.Panel1.Controls.Add(Me.GroupBox2)
+        Me.Panel1.Controls.Add(Me._seccionParametros)
         Me.Panel1.Controls.Add(Me._BarraHerramientas)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -64,6 +64,46 @@ Partial Class crtPanelBusqueda
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(725, 397)
         Me.Panel1.TabIndex = 5
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me._GridResultados)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 76)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(725, 321)
+        Me.GroupBox1.TabIndex = 7
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Resultados de Busqueda"
+        '
+        '_GridResultados
+        '
+        Me._GridResultados.AllowUserToAddRows = False
+        Me._GridResultados.AllowUserToDeleteRows = False
+        Me._GridResultados.BotonEditar = False
+        Me._GridResultados.BotonEliminar = False
+        Me._GridResultados.CampoId = Nothing
+        Me._GridResultados.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me._GridResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me._GridResultados.Dock = System.Windows.Forms.DockStyle.Fill
+        Me._GridResultados.Location = New System.Drawing.Point(3, 16)
+        Me._GridResultados.MultiSelect = False
+        Me._GridResultados.Name = "_GridResultados"
+        Me._GridResultados.RowHeadersVisible = False
+        Me._GridResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me._GridResultados.Size = New System.Drawing.Size(719, 302)
+        Me._GridResultados.TabIndex = 6
+        '
+        '_seccionParametros
+        '
+        Me._seccionParametros.Dock = System.Windows.Forms.DockStyle.Top
+        Me._seccionParametros.Location = New System.Drawing.Point(0, 25)
+        Me._seccionParametros.Name = "_seccionParametros"
+        Me._seccionParametros.Size = New System.Drawing.Size(725, 51)
+        Me._seccionParametros.TabIndex = 1
+        Me._seccionParametros.TabStop = False
+        Me._seccionParametros.Text = "Parámetros de Busqueda"
         '
         '_BarraHerramientas
         '
@@ -92,36 +132,6 @@ Partial Class crtPanelBusqueda
         Me.ImprimirToolStripButton.Name = "ImprimirToolStripButton"
         Me.ImprimirToolStripButton.Size = New System.Drawing.Size(23, 22)
         Me.ImprimirToolStripButton.Text = "&Imprimir"
-        '
-        '_GridResultados
-        '
-        Me._GridResultados.AllowUserToAddRows = False
-        Me._GridResultados.AllowUserToDeleteRows = False
-        Me._GridResultados.BotonEditar = False
-        Me._GridResultados.BotonEliminar = False
-        Me._GridResultados.CampoId = Nothing
-        Me._GridResultados.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me._GridResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me._GridResultados.Dock = System.Windows.Forms.DockStyle.Fill
-        Me._GridResultados.Location = New System.Drawing.Point(3, 16)
-        Me._GridResultados.MultiSelect = False
-        Me._GridResultados.Name = "_GridResultados"
-        Me._GridResultados.RowHeadersVisible = False
-        Me._GridResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me._GridResultados.Size = New System.Drawing.Size(719, 302)
-        Me._GridResultados.TabIndex = 6
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me._GridResultados)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 76)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(725, 321)
-        Me.GroupBox1.TabIndex = 7
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Resultados de Busqueda"
         '
         'Panel2
         '
@@ -159,16 +169,6 @@ Partial Class crtPanelBusqueda
         Me.Panel6.Size = New System.Drawing.Size(26, 397)
         Me.Panel6.TabIndex = 9
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 25)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(725, 51)
-        Me.GroupBox2.TabIndex = 1
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Parámetros de Busqueda"
-        '
         'crtPanelBusqueda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -181,10 +181,10 @@ Partial Class crtPanelBusqueda
         Me.PanelPrinipal.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        CType(Me._GridResultados, System.ComponentModel.ISupportInitialize).EndInit()
         Me._BarraHerramientas.ResumeLayout(False)
         Me._BarraHerramientas.PerformLayout()
-        CType(Me._GridResultados, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.ResumeLayout(False)
@@ -200,6 +200,6 @@ Partial Class crtPanelBusqueda
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents _seccionParametros As System.Windows.Forms.GroupBox
 
 End Class
