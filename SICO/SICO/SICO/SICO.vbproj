@@ -224,6 +224,18 @@
     <Compile Include="Inventario\frmProductosBusqueda.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.Designer.vb">
+      <DependentUpon>frmBusquedaRequsicion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\RequisicionProductos\frmRequesicionProducto.Designer.vb">
+      <DependentUpon>frmRequesicionProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Inventario\RequisicionProductos\frmRequesicionProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MDIParent1.Designer.vb">
       <DependentUpon>MDIParent1.vb</DependentUpon>
     </Compile>
@@ -249,12 +261,6 @@
       <DependentUpon>frmRegistroProveedores.vb</DependentUpon>
     </Compile>
     <Compile Include="Proveedores\frmRegistroProveedores.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Prueba.Designer.vb">
-      <DependentUpon>Prueba.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Prueba.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -325,6 +331,9 @@
     <EmbeddedResource Include="Inventario\frmProductosBusqueda.resx">
       <DependentUpon>frmProductosBusqueda.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.resx">
+      <DependentUpon>frmBusquedaRequsicion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.vb</DependentUpon>
     </EmbeddedResource>
@@ -336,9 +345,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Proveedores\frmRegistroProveedores.resx">
       <DependentUpon>frmRegistroProveedores.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prueba.resx">
-      <DependentUpon>Prueba.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

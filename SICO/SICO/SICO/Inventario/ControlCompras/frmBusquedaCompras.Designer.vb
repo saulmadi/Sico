@@ -43,7 +43,7 @@ Partial Class frmBusquedaCompras
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(313, 129)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(345, 132)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(224, 20)
         Me.DateTimePicker1.TabIndex = 1
@@ -51,7 +51,7 @@ Partial Class frmBusquedaCompras
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(270, 135)
+        Me.Label1.Location = New System.Drawing.Point(302, 135)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(37, 13)
         Me.Label1.TabIndex = 2
@@ -60,7 +60,7 @@ Partial Class frmBusquedaCompras
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 135)
+        Me.Label2.Location = New System.Drawing.Point(44, 135)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
         Me.Label2.TabIndex = 3
@@ -71,7 +71,7 @@ Partial Class frmBusquedaCompras
         Me.ListaDesplegable1.Comando = Nothing
         Me.ListaDesplegable1.FormattingEnabled = True
         Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(74, 131)
+        Me.ListaDesplegable1.Location = New System.Drawing.Point(106, 131)
         Me.ListaDesplegable1.Name = "ListaDesplegable1"
         Me.ListaDesplegable1.Size = New System.Drawing.Size(190, 21)
         Me.ListaDesplegable1.TabIndex = 4
