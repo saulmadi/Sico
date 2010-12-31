@@ -334,6 +334,9 @@
     <EmbeddedResource Include="Inventario\RequisicionProductos\frmBusquedaRequsicion.resx">
       <DependentUpon>frmBusquedaRequsicion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\RequisicionProductos\frmRequesicionProducto.resx">
+      <DependentUpon>frmRequesicionProducto.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIParent1.resx">
       <DependentUpon>MDIParent1.vb</DependentUpon>
     </EmbeddedResource>
