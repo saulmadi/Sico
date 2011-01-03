@@ -83,7 +83,6 @@ Partial Class frmOrdenSalida
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Panel7)
         Me.Panel2.Controls.Add(Me.GroupBox5)
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
@@ -97,9 +96,9 @@ Partial Class frmOrdenSalida
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(31, 118)
+        Me.Panel7.Location = New System.Drawing.Point(3, 115)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(833, 63)
+        Me.Panel7.Size = New System.Drawing.Size(827, 63)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
@@ -109,7 +108,7 @@ Partial Class frmOrdenSalida
         Me.Panel8.Controls.Add(Me.TextBox4)
         Me.Panel8.Controls.Add(Me.TextBox3)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(497, 0)
+        Me.Panel8.Location = New System.Drawing.Point(491, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(336, 63)
         Me.Panel8.TabIndex = 6
@@ -153,6 +152,7 @@ Partial Class frmOrdenSalida
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
@@ -168,7 +168,7 @@ Partial Class frmOrdenSalida
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(827, 162)
+        Me.DataGridView1.Size = New System.Drawing.Size(827, 99)
         Me.DataGridView1.TabIndex = 0
         '
         'Panel4

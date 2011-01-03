@@ -81,6 +81,7 @@ Partial Class frmMenuPrincipal
         Me.MarcasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ModelosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.CambiarDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CerrarSesesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip.SuspendLayout()
@@ -165,31 +166,31 @@ Partial Class frmMenuPrincipal
         '
         Me.VentasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductosToolStripMenuItem1, Me.MotocicletasToolStripMenuItem})
         Me.VentasToolStripMenuItem.Name = "VentasToolStripMenuItem"
-        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(145, 22)
+        Me.VentasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.VentasToolStripMenuItem.Text = "Ventas"
         '
         'ProductosToolStripMenuItem1
         '
         Me.ProductosToolStripMenuItem1.Name = "ProductosToolStripMenuItem1"
-        Me.ProductosToolStripMenuItem1.Size = New System.Drawing.Size(142, 22)
+        Me.ProductosToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.ProductosToolStripMenuItem1.Text = "Productos"
         '
         'MotocicletasToolStripMenuItem
         '
         Me.MotocicletasToolStripMenuItem.Name = "MotocicletasToolStripMenuItem"
-        Me.MotocicletasToolStripMenuItem.Size = New System.Drawing.Size(142, 22)
+        Me.MotocicletasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.MotocicletasToolStripMenuItem.Text = "Motocicletas"
         '
         'FacturaciónToolStripMenuItem1
         '
         Me.FacturaciónToolStripMenuItem1.Name = "FacturaciónToolStripMenuItem1"
-        Me.FacturaciónToolStripMenuItem1.Size = New System.Drawing.Size(145, 22)
+        Me.FacturaciónToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.FacturaciónToolStripMenuItem1.Text = "Facturación"
         '
         'DevolucionesToolStripMenuItem1
         '
         Me.DevolucionesToolStripMenuItem1.Name = "DevolucionesToolStripMenuItem1"
-        Me.DevolucionesToolStripMenuItem1.Size = New System.Drawing.Size(145, 22)
+        Me.DevolucionesToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.DevolucionesToolStripMenuItem1.Text = "Devoluciones"
         '
         'InventarioToolStripMenuItem
@@ -451,23 +452,30 @@ Partial Class frmMenuPrincipal
         '
         'SesiónToolStripMenuItem
         '
-        Me.SesiónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CerrarSesesiónToolStripMenuItem, Me.SalirToolStripMenuItem})
+        Me.SesiónToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CambiarDeUsuarioToolStripMenuItem, Me.CerrarSesesiónToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.SesiónToolStripMenuItem.Name = "SesiónToolStripMenuItem"
         Me.SesiónToolStripMenuItem.Size = New System.Drawing.Size(53, 19)
         Me.SesiónToolStripMenuItem.Text = "&Sesión"
+        '
+        'CambiarDeUsuarioToolStripMenuItem
+        '
+        Me.CambiarDeUsuarioToolStripMenuItem.Name = "CambiarDeUsuarioToolStripMenuItem"
+        Me.CambiarDeUsuarioToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.W), System.Windows.Forms.Keys)
+        Me.CambiarDeUsuarioToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.CambiarDeUsuarioToolStripMenuItem.Text = "Cambiar de usuario"
         '
         'CerrarSesesiónToolStripMenuItem
         '
         Me.CerrarSesesiónToolStripMenuItem.Name = "CerrarSesesiónToolStripMenuItem"
         Me.CerrarSesesiónToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.CerrarSesesiónToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
-        Me.CerrarSesesiónToolStripMenuItem.Text = "Cerrar Sesesión"
+        Me.CerrarSesesiónToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.CerrarSesesiónToolStripMenuItem.Text = "Cerrar sesión"
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
         Me.SalirToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(194, 22)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
         '
         'frmMenuPrincipal
@@ -558,5 +566,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents OrdenDeSalidaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OrdenesSalientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OrdenesEntrantesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CambiarDeUsuarioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

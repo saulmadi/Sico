@@ -29,7 +29,6 @@ Partial Class frmBusquedaOrdenesCompra
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.CrtPanelBusqueda2 = New SICO.ctrla2.crtPanelBusqueda
         Me.SuspendLayout()
         '
         'CrtPanelBusqueda1
@@ -77,16 +76,6 @@ Partial Class frmBusquedaOrdenesCompra
         Me.DateTimePicker1.Size = New System.Drawing.Size(224, 20)
         Me.DateTimePicker1.TabIndex = 6
         '
-        'CrtPanelBusqueda2
-        '
-        Me.CrtPanelBusqueda2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPanelBusqueda2.Location = New System.Drawing.Point(0, 0)
-        Me.CrtPanelBusqueda2.Name = "CrtPanelBusqueda2"
-        Me.CrtPanelBusqueda2.Size = New System.Drawing.Size(851, 418)
-        Me.CrtPanelBusqueda2.TabIndex = 5
-        Me.CrtPanelBusqueda2.Titulo = "Busqueda Compras"
-        Me.CrtPanelBusqueda2.VisiblePanelPrincipal = True
-        '
         'frmBusquedaOrdenesCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -96,7 +85,6 @@ Partial Class frmBusquedaOrdenesCompra
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.CrtPanelBusqueda2)
         Me.Controls.Add(Me.CrtPanelBusqueda1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmBusquedaOrdenesCompra"
@@ -111,5 +99,4 @@ Partial Class frmBusquedaOrdenesCompra
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents CrtPanelBusqueda2 As SICO.ctrla2.crtPanelBusqueda
 End Class

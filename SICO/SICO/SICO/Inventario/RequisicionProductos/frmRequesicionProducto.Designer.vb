@@ -37,7 +37,14 @@ Partial Class frmRequesicionProducto
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox
+        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label12 = New System.Windows.Forms.Label
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.Label14 = New System.Windows.Forms.Label
         Me.ComboBox3 = New System.Windows.Forms.ComboBox
         Me.Label8 = New System.Windows.Forms.Label
         Me.ComboBox2 = New System.Windows.Forms.ComboBox
@@ -61,13 +68,6 @@ Partial Class frmRequesicionProducto
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.Label14 = New System.Windows.Forms.Label
         Me.Panel2.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -75,15 +75,14 @@ Partial Class frmRequesicionProducto
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox6.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox6.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Panel7)
         Me.Panel2.Controls.Add(Me.GroupBox5)
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
@@ -97,9 +96,9 @@ Partial Class frmRequesicionProducto
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(31, 157)
+        Me.Panel7.Location = New System.Drawing.Point(3, 154)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(805, 63)
+        Me.Panel7.Size = New System.Drawing.Size(799, 63)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
@@ -109,7 +108,7 @@ Partial Class frmRequesicionProducto
         Me.Panel8.Controls.Add(Me.TextBox4)
         Me.Panel8.Controls.Add(Me.TextBox3)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(469, 0)
+        Me.Panel8.Location = New System.Drawing.Point(463, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(336, 63)
         Me.Panel8.TabIndex = 6
@@ -153,6 +152,7 @@ Partial Class frmRequesicionProducto
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
@@ -168,7 +168,7 @@ Partial Class frmRequesicionProducto
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(799, 201)
+        Me.DataGridView1.Size = New System.Drawing.Size(799, 138)
         Me.DataGridView1.TabIndex = 0
         '
         'Panel4
@@ -213,6 +213,57 @@ Partial Class frmRequesicionProducto
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
+        'GroupBox6
+        '
+        Me.GroupBox6.Controls.Add(Me.TextBox1)
+        Me.GroupBox6.Controls.Add(Me.Label2)
+        Me.GroupBox6.Controls.Add(Me.Label12)
+        Me.GroupBox6.Controls.Add(Me.ComboBox4)
+        Me.GroupBox6.Location = New System.Drawing.Point(431, 97)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(373, 75)
+        Me.GroupBox6.TabIndex = 6
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Recibido por"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox1.Location = New System.Drawing.Point(61, 46)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
+        Me.TextBox1.TabIndex = 5
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 49)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(49, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Telefono"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(6, 22)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(43, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Usuario"
+        '
+        'ComboBox4
+        '
+        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Location = New System.Drawing.Point(61, 19)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(300, 21)
+        Me.ComboBox4.Sorted = True
+        Me.ComboBox4.TabIndex = 3
+        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.TextBox6)
@@ -229,6 +280,24 @@ Partial Class frmRequesicionProducto
         Me.GroupBox3.TabIndex = 12
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de requisición"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox6.Location = New System.Drawing.Point(110, 20)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(300, 20)
+        Me.TextBox6.TabIndex = 14
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(6, 23)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(97, 13)
+        Me.Label14.TabIndex = 13
+        Me.Label14.Text = "Número requisición"
         '
         'ComboBox3
         '
@@ -474,75 +543,6 @@ Partial Class frmRequesicionProducto
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
-        'GroupBox6
-        '
-        Me.GroupBox6.Controls.Add(Me.TextBox1)
-        Me.GroupBox6.Controls.Add(Me.Label2)
-        Me.GroupBox6.Controls.Add(Me.Label12)
-        Me.GroupBox6.Controls.Add(Me.ComboBox4)
-        Me.GroupBox6.Location = New System.Drawing.Point(431, 97)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(373, 75)
-        Me.GroupBox6.TabIndex = 6
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Recibido por"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(6, 22)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(43, 13)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Usuario"
-        '
-        'ComboBox4
-        '
-        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(61, 19)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox4.Sorted = True
-        Me.ComboBox4.TabIndex = 3
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 49)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Telefono"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(61, 46)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox1.TabIndex = 5
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(110, 20)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox6.TabIndex = 14
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(6, 23)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(97, 13)
-        Me.Label14.TabIndex = 13
-        Me.Label14.Text = "Número requisición"
-        '
         'frmRequesicionProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -565,14 +565,14 @@ Partial Class frmRequesicionProducto
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

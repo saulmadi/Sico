@@ -155,9 +155,68 @@ Public Class frmMenuPrincipal
     End Sub
 #End Region
 
+#Region "Facturación"
+
+#Region "Control de caja"
+
+    Private Sub AperturaDeCajaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AperturaDeCajaToolStripMenuItem.Click
+        Dim frm As New frmAperturaCaja
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub IngresosDeEfectivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IngresosDeEfectivoToolStripMenuItem.Click
+        Dim frm As New frmIngresoEfectivo
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub RetirosDeEfectivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RetirosDeEfectivoToolStripMenuItem.Click
+        Dim frm As New frmRetirosEfectivo
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+    Private Sub CierreDeCajaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CierreDeCajaToolStripMenuItem.Click
+        Dim frm As New frmCierreCaja
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 
 #End Region
-  
+
+#Region "Transacciones de caja"
+
+#Region "Ventas"
+
+    Private Sub ProductosToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem1.Click
+        Dim frm As New frmVentas
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+
+    Private Sub MotocicletasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MotocicletasToolStripMenuItem.Click
+        Dim frm As New frmVentaMotocicleta
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+#End Region
+
+    Private Sub FacturaciónToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FacturaciónToolStripMenuItem1.Click
+        Dim frm As New frmBusquedaFactura
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
+#End Region
+
+#End Region
+
+
+#End Region
     
-   
+    
+    
 End Class
