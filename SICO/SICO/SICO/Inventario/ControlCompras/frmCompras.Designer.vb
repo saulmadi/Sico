@@ -39,16 +39,23 @@ Partial Class frmCompras
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.Label8 = New System.Windows.Forms.Label
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.Label13 = New System.Windows.Forms.Label
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
+        Me.TextBox6 = New System.Windows.Forms.TextBox
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.Label12 = New System.Windows.Forms.Label
+        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Button1 = New System.Windows.Forms.Button
+        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label11 = New System.Windows.Forms.Label
+        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.Label10 = New System.Windows.Forms.Label
+        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label9 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.TextBox2 = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
@@ -56,15 +63,8 @@ Partial Class frmCompras
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.Panel2.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -72,14 +72,13 @@ Partial Class frmCompras
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
         '
-        Me.Panel2.Controls.Add(Me.Panel7)
         Me.Panel2.Controls.Add(Me.GroupBox5)
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
@@ -93,9 +92,9 @@ Partial Class frmCompras
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(31, 175)
+        Me.Panel7.Location = New System.Drawing.Point(3, 172)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(855, 87)
+        Me.Panel7.Size = New System.Drawing.Size(849, 87)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
@@ -107,7 +106,7 @@ Partial Class frmCompras
         Me.Panel8.Controls.Add(Me.Label6)
         Me.Panel8.Controls.Add(Me.TextBox3)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(519, 0)
+        Me.Panel8.Location = New System.Drawing.Point(513, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(336, 87)
         Me.Panel8.TabIndex = 6
@@ -169,6 +168,7 @@ Partial Class frmCompras
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
@@ -184,7 +184,7 @@ Partial Class frmCompras
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(849, 243)
+        Me.DataGridView1.Size = New System.Drawing.Size(849, 156)
         Me.DataGridView1.TabIndex = 0
         '
         'Panel4
@@ -228,6 +228,77 @@ Partial Class frmCompras
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.Label8)
+        Me.GroupBox3.Controls.Add(Me.ComboBox2)
+        Me.GroupBox3.Controls.Add(Me.Label7)
+        Me.GroupBox3.Controls.Add(Me.Label13)
+        Me.GroupBox3.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox3.Controls.Add(Me.TextBox6)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 25)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(423, 96)
+        Me.GroupBox3.TabIndex = 12
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Datos de compra"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(16, 16)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(96, 13)
+        Me.Label8.TabIndex = 1
+        Me.Label8.Text = "Factura de compra"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(112, 65)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(300, 21)
+        Me.ComboBox2.Sorted = True
+        Me.ComboBox2.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(16, 45)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(95, 13)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Fecha de compras"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(16, 68)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(85, 13)
+        Me.Label13.TabIndex = 11
+        Me.Label13.Text = "Sucursal destino"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker1.Location = New System.Drawing.Point(112, 39)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(300, 20)
+        Me.DateTimePicker1.TabIndex = 4
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox6.Location = New System.Drawing.Point(112, 13)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(300, 20)
+        Me.TextBox6.TabIndex = 0
+        '
         'GroupBox4
         '
         Me.GroupBox4.Controls.Add(Me.Label12)
@@ -256,6 +327,23 @@ Partial Class frmCompras
         Me.Label12.TabIndex = 8
         Me.Label12.Text = "Precio de compra"
         '
+        'CajaTexto3
+        '
+        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto3.EsObligatorio = False
+        Me.CajaTexto3.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.CajaTexto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto3.Location = New System.Drawing.Point(643, 19)
+        Me.CajaTexto3.MaxLength = 12
+        Me.CajaTexto3.MensajeError = Nothing
+        Me.CajaTexto3.Name = "CajaTexto3"
+        Me.CajaTexto3.Size = New System.Drawing.Size(100, 20)
+        Me.CajaTexto3.TabIndex = 7
+        Me.CajaTexto3.Text = "0.00"
+        Me.CajaTexto3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.CajaTexto3.Texto = "0.00"
+        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -265,6 +353,23 @@ Partial Class frmCompras
         Me.Button1.TabIndex = 6
         Me.Button1.Text = "A&gregar"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'CajaTexto2
+        '
+        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto2.EsObligatorio = False
+        Me.CajaTexto2.ExpresionValidacion = Nothing
+        Me.CajaTexto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto2.Location = New System.Drawing.Point(486, 19)
+        Me.CajaTexto2.MaxLength = 12
+        Me.CajaTexto2.MensajeError = Nothing
+        Me.CajaTexto2.Name = "CajaTexto2"
+        Me.CajaTexto2.Size = New System.Drawing.Size(55, 20)
+        Me.CajaTexto2.TabIndex = 5
+        Me.CajaTexto2.Text = "0"
+        Me.CajaTexto2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.CajaTexto2.Texto = "0"
+        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Entero
         '
         'Label11
         '
@@ -276,6 +381,16 @@ Partial Class frmCompras
         Me.Label11.TabIndex = 4
         Me.Label11.Text = "Cantidad"
         '
+        'ListaDesplegable1
+        '
+        Me.ListaDesplegable1.Comando = Nothing
+        Me.ListaDesplegable1.FormattingEnabled = True
+        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
+        Me.ListaDesplegable1.Location = New System.Drawing.Point(251, 19)
+        Me.ListaDesplegable1.Name = "ListaDesplegable1"
+        Me.ListaDesplegable1.Size = New System.Drawing.Size(174, 21)
+        Me.ListaDesplegable1.TabIndex = 3
+        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -286,6 +401,20 @@ Partial Class frmCompras
         Me.Label10.TabIndex = 2
         Me.Label10.Text = "Descripción"
         '
+        'CajaTexto1
+        '
+        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto1.EsObligatorio = False
+        Me.CajaTexto1.ExpresionValidacion = Nothing
+        Me.CajaTexto1.Location = New System.Drawing.Point(52, 19)
+        Me.CajaTexto1.MaxLength = 255
+        Me.CajaTexto1.MensajeError = Nothing
+        Me.CajaTexto1.Name = "CajaTexto1"
+        Me.CajaTexto1.Size = New System.Drawing.Size(124, 20)
+        Me.CajaTexto1.TabIndex = 1
+        Me.CajaTexto1.Texto = Nothing
+        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -295,42 +424,6 @@ Partial Class frmCompras
         Me.Label9.Size = New System.Drawing.Size(40, 13)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "Código"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(112, 13)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox6.TabIndex = 0
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(16, 16)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(96, 13)
-        Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Factura de compra"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(112, 39)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(300, 20)
-        Me.DateTimePicker1.TabIndex = 4
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(16, 45)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(95, 13)
-        Me.Label7.TabIndex = 0
-        Me.Label7.Text = "Fecha de compras"
         '
         'GroupBox2
         '
@@ -399,64 +492,6 @@ Partial Class frmCompras
         Me.Panel6.Size = New System.Drawing.Size(31, 205)
         Me.Panel6.TabIndex = 0
         '
-        'CajaTexto3
-        '
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EsObligatorio = False
-        Me.CajaTexto3.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.CajaTexto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto3.Location = New System.Drawing.Point(643, 19)
-        Me.CajaTexto3.MaxLength = 12
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(100, 20)
-        Me.CajaTexto3.TabIndex = 7
-        Me.CajaTexto3.Text = "0.00"
-        Me.CajaTexto3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.CajaTexto3.Texto = "0.00"
-        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        '
-        'CajaTexto2
-        '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto2.Location = New System.Drawing.Point(486, 19)
-        Me.CajaTexto2.MaxLength = 12
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(55, 20)
-        Me.CajaTexto2.TabIndex = 5
-        Me.CajaTexto2.Text = "0"
-        Me.CajaTexto2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.CajaTexto2.Texto = "0"
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        '
-        'ListaDesplegable1
-        '
-        Me.ListaDesplegable1.Comando = Nothing
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(251, 19)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(174, 21)
-        Me.ListaDesplegable1.TabIndex = 3
-        '
-        'CajaTexto1
-        '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(52, 19)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(124, 20)
-        Me.CajaTexto1.TabIndex = 1
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
@@ -478,41 +513,6 @@ Partial Class frmCompras
         Me.PanelAccion1.TabIndex = 6
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
-        '
-        'Label13
-        '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(16, 68)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(85, 13)
-        Me.Label13.TabIndex = 11
-        Me.Label13.Text = "Sucursal destino"
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(112, 65)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox2.Sorted = True
-        Me.ComboBox2.TabIndex = 6
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.ComboBox2)
-        Me.GroupBox3.Controls.Add(Me.Label7)
-        Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox3.Controls.Add(Me.TextBox6)
-        Me.GroupBox3.Location = New System.Drawing.Point(6, 25)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(423, 96)
-        Me.GroupBox3.TabIndex = 12
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Datos de compra"
         '
         'frmCompras
         '
@@ -536,12 +536,12 @@ Partial Class frmCompras
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.GroupBox4.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

@@ -152,10 +152,64 @@
     <Compile Include="Administrativo\Mantenimietos\frmTiposMotocicletas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Clientes\CuentasPorCobrar\frmAbonos.Designer.vb">
+      <DependentUpon>frmAbonos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\CuentasPorCobrar\frmAbonos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Clientes\frmRegistroClientes.Designer.vb">
       <DependentUpon>frmRegistroClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="Clientes\frmRegistroClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmAperturaCaja.Designer.vb">
+      <DependentUpon>frmAperturaCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmAperturaCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmCierreCaja.Designer.vb">
+      <DependentUpon>frmCierreCaja.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmCierreCaja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmIngresoEfectivo.Designer.vb">
+      <DependentUpon>frmIngresoEfectivo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmIngresoEfectivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmRetirosEfectivo.Designer.vb">
+      <DependentUpon>frmRetirosEfectivo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmRetirosEfectivo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmBusquedaFactura.Designer.vb">
+      <DependentUpon>frmBusquedaFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmBusquedaFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\frmFacturacion.Designer.vb">
+      <DependentUpon>frmFacturacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\frmFacturacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmVentaMotocicleta.Designer.vb">
+      <DependentUpon>frmVentaMotocicleta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmVentaMotocicleta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmVentas.Designer.vb">
+      <DependentUpon>frmVentas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmVentas.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmIniciosesion.Designer.vb">
@@ -248,12 +302,6 @@
     <Compile Include="Inventario\RequisicionProductos\frmRequesicionProducto.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDIParent1.Designer.vb">
-      <DependentUpon>MDIParent1.vb</DependentUpon>
-    </Compile>
-    <Compile Include="MDIParent1.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -307,8 +355,35 @@
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmTiposMotocicletas.resx">
       <DependentUpon>frmTiposMotocicletas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\CuentasPorCobrar\frmAbonos.resx">
+      <DependentUpon>frmAbonos.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmRegistroClientes.resx">
       <DependentUpon>frmRegistroClientes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmAperturaCaja.resx">
+      <DependentUpon>frmAperturaCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmCierreCaja.resx">
+      <DependentUpon>frmCierreCaja.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmIngresoEfectivo.resx">
+      <DependentUpon>frmIngresoEfectivo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmRetirosEfectivo.resx">
+      <DependentUpon>frmRetirosEfectivo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\TransaccionesCaja\Ventas\frmBusquedaFactura.resx">
+      <DependentUpon>frmBusquedaFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\TransaccionesCaja\frmFacturacion.resx">
+      <DependentUpon>frmFacturacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\TransaccionesCaja\Ventas\frmVentaMotocicleta.resx">
+      <DependentUpon>frmVentaMotocicleta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\TransaccionesCaja\Ventas\frmVentas.resx">
+      <DependentUpon>frmVentas.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciosesion.resx">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
@@ -354,9 +429,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\RequisicionProductos\frmRequesicionProducto.resx">
       <DependentUpon>frmRequesicionProducto.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MDIParent1.resx">
-      <DependentUpon>MDIParent1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -427,7 +499,7 @@
     <Content Include="SICO.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Factuacion\" />
+    <Folder Include="Proveedores\CuentasPorPagar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
