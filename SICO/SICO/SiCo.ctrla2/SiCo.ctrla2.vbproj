@@ -86,7 +86,6 @@
       <DependentUpon>crtPanelBusqueda.vb</DependentUpon>
     </Compile>
     <Compile Include="ControlesPersonalizados\crtPanelBusqueda.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ControlesPersonalizados\crtPersonaJuridica.Designer.vb">
       <DependentUpon>crtPersonaJuridica.vb</DependentUpon>
