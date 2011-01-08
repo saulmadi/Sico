@@ -1,13 +1,13 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`Departamentos_Mant`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE  `sico`.`Departamentos_Mant`(
+DROP PROCEDURE IF EXISTS `Departamentos_Mant` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Departamentos_Mant`(
 
 /*definicion de parametros*/
 
 inout id int,
-departamento nvarchar(45),
-habilitados bool,
+descripcion nvarchar(45),
+habilitado bool,
 usu int,
 fmodif date
 )
@@ -15,24 +15,24 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from departamentos  where id=id into @conteo;
+select count(id) from departamentos d where d.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO departamentos(departamento,habilitados,usu,fmodif)
+  INSERT INTO departamentos(descripcion,habilitado,usu,fmodif)
 
-  VALUES(departamentos,habilitados,usu,fmodif);
+  VALUES(descripcion,habilitado,usu,fmodif);
 
   select last_insert_id() into id;
 
 else
 
   UPDATE departamentos c set
-        c.departamentos= departamentos,
-        c.habilitados =habilitados,
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
