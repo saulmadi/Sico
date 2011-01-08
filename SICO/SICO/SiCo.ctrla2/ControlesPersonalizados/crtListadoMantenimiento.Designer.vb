@@ -24,11 +24,12 @@ Partial Class crtListadoMantenimiento
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel
-        Me.lstBusqueda = New System.Windows.Forms.ListBox
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.lblDescripcion = New System.Windows.Forms.Label
         Me.txtBusqueda = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.lstBusqueda = New System.Windows.Forms.ListBox
+        Me.subproceso = New System.ComponentModel.BackgroundWorker
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -38,8 +39,8 @@ Partial Class crtListadoMantenimiento
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.lstBusqueda, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.lstBusqueda, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -49,19 +50,9 @@ Partial Class crtListadoMantenimiento
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(434, 307)
         Me.TableLayoutPanel1.TabIndex = 0
         '
-        'lstBusqueda
-        '
-        Me.lstBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lstBusqueda.FormattingEnabled = True
-        Me.lstBusqueda.Location = New System.Drawing.Point(3, 43)
-        Me.lstBusqueda.Name = "lstBusqueda"
-        Me.lstBusqueda.Size = New System.Drawing.Size(428, 251)
-        Me.lstBusqueda.TabIndex = 0
-        '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.TableLayoutPanel2)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(3, 3)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(428, 34)
@@ -98,16 +89,29 @@ Partial Class crtListadoMantenimiento
         Me.txtBusqueda.ColorError = System.Drawing.Color.Red
         Me.txtBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtBusqueda.EsObligatorio = False
-        Me.txtBusqueda.ExpresionValidacion = Nothing
+        Me.txtBusqueda.ExpresionValidacion = ""
         Me.txtBusqueda.Location = New System.Drawing.Point(78, 3)
-        Me.txtBusqueda.MaxLength = 255
+        Me.txtBusqueda.MaxLength = 3655
         Me.txtBusqueda.MensajeError = Nothing
         Me.txtBusqueda.Multiline = True
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(347, 28)
         Me.txtBusqueda.TabIndex = 1
         Me.txtBusqueda.Texto = Nothing
-        Me.txtBusqueda.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtBusqueda.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        '
+        'lstBusqueda
+        '
+        Me.lstBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lstBusqueda.FormattingEnabled = True
+        Me.lstBusqueda.Location = New System.Drawing.Point(3, 43)
+        Me.lstBusqueda.Name = "lstBusqueda"
+        Me.lstBusqueda.Size = New System.Drawing.Size(428, 251)
+        Me.lstBusqueda.TabIndex = 2
+        '
+        'subproceso
+        '
+        Me.subproceso.WorkerSupportsCancellation = True
         '
         'crtListadoMantenimiento
         '
@@ -126,8 +130,9 @@ Partial Class crtListadoMantenimiento
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
-    Public WithEvents lstBusqueda As System.Windows.Forms.ListBox
     Public WithEvents lblDescripcion As System.Windows.Forms.Label
     Public WithEvents txtBusqueda As SiCo.ctrla.CajaTexto
+    Friend WithEvents subproceso As System.ComponentModel.BackgroundWorker
+    Public WithEvents lstBusqueda As System.Windows.Forms.ListBox
 
 End Class

@@ -69,16 +69,16 @@ namespace SiCo.lgla
 
         #region Metodos
 
-        protected override  void CargadoPropiedades()
+        protected override  void CargadoPropiedades(int indice)
         {
             if (this.TotalRegistros > 0)
             {
                
-                telefono = (int)PrimerRegistro("telefono");                
-                direccion = PrimerRegistro("direccion").ToString();
-                correo = PrimerRegistro("correo").ToString();
-                rtn = (string)PrimerRegistro("RTN");
-                base.CargadoPropiedades();
+                telefono = (int) Registro (indice ,"telefono");                
+                direccion =Registro(indice ,"direccion").ToString();
+                correo = Registro(indice,"correo").ToString();
+                rtn = (string)Registro(indice,"RTN");
+                base.CargadoPropiedades(indice);
             }
            
 

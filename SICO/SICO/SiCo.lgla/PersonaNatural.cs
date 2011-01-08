@@ -65,18 +65,18 @@ namespace SiCo.lgla
         #endregion        
         
         #region Metodos
-        protected override void CargadoPropiedades()
+        protected override void CargadoPropiedades(int Indice)
         {
             if (this.TotalRegistros > 0)
             {
-                this.NombreCompleto = this.PrimerRegistro("NombreCompleto").ToString() ;                
-                this.identificacion = this.PrimerRegistro("identificacion").ToString();
-                if (PrimerRegistro("tipo").ToString() == "I")
+                this.NombreCompleto = this.Registro(Indice,"NombreCompleto").ToString() ;                
+                this.identificacion = this.Registro(Indice,"identificacion").ToString();
+                if (Registro(Indice,"tipo").ToString() == "I")
                     this.tipoidentidad = new TipoIdentidad("Identidad", "I");
-                else if (PrimerRegistro("tipo").ToString() == "P")
+                else if (Registro(Indice,"tipo").ToString() == "P")
                     this.tipoidentidad = new TipoIdentidad("Pasaporte", "P");
                 else this.tipoidentidad = new TipoIdentidad("Menor de Edad", "M");
-                base.CargadoPropiedades();                
+                base.CargadoPropiedades( Indice);                
             }            
         }       
 

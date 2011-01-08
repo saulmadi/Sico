@@ -7,7 +7,7 @@ using SiCo.dtla;
 
 namespace SiCo.lgla
 {
-    [Serializable()]abstract  public class Entidad
+    [Serializable()] abstract public class Entidad
     {
         #region Declaraciones
         public event ErroresEventHandler Errores;
@@ -16,7 +16,7 @@ namespace SiCo.lgla
         public event CargoTablaEventHandler CargoTabla;
     
         [NonSerialized]private DataTable _Tabla =new DataTable();
-        [NonSerialized]private SiCo.dtla.ConexionMySql _Conexion = new ConexionMySql(true);
+        [NonSerialized] private SiCo.dtla.ConexionMySql _Conexion= new ConexionMySql();
         [NonSerialized]private MySql.Data.MySqlClient.MySqlCommand _Comando = new MySqlCommand();
         [NonSerialized]private Usuario _Usuario;
         [NonSerialized]private List<Parametro> _ColeccionParametrosBusqueda= new List<Parametro> ();
@@ -28,16 +28,18 @@ namespace SiCo.lgla
         #region Construtor
         public Entidad()
         {
-            this.ColeccionParametrosBusqueda.Add(new Parametro("id", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("id", Id));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", this.Usuario.Id));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif", this.fmodif));
-
+            
+            _Conexion.Cargar(); 
             _Conexion.Errores += new ErroresEventArgs(_Conexion_Errores);
             this.CargoTabla += new CargoTablaEventHandler(Entidad_CargoTabla);
             this.CambioId += new CambioIdEventHandler(Entidad_CambioId);
+            this.ColeccionParametrosBusqueda.Add(new Parametro("id", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro  ("id", null,ParameterDirection.InputOutput  ));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif",null));
              
-        }          
+        }            
+      
         #endregion       
 
         #region Propiedades
@@ -129,6 +131,7 @@ namespace SiCo.lgla
         {
             get 
             {
+                if (_Usuario ==null )
                 _Usuario= new Usuario(); 
                 return _Usuario;
             }
@@ -185,10 +188,9 @@ namespace SiCo.lgla
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
-            foreach (Parametro i in ColeccionParametros)  
-            {
-                _Comando.Parameters.AddWithValue(i.Nombre, i.Valor); 
-            }
+            _Comando.CommandText = Comando;
+            LLenadoParametros(ref ColeccionParametros); 
+            EjecutarDataSet(); 
 
         } 
         
@@ -227,10 +229,11 @@ namespace SiCo.lgla
         {
             InicializarComando();
             _Comando.CommandType = CommandType.StoredProcedure;
-            LLenadoParametros(ref Parametro);           
             _Comando.CommandText = ComandoMantenimiento;
+            LLenadoParametros(ref Parametro);    
+            
             EjecutarComando();
-            LLenadoParametros(ref Parametro);
+            LLenadoParmaetrosSalida (ref Parametro);
         }
 
         /// <summary>
@@ -257,11 +260,11 @@ namespace SiCo.lgla
             {               
                 _Comando.Connection = _Conexion.Conexion;                
                 _Conexion.AbrirConexion();
-                 MySqlTransaction Transaccion = _Conexion.Conexion.BeginTransaction();   
+                MySqlTransaction Transaccion = _Comando.Connection.BeginTransaction();
                 try
-                {                   
-                    _Comando.ExecuteNonQuery();
-                    Transaccion.Commit(); 
+                {
+                    _Comando.ExecuteNonQuery() ;  
+                    Transaccion.Commit();
                 }
                 catch 
                 {
@@ -292,8 +295,9 @@ namespace SiCo.lgla
             {
                 _Tabla = new DataTable(); 
                 _Comando.Connection=_Conexion.Conexion;
-                MySqlDataAdapter _Adapter = new MySqlDataAdapter(_Comando);
-                _Conexion.AbrirConexion(); 
+                MySqlDataAdapter _Adapter = new MySqlDataAdapter(_Comando);        
+
+                _Conexion.AbrirConexion();               
                 _Adapter.Fill(Tabla);
                 _Conexion.CerrarConexion();
                 if (this.TotalRegistros > 0)
@@ -323,6 +327,7 @@ namespace SiCo.lgla
         /// <param name="Columna">Nombre de la columna en el que se encuentra el registro</param>
         protected object Registro(int Fila, String Columna)
         {
+            
             if (_Tabla.Rows[Fila][Columna] != DBNull.Value)
                 return _Tabla.Rows[Fila][Columna];
             else return null;
@@ -339,7 +344,10 @@ namespace SiCo.lgla
             {
                 _Comando.Parameters.AddWithValue(i.Nombre, i.Valor);
                 _Comando.Parameters[i.Nombre].IsNullable = true;    
-                _Comando.Parameters[i.Nombre].Direction = i.TipoParametro ; 
+                _Comando.Parameters[i.Nombre].Direction = i.TipoParametro;
+                if (i.Valor ==null)
+                _Comando.Parameters[i.Nombre].DbType = DbType.Object;
+                //_Comando.Parameters[i.Nombre].MySqlDbType = MySqlDbType.String;
             }
  
         }
@@ -360,15 +368,29 @@ namespace SiCo.lgla
             }                       
         }
 
-        protected  virtual void CargadoPropiedades()
+        protected  virtual void CargadoPropiedades(int Indice)
         {
-            _Id = (int) Registro(0, "id");             
+            if (TotalRegistros >0)
+            _Id = (int) Registro(Indice, "id");             
         }
        
         public virtual void Buscar()
         {
             this.NullParametrosBusqueda();
             LlenadoTabla(ComandoSelect, this.ColeccionParametrosBusqueda); 
+        }
+
+        public  void Buscar(string parametro, string  valor)
+        {
+
+            NullParametrosBusqueda();
+            ValorParametrosBusqueda(parametro , valor);
+            LlenadoTabla(ComandoSelect, this.ColeccionParametrosBusqueda); 
+        }
+
+        public virtual object TablaAColeccion()
+        {
+            return null;
         }
 
         public virtual  void Buscar(Int32? id)
@@ -430,7 +452,6 @@ namespace SiCo.lgla
             }
         }
         
-
         #endregion             
 
         #region Eventos
@@ -446,7 +467,8 @@ namespace SiCo.lgla
 
         void Entidad_CargoTabla()
         {
-            this.CargadoPropiedades(); 
+            if (this.TotalRegistros>0)   
+            this.CargadoPropiedades(0); 
 
         }
 

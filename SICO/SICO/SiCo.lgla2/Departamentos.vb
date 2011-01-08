@@ -1,4 +1,5 @@
 ﻿
+
 Public Class Departamentos
     Inherits TablasTipo
 
@@ -20,7 +21,7 @@ Public Class Departamentos
         NullParametrosMantenimiento()
         MyBase.Guardar()
     End Sub
-
+ 
 #End Region
 
 End Class

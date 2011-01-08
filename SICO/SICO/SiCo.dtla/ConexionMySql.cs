@@ -33,7 +33,14 @@ namespace SiCo.dtla
                 this.Cargar();
             _Serializador.Errores += new ErroresEventArgs(_Serializador_Errores);
  
-        }               
+        }
+
+         public ConexionMySql()
+         {
+             _Instancia = this;
+             _Serializador.Errores += new ErroresEventArgs(_Serializador_Errores);
+ 
+         }
 
         #endregion
 
@@ -155,7 +162,7 @@ namespace SiCo.dtla
                 Errores (ex.Message);
 
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n Contacte al administador de Sistema  " , ex);  
+                     "\n        Contacte al administador de Sistema  " , ex);  
             }
             return flag;  
 
@@ -184,7 +191,7 @@ namespace SiCo.dtla
                 Errores (ex.Message);
 
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n Contacte al administador de Sistema  ", ex);  
+                     "\n       Contacte al administador de Sistema  ", ex);  
             }
             return flag;
         }

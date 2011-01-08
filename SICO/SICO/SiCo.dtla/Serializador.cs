@@ -51,9 +51,7 @@ namespace SiCo.dtla
             {
                 Stream _Archivo = new FileStream(Directorio, FileMode.Open , FileAccess.ReadWrite, FileShare.ReadWrite);
                 _Objeto= _Serializador.Deserialize(_Archivo);
-                _Archivo.Close();
-
-                
+                _Archivo.Close();                
                 
             }
             catch (Exception ex)

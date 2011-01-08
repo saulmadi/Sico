@@ -12,11 +12,11 @@ namespace SiCo.lgla
     public class Usuario : Entidad
     {
         private string _NombreUsuario=string.Empty ;
-        public Usuario() :base()
+        public Usuario() :base() 
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
-            base.Id = 1;
-
+            base._Id = 1;
+            
         }
         public string NombreUsuario
         {

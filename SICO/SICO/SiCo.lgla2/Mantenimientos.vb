@@ -63,9 +63,9 @@ Public MustInherit Class Mantenimientos
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
     End Sub
 
-    Protected Overrides Sub CargadoPropiedades()
-        Me.idEntidades = Me.PrimerRegistro("identidades")
-        MyBase.CargadoPropiedades()
+    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
+        Me.idEntidades = Me.Registro(Indice, "identidades")
+        MyBase.CargadoPropiedades(Indice)
     End Sub
 
     Private Function CrearPersonaNatural() As PersonaNatural
