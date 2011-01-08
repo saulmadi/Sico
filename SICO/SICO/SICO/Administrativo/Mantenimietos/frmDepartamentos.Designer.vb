@@ -29,6 +29,7 @@ Partial Class frmDepartamentos
         '
         'CrtTablaTipo1
         '
+        Me.CrtTablaTipo1.CaracterinicioBusqueda = 3
         Me.CrtTablaTipo1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrtTablaTipo1.Location = New System.Drawing.Point(0, 0)
         Me.CrtTablaTipo1.Name = "CrtTablaTipo1"

@@ -30,9 +30,9 @@ Public Class Proveedores
 #End Region
 
 #Region "Metodos"
-    Protected Overrides Sub CargadoPropiedades()
-        Me.IdContacto = Me.PrimerRegistro("idContacto")
-        MyBase.CargadoPropiedades()
+    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
+        Me.IdContacto = Me.Registro(Indice, "idContacto")
+        MyBase.CargadoPropiedades(Indice)
     End Sub
 
     Public Overrides Sub Guardar()

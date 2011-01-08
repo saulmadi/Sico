@@ -44,9 +44,17 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // PanelPrinipal
             // 
             this.PanelPrinipal.Size = new System.Drawing.Size(593, 84);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.TabIndex = 0;
+            // 
+            // lblfecha
+            // 
+            this.lblfecha.TabIndex = 1;
             // 
             // lblTitulo
             // 
@@ -60,14 +68,14 @@
             this.BarraEstado.Location = new System.Drawing.Point(0, 514);
             this.BarraEstado.Name = "BarraEstado";
             this.BarraEstado.Size = new System.Drawing.Size(593, 22);
-            this.BarraEstado.TabIndex = 1;
+            this.BarraEstado.TabIndex = 0;
             this.BarraEstado.Text = "statusStrip1";
             // 
             // lblEstado
             // 
             this.lblEstado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(528, 17);
+            this.lblEstado.Size = new System.Drawing.Size(445, 17);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "lblestado";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -105,7 +113,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(516, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(74, 25);
-            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "&Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -116,7 +124,7 @@
             this.btnGuardar.Location = new System.Drawing.Point(436, 3);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(74, 25);
-            this.btnGuardar.TabIndex = 0;
+            this.btnGuardar.TabIndex = 3;
             this.btnGuardar.Text = "&Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
@@ -127,7 +135,7 @@
             this.btnNuevo.Location = new System.Drawing.Point(356, 3);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(74, 25);
-            this.btnNuevo.TabIndex = 0;
+            this.btnNuevo.TabIndex = 2;
             this.btnNuevo.Text = "&Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
@@ -149,7 +157,7 @@
             this.BtnImprimir.Location = new System.Drawing.Point(276, 3);
             this.BtnImprimir.Name = "BtnImprimir";
             this.BtnImprimir.Size = new System.Drawing.Size(74, 25);
-            this.BtnImprimir.TabIndex = 0;
+            this.BtnImprimir.TabIndex = 1;
             this.BtnImprimir.Text = "&Imprimir";
             this.BtnImprimir.UseVisualStyleBackColor = true;
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
@@ -187,8 +195,6 @@
 
         #endregion
 
-        protected System.Windows.Forms.ToolStripStatusLabel lblEstado;
-        protected System.Windows.Forms.ToolStripProgressBar BarraProgreso;
         protected System.Windows.Forms.StatusStrip BarraEstado;
         public System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         public System.Windows.Forms.Button btnCancelar;
@@ -197,5 +203,7 @@
         public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnEliminar;
         public System.Windows.Forms.Button BtnImprimir;
+        public System.Windows.Forms.ToolStripProgressBar BarraProgreso;
+        public System.Windows.Forms.ToolStripStatusLabel lblEstado;
     }
 }

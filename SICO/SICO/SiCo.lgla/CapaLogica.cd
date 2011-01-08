@@ -63,7 +63,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla.PersonaJuridica" Collapsed="true">
-    <Position X="0.5" Y="8.75" Width="1.5" />
+    <Position X="1" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAQAAA=</HashCode>
       <FileName>PersonaJuridica.cs</FileName>
@@ -85,7 +85,7 @@
       <Property Name="Usuario" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="SiCo.lgla.Ticket">
+  <Class Name="SiCo.lgla.Ticket" Collapsed="true">
     <Position X="10" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IpkAFApMAAgCgAAHJEkoAgABgBAgAAAIAAAAEAACBAA=</HashCode>

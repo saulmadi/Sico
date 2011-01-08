@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Clientes.vb" />
     <Compile Include="Departamentos.vb" />
+    <Compile Include="Estado.vb" />
     <Compile Include="Marcas.vb" />
     <Compile Include="Modelos.vb" />
     <Compile Include="Municipios.vb" />

@@ -10,6 +10,7 @@ namespace SiCo.ctrla
         #region Declaraciones
         List<CajaTexto> _ColecionCajasTexto = new List<CajaTexto>();
         #endregion
+
         #region Propiedades
         public  List<CajaTexto> ColecionCajasTexto
         {
@@ -40,7 +41,9 @@ namespace SiCo.ctrla
                 flag = !txt.EsVacio;
                 if (!flag)
                 {
-                    this.MensajesError+=  txt.MensajeError + "\n" ;   
+                    this.MensajesError=  txt.MensajeError  ;
+                    txt.Focus();
+                    return flag;
                 }
             }
 

@@ -47,11 +47,11 @@ namespace SiCo.lgla
         #endregion
         
         #region Metodos
-        protected override void CargadoPropiedades()
+        protected override void CargadoPropiedades(int Indice)
         {
-            this.RazonSocial = this.PrimerRegistro("razonsocial").ToString() ; 
+            this.RazonSocial = this.Registro(Indice,"razonsocial").ToString() ; 
             
-            base.CargadoPropiedades();
+            base.CargadoPropiedades( Indice);
         }
 
         public override void Guardar()
@@ -62,7 +62,7 @@ namespace SiCo.lgla
             base.Guardar();
         }
 
-        public  void Buscar(string RazonSocial,string rtn) 
+        public  void Buscar(string RazonSocial,string rtn,bool t) 
         {
             this.NullParametrosBusqueda();
             this.ValorParametrosBusqueda("razonsocial", RazonSocial);

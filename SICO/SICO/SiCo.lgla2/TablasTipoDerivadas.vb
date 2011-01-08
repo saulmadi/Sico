@@ -32,9 +32,12 @@ Public MustInherit Class TablasTipoDerivadas
         MyBase.Guardar()
     End Sub
 
-    Protected Overrides Sub CargadoPropiedades()
-        Me.idDerivada = Me.PrimerRegistro("idderivada")
-        MyBase.CargadoPropiedades()
+    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
+        If Me.TotalRegistros > 0 Then
+            Me.idDerivada = Me.Registro(Indice, "idderivada")
+            MyBase.CargadoPropiedades(Indice)
+        End If
+
     End Sub
 
 #End Region

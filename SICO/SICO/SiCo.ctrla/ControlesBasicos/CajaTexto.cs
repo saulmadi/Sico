@@ -22,7 +22,7 @@ namespace SiCo.ctrla
         protected string _ExpresionValidacion;
         protected string _MensajeError;
         private TiposTexto _tipotexto= TiposTexto.Alfanumerico;
-
+        private Color _backcolor;
         #endregion
 
         #region Construtores
@@ -88,7 +88,10 @@ namespace SiCo.ctrla
                 if (EsObligatorio)
                 {
                     if (this.Text == string.Empty)
+                    {
+                        this.BackColor = this.ColorError;
                         flag = true;
+                    }
                 }
 
                 return flag;
@@ -211,6 +214,8 @@ namespace SiCo.ctrla
         #region Eventos
         void CajaTexto_TextChanged(object sender, EventArgs e)
         {
+            this.ForeColor = DefaultForeColor;
+            this.BackColor=_backcolor ;
 
         }
 
@@ -295,6 +300,7 @@ namespace SiCo.ctrla
         {
             this.TextChanged += new EventHandler(CajaTexto_TextChanged);
             this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
+            _backcolor = this.BackColor;
         }     
         
 
