@@ -1,4 +1,4 @@
-﻿
+﻿<Serializable()> _
 Public Class Estado
 
 #Region "Declaraciones"

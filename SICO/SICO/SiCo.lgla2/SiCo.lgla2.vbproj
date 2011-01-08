@@ -67,7 +67,9 @@
     <Compile Include="Estado.vb" />
     <Compile Include="Marcas.vb" />
     <Compile Include="Modelos.vb" />
+    <Compile Include="ModulosTablasTipo.vb" />
     <Compile Include="Municipios.vb" />
+    <Compile Include="NombresModuloTablasTipo.vb" />
     <Compile Include="Proveedores.vb" />
     <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
