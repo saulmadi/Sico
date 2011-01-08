@@ -70,6 +70,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlesBasicos\ListaHabilitados.Designer.vb">
+      <DependentUpon>ListaHabilitados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaHabilitados.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ControlesPersonalizados\crtListadoMantenimiento.Designer.vb">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
     </Compile>

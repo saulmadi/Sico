@@ -103,5 +103,19 @@
       <FileName>Estado.vb</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="SiCo.lgla2.NombresModuloTablasTipo" Collapsed="true">
+    <Position X="9.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAgEAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>NombresModuloTablasTipo.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="SiCo.lgla2.ModulosTablasTipo">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAIAAAAAAAAAgAAAAAAAAAAIA=</HashCode>
+      <FileName>ModulosTablasTipo.vb</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
