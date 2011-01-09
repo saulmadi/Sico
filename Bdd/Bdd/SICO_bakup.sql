@@ -103,17 +103,21 @@ DROP TABLE IF EXISTS `departamentos`;
 CREATE TABLE `departamentos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
-  `habilitado` tinyint(1) NOT NULL,
+  `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Descripcion` (`descripcion`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departamentos`
 --
 
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
+INSERT INTO `departamentos` VALUES  (23,'carolo',0,1,'2011-01-08 00:00:00'),
+ (25,'kddk',0,1,'2011-01-08 00:00:00'),
+ (29,'fdsfjk',0,1,'2011-01-08 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
 
@@ -271,19 +275,29 @@ CREATE TABLE `inventario` (
 
 DROP TABLE IF EXISTS `marcas`;
 CREATE TABLE `marcas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
-  `habilitado` tinyint(1) NOT NULL,
+  `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Descripción` (`descripcion`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marcas`
 --
 
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
+INSERT INTO `marcas` VALUES  (1,'KMF',0,1,'2011-01-09'),
+ (2,'faksdfjk',1,1,'2011-01-09'),
+ (3,'fkasdksfj',0,1,'2011-01-09'),
+ (4,'ajsdkdasjf',0,1,'2011-01-09'),
+ (5,'aksdfaksdfjbnañsdfka',1,1,'2011-01-09'),
+ (6,'askdamnfsddkfjdaskljf',0,1,'2011-01-09'),
+ (7,'kdjfaklsfmkmcs',0,1,'2011-01-09'),
+ (8,'adfjaksdjfasklfjasdf',0,1,'2011-01-09'),
+ (9,'kasdjfakmckajsdfsfj',0,1,'2011-01-09');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 
@@ -384,13 +398,13 @@ DROP TABLE IF EXISTS `municipios`;
 CREATE TABLE `municipios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `municipio` varchar(45) NOT NULL,
-  `idderivada` int(11) NOT NULL,
+  `iddepartamento` int(11) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Municipio_Departamentos1` (`idderivada`),
-  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`idderivada`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  KEY `fk_Municipio_Departamentos1` (`iddepartamento`),
+  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`iddepartamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -488,8 +502,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -634,7 +648,7 @@ DROP PROCEDURE IF EXISTS `Clientes_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Buscar`(
 
 /*defiicion de parametros*/
@@ -695,7 +709,7 @@ DROP PROCEDURE IF EXISTS `Clientes_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Mant`(
 
 /*definicion de parametros*/
@@ -802,7 +816,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Departamentos_Mant`(
 
 inout id int,
 descripcion nvarchar(45),
-habilitado bool,
+habilitado tinyint,
 usu int,
 fmodif date
 )
@@ -810,7 +824,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from departamentos  where id=id into @conteo;
+select count(id) from departamentos d where d.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -827,7 +841,7 @@ else
         c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
@@ -845,7 +859,7 @@ DROP PROCEDURE IF EXISTS `Entidades_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Entidades_Mant`(
 
 /*definicion de parametros*/
@@ -900,65 +914,15 @@ END $$
 DELIMITER ;
 
 --
--- Definition of procedure `Marcas_Mant`
+-- Definition of procedure `Marcas_Buscar`
 --
 
-DROP PROCEDURE IF EXISTS `Marcas_Mant`;
+DROP PROCEDURE IF EXISTS `Marcas_Buscar`;
 
 DELIMITER $$
 
 /*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Mant`(
-
-/*definicion de parametros*/
-
-inout id int,
-descripcion nvarchar(45),
-habilitado bool,
-usu int,
-fmodif date
-)
-BEGIN
-
-
-set @conteo =0;
-select count(id) from Marcas  where id=id into @conteo;
-
-if @conteo =0 then
-
-  INSERT INTO Marcas(descripcion,habilitado,usu,fmodif)
-
-  VALUES(descripcion,habilitado,usu,fmodif);
-
-  select last_insert_id() into id;
-
-else
-
-  UPDATE Marcas c set
-        c.descripcion= descripcion,
-        c.habilitado =habilitado,
-        c.usu=usu,
-        c.fmodif=fmodif
-  where e.id= id;
-
-end if;
-
-
-END $$
-/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
-
-DELIMITER ;
-
---
--- Definition of procedure `Marca_Buscar`
---
-
-DROP PROCEDURE IF EXISTS `Marca_Buscar`;
-
-DELIMITER $$
-
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Marca_Buscar`(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
@@ -1002,6 +966,56 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `Marcas_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Marcas_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+descripcion nvarchar(45),
+habilitado int,
+usu int,
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from Marcas m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO Marcas(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE Marcas c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Modelos_Buscar`
 --
 
@@ -1009,7 +1023,7 @@ DROP PROCEDURE IF EXISTS `Modelos_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Buscar`(
 
 /*defiicion de parametros*/
@@ -1061,7 +1075,7 @@ DROP PROCEDURE IF EXISTS `Modelos_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Mant`(
 
 /*definicion de parametros*/
@@ -1113,7 +1127,7 @@ DROP PROCEDURE IF EXISTS `Municipios_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Buscar`(
 
 /*defiicion de parametros*/
@@ -1165,7 +1179,7 @@ DROP PROCEDURE IF EXISTS `Municipios_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Mant`(
 
 /*definicion de parametros*/
@@ -1217,7 +1231,7 @@ DROP PROCEDURE IF EXISTS `PersonaJuridica_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaJuridica_Buscar`(
 
 /*defiicion de parametros*/
@@ -1273,7 +1287,7 @@ DROP PROCEDURE IF EXISTS `PersonaNatural_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Buscar`(
 
 /*defiicion de parametros*/
@@ -1337,7 +1351,7 @@ DROP PROCEDURE IF EXISTS `Proveedores_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedores_Buscar`(
 
 /*defiicion de parametros*/
@@ -1398,7 +1412,7 @@ DROP PROCEDURE IF EXISTS `Proveedores_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedores_Mant`(
 
 /*definicion de parametros*/
@@ -1448,7 +1462,7 @@ DROP PROCEDURE IF EXISTS `TiposFacturas_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Buscar`(
 
 /*defiicion de parametros*/
@@ -1500,7 +1514,7 @@ DROP PROCEDURE IF EXISTS `TiposFacturas_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Mant`(
 
 /*definicion de parametros*/
@@ -1550,7 +1564,7 @@ DROP PROCEDURE IF EXISTS `TiposMotocicletas_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Buscar`(
 
 /*defiicion de parametros*/
@@ -1602,7 +1616,7 @@ DROP PROCEDURE IF EXISTS `TiposMotocicletas_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Mant`(
 
 /*definicion de parametros*/
