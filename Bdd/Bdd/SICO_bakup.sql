@@ -117,7 +117,7 @@ CREATE TABLE `departamentos` (
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
 INSERT INTO `departamentos` VALUES  (23,'carolo',0,1,'2011-01-08 00:00:00'),
  (25,'kddk',0,1,'2011-01-08 00:00:00'),
- (29,'fdsfjk',0,1,'2011-01-08 00:00:00');
+ (29,'fdsfjkl',0,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
 
@@ -568,19 +568,20 @@ CREATE TABLE `sucursales` (
 
 DROP TABLE IF EXISTS `tiposfacturas`;
 CREATE TABLE `tiposfacturas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) DEFAULT NULL,
-  `habilitado` tinyint(1) DEFAULT NULL,
+  `habilitado` int(1) DEFAULT NULL,
   `usu` int(11) DEFAULT NULL,
   `fmodif` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tiposfacturas`
 --
 
 /*!40000 ALTER TABLE `tiposfacturas` DISABLE KEYS */;
+INSERT INTO `tiposfacturas` VALUES  (1,'gfsdfg',1,1,'2011-01-09');
 /*!40000 ALTER TABLE `tiposfacturas` ENABLE KEYS */;
 
 
@@ -590,19 +591,22 @@ CREATE TABLE `tiposfacturas` (
 
 DROP TABLE IF EXISTS `tiposmotocicletas`;
 CREATE TABLE `tiposmotocicletas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
-  `habilitado` tinyint(1) NOT NULL,
+  `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Descripcion` (`descripcion`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tiposmotocicletas`
 --
 
 /*!40000 ALTER TABLE `tiposmotocicletas` DISABLE KEYS */;
+INSERT INTO `tiposmotocicletas` VALUES  (4,'KMF',0,1,'2011-01-09'),
+ (8,'KMfdop',1,1,'2011-01-09');
 /*!40000 ALTER TABLE `tiposmotocicletas` ENABLE KEYS */;
 
 
@@ -1514,14 +1518,14 @@ DROP PROCEDURE IF EXISTS `TiposFacturas_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Mant`(
 
 /*definicion de parametros*/
 
 inout id int,
 descripcion nvarchar(45),
-habilitado bool,
+habilitado int,
 usu int,
 fmodif date
 )
@@ -1529,7 +1533,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from tiposfacturas  where id=id into @conteo;
+select count(id) from tiposfacturas t where t.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -1546,7 +1550,7 @@ else
         c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
@@ -1616,14 +1620,14 @@ DROP PROCEDURE IF EXISTS `TiposMotocicletas_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Mant`(
 
 /*definicion de parametros*/
 
 inout id int,
 descripcion nvarchar(45),
-habilitado bool,
+habilitado int,
 usu int,
 fmodif date
 )
@@ -1631,7 +1635,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from tiposmotocicletas  where id=id into @conteo;
+select count(id) from tiposmotocicletas t  where t.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -1648,7 +1652,7 @@ else
         c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
