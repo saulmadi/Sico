@@ -68,7 +68,7 @@ Public Class crtTablaTipo
         Me.TablaTipo = Item
     End Sub
 
-    Private Sub PanelAccion_Guardar() Handles PanelAccion.Guardar
+    Protected Overridable Sub PanelAccion_Guardar() Handles PanelAccion.Guardar
         Try
             Dim val As New SiCo.ctrla.Validador()
             Dim flag As Boolean = True
@@ -92,6 +92,7 @@ Public Class crtTablaTipo
                 txtDescripcion.Focus()
                 PanelAccion.BarraProgreso.Value = 100
                 Me.Cursor = Cursors.Default
+
             Else
                 PanelAccion.lblEstado.Text = val.MensajesError
             End If

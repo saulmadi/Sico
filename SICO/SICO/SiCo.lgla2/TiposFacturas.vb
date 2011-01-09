@@ -5,8 +5,8 @@ Public Class TiposFacturas
 #Region "Constructor"
     Public Sub New()
         MyBase.New()
-        Me.ComandoMantenimiento = "TiposFactura_Mant"
-        Me.ComandoSelect = "TiposFactura_Buscar"
+        Me.ComandoMantenimiento = "TiposFacturas_Mant"
+        Me.ComandoSelect = "TiposFacturas_Buscar"
     End Sub
 #End Region
 

@@ -104,9 +104,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.NombresModuloTablasTipo" Collapsed="true">
-    <Position X="9.5" Y="2" Width="1.5" />
+    <Position X="9.5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAgEAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAgEACAAAQAAAAAAIAAAAAAAA=</HashCode>
       <FileName>NombresModuloTablasTipo.vb</FileName>
     </TypeIdentifier>
   </Class>

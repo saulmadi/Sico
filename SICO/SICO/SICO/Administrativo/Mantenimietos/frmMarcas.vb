@@ -25,4 +25,5 @@
         crtTablaTipo1.crtBusqueda.CargarTodo()
     End Sub
 #End Region
+
 End Class

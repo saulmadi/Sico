@@ -24,24 +24,27 @@ Partial Class frmTiposMotocicletas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTiposMotocicletas))
-        Me.CrtTablaTipo = New SICO.ctrla2.crtTablaTipo
+        Me.CrtTablaTipo1 = New SICO.ctrla2.crtTablaTipo
         Me.SuspendLayout()
         '
-        'CrtTablaTipo
+        'CrtTablaTipo1
         '
-        Me.CrtTablaTipo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtTablaTipo.Location = New System.Drawing.Point(0, 0)
-        Me.CrtTablaTipo.Name = "CrtTablaTipo"
-        Me.CrtTablaTipo.Size = New System.Drawing.Size(790, 527)
-        Me.CrtTablaTipo.TabIndex = 0
-        Me.CrtTablaTipo.Titulo = "Tipos Motocicletas"
+        Me.CrtTablaTipo1.CaracterinicioBusqueda = 3
+        Me.CrtTablaTipo1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtTablaTipo1.Location = New System.Drawing.Point(0, 0)
+        Me.CrtTablaTipo1.Modulo = SICO.lgla2.ModulosTablasTipo.Departamentos
+        Me.CrtTablaTipo1.Name = "CrtTablaTipo1"
+        Me.CrtTablaTipo1.Size = New System.Drawing.Size(790, 527)
+        Me.CrtTablaTipo1.TabIndex = 0
+        Me.CrtTablaTipo1.TablaTipo = Nothing
+        Me.CrtTablaTipo1.Titulo = "Tipos Motocicletas"
         '
         'frmTiposMotocicletas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(790, 527)
-        Me.Controls.Add(Me.CrtTablaTipo)
+        Me.Controls.Add(Me.CrtTablaTipo1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -51,5 +54,5 @@ Partial Class frmTiposMotocicletas
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents CrtTablaTipo As SICO.ctrla2.crtTablaTipo
+    Friend WithEvents CrtTablaTipo1 As SICO.ctrla2.crtTablaTipo
 End Class
