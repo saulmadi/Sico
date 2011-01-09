@@ -7,7 +7,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Mant`(
 
 inout id int,
 descripcion nvarchar(45),
-habilitado bool,
+habilitado int,
 usu int,
 fmodif date
 )
@@ -15,7 +15,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from tiposfacturas  where id=id into @conteo;
+select count(id) from tiposfacturas t where t.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -32,7 +32,7 @@ else
         c.habilitado =habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
