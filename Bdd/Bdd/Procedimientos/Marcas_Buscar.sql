@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `Marca_Buscar` $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Marca_Buscar`(
+DROP PROCEDURE IF EXISTS `Marcas_Buscar` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
