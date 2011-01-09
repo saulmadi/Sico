@@ -5,8 +5,8 @@ Public Class Marcas
     Public Sub New()
         MyBase.New()
 
-        Me.ComandoSelect = "Departamentos_Buscar"
-        Me.ComandoMantenimiento = "Departamentos_Mant"
+        Me.ComandoSelect = "Marcas_Buscar"
+        Me.ComandoMantenimiento = "Marcas_Mant"
 
     End Sub
 #End Region

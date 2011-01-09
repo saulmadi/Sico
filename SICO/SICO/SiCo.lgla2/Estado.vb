@@ -10,7 +10,7 @@ Public Class Estado
     Public Sub New()
 
     End Sub
-    Public Sub New(ByVal Descripcion As String, ByVal valor As Boolean)
+    Public Sub New(ByVal Descripcion As String, ByVal valor As Integer)
         Me.Descripcion = Descripcion
         Me.valor = valor
     End Sub

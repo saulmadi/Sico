@@ -64,40 +64,8 @@ namespace SiCo.ctrla
                 _ColorError = value;
             }
         }
-
-        public bool EsValido
-        {
-            get
-            {
-                bool flag = true;
-                
-                if (_Validador != null)
-                {
-                    flag = _Validador.IsMatch(this.Text);
-                }
-               
-                return flag;
-            }
-        }
-
-        public bool EsVacio
-        {
-            get 
-            {
-                bool flag = false ;
-                if (EsObligatorio)
-                {
-                    if (this.Text == string.Empty)
-                    {
-                        this.BackColor = this.ColorError;
-                        flag = true;
-                    }
-                }
-
-                return flag;
-            }
-            
-        }
+       
+       
 
         public string ExpresionValidacion
         {
@@ -137,8 +105,7 @@ namespace SiCo.ctrla
                 switch (value )
                 {
                     case TiposTexto.Alfanumerico:
-                        this.Text = "";
-                        this.MaxLength = 255;
+                        this.Text = "";                       
                        
                         break;
                     case TiposTexto.Parrafo:
@@ -158,7 +125,7 @@ namespace SiCo.ctrla
                         break;
 
                     case TiposTexto.Alfabetico:
-                        this.MaxLength = 3655;
+                        
                         this.Text = "";
                         this.ExpresionValidacion = string.Empty;
                         break;
@@ -287,7 +254,7 @@ namespace SiCo.ctrla
 
         protected override void OnValidated(System.EventArgs e)
         {
-            if (!this.EsValido)
+            if (!this.EsValido())
                 this.ForeColor = ColorError;
             else
                 this.ForeColor = DefaultForeColor;
@@ -302,6 +269,36 @@ namespace SiCo.ctrla
             this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
             _backcolor = this.BackColor;
         }     
+
+         public bool EsValido()
+        {
+            
+                bool flag = true;
+                
+                if (_Validador != null)
+                {
+                    flag = _Validador.IsMatch(this.Text);
+                }
+               
+                return flag;
+            
+        }
+        
+        public bool EsVacio()
+        {           
+                bool flag = false ;
+                if (EsObligatorio)
+                {
+                    if (this.Text == string.Empty)
+                    {
+                        this.BackColor = this.ColorError;
+                        flag = true;
+                    }
+                }
+
+                return flag;
+            
+        }
         
 
         #endregion

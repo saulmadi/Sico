@@ -132,13 +132,14 @@ namespace SiCo.ctrla
         {
             if (this.Nuevo != null)
                 this.Nuevo();
-
+            this.BarraProgreso.Value = 0;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (this.Guardar != null)
                 this.Guardar();
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -37,8 +37,8 @@ namespace SiCo.ctrla
             bool flag = false;
             foreach( CajaTexto  txt in this.ColecionCajasTexto   )
             {
-                flag = txt.EsValido;
-                flag = !txt.EsVacio;
+                flag = txt.EsValido();
+                flag = !txt.EsVacio();
                 if (!flag)
                 {
                     this.MensajesError=  txt.MensajeError  ;
