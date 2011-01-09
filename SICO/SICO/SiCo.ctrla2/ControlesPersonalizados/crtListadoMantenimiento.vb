@@ -9,8 +9,10 @@ Public Class crtListadoMantenimiento
     Private _CampoAMostrar As String
     Private _UltimoParametro As String
     Private _CaracteresSegundaBusqueda As Integer = 6
+    Private _CargarInicio As Boolean = False
 
     Public Event SeleccionItem(ByVal Item As Object)
+    Public Event Limpio()
 #End Region
 
 #Region "Constructor"
@@ -79,6 +81,15 @@ Public Class crtListadoMantenimiento
         End Set
     End Property
 
+    Public Property CargarInicio() As Boolean
+        Get
+            Return _CargarInicio
+        End Get
+        Set(ByVal value As Boolean)
+            _CargarInicio = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Eventos"
@@ -91,17 +102,8 @@ Public Class crtListadoMantenimiento
 
     Private Sub txtBusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBusqueda.TextChanged
         If (Me.txtBusqueda.Text.Length = Me.CaracteresInicioBusqueda Or Me.CaracteresSegundaBusqueda = txtBusqueda.Text.Length) And _UltimoParametro <> txtBusqueda.Text Then
-            If Not Me.subproceso.IsBusy Then
-                Dim c As New Argumento(Entidad)
-                c.entidad = Me.Entidad
-                c.Parametro = Me.NombreParametroBusqueda
-                c.texto = Me.txtBusqueda.Text
-                Me.Cursor = Cursors.WaitCursor
-                Me.lstBusqueda.DataSource = Nothing
-                Me.lstBusqueda.DisplayMember = Me.CampoAMostrar
-                Me.subproceso.RunWorkerAsync(c)
-                _UltimoParametro = c.texto
-            End If
+            lanzarbusqueda(txtBusqueda.Text)
+            _UltimoParametro = txtBusqueda.Text
         ElseIf txtBusqueda.Text.Length < Me.CaracteresInicioBusqueda Then
             _UltimoParametro = "12"
             lstBusqueda.DataSource = Nothing
@@ -127,8 +129,56 @@ Public Class crtListadoMantenimiento
         MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
     End Sub
 
+    Private Sub lstBusqueda_DataSourceChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lstBusqueda.DataSourceChanged
+        If lstBusqueda.DataSource Is Nothing Then
+            RaiseEvent Limpio()
+        End If
+    End Sub
+
     Private Sub lstBusqueda_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstBusqueda.DoubleClick
         RaiseEvent SeleccionItem(lstBusqueda.SelectedItem)
+    End Sub
+
+    Private Sub crtListadoMantenimiento_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Entidad Is Nothing Then
+            Entidad.Buscar()
+            If Entidad.TotalRegistros > 0 Then
+                lstBusqueda.DataSource = Nothing
+                lstBusqueda.DataSource = Entidad.TablaAColeccion
+                lstBusqueda.DisplayMember = Me.CampoAMostrar
+            End If
+
+        End If
+    End Sub
+
+    Private Sub lstBusqueda_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lstBusqueda.SelectedIndexChanged
+
+        If Not lstBusqueda.SelectedItem Is Nothing Then
+            RaiseEvent SeleccionItem(lstBusqueda.SelectedItem)
+        End If
+
+
+    End Sub
+
+#End Region
+
+#Region "Metodos"
+    Private Sub lanzarbusqueda(ByVal texto As String)
+        If Not Me.subproceso.IsBusy Then
+            Dim c As New Argumento(Entidad)
+            c.entidad = Me.Entidad
+            c.Parametro = Me.NombreParametroBusqueda
+            c.texto = texto
+            Me.Cursor = Cursors.WaitCursor
+            Me.lstBusqueda.DataSource = Nothing
+            Me.lstBusqueda.DisplayMember = Me.CampoAMostrar
+            Me.subproceso.RunWorkerAsync(c)
+
+        End If
+    End Sub
+
+    Public Sub CargarTodo()
+        lanzarbusqueda(Nothing)
     End Sub
 
 #End Region
@@ -145,5 +195,4 @@ Public Class crtListadoMantenimiento
     End Class
 #End Region
 
-    
 End Class

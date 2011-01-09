@@ -75,7 +75,7 @@
             // 
             this.lblEstado.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(445, 17);
+            this.lblEstado.Size = new System.Drawing.Size(476, 17);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "lblestado";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

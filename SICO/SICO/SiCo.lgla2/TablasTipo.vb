@@ -15,7 +15,7 @@ Public Class TablasTipo
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("descripcion", Nothing))
     End Sub
 
-    Public Sub New(ByVal id As Integer, ByVal descripcion As String, ByVal habilitado As Boolean)
+    Public Sub New(ByVal id As Integer, ByVal descripcion As String, ByVal habilitado As Integer)
         Me.New()
         Me._Id = id
         Me.descripcion = descripcion

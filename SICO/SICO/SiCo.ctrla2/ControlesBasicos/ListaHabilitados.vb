@@ -14,17 +14,27 @@ Public Class ListaHabilitados
         InitializeComponent()
         Me.DropDownStyle = ComboBoxStyle.DropDownList
 
-        _ListaHabilitados.Add(New Estado("In Habilitado", 0))
-        _ListaHabilitados.Add(New Estado("Habilitado", 1))
+       
         Try
-            Me.DataSource = _ListaHabilitados
-            Me.DisplayMember = "Descripcion"
-            Me.ValueMember = "Valor"
+            MyBase.Items.Add(New Estado("In Habilitado", 0))
+            MyBase.Items.Add(New Estado("Habilitado", 1))
+
+            MyBase.DisplayMember = "Descripcion"
+            MyBase.ValueMember = "Valor"
+            MyBase.SelectedIndex = 0
         Catch ex As Exception
 
         End Try
 
     End Sub
+    Public Shadows Property Items()
+        Get
+            Return MyBase.Items
+        End Get
+        Set(ByVal value)
+
+        End Set
+    End Property
 #End Region
 
 End Class

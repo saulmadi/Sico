@@ -266,9 +266,12 @@ namespace SiCo.lgla
                     _Comando.ExecuteNonQuery() ;  
                     Transaccion.Commit();
                 }
-                catch 
+                catch (Exception ex)
                 {
-                    Transaccion.Rollback();                   
+                    Transaccion.Rollback();
+                    if (this.Errores != null)
+                        this.Errores("Error en la ejecución de guardado \n" + ex.Message);
+                    throw new ApplicationException("Error en la ejecución de guardado \n" + ex.Message);
                 }
                 finally
                 {

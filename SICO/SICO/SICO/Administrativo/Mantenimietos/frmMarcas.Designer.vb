@@ -24,24 +24,27 @@ Partial Class frmMarcas
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMarcas))
-        Me.TablaTipo = New SICO.ctrla2.crtTablaTipo
+        Me.crtTablaTipo1 = New SICO.ctrla2.crtTablaTipo
         Me.SuspendLayout()
         '
-        'TablaTipo
+        'crtTablaTipo1
         '
-        Me.TablaTipo.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TablaTipo.Location = New System.Drawing.Point(0, 0)
-        Me.TablaTipo.Name = "TablaTipo"
-        Me.TablaTipo.Size = New System.Drawing.Size(792, 468)
-        Me.TablaTipo.TabIndex = 0
-        Me.TablaTipo.Titulo = "Marcas Motociletas"
+        Me.crtTablaTipo1.CaracterinicioBusqueda = 3
+        Me.crtTablaTipo1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.crtTablaTipo1.Location = New System.Drawing.Point(0, 0)
+        Me.crtTablaTipo1.Modulo = SICO.lgla2.ModulosTablasTipo.Departamentos
+        Me.crtTablaTipo1.Name = "crtTablaTipo1"
+        Me.crtTablaTipo1.Size = New System.Drawing.Size(792, 468)
+        Me.crtTablaTipo1.TabIndex = 0
+        Me.crtTablaTipo1.TablaTipo = Nothing
+        Me.crtTablaTipo1.Titulo = "Marcas Motociletas"
         '
         'frmMarcas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(792, 468)
-        Me.Controls.Add(Me.TablaTipo)
+        Me.Controls.Add(Me.crtTablaTipo1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -51,5 +54,5 @@ Partial Class frmMarcas
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents TablaTipo As SICO.ctrla2.crtTablaTipo
+    Friend WithEvents crtTablaTipo1 As SICO.ctrla2.crtTablaTipo
 End Class

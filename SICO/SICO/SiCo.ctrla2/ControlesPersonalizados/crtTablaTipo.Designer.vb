@@ -14,6 +14,17 @@ Partial Class crtTablaTipo
         End Try
     End Sub
 
+    Public Sub New()
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        crtBusqueda.NombreParametroBusqueda = "descripcion"
+        _TalaTipo = TablaTipo
+        crtBusqueda.CampoAMostrar = "descripcion"
+    End Sub
+
     'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
 
@@ -24,11 +35,11 @@ Partial Class crtTablaTipo
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.cmbEstado = New System.Windows.Forms.ComboBox
+        Me.crtBusqueda = New SiCo.ctrla2.crtListadoMantenimiento
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.crtBusqueda = New SiCo.ctrla2.crtListadoMantenimiento
+        Me.cmbEstado = New SiCo.ctrla2.ListaHabilitados(Me.components)
         Me.txtDescripcion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.PanelAccion = New SiCo.ctrla.PanelAccion
         Me.GroupBox1.SuspendLayout()
@@ -46,15 +57,20 @@ Partial Class crtTablaTipo
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
         '
-        'cmbEstado
+        'crtBusqueda
         '
-        Me.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbEstado.FormattingEnabled = True
-        Me.cmbEstado.Location = New System.Drawing.Point(75, 46)
-        Me.cmbEstado.Name = "cmbEstado"
-        Me.cmbEstado.Size = New System.Drawing.Size(298, 21)
-        Me.cmbEstado.TabIndex = 1
+        Me.crtBusqueda.CampoAMostrar = ""
+        Me.crtBusqueda.CaracteresInicioBusqueda = 3
+        Me.crtBusqueda.CaracteresSegundaBusqueda = 6
+        Me.crtBusqueda.CargarInicio = True
+        Me.crtBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.crtBusqueda.Entidad = Nothing
+        Me.crtBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.crtBusqueda.Location = New System.Drawing.Point(3, 16)
+        Me.crtBusqueda.Name = "crtBusqueda"
+        Me.crtBusqueda.NombreParametroBusqueda = Nothing
+        Me.crtBusqueda.Size = New System.Drawing.Size(316, 322)
+        Me.crtBusqueda.TabIndex = 0
         '
         'Label1
         '
@@ -78,10 +94,10 @@ Partial Class crtTablaTipo
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cmbEstado)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.txtDescripcion)
-        Me.GroupBox2.Controls.Add(Me.cmbEstado)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(366, 157)
         Me.GroupBox2.Name = "GroupBox2"
@@ -90,34 +106,33 @@ Partial Class crtTablaTipo
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
         '
-        'crtBusqueda
+        'cmbEstado
         '
-        Me.crtBusqueda.CampoAMostrar = ""
-        Me.crtBusqueda.CaracteresInicioBusqueda = 3
-        Me.crtBusqueda.CaracteresSegundaBusqueda = 6
-        Me.crtBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.crtBusqueda.Entidad = Nothing
-        Me.crtBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.crtBusqueda.Location = New System.Drawing.Point(3, 16)
-        Me.crtBusqueda.Name = "crtBusqueda"
-        Me.crtBusqueda.NombreParametroBusqueda = Nothing
-        Me.crtBusqueda.Size = New System.Drawing.Size(316, 322)
-        Me.crtBusqueda.TabIndex = 0
+        Me.cmbEstado.DisplayMember = "Descripcion"
+        Me.cmbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbEstado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbEstado.FormattingEnabled = True
+        Me.cmbEstado.Location = New System.Drawing.Point(75, 46)
+        Me.cmbEstado.Name = "cmbEstado"
+        Me.cmbEstado.Size = New System.Drawing.Size(298, 21)
+        Me.cmbEstado.TabIndex = 4
+        Me.cmbEstado.ValueMember = "Valor"
         '
         'txtDescripcion
         '
+        Me.txtDescripcion.BackColor = System.Drawing.Color.White
         Me.txtDescripcion.ColorError = System.Drawing.Color.Red
         Me.txtDescripcion.EsObligatorio = True
-        Me.txtDescripcion.ExpresionValidacion = Nothing
+        Me.txtDescripcion.ExpresionValidacion = ""
         Me.txtDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDescripcion.Location = New System.Drawing.Point(75, 20)
-        Me.txtDescripcion.MaxLength = 255
+        Me.txtDescripcion.MaxLength = 45
         Me.txtDescripcion.MensajeError = "La descripción no puede ser vacía"
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(298, 20)
         Me.txtDescripcion.TabIndex = 0
         Me.txtDescripcion.Texto = Nothing
-        Me.txtDescripcion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtDescripcion.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         '
         'PanelAccion
         '
@@ -150,9 +165,9 @@ Partial Class crtTablaTipo
     Public WithEvents crtBusqueda As SiCo.ctrla2.crtListadoMantenimiento
     Public WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Public WithEvents txtDescripcion As SiCo.ctrla.CajaTexto
-    Public WithEvents cmbEstado As System.Windows.Forms.ComboBox
     Public WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Public WithEvents Label1 As System.Windows.Forms.Label
     Public WithEvents Label2 As System.Windows.Forms.Label
+    Public WithEvents cmbEstado As SiCo.ctrla2.ListaHabilitados
 
 End Class
