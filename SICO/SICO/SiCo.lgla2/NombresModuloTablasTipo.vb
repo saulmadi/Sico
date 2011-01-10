@@ -44,6 +44,10 @@ Public Class NombresModuloTablasTipo
                 Return "Tipo de factura"
             Case ModulosTablasTipo.TiposMotocicletas
                 Return "Tipo de motocicleta"
+            Case ModulosTablasTipo.Modelos
+                Return "Modelo"
+            Case ModulosTablasTipo.Municipios
+                Return "Municipio"
 
         End Select
 
@@ -59,6 +63,11 @@ Public Class NombresModuloTablasTipo
                 Return New TiposFacturas
             Case ModulosTablasTipo.TiposMotocicletas
                 Return New TiposMotocicletas
+            Case ModulosTablasTipo.Modelos
+                Return New Modelos
+            Case ModulosTablasTipo.Municipios
+                Return New Municipios
+
         End Select
         Return Nothing
     End Function

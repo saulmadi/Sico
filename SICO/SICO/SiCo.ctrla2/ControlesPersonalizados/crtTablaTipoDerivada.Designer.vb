@@ -21,8 +21,9 @@ Partial Class crtTablaTipoDerivada
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Me.lblDerivado = New System.Windows.Forms.Label
-        Me.cmbDerivado = New System.Windows.Forms.ComboBox
+        Me.cmbDerivado = New SiCo.ctrla.ListaDesplegable(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -31,11 +32,6 @@ Partial Class crtTablaTipoDerivada
         '
         Me.txtDescripcion.Location = New System.Drawing.Point(89, 19)
         Me.txtDescripcion.Size = New System.Drawing.Size(301, 20)
-        '
-        'cmbEstado
-        '
-        Me.cmbEstado.Location = New System.Drawing.Point(89, 72)
-        Me.cmbEstado.Size = New System.Drawing.Size(301, 21)
         '
         'GroupBox2
         '
@@ -53,6 +49,11 @@ Partial Class crtTablaTipoDerivada
         '
         Me.Label2.Location = New System.Drawing.Point(6, 75)
         '
+        'cmbEstado
+        '
+        Me.cmbEstado.Location = New System.Drawing.Point(89, 72)
+        Me.cmbEstado.Size = New System.Drawing.Size(301, 21)
+        '
         'lblDerivado
         '
         Me.lblDerivado.AutoSize = True
@@ -65,12 +66,18 @@ Partial Class crtTablaTipoDerivada
         '
         'cmbDerivado
         '
+        Me.cmbDerivado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbDerivado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbDerivado.CargarAutoCompletar = False
+        Me.cmbDerivado.DisplayMember = "descripcion"
         Me.cmbDerivado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDerivado.FormattingEnabled = True
-        Me.cmbDerivado.Location = New System.Drawing.Point(89, 45)
+        Me.cmbDerivado.Location = New System.Drawing.Point(89, 46)
         Me.cmbDerivado.Name = "cmbDerivado"
+        Me.cmbDerivado.ParametroAutocompletar = Nothing
         Me.cmbDerivado.Size = New System.Drawing.Size(301, 21)
         Me.cmbDerivado.TabIndex = 7
+        Me.cmbDerivado.ValueMember = "id"
         '
         'crtTablaTipoDerivada
         '
@@ -83,7 +90,7 @@ Partial Class crtTablaTipoDerivada
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents cmbDerivado As System.Windows.Forms.ComboBox
     Friend WithEvents lblDerivado As System.Windows.Forms.Label
+    Public WithEvents cmbDerivado As SiCo.ctrla.ListaDesplegable
 
 End Class

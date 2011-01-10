@@ -1,4 +1,4 @@
-﻿
+﻿Imports SiCo.lgla
 Public Class Modelos
     Inherits TablasTipoDerivadas
 
@@ -6,8 +6,13 @@ Public Class Modelos
     Public Sub New()
         MyBase.New()
 
-        Me.ComandoSelect = "Modelos_Buscar"
         Me.ComandoMantenimiento = "Modelos_Mant"
+
+
+        Me.TablaBusqueda = "modelos"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
+
+
     End Sub
 #End Region
 

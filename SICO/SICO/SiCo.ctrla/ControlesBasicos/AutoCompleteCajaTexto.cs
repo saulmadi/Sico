@@ -11,7 +11,7 @@ namespace SiCo.ctrla.ControlesBasicos
     public partial class AutoCompleteCajaTexto : SiCo.ctrla.CajaTexto
     {
         #region Declaraciones
-        private EntidadInstanciable _Entidad;
+        //private Entidad _Entidad;
         private string _ParametroBusqueda = string.Empty;
         private List<SiCo.lgla.Parametro> _ColeccionParametros= new List<SiCo.lgla.Parametro  > ();
         public event ErroresEventsHandler Errores;
@@ -96,13 +96,7 @@ namespace SiCo.ctrla.ControlesBasicos
             this.AutoCompletar = true;          
         }       
 
-        private void InicializarEntidad()
-        {
-            if (_Entidad == null)
-            {
-                _Entidad = new EntidadInstanciable();
-            }
-        }
+        
 
 
         #endregion
@@ -115,36 +109,10 @@ namespace SiCo.ctrla.ControlesBasicos
             {
                 if(this.AutoCompletar)
                 {
-                    InicializarEntidad();
+                    
                     if (this.Text.Length == this.CaracteresInicio)
                     {
-                        if (ColeccionParametros.Count > 0 && this.Procedimiento.Length > 0)
-                        {
-                            int val = 0;
-                            foreach (SiCo.lgla.Parametro p in ColeccionParametros)
-                            {
-                                if (p.Nombre == this.ParameteroBusqueda)
-                                {
-                                    p.Valor = this.Text.Trim();
-                                    val++;
-                                }
-                                
-                            }
-                            if (val >0 && this.ParameteroBusqueda.Length>0)
-                            {
-                                _Entidad.LlenadoTabla(this.Procedimiento, ColeccionParametros);
-                                if (_Entidad.TotalRegistros > 0)
-                                {
-                                    for (int x = 0; x < _Entidad.TotalRegistros; x++)
-                                    {
-                                        AutoCompleteCustomSource.Add(_Entidad.Registro(x, this.CampoMostrar).ToString());
-                                    }
-                                }
-                            }
-                            else
-                                throw new ApplicationException("El parametro de busqueda: " + this.ParameteroBusqueda + " no se encuentra en la colección");
-                        }
-
+                        
                     }
                     else
                     {

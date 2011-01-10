@@ -141,6 +141,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesBasicos\ListaDesplegable.resx">
+      <DependentUpon>ListaDesplegable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtImagen.resx">
       <DependentUpon>crtImagen.cs</DependentUpon>
     </EmbeddedResource>

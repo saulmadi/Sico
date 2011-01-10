@@ -16,7 +16,7 @@ Public Class ListaHabilitados
 
        
         Try
-            MyBase.Items.Add(New Estado("In Habilitado", 0))
+            MyBase.Items.Add(New Estado("Inhabilitado", 0))
             MyBase.Items.Add(New Estado("Habilitado", 1))
 
             MyBase.DisplayMember = "Descripcion"

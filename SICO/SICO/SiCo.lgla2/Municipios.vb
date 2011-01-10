@@ -1,4 +1,4 @@
-﻿
+﻿Imports SiCo.lgla
 Public Class Municipios
     Inherits TablasTipoDerivadas
 
@@ -7,10 +7,13 @@ Public Class Municipios
         MyBase.New()
 
         Me.ComandoMantenimiento = "Municipios_Mant"
-        Me.ComandoSelect = "Municipios_Buscar"
+
+        Me.TablaBusqueda = "municipios"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
 
     End Sub
 #End Region
+
 #Region "Metodos"
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()

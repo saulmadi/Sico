@@ -4,12 +4,16 @@ Public Class TablasTipo
 #Region "Declaraciones"
     Private _Descripcion As String
     Private _habilitado As Integer
+    Private _tablaBusqueda As String
 #End Region
 
 #Region "Constructor"
     Public Sub New()
         MyBase.New()
         Me.ColeccionParametrosBusqueda.Add(New Parametro("descripcion", Nothing))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("habilitado", Nothing))
+
+        Me.ComandoSelect = "Mantenimientos_Buscar"
 
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("habilitado", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("descripcion", Nothing))
@@ -42,13 +46,22 @@ Public Class TablasTipo
             _habilitado = value
         End Set
     End Property
-   
+    Public Property TablaBusqueda() As String
+        Get
+            Return _tablaBusqueda
+        End Get
+        Set(ByVal value As String)
+            _tablaBusqueda = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Metodos"
 
     Public Overloads Sub Buscar(ByVal Descripcion As String)
         Me.NullParametrosBusqueda()
+        Me.ValorParametrosBusqueda("tabla", Me.TablaBusqueda)
         Me.ValorParametrosBusqueda("descripcion", Descripcion)
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
     End Sub
@@ -60,7 +73,7 @@ Public Class TablasTipo
 
             MyBase.CargadoPropiedades(Indice)
         End If
-        
+
     End Sub
 
     Public Overrides Sub Guardar()
@@ -82,6 +95,11 @@ Public Class TablasTipo
         Me.CargadoPropiedades(0)
         Return Lista
     End Function
+    Public Overrides Sub Buscar()
+        NullParametrosBusqueda()
+        Me.ValorParametrosBusqueda("tabla", Me.TablaBusqueda)
+        Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
+    End Sub
 
 #End Region
 

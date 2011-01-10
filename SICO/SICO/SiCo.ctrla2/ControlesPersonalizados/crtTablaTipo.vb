@@ -1,11 +1,13 @@
 ﻿Imports SiCo.lgla
 Imports SiCo.lgla2
+Imports System.Diagnostics
+Imports System.ComponentModel
 Public Class crtTablaTipo
 
 #Region "Declaraciones"
     Private WithEvents _TalaTipo As TablasTipo
-    Private _Modulo As ModulosTablasTipo = ModulosTablasTipo.Departamentos
-    Private _Nombre As New NombresModuloTablasTipo(_Modulo)
+    Protected _Modulo As ModulosTablasTipo = ModulosTablasTipo.Departamentos
+    Protected _Nombre As New NombresModuloTablasTipo(_Modulo)
     Public Event CambioTablaTipo()
 #End Region
 
@@ -15,6 +17,7 @@ Public Class crtTablaTipo
 #End Region
 
 #Region "Propiedades"
+
     Public Property Titulo() As String
         Get
             Return PanelAccion.Titulo
@@ -33,16 +36,20 @@ Public Class crtTablaTipo
         End Set
     End Property
 
+
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property TablaTipo() As TablasTipo
         Get
             Return _TalaTipo
         End Get
         Set(ByVal value As TablasTipo)
             _TalaTipo = value
+
             RaiseEvent CambioTablaTipo()
         End Set
     End Property
 
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property Modulo() As ModulosTablasTipo
         Get
             Return _Modulo
@@ -50,6 +57,8 @@ Public Class crtTablaTipo
         Set(ByVal value As ModulosTablasTipo)
             _Modulo = value
             _Nombre.ModuloTablaTipo = value
+            crtBusqueda.Entidad = _Nombre.Instancias
+            TablaTipo = _Nombre.Instancias
         End Set
     End Property
 
