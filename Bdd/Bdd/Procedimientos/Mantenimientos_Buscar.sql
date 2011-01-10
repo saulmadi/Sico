@@ -32,8 +32,8 @@ if descripcion<>"" then
   set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
 end if;
 
-if habilitados <>"" then
-  set @where = concat(@where, " and habilitado = = ", id, " ");
+if habilitado<>"" then
+  set @where = concat(@where, " and habilitado =  ", habilitado, " ");
 end if;
 
 
