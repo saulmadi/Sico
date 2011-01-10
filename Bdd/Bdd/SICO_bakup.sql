@@ -108,16 +108,18 @@ CREATE TABLE `departamentos` (
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripcion` (`descripcion`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departamentos`
 --
 
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES  (23,'carolo',0,1,'2011-01-08 00:00:00'),
- (25,'kddk',0,1,'2011-01-08 00:00:00'),
- (29,'fdsfjkl',0,1,'2011-01-09 00:00:00');
+INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-09 00:00:00'),
+ (35,'Francisco Morazan',1,1,'2011-01-09 00:00:00'),
+ (36,'Lempira',0,1,'2011-01-09 00:00:00'),
+ (37,'Copan',1,1,'2011-01-09 00:00:00'),
+ (38,'Cortes',1,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
 
@@ -279,25 +281,19 @@ CREATE TABLE `marcas` (
   `descripcion` varchar(45) NOT NULL,
   `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
+  `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripción` (`descripcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marcas`
 --
 
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
-INSERT INTO `marcas` VALUES  (1,'KMF',0,1,'2011-01-09'),
- (2,'faksdfjk',1,1,'2011-01-09'),
- (3,'fkasdksfj',0,1,'2011-01-09'),
- (4,'ajsdkdasjf',0,1,'2011-01-09'),
- (5,'aksdfaksdfjbnañsdfka',1,1,'2011-01-09'),
- (6,'askdamnfsddkfjdaskljf',0,1,'2011-01-09'),
- (7,'kdjfaklsfmkmcs',0,1,'2011-01-09'),
- (8,'adfjaksdjfasklfjasdf',0,1,'2011-01-09'),
- (9,'kasdjfakmckajsdfsfj',0,1,'2011-01-09');
+INSERT INTO `marcas` VALUES  (10,'KMF',1,1,'2011-01-09 00:00:00'),
+ (11,'YAMAHA',1,1,'2011-01-09 00:00:00'),
+ (12,'HONDA',1,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 
@@ -308,13 +304,14 @@ INSERT INTO `marcas` VALUES  (1,'KMF',0,1,'2011-01-09'),
 DROP TABLE IF EXISTS `modelos`;
 CREATE TABLE `modelos` (
   `id` int(11) NOT NULL,
-  `modelo` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `idderivada` int(11) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
+  `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Modelos_Marcas1` (`idderivada`),
+  KEY `Descripcion` (`descripcion`),
   CONSTRAINT `fk_Modelos_Marcas1` FOREIGN KEY (`idderivada`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -397,11 +394,11 @@ CREATE TABLE `motocicletasimagenes` (
 DROP TABLE IF EXISTS `municipios`;
 CREATE TABLE `municipios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `municipio` varchar(45) NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   `iddepartamento` int(11) NOT NULL,
   `habilitado` tinyint(1) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` varchar(45) NOT NULL,
+  `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Municipio_Departamentos1` (`iddepartamento`),
   CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`iddepartamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -502,8 +499,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -544,7 +541,7 @@ CREATE TABLE `sucursales` (
   `idusuario` int(11) DEFAULT NULL COMMENT 'Administrador de la Sucursal',
   `idmunicipio` int(11) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
+  `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Sucursales_Entidades1` (`identidades`),
   KEY `fk_Sucursales_Usuarios1` (`idusuario`),
@@ -572,16 +569,18 @@ CREATE TABLE `tiposfacturas` (
   `descripcion` varchar(45) DEFAULT NULL,
   `habilitado` int(1) DEFAULT NULL,
   `usu` int(11) DEFAULT NULL,
-  `fmodif` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `fmodif` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Descripcion` (`descripcion`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tiposfacturas`
 --
 
 /*!40000 ALTER TABLE `tiposfacturas` DISABLE KEYS */;
-INSERT INTO `tiposfacturas` VALUES  (1,'gfsdfg',1,1,'2011-01-09');
+INSERT INTO `tiposfacturas` VALUES  (1,'Contado',1,1,'2011-01-09 00:00:00'),
+ (2,'Crédito',1,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `tiposfacturas` ENABLE KEYS */;
 
 
@@ -595,18 +594,18 @@ CREATE TABLE `tiposmotocicletas` (
   `descripcion` varchar(45) NOT NULL,
   `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` varchar(45) NOT NULL,
+  `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripcion` (`descripcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tiposmotocicletas`
 --
 
 /*!40000 ALTER TABLE `tiposmotocicletas` DISABLE KEYS */;
-INSERT INTO `tiposmotocicletas` VALUES  (4,'KMF',0,1,'2011-01-09'),
- (8,'KMfdop',1,1,'2011-01-09');
+INSERT INTO `tiposmotocicletas` VALUES  (9,'Turismo',1,1,'2011-01-09 00:00:00'),
+ (10,'Montañeza',1,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `tiposmotocicletas` ENABLE KEYS */;
 
 
@@ -910,6 +909,65 @@ else
   where e.id= id;
 
 end if;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Mantenimientos_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Mantenimientos_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Mantenimientos_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+descripcion nvarchar(45),
+tabla nvarchar (60),
+habilitado nvarchar(1)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from ", Tabla);
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if descripcion<>"" then
+  set @where = concat(@where, " and descripcion like '",descripcion, "%' ");
+end if;
+
+if habilitado<>"" then
+  set @where = concat(@where, " and habilitado =  ", habilitado, " ");
+end if;
+
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 
 
 END $$
