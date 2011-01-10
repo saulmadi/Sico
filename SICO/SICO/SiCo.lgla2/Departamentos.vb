@@ -1,5 +1,5 @@
 ﻿
-
+Imports SiCo.lgla
 Public Class Departamentos
     Inherits TablasTipo
 
@@ -8,8 +8,9 @@ Public Class Departamentos
     Sub New()
         MyBase.New()
 
-        Me.ComandoSelect = "Departamentos_Buscar"
         Me.ComandoMantenimiento = "Departamentos_Mant"
+        Me.TablaBusqueda = "departamentos"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
 
     End Sub
 

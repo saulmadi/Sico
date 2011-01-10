@@ -163,18 +163,23 @@ Public Class crtListadoMantenimiento
 #End Region
 
 #Region "Metodos"
-    Private Sub lanzarbusqueda(ByVal texto As String)
-        If Not Me.subproceso.IsBusy Then
-            Dim c As New Argumento(Entidad)
-            c.entidad = Me.Entidad
-            c.Parametro = Me.NombreParametroBusqueda
-            c.texto = texto
-            Me.Cursor = Cursors.WaitCursor
-            Me.lstBusqueda.DataSource = Nothing
-            Me.lstBusqueda.DisplayMember = Me.CampoAMostrar
-            Me.subproceso.RunWorkerAsync(c)
 
+    Private Sub lanzarbusqueda(ByVal texto As String)
+        If Not Entidad Is Nothing Then
+
+            If Not Me.subproceso.IsBusy Then
+                Dim c As New Argumento(Entidad)
+                c.entidad = Me.Entidad
+                c.Parametro = Me.NombreParametroBusqueda
+                c.texto = texto
+                Me.Cursor = Cursors.WaitCursor
+                Me.lstBusqueda.DataSource = Nothing
+                Me.lstBusqueda.DisplayMember = Me.CampoAMostrar
+                Me.subproceso.RunWorkerAsync(c)
+
+            End If
         End If
+
     End Sub
 
     Public Sub CargarTodo()

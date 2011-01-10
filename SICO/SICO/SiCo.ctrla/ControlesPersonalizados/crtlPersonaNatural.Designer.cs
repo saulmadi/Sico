@@ -184,8 +184,7 @@
             // 
             this.cmbTipoIdentidad.Comando = null;
             this.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTipoIdentidad.FormattingEnabled = true;
-            this.cmbTipoIdentidad.ListaDesplegablePadre = null;
+            this.cmbTipoIdentidad.FormattingEnabled = true;            
             this.cmbTipoIdentidad.Location = new System.Drawing.Point(102, 84);
             this.cmbTipoIdentidad.Name = "cmbTipoIdentidad";
             this.cmbTipoIdentidad.Size = new System.Drawing.Size(380, 21);

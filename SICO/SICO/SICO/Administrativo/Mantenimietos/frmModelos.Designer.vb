@@ -13,7 +13,14 @@ Partial Class frmModelos
             MyBase.Dispose(disposing)
         End Try
     End Sub
+    Public Sub New()
 
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+    End Sub
     'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
 
@@ -34,7 +41,7 @@ Partial Class frmModelos
         Me.CrtTablaTipoDerivada1.Name = "CrtTablaTipoDerivada1"
         Me.CrtTablaTipoDerivada1.Size = New System.Drawing.Size(782, 524)
         Me.CrtTablaTipoDerivada1.TabIndex = 0
-        Me.CrtTablaTipoDerivada1.Titulo = "Modelos "
+        Me.CrtTablaTipoDerivada1.Titulo = "Modelos"
         Me.CrtTablaTipoDerivada1.TituloDerivado = "Marca"
         '
         'frmModelos

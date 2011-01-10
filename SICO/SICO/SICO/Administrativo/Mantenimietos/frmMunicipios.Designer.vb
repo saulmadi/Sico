@@ -13,6 +13,14 @@ Partial Class frmMunicipios
             MyBase.Dispose(disposing)
         End Try
     End Sub
+    Public Sub New()
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+
+    End Sub
 
     'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
@@ -29,11 +37,14 @@ Partial Class frmMunicipios
         '
         'CrtTablaTipoDerivada
         '
+        Me.CrtTablaTipoDerivada.CaracterinicioBusqueda = 3
         Me.CrtTablaTipoDerivada.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrtTablaTipoDerivada.Location = New System.Drawing.Point(0, 0)
         Me.CrtTablaTipoDerivada.Name = "CrtTablaTipoDerivada"
         Me.CrtTablaTipoDerivada.Size = New System.Drawing.Size(787, 504)
         Me.CrtTablaTipoDerivada.TabIndex = 0
+        Me.CrtTablaTipoDerivada.TablaTipo = Nothing
+        Me.CrtTablaTipoDerivada.TablaTipoDerivada = Nothing
         Me.CrtTablaTipoDerivada.Titulo = "Municipios"
         Me.CrtTablaTipoDerivada.TituloDerivado = "Departamento"
         '

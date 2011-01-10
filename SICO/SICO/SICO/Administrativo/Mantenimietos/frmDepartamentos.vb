@@ -21,8 +21,9 @@ Public Class frmDepartamentos
         Me.Close()
     End Sub
     Private Sub frmDepartamentos_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        CrtTablaTipo1.TablaTipo = Departamento
-        CrtTablaTipo1.crtBusqueda.Entidad = (Departamento)
+        'CrtTablaTipo1.TablaTipo = Departamento
+        'CrtTablaTipo1.crtBusqueda.Entidad = (Departamento)
+        CrtTablaTipo1.Modulo = lgla2.ModulosTablasTipo.Departamentos
         CrtTablaTipo1.crtBusqueda.CargarTodo()
     End Sub
 #End Region
