@@ -28,6 +28,14 @@ Partial Class crtTablaTipoDerivada
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
+        'PanelAccion
+        '
+        '
+        'crtBusqueda
+        '
+        Me.crtBusqueda.CampoAMostrar = "descripcion"
+        Me.crtBusqueda.NombreParametroBusqueda = "descripcion"
+        '
         'txtDescripcion
         '
         Me.txtDescripcion.Location = New System.Drawing.Point(89, 19)
@@ -45,14 +53,20 @@ Partial Class crtTablaTipoDerivada
         Me.GroupBox2.Controls.SetChildIndex(Me.txtDescripcion, 0)
         Me.GroupBox2.Controls.SetChildIndex(Me.Label1, 0)
         '
+        'Label1
+        '
+        Me.Label1.TabIndex = 3
+        '
         'Label2
         '
         Me.Label2.Location = New System.Drawing.Point(6, 75)
+        Me.Label2.TabIndex = 5
         '
         'cmbEstado
         '
         Me.cmbEstado.Location = New System.Drawing.Point(89, 72)
         Me.cmbEstado.Size = New System.Drawing.Size(301, 21)
+        Me.cmbEstado.TabIndex = 2
         '
         'lblDerivado
         '
@@ -61,7 +75,7 @@ Partial Class crtTablaTipoDerivada
         Me.lblDerivado.Location = New System.Drawing.Point(6, 48)
         Me.lblDerivado.Name = "lblDerivado"
         Me.lblDerivado.Size = New System.Drawing.Size(60, 13)
-        Me.lblDerivado.TabIndex = 6
+        Me.lblDerivado.TabIndex = 4
         Me.lblDerivado.Text = "lblDerivado"
         '
         'cmbDerivado
@@ -76,7 +90,7 @@ Partial Class crtTablaTipoDerivada
         Me.cmbDerivado.Name = "cmbDerivado"
         Me.cmbDerivado.ParametroAutocompletar = Nothing
         Me.cmbDerivado.Size = New System.Drawing.Size(301, 21)
-        Me.cmbDerivado.TabIndex = 7
+        Me.cmbDerivado.TabIndex = 1
         Me.cmbDerivado.ValueMember = "id"
         '
         'crtTablaTipoDerivada
