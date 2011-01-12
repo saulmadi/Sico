@@ -138,6 +138,9 @@ Public Class crtTablaTipo
     End Sub
 
     Private Sub crtTablaTipo_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        crtBusqueda.NombreParametroBusqueda = "descripcion"
+        _TalaTipo = TablaTipo
+        crtBusqueda.CampoAMostrar = "descripcion"
         Me.PanelAccion.BotonImprimir.Enabled = False
         Me.PanelAccion.BotonImprimir.Visible = False
 

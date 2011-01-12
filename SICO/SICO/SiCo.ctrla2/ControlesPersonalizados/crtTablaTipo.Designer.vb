@@ -20,9 +20,7 @@ Partial Class crtTablaTipo
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        crtBusqueda.NombreParametroBusqueda = "descripcion"
-        _TalaTipo = TablaTipo
-        crtBusqueda.CampoAMostrar = "descripcion"
+        
     End Sub
 
     'Requerido por el Diseñador de Windows Forms
@@ -64,7 +62,6 @@ Partial Class crtTablaTipo
         Me.crtBusqueda.CaracteresSegundaBusqueda = 6
         Me.crtBusqueda.CargarInicio = True
         Me.crtBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.crtBusqueda.Entidad = Nothing
         Me.crtBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.crtBusqueda.Location = New System.Drawing.Point(3, 16)
         Me.crtBusqueda.Name = "crtBusqueda"
