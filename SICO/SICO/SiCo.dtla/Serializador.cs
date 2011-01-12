@@ -12,7 +12,6 @@ namespace SiCo.dtla
         #region Declaraciones
         private BinaryFormatter _Serializador = new BinaryFormatter();
         private object _Objeto = new object();
-        public event ErroresEventArgs Errores;
         
         #endregion 
         
@@ -56,9 +55,8 @@ namespace SiCo.dtla
             }
             catch (Exception ex)
             {
-               if(Errores!=null)
-               Errores(ex.Message);
-               throw new ApplicationException(ex.Message,ex);  
+              
+               throw new ApplicationException("Error en la configuración del sistema. \n Vuelva a configurar.",ex);  
 
             }
             return _Objeto;            
@@ -78,9 +76,8 @@ namespace SiCo.dtla
             }
             catch (Exception ex)
             {
-                if (Errores != null)
-                Errores (ex.Message);
-                throw new ApplicationException(ex.Message, ex);  
+               
+                throw new ApplicationException("Error al guardar el archivo. \n la configuración no se realizó", ex);  
             }
         }
 

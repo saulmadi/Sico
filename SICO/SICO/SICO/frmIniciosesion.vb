@@ -20,6 +20,8 @@
     End Sub
 
     Private Sub btnconfig_LinkClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles btnconfig.LinkClicked
+        Dim frm As New frmConfiguracionBDD
+        frm.ShowDialog()
 
     End Sub
 End Class

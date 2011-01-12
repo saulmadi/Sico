@@ -15,9 +15,8 @@ namespace SiCo.dtla
             [NonSerialized]private Serializador  _Serializador = new Serializador();
             [NonSerialized]private MySqlConnection _Conexion = new MySqlConnection();
             [NonSerialized]private ConexionMySql _Instancia;
-            [NonSerialized]private ClavesRegistro _ClavesRegistro = new ClavesRegistro(); 
-
-            public event ErroresEventArgs Errores;
+            [NonSerialized]
+            private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
         #endregion                 
 
         #region Construtor
@@ -31,14 +30,13 @@ namespace SiCo.dtla
             _Instancia = this; 
             if (Cargar)
                 this.Cargar();
-            _Serializador.Errores += new ErroresEventArgs(_Serializador_Errores);
+ 
  
         }
 
          public ConexionMySql()
          {
              _Instancia = this;
-             _Serializador.Errores += new ErroresEventArgs(_Serializador_Errores);
  
          }
 
@@ -131,7 +129,7 @@ namespace SiCo.dtla
 
         void _Serializador_Errores(string Mensaje)
         {
-            Errores (Mensaje); 
+          
         }
 
         #endregion
@@ -158,8 +156,7 @@ namespace SiCo.dtla
             }
             catch( Exception ex)
             {
-                if (Errores != null)
-                Errores (ex.Message);
+                
 
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
                      "\n        Contacte al administador de Sistema  " , ex);  
@@ -187,9 +184,7 @@ namespace SiCo.dtla
             }
             catch (Exception ex)
             {
-                if (Errores != null)
-                Errores (ex.Message);
-
+                
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
                      "\n       Contacte al administador de Sistema  ", ex);  
             }
@@ -201,9 +196,16 @@ namespace SiCo.dtla
         /// </summary>
         public void Guardar()
         {
-            _Serializador.Directorio = Archivo;
-            _Serializador.Objeto = _Instancia;
-            _Serializador.Guardar(); 
+            try
+            {
+                _Serializador.Directorio = Archivo;
+                _Serializador.Objeto = _Instancia;
+                _Serializador.Guardar(); 
+            }
+            catch(Exception ex) 
+            {
+                throw new ApplicationException(ex.Message,ex); 
+            }           
         }
 
         /// <summary>
@@ -211,18 +213,26 @@ namespace SiCo.dtla
         /// </summary>
         public void Cargar()
         {
-            
-            _Instancia = this;           
-            
-            _Serializador.Objeto = _Instancia ;
-            _Serializador.Directorio = Archivo;
-           _Instancia=(ConexionMySql) _Serializador.Cargar();
-           this.BaseDatos = _Instancia.BaseDatos;
-           this.Servidor = _Instancia.Servidor;
-           this.Usuario = _Instancia.Usuario;
-           this.Contrasena = _Instancia.Contrasena;
-           this.Puerto = _Instancia.Puerto;
+            try
+            {
+                _Instancia = this;
+
+                _Serializador.Objeto = _Instancia;
+                _Serializador.Directorio = Archivo;
+                _Instancia = (ConexionMySql)_Serializador.Cargar();
+                this.BaseDatos = _Instancia.BaseDatos;
+                this.Servidor = _Instancia.Servidor;
+                this.Usuario = _Instancia.Usuario;
+                this.Contrasena = _Instancia.Contrasena;
+                this.Puerto = _Instancia.Puerto;
            
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message, ex); 
+            }
+            
+          
         }
 
         /// <summary>

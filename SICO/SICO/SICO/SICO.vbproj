@@ -223,6 +223,12 @@
     <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmVentas.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmConfiguracionBDD.Designer.vb">
+      <DependentUpon>frmConfiguracionBDD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmConfiguracionBDD.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIniciosesion.Designer.vb">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </Compile>
@@ -400,6 +406,9 @@
     <EmbeddedResource Include="Factuacion\TransaccionesCaja\Ventas\frmVentas.resx">
       <DependentUpon>frmVentas.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmConfiguracionBDD.resx">
+      <DependentUpon>frmConfiguracionBDD.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmIniciosesion.resx">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </EmbeddedResource>
@@ -496,6 +505,10 @@
     <ProjectReference Include="..\SiCo.ctrla\SiCo.ctrla.csproj">
       <Project>{4F3D43B5-6B88-41AD-A21B-07451C7EF7F3}</Project>
       <Name>SiCo.ctrla</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SiCo.dtla\SiCo.dtla.csproj">
+      <Project>{D4D335B3-0AAA-44F2-A150-8263A93E53F7}</Project>
+      <Name>SiCo.dtla</Name>
     </ProjectReference>
     <ProjectReference Include="..\SiCo.lgla2\SiCo.lgla2.vbproj">
       <Project>{AAA06334-AE0B-49B8-A76A-531B401D4A5B}</Project>

@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="CambioIdEventArgs.cs" />
     <Compile Include="CargoTablaHandle.cs" />
+    <Compile Include="Configuracion.cs" />
     <Compile Include="Entidad.cs" />
     <Compile Include="ErroresEventsArgs.cs" />
     <Compile Include="Generales.cs" />
