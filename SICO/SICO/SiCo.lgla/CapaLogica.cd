@@ -16,7 +16,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBgkFAAUAUQ=</HashCode>
+      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBglFAAUAUQ=</HashCode>
       <FileName>Entidad.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -48,8 +48,8 @@
       <FileName>Entidades.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.TipoIdentidad">
-    <Position X="6.75" Y="2.25" Width="1.5" />
+  <Class Name="SiCo.lgla.TipoIdentidad" Collapsed="true">
+    <Position X="6.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>TipoIdentidad.cs</FileName>
@@ -69,22 +69,6 @@
       <FileName>PersonaJuridica.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.EntidadInstanciable">
-    <Position X="5.5" Y="5.25" Width="2.25" />
-    <Compartments>
-      <Compartment Name="Fields" Collapsed="true" />
-      <Compartment Name="Properties" Collapsed="true" />
-      <Compartment Name="Events" Collapsed="true" />
-      <Compartment Name="Methods" Collapsed="true" />
-    </Compartments>
-    <TypeIdentifier>
-      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBgkFAAUAUQ=</HashCode>
-      <FileName>Entidad.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Usuario" />
-    </ShowAsAssociation>
-  </Class>
   <Class Name="SiCo.lgla.Ticket" Collapsed="true">
     <Position X="10" Y="2.25" Width="1.5" />
     <TypeIdentifier>
@@ -97,6 +81,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Generales.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla.Configuracion">
+    <Position X="6.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Configuracion.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Delegate Name="SiCo.lgla.ErroresEventHandler" Collapsed="true">

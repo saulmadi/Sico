@@ -36,12 +36,12 @@ Public Class crtTablaTipo
         End Set
     End Property
 
-
     <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property TablaTipo() As TablasTipo
         Get
             Return _TalaTipo
         End Get
+
         Set(ByVal value As TablasTipo)
             _TalaTipo = value
 
@@ -51,15 +51,23 @@ Public Class crtTablaTipo
 
     <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property Modulo() As ModulosTablasTipo
+
         Get
             Return _Modulo
         End Get
+
         Set(ByVal value As ModulosTablasTipo)
             _Modulo = value
-            _Nombre.ModuloTablaTipo = value
-            crtBusqueda.Entidad = _Nombre.Instancias
-            TablaTipo = _Nombre.Instancias
+            Try
+                _Nombre.ModuloTablaTipo = value
+                crtBusqueda.Entidad = _Nombre.Instancias
+                TablaTipo = _Nombre.Instancias
+            Catch ex As Exception
+
+            End Try
+
         End Set
+
     End Property
 
 #End Region

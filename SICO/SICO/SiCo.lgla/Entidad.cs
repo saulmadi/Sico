@@ -28,15 +28,21 @@ namespace SiCo.lgla
         #region Construtor
         public Entidad()
         {
-            
-            _Conexion.Cargar(); 
-            _Conexion.Errores += new ErroresEventArgs(_Conexion_Errores);
-            this.CargoTabla += new CargoTablaEventHandler(Entidad_CargoTabla);
-            this.CambioId += new CambioIdEventHandler(Entidad_CambioId);
-            this.ColeccionParametrosBusqueda.Add(new Parametro("id", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro  ("id", null,ParameterDirection.InputOutput  ));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif",null));
+
+            try
+            {
+                _Conexion.Cargar();
+                this.CargoTabla += new CargoTablaEventHandler(Entidad_CargoTabla);
+                this.CambioId += new CambioIdEventHandler(Entidad_CambioId);
+                this.ColeccionParametrosBusqueda.Add(new Parametro("id", null));
+                this.ColeccionParametrosMantenimiento.Add(new Parametro("id", null, ParameterDirection.InputOutput));
+                this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", null));
+                this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif", null));
+            }
+            catch(Exception ex)
+            {
+                throw new ApplicationException(ex.Message, ex);  
+            }           
              
         }            
       

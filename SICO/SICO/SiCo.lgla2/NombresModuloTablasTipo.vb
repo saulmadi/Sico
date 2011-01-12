@@ -53,6 +53,7 @@ Public Class NombresModuloTablasTipo
 
         Return String.Empty
     End Function
+
     Public Shared Function InstanciaTablaTipo(ByVal Tablastipo As ModulosTablasTipo) As Object
         Select Case Tablastipo
             Case ModulosTablasTipo.Departamentos

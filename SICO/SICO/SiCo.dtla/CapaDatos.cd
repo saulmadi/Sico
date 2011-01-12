@@ -9,10 +9,9 @@
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
-      <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIABgAAkBAAAAAA=</HashCode>
+      <HashCode>ACAEAQAAAACAAAIEIgAAAgAEAgAACIABgAAEBAAAAAA=</HashCode>
       <FileName>ConexionMySql.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -29,7 +28,6 @@
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Properties" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
-      <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAQAAABAAgAAAAAAAAAgBAAAAAA=</HashCode>
@@ -39,7 +37,7 @@
   <Class Name="SiCo.dtla.ClavesRegistro">
     <Position X="3.75" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ClavesRegistro.cs</FileName>
     </TypeIdentifier>
   </Class>
