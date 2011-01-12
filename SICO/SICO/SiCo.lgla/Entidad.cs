@@ -275,8 +275,7 @@ namespace SiCo.lgla
                 catch (Exception ex)
                 {
                     Transaccion.Rollback();
-                    if (this.Errores != null)
-                        this.Errores("Error en la ejecución de guardado \n" + ex.Message);
+                    
                     throw new ApplicationException("Error en la ejecución de guardado \n" + ex.Message);
                 }
                 finally

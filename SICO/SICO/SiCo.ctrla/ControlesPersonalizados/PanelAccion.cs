@@ -145,7 +145,8 @@ namespace SiCo.ctrla
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             if (this.Cancelar  != null)
-                this.Cancelar();
+                this.Cancelar();            
+
         }
 
         #endregion               

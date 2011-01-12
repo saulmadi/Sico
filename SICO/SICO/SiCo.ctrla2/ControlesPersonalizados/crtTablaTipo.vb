@@ -8,6 +8,7 @@ Public Class crtTablaTipo
     Private WithEvents _TalaTipo As TablasTipo
     Protected _Modulo As ModulosTablasTipo = ModulosTablasTipo.Departamentos
     Protected _Nombre As New NombresModuloTablasTipo(_Modulo)
+    Protected _TipoControl As TipoControl = TipoControl.TablaTipo
     Public Event CambioTablaTipo()
 #End Region
 
@@ -70,22 +71,20 @@ Public Class crtTablaTipo
 
     End Property
 
+    Protected Property TipoControl() As TipoControl
+        Get
+            Return _TipoControl
+        End Get
+        Set(ByVal value As TipoControl)
+            _TipoControl = value
+        End Set
+    End Property
+
 #End Region
 
-#Region "Eventos"
+#Region "Metodos"
 
-    Private Sub crtBusqueda_Limpio() Handles crtBusqueda.Limpio
-        If Me.TablaTipo.Id > 0 Then
-            Me.TablaTipo = Me._Nombre.Instancias
-        End If
-
-    End Sub
-
-    Private Sub crtBusqueda_SeleccionItem(ByVal Item As System.Object) Handles crtBusqueda.SeleccionItem
-        Me.TablaTipo = Item
-    End Sub
-
-    Protected Overridable Sub PanelAccion_Guardar() Handles PanelAccion.Guardar
+    Protected Overridable Sub Guardar()
         Try
             Dim val As New SiCo.ctrla.Validador()
             Dim flag As Boolean = True
@@ -115,13 +114,31 @@ Public Class crtTablaTipo
             End If
 
         Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion.lblEstado.Text = "Error guardando"
             PanelAccion.BarraProgreso.Value = 0
             Me.Cursor = Cursors.Default
 
         End Try
+    End Sub
 
+#End Region
 
+#Region "Eventos"
+
+    Private Sub crtBusqueda_Limpio() Handles crtBusqueda.Limpio
+        If Me.TablaTipo.Id > 0 Then
+            Me.TablaTipo = Me._Nombre.Instancias
+        End If
+
+    End Sub
+
+    Private Sub crtBusqueda_SeleccionItem(ByVal Item As System.Object) Handles crtBusqueda.SeleccionItem
+        Me.TablaTipo = Item
+    End Sub
+
+    Protected Overridable Sub PanelAccion_Guardar() Handles PanelAccion.Guardar
+        Guardar()
     End Sub
 
     Private Sub PanelAccion_Nuevo() Handles PanelAccion.Nuevo
@@ -145,11 +162,6 @@ Public Class crtTablaTipo
         Me.PanelAccion.BotonImprimir.Visible = False
 
     End Sub
-
-    Private Sub _TalaTipo_Errores(ByVal Mensaje As String) Handles _TalaTipo.Errores
-        MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    End Sub
-
 #End Region
 
 End Class
