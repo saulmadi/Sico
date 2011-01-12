@@ -17,6 +17,7 @@
     Private Sub Cancelar()
         Me.Close()
     End Sub
+
     Private Sub frmDepartamentos_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Dim marca As New SICO.lgla2.Marcas
         crtTablaTipo1.TablaTipo = marca

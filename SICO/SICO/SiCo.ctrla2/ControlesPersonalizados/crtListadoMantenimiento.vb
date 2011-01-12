@@ -1,5 +1,6 @@
 ﻿Imports SiCo.lgla
 Imports System.ComponentModel
+Imports System.Diagnostics
 Public Class crtListadoMantenimiento
 
 #Region "Declaraciones"
@@ -30,7 +31,7 @@ Public Class crtListadoMantenimiento
 
 #Region "Propiedades"
 
-    <Browsable(False), EditorBrowsable(EditorBrowsableState.Advanced)> _
+    <Browsable(False), EditorBrowsable(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property Entidad() As Entidad
         Get
             Return _Entidad
