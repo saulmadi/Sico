@@ -134,6 +134,13 @@ namespace SiCo.ctrla
 
         private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            if (e.Error !=null)
+            {
+                MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Cursor = Cursors.Default;
+                return;                
+            }
+
             if (Entidad.TotalRegistros > 0)
             {
                 string d = DisplayMember; 

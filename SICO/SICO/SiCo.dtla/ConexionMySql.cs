@@ -159,7 +159,7 @@ namespace SiCo.dtla
                 
 
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n        Contacte al administador de Sistema  " , ex);  
+                     "\n        Contacte al administador de Sistema o intente más tarde.  " , ex);  
             }
             return flag;  
 
