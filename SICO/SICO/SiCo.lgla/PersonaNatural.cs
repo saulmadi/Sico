@@ -22,7 +22,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
         }
-        public PersonaNatural(Int32 id, string NombreCompleto,TipoIdentidad TipoIdentidad, string Identificacion,string correo, string direccion, string rtn , int Telefono):base( )
+        public PersonaNatural(long? id, string NombreCompleto,TipoIdentidad TipoIdentidad, string Identificacion,string correo, string direccion, string rtn , int? Telefono,int? telefono2):base( )
         {
             this.ComandoSelect = "PersonaNatural_buscar";
             this._espersonanatural = true;
@@ -37,6 +37,7 @@ namespace SiCo.lgla
             this.direccion = direccion;
             this.rtn = rtn;
             this.telefono = Telefono;
+            this.telefono2 = telefono2; 
 
 
         }
@@ -62,9 +63,18 @@ namespace SiCo.lgla
             set{ _TipoIdentidad=value ;}
         }
 
+        public string NombreCompletoMostrar
+        {
+            get
+            {
+                return NombreCompleto.Replace("@", " "); 
+            } 
+        }
+
         #endregion        
         
         #region Metodos
+
         protected override void CargadoPropiedades(int Indice)
         {
             if (this.TotalRegistros > 0)
@@ -73,9 +83,8 @@ namespace SiCo.lgla
                 this.identificacion = this.Registro(Indice,"identificacion").ToString();
                 if (Registro(Indice,"tipo").ToString() == "I")
                     this.tipoidentidad = new TipoIdentidad("Identidad", "I");
-                else if (Registro(Indice,"tipo").ToString() == "P")
-                    this.tipoidentidad = new TipoIdentidad("Pasaporte", "P");
-                else this.tipoidentidad = new TipoIdentidad("Menor de Edad", "M");
+                else if (Registro(Indice,"tipo").ToString() == "R")
+                    this.tipoidentidad = new TipoIdentidad("Residencia", "R");                
                 base.CargadoPropiedades( Indice);                
             }            
         }       
@@ -91,6 +100,35 @@ namespace SiCo.lgla
             
         }
 
+        public static string CrearNombreCompleto(string NombreCompleto, ref string PrimerNombre, ref string SegundoNombre, ref string PrimerApellido, ref string SegundoApellido)
+        {
+            
+            if (NombreCompleto != string.Empty)
+            {
+                if (NombreCompleto.Contains(" "))
+                {
+                    string[] Nombre;
+                    Nombre = NombreCompleto.Split(' ');                    
+                    PrimerNombre = Nombre[0];
+                    SegundoNombre = Nombre [1];
+                    PrimerApellido =Nombre[2];
+                    SegundoApellido = Nombre[3];
+                }
+                else
+                {
+                    PrimerNombre = NombreCompleto;
+                
+                }
+                return NombreCompleto;
+            }
+            else 
+            {
+                return PrimerNombre.Trim()  + " "+ SegundoNombre.Trim() + " " + PrimerApellido .Trim()+" "+SegundoApellido.Trim();   
+            }
+
+
+        }
+
         public  override void  Guardar()
         {
             this.NullParametrosMantenimiento(); 
@@ -99,7 +137,19 @@ namespace SiCo.lgla
             this.ValorParametrosMantenimiento("tipoIdentidad", this.tipoidentidad);           
             base.Guardar();
         }
-        
+
+        public override object TablaAColeccion()
+        {
+            base.TablaAColeccion();
+            List<PersonaNatural> lista = new List<PersonaNatural>();
+            for (int i = 0; i < this.TotalRegistros - 1; i++)
+            {
+                this.CargadoPropiedades(i);
+                PersonaNatural pntemp = new PersonaNatural(this._Id, this.NombreCompleto, this.tipoidentidad,this.identificacion , this.correo, this.direccion, this.rtn, this.telefono,this.telefono2);
+                
+            }
+            return lista; 
+        }
         
         #endregion
 

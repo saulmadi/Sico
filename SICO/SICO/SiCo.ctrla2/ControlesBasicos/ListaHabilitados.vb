@@ -22,6 +22,7 @@ Public Class ListaHabilitados
             MyBase.DisplayMember = "Descripcion"
             MyBase.ValueMember = "Valor"
             MyBase.SelectedIndex = 0
+
         Catch ex As Exception
 
         End Try

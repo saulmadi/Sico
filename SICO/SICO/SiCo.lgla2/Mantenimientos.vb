@@ -71,7 +71,7 @@ Public MustInherit Class Mantenimientos
     Private Function CrearPersonaNatural() As PersonaNatural
         Dim i As Integer = PrimerRegistro("identidades")
         If Not i = Nothing Then
-            Return New PersonaNatural(i, PrimerRegistro("entidadnombre"), New TipoIdentidad(PrimerRegistro("tipoidentificacion").ToString()), PrimerRegistro("identificacion").ToString, PrimerRegistro("correo"), PrimerRegistro("direccion"), PrimerRegistro("rtn"), PrimerRegistro("telefono"))
+            Return New PersonaNatural(i, PrimerRegistro("entidadnombre"), New TipoIdentidad(PrimerRegistro("tipoidentificacion").ToString()), PrimerRegistro("identificacion").ToString, PrimerRegistro("correo"), PrimerRegistro("direccion"), PrimerRegistro("rtn"), PrimerRegistro("telefono"), PrimerRegistro("telefono2"))
         End If
         Return Nothing
     End Function

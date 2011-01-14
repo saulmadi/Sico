@@ -3,30 +3,33 @@ Public Class TablasTipoDerivadas
     Inherits TablasTipo
 
 #Region "Declaraciones"
-    Private _idDerivada As Integer
+    Private _idDerivada As Long
 #End Region
 
 #Region "Constructor"
+
     Sub New()
         MyBase.New()
 
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idderivada", Nothing))
     End Sub
-    Sub New(ByVal id As Integer, ByVal descripcion As String, ByVal habilitado As Integer, ByVal idDeriva As Integer)
+
+    Sub New(ByVal id As Integer, ByVal descripcion As String, ByVal habilitado As Integer, ByVal idDeriva As Long)
         MyBase.New(id, descripcion, habilitado)
 
         Me.idDerivada = idDeriva
 
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idderivada", Nothing))
     End Sub
+
 #End Region
 
 #Region "propiedades"
-    Public Property idDerivada() As Integer
+    Public Property idDerivada() As Long
         Get
             Return _idDerivada
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Long)
             _idDerivada = value
         End Set
     End Property

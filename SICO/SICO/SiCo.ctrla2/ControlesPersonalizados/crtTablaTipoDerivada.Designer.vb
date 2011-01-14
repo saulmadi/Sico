@@ -45,7 +45,7 @@ Partial Class crtTablaTipoDerivada
         '
         Me.GroupBox2.Controls.Add(Me.cmbDerivado)
         Me.GroupBox2.Controls.Add(Me.lblDerivado)
-        Me.GroupBox2.Size = New System.Drawing.Size(396, 130)
+        Me.GroupBox2.Size = New System.Drawing.Size(396, 107)
         Me.GroupBox2.Controls.SetChildIndex(Me.Label2, 0)
         Me.GroupBox2.Controls.SetChildIndex(Me.cmbEstado, 0)
         Me.GroupBox2.Controls.SetChildIndex(Me.lblDerivado, 0)

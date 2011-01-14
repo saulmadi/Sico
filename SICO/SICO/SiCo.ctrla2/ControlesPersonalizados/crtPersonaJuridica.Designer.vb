@@ -38,12 +38,10 @@ Partial Class crtPersonaJuridica
         '
         'txtNombre
         '
-        Me.txtNombre.AutoCompletar = True
+
         Me.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
         Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtNombre.CampoMostrar = "NombreCompleto"
-        Me.txtNombre.CaracteresInicio = 3
-        Me.txtNombre.ColeccionParametros = CType(resources.GetObject("txtNombre.ColeccionParametros"), System.Collections.Generic.List(Of SiCo.lgla.Parametro))
+        
         Me.txtNombre.ColorError = System.Drawing.Color.Red
         Me.txtNombre.EsObligatorio = False
         Me.txtNombre.ExpresionValidacion = Nothing
@@ -51,8 +49,7 @@ Partial Class crtPersonaJuridica
         Me.txtNombre.MaxLength = 255
         Me.txtNombre.MensajeError = Nothing
         Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.ParameteroBusqueda = "NombreCompleto"
-        Me.txtNombre.Procedimiento = "PersonaNatural_Buscar"
+        
         Me.txtNombre.Size = New System.Drawing.Size(380, 20)
         Me.txtNombre.TabIndex = 32
         Me.txtNombre.Texto = Nothing
@@ -182,7 +179,7 @@ Partial Class crtPersonaJuridica
         Me.PerformLayout()
 
     End Sub
-    Private WithEvents txtNombre As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
+    Private WithEvents txtNombre As SiCo.ctrla.CajaTexto
     Private WithEvents txtrtn As SiCo.ctrla.CajaTexto
     Private WithEvents txtCorreo As SiCo.ctrla.CorreoCajaTexto
     Private WithEvents txtdireccion As SiCo.ctrla.CajaTexto

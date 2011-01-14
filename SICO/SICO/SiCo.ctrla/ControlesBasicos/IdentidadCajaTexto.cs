@@ -25,7 +25,8 @@ namespace SiCo.ctrla
             InitializeComponent();
             SetValidacion();
         }
-        [Browsable(false),EditorBrowsable(EditorBrowsableState.Never)]
+
+        [Browsable(false),EditorBrowsable(EditorBrowsableState.Advanced ), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SiCo.lgla.TipoIdentidad   TipoIdentificacion
         {
             get { return _TipoIdentificacion; }
@@ -37,23 +38,14 @@ namespace SiCo.ctrla
                     case "I":
                         this.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]";
                         this.MaxLength = 15;
-                        this.Enabled = true ;
-                        if (this.Text.Trim() =="Menor de Edad")
-                        this.Text = "";
+                        this.Enabled = true ;                                  
                         break;
-                    case "P":
+                    case "R":
                         this.ExpresionValidacion = "";
                         this.MaxLength = 45;
-                        this.Enabled = true;
-                        if (this.Text.Trim() =="Menor de Edad")
-                        this.Text = "";
+                        this.Enabled = true;                                     
                         break;
-                    case "M":
-                        this.ExpresionValidacion = "";
-                        this.MaxLength = 45;
-                        this.Enabled=false;
-                        this.Text="Menor de Edad";
-                        break; 
+                    
                 }
 
             }
