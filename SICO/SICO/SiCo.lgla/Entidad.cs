@@ -21,7 +21,7 @@ namespace SiCo.lgla
         [NonSerialized]private Usuario _Usuario;
         [NonSerialized]private List<Parametro> _ColeccionParametrosBusqueda= new List<Parametro> ();
         [NonSerialized]protected  List<Parametro> _ColeccionParametrosMantenimiento = new List<Parametro>();
-        protected int? _Id =0;
+        protected long? _Id =0;
         
         #endregion
 
@@ -102,7 +102,7 @@ namespace SiCo.lgla
         /// <summary>
         /// Id de la entidad
         /// </summary>
-        public Int32? Id
+        public long? Id
         {
             get
             {
@@ -370,7 +370,7 @@ namespace SiCo.lgla
                     {
                         parametro[x].Valor = i.Value;
                         if (i.ParameterName == "id")
-                            _Id =(Int32?) i.Value;
+                            _Id =(long?) i.Value;
                     } 
                 } 
             }                       
@@ -412,7 +412,7 @@ namespace SiCo.lgla
             return null;
         }
 
-        public virtual  void Buscar(Int32? id)
+        public virtual  void Buscar(long? id)
         {
             NullParametrosBusqueda();
             ValorParametrosBusqueda("id", id.ToString());

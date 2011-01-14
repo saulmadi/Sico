@@ -15,7 +15,7 @@ namespace SiCo.lgla
             }
             else
             {
-                this.Descripcion="Pasaporte";
+                this.Descripcion="Residencia";
             }
 
         }

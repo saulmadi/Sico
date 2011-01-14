@@ -23,12 +23,25 @@ Partial Class frmVentaMotocicleta
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentaMotocicleta))
-        Dim TipoIdentidad9 As SICO.lgla.TipoIdentidad = New SICO.lgla.TipoIdentidad
-        Dim TipoIdentidad10 As SICO.lgla.TipoIdentidad = New SICO.lgla.TipoIdentidad
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
+        Me.Label13 = New System.Windows.Forms.Label
+        Me.CajaTexto9 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label8 = New System.Windows.Forms.Label
+        Me.CajaTexto5 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.ListaDesplegable2 = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.Label10 = New System.Windows.Forms.Label
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.Label11 = New System.Windows.Forms.Label
+        Me.Label12 = New System.Windows.Forms.Label
+        Me.CajaTexto4 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CajaTexto6 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label14 = New System.Windows.Forms.Label
+        Me.CajaTexto7 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label15 = New System.Windows.Forms.Label
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label2 = New System.Windows.Forms.Label
@@ -48,48 +61,13 @@ Partial Class frmVentaMotocicleta
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.CrtPersonaNatural1 = New SICO.ctrla2.crtPersonaNatural
-        Me.txtApellidos = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.txtNombre = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.txtrtn = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtCorreo = New SICO.ctrla.CorreoCajaTexto(Me.components)
-        Me.txtdireccion = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txttelefono = New SICO.ctrla.CajaTexto(Me.components)
-        Me.cmbTipoIdentidad = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.txtidentifiacion = New SICO.ctrla.IdentidadCajaTexto(Me.components)
-        Me.AutoCompleteCajaTexto1 = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.AutoCompleteCajaTexto2 = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CorreoCajaTexto1 = New SICO.ctrla.CorreoCajaTexto(Me.components)
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.IdentidadCajaTexto1 = New SICO.ctrla.IdentidadCajaTexto(Me.components)
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.Label13 = New System.Windows.Forms.Label
-        Me.CajaTexto9 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label
-        Me.CajaTexto5 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.ListaDesplegable2 = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.Label12 = New System.Windows.Forms.Label
-        Me.CajaTexto4 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto6 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Label14 = New System.Windows.Forms.Label
-        Me.CajaTexto7 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Label15 = New System.Windows.Forms.Label
+        Me.TabPage2 = New System.Windows.Forms.TabPage
+        Me.TabControl1 = New System.Windows.Forms.TabControl
+        Me.TabPage1 = New System.Windows.Forms.TabPage
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -98,9 +76,6 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.CrtPersonaNatural1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -141,6 +116,189 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Motocicleta"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(16, 100)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(68, 13)
+        Me.Label13.TabIndex = 49
+        Me.Label13.Text = "Horse Power"
+        '
+        'CajaTexto9
+        '
+        Me.CajaTexto9.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto9.EsObligatorio = False
+        Me.CajaTexto9.ExpresionValidacion = Nothing
+        Me.CajaTexto9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto9.Location = New System.Drawing.Point(122, 97)
+        Me.CajaTexto9.MaxLength = 255
+        Me.CajaTexto9.MensajeError = Nothing
+        Me.CajaTexto9.Name = "CajaTexto9"
+        Me.CajaTexto9.Size = New System.Drawing.Size(335, 20)
+        Me.CajaTexto9.TabIndex = 48
+        Me.CajaTexto9.Texto = Nothing
+        Me.CajaTexto9.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(16, 126)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(26, 13)
+        Me.Label8.TabIndex = 47
+        Me.Label8.Text = "Año"
+        '
+        'CajaTexto5
+        '
+        Me.CajaTexto5.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto5.EsObligatorio = False
+        Me.CajaTexto5.ExpresionValidacion = Nothing
+        Me.CajaTexto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto5.Location = New System.Drawing.Point(122, 123)
+        Me.CajaTexto5.MaxLength = 255
+        Me.CajaTexto5.MensajeError = Nothing
+        Me.CajaTexto5.Name = "CajaTexto5"
+        Me.CajaTexto5.Size = New System.Drawing.Size(335, 20)
+        Me.CajaTexto5.TabIndex = 46
+        Me.CajaTexto5.Texto = Nothing
+        Me.CajaTexto5.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(122, 203)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(335, 21)
+        Me.ComboBox2.TabIndex = 45
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(16, 206)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(100, 13)
+        Me.Label9.TabIndex = 44
+        Me.Label9.Text = "Tipo de motocicleta"
+        '
+        'ListaDesplegable2
+        '
+        Me.ListaDesplegable2.CargarAutoCompletar = False
+        Me.ListaDesplegable2.FormattingEnabled = True
+        Me.ListaDesplegable2.ListaDesplegablePadre = Nothing
+        Me.ListaDesplegable2.Location = New System.Drawing.Point(122, 176)
+        Me.ListaDesplegable2.Name = "ListaDesplegable2"
+        Me.ListaDesplegable2.ParametroAutocompletar = Nothing
+        Me.ListaDesplegable2.Size = New System.Drawing.Size(335, 21)
+        Me.ListaDesplegable2.TabIndex = 43
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(16, 179)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(42, 13)
+        Me.Label10.TabIndex = 42
+        Me.Label10.Text = "Modelo"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(122, 149)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(335, 21)
+        Me.ComboBox1.TabIndex = 41
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(16, 152)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(37, 13)
+        Me.Label11.TabIndex = 40
+        Me.Label11.Text = "Marca"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(16, 74)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(49, 13)
+        Me.Label12.TabIndex = 39
+        Me.Label12.Text = "Cilindraje"
+        '
+        'CajaTexto4
+        '
+        Me.CajaTexto4.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto4.EsObligatorio = False
+        Me.CajaTexto4.ExpresionValidacion = Nothing
+        Me.CajaTexto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto4.Location = New System.Drawing.Point(122, 71)
+        Me.CajaTexto4.MaxLength = 255
+        Me.CajaTexto4.MensajeError = Nothing
+        Me.CajaTexto4.Name = "CajaTexto4"
+        Me.CajaTexto4.Size = New System.Drawing.Size(335, 20)
+        Me.CajaTexto4.TabIndex = 38
+        Me.CajaTexto4.Texto = Nothing
+        Me.CajaTexto4.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
+        'CajaTexto6
+        '
+        Me.CajaTexto6.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto6.EsObligatorio = False
+        Me.CajaTexto6.ExpresionValidacion = Nothing
+        Me.CajaTexto6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto6.Location = New System.Drawing.Point(122, 45)
+        Me.CajaTexto6.MaxLength = 255
+        Me.CajaTexto6.MensajeError = Nothing
+        Me.CajaTexto6.Name = "CajaTexto6"
+        Me.CajaTexto6.Size = New System.Drawing.Size(335, 20)
+        Me.CajaTexto6.TabIndex = 37
+        Me.CajaTexto6.Texto = Nothing
+        Me.CajaTexto6.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label14.Location = New System.Drawing.Point(16, 48)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(38, 13)
+        Me.Label14.TabIndex = 36
+        Me.Label14.Text = "Chasis"
+        '
+        'CajaTexto7
+        '
+        Me.CajaTexto7.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto7.EsObligatorio = False
+        Me.CajaTexto7.ExpresionValidacion = Nothing
+        Me.CajaTexto7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto7.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CajaTexto7.Location = New System.Drawing.Point(122, 19)
+        Me.CajaTexto7.MaxLength = 255
+        Me.CajaTexto7.MensajeError = Nothing
+        Me.CajaTexto7.Name = "CajaTexto7"
+        Me.CajaTexto7.Size = New System.Drawing.Size(335, 20)
+        Me.CajaTexto7.TabIndex = 35
+        Me.CajaTexto7.Texto = Nothing
+        Me.CajaTexto7.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(16, 22)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(34, 13)
+        Me.Label15.TabIndex = 34
+        Me.Label15.Text = "Motor"
         '
         'Panel7
         '
@@ -322,352 +480,10 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox2.Controls.Add(Me.TabControl1)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 51)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(522, 120)
+        Me.GroupBox2.Size = New System.Drawing.Size(731, 120)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cliente"
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(6, 19)
-        Me.TabControl1.Multiline = True
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(503, 91)
-        Me.TabControl1.TabIndex = 2
-        '
-        'TabPage1
-        '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage1.Controls.Add(Me.CrtPersonaNatural1)
-        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(495, 65)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Persona Naturales"
-        '
-        'CrtPersonaNatural1
-        '
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtApellidos)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtNombre)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtrtn)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtCorreo)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtdireccion)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txttelefono)
-        Me.CrtPersonaNatural1.Controls.Add(Me.cmbTipoIdentidad)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtidentifiacion)
-        Me.CrtPersonaNatural1.Controls.Add(Me.AutoCompleteCajaTexto1)
-        Me.CrtPersonaNatural1.Controls.Add(Me.AutoCompleteCajaTexto2)
-        Me.CrtPersonaNatural1.Controls.Add(Me.CajaTexto1)
-        Me.CrtPersonaNatural1.Controls.Add(Me.CorreoCajaTexto1)
-        Me.CrtPersonaNatural1.Controls.Add(Me.CajaTexto2)
-        Me.CrtPersonaNatural1.Controls.Add(Me.CajaTexto3)
-        Me.CrtPersonaNatural1.Controls.Add(Me.ListaDesplegable1)
-        Me.CrtPersonaNatural1.Controls.Add(Me.IdentidadCajaTexto1)
-        Me.CrtPersonaNatural1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 3)
-        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(487, 57)
-        Me.CrtPersonaNatural1.TabIndex = 0
-        '
-        'txtApellidos
-        '
-        Me.txtApellidos.AutoCompletar = True
-        Me.txtApellidos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.txtApellidos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtApellidos.CampoMostrar = "apellidos"
-        Me.txtApellidos.CaracteresInicio = 3
-        Me.txtApellidos.ColeccionParametros = CType(resources.GetObject("txtApellidos.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.txtApellidos.ColorError = System.Drawing.Color.Red
-        Me.txtApellidos.EsObligatorio = False
-        Me.txtApellidos.ExpresionValidacion = Nothing
-        Me.txtApellidos.Location = New System.Drawing.Point(102, 33)
-        Me.txtApellidos.MaxLength = 255
-        Me.txtApellidos.MensajeError = Nothing
-        Me.txtApellidos.Name = "txtApellidos"
-        Me.txtApellidos.ParameteroBusqueda = "apellidos"
-        Me.txtApellidos.Procedimiento = "PersonaNatural_Buscar"
-        Me.txtApellidos.Size = New System.Drawing.Size(380, 20)
-        Me.txtApellidos.TabIndex = 33
-        Me.txtApellidos.Texto = Nothing
-        Me.txtApellidos.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtNombre
-        '
-        Me.txtNombre.AutoCompletar = True
-        Me.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtNombre.CampoMostrar = "NombreCompleto"
-        Me.txtNombre.CaracteresInicio = 3
-        Me.txtNombre.ColeccionParametros = CType(resources.GetObject("txtNombre.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.txtNombre.ColorError = System.Drawing.Color.Red
-        Me.txtNombre.EsObligatorio = False
-        Me.txtNombre.ExpresionValidacion = Nothing
-        Me.txtNombre.Location = New System.Drawing.Point(102, 7)
-        Me.txtNombre.MaxLength = 255
-        Me.txtNombre.MensajeError = Nothing
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.ParameteroBusqueda = "NombreCompleto"
-        Me.txtNombre.Procedimiento = "PersonaNatural_Buscar"
-        Me.txtNombre.Size = New System.Drawing.Size(380, 20)
-        Me.txtNombre.TabIndex = 32
-        Me.txtNombre.Texto = Nothing
-        Me.txtNombre.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtrtn
-        '
-        Me.txtrtn.ColorError = System.Drawing.Color.Red
-        Me.txtrtn.EsObligatorio = False
-        Me.txtrtn.ExpresionValidacion = Nothing
-        Me.txtrtn.Location = New System.Drawing.Point(102, 236)
-        Me.txtrtn.MaxLength = 255
-        Me.txtrtn.MensajeError = Nothing
-        Me.txtrtn.Name = "txtrtn"
-        Me.txtrtn.Size = New System.Drawing.Size(380, 20)
-        Me.txtrtn.TabIndex = 23
-        Me.txtrtn.Texto = Nothing
-        Me.txtrtn.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtCorreo
-        '
-        Me.txtCorreo.ColorError = System.Drawing.Color.Red
-        Me.txtCorreo.EsObligatorio = False
-        Me.txtCorreo.ExpresionValidacion = "^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0" & _
-            "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
-            "9][0-9]|[1-9][0-9]|[0-9])\])$"
-        Me.txtCorreo.Location = New System.Drawing.Point(102, 138)
-        Me.txtCorreo.MaxLength = 255
-        Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
-        Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(380, 20)
-        Me.txtCorreo.TabIndex = 22
-        Me.txtCorreo.Texto = Nothing
-        Me.txtCorreo.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtdireccion
-        '
-        Me.txtdireccion.ColorError = System.Drawing.Color.Red
-        Me.txtdireccion.EsObligatorio = False
-        Me.txtdireccion.ExpresionValidacion = Nothing
-        Me.txtdireccion.Location = New System.Drawing.Point(102, 164)
-        Me.txtdireccion.MensajeError = Nothing
-        Me.txtdireccion.Multiline = True
-        Me.txtdireccion.Name = "txtdireccion"
-        Me.txtdireccion.Size = New System.Drawing.Size(380, 66)
-        Me.txtdireccion.TabIndex = 21
-        Me.txtdireccion.Texto = Nothing
-        Me.txtdireccion.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'txttelefono
-        '
-        Me.txttelefono.ColorError = System.Drawing.Color.Red
-        Me.txttelefono.EsObligatorio = False
-        Me.txttelefono.ExpresionValidacion = Nothing
-        Me.txttelefono.Location = New System.Drawing.Point(102, 112)
-        Me.txttelefono.MaxLength = 255
-        Me.txttelefono.MensajeError = Nothing
-        Me.txttelefono.Multiline = True
-        Me.txttelefono.Name = "txttelefono"
-        Me.txttelefono.Size = New System.Drawing.Size(380, 20)
-        Me.txttelefono.TabIndex = 20
-        Me.txttelefono.Texto = Nothing
-        Me.txttelefono.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'cmbTipoIdentidad
-        '
-        Me.cmbTipoIdentidad.Comando = Nothing
-        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoIdentidad.FormattingEnabled = True
-        Me.cmbTipoIdentidad.ListaDesplegablePadre = Nothing
-        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 85)
-        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
-        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(380, 21)
-        Me.cmbTipoIdentidad.TabIndex = 19
-        '
-        'txtidentifiacion
-        '
-        Me.txtidentifiacion.ColorError = System.Drawing.Color.Red
-        Me.txtidentifiacion.EsObligatorio = False
-        Me.txtidentifiacion.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
-        Me.txtidentifiacion.Location = New System.Drawing.Point(102, 59)
-        Me.txtidentifiacion.MaxLength = 255
-        Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232"
-        Me.txtidentifiacion.Name = "txtidentifiacion"
-        Me.txtidentifiacion.Size = New System.Drawing.Size(380, 20)
-        Me.txtidentifiacion.TabIndex = 18
-        Me.txtidentifiacion.Texto = Nothing
-        TipoIdentidad9.Descripcion = "Identidad"
-        TipoIdentidad9.Valor = "I"
-        Me.txtidentifiacion.TipoIdentificacion = TipoIdentidad9
-        Me.txtidentifiacion.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'AutoCompleteCajaTexto1
-        '
-        Me.AutoCompleteCajaTexto1.AutoCompletar = True
-        Me.AutoCompleteCajaTexto1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.AutoCompleteCajaTexto1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.AutoCompleteCajaTexto1.CampoMostrar = "apellidos"
-        Me.AutoCompleteCajaTexto1.CaracteresInicio = 3
-        Me.AutoCompleteCajaTexto1.ColeccionParametros = CType(resources.GetObject("AutoCompleteCajaTexto1.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.AutoCompleteCajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.AutoCompleteCajaTexto1.EsObligatorio = False
-        Me.AutoCompleteCajaTexto1.ExpresionValidacion = Nothing
-        Me.AutoCompleteCajaTexto1.Location = New System.Drawing.Point(102, 33)
-        Me.AutoCompleteCajaTexto1.MaxLength = 255
-        Me.AutoCompleteCajaTexto1.MensajeError = Nothing
-        Me.AutoCompleteCajaTexto1.Name = "AutoCompleteCajaTexto1"
-        Me.AutoCompleteCajaTexto1.ParameteroBusqueda = "apellidos"
-        Me.AutoCompleteCajaTexto1.Procedimiento = "PersonaNatural_Buscar"
-        Me.AutoCompleteCajaTexto1.Size = New System.Drawing.Size(380, 20)
-        Me.AutoCompleteCajaTexto1.TabIndex = 33
-        Me.AutoCompleteCajaTexto1.Texto = Nothing
-        Me.AutoCompleteCajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'AutoCompleteCajaTexto2
-        '
-        Me.AutoCompleteCajaTexto2.AutoCompletar = True
-        Me.AutoCompleteCajaTexto2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.AutoCompleteCajaTexto2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.AutoCompleteCajaTexto2.CampoMostrar = "NombreCompleto"
-        Me.AutoCompleteCajaTexto2.CaracteresInicio = 3
-        Me.AutoCompleteCajaTexto2.ColeccionParametros = CType(resources.GetObject("AutoCompleteCajaTexto2.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.AutoCompleteCajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.AutoCompleteCajaTexto2.EsObligatorio = False
-        Me.AutoCompleteCajaTexto2.ExpresionValidacion = Nothing
-        Me.AutoCompleteCajaTexto2.Location = New System.Drawing.Point(102, 7)
-        Me.AutoCompleteCajaTexto2.MaxLength = 255
-        Me.AutoCompleteCajaTexto2.MensajeError = Nothing
-        Me.AutoCompleteCajaTexto2.Name = "AutoCompleteCajaTexto2"
-        Me.AutoCompleteCajaTexto2.ParameteroBusqueda = "NombreCompleto"
-        Me.AutoCompleteCajaTexto2.Procedimiento = "PersonaNatural_Buscar"
-        Me.AutoCompleteCajaTexto2.Size = New System.Drawing.Size(380, 20)
-        Me.AutoCompleteCajaTexto2.TabIndex = 32
-        Me.AutoCompleteCajaTexto2.Texto = Nothing
-        Me.AutoCompleteCajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'CajaTexto1
-        '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(102, 236)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(380, 20)
-        Me.CajaTexto1.TabIndex = 23
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'CorreoCajaTexto1
-        '
-        Me.CorreoCajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CorreoCajaTexto1.EsObligatorio = False
-        Me.CorreoCajaTexto1.ExpresionValidacion = "^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0" & _
-            "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
-            "9][0-9]|[1-9][0-9]|[0-9])\])$"
-        Me.CorreoCajaTexto1.Location = New System.Drawing.Point(102, 138)
-        Me.CorreoCajaTexto1.MaxLength = 255
-        Me.CorreoCajaTexto1.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
-        Me.CorreoCajaTexto1.Name = "CorreoCajaTexto1"
-        Me.CorreoCajaTexto1.Size = New System.Drawing.Size(380, 20)
-        Me.CorreoCajaTexto1.TabIndex = 22
-        Me.CorreoCajaTexto1.Texto = Nothing
-        Me.CorreoCajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'CajaTexto2
-        '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.Location = New System.Drawing.Point(102, 164)
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Multiline = True
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(380, 66)
-        Me.CajaTexto2.TabIndex = 21
-        Me.CajaTexto2.Texto = Nothing
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'CajaTexto3
-        '
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EsObligatorio = False
-        Me.CajaTexto3.ExpresionValidacion = Nothing
-        Me.CajaTexto3.Location = New System.Drawing.Point(102, 112)
-        Me.CajaTexto3.MaxLength = 255
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Multiline = True
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(380, 20)
-        Me.CajaTexto3.TabIndex = 20
-        Me.CajaTexto3.Texto = Nothing
-        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'ListaDesplegable1
-        '
-        Me.ListaDesplegable1.Comando = Nothing
-        Me.ListaDesplegable1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(102, 85)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(380, 21)
-        Me.ListaDesplegable1.TabIndex = 19
-        '
-        'IdentidadCajaTexto1
-        '
-        Me.IdentidadCajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.IdentidadCajaTexto1.EsObligatorio = False
-        Me.IdentidadCajaTexto1.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
-        Me.IdentidadCajaTexto1.Location = New System.Drawing.Point(102, 59)
-        Me.IdentidadCajaTexto1.MaxLength = 255
-        Me.IdentidadCajaTexto1.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232"
-        Me.IdentidadCajaTexto1.Name = "IdentidadCajaTexto1"
-        Me.IdentidadCajaTexto1.Size = New System.Drawing.Size(380, 20)
-        Me.IdentidadCajaTexto1.TabIndex = 18
-        Me.IdentidadCajaTexto1.Texto = Nothing
-        TipoIdentidad10.Descripcion = "Identidad"
-        TipoIdentidad10.Valor = "I"
-        Me.IdentidadCajaTexto1.TipoIdentificacion = TipoIdentidad10
-        Me.IdentidadCajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage2.Controls.Add(Me.TextBox6)
-        Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(495, 65)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Personas Jurídicas"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(80, 11)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(407, 20)
-        Me.TextBox6.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 14)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Razón social"
         '
         'Panel5
         '
@@ -707,187 +523,41 @@ Partial Class frmVentaMotocicleta
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
-        'Label13
+        'TabPage2
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(16, 100)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(68, 13)
-        Me.Label13.TabIndex = 49
-        Me.Label13.Text = "Horse Power"
+        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(717, 75)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Personas Jurídicas"
         '
-        'CajaTexto9
+        'TabControl1
         '
-        Me.CajaTexto9.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto9.EsObligatorio = False
-        Me.CajaTexto9.ExpresionValidacion = Nothing
-        Me.CajaTexto9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto9.Location = New System.Drawing.Point(122, 97)
-        Me.CajaTexto9.MaxLength = 255
-        Me.CajaTexto9.MensajeError = Nothing
-        Me.CajaTexto9.Name = "CajaTexto9"
-        Me.CajaTexto9.Size = New System.Drawing.Size(335, 20)
-        Me.CajaTexto9.TabIndex = 48
-        Me.CajaTexto9.Texto = Nothing
-        Me.CajaTexto9.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.TabControl1.Location = New System.Drawing.Point(3, 16)
+        Me.TabControl1.Multiline = True
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(725, 101)
+        Me.TabControl1.TabIndex = 2
         '
-        'Label8
+        'TabPage1
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(16, 126)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(26, 13)
-        Me.Label8.TabIndex = 47
-        Me.Label8.Text = "Año"
-        '
-        'CajaTexto5
-        '
-        Me.CajaTexto5.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto5.EsObligatorio = False
-        Me.CajaTexto5.ExpresionValidacion = Nothing
-        Me.CajaTexto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto5.Location = New System.Drawing.Point(122, 123)
-        Me.CajaTexto5.MaxLength = 255
-        Me.CajaTexto5.MensajeError = Nothing
-        Me.CajaTexto5.Name = "CajaTexto5"
-        Me.CajaTexto5.Size = New System.Drawing.Size(335, 20)
-        Me.CajaTexto5.TabIndex = 46
-        Me.CajaTexto5.Texto = Nothing
-        Me.CajaTexto5.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(122, 203)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(335, 21)
-        Me.ComboBox2.TabIndex = 45
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(16, 206)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(100, 13)
-        Me.Label9.TabIndex = 44
-        Me.Label9.Text = "Tipo de motocicleta"
-        '
-        'ListaDesplegable2
-        '
-        Me.ListaDesplegable2.Comando = Nothing
-        Me.ListaDesplegable2.FormattingEnabled = True
-        Me.ListaDesplegable2.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable2.Location = New System.Drawing.Point(122, 176)
-        Me.ListaDesplegable2.Name = "ListaDesplegable2"
-        Me.ListaDesplegable2.Size = New System.Drawing.Size(335, 21)
-        Me.ListaDesplegable2.TabIndex = 43
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(16, 179)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(42, 13)
-        Me.Label10.TabIndex = 42
-        Me.Label10.Text = "Modelo"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(122, 149)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(335, 21)
-        Me.ComboBox1.TabIndex = 41
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(16, 152)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(37, 13)
-        Me.Label11.TabIndex = 40
-        Me.Label11.Text = "Marca"
-        '
-        'Label12
-        '
-        Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(16, 74)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(49, 13)
-        Me.Label12.TabIndex = 39
-        Me.Label12.Text = "Cilindraje"
-        '
-        'CajaTexto4
-        '
-        Me.CajaTexto4.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto4.EsObligatorio = False
-        Me.CajaTexto4.ExpresionValidacion = Nothing
-        Me.CajaTexto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto4.Location = New System.Drawing.Point(122, 71)
-        Me.CajaTexto4.MaxLength = 255
-        Me.CajaTexto4.MensajeError = Nothing
-        Me.CajaTexto4.Name = "CajaTexto4"
-        Me.CajaTexto4.Size = New System.Drawing.Size(335, 20)
-        Me.CajaTexto4.TabIndex = 38
-        Me.CajaTexto4.Texto = Nothing
-        Me.CajaTexto4.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'CajaTexto6
-        '
-        Me.CajaTexto6.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto6.EsObligatorio = False
-        Me.CajaTexto6.ExpresionValidacion = Nothing
-        Me.CajaTexto6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto6.Location = New System.Drawing.Point(122, 45)
-        Me.CajaTexto6.MaxLength = 255
-        Me.CajaTexto6.MensajeError = Nothing
-        Me.CajaTexto6.Name = "CajaTexto6"
-        Me.CajaTexto6.Size = New System.Drawing.Size(335, 20)
-        Me.CajaTexto6.TabIndex = 37
-        Me.CajaTexto6.Texto = Nothing
-        Me.CajaTexto6.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label14.Location = New System.Drawing.Point(16, 48)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(38, 13)
-        Me.Label14.TabIndex = 36
-        Me.Label14.Text = "Chasis"
-        '
-        'CajaTexto7
-        '
-        Me.CajaTexto7.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto7.EsObligatorio = False
-        Me.CajaTexto7.ExpresionValidacion = Nothing
-        Me.CajaTexto7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto7.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto7.Location = New System.Drawing.Point(122, 19)
-        Me.CajaTexto7.MaxLength = 255
-        Me.CajaTexto7.MensajeError = Nothing
-        Me.CajaTexto7.Name = "CajaTexto7"
-        Me.CajaTexto7.Size = New System.Drawing.Size(335, 20)
-        Me.CajaTexto7.TabIndex = 35
-        Me.CajaTexto7.Texto = Nothing
-        Me.CajaTexto7.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(16, 22)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(34, 13)
-        Me.Label15.TabIndex = 34
-        Me.Label15.Text = "Motor"
+        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(717, 75)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Persona Naturales"
         '
         'frmVentaMotocicleta
         '
@@ -913,11 +583,6 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.CrtPersonaNatural1.ResumeLayout(False)
-        Me.CrtPersonaNatural1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -942,28 +607,6 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents CrtPersonaNatural1 As SICO.ctrla2.crtPersonaNatural
-    Friend WithEvents txtApellidos As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents txtNombre As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents txtrtn As SICO.ctrla.CajaTexto
-    Friend WithEvents txtCorreo As SICO.ctrla.CorreoCajaTexto
-    Friend WithEvents txtdireccion As SICO.ctrla.CajaTexto
-    Friend WithEvents txttelefono As SICO.ctrla.CajaTexto
-    Friend WithEvents cmbTipoIdentidad As SICO.ctrla.ListaDesplegable
-    Friend WithEvents txtidentifiacion As SICO.ctrla.IdentidadCajaTexto
-    Friend WithEvents AutoCompleteCajaTexto1 As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents AutoCompleteCajaTexto2 As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents CajaTexto1 As SICO.ctrla.CajaTexto
-    Friend WithEvents CorreoCajaTexto1 As SICO.ctrla.CorreoCajaTexto
-    Friend WithEvents CajaTexto2 As SICO.ctrla.CajaTexto
-    Friend WithEvents CajaTexto3 As SICO.ctrla.CajaTexto
-    Friend WithEvents ListaDesplegable1 As SICO.ctrla.ListaDesplegable
-    Friend WithEvents IdentidadCajaTexto1 As SICO.ctrla.IdentidadCajaTexto
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
@@ -984,4 +627,7 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents CajaTexto7 As SICO.ctrla.CajaTexto
     Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
+    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
+    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
 End Class

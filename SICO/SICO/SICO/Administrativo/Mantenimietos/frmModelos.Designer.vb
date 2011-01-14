@@ -31,25 +31,26 @@ Partial Class frmModelos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModelos))
-        Me.CrtTablaTipoDerivada1 = New SICO.ctrla2.crtTablaTipoDerivada
+        Me.CrtTablaTipoDerivada = New SICO.ctrla2.crtTablaTipoDerivada
         Me.SuspendLayout()
         '
-        'CrtTablaTipoDerivada1
+        'CrtTablaTipoDerivada
         '
-        Me.CrtTablaTipoDerivada1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtTablaTipoDerivada1.Location = New System.Drawing.Point(0, 0)
-        Me.CrtTablaTipoDerivada1.Name = "CrtTablaTipoDerivada1"
-        Me.CrtTablaTipoDerivada1.Size = New System.Drawing.Size(782, 524)
-        Me.CrtTablaTipoDerivada1.TabIndex = 0
-        Me.CrtTablaTipoDerivada1.Titulo = "Modelos"
-        Me.CrtTablaTipoDerivada1.TituloDerivado = "Marca"
+        Me.CrtTablaTipoDerivada.CaracterinicioBusqueda = 3
+        Me.CrtTablaTipoDerivada.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtTablaTipoDerivada.Location = New System.Drawing.Point(0, 0)
+        Me.CrtTablaTipoDerivada.Name = "CrtTablaTipoDerivada"
+        Me.CrtTablaTipoDerivada.Size = New System.Drawing.Size(782, 524)
+        Me.CrtTablaTipoDerivada.TabIndex = 0
+        Me.CrtTablaTipoDerivada.Titulo = "Modelos"
+        Me.CrtTablaTipoDerivada.TituloDerivado = "Marca"
         '
         'frmModelos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(782, 524)
-        Me.Controls.Add(Me.CrtTablaTipoDerivada1)
+        Me.Controls.Add(Me.CrtTablaTipoDerivada)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
@@ -59,5 +60,5 @@ Partial Class frmModelos
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents CrtTablaTipoDerivada1 As SICO.ctrla2.crtTablaTipoDerivada
+    Friend WithEvents CrtTablaTipoDerivada As SICO.ctrla2.crtTablaTipoDerivada
 End Class

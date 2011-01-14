@@ -25,7 +25,8 @@ namespace SiCo.lgla
             this.ColeccionParametrosMantenimiento.Add(new Parametro("rtn", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("entidadnombre", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identificacion", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));             
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("telefono2", null)); 
             
         }       
 
@@ -57,6 +58,12 @@ namespace SiCo.lgla
             set;
         }
 
+        public int? telefono2
+        {
+            get;
+            set;
+        }
+
         public bool espersonanatural
         {
             get
@@ -78,6 +85,7 @@ namespace SiCo.lgla
                 direccion =Registro(indice ,"direccion").ToString();
                 correo = Registro(indice,"correo").ToString();
                 rtn = (string)Registro(indice,"RTN");
+                telefono2 = (int)Registro(indice, "telefono2"); 
                 base.CargadoPropiedades(indice);
             }
            
@@ -92,6 +100,7 @@ namespace SiCo.lgla
             this.ValorParametrosMantenimiento("correo", this.correo);
             this.ValorParametrosMantenimiento("rtn", this.rtn);
             this.ValorParametrosMantenimiento("espersonanatural", this.espersonanatural);
+            this.ValorParametrosMantenimiento("telefono2", this.telefono2); 
             base.Guardar(); 
         }
 

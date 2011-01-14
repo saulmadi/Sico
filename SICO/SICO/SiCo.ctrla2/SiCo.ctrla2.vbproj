@@ -76,6 +76,12 @@
     <Compile Include="ControlesBasicos\ListaHabilitados.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlesBasicos\ListaTipoIdentidad.Designer.vb">
+      <DependentUpon>ListaTipoIdentidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaTipoIdentidad.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ControlesPersonalizados\crtListadoMantenimiento.Designer.vb">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
     </Compile>
