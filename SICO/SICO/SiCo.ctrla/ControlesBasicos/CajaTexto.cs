@@ -112,11 +112,8 @@ namespace SiCo.ctrla
                         this.Text = "";
                         this.Multiline = true;                      
                         break;
-                    case TiposTexto.Entero:
-                        this.MaxLength = 12; 
-                        this.Text = "0";                       
-                        this.TextAlign = HorizontalAlignment.Right;
-                        break;
+                    case TiposTexto.Entero:                                                             
+                               break;
                     case TiposTexto.Decimal:
                         this.Text = "0.00";
                         this.ExpresionValidacion = "^(?!^0*$)(?!^0*\\.0*$)^\\d{1,9}(\\.\\d{1,3})?$";

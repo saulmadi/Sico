@@ -19,6 +19,7 @@ namespace SiCo.lgla
             this._espersonanatural = true;
             this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompleto",null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("identificacion", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("tipoidentificacion", null)); 
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
         }
@@ -28,7 +29,9 @@ namespace SiCo.lgla
             this._espersonanatural = true;
             this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompleto", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("identificacion", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null)); 
+            this.ColeccionParametrosBusqueda.Add(new Parametro("tipoidentificacion", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));  
+            
             this._Id=id;
             this.NombreCompleto=NombreCompleto;
             this.identificacion = Identificacion;

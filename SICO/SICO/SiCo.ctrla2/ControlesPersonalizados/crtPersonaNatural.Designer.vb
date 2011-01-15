@@ -43,27 +43,27 @@ Partial Class crtPersonaNatural
         Me.Label10 = New System.Windows.Forms.Label
         Me.Label11 = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
-        Me.CajaTexto5 = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto4 = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto3 = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto2 = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto1 = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
+        Me.txtSegundoApellido = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtSegundoNombre = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtPrimerApellido = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtPrimerNombre = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtCelular = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtCorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtidentifiacion = New SiCo.ctrla.IdentidadCajaTexto(Me.components)
-        Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
         Me.SuspendLayout()
         '
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(3, 62)
+        Me.label2.Location = New System.Drawing.Point(346, 62)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(70, 13)
-        Me.label2.TabIndex = 13
-        Me.label2.Text = "Identificacion"
+        Me.label2.TabIndex = 19
+        Me.label2.Text = "Identificación"
         '
         'label8
         '
@@ -122,10 +122,10 @@ Partial Class crtPersonaNatural
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(346, 62)
+        Me.label1.Location = New System.Drawing.Point(3, 62)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(93, 13)
-        Me.label1.TabIndex = 19
+        Me.label1.TabIndex = 13
         Me.label1.Text = "Tipo identificación"
         '
         'Label9
@@ -155,90 +155,106 @@ Partial Class crtPersonaNatural
         Me.Label11.TabIndex = 21
         Me.Label11.Text = "Celular"
         '
-        'CajaTexto5
+        'SubProceso
         '
-        Me.CajaTexto5.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto5.EsObligatorio = False
-        Me.CajaTexto5.ExpresionValidacion = ""
-        Me.CajaTexto5.Location = New System.Drawing.Point(445, 33)
-        Me.CajaTexto5.MaxLength = 30
-        Me.CajaTexto5.MensajeError = Nothing
-        Me.CajaTexto5.Name = "CajaTexto5"
-        Me.CajaTexto5.Size = New System.Drawing.Size(238, 20)
-        Me.CajaTexto5.TabIndex = 3
-        Me.CajaTexto5.Texto = Nothing
-        Me.CajaTexto5.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         '
-        'CajaTexto4
+        'cmbTipoIdentidad
         '
-        Me.CajaTexto4.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto4.EsObligatorio = False
-        Me.CajaTexto4.ExpresionValidacion = ""
-        Me.CajaTexto4.Location = New System.Drawing.Point(445, 7)
-        Me.CajaTexto4.MaxLength = 30
-        Me.CajaTexto4.MensajeError = Nothing
-        Me.CajaTexto4.Name = "CajaTexto4"
-        Me.CajaTexto4.Size = New System.Drawing.Size(238, 20)
-        Me.CajaTexto4.TabIndex = 1
-        Me.CajaTexto4.Texto = Nothing
-        Me.CajaTexto4.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
+        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipoIdentidad.FormattingEnabled = True
+        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 58)
+        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
+        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(238, 21)
+        Me.cmbTipoIdentidad.TabIndex = 4
+        Me.cmbTipoIdentidad.ValueMember = "Valor"
         '
-        'CajaTexto3
+        'txtSegundoApellido
         '
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EsObligatorio = True
-        Me.CajaTexto3.ExpresionValidacion = ""
-        Me.CajaTexto3.Location = New System.Drawing.Point(102, 33)
-        Me.CajaTexto3.MaxLength = 30
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(238, 20)
-        Me.CajaTexto3.TabIndex = 2
-        Me.CajaTexto3.Texto = Nothing
-        Me.CajaTexto3.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtSegundoApellido.ColorError = System.Drawing.Color.Red
+        Me.txtSegundoApellido.EsObligatorio = False
+        Me.txtSegundoApellido.ExpresionValidacion = ""
+        Me.txtSegundoApellido.Location = New System.Drawing.Point(445, 33)
+        Me.txtSegundoApellido.MaxLength = 30
+        Me.txtSegundoApellido.MensajeError = Nothing
+        Me.txtSegundoApellido.Name = "txtSegundoApellido"
+        Me.txtSegundoApellido.Size = New System.Drawing.Size(238, 20)
+        Me.txtSegundoApellido.TabIndex = 3
+        Me.txtSegundoApellido.Texto = Nothing
+        Me.txtSegundoApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         '
-        'CajaTexto2
+        'txtSegundoNombre
         '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EsObligatorio = True
-        Me.CajaTexto2.ExpresionValidacion = ""
-        Me.CajaTexto2.Location = New System.Drawing.Point(102, 7)
-        Me.CajaTexto2.MaxLength = 30
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(238, 20)
-        Me.CajaTexto2.TabIndex = 0
-        Me.CajaTexto2.Texto = Nothing
-        Me.CajaTexto2.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtSegundoNombre.ColorError = System.Drawing.Color.Red
+        Me.txtSegundoNombre.EsObligatorio = False
+        Me.txtSegundoNombre.ExpresionValidacion = ""
+        Me.txtSegundoNombre.Location = New System.Drawing.Point(445, 7)
+        Me.txtSegundoNombre.MaxLength = 30
+        Me.txtSegundoNombre.MensajeError = Nothing
+        Me.txtSegundoNombre.Name = "txtSegundoNombre"
+        Me.txtSegundoNombre.Size = New System.Drawing.Size(238, 20)
+        Me.txtSegundoNombre.TabIndex = 1
+        Me.txtSegundoNombre.Texto = Nothing
+        Me.txtSegundoNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         '
-        'CajaTexto1
+        'txtPrimerApellido
         '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(445, 112)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Multiline = True
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(238, 20)
-        Me.CajaTexto1.TabIndex = 9
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo
+        Me.txtPrimerApellido.ColorError = System.Drawing.Color.Red
+        Me.txtPrimerApellido.EsObligatorio = True
+        Me.txtPrimerApellido.ExpresionValidacion = ""
+        Me.txtPrimerApellido.Location = New System.Drawing.Point(102, 33)
+        Me.txtPrimerApellido.MaxLength = 30
+        Me.txtPrimerApellido.MensajeError = Nothing
+        Me.txtPrimerApellido.Name = "txtPrimerApellido"
+        Me.txtPrimerApellido.Size = New System.Drawing.Size(238, 20)
+        Me.txtPrimerApellido.TabIndex = 2
+        Me.txtPrimerApellido.Texto = Nothing
+        Me.txtPrimerApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        '
+        'txtPrimerNombre
+        '
+        Me.txtPrimerNombre.ColorError = System.Drawing.Color.Red
+        Me.txtPrimerNombre.EsObligatorio = True
+        Me.txtPrimerNombre.ExpresionValidacion = ""
+        Me.txtPrimerNombre.Location = New System.Drawing.Point(102, 7)
+        Me.txtPrimerNombre.MaxLength = 30
+        Me.txtPrimerNombre.MensajeError = Nothing
+        Me.txtPrimerNombre.Name = "txtPrimerNombre"
+        Me.txtPrimerNombre.Size = New System.Drawing.Size(238, 20)
+        Me.txtPrimerNombre.TabIndex = 0
+        Me.txtPrimerNombre.Texto = Nothing
+        Me.txtPrimerNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        '
+        'txtCelular
+        '
+        Me.txtCelular.BackColor = System.Drawing.SystemColors.Window
+        Me.txtCelular.ColorError = System.Drawing.Color.Red
+        Me.txtCelular.EsObligatorio = False
+        Me.txtCelular.ExpresionValidacion = Nothing
+        Me.txtCelular.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtCelular.Location = New System.Drawing.Point(445, 112)
+        Me.txtCelular.MaxLength = 12
+        Me.txtCelular.MensajeError = Nothing
+        Me.txtCelular.Multiline = True
+        Me.txtCelular.Name = "txtCelular"
+        Me.txtCelular.Size = New System.Drawing.Size(238, 20)
+        Me.txtCelular.TabIndex = 9
+        Me.txtCelular.Texto = Nothing
+        Me.txtCelular.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         '
         'txtrtn
         '
         Me.txtrtn.ColorError = System.Drawing.Color.Red
         Me.txtrtn.EsObligatorio = False
-        Me.txtrtn.ExpresionValidacion = Nothing
+        Me.txtrtn.ExpresionValidacion = ""
         Me.txtrtn.Location = New System.Drawing.Point(102, 85)
-        Me.txtrtn.MaxLength = 255
+        Me.txtrtn.MaxLength = 14
         Me.txtrtn.MensajeError = Nothing
         Me.txtrtn.Name = "txtrtn"
         Me.txtrtn.Size = New System.Drawing.Size(238, 20)
         Me.txtrtn.TabIndex = 6
         Me.txtrtn.Texto = Nothing
-        Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         '
         'txtCorreo
         '
@@ -272,54 +288,45 @@ Partial Class crtPersonaNatural
         '
         'txttelefono
         '
+        Me.txttelefono.BackColor = System.Drawing.SystemColors.Window
         Me.txttelefono.ColorError = System.Drawing.Color.Red
         Me.txttelefono.EsObligatorio = False
         Me.txttelefono.ExpresionValidacion = Nothing
+        Me.txttelefono.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txttelefono.Location = New System.Drawing.Point(102, 111)
-        Me.txttelefono.MaxLength = 255
+        Me.txttelefono.MaxLength = 12
         Me.txttelefono.MensajeError = Nothing
         Me.txttelefono.Multiline = True
         Me.txttelefono.Name = "txttelefono"
         Me.txttelefono.Size = New System.Drawing.Size(238, 20)
         Me.txttelefono.TabIndex = 8
         Me.txttelefono.Texto = Nothing
-        Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo
+        Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         '
         'txtidentifiacion
         '
         Me.txtidentifiacion.ColorError = System.Drawing.Color.Red
         Me.txtidentifiacion.EsObligatorio = True
         Me.txtidentifiacion.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
-        Me.txtidentifiacion.Location = New System.Drawing.Point(102, 59)
+        Me.txtidentifiacion.Location = New System.Drawing.Point(445, 59)
         Me.txtidentifiacion.MaxLength = 15
         Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232"
         Me.txtidentifiacion.Name = "txtidentifiacion"
         Me.txtidentifiacion.Size = New System.Drawing.Size(238, 20)
-        Me.txtidentifiacion.TabIndex = 4
+        Me.txtidentifiacion.TabIndex = 5
         Me.txtidentifiacion.Texto = Nothing
         Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
-        '
-        'cmbTipoIdentidad
-        '
-        Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
-        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoIdentidad.FormattingEnabled = True
-        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(445, 59)
-        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
-        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(238, 21)
-        Me.cmbTipoIdentidad.TabIndex = 5
-        Me.cmbTipoIdentidad.ValueMember = "Valor"
         '
         'crtPersonaNatural
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.cmbTipoIdentidad)
-        Me.Controls.Add(Me.CajaTexto5)
-        Me.Controls.Add(Me.CajaTexto4)
-        Me.Controls.Add(Me.CajaTexto3)
-        Me.Controls.Add(Me.CajaTexto2)
-        Me.Controls.Add(Me.CajaTexto1)
+        Me.Controls.Add(Me.txtSegundoApellido)
+        Me.Controls.Add(Me.txtSegundoNombre)
+        Me.Controls.Add(Me.txtPrimerApellido)
+        Me.Controls.Add(Me.txtPrimerNombre)
+        Me.Controls.Add(Me.txtCelular)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Label9)
@@ -337,7 +344,7 @@ Partial Class crtPersonaNatural
         Me.Controls.Add(Me.label3)
         Me.Controls.Add(Me.label1)
         Me.Name = "crtPersonaNatural"
-        Me.Size = New System.Drawing.Size(692, 191)
+        Me.Size = New System.Drawing.Size(692, 187)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -361,11 +368,11 @@ Partial Class crtPersonaNatural
 
 
     Private WithEvents Label11 As System.Windows.Forms.Label
-    Private WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
-    Private WithEvents CajaTexto2 As SiCo.ctrla.CajaTexto
-    Private WithEvents CajaTexto3 As SiCo.ctrla.CajaTexto
-    Private WithEvents CajaTexto4 As SiCo.ctrla.CajaTexto
-    Private WithEvents CajaTexto5 As SiCo.ctrla.CajaTexto
+    Private WithEvents txtCelular As SiCo.ctrla.CajaTexto
+    Private WithEvents txtPrimerNombre As SiCo.ctrla.CajaTexto
+    Private WithEvents txtPrimerApellido As SiCo.ctrla.CajaTexto
+    Private WithEvents txtSegundoNombre As SiCo.ctrla.CajaTexto
+    Private WithEvents txtSegundoApellido As SiCo.ctrla.CajaTexto
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker
     Friend WithEvents cmbTipoIdentidad As SiCo.ctrla2.ListaTipoIdentidad
 
