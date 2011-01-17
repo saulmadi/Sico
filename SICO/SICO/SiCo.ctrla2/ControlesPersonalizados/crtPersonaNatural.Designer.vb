@@ -43,6 +43,7 @@ Partial Class crtPersonaNatural
         Me.Label10 = New System.Windows.Forms.Label
         Me.Label11 = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
+        Me.lblEstado = New System.Windows.Forms.Label
         Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
         Me.txtSegundoApellido = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtSegundoNombre = New SiCo.ctrla.CajaTexto(Me.components)
@@ -158,6 +159,15 @@ Partial Class crtPersonaNatural
         'SubProceso
         '
         '
+        'lblEstado
+        '
+        Me.lblEstado.Location = New System.Drawing.Point(257, 182)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(426, 23)
+        Me.lblEstado.TabIndex = 22
+        Me.lblEstado.Text = "Label12"
+        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'cmbTipoIdentidad
         '
         Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
@@ -171,9 +181,12 @@ Partial Class crtPersonaNatural
         '
         'txtSegundoApellido
         '
+        Me.txtSegundoApellido.BackColor = System.Drawing.SystemColors.Window
         Me.txtSegundoApellido.ColorError = System.Drawing.Color.Red
+        Me.txtSegundoApellido.EnterPorTab = True
         Me.txtSegundoApellido.EsObligatorio = False
         Me.txtSegundoApellido.ExpresionValidacion = ""
+        Me.txtSegundoApellido.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtSegundoApellido.Location = New System.Drawing.Point(445, 33)
         Me.txtSegundoApellido.MaxLength = 30
         Me.txtSegundoApellido.MensajeError = Nothing
@@ -182,12 +195,16 @@ Partial Class crtPersonaNatural
         Me.txtSegundoApellido.TabIndex = 3
         Me.txtSegundoApellido.Texto = Nothing
         Me.txtSegundoApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtSegundoApellido.ValorInt = Nothing
         '
         'txtSegundoNombre
         '
+        Me.txtSegundoNombre.BackColor = System.Drawing.SystemColors.Window
         Me.txtSegundoNombre.ColorError = System.Drawing.Color.Red
+        Me.txtSegundoNombre.EnterPorTab = True
         Me.txtSegundoNombre.EsObligatorio = False
         Me.txtSegundoNombre.ExpresionValidacion = ""
+        Me.txtSegundoNombre.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtSegundoNombre.Location = New System.Drawing.Point(445, 7)
         Me.txtSegundoNombre.MaxLength = 30
         Me.txtSegundoNombre.MensajeError = Nothing
@@ -196,39 +213,49 @@ Partial Class crtPersonaNatural
         Me.txtSegundoNombre.TabIndex = 1
         Me.txtSegundoNombre.Texto = Nothing
         Me.txtSegundoNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtSegundoNombre.ValorInt = Nothing
         '
         'txtPrimerApellido
         '
+        Me.txtPrimerApellido.BackColor = System.Drawing.SystemColors.Window
         Me.txtPrimerApellido.ColorError = System.Drawing.Color.Red
+        Me.txtPrimerApellido.EnterPorTab = True
         Me.txtPrimerApellido.EsObligatorio = True
         Me.txtPrimerApellido.ExpresionValidacion = ""
+        Me.txtPrimerApellido.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtPrimerApellido.Location = New System.Drawing.Point(102, 33)
         Me.txtPrimerApellido.MaxLength = 30
-        Me.txtPrimerApellido.MensajeError = Nothing
+        Me.txtPrimerApellido.MensajeError = "El primer apellido no puede ser vacío"
         Me.txtPrimerApellido.Name = "txtPrimerApellido"
         Me.txtPrimerApellido.Size = New System.Drawing.Size(238, 20)
         Me.txtPrimerApellido.TabIndex = 2
         Me.txtPrimerApellido.Texto = Nothing
         Me.txtPrimerApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtPrimerApellido.ValorInt = Nothing
         '
         'txtPrimerNombre
         '
+        Me.txtPrimerNombre.BackColor = System.Drawing.SystemColors.Window
         Me.txtPrimerNombre.ColorError = System.Drawing.Color.Red
+        Me.txtPrimerNombre.EnterPorTab = True
         Me.txtPrimerNombre.EsObligatorio = True
         Me.txtPrimerNombre.ExpresionValidacion = ""
+        Me.txtPrimerNombre.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtPrimerNombre.Location = New System.Drawing.Point(102, 7)
         Me.txtPrimerNombre.MaxLength = 30
-        Me.txtPrimerNombre.MensajeError = Nothing
+        Me.txtPrimerNombre.MensajeError = "El primer nombre no puede ser vacío"
         Me.txtPrimerNombre.Name = "txtPrimerNombre"
         Me.txtPrimerNombre.Size = New System.Drawing.Size(238, 20)
         Me.txtPrimerNombre.TabIndex = 0
         Me.txtPrimerNombre.Texto = Nothing
         Me.txtPrimerNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtPrimerNombre.ValorInt = Nothing
         '
         'txtCelular
         '
         Me.txtCelular.BackColor = System.Drawing.SystemColors.Window
         Me.txtCelular.ColorError = System.Drawing.Color.Red
+        Me.txtCelular.EnterPorTab = True
         Me.txtCelular.EsObligatorio = False
         Me.txtCelular.ExpresionValidacion = Nothing
         Me.txtCelular.ForeColor = System.Drawing.SystemColors.ControlText
@@ -241,12 +268,16 @@ Partial Class crtPersonaNatural
         Me.txtCelular.TabIndex = 9
         Me.txtCelular.Texto = Nothing
         Me.txtCelular.TipoTexto = SiCo.ctrla.TiposTexto.Entero
+        Me.txtCelular.ValorInt = Nothing
         '
         'txtrtn
         '
+        Me.txtrtn.BackColor = System.Drawing.SystemColors.Window
         Me.txtrtn.ColorError = System.Drawing.Color.Red
+        Me.txtrtn.EnterPorTab = True
         Me.txtrtn.EsObligatorio = False
         Me.txtrtn.ExpresionValidacion = ""
+        Me.txtrtn.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtrtn.Location = New System.Drawing.Point(102, 85)
         Me.txtrtn.MaxLength = 14
         Me.txtrtn.MensajeError = Nothing
@@ -255,14 +286,18 @@ Partial Class crtPersonaNatural
         Me.txtrtn.TabIndex = 6
         Me.txtrtn.Texto = Nothing
         Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtrtn.ValorInt = Nothing
         '
         'txtCorreo
         '
+        Me.txtCorreo.BackColor = System.Drawing.SystemColors.Window
         Me.txtCorreo.ColorError = System.Drawing.Color.Red
+        Me.txtCorreo.EnterPorTab = True
         Me.txtCorreo.EsObligatorio = False
         Me.txtCorreo.ExpresionValidacion = "^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0" & _
             "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
             "9][0-9]|[1-9][0-9]|[0-9])\])$"
+        Me.txtCorreo.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtCorreo.Location = New System.Drawing.Point(445, 86)
         Me.txtCorreo.MaxLength = 255
         Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
@@ -271,12 +306,16 @@ Partial Class crtPersonaNatural
         Me.txtCorreo.TabIndex = 7
         Me.txtCorreo.Texto = Nothing
         Me.txtCorreo.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtCorreo.ValorInt = Nothing
         '
         'txtdireccion
         '
+        Me.txtdireccion.BackColor = System.Drawing.SystemColors.Window
         Me.txtdireccion.ColorError = System.Drawing.Color.Red
+        Me.txtdireccion.EnterPorTab = True
         Me.txtdireccion.EsObligatorio = False
         Me.txtdireccion.ExpresionValidacion = Nothing
+        Me.txtdireccion.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtdireccion.Location = New System.Drawing.Point(102, 138)
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
@@ -285,11 +324,13 @@ Partial Class crtPersonaNatural
         Me.txtdireccion.TabIndex = 10
         Me.txtdireccion.Texto = Nothing
         Me.txtdireccion.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo
+        Me.txtdireccion.ValorInt = Nothing
         '
         'txttelefono
         '
         Me.txttelefono.BackColor = System.Drawing.SystemColors.Window
         Me.txttelefono.ColorError = System.Drawing.Color.Red
+        Me.txttelefono.EnterPorTab = True
         Me.txttelefono.EsObligatorio = False
         Me.txttelefono.ExpresionValidacion = Nothing
         Me.txttelefono.ForeColor = System.Drawing.SystemColors.ControlText
@@ -302,25 +343,32 @@ Partial Class crtPersonaNatural
         Me.txttelefono.TabIndex = 8
         Me.txttelefono.Texto = Nothing
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
+        Me.txttelefono.ValorInt = Nothing
         '
         'txtidentifiacion
         '
+        Me.txtidentifiacion.BackColor = System.Drawing.SystemColors.Window
         Me.txtidentifiacion.ColorError = System.Drawing.Color.Red
+        Me.txtidentifiacion.EnterPorTab = True
         Me.txtidentifiacion.EsObligatorio = True
         Me.txtidentifiacion.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
+        Me.txtidentifiacion.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtidentifiacion.Location = New System.Drawing.Point(445, 59)
-        Me.txtidentifiacion.MaxLength = 15
-        Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232"
+        Me.txtidentifiacion.MaxLength = 13
+        Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232 o no puede ser vac" & _
+            "ía"
         Me.txtidentifiacion.Name = "txtidentifiacion"
         Me.txtidentifiacion.Size = New System.Drawing.Size(238, 20)
         Me.txtidentifiacion.TabIndex = 5
         Me.txtidentifiacion.Texto = Nothing
-        Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Entero
+        Me.txtidentifiacion.ValorInt = Nothing
         '
         'crtPersonaNatural
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.cmbTipoIdentidad)
         Me.Controls.Add(Me.txtSegundoApellido)
         Me.Controls.Add(Me.txtSegundoNombre)
@@ -344,7 +392,7 @@ Partial Class crtPersonaNatural
         Me.Controls.Add(Me.label3)
         Me.Controls.Add(Me.label1)
         Me.Name = "crtPersonaNatural"
-        Me.Size = New System.Drawing.Size(692, 187)
+        Me.Size = New System.Drawing.Size(692, 213)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -375,5 +423,6 @@ Partial Class crtPersonaNatural
     Private WithEvents txtSegundoApellido As SiCo.ctrla.CajaTexto
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker
     Friend WithEvents cmbTipoIdentidad As SiCo.ctrla2.ListaTipoIdentidad
+    Friend WithEvents lblEstado As System.Windows.Forms.Label
 
 End Class

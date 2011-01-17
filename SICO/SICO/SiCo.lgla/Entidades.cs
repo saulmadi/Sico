@@ -81,11 +81,11 @@ namespace SiCo.lgla
             if (this.TotalRegistros > 0)
             {
                
-                telefono = (int) Registro (indice ,"telefono");                
-                direccion =Registro(indice ,"direccion").ToString();
-                correo = Registro(indice,"correo").ToString();
+                telefono = (int?) Registro (indice ,"telefono");                
+                direccion =(string)Registro(indice ,"direccion");
+                correo =(string)  Registro(indice,"correo");
                 rtn = (string)Registro(indice,"RTN");
-                telefono2 = (int)Registro(indice, "telefono2"); 
+                telefono2 = (int?)Registro(indice, "telefono2"); 
                 base.CargadoPropiedades(indice);
             }
            

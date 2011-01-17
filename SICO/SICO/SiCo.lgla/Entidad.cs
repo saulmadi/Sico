@@ -401,7 +401,7 @@ namespace SiCo.lgla
             NullParametrosBusqueda();
             foreach (Parametro p in ColeccionParametrosBusqueda)
             {
-                ValorParametrosBusqueda(p.Nombre, p.Valor.ToString());  
+                ValorParametrosBusqueda(p.Nombre, p.Valor);  
             }
             LlenadoTabla(ComandoSelect, this.ColeccionParametrosBusqueda);  
  

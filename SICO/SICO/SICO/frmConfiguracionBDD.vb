@@ -42,8 +42,8 @@ Public Class frmConfiguracionBDD
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
         Dim va As New Validador
         va.ColecionCajasTexto.Add(txtservidor)
-        va.ColecionCajasTexto.Add(txtcontrasena)
         va.ColecionCajasTexto.Add(txtusuario)
+        va.ColecionCajasTexto.Add(txtcontrasena)
         va.ColecionCajasTexto.Add(txtbasedatos)
 
         If va.PermitirIngresar Then

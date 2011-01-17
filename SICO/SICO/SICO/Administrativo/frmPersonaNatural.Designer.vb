@@ -25,9 +25,9 @@ Partial Class frmPersonaNatural
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonaNatural))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.CrtPersonaNatural1 = New SICO.ctrla2.crtPersonaNatural
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.CrtPersonaNatural = New SICO.ctrla2.crtPersonaNatural
         Me.crtBusqueda = New SICO.ctrla2.crtListadoMantenimiento
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -44,6 +44,17 @@ Partial Class frmPersonaNatural
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.CrtPersonaNatural)
+        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox2.Location = New System.Drawing.Point(276, 95)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(693, 291)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Datos"
+        '
         'PanelAccion1
         '
         Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
@@ -56,25 +67,17 @@ Partial Class frmPersonaNatural
         Me.PanelAccion1.Titulo = "Persona Natural"
         Me.PanelAccion1.VisiblePanelPrincipal = True
         '
-        'GroupBox2
+        'CrtPersonaNatural
         '
-        Me.GroupBox2.Controls.Add(Me.CrtPersonaNatural1)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(276, 95)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(693, 291)
-        Me.GroupBox2.TabIndex = 2
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Datos"
-        '
-        'CrtPersonaNatural1
-        '
-        Me.CrtPersonaNatural1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(687, 272)
-        Me.CrtPersonaNatural1.TabIndex = 0
+        Me.CrtPersonaNatural.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPersonaNatural.EtiquetaError = Nothing
+        Me.CrtPersonaNatural.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtPersonaNatural.Location = New System.Drawing.Point(3, 16)
+        Me.CrtPersonaNatural.Name = "CrtPersonaNatural"
+        Me.CrtPersonaNatural.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaNatural.Size = New System.Drawing.Size(687, 272)
+        Me.CrtPersonaNatural.SoloLectura = False
+        Me.CrtPersonaNatural.TabIndex = 0
         '
         'crtBusqueda
         '
@@ -113,5 +116,5 @@ Partial Class frmPersonaNatural
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents crtBusqueda As SICO.ctrla2.crtListadoMantenimiento
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents CrtPersonaNatural1 As SICO.ctrla2.crtPersonaNatural
+    Friend WithEvents CrtPersonaNatural As SICO.ctrla2.crtPersonaNatural
 End Class

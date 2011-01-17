@@ -119,6 +119,7 @@ Partial Class crtTablaTipo
         '
         Me.txtDescripcion.BackColor = System.Drawing.Color.White
         Me.txtDescripcion.ColorError = System.Drawing.Color.Red
+        Me.txtDescripcion.EnterPorTab = True
         Me.txtDescripcion.EsObligatorio = True
         Me.txtDescripcion.ExpresionValidacion = ""
         Me.txtDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))

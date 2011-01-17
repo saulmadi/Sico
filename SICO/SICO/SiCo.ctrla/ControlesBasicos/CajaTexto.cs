@@ -64,8 +64,12 @@ namespace SiCo.ctrla
                 _ColorError = value;
             }
         }
-       
-       
+
+        public bool EnterPorTab
+        {
+            get;
+            set;
+        }
 
         public string ExpresionValidacion
         {
@@ -144,8 +148,9 @@ namespace SiCo.ctrla
                 else
                     return base.Text.Trim() ;
             }
+
             set { base.Text = value; }
-        }
+        }       
 
         public int? ValorInt
         {
@@ -168,6 +173,17 @@ namespace SiCo.ctrla
                     return null;
                     
                 } 
+            }
+            set
+            {
+                if (value == null)
+                {
+                    this.Text = string.Empty;
+                }
+                else
+                {
+                    this.Text = value.ToString();
+                }
             }
         }
 
@@ -245,17 +261,34 @@ namespace SiCo.ctrla
 
                   
             }
+            if (Microsoft.VisualBasic.Strings.Asc(e.KeyChar) == 13 && this.EnterPorTab)
+            {
+                e.Handled = true; 
+            }
+            
 
         }
 
         void CajaTexto_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 13)
+            if (e.KeyValue == 13 && this.EnterPorTab )
             {
-                e.Handled = true;
-                SendKeys.Send("{TAB}"); 
+                if (this.EsObligatorio)
+                {
+                    if (this.Text != string.Empty)
+                        SendKeys.Send("{TAB}");
+                }
+                else
+                {
+                    SendKeys.Send("{TAB}");
+                }               
             }
-        } 
+        }
+
+        void CajaTexto_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
 
         #endregion
 
@@ -274,14 +307,17 @@ namespace SiCo.ctrla
 
         private void  InicializacionDelegados()
         {
+            this.KeyDown += new KeyEventHandler(CajaTexto_KeyDown);
             this.TextChanged += new EventHandler(CajaTexto_TextChanged);
             this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
             this.KeyUp += new KeyEventHandler(CajaTexto_KeyUp); 
             _backcolor = this.BackColor;
+            this.EnterPorTab = true;
         }
-    
 
-         public bool EsValido()
+            
+
+        public bool EsValido()
         {
             
                 bool flag = true;

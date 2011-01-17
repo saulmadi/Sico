@@ -35,6 +35,7 @@ namespace SiCo.ctrla
             InitializeComponent();
             EstadoMensaje = "";
             lblfecha .Text = DateTime.Now.ToLongDateString ();
+            
         }
         #endregion
 
@@ -144,12 +145,47 @@ namespace SiCo.ctrla
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (this.Cancelar  != null)
-                this.Cancelar();            
+            switch (MessageBox.Show("¿Esta seguro de cancelar la transacción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                case DialogResult.Yes :
+                    if (this.Cancelar != null)
+                        this.Cancelar();            
+                    break ;
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnEliminar_Click(sender, e); 
+        }
+
+        private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BtnImprimir_Click(sender, e);
+        }
+
+        private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnNuevo_Click(sender, e); 
+        
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnGuardar_Click(sender, e);  
+        }
+
+        private void cancelarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnCancelar_Click(sender, e);
+        }
+
+        private void PanelAccion_Load(object sender, EventArgs e)
+        {
 
         }
 
-        #endregion               
+        #endregion                      
         
     }
 }
