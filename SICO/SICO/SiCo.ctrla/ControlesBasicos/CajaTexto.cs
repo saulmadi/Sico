@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Drawing;
-
+using Microsoft.VisualBasic;
 
 namespace SiCo.ctrla
 {
@@ -242,8 +242,20 @@ namespace SiCo.ctrla
                     break;
                 default:
                     break;
+
+                  
             }
+
         }
+
+        void CajaTexto_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}"); 
+            }
+        } 
 
         #endregion
 
@@ -264,8 +276,10 @@ namespace SiCo.ctrla
         {
             this.TextChanged += new EventHandler(CajaTexto_TextChanged);
             this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
+            this.KeyUp += new KeyEventHandler(CajaTexto_KeyUp); 
             _backcolor = this.BackColor;
-        }     
+        }
+    
 
          public bool EsValido()
         {

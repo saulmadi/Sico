@@ -136,6 +136,9 @@
     <Compile Include="TipoControl.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesBasicos\ListaTipoIdentidad.resx">
+      <DependentUpon>ListaTipoIdentidad.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtListadoMantenimiento.resx">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
     </EmbeddedResource>
