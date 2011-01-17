@@ -4,13 +4,15 @@ Public Class frmConfiguracionBDD
     Dim config As New SICO.lgla.Configuracion
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
         Dim va As New Validador
         va.ColecionCajasTexto.Add(txtservidor)
-        va.ColecionCajasTexto.Add(txtcontrasena)
         va.ColecionCajasTexto.Add(txtusuario)
+        va.ColecionCajasTexto.Add(txtcontrasena)
         va.ColecionCajasTexto.Add(txtbasedatos)
        
         If va.PermitirIngresar Then
+            Me.Cursor = Cursors.WaitCursor
             config.Config.Servidor = txtservidor.Text
             config.Config.Puerto = cmbpuerto.SelectedItem
             config.Config.Usuario = txtusuario.Text
@@ -19,15 +21,14 @@ Public Class frmConfiguracionBDD
             Try
                 If config.Config.ProbarConexion() Then
                     MessageBox.Show("La conexión fue exitosa", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                
+
                 End If
             Catch ex As Exception
 
                 MessageBox.Show("Error en la conexión", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Finally
+                Me.Cursor = Cursors.Default
             End Try
-           
-
-
         End If
 
 
@@ -46,6 +47,7 @@ Public Class frmConfiguracionBDD
         va.ColecionCajasTexto.Add(txtbasedatos)
 
         If va.PermitirIngresar Then
+            Me.Cursor = Cursors.WaitCursor
             config.Config.Servidor = txtservidor.Text
             config.Config.Puerto = cmbpuerto.SelectedItem
             config.Config.Usuario = txtusuario.Text
@@ -60,6 +62,8 @@ Public Class frmConfiguracionBDD
             Catch ex As Exception
 
                 MessageBox.Show("Error en la conexión", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            Finally
+                Me.Cursor = Cursors.Default
             End Try
 
 

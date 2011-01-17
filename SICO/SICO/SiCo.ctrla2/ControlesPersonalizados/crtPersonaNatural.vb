@@ -10,7 +10,9 @@ Public Class crtPersonaNatural
     Private WithEvents _PersonaNatural As PersonaNatural
     Private _etiquetaError As Label
     Private _PersonaNaturalBusqueda As PersonaNatural
-   
+    Private _RealizarBusquedaPor As BusquedaPor
+
+    Public Event CambioPersona()
 #End Region
 
 #Region "Propiedades"
@@ -23,6 +25,7 @@ Public Class crtPersonaNatural
 
         Set(ByVal value As PersonaNatural)
             _PersonaNatural = value
+            RaiseEvent CambioPersona()
         End Set
     End Property
 
@@ -48,7 +51,6 @@ Public Class crtPersonaNatural
                     Case DialogResult.No
                         flag = False
                 End Select
-
             End If
             If flag Then
                 Dim validador As New SiCo.ctrla.Validador
@@ -70,26 +72,44 @@ Public Class crtPersonaNatural
                     Me.Persona.Guardar()
                     Return Persona.Id
                 Else
-
                     Me.EtiquetaError.Text = validador.MensajesError
                     Return 0
                 End If
             Else
                 Return Persona.Id
             End If
-
-
-
-
-
         Catch ex As Exception
             Throw New ApplicationException(ex.Message)
         End Try
     End Function
 
+    Public Sub Nuevo()
+        Me.Persona = New PersonaNatural()
+    End Sub
+
 #End Region
 
 #Region "Eventos"
+
+    Private Sub crtPersonaNatural_CambioPersona() Handles Me.CambioPersona
+        If Persona.Id > 0 Then
+            PersonaNatural.CrearNombreCompleto(Me.Persona.NombreCompleto, txtPrimerApellido.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text)
+        Else
+            txtPrimerNombre.Text = ""
+            txtPrimerApellido.Text = ""
+            txtSegundoApellido.Text = ""
+            txtSegundoNombre.Text = ""
+        End If
+
+        cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad.Valor
+        txtidentifiacion.Text = Persona.identificacion
+        txtrtn.Text = Persona.rtn
+        txtCorreo.Text = Persona.correo
+        txttelefono.Text = Persona.telefono
+        txtCelular.Text = Persona.telefono2
+        txtdireccion.Text = Persona.direccion
+
+    End Sub
 
     Private Sub crtPersonaNatural_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
@@ -98,12 +118,12 @@ Public Class crtPersonaNatural
         Catch ex As Exception
 
         End Try
-
     End Sub
 
     Private Sub ListaTipoIdentidad1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbTipoIdentidad.SelectedIndexChanged
         If Not cmbTipoIdentidad.SelectedItem Is Nothing Then
             txtidentifiacion.TipoIdentificacion = cmbTipoIdentidad.SelectedItem
+            _RealizarBusquedaPor = BusquedaPor.Identidad
         End If
     End Sub
 
@@ -117,16 +137,18 @@ Public Class crtPersonaNatural
     End Sub
 
     Private Sub crtPersonaNatural_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSegundoNombre.Leave, txtSegundoApellido.Leave, txtPrimerNombre.Leave, txtPrimerApellido.Leave
-        If txtPrimerNombre.Text <> String.Empty And txtPrimerApellido.Text <> String.Empty Then
+        If txtPrimerNombre.Text <> String.Empty And txtPrimerApellido.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.Nombre Then
             If Not SubProceso.IsBusy Then
                 _PersonaNaturalBusqueda = New PersonaNatural
                 Dim ar As New Argumento(_PersonaNaturalBusqueda, PersonaNatural.CrearNombreCompleto("", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text))
+                Me.Cursor = Cursors.WaitCursor
                 SubProceso.RunWorkerAsync(ar)
             End If
         End If
     End Sub
 
     Private Sub SubProceso_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles SubProceso.RunWorkerCompleted
+        Me.Cursor = Cursors.Default
         If e.Error Is Nothing Then
             If _PersonaNaturalBusqueda.TotalRegistros > 0 Then
                 Me.Persona = _PersonaNaturalBusqueda
@@ -134,9 +156,29 @@ Public Class crtPersonaNatural
         Else
             MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-        
+
     End Sub
 
+    Private Sub txtPrimerNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSegundoNombre.KeyPress, txtSegundoApellido.KeyPress, txtPrimerNombre.KeyPress, txtPrimerApellido.KeyPress
+        _RealizarBusquedaPor = BusquedaPor.Nombre
+    End Sub
+
+    Private Sub txtidentifiacion_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtidentifiacion.KeyPress
+        _RealizarBusquedaPor = BusquedaPor.Identidad
+    End Sub
+
+    Private Sub txtidentifiacion_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtidentifiacion.Leave
+        If txtidentifiacion.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.Identidad Then
+            If Not SubProceso.IsBusy Then
+                _PersonaNaturalBusqueda = New PersonaNatural
+                Dim listemp As New List(Of Parametro)
+                listemp.Add(New Parametro("identificacion", txtidentifiacion.Text))
+                listemp.Add(New Parametro("tipoidentificacion", cmbTipoIdentidad.SelectedValue))
+                Dim ar As New Argumento(_PersonaNaturalBusqueda, listemp)
+                SubProceso.RunWorkerAsync(ar)
+            End If
+        End If
+    End Sub
 
 #End Region
 
@@ -156,6 +198,12 @@ Public Class crtPersonaNatural
     End Class
 #End Region
 
+#Region "Enumerador"
+    Protected Enum BusquedaPor
+        Nombre = 0
+        Identidad = 1
+    End Enum
+#End Region
 
-
+    
 End Class
