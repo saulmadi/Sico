@@ -88,6 +88,7 @@ Partial Class crtListadoMantenimiento
         '
         Me.txtBusqueda.ColorError = System.Drawing.Color.Red
         Me.txtBusqueda.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtBusqueda.EnterPorTab = True
         Me.txtBusqueda.EsObligatorio = False
         Me.txtBusqueda.ExpresionValidacion = ""
         Me.txtBusqueda.Location = New System.Drawing.Point(78, 3)

@@ -164,4 +164,5 @@ Public Class crtTablaTipo
     End Sub
 #End Region
 
+   
 End Class

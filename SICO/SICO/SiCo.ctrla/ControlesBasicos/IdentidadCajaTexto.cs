@@ -37,12 +37,14 @@ namespace SiCo.ctrla
                 {
                     case "I":
                         this.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]";
-                        this.MaxLength = 15;
-                        this.Enabled = true ;                                  
+                        this.MaxLength = 13;
+                        this.Enabled = true ;
+                        this.TipoTexto = TiposTexto.Entero;        
                         break;
                     case "R":
                         this.ExpresionValidacion = "";
                         this.MaxLength = 45;
+                        this.TipoTexto = TiposTexto.Alfabetico; 
                         this.Enabled = true;                                     
                         break;
                     
@@ -54,10 +56,32 @@ namespace SiCo.ctrla
         public void SetValidacion()
         {
             this.ExpresionValidacion  = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]";
-            this.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232";
-            this.TipoTexto = TiposTexto.Alfanumerico;
+            this.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232 o no puede ser vacía";
+            this.TipoTexto = TiposTexto.Entero;
+            this.MaxLength = 13;
             this.TipoIdentificacion = new SiCo.lgla.TipoIdentidad("Identidad", "I");
+            this.Leave += new EventHandler(IdentidadCajaTexto_Leave);
+
         }
+
+        void IdentidadCajaTexto_Leave(object sender, EventArgs e)
+        {
+            if (this.TipoIdentificacion.Valor == "I")
+            {
+                if (this.Text.Length == 13)
+                {
+                    this.MaxLength = 15;
+                    string t = this.Text.Substring(0, 4);
+                    t += "-";
+                    t += this.Text.Substring(4, 4);
+                    t += "-";
+                    t += this.Text.Substring(8, 5);
+                    this.Text = t;
+                }
+            }
+        }
+
+            
 
     }
 }

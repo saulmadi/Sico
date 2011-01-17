@@ -132,6 +132,7 @@ Partial Class crtPanelBusqueda
         Me.ImprimirToolStripButton.Name = "ImprimirToolStripButton"
         Me.ImprimirToolStripButton.Size = New System.Drawing.Size(23, 22)
         Me.ImprimirToolStripButton.Text = "&Imprimir"
+        Me.ImprimirToolStripButton.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal
         '
         'Panel2
         '

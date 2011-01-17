@@ -19,7 +19,8 @@ namespace SiCo.lgla
             this._espersonanatural = true;
             this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompleto",null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("identificacion", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("tipoidentificacion", null)); 
+            this.ColeccionParametrosBusqueda.Add(new Parametro("tipoidentificacion", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompletoigual", null)); 
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
         }
@@ -70,7 +71,7 @@ namespace SiCo.lgla
         {
             get
             {
-                return NombreCompleto.Replace("@", " "); 
+                return NombreCompleto.Replace("@", "") ; 
             } 
         }
 
@@ -84,7 +85,7 @@ namespace SiCo.lgla
             {
                 this.NombreCompleto = this.Registro(Indice,"NombreCompleto").ToString() ;                
                 this.identificacion = this.Registro(Indice,"identificacion").ToString();
-                if (Registro(Indice,"tipo").ToString() == "I")
+                if (Registro(Indice,"tipoidentidad").ToString() == "I")
                     this.tipoidentidad = new TipoIdentidad("Identidad", "I");
                 else if (Registro(Indice,"tipo").ToString() == "R")
                     this.tipoidentidad = new TipoIdentidad("Residencia", "R");                
@@ -111,7 +112,7 @@ namespace SiCo.lgla
                 if (NombreCompleto.Contains(" "))
                 {
                     string[] Nombre;
-                    Nombre = NombreCompleto.Split(' ');                    
+                    Nombre = NombreCompleto.Replace("@","") .Split(' ');                    
                     PrimerNombre = Nombre[0];
                     SegundoNombre = Nombre [1];
                     PrimerApellido =Nombre[2];
@@ -126,7 +127,7 @@ namespace SiCo.lgla
             }
             else 
             {
-                return PrimerNombre.Trim()  + " "+ SegundoNombre.Trim() + " " + PrimerApellido .Trim()+" "+SegundoApellido.Trim();   
+                return PrimerNombre.Trim()  + " "+ SegundoNombre.Trim() + " " + PrimerApellido .Trim()+" "+SegundoApellido.Trim() +"@";   
             }
 
 
@@ -135,9 +136,9 @@ namespace SiCo.lgla
         public  override void  Guardar()
         {
             this.NullParametrosMantenimiento(); 
-            this.ValorParametrosMantenimiento("entidadnombre", this.NombreCompleto.ToUpperInvariant());
+            this.ValorParametrosMantenimiento("entidadnombre", this.NombreCompleto);
             this.ValorParametrosMantenimiento("identificacion", this.identificacion );
-            this.ValorParametrosMantenimiento("tipoIdentidad", this.tipoidentidad);           
+            this.ValorParametrosMantenimiento("tipoIdentidad", this.tipoidentidad.Valor );           
             base.Guardar();
         }
 
@@ -145,16 +146,15 @@ namespace SiCo.lgla
         {
             base.TablaAColeccion();
             List<PersonaNatural> lista = new List<PersonaNatural>();
-            for (int i = 0; i < this.TotalRegistros - 1; i++)
+            for (int i = 0; i < this.TotalRegistros ; i++)
             {
                 this.CargadoPropiedades(i);
                 PersonaNatural pntemp = new PersonaNatural(this._Id, this.NombreCompleto, this.tipoidentidad,this.identificacion , this.correo, this.direccion, this.rtn, this.telefono,this.telefono2);
-                
+                lista.Add(pntemp);
             }
             return lista; 
         }
         
         #endregion
-
     }
 }
