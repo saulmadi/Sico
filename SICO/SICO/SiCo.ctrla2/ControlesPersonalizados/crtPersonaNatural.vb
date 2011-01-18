@@ -233,6 +233,36 @@ Public Class crtPersonaNatural
         _RealizarBusquedaPor = BusquedaPor.Identidad
     End Sub
 
+    Private Sub btnbuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscar.Click
+        Dim f As New frmBusqueda(New PersonaNatural)
+        f.Grid.AutoGenerateColumns = True
+        f.Grid.DarFormato("NombreCompletoMostrar", "Nombre Completo", True)
+        f.Grid.DarFormato("identificacion", "Identifación", True)
+        f.Grid.DarFormato("telefono", "Télefono", True)
+        f.Grid.DarFormato("telefono2", "Celular", True)
+        f.Grid.DarFormato("correo", "Correo", True)
+        f.VerParametros = False
+
+        Dim p As String = String.Empty
+        If txtPrimerNombre.Text <> String.Empty Then
+            p = txtPrimerNombre.Text
+        End If
+
+        If txtSegundoNombre.Text <> String.Empty Then
+            p += " " + txtSegundoNombre.Text
+        End If
+        If txtPrimerApellido.Text <> String.Empty Then
+            p += " " + txtPrimerApellido.Text
+        End If
+        If txtSegundoApellido.Text <> String.Empty Then
+            p = txtPrimerNombre.Text
+        End If
+        If p <> String.Empty Then
+            f.cargar("nombrecompleto", p)
+            f.ShowDialog()
+        End If
+    End Sub
+
 #End Region
 
 #Region "Clase Argmentos"

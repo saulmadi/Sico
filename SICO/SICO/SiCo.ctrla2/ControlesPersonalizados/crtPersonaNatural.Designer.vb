@@ -31,6 +31,7 @@ Partial Class crtPersonaNatural
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(crtPersonaNatural))
         Me.label2 = New System.Windows.Forms.Label
         Me.label8 = New System.Windows.Forms.Label
         Me.label7 = New System.Windows.Forms.Label
@@ -44,7 +45,7 @@ Partial Class crtPersonaNatural
         Me.Label11 = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
         Me.lblEstado = New System.Windows.Forms.Label
-        Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
+        Me.btnbuscar = New System.Windows.Forms.Button
         Me.txtSegundoApellido = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtSegundoNombre = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtPrimerApellido = New SiCo.ctrla.CajaTexto(Me.components)
@@ -55,6 +56,7 @@ Partial Class crtPersonaNatural
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtidentifiacion = New SiCo.ctrla.IdentidadCajaTexto(Me.components)
+        Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
         Me.SuspendLayout()
         '
         'label2
@@ -161,23 +163,25 @@ Partial Class crtPersonaNatural
         '
         'lblEstado
         '
-        Me.lblEstado.Location = New System.Drawing.Point(257, 182)
+        Me.lblEstado.Location = New System.Drawing.Point(220, 187)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(426, 23)
         Me.lblEstado.TabIndex = 22
         Me.lblEstado.Text = "Label12"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
-        'cmbTipoIdentidad
+        'btnbuscar
         '
-        Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
-        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoIdentidad.FormattingEnabled = True
-        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 58)
-        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
-        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(238, 21)
-        Me.cmbTipoIdentidad.TabIndex = 4
-        Me.cmbTipoIdentidad.ValueMember = "Valor"
+        Me.btnbuscar.BackgroundImage = CType(resources.GetObject("btnbuscar.BackgroundImage"), System.Drawing.Image)
+        Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnbuscar.FlatAppearance.BorderSize = 0
+        Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnbuscar.Location = New System.Drawing.Point(653, 186)
+        Me.btnbuscar.Name = "btnbuscar"
+        Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
+        Me.btnbuscar.TabIndex = 23
+        Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnbuscar.UseVisualStyleBackColor = True
         '
         'txtSegundoApellido
         '
@@ -273,6 +277,7 @@ Partial Class crtPersonaNatural
         'txtrtn
         '
         Me.txtrtn.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrtn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtrtn.ColorError = System.Drawing.Color.Red
         Me.txtrtn.EnterPorTab = True
         Me.txtrtn.EsObligatorio = False
@@ -285,7 +290,7 @@ Partial Class crtPersonaNatural
         Me.txtrtn.Size = New System.Drawing.Size(238, 20)
         Me.txtrtn.TabIndex = 6
         Me.txtrtn.Texto = Nothing
-        Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txtrtn.ValorInt = Nothing
         '
         'txtCorreo
@@ -364,10 +369,22 @@ Partial Class crtPersonaNatural
         Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txtidentifiacion.ValorInt = Nothing
         '
+        'cmbTipoIdentidad
+        '
+        Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
+        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbTipoIdentidad.FormattingEnabled = True
+        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 58)
+        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
+        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(238, 21)
+        Me.cmbTipoIdentidad.TabIndex = 4
+        Me.cmbTipoIdentidad.ValueMember = "Valor"
+        '
         'crtPersonaNatural
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btnbuscar)
         Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.cmbTipoIdentidad)
         Me.Controls.Add(Me.txtSegundoApellido)
@@ -424,5 +441,6 @@ Partial Class crtPersonaNatural
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker
     Friend WithEvents cmbTipoIdentidad As SiCo.ctrla2.ListaTipoIdentidad
     Friend WithEvents lblEstado As System.Windows.Forms.Label
+    Friend WithEvents btnbuscar As System.Windows.Forms.Button
 
 End Class

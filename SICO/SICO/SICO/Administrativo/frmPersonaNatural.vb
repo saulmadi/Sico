@@ -10,7 +10,6 @@
         PanelAccion1.BotonImprimir.Enabled = False
 
     End Sub
-
    
     Private Sub crtBusqueda_SeleccionItem(ByVal Item As System.Object) Handles crtBusqueda.SeleccionItem
         CrtPersonaNatural.Persona = Item
@@ -37,8 +36,10 @@
 
     Private Sub crtBusqueda_Limpio() Handles crtBusqueda.Limpio
         If CrtPersonaNatural.Persona.Id > 0 Then
-            CrtPersonaNatural.Nuevo()
+            CrtPersonaNatural.Persona = New SICO.lgla.PersonaNatural
         End If
 
     End Sub
+
+   
 End Class
