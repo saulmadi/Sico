@@ -80,42 +80,50 @@ namespace SiCo.ctrla
             }
         }
 
+        public long IdActual
+        {
+            //this.CurrentRow 
+        }
+
         #endregion
 
         #region Eventos
 
-        void Grid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        void Grid_DataSourceChanged(object sender, EventArgs e)
         {
-            FormatoColumnas(); 
-            if (this.BotonEditar && !_AgregadoBotonEditar )
+            if (this.DataSource != null)
             {
-                DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
-                columna.Text = "Editar";
-                columna.HeaderText = "Editar";
-                columna.Name = "BtnEditar";
-                columna.Resizable = DataGridViewTriState.False;
-                columna.ReadOnly = true;                
-                columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader; 
-                columna.UseColumnTextForButtonValue = true;
-                
-                this.Columns.Add(columna);
-                _AgregadoBotonEditar = true;
- 
-            }
-            if (this.BotonEliminar && !_AgregadoBotonEliminar)
-            {
-                DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
-                columna.Text = "Eliminar";
-                columna.HeaderText = "Eliminar";
-                columna.Name = "BtnEliminar";
-                columna.Resizable = DataGridViewTriState.False;
-                columna.ReadOnly = true;
-                columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                columna.UseColumnTextForButtonValue = true;
+                FormatoColumnas();
+                if (this.BotonEditar && !_AgregadoBotonEditar)
+                {
+                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    columna.Text = "Editar";
+                    columna.HeaderText = "Editar";
+                    columna.Name = "BtnEditar";
+                    columna.Resizable = DataGridViewTriState.False;
+                    columna.ReadOnly = true;
+                    columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    columna.UseColumnTextForButtonValue = true;
 
-                this.Columns.Add(columna);
-                _AgregadoBotonEliminar  = true;
- 
+                    this.Columns.Add(columna);
+                    _AgregadoBotonEditar = true;
+
+                }
+                if (this.BotonEliminar && !_AgregadoBotonEliminar)
+                {
+                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    columna.Text = "Eliminar";
+                    columna.HeaderText = "Eliminar";
+                    columna.Name = "BtnEliminar";
+                    columna.Resizable = DataGridViewTriState.False;
+                    columna.ReadOnly = true;
+                    columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    columna.UseColumnTextForButtonValue = true;
+
+                    this.Columns.Add(columna);
+                    _AgregadoBotonEliminar = true;
+
+                }
             }
         }
 
@@ -175,9 +183,10 @@ namespace SiCo.ctrla
 
         private void InicializarDelegados()
         {
-            this.DataBindingComplete += new DataGridViewBindingCompleteEventHandler(Grid_DataBindingComplete);
+            
+            this.DataSourceChanged += new EventHandler(Grid_DataSourceChanged);
             this.CellContentClick += new DataGridViewCellEventHandler(Grid_CellContentClick);
-        }
+        }        
 
         private void FormatoDefectoGeneral()
         {            
@@ -190,17 +199,27 @@ namespace SiCo.ctrla
         }
 
         private void FormatoColumnas()
-        {         
+        {
+            foreach (DataGridViewColumn i in this.Columns)
+            {
+                i.Visible = false;
+            }
+
             foreach (GridFormatoColumnas f in _ListaFormatos)
             {
                 if (this.Columns.Contains(f.ColumnaNombre))
                 {
-                    this.Columns[f.ColumnaNombre].HeaderText = f.ColumnaTitulo;
-                    this.Columns[f.ColumnaNombre].Visible = f.Visible;
-                    this.Columns[f.ColumnaNombre].ReadOnly = f.SoloLectura;
+
+                    DataGridViewTextBoxColumn c = new DataGridViewTextBoxColumn();
+                    c.HeaderText=f.ColumnaTitulo ;
+                    c.Name = f.ColumnaNombre;
+                    c.DataPropertyName = f.ColumnaNombre;
+                    c.Visible = f.Visible;                    
+                     this.Columns.Add(c);
+                    
                 }     
             }            
-        }
+        }        
 
         private void VisiblesColumnasEditarEliminar()
         {

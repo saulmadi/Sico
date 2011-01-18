@@ -109,25 +109,71 @@ namespace SiCo.lgla
             
             if (NombreCompleto != string.Empty)
             {
-                if (NombreCompleto.Contains(" "))
+                if (NombreCompleto.EndsWith("@"))
                 {
                     string[] Nombre;
                     Nombre = NombreCompleto.Replace("@","") .Split(' ');                    
-                    PrimerNombre = Nombre[0];
-                    SegundoNombre = Nombre [1];
-                    PrimerApellido =Nombre[2];
-                    SegundoApellido = Nombre[3];
+                    PrimerNombre = Nombre[0];                    
+                    PrimerApellido =Nombre[1];                    
                 }
-                else
+                else if (NombreCompleto.EndsWith("$"))
                 {
-                    PrimerNombre = NombreCompleto;
-                
+                    string[] Nombre;
+                    Nombre = NombreCompleto.Replace("$", "").Split(' ');
+                    PrimerNombre = Nombre[0];
+                    PrimerApellido = Nombre[1];
+                    SegundoApellido = Nombre[2];
                 }
+                else if (NombreCompleto.EndsWith("%"))
+                {
+                    string[] Nombre;
+                    Nombre = NombreCompleto.Replace("%", "").Split(' ');
+                    PrimerNombre = Nombre[0];
+                    SegundoNombre = Nombre[1];
+                    PrimerApellido = Nombre[2];
+
+
+                }
+                else if (NombreCompleto.EndsWith("&"))
+                {
+                    string[] Nombre;
+                    Nombre = NombreCompleto.Replace("&", "").Split(' ');
+                    PrimerNombre = Nombre[0];
+                    SegundoNombre = Nombre[1];
+                    PrimerApellido = Nombre[2];
+                    SegundoNombre = Nombre[3];
+
+                }
+                else 
+                {
+                    throw new ApplicationException("El nombre completo no tiene el formato correcto"); 
+                }
+
                 return NombreCompleto;
             }
             else 
             {
-                return PrimerNombre.Trim()  + " "+ SegundoNombre.Trim() + " " + PrimerApellido .Trim()+" "+SegundoApellido.Trim() +"@";   
+
+                if (SegundoApellido.Trim() == string.Empty && SegundoNombre.Trim() == string.Empty)
+                {
+                    return PrimerNombre.Trim() + " " + PrimerApellido.Trim() + "@";
+                }
+
+                if (SegundoApellido.Trim() != string.Empty && SegundoNombre.Trim() == string.Empty)
+                {
+                    return PrimerNombre.Trim() + " " + PrimerApellido.Trim() +" " + SegundoApellido.Trim() + "$";
+                }
+
+                if (SegundoApellido.Trim() == string.Empty && SegundoNombre.Trim() != string.Empty)
+                {
+                    return PrimerNombre.Trim()+" "+ SegundoNombre.Trim()  + " " + PrimerApellido.Trim() + "%";
+                }
+
+                if (SegundoApellido.Trim() != string.Empty && SegundoNombre.Trim() != string.Empty)
+                {
+                    return PrimerNombre.Trim() + " " + SegundoNombre.Trim() + " " + PrimerApellido.Trim()+" " + SegundoApellido.Trim()  + "&";
+                }
+                throw new ApplicationException("El nombre completo no puede ser creado dado que la persona tiene que tener un nombre y un apellido"); 
             }
 
 

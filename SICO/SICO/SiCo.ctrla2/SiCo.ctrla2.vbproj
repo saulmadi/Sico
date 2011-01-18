@@ -118,6 +118,12 @@
     <Compile Include="ControlesPersonalizados\crtTablaTipoDerivada.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ControlesPersonalizados\frmBusqueda.Designer.vb">
+      <DependentUpon>frmBusqueda.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\frmBusqueda.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtTablaTipoDerivada.resx">
       <DependentUpon>crtTablaTipoDerivada.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\frmBusqueda.resx">
+      <DependentUpon>frmBusqueda.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

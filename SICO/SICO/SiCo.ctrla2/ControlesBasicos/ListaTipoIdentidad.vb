@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 Imports System.Diagnostics
 Public Class ListaTipoIdentidad
+
 #Region "Declaraciones"
 
 #End Region
@@ -34,6 +35,7 @@ Public Class ListaTipoIdentidad
         End Get
     End Property
 #End Region
+
 #Region "ClaseListaTipoIdentidad"
     Private Class ListaTipoIdentidad
         Inherits SiCo.lgla.TipoIdentidad
