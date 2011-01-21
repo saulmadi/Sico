@@ -29,12 +29,12 @@ Partial Class crtPersonaJuridica
         Me.label6 = New System.Windows.Forms.Label
         Me.label5 = New System.Windows.Forms.Label
         Me.lblRazonSocial = New System.Windows.Forms.Label
-        Me.txtNombre = New SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
+        Me.txtrazonsocial = New SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
         Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtCorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto1 = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtFax = New SiCo.ctrla.CajaTexto(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
         Me.btnbuscar = New System.Windows.Forms.Button
         Me.lblEstado = New System.Windows.Forms.Label
@@ -47,7 +47,7 @@ Partial Class crtPersonaJuridica
         Me.label8.Location = New System.Drawing.Point(3, 63)
         Me.label8.Name = "label8"
         Me.label8.Size = New System.Drawing.Size(30, 13)
-        Me.label8.TabIndex = 31
+        Me.label8.TabIndex = 10
         Me.label8.Text = "RTN"
         '
         'label7
@@ -56,7 +56,7 @@ Partial Class crtPersonaJuridica
         Me.label7.Location = New System.Drawing.Point(303, 63)
         Me.label7.Name = "label7"
         Me.label7.Size = New System.Drawing.Size(38, 13)
-        Me.label7.TabIndex = 30
+        Me.label7.TabIndex = 13
         Me.label7.Text = "Correo"
         '
         'label6
@@ -65,7 +65,7 @@ Partial Class crtPersonaJuridica
         Me.label6.Location = New System.Drawing.Point(3, 89)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(52, 13)
-        Me.label6.TabIndex = 29
+        Me.label6.TabIndex = 11
         Me.label6.Text = "Dirección"
         '
         'label5
@@ -74,7 +74,7 @@ Partial Class crtPersonaJuridica
         Me.label5.Location = New System.Drawing.Point(3, 37)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(49, 13)
-        Me.label5.TabIndex = 28
+        Me.label5.TabIndex = 9
         Me.label5.Text = "Telefono"
         '
         'lblRazonSocial
@@ -83,32 +83,32 @@ Partial Class crtPersonaJuridica
         Me.lblRazonSocial.Location = New System.Drawing.Point(3, 11)
         Me.lblRazonSocial.Name = "lblRazonSocial"
         Me.lblRazonSocial.Size = New System.Drawing.Size(68, 13)
-        Me.lblRazonSocial.TabIndex = 24
+        Me.lblRazonSocial.TabIndex = 8
         Me.lblRazonSocial.Text = "Razón social"
         '
-        'txtNombre
+        'txtrazonsocial
         '
-        Me.txtNombre.AutoCompletar = True
-        Me.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtNombre.CampoMostrar = Nothing
-        Me.txtNombre.CaracteresInicio = 3
-        Me.txtNombre.ColeccionParametros = CType(resources.GetObject("txtNombre.ColeccionParametros"), System.Collections.Generic.List(Of SiCo.lgla.Parametro))
-        Me.txtNombre.ColorError = System.Drawing.Color.Red
-        Me.txtNombre.EnterPorTab = True
-        Me.txtNombre.EsObligatorio = True
-        Me.txtNombre.ExpresionValidacion = ""
-        Me.txtNombre.Location = New System.Drawing.Point(77, 8)
-        Me.txtNombre.MaxLength = 120
-        Me.txtNombre.MensajeError = Nothing
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.ParameteroBusqueda = ""
-        Me.txtNombre.Procedimiento = Nothing
-        Me.txtNombre.Size = New System.Drawing.Size(503, 20)
-        Me.txtNombre.TabIndex = 32
-        Me.txtNombre.Texto = Nothing
-        Me.txtNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
-        Me.txtNombre.ValorInt = Nothing
+        Me.txtrazonsocial.AutoCompletar = True
+        Me.txtrazonsocial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.txtrazonsocial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtrazonsocial.CampoMostrar = Nothing
+        Me.txtrazonsocial.CaracteresInicio = 3
+        Me.txtrazonsocial.ColeccionParametros = CType(resources.GetObject("txtrazonsocial.ColeccionParametros"), System.Collections.Generic.List(Of SiCo.lgla.Parametro))
+        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
+        Me.txtrazonsocial.EnterPorTab = True
+        Me.txtrazonsocial.EsObligatorio = True
+        Me.txtrazonsocial.ExpresionValidacion = ""
+        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
+        Me.txtrazonsocial.MaxLength = 120
+        Me.txtrazonsocial.MensajeError = Nothing
+        Me.txtrazonsocial.Name = "txtrazonsocial"
+        Me.txtrazonsocial.ParameteroBusqueda = ""
+        Me.txtrazonsocial.Procedimiento = Nothing
+        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
+        Me.txtrazonsocial.TabIndex = 0
+        Me.txtrazonsocial.Texto = Nothing
+        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtrazonsocial.ValorInt = Nothing
         '
         'txtrtn
         '
@@ -122,7 +122,7 @@ Partial Class crtPersonaJuridica
         Me.txtrtn.MensajeError = Nothing
         Me.txtrtn.Name = "txtrtn"
         Me.txtrtn.Size = New System.Drawing.Size(220, 20)
-        Me.txtrtn.TabIndex = 23
+        Me.txtrtn.TabIndex = 3
         Me.txtrtn.Texto = Nothing
         Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txtrtn.ValorInt = Nothing
@@ -140,7 +140,7 @@ Partial Class crtPersonaJuridica
         Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
         Me.txtCorreo.Name = "txtCorreo"
         Me.txtCorreo.Size = New System.Drawing.Size(233, 20)
-        Me.txtCorreo.TabIndex = 22
+        Me.txtCorreo.TabIndex = 4
         Me.txtCorreo.Texto = Nothing
         Me.txtCorreo.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txtCorreo.ValorInt = Nothing
@@ -156,7 +156,7 @@ Partial Class crtPersonaJuridica
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"
         Me.txtdireccion.Size = New System.Drawing.Size(503, 66)
-        Me.txtdireccion.TabIndex = 21
+        Me.txtdireccion.TabIndex = 5
         Me.txtdireccion.Texto = Nothing
         Me.txtdireccion.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo
         Me.txtdireccion.ValorInt = Nothing
@@ -173,27 +173,27 @@ Partial Class crtPersonaJuridica
         Me.txttelefono.Multiline = True
         Me.txttelefono.Name = "txttelefono"
         Me.txttelefono.Size = New System.Drawing.Size(220, 20)
-        Me.txttelefono.TabIndex = 20
+        Me.txttelefono.TabIndex = 1
         Me.txttelefono.Texto = Nothing
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txttelefono.ValorInt = Nothing
         '
-        'CajaTexto1
+        'txtFax
         '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EnterPorTab = True
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(347, 34)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Multiline = True
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(233, 20)
-        Me.CajaTexto1.TabIndex = 33
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SiCo.ctrla.TiposTexto.Entero
-        Me.CajaTexto1.ValorInt = Nothing
+        Me.txtFax.ColorError = System.Drawing.Color.Red
+        Me.txtFax.EnterPorTab = True
+        Me.txtFax.EsObligatorio = False
+        Me.txtFax.ExpresionValidacion = Nothing
+        Me.txtFax.Location = New System.Drawing.Point(347, 34)
+        Me.txtFax.MaxLength = 255
+        Me.txtFax.MensajeError = Nothing
+        Me.txtFax.Multiline = True
+        Me.txtFax.Name = "txtFax"
+        Me.txtFax.Size = New System.Drawing.Size(233, 20)
+        Me.txtFax.TabIndex = 2
+        Me.txtFax.Texto = Nothing
+        Me.txtFax.TipoTexto = SiCo.ctrla.TiposTexto.Entero
+        Me.txtFax.ValorInt = Nothing
         '
         'Label1
         '
@@ -201,7 +201,7 @@ Partial Class crtPersonaJuridica
         Me.Label1.Location = New System.Drawing.Point(303, 37)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(24, 13)
-        Me.Label1.TabIndex = 34
+        Me.Label1.TabIndex = 12
         Me.Label1.Text = "Fax"
         '
         'btnbuscar
@@ -213,7 +213,7 @@ Partial Class crtPersonaJuridica
         Me.btnbuscar.Location = New System.Drawing.Point(545, 157)
         Me.btnbuscar.Name = "btnbuscar"
         Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
-        Me.btnbuscar.TabIndex = 36
+        Me.btnbuscar.TabIndex = 7
         Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnbuscar.UseVisualStyleBackColor = True
         '
@@ -222,7 +222,7 @@ Partial Class crtPersonaJuridica
         Me.lblEstado.Location = New System.Drawing.Point(181, 158)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(357, 23)
-        Me.lblEstado.TabIndex = 35
+        Me.lblEstado.TabIndex = 6
         Me.lblEstado.Text = "Label12"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -236,8 +236,8 @@ Partial Class crtPersonaJuridica
         Me.Controls.Add(Me.btnbuscar)
         Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.CajaTexto1)
-        Me.Controls.Add(Me.txtNombre)
+        Me.Controls.Add(Me.txtFax)
+        Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.txtrtn)
         Me.Controls.Add(Me.txtCorreo)
         Me.Controls.Add(Me.txtdireccion)
@@ -262,9 +262,9 @@ Partial Class crtPersonaJuridica
     Private WithEvents label6 As System.Windows.Forms.Label
     Private WithEvents label5 As System.Windows.Forms.Label
     Private WithEvents lblRazonSocial As System.Windows.Forms.Label
-    Private WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
+    Private WithEvents txtFax As SiCo.ctrla.CajaTexto
     Private WithEvents Label1 As System.Windows.Forms.Label
-    Private WithEvents txtNombre As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
+    Private WithEvents txtrazonsocial As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
     Friend WithEvents btnbuscar As System.Windows.Forms.Button
     Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker

@@ -151,7 +151,7 @@ Public Class crtPersonaNatural
     Private Sub crtPersonaNatural_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             _PersonaNatural = New PersonaNatural
-            _PersonaNatural = New PersonaNatural
+            _PersonaNaturalBusqueda = New PersonaNatural
             lblEstado.Text = ""
         Catch ex As Exception
         End Try
