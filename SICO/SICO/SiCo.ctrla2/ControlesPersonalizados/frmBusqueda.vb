@@ -88,11 +88,8 @@ Public Class frmBusqueda
 
     Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
         Me.Close()
-
+        Me.Entidad = Grid.Item()
     End Sub
 
 #End Region
-
-    
-    
 End Class

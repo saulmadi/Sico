@@ -313,14 +313,16 @@ namespace SiCo.ctrla
             this.KeyUp += new KeyEventHandler(CajaTexto_KeyUp); 
             _backcolor = this.BackColor;
             this.EnterPorTab = true;
-        }
-
-            
+        }            
 
         public bool EsValido()
         {
             
                 bool flag = true;
+                if (this.Text== string.Empty)
+                { 
+                    return true;
+                }
                 
                 if (_Validador != null)
                 {

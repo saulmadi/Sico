@@ -51,7 +51,7 @@ Public Class crtPersonaNatural
                 txtPrimerApellido.ReadOnly = value
                 txtSegundoApellido.ReadOnly = value
                 txtSegundoNombre.ReadOnly = value
-                cmbTipoIdentidad.Enabled = Not value
+                'cmbTipoIdentidad.Enabled = Not value
                 txtidentifiacion.ReadOnly = value
                 txtrtn.ReadOnly = value
                 txtCorreo.ReadOnly = value
@@ -257,9 +257,14 @@ Public Class crtPersonaNatural
         If txtSegundoApellido.Text <> String.Empty Then
             p = txtPrimerNombre.Text
         End If
-        If p <> String.Empty Then
+        If p.Trim <> String.Empty Then
             f.cargar("nombrecompleto", p)
-            f.ShowDialog()
+            If f.ShowDialog() = DialogResult.OK Then
+                Me.Persona = f.Entidad
+            End If
+            Me.lblEstado.Text = ""
+        Else
+            Me.lblEstado.Text = "Ingrese un nombre para poder realizar la busqueda"
         End If
     End Sub
 
