@@ -37,7 +37,7 @@
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.Entidades" Collapsed="true">
+  <Class Name="SiCo.lgla.Entidades">
     <Position X="0.75" Y="4.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -55,17 +55,20 @@
       <FileName>TipoIdentidad.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaNatural" Collapsed="true">
-    <Position X="3.25" Y="5" Width="1.5" />
+  <Class Name="SiCo.lgla.PersonaNatural">
+    <Position X="3.25" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAAAAAgBAAAAAAAAAAAAABAAQgIA=</HashCode>
+      <HashCode>AIAAAAIAAAAAgAAAAAAAAgBAAAAAAAAAAAABBAAQgIA=</HashCode>
       <FileName>PersonaNatural.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla.PersonaJuridica" Collapsed="true">
-    <Position X="1" Y="6.5" Width="1.5" />
+  <Class Name="SiCo.lgla.PersonaJuridica">
+    <Position X="3" Y="8.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAABAAQAAA=</HashCode>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAABBAAQAAA=</HashCode>
       <FileName>PersonaJuridica.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -86,7 +89,7 @@
   <Class Name="SiCo.lgla.Configuracion">
     <Position X="6.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
       <FileName>Configuracion.cs</FileName>
     </TypeIdentifier>
   </Class>
