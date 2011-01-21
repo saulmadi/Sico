@@ -16,7 +16,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from municipios  where id=id into @conteo;
+select count(id) from municipios m  where m.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -34,7 +34,7 @@ else
         c.idderivada= idderivada,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 

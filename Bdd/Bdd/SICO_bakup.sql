@@ -50,7 +50,8 @@ CREATE TABLE `personasnaturales` (
   `NombreCompleto` varchar(120),
   `identificacion` varchar(20),
   `tipoidentidad` varchar(1),
-  `id` int(11)
+  `id` int(11),
+  `telefono2` int(11)
 );
 
 --
@@ -108,18 +109,20 @@ CREATE TABLE `departamentos` (
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripcion` (`descripcion`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departamentos`
 --
 
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-09 00:00:00'),
+INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-16 00:00:00'),
  (35,'Francisco Morazan',1,1,'2011-01-09 00:00:00'),
  (36,'Lempira',0,1,'2011-01-09 00:00:00'),
  (37,'Copan',1,1,'2011-01-09 00:00:00'),
- (38,'Cortes',1,1,'2011-01-09 00:00:00');
+ (38,'Cortes',1,1,'2011-01-09 00:00:00'),
+ (39,'La Paz',1,1,'2011-01-16 00:00:00'),
+ (40,'Choluteca',1,1,'2011-01-16 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
 
@@ -129,7 +132,7 @@ INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-09 00:00:00'),
 
 DROP TABLE IF EXISTS `entidades`;
 CREATE TABLE `entidades` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `telefono` int(11) DEFAULT NULL,
   `direccion` varchar(150) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
@@ -138,17 +141,22 @@ CREATE TABLE `entidades` (
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   `entidadnombre` varchar(120) NOT NULL,
-  `identificacion` varchar(20) DEFAULT NULL,
-  `tipoidentidad` varchar(1) DEFAULT NULL COMMENT 'I identidad, P pasaporte',
+  `identificacion` varchar(20) NOT NULL,
+  `tipoidentidad` varchar(1) NOT NULL COMMENT 'I identidad, R resiendica',
+  `telefono2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `NombreUnico` (`entidadnombre`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `Identificacion` (`identificacion`,`tipoidentidad`) USING BTREE,
+  UNIQUE KEY `Nombre` (`entidadnombre`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `entidades`
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
+INSERT INTO `entidades` VALUES  (1,NULL,'asdfkasdklfjakjfaklsdjfal kaklfjldmamcakmfasklfjakjakfasfjaskljfaslkjsdfljasklfjadsklfj','saulmadi@gmail.com',1,'4894358998|498',1,'2011-01-20','saul antonio mayorquin Diaz&','0801-1988-12524','I',342343),
+ (2,NULL,NULL,NULL,1,NULL,1,'2011-01-17','manuel mayorquin@','1234-5678-89012','I',NULL),
+ (3,4323424,'DFSFDSFSFSFSFSFD','miggl@gma.cn',1,'SDFFS',1,'2011-01-20','Miguel Angel Mayorquin Diaz&','0301-1993-00599','I',4323234);
 /*!40000 ALTER TABLE `entidades` ENABLE KEYS */;
 
 
@@ -303,9 +311,9 @@ INSERT INTO `marcas` VALUES  (10,'KMF',1,1,'2011-01-09 00:00:00'),
 
 DROP TABLE IF EXISTS `modelos`;
 CREATE TABLE `modelos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
-  `habilitado` tinyint(1) NOT NULL,
+  `habilitado` int(1) NOT NULL,
   `idderivada` int(11) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` datetime NOT NULL,
@@ -313,13 +321,15 @@ CREATE TABLE `modelos` (
   KEY `fk_Modelos_Marcas1` (`idderivada`),
   KEY `Descripcion` (`descripcion`),
   CONSTRAINT `fk_Modelos_Marcas1` FOREIGN KEY (`idderivada`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modelos`
 --
 
 /*!40000 ALTER TABLE `modelos` DISABLE KEYS */;
+INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00'),
+ (2,'DT125L',1,11,1,'2011-01-12 00:00:00');
 /*!40000 ALTER TABLE `modelos` ENABLE KEYS */;
 
 
@@ -395,20 +405,28 @@ DROP TABLE IF EXISTS `municipios`;
 CREATE TABLE `municipios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(45) NOT NULL,
-  `iddepartamento` int(11) NOT NULL,
-  `habilitado` tinyint(1) NOT NULL,
+  `idderivada` int(11) NOT NULL,
+  `habilitado` int(1) unsigned NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_Municipio_Departamentos1` (`iddepartamento`),
-  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`iddepartamento`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_Municipio_Departamentos1` (`idderivada`),
+  CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`idderivada`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `municipios`
 --
 
 /*!40000 ALTER TABLE `municipios` DISABLE KEYS */;
+INSERT INTO `municipios` VALUES  (1,'Comayagua',34,1,1,'2011-01-13 00:00:00'),
+ (2,'Lepaterique',37,1,1,'2011-01-12 00:00:00'),
+ (3,'San Juan del Potrero',34,0,1,'2011-01-13 00:00:00'),
+ (4,'fgsd',37,1,1,'2011-01-12 00:00:00'),
+ (5,'Distrito Central',35,1,1,'2011-01-12 00:00:00'),
+ (6,'Ojona',35,1,1,'2011-01-13 00:00:00'),
+ (7,'Talanga',35,1,1,'2011-01-13 00:00:00'),
+ (8,'La paz',39,0,1,'2011-01-16 00:00:00');
 /*!40000 ALTER TABLE `municipios` ENABLE KEYS */;
 
 
@@ -499,8 +517,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -862,7 +880,7 @@ DROP PROCEDURE IF EXISTS `Entidades_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Entidades_Mant`(
 
 /*definicion de parametros*/
@@ -876,6 +894,7 @@ rtn varchar(18),
 entidadnombre varchar(120),
 identificacion varchar(20),
 tipoidentidad varchar(1),
+telefono2 int,
 usu int,
 fmodif date
 )
@@ -887,9 +906,9 @@ select count(e.id) from entidades E where E.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO entidades(telefono, direccion,correo,espersonanatural, RTN, usu,fmodif,entidadnombre,identificacion,tipoidentidad)
+  INSERT INTO entidades(telefono, direccion,correo,espersonanatural, RTN, usu,fmodif,entidadnombre,identificacion,tipoidentidad,telefono2)
 
-  VALUES(telefono,direccion,correo,espersonanatural,rtn,usu,fmodif,entidadnombre,identificacion,tipoidentidad);
+  VALUES(telefono,direccion,correo,espersonanatural,rtn,usu,fmodif,entidadnombre,identificacion,tipoidentidad,telefono2);
 
   select last_insert_id() into id;
 
@@ -905,7 +924,8 @@ else
         e.fmodif= fmodif,
         e.entidadnombre=entidadnombre,
         e.identificacion=identificacion,
-        e.tipoidentidad=identificacion
+        e.tipoidentidad=tipoidentidad,
+        e.telefono2=telefono2
   where e.id= id;
 
 end if;
@@ -1137,7 +1157,7 @@ DROP PROCEDURE IF EXISTS `Modelos_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Mant`(
 
 /*definicion de parametros*/
@@ -1153,7 +1173,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from modelos  where id=id into @conteo;
+select count(id) from modelos m  where m.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -1171,7 +1191,7 @@ else
         c.idderivada= idderivada,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
@@ -1241,7 +1261,7 @@ DROP PROCEDURE IF EXISTS `Municipios_Mant`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Mant`(
 
 /*definicion de parametros*/
@@ -1257,7 +1277,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from municipios  where id=id into @conteo;
+select count(id) from municipios m  where m.id=id into @conteo;
 
 if @conteo =0 then
 
@@ -1275,7 +1295,7 @@ else
         c.idderivada= idderivada,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
@@ -1349,13 +1369,15 @@ DROP PROCEDURE IF EXISTS `PersonaNatural_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
-nombrecompleto nvarchar(125),
+nombrecompleto nvarchar(120),
+nombrecompletoigual nvarchar (120),
 identificacion nvarchar(45),
+tipoidentificacion nvarchar(1),
 rtn nvarchar(18) 
 
 )
@@ -1382,9 +1404,21 @@ if nombrecompleto<>"" then
   set @where = concat(@where, " and NombreCompleto like '",nombrecompleto, "%' ");
 end if;
 
+if nombrecompletoigual<>"" then
+  set @where = concat(@where, " and NombreCompleto = '",nombrecompletoigual, "' ");
+end if;
+
+
+
+
+if tipoidentificacion<>"" then
+  set @where = concat(@where, " and tipoidentidad = '",tipoidentificacion,"' ");
+end if;
+
 if identificacion<>"" then
   set @where = concat(@where, " and identificacion = '",identificacion,"' ");
 end if;
+
 
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"´' ");
@@ -1734,7 +1768,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 
 DROP TABLE IF EXISTS `personasnaturales`;
 DROP VIEW IF EXISTS `personasnaturales`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasnaturales` AS select `e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN`,`e`.`usu` AS `usu`,`e`.`fmodif` AS `fmodif`,`e`.`entidadnombre` AS `NombreCompleto`,`e`.`identificacion` AS `identificacion`,`e`.`tipoidentidad` AS `tipoidentidad`,`e`.`id` AS `id` from `entidades` `e` where (`e`.`espersonanatural` = 1);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasnaturales` AS select `e`.`telefono` AS `telefono`,`e`.`direccion` AS `direccion`,`e`.`correo` AS `correo`,`e`.`RTN` AS `RTN`,`e`.`usu` AS `usu`,`e`.`fmodif` AS `fmodif`,`e`.`entidadnombre` AS `NombreCompleto`,`e`.`identificacion` AS `identificacion`,`e`.`tipoidentidad` AS `tipoidentidad`,`e`.`id` AS `id`,`e`.`telefono2` AS `telefono2` from `entidades` `e` where (`e`.`espersonanatural` = 1);
 
 --
 -- Definition of view `ventidades`

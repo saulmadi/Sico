@@ -16,7 +16,7 @@ BEGIN
 
 
 set @conteo =0;
-select count(id) from modelos  where id=id into @conteo;
+select count(id) from modelos m  where m.id=id into @conteo;
 
 if @conteo =0 then
 
