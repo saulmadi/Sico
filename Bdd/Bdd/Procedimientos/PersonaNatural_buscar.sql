@@ -5,8 +5,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaNatural_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
-nombrecompleto nvarchar(125),
+nombrecompleto nvarchar(120),
+nombrecompletoigual nvarchar (120),
 identificacion nvarchar(45),
+tipoidentificacion nvarchar(1),
 rtn nvarchar(18) 
 
 )
@@ -33,9 +35,21 @@ if nombrecompleto<>"" then
   set @where = concat(@where, " and NombreCompleto like '",nombrecompleto, "%' ");
 end if;
 
+if nombrecompletoigual<>"" then
+  set @where = concat(@where, " and NombreCompleto = '",nombrecompletoigual, "' ");
+end if;
+
+
+
+
+if tipoidentificacion<>"" then
+  set @where = concat(@where, " and tipoidentidad = '",tipoidentificacion,"' ");
+end if;
+
 if identificacion<>"" then
   set @where = concat(@where, " and identificacion = '",identificacion,"' ");
 end if;
+
 
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"´' ");
