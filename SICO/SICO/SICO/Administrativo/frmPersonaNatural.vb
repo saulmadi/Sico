@@ -22,11 +22,15 @@
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
             PanelAccion1.lblEstado.Text = "Guardando..."
-            CrtPersonaNatural.Guardar()
-            PanelAccion1.lblEstado.Text = "Persona natural guardada correctamente"
+
+            If CrtPersonaNatural.Guardar() > 0 Then
+                CrtPersonaNatural.Nuevo()
+                PanelAccion1.lblEstado.Text = "Persona natural guardada correctamente"
+            End If
+            
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            PanelAccion1.lblEstado.Text = "Error al guardar persona natural"
+            PanelAccion1.lblEstado.Text = "Error al guardar la persona natural"
         End Try
     End Sub
 

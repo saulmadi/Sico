@@ -38,6 +38,12 @@ namespace SiCo.ctrla
             foreach( CajaTexto  txt in this.ColecionCajasTexto   )
             {
                 flag = txt.EsValido();
+                if (!flag)
+                {
+                    this.MensajesError = txt.MensajeError;
+                    txt.Focus();
+                    return flag;
+                }
                 flag = !txt.EsVacio();
                 if (!flag)
                 {

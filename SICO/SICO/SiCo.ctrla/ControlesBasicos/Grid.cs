@@ -80,9 +80,12 @@ namespace SiCo.ctrla
             }
         }
 
-        public long IdActual
+        public object Item
         {
-            //this.CurrentRow 
+            get
+            {
+                return this.CurrentRow.DataBoundItem;
+            }
         }
 
         #endregion

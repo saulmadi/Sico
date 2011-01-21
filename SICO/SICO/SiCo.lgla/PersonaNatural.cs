@@ -71,7 +71,7 @@ namespace SiCo.lgla
         {
             get
             {
-                return NombreCompleto.Replace("@", "") ; 
+                return NombreCompleto.Replace("@", "").Replace("%","").Replace("&","").Replace("$","")   ; 
             } 
         }
 
@@ -114,13 +114,16 @@ namespace SiCo.lgla
                     string[] Nombre;
                     Nombre = NombreCompleto.Replace("@","") .Split(' ');                    
                     PrimerNombre = Nombre[0];                    
-                    PrimerApellido =Nombre[1];                    
+                    PrimerApellido =Nombre[1];
+                    SegundoApellido = "";
+                    SegundoNombre = "";
                 }
                 else if (NombreCompleto.EndsWith("$"))
                 {
                     string[] Nombre;
                     Nombre = NombreCompleto.Replace("$", "").Split(' ');
                     PrimerNombre = Nombre[0];
+                    SegundoNombre = "";
                     PrimerApellido = Nombre[1];
                     SegundoApellido = Nombre[2];
                 }
@@ -131,6 +134,7 @@ namespace SiCo.lgla
                     PrimerNombre = Nombre[0];
                     SegundoNombre = Nombre[1];
                     PrimerApellido = Nombre[2];
+                    SegundoApellido = "";
 
 
                 }
@@ -141,7 +145,7 @@ namespace SiCo.lgla
                     PrimerNombre = Nombre[0];
                     SegundoNombre = Nombre[1];
                     PrimerApellido = Nombre[2];
-                    SegundoNombre = Nombre[3];
+                    SegundoApellido = Nombre[3];
 
                 }
                 else 

@@ -33,14 +33,14 @@ Partial Class frmBusqueda
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBusqueda))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.grdbusqueda = New SiCo.ctrla.Grid(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.btnCancelar = New System.Windows.Forms.Button
         Me.btnAceptar = New System.Windows.Forms.Button
         Me.panelparametros = New System.Windows.Forms.Panel
-        Me.grdbusqueda = New SiCo.ctrla.Grid(Me.components)
         Me.GroupBox1.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         CType(Me.grdbusqueda, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -52,6 +52,26 @@ Partial Class frmBusqueda
         Me.GroupBox1.Size = New System.Drawing.Size(597, 274)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
+        '
+        'grdbusqueda
+        '
+        Me.grdbusqueda.AllowUserToAddRows = False
+        Me.grdbusqueda.AllowUserToDeleteRows = False
+        Me.grdbusqueda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdbusqueda.BotonEditar = False
+        Me.grdbusqueda.BotonEliminar = False
+        Me.grdbusqueda.CampoId = "id"
+        Me.grdbusqueda.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdbusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdbusqueda.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdbusqueda.Location = New System.Drawing.Point(3, 16)
+        Me.grdbusqueda.MultiSelect = False
+        Me.grdbusqueda.Name = "grdbusqueda"
+        Me.grdbusqueda.ReadOnly = True
+        Me.grdbusqueda.RowHeadersVisible = False
+        Me.grdbusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdbusqueda.Size = New System.Drawing.Size(591, 255)
+        Me.grdbusqueda.TabIndex = 0
         '
         'Panel1
         '
@@ -75,6 +95,7 @@ Partial Class frmBusqueda
         '
         'btnAceptar
         '
+        Me.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK
         Me.btnAceptar.Location = New System.Drawing.Point(12, 12)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(76, 31)
@@ -90,26 +111,6 @@ Partial Class frmBusqueda
         Me.panelparametros.Size = New System.Drawing.Size(597, 100)
         Me.panelparametros.TabIndex = 1
         '
-        'grdbusqueda
-        '
-        Me.grdbusqueda.AllowUserToAddRows = False
-        Me.grdbusqueda.AllowUserToDeleteRows = False
-        Me.grdbusqueda.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grdbusqueda.BotonEditar = False
-        Me.grdbusqueda.BotonEliminar = False
-        Me.grdbusqueda.CampoId = "id"
-        Me.grdbusqueda.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grdbusqueda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdbusqueda.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdbusqueda.Location = New System.Drawing.Point(3, 16)
-        Me.grdbusqueda.MultiSelect = False
-        Me.grdbusqueda.Name = "grdbusqueda"
-        Me.grdbusqueda.ReadOnly = True
-        Me.grdbusqueda.RowHeadersVisible = False
-        Me.grdbusqueda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.grdbusqueda.Size = New System.Drawing.Size(591, 255)
-        Me.grdbusqueda.TabIndex = 0
-        '
         'frmBusqueda
         '
         Me.AcceptButton = Me.btnAceptar
@@ -123,13 +124,14 @@ Partial Class frmBusqueda
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
+        Me.MinimumSize = New System.Drawing.Size(613, 467)
         Me.Name = "frmBusqueda"
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Busqueda"
         Me.GroupBox1.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
         CType(Me.grdbusqueda, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
