@@ -5,6 +5,7 @@ Public Class crtPersonaJuridica
 
 #Region "Declaraciones"
     Private _Persona As PersonaJuridica
+    Private _PersonaBusqueda As PersonaJuridica
     Private _etiquetaError As New ToolStripStatusLabel
     Private _RealizarBusquedaPor As BusquedaPor
     Private _SoloLectura As Boolean = False
@@ -14,6 +15,7 @@ Public Class crtPersonaJuridica
 #End Region
 
 #Region "Propiedades"
+
     Public Property TextoRazonSocial() As String
         Get
             Return lblRazonSocial.Text
@@ -42,7 +44,8 @@ Public Class crtPersonaJuridica
         Set(ByVal value As Boolean)
             Try
                 _SoloLectura = value
-                
+                txtrazonsocial.ReadOnly = value
+                txtFax.ReadOnly = value
                 txtrtn.ReadOnly = value
                 txtCorreo.ReadOnly = value
                 txttelefono.ReadOnly = value
@@ -51,6 +54,15 @@ Public Class crtPersonaJuridica
 
             End Try
 
+        End Set
+    End Property
+
+    Public Property EtiquetaError() As ToolStripStatusLabel
+        Get
+            Return _etiquetaError
+        End Get
+        Set(ByVal value As ToolStripStatusLabel)
+            _etiquetaError = value
         End Set
     End Property
 
@@ -87,12 +99,33 @@ Public Class crtPersonaJuridica
 
     End Sub
 
-    Private Sub txtNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrtn.Leave, txtNombre.Leave
-
+    Private Sub txtNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrtn.Leave, txtrazonsocial.Leave
+        If Me.RealizarBusquedaAutomarita Then
+            If txtrazonsocial.Text <> String.Empty Then
+                If Not SubProceso.IsBusy Then
+                    Me.Cursor = Cursors.WaitCursor
+                    lblEstado.Text = "Buscando..."
+                    Me.RealizarBusquedaAutomarita = False
+                    Me.SoloLectura = True
+                    _PersonaNaturalBusqueda = New PersonaJuridica
+                    Dim ar As New Argumento(_PersonaNaturalBusqueda, PersonaNatural.CrearNombreCompleto("", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text))
+                    Me.Cursor = Cursors.WaitCursor
+                    If Not SubProceso.IsBusy Then SubProceso.RunWorkerAsync(ar)
+                End If
+            End If
+        End If
     End Sub
 
     Private Sub SubProceso_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles SubProceso.DoWork
 
+    End Sub
+
+    Private Sub txtrazonsocial_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrazonsocial.TextChanged
+        _RealizarBusquedaPor = BusquedaPor.RazonSocial
+    End Sub
+
+    Private Sub txtrtn_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrtn.TextChanged
+        _RealizarBusquedaPor = BusquedaPor.rtn
     End Sub
 
 #End Region
@@ -121,5 +154,7 @@ Public Class crtPersonaJuridica
     End Enum
 #End Region
 
+    
+  
     
 End Class
