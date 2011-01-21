@@ -21,7 +21,7 @@ namespace SiCo.lgla
             
 
         }
-        public PersonaJuridica(Int32 id, string RazonSocial,string correo, string direccion, string rtn , int Telefono):base()         
+        public PersonaJuridica(long? id, string RazonSocial,string correo, string direccion, string rtn , int? Telefono,int? Telefono2 ):base()         
         {
             this.ComandoSelect = "PersonaJuridica_Buscar";
             this._espersonanatural = false;
@@ -35,6 +35,7 @@ namespace SiCo.lgla
             this.direccion = direccion;
             this.rtn = rtn;
             this.telefono = Telefono;
+            this.telefono2 = Telefono2;
         }
         #endregion
 
@@ -68,6 +69,19 @@ namespace SiCo.lgla
             this.ValorParametrosBusqueda("razonsocial", RazonSocial);
             this.ValorParametrosBusqueda("rtn", rtn); 
             base.Buscar();
+        }
+
+        public override object TablaAColeccion()
+        {
+            base.TablaAColeccion();
+            List<PersonaJuridica> lista = new List<PersonaJuridica>();
+            for (int i = 0; i < this.TotalRegistros; i++)
+            {
+                this.CargadoPropiedades(i);
+                PersonaJuridica pntemp = new PersonaJuridica(this._Id, this.RazonSocial, this.correo, this.direccion, this.rtn, this.telefono,this.telefono2 ); 
+                lista.Add(pntemp);
+            }
+            return lista; 
         }
 
         #endregion

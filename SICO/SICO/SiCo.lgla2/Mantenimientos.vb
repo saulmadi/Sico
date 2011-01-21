@@ -80,7 +80,7 @@ Public MustInherit Class Mantenimientos
 
         Dim i As Integer = PrimerRegistro("identidades")
         If Not i = Nothing Then
-            Return New PersonaJuridica(i, PrimerRegistro("entidadnombre"), PrimerRegistro("correo"), PrimerRegistro("direccion"), PrimerRegistro("rtn"), PrimerRegistro("telefono"))
+            Return New PersonaJuridica(i, PrimerRegistro("entidadnombre"), PrimerRegistro("correo"), PrimerRegistro("direccion"), PrimerRegistro("rtn"), PrimerRegistro("telefono"), PrimerRegistro("telefono2"))
         End If
         Return Nothing
     End Function
