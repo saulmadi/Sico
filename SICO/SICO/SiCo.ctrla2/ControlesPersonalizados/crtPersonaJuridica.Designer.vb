@@ -29,7 +29,6 @@ Partial Class crtPersonaJuridica
         Me.label6 = New System.Windows.Forms.Label
         Me.label5 = New System.Windows.Forms.Label
         Me.lblRazonSocial = New System.Windows.Forms.Label
-        Me.txtrazonsocial = New SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
         Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtCorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
@@ -39,6 +38,7 @@ Partial Class crtPersonaJuridica
         Me.btnbuscar = New System.Windows.Forms.Button
         Me.lblEstado = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
+        Me.txtrazonsocial = New SiCo.ctrla.CajaTexto(Me.components)
         Me.SuspendLayout()
         '
         'label8
@@ -86,30 +86,6 @@ Partial Class crtPersonaJuridica
         Me.lblRazonSocial.TabIndex = 8
         Me.lblRazonSocial.Text = "Razón social"
         '
-        'txtrazonsocial
-        '
-        Me.txtrazonsocial.AutoCompletar = True
-        Me.txtrazonsocial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.txtrazonsocial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtrazonsocial.CampoMostrar = Nothing
-        Me.txtrazonsocial.CaracteresInicio = 3
-        Me.txtrazonsocial.ColeccionParametros = CType(resources.GetObject("txtrazonsocial.ColeccionParametros"), System.Collections.Generic.List(Of SiCo.lgla.Parametro))
-        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
-        Me.txtrazonsocial.EnterPorTab = True
-        Me.txtrazonsocial.EsObligatorio = True
-        Me.txtrazonsocial.ExpresionValidacion = ""
-        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
-        Me.txtrazonsocial.MaxLength = 120
-        Me.txtrazonsocial.MensajeError = Nothing
-        Me.txtrazonsocial.Name = "txtrazonsocial"
-        Me.txtrazonsocial.ParameteroBusqueda = ""
-        Me.txtrazonsocial.Procedimiento = Nothing
-        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
-        Me.txtrazonsocial.TabIndex = 0
-        Me.txtrazonsocial.Texto = Nothing
-        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
-        Me.txtrazonsocial.ValorInt = Nothing
-        '
         'txtrtn
         '
         Me.txtrtn.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
@@ -152,6 +128,7 @@ Partial Class crtPersonaJuridica
         Me.txtdireccion.EsObligatorio = False
         Me.txtdireccion.ExpresionValidacion = Nothing
         Me.txtdireccion.Location = New System.Drawing.Point(77, 86)
+        Me.txtdireccion.MaxLength = 150
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"
@@ -229,15 +206,32 @@ Partial Class crtPersonaJuridica
         'SubProceso
         '
         '
+        'txtrazonsocial
+        '
+        Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
+        Me.txtrazonsocial.EnterPorTab = True
+        Me.txtrazonsocial.EsObligatorio = False
+        Me.txtrazonsocial.ExpresionValidacion = Nothing
+        Me.txtrazonsocial.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
+        Me.txtrazonsocial.MensajeError = Nothing
+        Me.txtrazonsocial.Name = "txtrazonsocial"
+        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
+        Me.txtrazonsocial.TabIndex = 14
+        Me.txtrazonsocial.Texto = Nothing
+        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtrazonsocial.ValorInt = Nothing
+        '
         'crtPersonaJuridica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.btnbuscar)
         Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.txtFax)
-        Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.txtrtn)
         Me.Controls.Add(Me.txtCorreo)
         Me.Controls.Add(Me.txtdireccion)
@@ -264,9 +258,9 @@ Partial Class crtPersonaJuridica
     Private WithEvents lblRazonSocial As System.Windows.Forms.Label
     Private WithEvents txtFax As SiCo.ctrla.CajaTexto
     Private WithEvents Label1 As System.Windows.Forms.Label
-    Private WithEvents txtrazonsocial As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
     Friend WithEvents btnbuscar As System.Windows.Forms.Button
     Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker
+    Friend WithEvents txtrazonsocial As SiCo.ctrla.CajaTexto
 
 End Class

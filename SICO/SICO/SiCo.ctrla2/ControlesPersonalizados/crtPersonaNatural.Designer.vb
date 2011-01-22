@@ -322,6 +322,7 @@ Partial Class crtPersonaNatural
         Me.txtdireccion.ExpresionValidacion = Nothing
         Me.txtdireccion.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtdireccion.Location = New System.Drawing.Point(102, 138)
+        Me.txtdireccion.MaxLength = 150
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"

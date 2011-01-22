@@ -84,7 +84,10 @@ namespace SiCo.ctrla
         {
             get
             {
+                if(this.CurrentRow.DataBoundItem !=null)
                 return this.CurrentRow.DataBoundItem;
+
+                return null;
             }
         }
 

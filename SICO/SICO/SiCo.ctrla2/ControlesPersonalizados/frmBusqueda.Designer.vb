@@ -96,6 +96,7 @@ Partial Class frmBusqueda
         'btnAceptar
         '
         Me.btnAceptar.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.btnAceptar.Enabled = False
         Me.btnAceptar.Location = New System.Drawing.Point(12, 12)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(76, 31)
