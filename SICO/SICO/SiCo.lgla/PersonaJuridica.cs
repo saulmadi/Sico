@@ -17,6 +17,7 @@ namespace SiCo.lgla
             this._espersonanatural = false;
 
             this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial",null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));  
             
 
@@ -28,6 +29,7 @@ namespace SiCo.lgla
             this._espersonanatural = false;
 
             this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
 
             this._Id=id;
@@ -61,7 +63,7 @@ namespace SiCo.lgla
             this.NullParametrosMantenimiento();
             this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial.Trim());
             this.ValorParametrosMantenimiento("identificacion",  Guid.NewGuid().ToString() );
-            this.ValorParametrosMantenimiento("tipoidentificacion", "J");
+            this.ValorParametrosMantenimiento("tipoIdentidad", "J");
 
             base.Guardar();
         }
