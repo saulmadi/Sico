@@ -26,9 +26,9 @@ Partial Class frmPersonaJuridica
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPersonaJuridica))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
         Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -39,7 +39,7 @@ Partial Class frmPersonaJuridica
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 96)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(290, 273)
+        Me.GroupBox1.Size = New System.Drawing.Size(290, 276)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
@@ -54,6 +54,18 @@ Partial Class frmPersonaJuridica
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos"
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(909, 439)
+        Me.PanelAccion1.TabIndex = 2
+        Me.PanelAccion1.Titulo = "Persona Jurídica"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'CrtPersonaJuridica1
         '
@@ -78,20 +90,8 @@ Partial Class frmPersonaJuridica
         Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
         Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
         Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "razonsocial"
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(284, 254)
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(284, 257)
         Me.CrtListadoMantenimiento1.TabIndex = 0
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(909, 439)
-        Me.PanelAccion1.TabIndex = 2
-        Me.PanelAccion1.Titulo = "Persona Jurídica"
-        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'frmPersonaJuridica
         '

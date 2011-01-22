@@ -61,7 +61,13 @@ namespace SiCo.ctrla
             this.MaxLength = 13;
             this.TipoIdentificacion = new SiCo.lgla.TipoIdentidad("Identidad", "I");
             this.Leave += new EventHandler(IdentidadCajaTexto_Leave);
+            this.Enter += new EventHandler(IdentidadCajaTexto_Enter);
 
+        }
+
+        void IdentidadCajaTexto_Enter(object sender, EventArgs e)
+        {
+            this.Text = this.Text.Replace("-", "");
         }
 
         void IdentidadCajaTexto_Leave(object sender, EventArgs e)

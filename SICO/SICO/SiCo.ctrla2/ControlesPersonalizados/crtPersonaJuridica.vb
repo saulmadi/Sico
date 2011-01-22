@@ -211,14 +211,14 @@ Imports System.Diagnostics
         End If
     End Sub
 
-    Private Sub txtrtn_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtrtn.KeyPress
+    Private Sub txtrtn_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
         If Char.IsLetter(e.KeyChar) Or Char.IsNumber(e.KeyChar) Then
             _RealizarBusquedaPor = BusquedaPor.rtn
         End If
 
     End Sub
 
-    Private Sub txtrtn_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrtn.Leave
+    Private Sub txtrtn_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Me.RealizarBusquedaAutomarita Then
             If txtrtn.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.rtn Then
                 If Not SubProceso.IsBusy Then

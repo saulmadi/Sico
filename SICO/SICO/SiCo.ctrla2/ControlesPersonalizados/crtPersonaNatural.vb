@@ -40,6 +40,7 @@ Public Class crtPersonaNatural
     End Property
 
     Public Property SoloLectura() As Boolean
+
         Get
             Return _SoloLectura
         End Get
@@ -61,8 +62,9 @@ Public Class crtPersonaNatural
             Catch ex As Exception
 
             End Try
-            
+
         End Set
+
     End Property
 
     Public Property RealizarBusquedaAutomarita() As Boolean
