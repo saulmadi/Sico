@@ -21,6 +21,7 @@ namespace SiCo.lgla
             
 
         }
+
         public PersonaJuridica(long? id, string RazonSocial,string correo, string direccion, string rtn , int? Telefono,int? Telefono2 ):base()         
         {
             this.ComandoSelect = "PersonaJuridica_Buscar";
@@ -58,7 +59,9 @@ namespace SiCo.lgla
         public override void Guardar()
         {
             this.NullParametrosMantenimiento();
-            this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial.ToUpperInvariant() );
+            this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial.Trim());
+            this.ValorParametrosMantenimiento("identificacion",  Guid.NewGuid().ToString() );
+            this.ValorParametrosMantenimiento("tipoidentificacion", "J");
 
             base.Guardar();
         }

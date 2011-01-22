@@ -226,18 +226,23 @@ Public Class crtPersonaNatural
     End Sub
 
     Private Sub txtPrimerNombre_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSegundoNombre.KeyPress, txtSegundoApellido.KeyPress, txtPrimerNombre.KeyPress, txtPrimerApellido.KeyPress
-        _RealizarBusquedaPor = BusquedaPor.Nombre
+        If Char.IsLetter(e.KeyChar) Then
+            _RealizarBusquedaPor = BusquedaPor.Nombre
+        End If
+
     End Sub
 
     Private Sub txtidentifiacion_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtidentifiacion.KeyPress
-        _RealizarBusquedaPor = BusquedaPor.Identidad
+        If Char.IsLetter(e.KeyChar) Or Char.IsNumber(e.KeyChar) Then
+            _RealizarBusquedaPor = BusquedaPor.Identidad
+        End If
     End Sub
 
     Private Sub btnbuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscar.Click
         Dim f As New frmBusqueda(New PersonaNatural)
         f.Grid.AutoGenerateColumns = True
         f.Grid.DarFormato("NombreCompletoMostrar", "Nombre Completo", True)
-        f.Grid.DarFormato("identificacion", "Identifación", True)
+        f.Grid.DarFormato("identificacion", "Identificación", True)
         f.Grid.DarFormato("telefono", "Télefono", True)
         f.Grid.DarFormato("telefono2", "Celular", True)
         f.Grid.DarFormato("correo", "Correo", True)
@@ -294,4 +299,5 @@ Public Class crtPersonaNatural
     End Enum
 #End Region
 
+    
 End Class
