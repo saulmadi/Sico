@@ -393,7 +393,7 @@ Partial Class frmMenuPrincipal
         '
         Me.PersonasNaturlaesToolStripMenuItem.Name = "PersonasNaturlaesToolStripMenuItem"
         Me.PersonasNaturlaesToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.PersonasNaturlaesToolStripMenuItem.Text = "Personas naturlaes"
+        Me.PersonasNaturlaesToolStripMenuItem.Text = "Personas naturales"
         '
         'PersonasJurídicasToolStripMenuItem
         '

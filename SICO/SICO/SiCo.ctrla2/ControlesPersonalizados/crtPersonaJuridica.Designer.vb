@@ -29,16 +29,16 @@ Partial Class crtPersonaJuridica
         Me.label6 = New System.Windows.Forms.Label
         Me.label5 = New System.Windows.Forms.Label
         Me.lblRazonSocial = New System.Windows.Forms.Label
-        Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.txtCorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
-        Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.txtFax = New SiCo.ctrla.CajaTexto(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
         Me.btnbuscar = New System.Windows.Forms.Button
         Me.lblEstado = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
         Me.txtrazonsocial = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtFax = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txtCorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
+        Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
         Me.SuspendLayout()
         '
         'label8
@@ -47,7 +47,7 @@ Partial Class crtPersonaJuridica
         Me.label8.Location = New System.Drawing.Point(3, 63)
         Me.label8.Name = "label8"
         Me.label8.Size = New System.Drawing.Size(30, 13)
-        Me.label8.TabIndex = 10
+        Me.label8.TabIndex = 9
         Me.label8.Text = "RTN"
         '
         'label7
@@ -56,7 +56,7 @@ Partial Class crtPersonaJuridica
         Me.label7.Location = New System.Drawing.Point(303, 63)
         Me.label7.Name = "label7"
         Me.label7.Size = New System.Drawing.Size(38, 13)
-        Me.label7.TabIndex = 13
+        Me.label7.TabIndex = 12
         Me.label7.Text = "Correo"
         '
         'label6
@@ -65,7 +65,7 @@ Partial Class crtPersonaJuridica
         Me.label6.Location = New System.Drawing.Point(3, 89)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(52, 13)
-        Me.label6.TabIndex = 11
+        Me.label6.TabIndex = 8
         Me.label6.Text = "Dirección"
         '
         'label5
@@ -74,7 +74,7 @@ Partial Class crtPersonaJuridica
         Me.label5.Location = New System.Drawing.Point(3, 37)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(49, 13)
-        Me.label5.TabIndex = 9
+        Me.label5.TabIndex = 10
         Me.label5.Text = "Telefono"
         '
         'lblRazonSocial
@@ -83,8 +83,76 @@ Partial Class crtPersonaJuridica
         Me.lblRazonSocial.Location = New System.Drawing.Point(3, 11)
         Me.lblRazonSocial.Name = "lblRazonSocial"
         Me.lblRazonSocial.Size = New System.Drawing.Size(68, 13)
-        Me.lblRazonSocial.TabIndex = 8
+        Me.lblRazonSocial.TabIndex = 11
         Me.lblRazonSocial.Text = "Razón social"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(303, 37)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(24, 13)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Fax"
+        '
+        'btnbuscar
+        '
+        Me.btnbuscar.BackgroundImage = CType(resources.GetObject("btnbuscar.BackgroundImage"), System.Drawing.Image)
+        Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnbuscar.FlatAppearance.BorderSize = 0
+        Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnbuscar.Location = New System.Drawing.Point(545, 157)
+        Me.btnbuscar.Name = "btnbuscar"
+        Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
+        Me.btnbuscar.TabIndex = 6
+        Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnbuscar.UseVisualStyleBackColor = True
+        '
+        'lblEstado
+        '
+        Me.lblEstado.Location = New System.Drawing.Point(181, 158)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(357, 23)
+        Me.lblEstado.TabIndex = 7
+        Me.lblEstado.Text = "Label12"
+        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'SubProceso
+        '
+        '
+        'txtrazonsocial
+        '
+        Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
+        Me.txtrazonsocial.EnterPorTab = True
+        Me.txtrazonsocial.EsObligatorio = False
+        Me.txtrazonsocial.ExpresionValidacion = Nothing
+        Me.txtrazonsocial.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
+        Me.txtrazonsocial.MensajeError = Nothing
+        Me.txtrazonsocial.Name = "txtrazonsocial"
+        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
+        Me.txtrazonsocial.TabIndex = 0
+        Me.txtrazonsocial.Texto = Nothing
+        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtrazonsocial.ValorInt = Nothing
+        '
+        'txtFax
+        '
+        Me.txtFax.ColorError = System.Drawing.Color.Red
+        Me.txtFax.EnterPorTab = True
+        Me.txtFax.EsObligatorio = False
+        Me.txtFax.ExpresionValidacion = Nothing
+        Me.txtFax.Location = New System.Drawing.Point(347, 34)
+        Me.txtFax.MaxLength = 255
+        Me.txtFax.MensajeError = Nothing
+        Me.txtFax.Multiline = True
+        Me.txtFax.Name = "txtFax"
+        Me.txtFax.Size = New System.Drawing.Size(233, 20)
+        Me.txtFax.TabIndex = 2
+        Me.txtFax.Texto = Nothing
+        Me.txtFax.TipoTexto = SiCo.ctrla.TiposTexto.Entero
+        Me.txtFax.ValorInt = Nothing
         '
         'txtrtn
         '
@@ -154,74 +222,6 @@ Partial Class crtPersonaJuridica
         Me.txttelefono.Texto = Nothing
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txttelefono.ValorInt = Nothing
-        '
-        'txtFax
-        '
-        Me.txtFax.ColorError = System.Drawing.Color.Red
-        Me.txtFax.EnterPorTab = True
-        Me.txtFax.EsObligatorio = False
-        Me.txtFax.ExpresionValidacion = Nothing
-        Me.txtFax.Location = New System.Drawing.Point(347, 34)
-        Me.txtFax.MaxLength = 255
-        Me.txtFax.MensajeError = Nothing
-        Me.txtFax.Multiline = True
-        Me.txtFax.Name = "txtFax"
-        Me.txtFax.Size = New System.Drawing.Size(233, 20)
-        Me.txtFax.TabIndex = 2
-        Me.txtFax.Texto = Nothing
-        Me.txtFax.TipoTexto = SiCo.ctrla.TiposTexto.Entero
-        Me.txtFax.ValorInt = Nothing
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(303, 37)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(24, 13)
-        Me.Label1.TabIndex = 12
-        Me.Label1.Text = "Fax"
-        '
-        'btnbuscar
-        '
-        Me.btnbuscar.BackgroundImage = CType(resources.GetObject("btnbuscar.BackgroundImage"), System.Drawing.Image)
-        Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnbuscar.FlatAppearance.BorderSize = 0
-        Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnbuscar.Location = New System.Drawing.Point(545, 157)
-        Me.btnbuscar.Name = "btnbuscar"
-        Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
-        Me.btnbuscar.TabIndex = 7
-        Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnbuscar.UseVisualStyleBackColor = True
-        '
-        'lblEstado
-        '
-        Me.lblEstado.Location = New System.Drawing.Point(181, 158)
-        Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(357, 23)
-        Me.lblEstado.TabIndex = 6
-        Me.lblEstado.Text = "Label12"
-        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'SubProceso
-        '
-        '
-        'txtrazonsocial
-        '
-        Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
-        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
-        Me.txtrazonsocial.EnterPorTab = True
-        Me.txtrazonsocial.EsObligatorio = False
-        Me.txtrazonsocial.ExpresionValidacion = Nothing
-        Me.txtrazonsocial.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
-        Me.txtrazonsocial.MensajeError = Nothing
-        Me.txtrazonsocial.Name = "txtrazonsocial"
-        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
-        Me.txtrazonsocial.TabIndex = 14
-        Me.txtrazonsocial.Texto = Nothing
-        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
-        Me.txtrazonsocial.ValorInt = Nothing
         '
         'crtPersonaJuridica
         '

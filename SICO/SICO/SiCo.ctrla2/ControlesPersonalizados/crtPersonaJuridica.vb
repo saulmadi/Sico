@@ -144,7 +144,7 @@ Imports System.Diagnostics
     End Sub
 
     Private Sub btnbuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscar.Click
-        Dim f As New frmBusqueda(New PersonaNatural)
+        Dim f As New frmBusqueda(New PersonaJuridica)
         f.Grid.AutoGenerateColumns = True
         f.Grid.DarFormato("razonsocial", "Razón Social", True)
         f.Grid.DarFormato("rtn", "RTN", True)
@@ -155,7 +155,7 @@ Imports System.Diagnostics
 
         
         If txtrazonsocial.Text <> String.Empty Then
-            f.cargar("nombrecompleto", txtrazonsocial.Text)
+            f.cargar("razonsocial", txtrazonsocial.Text)
             If f.ShowDialog() = DialogResult.OK Then
                 Me.Persona = f.Entidad
             End If
@@ -165,9 +165,9 @@ Imports System.Diagnostics
         End If
     End Sub
 
-    Private Sub txtNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrazonsocial.Leave
         If Me.RealizarBusquedaAutomarita Then
-            If txtrazonsocial.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.rtn Then
+            If txtrazonsocial.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.RazonSocial Then
                 If Not SubProceso.IsBusy Then
                     Me.Cursor = Cursors.WaitCursor
                     lblEstado.Text = "Buscando..."
@@ -245,6 +245,7 @@ Imports System.Diagnostics
         Public Sub New(ByRef persona As PersonaJuridica, ByVal nombre As String, ByVal parametro As String)
             Me.persona = persona
             Me.nombre = nombre
+            Me.parametro = parametro
         End Sub
         
     End Class

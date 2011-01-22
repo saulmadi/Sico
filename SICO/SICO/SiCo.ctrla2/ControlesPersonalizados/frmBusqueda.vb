@@ -1,6 +1,5 @@
 ﻿Imports SiCo.lgla
 Public Class frmBusqueda
-
 #Region "Declaraciones"
     Private WithEvents _entidad As SiCo.lgla.Entidad
 #End Region
@@ -53,9 +52,6 @@ Public Class frmBusqueda
 #End Region
 
 #Region "Metodos"
-
-    
-
     Public Sub cargar(ByVal Parametros As List(Of SiCo.lgla.Parametro))
         Try
             btnAceptar.Enabled = False
