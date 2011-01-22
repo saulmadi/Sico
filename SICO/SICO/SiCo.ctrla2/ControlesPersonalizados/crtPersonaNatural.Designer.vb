@@ -326,6 +326,7 @@ Partial Class crtPersonaNatural
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"
+        Me.txtdireccion.ReadOnly = True
         Me.txtdireccion.Size = New System.Drawing.Size(581, 41)
         Me.txtdireccion.TabIndex = 10
         Me.txtdireccion.Texto = Nothing
