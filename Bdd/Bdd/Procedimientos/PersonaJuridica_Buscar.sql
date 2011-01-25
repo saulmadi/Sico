@@ -1,11 +1,12 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`PersonaJuridica_Buscar` $$
-CREATE PROCEDURE `sico`.`PersonaJuridica_Buscar` (
+DROP PROCEDURE IF EXISTS `PersonaJuridica_Buscar` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaJuridica_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
-razonsocial nvarchar(125),
+razonsocial nvarchar(120),
+razonsocialigual nvarchar(120),
 rtn nvarchar(18)
 )
 BEGIN
@@ -30,6 +31,9 @@ if razonsocial<>"" then
   set @where = concat(@where, " and razonsocial like '",razonsocial, "%' ");
 end if;
 
+if razonsocialigual<>"" then
+  set @where = concat(@where, " and razonsocial = '",razonsocialigual, "' ");
+end if;
 
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"' ");
