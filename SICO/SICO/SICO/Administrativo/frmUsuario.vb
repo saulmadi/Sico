@@ -32,7 +32,7 @@ Public Class frmUsuario
 
     Private Sub CrtListadoMantenimiento1_Limpio() Handles CrtListadoMantenimiento1.Limpio
         Me.Usuario = New Usuario
-        CrtPersonaNatural1.Nuevo()
+        CrtPersonaNatural1.Persona = New PersonaNatural
     End Sub
 
     Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
@@ -88,5 +88,6 @@ Public Class frmUsuario
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
         Usuario = New Usuario
+        CrtPersonaNatural1.Nuevo()
     End Sub
 End Class
