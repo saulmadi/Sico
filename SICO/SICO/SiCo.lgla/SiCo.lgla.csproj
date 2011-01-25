@@ -61,6 +61,7 @@
     <Compile Include="Entidad.cs" />
     <Compile Include="ErroresEventsArgs.cs" />
     <Compile Include="Generales.cs" />
+    <Compile Include="Mantenimientos.cs" />
     <Compile Include="Parametro.cs" />
     <Compile Include="Entidades.cs" />
     <Compile Include="PersonaJuridica.cs" />

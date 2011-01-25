@@ -1,6 +1,6 @@
 ﻿
 Public Class Clientes
-    Inherits Mantenimientos
+    Inherits SiCo.lgla.Mantenimientos
 #Region "Constructor"
 
     Sub New()

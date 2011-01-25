@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="SiCo.lgla2.Mantenimientos" Collapsed="true">
-    <Position X="4.75" Y="2.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAEAAgAAAAkAAAAIAAAAAQAAABAIQAAA=</HashCode>
-      <FileName>Mantenimientos.vb</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="SiCo.lgla.Entidad" Collapsed="true">
     <Position X="3.25" Y="0.75" Width="1.5" />
     <Compartments>
@@ -17,7 +10,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="SiCo.lgla2.Clientes" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+    <Position X="5.75" Y="2.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -26,10 +19,11 @@
       <FileName>Clientes.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.TablasTipo" Collapsed="true">
-    <Position X="1.75" Y="2" Width="1.5" />
+  <Class Name="SiCo.lgla2.TablasTipo">
+    <Position X="1.5" Y="1.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAABCAAAAAAAAAAAAAEAAgAAEAAgAAAEAAABBAAQAAA=</HashCode>
@@ -56,7 +50,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAQgAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAQgAA=</HashCode>
       <FileName>TablasTipoDerivadas.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -90,7 +84,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Proveedores" Collapsed="true">
-    <Position X="7.5" Y="2.75" Width="1.5" />
+    <Position X="4" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAASAAA=</HashCode>
       <FileName>Proveedores.vb</FileName>
@@ -104,13 +98,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.NombresModuloTablasTipo" Collapsed="true">
-    <Position X="9.5" Y="3" Width="1.5" />
+    <Position X="11" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAAAAAAAAAgEACAAAQAAAAAAIAAAAAAAA=</HashCode>
       <FileName>NombresModuloTablasTipo.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="SiCo.lgla2.ModulosTablasTipo">
+  <Class Name="SiCo.lgla.Mantenimientos" Collapsed="true">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAAAAAIAAAABAQAAgAAAAAAAAAAIA=</HashCode>

@@ -138,7 +138,8 @@ namespace SiCo.lgla
             get 
             {
                 if (_Usuario ==null )
-                _Usuario= new Usuario(); 
+                _Usuario= new Usuario();
+                _Usuario.Cargar(); 
                 return _Usuario;
             }
             
@@ -323,6 +324,28 @@ namespace SiCo.lgla
              
         }
 
+        protected object EjecutaFuncion(string comando, List<Parametro> ColeccionParametros)
+        {
+            try
+            {
+                object o = new object();
+                InicializarComando();
+                _Comando.CommandType = CommandType.StoredProcedure;
+                _Comando.CommandText = comando;
+                LLenadoParametros(ref ColeccionParametros);
+                _Comando.Connection = _Conexion.Conexion;
+                _Conexion.AbrirConexion();
+                o = _Comando.ExecuteScalar();
+                _Conexion.CerrarConexion();
+                return o;     
+ 
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("Error en la ejecuación de la función " + comando.ToString() + " \n pongase contacto el administrador del sistema. ",ex); 
+            }
+                       
+        }
         private void InicializarComando()
         {
             _Comando = new MySqlCommand();  

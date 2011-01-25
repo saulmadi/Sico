@@ -100,6 +100,7 @@ Partial Class crtListadoMantenimiento
         Me.txtBusqueda.TabIndex = 1
         Me.txtBusqueda.Texto = Nothing
         Me.txtBusqueda.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtBusqueda.ValorInt = Nothing
         '
         'lstBusqueda
         '
