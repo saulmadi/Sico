@@ -76,6 +76,12 @@
     <Compile Include="ControlesBasicos\ListaHabilitados.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlesBasicos\ListaRoles.Designer.vb">
+      <DependentUpon>ListaRoles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaRoles.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ControlesBasicos\ListaTipoIdentidad.Designer.vb">
       <DependentUpon>ListaTipoIdentidad.vb</DependentUpon>
     </Compile>

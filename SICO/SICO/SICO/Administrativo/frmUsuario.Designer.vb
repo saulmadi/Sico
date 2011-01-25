@@ -24,38 +24,28 @@ Partial Class frmUsuario
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUsuario))
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.cmbsucursal = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.txtConfirmar = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtcontrasena = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtusuario = New SICO.ctrla.CajaTexto(Me.components)
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.cmbhabilitado = New SICO.ctrla2.ListaHabilitados(Me.components)
         Me.CrtPersonaNatural1 = New SICO.ctrla2.crtPersonaNatural
-        Me.ListaHabilitados1 = New SICO.ctrla2.ListaHabilitados(Me.components)
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
+        Me.cmbrol = New SICO.ctrla2.ListaRoles(Me.components)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(979, 569)
-        Me.PanelAccion1.TabIndex = 0
-        Me.PanelAccion1.Titulo = "Usuarios"
-        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'GroupBox1
         '
@@ -64,160 +54,41 @@ Partial Class frmUsuario
         Me.GroupBox1.Location = New System.Drawing.Point(12, 94)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(257, 415)
-        Me.GroupBox1.TabIndex = 1
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
         '
-        'CrtListadoMantenimiento1
-        '
-        Me.CrtListadoMantenimiento1.CampoAMostrar = Nothing
-        Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
-        Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
-        Me.CrtListadoMantenimiento1.CargarInicio = False
-        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
-        Me.CrtListadoMantenimiento1.NombreParametroBusqueda = Nothing
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(251, 396)
-        Me.CrtListadoMantenimiento1.TabIndex = 0
-        '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.CajaTexto3)
+        Me.GroupBox2.Controls.Add(Me.cmbrol)
+        Me.GroupBox2.Controls.Add(Me.Label6)
+        Me.GroupBox2.Controls.Add(Me.cmbsucursal)
+        Me.GroupBox2.Controls.Add(Me.txtConfirmar)
         Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.ListaHabilitados1)
+        Me.GroupBox2.Controls.Add(Me.cmbhabilitado)
         Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
-        Me.GroupBox2.Controls.Add(Me.CajaTexto2)
-        Me.GroupBox2.Controls.Add(Me.CajaTexto1)
+        Me.GroupBox2.Controls.Add(Me.txtcontrasena)
+        Me.GroupBox2.Controls.Add(Me.txtusuario)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(275, 350)
+        Me.GroupBox2.Location = New System.Drawing.Point(275, 340)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(500, 159)
+        Me.GroupBox2.Size = New System.Drawing.Size(500, 193)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos de Usuario"
         '
-        'Label4
+        'Label6
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 127)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 13)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Estado"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(108, 97)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(378, 21)
-        Me.ComboBox1.TabIndex = 4
-        '
-        'CajaTexto2
-        '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EnterPorTab = True
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.Font = New System.Drawing.Font("Corbel", 8.25!)
-        Me.CajaTexto2.Location = New System.Drawing.Point(109, 43)
-        Me.CajaTexto2.MaxLength = 255
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(378, 21)
-        Me.CajaTexto2.TabIndex = 3
-        Me.CajaTexto2.Texto = Nothing
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.CajaTexto2.ValorInt = Nothing
-        '
-        'CajaTexto1
-        '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EnterPorTab = True
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto1.Location = New System.Drawing.Point(109, 17)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(378, 20)
-        Me.CajaTexto1.TabIndex = 2
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.CajaTexto1.ValorInt = Nothing
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 100)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 13)
-        Me.Label3.TabIndex = 1
-        Me.Label3.Text = "Sucursal"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 46)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(61, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Contraseña"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 24)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Usuario"
-        '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.CrtPersonaNatural1)
-        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(275, 94)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(695, 250)
-        Me.GroupBox3.TabIndex = 2
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Datos Personales"
-        '
-        'CrtPersonaNatural1
-        '
-        Me.CrtPersonaNatural1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(689, 231)
-        Me.CrtPersonaNatural1.SoloLectura = False
-        Me.CrtPersonaNatural1.TabIndex = 0
-        '
-        'ListaHabilitados1
-        '
-        Me.ListaHabilitados1.DisplayMember = "Descripcion"
-        Me.ListaHabilitados1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ListaHabilitados1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ListaHabilitados1.FormattingEnabled = True
-        Me.ListaHabilitados1.Location = New System.Drawing.Point(108, 125)
-        Me.ListaHabilitados1.Name = "ListaHabilitados1"
-        Me.ListaHabilitados1.Size = New System.Drawing.Size(378, 21)
-        Me.ListaHabilitados1.TabIndex = 7
-        Me.ListaHabilitados1.ValueMember = "Valor"
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(6, 100)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(75, 13)
+        Me.Label6.TabIndex = 9
+        Me.Label6.Text = "Rol de usuario"
         '
         'Label5
         '
@@ -229,28 +100,185 @@ Partial Class frmUsuario
         Me.Label5.TabIndex = 8
         Me.Label5.Text = "Confirmar"
         '
-        'CajaTexto3
+        'Label4
         '
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EnterPorTab = True
-        Me.CajaTexto3.EsObligatorio = False
-        Me.CajaTexto3.ExpresionValidacion = Nothing
-        Me.CajaTexto3.Font = New System.Drawing.Font("Corbel", 8.25!)
-        Me.CajaTexto3.Location = New System.Drawing.Point(108, 70)
-        Me.CajaTexto3.MaxLength = 255
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(378, 21)
-        Me.CajaTexto3.TabIndex = 9
-        Me.CajaTexto3.Texto = Nothing
-        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.CajaTexto3.ValorInt = Nothing
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 153)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Estado"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 126)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(48, 13)
+        Me.Label3.TabIndex = 10
+        Me.Label3.Text = "Sucursal"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 46)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(61, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Contraseña"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 24)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(43, 13)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Usuario"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.CrtPersonaNatural1)
+        Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox3.Location = New System.Drawing.Point(275, 94)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(695, 240)
+        Me.GroupBox3.TabIndex = 1
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Datos Personales"
+        '
+        'cmbsucursal
+        '
+        Me.cmbsucursal.CargarAutoCompletar = False
+        Me.cmbsucursal.FormattingEnabled = True
+        Me.cmbsucursal.Location = New System.Drawing.Point(109, 124)
+        Me.cmbsucursal.Name = "cmbsucursal"
+        Me.cmbsucursal.ParametroAutocompletar = Nothing
+        Me.cmbsucursal.Size = New System.Drawing.Size(377, 21)
+        Me.cmbsucursal.TabIndex = 4
+        '
+        'txtConfirmar
+        '
+        Me.txtConfirmar.ColorError = System.Drawing.Color.Red
+        Me.txtConfirmar.EnterPorTab = True
+        Me.txtConfirmar.EsObligatorio = False
+        Me.txtConfirmar.ExpresionValidacion = "Debe confirmar la contraseña"
+        Me.txtConfirmar.Font = New System.Drawing.Font("Corbel", 8.25!)
+        Me.txtConfirmar.Location = New System.Drawing.Point(108, 70)
+        Me.txtConfirmar.MaxLength = 255
+        Me.txtConfirmar.MensajeError = Nothing
+        Me.txtConfirmar.Name = "txtConfirmar"
+        Me.txtConfirmar.Size = New System.Drawing.Size(378, 21)
+        Me.txtConfirmar.TabIndex = 2
+        Me.txtConfirmar.Texto = Nothing
+        Me.txtConfirmar.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtConfirmar.ValorInt = Nothing
+        '
+        'txtcontrasena
+        '
+        Me.txtcontrasena.ColorError = System.Drawing.Color.Red
+        Me.txtcontrasena.EnterPorTab = True
+        Me.txtcontrasena.EsObligatorio = False
+        Me.txtcontrasena.ExpresionValidacion = "La contraseña no puede ser vacía"
+        Me.txtcontrasena.Font = New System.Drawing.Font("Corbel", 8.25!)
+        Me.txtcontrasena.Location = New System.Drawing.Point(109, 43)
+        Me.txtcontrasena.MaxLength = 255
+        Me.txtcontrasena.MensajeError = Nothing
+        Me.txtcontrasena.Name = "txtcontrasena"
+        Me.txtcontrasena.Size = New System.Drawing.Size(378, 21)
+        Me.txtcontrasena.TabIndex = 1
+        Me.txtcontrasena.Texto = Nothing
+        Me.txtcontrasena.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtcontrasena.UseSystemPasswordChar = True
+        Me.txtcontrasena.ValorInt = Nothing
+        '
+        'txtusuario
+        '
+        Me.txtusuario.ColorError = System.Drawing.Color.Red
+        Me.txtusuario.EnterPorTab = True
+        Me.txtusuario.EsObligatorio = True
+        Me.txtusuario.ExpresionValidacion = Nothing
+        Me.txtusuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusuario.Location = New System.Drawing.Point(109, 17)
+        Me.txtusuario.MaxLength = 255
+        Me.txtusuario.MensajeError = "El usuario no puede ser vacío"
+        Me.txtusuario.Name = "txtusuario"
+        Me.txtusuario.Size = New System.Drawing.Size(378, 20)
+        Me.txtusuario.TabIndex = 0
+        Me.txtusuario.Texto = Nothing
+        Me.txtusuario.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtusuario.ValorInt = Nothing
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(979, 625)
+        Me.PanelAccion1.TabIndex = 3
+        Me.PanelAccion1.Titulo = "Usuarios"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
+        '
+        'cmbhabilitado
+        '
+        Me.cmbhabilitado.DisplayMember = "Descripcion"
+        Me.cmbhabilitado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbhabilitado.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbhabilitado.FormattingEnabled = True
+        Me.cmbhabilitado.Location = New System.Drawing.Point(108, 151)
+        Me.cmbhabilitado.Name = "cmbhabilitado"
+        Me.cmbhabilitado.Size = New System.Drawing.Size(378, 21)
+        Me.cmbhabilitado.TabIndex = 5
+        Me.cmbhabilitado.ValueMember = "Valor"
+        '
+        'CrtPersonaNatural1
+        '
+        Me.CrtPersonaNatural1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
+        Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(689, 221)
+        Me.CrtPersonaNatural1.SoloLectura = False
+        Me.CrtPersonaNatural1.TabIndex = 0
+        '
+        'CrtListadoMantenimiento1
+        '
+        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento"
+        Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
+        Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
+        Me.CrtListadoMantenimiento1.CargarInicio = False
+        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
+        Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "entidadnombre"
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(251, 396)
+        Me.CrtListadoMantenimiento1.TabIndex = 0
+        '
+        'cmbrol
+        '
+        Me.cmbrol.DisplayMember = "Descripcion"
+        Me.cmbrol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbrol.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbrol.FormattingEnabled = True
+        Me.cmbrol.Location = New System.Drawing.Point(109, 97)
+        Me.cmbrol.Name = "cmbrol"
+        Me.cmbrol.Size = New System.Drawing.Size(377, 21)
+        Me.cmbrol.TabIndex = 4
+        Me.cmbrol.ValueMember = "Valor"
         '
         'frmUsuario
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(979, 569)
+        Me.ClientSize = New System.Drawing.Size(979, 625)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox1)
@@ -274,13 +302,15 @@ Partial Class frmUsuario
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents CrtPersonaNatural1 As SICO.ctrla2.crtPersonaNatural
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
+    Friend WithEvents txtusuario As SiCo.ctrla.CajaTexto
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto2 As SICO.ctrla.CajaTexto
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents txtcontrasena As SICO.ctrla.CajaTexto
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents ListaHabilitados1 As SICO.ctrla2.ListaHabilitados
-    Friend WithEvents CajaTexto3 As SICO.ctrla.CajaTexto
+    Friend WithEvents cmbhabilitado As SICO.ctrla2.ListaHabilitados
+    Friend WithEvents txtConfirmar As SICO.ctrla.CajaTexto
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents cmbsucursal As SICO.ctrla.ListaDesplegable
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cmbrol As SICO.ctrla2.ListaRoles
 End Class

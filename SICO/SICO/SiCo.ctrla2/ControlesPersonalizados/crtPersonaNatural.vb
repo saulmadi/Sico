@@ -75,6 +75,27 @@ Public Class crtPersonaNatural
             _RealizarBusquedaAutomatica = value
         End Set
     End Property
+
+    Public ReadOnly Property PrimerNombre() As String
+        Get
+            Return txtPrimerNombre.Text
+        End Get
+    End Property
+    Public ReadOnly Property SegundoNombre() As String
+        Get
+            Return txtSegundoNombre.Text
+        End Get
+    End Property
+    Public ReadOnly Property PrimerApellido() As String
+        Get
+            Return txtPrimerApellido.Text
+        End Get
+    End Property
+    Public ReadOnly Property SegundoApellido() As String
+        Get
+            Return txtSegundoApellido.Text
+        End Get
+    End Property
 #End Region
 
 #Region "Metodos"
