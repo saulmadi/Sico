@@ -23,6 +23,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosMantenimiento.Add(new Parametro("usuario",null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("contrasena",null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idsucursales",null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("idrol", null)); 
             this.TablaBusqueda = "usuarios";
             this.ColeccionParametrosBusqueda.Add(new Parametro(  "tabla", this.TablaBusqueda));
             this.ComandoMantenimiento = "Usuarios_Mant";
@@ -37,6 +38,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosMantenimiento.Add(new Parametro("usuario", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("contrasena", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idsucursales", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("idrol", null)); 
             this.TablaBusqueda = "usuarios";
             this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
             this.ComandoMantenimiento = "Usuarios_Mant";
@@ -91,7 +93,7 @@ namespace SiCo.lgla
 
         protected override void CargadoPropiedades(int Indice)
         {
-            this.rol = (int)this.Registro(Indice, "idrol");  
+             this.rol =Convert.ToInt32(   this.Registro(Indice, "idrol"));  
             this.usuario =(string) this.Registro(Indice, "usuario");
             this.contrasena =(string) this.Registro(Indice, "contrasena");
             this.sucursal = (long?)this.Registro(Indice, "idsucursales"); 
@@ -103,6 +105,7 @@ namespace SiCo.lgla
             NullParametrosMantenimiento();
             ValorParametrosMantenimiento("usuario",this.usuario);
             ValorParametrosMantenimiento("contrasena",this.contrasena);
+            ValorParametrosMantenimiento("idrol", this.rol); 
             ValorParametrosMantenimiento("idsucursales",this.sucursal);              
             base.Guardar();
         }
@@ -159,9 +162,8 @@ namespace SiCo.lgla
         {
             try
             {
-                List<Parametro> col = new List<Parametro>();
-                col.Add(new Parametro("nombreusuario", nombreUsuario));
-                return (string)this.EjecutaFuncion("CrearUsuario", col);
+                
+                return (string)this.EjecutaFuncion("select CrearUsuario('"+nombreUsuario+"')");
             }
             catch (Exception ex)
             {
@@ -174,11 +176,14 @@ namespace SiCo.lgla
             List<Usuario> Lista = new List<Usuario>();
             if (this.TotalRegistros > 0)
             {
-                for (int x = 0; x < this.TotalRegistros - 1; x++)
+                for (int x = 0; x < this.TotalRegistros ; x++)
                 {
                     this.CargadoPropiedades(x);
-                      SiCo.lgla.Usuario tempUsu = new Usuario(this.idEntidades, this.idEntidades, this.Estado, this.usuario, this.contrasena, this.sucursal);
-                      Lista.Add(tempUsu);
+                    SiCo.lgla.Usuario tempUsu = new Usuario(this.Id , this.idEntidades, this.Estado, this.usuario, this.contrasena, this.sucursal);
+                    tempUsu.PersonaJuridica = this.PersonaJuridica;
+                    tempUsu.PersonaNatural = this.PersonaNatural;                       
+ 
+                    Lista.Add(tempUsu);
                 }
 
                 this.CargadoPropiedades(0);

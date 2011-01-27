@@ -9,6 +9,8 @@ namespace SiCo.lgla
     {
         #region Declaraciones
         private long? _idEntidades;
+        private PersonaNatural  _PersonaNatural = new PersonaNatural();
+        private PersonaJuridica  _PersonaJuridica = new PersonaJuridica();
         #endregion
 
         #region Constructor
@@ -21,6 +23,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
 
             this.ComandoSelect = "MantenimientosComplejos_Buscar";
             
@@ -34,6 +37,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
 
             this.ComandoSelect = "MantenimientosComplejos_Buscar";
             this._Id = id;
@@ -73,12 +77,15 @@ namespace SiCo.lgla
             }
         }
 
-
         public PersonaNatural PersonaNatural
         {
             get
             {
-                return CrearPersonaNatural();
+                return _PersonaNatural;
+            }
+            set 
+            {
+                _PersonaNatural = value;
             }
         }
 
@@ -86,7 +93,11 @@ namespace SiCo.lgla
         {
             get
             {
-                return CrearPersonaJuridica();
+                return _PersonaJuridica ;
+            }
+            set 
+            {
+                _PersonaJuridica = value;
             }
         }
 
@@ -128,40 +139,42 @@ namespace SiCo.lgla
 
         protected override void CargadoPropiedades(int Indice)
         {
-            this.Estado = (int)this.Registro(Indice, "estado"); 
-            this.idEntidades = (long)this.Registro(Indice, "identidades");
+            this.Estado = Convert.ToInt32( this.Registro(Indice, "estado")); 
+            this.idEntidades = Convert.ToInt64(  (  this.Registro(Indice, "identidades")));
+            this._PersonaJuridica = CrearPersonaJuridica(Indice );
+            this._PersonaNatural = CrearPersonaNatural(Indice ); 
+
             base.CargadoPropiedades(Indice);
         }
 
-        protected   PersonaNatural CrearPersonaNatural()
+        protected   PersonaNatural CrearPersonaNatural(int Indice)
         {
             if (this.TotalRegistros > 0)
             { 
 
-                long? i = (long?)PrimerRegistro("identidades");
-                if (!(i == null) && (int)PrimerRegistro("espersonanatural") == 1 )
+                
+                if (!(this.idEntidades  == null) && Convert.ToInt32( Registro(Indice,"espersonanatural")) == 1 )
                 {
-                    return new PersonaNatural(i, (string)PrimerRegistro("entidadnombre"), new TipoIdentidad((string)PrimerRegistro("tipoidentificacion")), (string)PrimerRegistro("identificacion"), (string)PrimerRegistro("correo"), (string)PrimerRegistro("direccion"), (string)PrimerRegistro("rtn"), (int?)PrimerRegistro("telefono"), (int?)PrimerRegistro("telefono2"));
+                    return new PersonaNatural(this.idEntidades , (string)Registro(Indice,"entidadnombre"), new TipoIdentidad((string)Registro(Indice,"tipoidentidad")), (string)Registro(Indice,"identificacion"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
                 }
             
             }
             return null;
         }
 
-        protected  PersonaJuridica CrearPersonaJuridica()
+        protected  PersonaJuridica CrearPersonaJuridica(int Indice)
         {
             if (this.TotalRegistros > 0)
             {
-                long? i = (long?)PrimerRegistro("identidades");
-                if (!(i == null) && (int)PrimerRegistro("espersonanatural") == 0)
+
+                if (!(this.idEntidades == null) && Convert.ToInt32 (  Registro(Indice,"espersonanatural")) == 0 )
                 {
-                    return new PersonaJuridica(i, (string)PrimerRegistro("entidadnombre"), (string)PrimerRegistro("correo"), (string)PrimerRegistro("direccion"), (string)PrimerRegistro("rtn"), (int?)PrimerRegistro("telefono"), (int?)PrimerRegistro("telefono2"));
+                    return new PersonaJuridica(this.idEntidades , (string)Registro(Indice,"entidadnombre"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
                 }
             }
             return null;
         }
 
-        #endregion      
-     
+        #endregion           
     }
 }
