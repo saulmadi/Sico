@@ -24,7 +24,11 @@ Public Class frmUsuario
 
     Private Sub CrtPersonaNatural1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CrtPersonaNatural1.Leave
         Try
-            txtusuario.Text = Usuario.CrearUsuario(CrtPersonaNatural1.PrimerNombre.First + CrtPersonaNatural1.PrimerApellido)
+            If CrtPersonaNatural1.PrimerApellido.Length > 0 And CrtPersonaNatural1.PrimerNombre.Length > 0 Then
+                txtusuario.Text = Usuario.CrearUsuario(CrtPersonaNatural1.PrimerNombre.First + CrtPersonaNatural1.PrimerApellido)
+            End If
+
+
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -71,8 +75,8 @@ Public Class frmUsuario
                     If Not txtcontrasena.Text.Trim = String.Empty Then
                         Me.Usuario.contrasena = txtcontrasena.Texto
                     End If
-                    Me.Usuario.rol = cmbrol.SelectedValue
-                    Me.Usuario.Estado = cmbhabilitado.SelectedValue
+                    Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
+                    Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
                     Me.Usuario.Guardar()
                 End If
             Else

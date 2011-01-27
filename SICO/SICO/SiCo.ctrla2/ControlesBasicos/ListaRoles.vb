@@ -40,10 +40,19 @@ Public Class ListaRoles
             Return MyBase.Items
         End Get
     End Property
+
+    Public Shadows Property SelectedItem() As ListaTipo
+        Get
+            Return MyBase.SelectedItem
+        End Get
+        Set(ByVal value As ListaTipo)
+            MyBase.SelectedItem = value
+        End Set
+    End Property
 #End Region
 
 #Region "ClaseListaTipo"
-    Private Class ListaTipo
+    Public Class ListaTipo
         Inherits SiCo.lgla.Tipo
         Public Sub New(ByVal valor As String, ByVal descripcion As String)
             MyBase.New(descripcion, valor)
@@ -51,5 +60,7 @@ Public Class ListaRoles
 
     End Class
 #End Region
+
+
 
 End Class

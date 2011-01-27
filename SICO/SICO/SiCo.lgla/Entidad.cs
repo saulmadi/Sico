@@ -139,7 +139,7 @@ namespace SiCo.lgla
             {
                 if (_Usuario ==null )
                 _Usuario= new Usuario();
-                _Usuario.Cargar(); 
+                //_Usuario.Cargar(); 
                 return _Usuario;
             }
             
@@ -324,18 +324,17 @@ namespace SiCo.lgla
              
         }
 
-        protected object EjecutaFuncion(string comando, List<Parametro> ColeccionParametros)
+        protected object EjecutaFuncion(string comando)
         {
             try
             {
                 object o = new object();
                 InicializarComando();
-                _Comando.CommandType = CommandType.StoredProcedure;
-                _Comando.CommandText = comando;
-                LLenadoParametros(ref ColeccionParametros);
+                _Comando.CommandType = CommandType.Text ;
+                _Comando.CommandText = comando ;               
                 _Comando.Connection = _Conexion.Conexion;
                 _Conexion.AbrirConexion();
-                o = _Comando.ExecuteScalar();
+                o = _Comando.ExecuteScalar ();
                 _Conexion.CerrarConexion();
                 return o;     
  

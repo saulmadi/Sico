@@ -36,6 +36,14 @@ Public Class ListaHabilitados
 
         End Set
     End Property
+    Public Shadows Property SelectedItem() As Estado
+        Get
+            Return MyBase.SelectedItem
+        End Get
+        Set(ByVal value As Estado)
+            MyBase.SelectedItem = value
+        End Set
+    End Property
 #End Region
 
 End Class
