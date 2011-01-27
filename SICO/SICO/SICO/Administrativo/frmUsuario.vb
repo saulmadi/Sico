@@ -37,10 +37,12 @@ Public Class frmUsuario
     Private Sub CrtListadoMantenimiento1_Limpio() Handles CrtListadoMantenimiento1.Limpio
         Me.Usuario = New Usuario
         CrtPersonaNatural1.Persona = New PersonaNatural
+        Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
     Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
         Me.Usuario = CType(Item, Usuario)
+        Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
     Private Sub frmUsuario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -56,42 +58,61 @@ Public Class frmUsuario
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
+            Dim flag As Boolean = True
+            If Me.Usuario.Id > 0 Then
+                Select Case MessageBox.Show("¿Esta seguro de modificar el usuario " + Me.Usuario.NombreMantenimiento + "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    Case Windows.Forms.DialogResult.No
+                        flag = False
 
-            Dim validador As New SICO.ctrla.Validador()
-            If Me.Usuario.Id = 0 Then
-                txtcontrasena.EsObligatorio = True
-                txtConfirmar.ExpresionValidacion = True
+                End Select
             End If
-            Me.Usuario.idEntidades = CrtPersonaNatural1.Guardar()
 
-            validador.ColecionCajasTexto.Add(txtusuario)
-            validador.ColecionCajasTexto.Add(txtcontrasena)
-            validador.ColecionCajasTexto.Add(txtConfirmar)
-            
-
-            If txtConfirmar.Text.Trim = txtcontrasena.Text.Trim Then
-                If validador.PermitirIngresar Then
-                    Me.Usuario.usuario = txtusuario.Texto
-                    If Not txtcontrasena.Text.Trim = String.Empty Then
-                        Me.Usuario.contrasena = txtcontrasena.Texto
-                    End If
-                    Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
-                    Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
-                    Me.Usuario.Guardar()
+            If flag Then
+                Me.PanelAccion1.lblEstado.Text = "Guardando..."
+                Me.PanelAccion1.BarraProgreso.Value = 50
+                Dim validador As New SICO.ctrla.Validador()
+                If Me.Usuario.Id = 0 Then
+                    txtcontrasena.EsObligatorio = True
+                    txtConfirmar.ExpresionValidacion = True
                 End If
-            Else
-                Me.PanelAccion1.lblEstado.Text = ("Las contraseñas no coinciden...")
-                txtcontrasena.BackColor = txtcontrasena.ColorError
-                txtConfirmar.BackColor = txtConfirmar.ColorError
+                Me.Usuario.idEntidades = CrtPersonaNatural1.Guardar()
+
+                validador.ColecionCajasTexto.Add(txtusuario)
+                validador.ColecionCajasTexto.Add(txtcontrasena)
+                validador.ColecionCajasTexto.Add(txtConfirmar)
+
+
+                If txtConfirmar.Text.Trim = txtcontrasena.Text.Trim Then
+                    If validador.PermitirIngresar Then
+                        Me.Usuario.usuario = txtusuario.Texto
+                        If Not txtcontrasena.Text.Trim = String.Empty Then
+                            Me.Usuario.contrasena = txtcontrasena.Texto
+                        End If
+                        Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
+                        Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
+                        Me.Usuario.Guardar()
+                        Me.PanelAccion1.BarraProgreso.Value = 100
+                        Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
+                    End If
+                Else
+                    Me.PanelAccion1.lblEstado.Text = ("Las contraseñas no coinciden...")
+                    txtcontrasena.BackColor = txtcontrasena.ColorError
+                    txtConfirmar.BackColor = txtConfirmar.ColorError
+                End If
+
             End If
+
 
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Me.PanelAccion1.lblEstado.Text = ("Error al guardar el Usuario")
+            Me.PanelAccion1.BarraProgreso.Value = 0
         End Try
     End Sub
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
         Usuario = New Usuario
         CrtPersonaNatural1.Nuevo()
+        Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 End Class
