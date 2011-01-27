@@ -32,7 +32,8 @@ CREATE TABLE `personasjuridicas` (
   `direccion` varchar(150),
   `correo` varchar(45),
   `RTN` varchar(14),
-  `id` int(11)
+  `id` int(11),
+  `telefono2` int(11)
 );
 
 --
@@ -48,7 +49,7 @@ CREATE TABLE `personasnaturales` (
   `usu` int(11),
   `fmodif` date,
   `NombreCompleto` varchar(120),
-  `identificacion` varchar(20),
+  `identificacion` varchar(120),
   `tipoidentidad` varchar(1),
   `id` int(11),
   `telefono2` int(11)
@@ -64,12 +65,12 @@ CREATE TABLE `ventidades` (
   `telefono` int(11),
   `direccion` varchar(150),
   `correo` varchar(45),
-  `espersonanatural` tinyint(1),
+  `espersonanatural` int(1) unsigned,
   `rtn` varchar(14),
   `entidadnombre` varchar(120),
-  `identificacion` varchar(20),
+  `identificacion` varchar(120),
   `tipoidentidad` varchar(1),
-  `id` int(11)
+  `telefono2` int(11)
 );
 
 --
@@ -136,27 +137,29 @@ CREATE TABLE `entidades` (
   `telefono` int(11) DEFAULT NULL,
   `direccion` varchar(150) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
-  `espersonanatural` tinyint(1) NOT NULL,
+  `espersonanatural` int(1) unsigned NOT NULL,
   `RTN` varchar(14) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` date NOT NULL,
   `entidadnombre` varchar(120) NOT NULL,
-  `identificacion` varchar(20) NOT NULL,
+  `identificacion` varchar(120) NOT NULL,
   `tipoidentidad` varchar(1) NOT NULL COMMENT 'I identidad, R resiendica',
   `telefono2` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Identificacion` (`identificacion`,`tipoidentidad`) USING BTREE,
   UNIQUE KEY `Nombre` (`entidadnombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `entidades`
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (1,NULL,'asdfkasdklfjakjfaklsdjfal kaklfjldmamcakmfasklfjakjakfasfjaskljfaslkjsdfljasklfjadsklfj','saulmadi@gmail.com',1,'4894358998|498',1,'2011-01-20','saul antonio mayorquin Diaz&','0801-1988-12524','I',342343),
- (2,NULL,NULL,NULL,1,NULL,1,'2011-01-17','manuel mayorquin@','1234-5678-89012','I',NULL),
- (3,4323424,'DFSFDSFSFSFSFSFD','miggl@gma.cn',1,'SDFFS',1,'2011-01-20','Miguel Angel Mayorquin Diaz&','0301-1993-00599','I',4323234);
+INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',0,'2011-01-27','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
+ (5,NULL,NULL,NULL,1,NULL,1,'2011-01-22','asdf asdf asdf%','6a20d7e7-8eaa6a20d7e7-8eaa6a20d7e7-8eaa6a20d7','R',NULL),
+ (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',1,'2011-01-22','Varideades Canezu','0a3b0c34-256a-4a02-a7bf-a2ac0f9adb7c','J',34872342),
+ (7,NULL,NULL,NULL,1,NULL,1,'2011-01-27','carlos diaz@','0301-1989-12345','I',NULL),
+ (8,34234,NULL,NULL,0,NULL,1,'2011-01-27','ENEE','86286677-88f5-4b37-909b-7a628359a437','J',342443);
 /*!40000 ALTER TABLE `entidades` ENABLE KEYS */;
 
 
@@ -412,7 +415,7 @@ CREATE TABLE `municipios` (
   PRIMARY KEY (`id`),
   KEY `fk_Municipio_Departamentos1` (`idderivada`),
   CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`idderivada`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `municipios`
@@ -426,7 +429,8 @@ INSERT INTO `municipios` VALUES  (1,'Comayagua',34,1,1,'2011-01-13 00:00:00'),
  (5,'Distrito Central',35,1,1,'2011-01-12 00:00:00'),
  (6,'Ojona',35,1,1,'2011-01-13 00:00:00'),
  (7,'Talanga',35,1,1,'2011-01-13 00:00:00'),
- (8,'La paz',39,0,1,'2011-01-16 00:00:00');
+ (8,'La paz',39,0,1,'2011-01-16 00:00:00'),
+ (9,'Salama',35,1,1,'2011-01-26 00:00:00');
 /*!40000 ALTER TABLE `municipios` ENABLE KEYS */;
 
 
@@ -530,25 +534,6 @@ CREATE TABLE `proveeedorproducto` (
 
 
 --
--- Definition of table `roles`
---
-
-DROP TABLE IF EXISTS `roles`;
-CREATE TABLE `roles` (
-  `id` int(11) NOT NULL,
-  `rol` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `roles`
---
-
-/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
-
-
---
 -- Definition of table `sucursales`
 --
 
@@ -634,32 +619,59 @@ INSERT INTO `tiposmotocicletas` VALUES  (9,'Turismo',1,1,'2011-01-09 00:00:00'),
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `identidad` int(11) NOT NULL,
+  `identidades` int(11) NOT NULL,
   `contrasena` varchar(30) NOT NULL,
-  `idrol` int(11) NOT NULL,
   `usuario` varchar(45) NOT NULL,
-  `estado` tinyint(1) NOT NULL,
+  `estado` int(1) unsigned NOT NULL,
   `idsucursales` int(11) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` varchar(45) NOT NULL,
+  `idrol` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `InicioSesion` (`usuario`),
-  UNIQUE KEY `Entidad` (`identidad`),
-  KEY `Usuarios_Entidad` (`identidad`),
-  KEY `Usuarios_Roles` (`idrol`),
+  UNIQUE KEY `Entidad` (`identidades`),
+  UNIQUE KEY `Usuario` (`usuario`),
   KEY `fk_Usuarios_Sucursales1` (`idsucursales`),
+  KEY `Usuarios_Entidad` (`identidades`),
   CONSTRAINT `fk_Usuarios_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Usuarios_Entidad` FOREIGN KEY (`identidad`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `Usuarios_Roles` FOREIGN KEY (`idrol`) REFERENCES `roles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `Usuarios_Entidad` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `usuarios`
 --
 
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
+INSERT INTO `usuarios` VALUES  (2,4,'12345678','smayorquin',0,NULL,0,'2011-01-27 01:07:49',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
+
+--
+-- Definition of function `CrearUsuario`
+--
+
+DROP FUNCTION IF EXISTS `CrearUsuario`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CrearUsuario`(nombreusuario nvarchar(45) ) RETURNS varchar(45) CHARSET utf8
+BEGIN
+set @conteo =0;
+
+select count(*) from usuarios into @conteo;
+
+if @conteo =0 then
+  return nombreusuario;
+else
+  set @conteo=@conteo +1;
+  return concat(nombreusuario,@conteo);
+end if;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
 
 --
 -- Definition of procedure `Clientes_Buscar`
@@ -892,7 +904,7 @@ correo varchar (45),
 espersonanatural bool,
 rtn varchar(18),
 entidadnombre varchar(120),
-identificacion varchar(20),
+identificacion varchar(45),
 tipoidentidad varchar(1),
 telefono2 int,
 usu int,
@@ -937,6 +949,77 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `MantenimientosComplejos_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `MantenimientosComplejos_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MantenimientosComplejos_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+identidades nvarchar(11),
+entidadnombre nvarchar(120),
+espersonanatural nvarchar(1),
+usuario nvarchar(45),
+contrasena nvarchar(30),
+tabla nvarchar(25)
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by c.id ";
+set @join = " ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from ", tabla,"  c ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and c.id = ", id, " ");
+end if;
+
+if identidades<>"" then
+  set @where = concat(@where, " and c.identidades = ",identidades," ");
+end if;
+
+if usuario<>"" and contrasena<> "" then
+  set @where = concat(@where, " and c.usuario = '",usuario,"' and contrasena = '",contrasena,"' ");
+end if;
+
+
+if entidadnombre<>"" and espersonanatural <>""  then
+  set @where = concat(@where, " and   e.entidadnombre like'",entidadnombre, "%' ");
+end if;
+
+if espersonanatural <>"" then
+  set @join= concat(@join, " inner join ventidades e on e.IdEntidad=c.identidades and espersonanatural = ",espersonanatural);
+else
+  set @join= concat(@join," inner join ventidades e on e.IdEntidad=c.identidades");
+end if;
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Mantenimientos_Buscar`
 --
 
@@ -947,7 +1030,7 @@ DELIMITER $$
 /*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Mantenimientos_Buscar`(
 
-/*defiicion de parametros*/
+
 id nvarchar(11),
 descripcion nvarchar(45),
 tabla nvarchar (60),
@@ -955,7 +1038,7 @@ habilitado nvarchar(1)
 
 )
 BEGIN
-/*defiicion de consulta*/
+
 set @Campos="select ";
 set @from=" ";
 set @where=" where 1=1 ";
@@ -967,7 +1050,7 @@ set @campos= concat( @campos," * ");
 set @from= concat(@from," from ", Tabla);
 
 
-/*defiicion de filtros*/
+
 if id<>"" then
   set @where= concat(@where, " and id = ", id, " ");
 end if;
@@ -984,7 +1067,7 @@ end if;
 
 set @sql = concat(@campos,@from,@where,@orden);
 
-/*ejecucion de consulta*/
+
 PREPARE stmt FROM @sql;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
@@ -1313,12 +1396,13 @@ DROP PROCEDURE IF EXISTS `PersonaJuridica_Buscar`;
 
 DELIMITER $$
 
-/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_AUTO_CREATE_USER' */ $$
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `PersonaJuridica_Buscar`(
 
 /*defiicion de parametros*/
 id nvarchar(11),
-razonsocial nvarchar(125),
+razonsocial nvarchar(120),
+razonsocialigual nvarchar(120),
 rtn nvarchar(18)
 )
 BEGIN
@@ -1343,6 +1427,9 @@ if razonsocial<>"" then
   set @where = concat(@where, " and razonsocial like '",razonsocial, "%' ");
 end if;
 
+if razonsocialigual<>"" then
+  set @where = concat(@where, " and razonsocial = '",razonsocialigual, "' ");
+end if;
 
 if rtn<>"" then
   set @where = concat(@where, " and rtn = '",rtn,"' ");
@@ -1755,12 +1842,67 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `Usuarios_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Usuarios_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Usuarios_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+identidades int,
+contrasena nvarchar(30),
+usuario nvarchar(45),
+estado int(1),
+idrol int,
+idsucursales int,
+usu int,
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(c.id) from usuarios c where c.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO usuarios (identidades,contrasena,usuario,idrol,estado,idsucursales,usu,fmodif)
+
+  VALUES(identidades,contrasena,usuario,idrol,estado,idsucursales,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE usuarios c set
+        c.identidades= identidades,
+        c.contrasena=contrasena,
+        c.usuario = usuario,
+        c.idrol=idrol,
+        c.idsucursales=idsucursales,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of view `personasjuridicas`
 --
 
 DROP TABLE IF EXISTS `personasjuridicas`;
 DROP VIEW IF EXISTS `personasjuridicas`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasjuridicas` AS select `entidades`.`entidadnombre` AS `RazonSocial`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`RTN` AS `RTN`,`entidades`.`id` AS `id` from `entidades` where (`entidades`.`espersonanatural` = 0);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `personasjuridicas` AS select `entidades`.`entidadnombre` AS `RazonSocial`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`RTN` AS `RTN`,`entidades`.`id` AS `id`,`entidades`.`telefono2` AS `telefono2` from `entidades` where (`entidades`.`espersonanatural` = 0);
 
 --
 -- Definition of view `personasnaturales`
@@ -1776,7 +1918,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 
 DROP TABLE IF EXISTS `ventidades`;
 DROP VIEW IF EXISTS `ventidades`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidades` AS select `entidades`.`id` AS `IdEntidad`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`espersonanatural` AS `espersonanatural`,`entidades`.`RTN` AS `rtn`,`entidades`.`entidadnombre` AS `entidadnombre`,`entidades`.`identificacion` AS `identificacion`,`entidades`.`tipoidentidad` AS `tipoidentidad`,`entidades`.`id` AS `id` from `entidades`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidades` AS select `entidades`.`id` AS `IdEntidad`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`espersonanatural` AS `espersonanatural`,`entidades`.`RTN` AS `rtn`,`entidades`.`entidadnombre` AS `entidadnombre`,`entidades`.`identificacion` AS `identificacion`,`entidades`.`tipoidentidad` AS `tipoidentidad`,`entidades`.`telefono2` AS `telefono2` from `entidades`;
 
 
 
