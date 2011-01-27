@@ -19,7 +19,7 @@ namespace SiCo.lgla
         public Usuario(): base()
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
-            base._Id = 1;
+            
             this.ColeccionParametrosMantenimiento.Add(new Parametro("usuario",null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("contrasena",null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idsucursales",null));
@@ -34,7 +34,7 @@ namespace SiCo.lgla
         public Usuario(long? id, long? idEntidades,int estado,string usuario,string contrasena,long? sucursal): base(id,idEntidades,estado)
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
-            base._Id = 1;
+            
             this.ColeccionParametrosMantenimiento.Add(new Parametro("usuario", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("contrasena", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idsucursales", null));
