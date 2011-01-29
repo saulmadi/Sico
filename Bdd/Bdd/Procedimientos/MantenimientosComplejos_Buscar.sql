@@ -10,6 +10,7 @@ entidadnombre nvarchar(120),
 espersonanatural nvarchar(1),
 usuario nvarchar(45),
 contrasena nvarchar(30),
+estado nvarchar(1),
 tabla nvarchar(25)
 )
 BEGIN
@@ -35,13 +36,18 @@ if identidades<>"" then
   set @where = concat(@where, " and c.identidades = ",identidades," ");
 end if;
 
-if usuario<>"" and contrasena<> "" then
-  set @where = concat(@where, " and c.usuario = '",usuario,"' and contrasena = '",contrasena,"' ");
+if estado<>"" then
+  set @where = concat(@where, " and c.estado = ",estado," ");
 end if;
 
 
-if entidadnombre<>"" and espersonanatural <>""  then
-  set @where = concat(@where, " and   e.entidadnombre like'",entidadnombre, "%' ");
+if usuario<>"" and contrasena<> "" then
+  set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' and  contrasena COLLATE latin1_general_cs like '",contrasena,"' ");
+end if;
+
+
+if entidadnombre<>""  then
+  set @where = concat(@where, " and   e.entidadnombre like '",entidadnombre, "%' ");
 end if;
 
 if espersonanatural <>"" then

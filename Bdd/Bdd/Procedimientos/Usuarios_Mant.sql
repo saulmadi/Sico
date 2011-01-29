@@ -38,7 +38,8 @@ else
         c.idrol=idrol,
         c.idsucursales=idsucursales,
         c.usu=usu,
-        c.fmodif=fmodif
+        c.fmodif=fmodif,
+        c.estado=estado
   where c.id= id;
 
 end if;
