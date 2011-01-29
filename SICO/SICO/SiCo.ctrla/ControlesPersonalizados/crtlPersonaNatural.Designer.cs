@@ -215,7 +215,7 @@
             this.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtNombre.CampoMostrar = "NombreCompleto";
             this.txtNombre.CaracteresInicio = 3;
-            this.txtNombre.ColeccionParametros = ((System.Collections.Generic.List<SiCo.lgla.Parametro>)(resources.GetObject("txtNombre.ColeccionParametros")));
+            
             this.txtNombre.ColorError = System.Drawing.Color.Red;
             this.txtNombre.EsObligatorio = false;
             this.txtNombre.ExpresionValidacion = null;
@@ -224,7 +224,7 @@
             this.txtNombre.MensajeError = null;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ParameteroBusqueda = "NombreCompleto";
-            this.txtNombre.Procedimiento = "PersonaNatural_Buscar";
+            
             this.txtNombre.Size = new System.Drawing.Size(380, 20);
             this.txtNombre.TabIndex = 16;
             this.txtNombre.Texto = null;
@@ -238,7 +238,7 @@
             this.txtApellidos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtApellidos.CampoMostrar = "apellidos";
             this.txtApellidos.CaracteresInicio = 3;
-            this.txtApellidos.ColeccionParametros = ((System.Collections.Generic.List<SiCo.lgla.Parametro>)(resources.GetObject("txtApellidos.ColeccionParametros")));
+           
             this.txtApellidos.ColorError = System.Drawing.Color.Red;
             this.txtApellidos.EsObligatorio = false;
             this.txtApellidos.ExpresionValidacion = null;

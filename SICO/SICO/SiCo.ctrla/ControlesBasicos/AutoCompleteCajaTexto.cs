@@ -4,7 +4,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using SiCo.lgla; 
+using SiCo.lgla;
+using System.Windows.Forms;
 
 namespace SiCo.ctrla.ControlesBasicos
 {
@@ -13,8 +14,8 @@ namespace SiCo.ctrla.ControlesBasicos
         #region Declaraciones
         //private Entidad _Entidad;
         private string _ParametroBusqueda = string.Empty;
-        private List<SiCo.lgla.Parametro> _ColeccionParametros= new List<SiCo.lgla.Parametro  > ();
-        public event ErroresEventsHandler Errores;
+        private string _CampoMostrar = string.Empty;
+        private Entidad _Entidad;                
         private List<string> ListaAutoCompletado = new List<string>();
         private int _CaracteresInicio=3;
         #endregion
@@ -41,13 +42,12 @@ namespace SiCo.ctrla.ControlesBasicos
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public  System.Collections.Generic.List<SiCo.lgla.Parametro> ColeccionParametros
-        {
-            get { return _ColeccionParametros; }
-            set
-            {
-                if(value !=null)
-                _ColeccionParametros = value ;
-            }
+	        {
+            get { return null ; }
+	            set  {
+	                
+	                
+	            }
         }
 
         public string ParameteroBusqueda
@@ -62,15 +62,9 @@ namespace SiCo.ctrla.ControlesBasicos
 
         public string CampoMostrar
         {
-            get;
-            set;
-        }
-
-        public string Procedimiento
-        {
-            get;
-            set;
-        }
+            get { return _CampoMostrar; }
+            set { _CampoMostrar = value; }
+        }        
 
         public bool AutoCompletar
         {
@@ -83,6 +77,20 @@ namespace SiCo.ctrla.ControlesBasicos
             get { return _CaracteresInicio; }
             set { _CaracteresInicio = value; }
         }
+
+        public Entidad Entidad
+        {
+            get { return _Entidad; }
+            set { _Entidad = value; }
+        }
+
+        public string Procedimiento
+        {
+            get;
+            set;
+        }
+
+        
         
         #endregion
 
@@ -94,9 +102,7 @@ namespace SiCo.ctrla.ControlesBasicos
             this.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.TextChanged += new EventHandler(AutoCompleteCajaTexto_TextChanged);
             this.AutoCompletar = true;          
-        }       
-
-        
+        }            
 
 
         #endregion
@@ -112,7 +118,12 @@ namespace SiCo.ctrla.ControlesBasicos
                     
                     if (this.Text.Length == this.CaracteresInicio)
                     {
-                        
+                        if (!SubProceso.IsBusy)
+                        {
+                            Argumento arg = new Argumento(this.Entidad, this.ParameteroBusqueda, this.Text);
+                            this.Cursor = Cursors.WaitCursor; 
+                            if (!SubProceso.IsBusy) SubProceso.RunWorkerAsync(arg);
+                        }
                     }
                     else
                     {
@@ -122,13 +133,56 @@ namespace SiCo.ctrla.ControlesBasicos
             }
             catch (Exception ex)
             {
-
-                if (this.Errores != null)
-                    this.Errores(ex.Message);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);     
+                
             }
         }
 
+        private void SubProceso_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (e.Argument != null)
+            {
+                Argumento  en = (Argumento)e.Argument;
+                en._Entidad.Buscar(en.ParaBusqueda, en.valor);    
+            }
+        }
+
+        private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Cursor = Cursors.Default;
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return; 
+            }
+
+            if (Entidad.TotalRegistros > 0)
+            {
+                
+                this.AutoCompleteCustomSource.Clear();
+                for (int x = 0; x < Entidad.TotalRegistros; x++)
+                { 
+                    if ((string)Entidad.Registro(x,CampoMostrar) !="")
+                        this.AutoCompleteCustomSource.Add((string)Entidad.Registro(x, CampoMostrar));
+                }                
+            }
+            
+        }
+
         #endregion
+
+        private class Argumento
+        {
+            public Entidad _Entidad ;
+            public string  ParaBusqueda;
+            public string valor;
+            public Argumento(Entidad entidad,string parametro, string val)
+            {
+                this._Entidad = entidad;
+                this.ParaBusqueda = parametro;
+                this.valor = val;
+            } 
+        }        
     }
 
 }
