@@ -16,8 +16,8 @@ Partial Class frmIniciosesion
     End Sub
     Friend WithEvents UsernameLabel As System.Windows.Forms.Label
     Friend WithEvents PasswordLabel As System.Windows.Forms.Label
-    Friend WithEvents UsernameTextBox As System.Windows.Forms.TextBox
-    Friend WithEvents PasswordTextBox As System.Windows.Forms.TextBox
+    Friend WithEvents txtusuario As System.Windows.Forms.TextBox
+    Friend WithEvents txtcontrasena As System.Windows.Forms.TextBox
     Friend WithEvents OK As System.Windows.Forms.Button
     Friend WithEvents Cancel As System.Windows.Forms.Button
 
@@ -32,8 +32,8 @@ Partial Class frmIniciosesion
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmIniciosesion))
         Me.UsernameLabel = New System.Windows.Forms.Label
         Me.PasswordLabel = New System.Windows.Forms.Label
-        Me.UsernameTextBox = New System.Windows.Forms.TextBox
-        Me.PasswordTextBox = New System.Windows.Forms.TextBox
+        Me.txtusuario = New System.Windows.Forms.TextBox
+        Me.txtcontrasena = New System.Windows.Forms.TextBox
         Me.OK = New System.Windows.Forms.Button
         Me.Cancel = New System.Windows.Forms.Button
         Me.btnconfig = New System.Windows.Forms.LinkLabel
@@ -58,21 +58,21 @@ Partial Class frmIniciosesion
         Me.PasswordLabel.Text = "&Contraseña"
         Me.PasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'UsernameTextBox
+        'txtusuario
         '
-        Me.UsernameTextBox.Location = New System.Drawing.Point(174, 44)
-        Me.UsernameTextBox.Name = "UsernameTextBox"
-        Me.UsernameTextBox.Size = New System.Drawing.Size(220, 20)
-        Me.UsernameTextBox.TabIndex = 1
+        Me.txtusuario.Location = New System.Drawing.Point(174, 44)
+        Me.txtusuario.Name = "txtusuario"
+        Me.txtusuario.Size = New System.Drawing.Size(220, 20)
+        Me.txtusuario.TabIndex = 1
         '
-        'PasswordTextBox
+        'txtcontrasena
         '
-        Me.PasswordTextBox.Location = New System.Drawing.Point(174, 101)
-        Me.PasswordTextBox.Name = "PasswordTextBox"
-        Me.PasswordTextBox.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-        Me.PasswordTextBox.Size = New System.Drawing.Size(220, 20)
-        Me.PasswordTextBox.TabIndex = 3
-        Me.PasswordTextBox.UseSystemPasswordChar = True
+        Me.txtcontrasena.Location = New System.Drawing.Point(174, 101)
+        Me.txtcontrasena.Name = "txtcontrasena"
+        Me.txtcontrasena.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.txtcontrasena.Size = New System.Drawing.Size(220, 20)
+        Me.txtcontrasena.TabIndex = 3
+        Me.txtcontrasena.UseSystemPasswordChar = True
         '
         'OK
         '
@@ -127,8 +127,8 @@ Partial Class frmIniciosesion
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
-        Me.Controls.Add(Me.PasswordTextBox)
-        Me.Controls.Add(Me.UsernameTextBox)
+        Me.Controls.Add(Me.txtcontrasena)
+        Me.Controls.Add(Me.txtusuario)
         Me.Controls.Add(Me.PasswordLabel)
         Me.Controls.Add(Me.UsernameLabel)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog

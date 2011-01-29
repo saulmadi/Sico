@@ -16,11 +16,13 @@ Public Class ListaHabilitados
 
        
         Try
+            MyBase.DisplayMember = "Descripcion"
+            MyBase.ValueMember = "valor"
             MyBase.Items.Add(New Estado("Inhabilitado", 0))
             MyBase.Items.Add(New Estado("Habilitado", 1))
 
             MyBase.DisplayMember = "Descripcion"
-            MyBase.ValueMember = "Valor"
+            MyBase.ValueMember = "valor"
             MyBase.SelectedIndex = 0
 
         Catch ex As Exception

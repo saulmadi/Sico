@@ -52,6 +52,7 @@ Public Class TablasTipo
         End Get
         Set(ByVal value As String)
             _tablaBusqueda = value
+            Me.TablaEliminar = value
         End Set
     End Property
 
@@ -90,11 +91,14 @@ Public Class TablasTipo
             Dim tem As New TablasTipo(Me.Id, Me.descripcion, Me.habilitado)
             tem.ComandoSelect = Me.ComandoSelect
             tem.ComandoMantenimiento = Me.ComandoMantenimiento
+            tem.TablaBusqueda = Me.TablaBusqueda
+            tem.TablaEliminar = Me.TablaBusqueda
             Lista.Add(tem)
         Next
         Me.CargadoPropiedades(0)
         Return Lista
     End Function
+
     Public Overrides Sub Buscar()
         NullParametrosBusqueda()
         Me.ValorParametrosBusqueda("tabla", Me.TablaBusqueda)

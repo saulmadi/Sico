@@ -122,6 +122,15 @@ Public Class crtTablaTipo
         End Try
     End Sub
 
+    Protected Overridable Sub Eliminar()
+        Try
+            Me.TablaTipo.Eliminar()
+            Me.TablaTipo = _Nombre.Instancias
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 #End Region
 
 #Region "Eventos"
@@ -162,7 +171,9 @@ Public Class crtTablaTipo
         Me.PanelAccion.BotonImprimir.Visible = False
 
     End Sub
-#End Region
 
-   
+    Private Sub PanelAccion_Eliminar() Handles PanelAccion.Eliminar
+        Eliminar()
+    End Sub
+#End Region
 End Class

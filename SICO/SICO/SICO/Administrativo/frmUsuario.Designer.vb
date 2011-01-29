@@ -162,6 +162,7 @@ Partial Class frmUsuario
         Me.cmbhabilitado.FormattingEnabled = True
         Me.cmbhabilitado.Location = New System.Drawing.Point(108, 151)
         Me.cmbhabilitado.Name = "cmbhabilitado"
+        Me.cmbhabilitado.SelectedItem = CType(resources.GetObject("cmbhabilitado.SelectedItem"), SICO.lgla2.Estado)
         Me.cmbhabilitado.Size = New System.Drawing.Size(378, 21)
         Me.cmbhabilitado.TabIndex = 5
         Me.cmbhabilitado.ValueMember = "Valor"

@@ -4,6 +4,7 @@ Imports System.ComponentModel
 Imports System.Diagnostics
 <Serializable()> _
 Public Class crtPersonaNatural
+
 #Region "Declaraciones"
     <NonSerialized()> _
     Private WithEvents _PersonaNatural As PersonaNatural
@@ -160,8 +161,16 @@ Public Class crtPersonaNatural
             txtSegundoApellido.Text = ""
             txtSegundoNombre.Text = ""
         End If
-
-        cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad.Valor
+        Dim x As Integer = 0
+        cmbTipoIdentidad.SelectedIndex = 0
+        For Each i As Object In cmbTipoIdentidad.Items
+            If CType(i, ListaTipoIdentidad.ListaTipoIdentidad).Valor = Persona.tipoidentidad.Valor Then
+                cmbTipoIdentidad.SelectedIndex = x
+                Exit For
+            End If
+            x += 1
+        Next
+        cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad
         txtidentifiacion.Text = Persona.identificacion
         txtrtn.Text = Persona.rtn
         txtCorreo.Text = Persona.correo
@@ -322,5 +331,5 @@ Public Class crtPersonaNatural
     End Enum
 #End Region
 
-    
+
 End Class

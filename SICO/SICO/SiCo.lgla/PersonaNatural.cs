@@ -23,6 +23,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("nombrecompletoigual", null)); 
             this.ColeccionParametrosBusqueda.Add(new Parametro("rtn",null));  
             
+            
         }
         public PersonaNatural(long? id, string NombreCompleto,TipoIdentidad TipoIdentidad, string Identificacion,string correo, string direccion, string rtn , int? Telefono,int? telefono2):base( )
         {
@@ -87,7 +88,7 @@ namespace SiCo.lgla
                 this.identificacion = this.Registro(Indice,"identificacion").ToString();
                 if (Registro(Indice,"tipoidentidad").ToString() == "I")
                     this.tipoidentidad = new TipoIdentidad("Identidad", "I");
-                else if (Registro(Indice,"tipo").ToString() == "R")
+                else if (Registro(Indice, "tipoidentidad").ToString() == "R")
                     this.tipoidentidad = new TipoIdentidad("Residencia", "R");                
                 base.CargadoPropiedades( Indice);                
             }            

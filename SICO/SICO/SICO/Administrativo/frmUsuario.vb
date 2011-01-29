@@ -11,7 +11,12 @@ Public Class frmUsuario
             _Usuario = value
             txtusuario.Text = value.usuario
             cmbrol.SelectedValue = value.rol
-            cmbhabilitado.SelectedValue = value.Estado
+            cmbhabilitado.SelectedIndex = value.Estado
+
+            txtConfirmar.Text = ""
+            txtcontrasena.Text = ""
+            txtConfirmar.EsObligatorio = False
+            txtcontrasena.EsObligatorio = False
 
             If Not value.sucursal Is Nothing Then
                 cmbsucursal.SelectedValue = value.sucursal
@@ -24,8 +29,8 @@ Public Class frmUsuario
 
     Private Sub CrtPersonaNatural1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CrtPersonaNatural1.Leave
         Try
-            If CrtPersonaNatural1.PrimerApellido.Length > 0 And CrtPersonaNatural1.PrimerNombre.Length > 0 Then
-                txtusuario.Text = Usuario.CrearUsuario(CrtPersonaNatural1.PrimerNombre.First + CrtPersonaNatural1.PrimerApellido)
+            If CrtPersonaNatural1.PrimerApellido.Length > 0 And CrtPersonaNatural1.PrimerNombre.Length > 0 And Me.Usuario.Id = 0 Then
+                txtusuario.Text = Usuario.CrearUsuario(Char.ToLower(CrtPersonaNatural1.PrimerNombre.First) + CrtPersonaNatural1.PrimerApellido.ToLower)
             End If
 
 
@@ -48,7 +53,11 @@ Public Class frmUsuario
     Private Sub frmUsuario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         CrtListadoMantenimiento1.Entidad = _Usuario
         CrtPersonaNatural1.EtiquetaError = Me.PanelAccion1.lblEstado
-
+        CrtListadoMantenimiento1.lblDescripcion.Text = "Usuario"
+        PanelAccion1.BotonImprimir.Visible = False
+        PanelAccion1.BotonImprimir.Enabled = False
+        PanelAccion1.BotonEliminar.Visible = False
+        PanelAccion1.BotonEliminar.Enabled = False
 
     End Sub
 
@@ -73,7 +82,7 @@ Public Class frmUsuario
                 Dim validador As New SICO.ctrla.Validador()
                 If Me.Usuario.Id = 0 Then
                     txtcontrasena.EsObligatorio = True
-                    txtConfirmar.ExpresionValidacion = True
+                    txtConfirmar.EsObligatorio = True
                 End If
                 Me.Usuario.idEntidades = CrtPersonaNatural1.Guardar()
 
@@ -83,16 +92,26 @@ Public Class frmUsuario
 
 
                 If txtConfirmar.Text.Trim = txtcontrasena.Text.Trim Then
-                    If validador.PermitirIngresar Then
-                        Me.Usuario.usuario = txtusuario.Texto
-                        If Not txtcontrasena.Text.Trim = String.Empty Then
-                            Me.Usuario.contrasena = txtcontrasena.Texto
+                    If txtcontrasena.Text.Length = 0 Or txtcontrasena.Text.Length > 7 Then
+
+
+                        If validador.PermitirIngresar Then
+                            Me.Usuario.usuario = txtusuario.Texto
+                            If Not txtcontrasena.Text.Trim = String.Empty Then
+                                Me.Usuario.contrasena = txtcontrasena.Texto
+                            End If
+                            Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
+                            Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
+                            Me.Usuario.Guardar()
+                            Me.PanelAccion1.BarraProgreso.Value = 100
+                            Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
+                        Else
+                            Me.PanelAccion1.lblEstado.Text = validador.MensajesError
                         End If
-                        Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
-                        Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
-                        Me.Usuario.Guardar()
-                        Me.PanelAccion1.BarraProgreso.Value = 100
-                        Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
+                    Else
+                        Me.PanelAccion1.lblEstado.Text = ("Las contraseñas no puede ser menor de 8 caracteres...")
+                        txtcontrasena.BackColor = txtcontrasena.ColorError
+                        txtConfirmar.BackColor = txtConfirmar.ColorError
                     End If
                 Else
                     Me.PanelAccion1.lblEstado.Text = ("Las contraseñas no coinciden...")
@@ -115,4 +134,6 @@ Public Class frmUsuario
         CrtPersonaNatural1.Nuevo()
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
+
+   
 End Class

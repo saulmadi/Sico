@@ -26,6 +26,21 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             get { return PanelPrinipal.Visible; }
             set { PanelPrinipal.Visible = value; }
+
+        }
+        private void crtPanelBase_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                SiCo.lgla.Usuario usu = new SiCo.lgla.Usuario();
+                usu.Cargar();
+                lblUsuario.Text = usu.usuario; 
+            }
+            catch
+            {
+                lblUsuario.Text = "Error al cargar el usuario";
+            }            
+           
         }
     }
 }

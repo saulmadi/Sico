@@ -27,7 +27,7 @@ namespace SiCo.lgla
             this.TablaBusqueda = "usuarios";
             this.ColeccionParametrosBusqueda.Add(new Parametro(  "tabla", this.TablaBusqueda));
             this.ComandoMantenimiento = "Usuarios_Mant";
-
+            this.TablaEliminar = "usuarios";
 
         
         }
@@ -45,7 +45,7 @@ namespace SiCo.lgla
             this.usuario = usuario;
             this.contrasena = contrasena;
             this.sucursal = sucursal;
-
+            this.TablaEliminar = "usuarios";
 
         }
         #endregion
@@ -119,6 +119,7 @@ namespace SiCo.lgla
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Cargar();
+                usu =(UsuarioSerializable) s.Objeto;
                 this._Id = usu.id;
                 this.usuario = usu.usuario;
             }
@@ -151,6 +152,8 @@ namespace SiCo.lgla
             NullParametrosBusqueda();
             ValorParametrosBusqueda("usuario", usuario);
             ValorParametrosBusqueda("contrasena", contrasena);
+            ValorParametrosBusqueda("estado", "1");
+
             LlenadoTabla(ColeccionParametrosBusqueda);
             if (this.TotalRegistros == 1)
                 return true;

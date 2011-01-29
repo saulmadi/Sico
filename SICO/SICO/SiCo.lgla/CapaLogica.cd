@@ -16,7 +16,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>oAFCAAAATgzgAAABABIgogAgAAABAiAFQBglFAAUAUQ=</HashCode>
+      <HashCode>oAFCAAAATgzgAAABABIgogAgEAABAyAFQBglFAAUAUQ=</HashCode>
       <FileName>Entidad.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -33,7 +33,7 @@
   <Class Name="SiCo.lgla.Usuario" Collapsed="true">
     <Position X="2.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAgAAAAAAAACAAAAAAAAAAQAAAAABQAQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAgAACAEAAACAgACAAAAAAQAAAABBQgQAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -59,6 +59,7 @@
     <Position X="3.25" Y="4" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AIAAAAIAAAAAgAAAAAAAAgBAAAAAAAAAAAABBAAQgIA=</HashCode>
@@ -100,7 +101,7 @@
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>ABAAAAAAAAAAAEAAgAAAAkAAAAIgAAAAQAAABAIQAAg=</HashCode>
+      <HashCode>ABAAAAQAAAAAAEAAgIAEAkAAAAIgAAAAQAAABAIQAAg=</HashCode>
       <FileName>Mantenimientos.cs</FileName>
     </TypeIdentifier>
   </Class>

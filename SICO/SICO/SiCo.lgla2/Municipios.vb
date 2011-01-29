@@ -10,7 +10,7 @@ Public Class Municipios
 
         Me.TablaBusqueda = "municipios"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
-
+        Me.TablaEliminar = TablaBusqueda
     End Sub
 #End Region
 

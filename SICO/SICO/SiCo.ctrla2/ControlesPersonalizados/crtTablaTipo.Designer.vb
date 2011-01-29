@@ -32,6 +32,7 @@ Partial Class crtTablaTipo
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(crtTablaTipo))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.crtBusqueda = New SiCo.ctrla2.crtListadoMantenimiento
         Me.Label1 = New System.Windows.Forms.Label
@@ -111,6 +112,7 @@ Partial Class crtTablaTipo
         Me.cmbEstado.FormattingEnabled = True
         Me.cmbEstado.Location = New System.Drawing.Point(75, 46)
         Me.cmbEstado.Name = "cmbEstado"
+        Me.cmbEstado.SelectedItem = CType(resources.GetObject("cmbEstado.SelectedItem"), SiCo.lgla2.Estado)
         Me.cmbEstado.Size = New System.Drawing.Size(298, 21)
         Me.cmbEstado.TabIndex = 4
         Me.cmbEstado.ValueMember = "Valor"
@@ -131,6 +133,7 @@ Partial Class crtTablaTipo
         Me.txtDescripcion.TabIndex = 0
         Me.txtDescripcion.Texto = Nothing
         Me.txtDescripcion.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtDescripcion.ValorInt = Nothing
         '
         'PanelAccion
         '

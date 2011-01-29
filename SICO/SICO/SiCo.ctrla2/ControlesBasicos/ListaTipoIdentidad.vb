@@ -37,7 +37,7 @@ Public Class ListaTipoIdentidad
 #End Region
 
 #Region "ClaseListaTipoIdentidad"
-    Private Class ListaTipoIdentidad
+    Public Class ListaTipoIdentidad
         Inherits SiCo.lgla.TipoIdentidad
         Public Sub New(ByVal valor As String)
             MyBase.New(valor)
