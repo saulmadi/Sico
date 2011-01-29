@@ -134,6 +134,5 @@ Public Class frmUsuario
         CrtPersonaNatural1.Nuevo()
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
-
    
 End Class
