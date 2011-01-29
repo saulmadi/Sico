@@ -141,6 +141,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ControlesBasicos\AutoCompleteCajaTexto.resx">
+      <DependentUpon>AutoCompleteCajaTexto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesBasicos\ListaDesplegable.resx">
       <DependentUpon>ListaDesplegable.cs</DependentUpon>
     </EmbeddedResource>

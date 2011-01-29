@@ -29,9 +29,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
+            this.SubProceso = new System.ComponentModel.BackgroundWorker();
+            this.SuspendLayout();
+            // 
+            // SubProceso
+            // 
+            this.SubProceso.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SubProceso_DoWork);
+            this.SubProceso.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SubProceso_RunWorkerCompleted);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.ComponentModel.BackgroundWorker SubProceso;
     }
 }
