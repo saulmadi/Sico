@@ -1,11 +1,11 @@
 ﻿DELIMITER $$
 
-DROP FUNCTION IF EXISTS `sico`.`CrearUsuario` $$
-CREATE FUNCTION `sico`.`CrearUsuario` (nombreusuario nvarchar(45) ) RETURNS nvarchar(45)
+DROP FUNCTION IF EXISTS `CrearUsuario` $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CrearUsuario`(nombreusuario nvarchar(45) ) RETURNS varchar(45) CHARSET utf8
 BEGIN
 set @conteo =0;
 
-select count(*) from usuarios into @conteo;
+select count(*) from usuarios where usuario = nombreusuario  into @conteo;
 
 if @conteo =0 then
   return nombreusuario;
