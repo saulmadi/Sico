@@ -119,7 +119,6 @@ CREATE TABLE `departamentos` (
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
 INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-16 00:00:00'),
  (35,'Francisco Morazan',1,1,'2011-01-09 00:00:00'),
- (36,'Lempira',0,1,'2011-01-09 00:00:00'),
  (37,'Copan',1,1,'2011-01-09 00:00:00'),
  (38,'Cortes',1,1,'2011-01-09 00:00:00'),
  (39,'La Paz',1,1,'2011-01-16 00:00:00'),
@@ -148,18 +147,21 @@ CREATE TABLE `entidades` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `Identificacion` (`identificacion`,`tipoidentidad`) USING BTREE,
   UNIQUE KEY `Nombre` (`entidadnombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `entidades`
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',0,'2011-01-27','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
+INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-01-28','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
  (5,NULL,NULL,NULL,1,NULL,1,'2011-01-22','asdf asdf asdf%','6a20d7e7-8eaa6a20d7e7-8eaa6a20d7e7-8eaa6a20d7','R',NULL),
  (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',1,'2011-01-22','Varideades Canezu','0a3b0c34-256a-4a02-a7bf-a2ac0f9adb7c','J',34872342),
  (7,NULL,NULL,NULL,1,NULL,1,'2011-01-27','carlos diaz@','0301-1989-12345','I',NULL),
- (8,34234,NULL,NULL,0,NULL,1,'2011-01-27','ENEE','86286677-88f5-4b37-909b-7a628359a437','J',342443);
+ (8,34234,NULL,NULL,0,NULL,1,'2011-01-27','ENEE','86286677-88f5-4b37-909b-7a628359a437','J',342443),
+ (9,NULL,NULL,NULL,1,'S33DD343',2,'2011-01-28','Pamela castro@','fdfdfd','R',NULL),
+ (10,NULL,NULL,NULL,1,'KSADFSJ43342',2,'2011-01-28','carlo madrid@','skd243','R',NULL),
+ (11,NULL,NULL,NULL,1,NULL,2,'2011-01-28','carlos maldonado@','21ddf','R',NULL);
 /*!40000 ALTER TABLE `entidades` ENABLE KEYS */;
 
 
@@ -303,8 +305,7 @@ CREATE TABLE `marcas` (
 
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
 INSERT INTO `marcas` VALUES  (10,'KMF',1,1,'2011-01-09 00:00:00'),
- (11,'YAMAHA',1,1,'2011-01-09 00:00:00'),
- (12,'HONDA',1,1,'2011-01-09 00:00:00');
+ (11,'YAMAHA',1,1,'2011-01-09 00:00:00');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 
@@ -331,8 +332,7 @@ CREATE TABLE `modelos` (
 --
 
 /*!40000 ALTER TABLE `modelos` DISABLE KEYS */;
-INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00'),
- (2,'DT125L',1,11,1,'2011-01-12 00:00:00');
+INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00');
 /*!40000 ALTER TABLE `modelos` ENABLE KEYS */;
 
 
@@ -422,11 +422,9 @@ CREATE TABLE `municipios` (
 --
 
 /*!40000 ALTER TABLE `municipios` DISABLE KEYS */;
-INSERT INTO `municipios` VALUES  (1,'Comayagua',34,1,1,'2011-01-13 00:00:00'),
- (2,'Lepaterique',37,1,1,'2011-01-12 00:00:00'),
+INSERT INTO `municipios` VALUES  (2,'Lepaterique',37,1,1,'2011-01-12 00:00:00'),
  (3,'San Juan del Potrero',34,0,1,'2011-01-13 00:00:00'),
  (4,'fgsd',37,1,1,'2011-01-12 00:00:00'),
- (5,'Distrito Central',35,1,1,'2011-01-12 00:00:00'),
  (6,'Ojona',35,1,1,'2011-01-13 00:00:00'),
  (7,'Talanga',35,1,1,'2011-01-13 00:00:00'),
  (8,'La paz',39,0,1,'2011-01-16 00:00:00'),
@@ -642,7 +640,9 @@ CREATE TABLE `usuarios` (
 --
 
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES  (2,4,'12345678','smayorquin',0,NULL,0,'2011-01-27 01:07:49',1);
+INSERT INTO `usuarios` VALUES  (2,4,'12345678','smayorquin',1,NULL,2,'2011-01-28 23:04:22',1),
+ (3,9,'1234567','pcastro',1,NULL,2,'2011-01-28 23:14:39',1),
+ (4,11,'12345678','cmaldonado',0,NULL,2,'2011-01-28 23:23:13',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 
@@ -659,7 +659,7 @@ CREATE DEFINER=`root`@`localhost` FUNCTION `CrearUsuario`(nombreusuario nvarchar
 BEGIN
 set @conteo =0;
 
-select count(*) from usuarios into @conteo;
+select count(*) from usuarios where usuario = nombreusuario  into @conteo;
 
 if @conteo =0 then
   return nombreusuario;
@@ -966,6 +966,7 @@ entidadnombre nvarchar(120),
 espersonanatural nvarchar(1),
 usuario nvarchar(45),
 contrasena nvarchar(30),
+estado nvarchar(1),
 tabla nvarchar(25)
 )
 BEGIN
@@ -991,13 +992,18 @@ if identidades<>"" then
   set @where = concat(@where, " and c.identidades = ",identidades," ");
 end if;
 
-if usuario<>"" and contrasena<> "" then
-  set @where = concat(@where, " and c.usuario = '",usuario,"' and contrasena = '",contrasena,"' ");
+if estado<>"" then
+  set @where = concat(@where, " and c.estado = ",estado," ");
 end if;
 
 
-if entidadnombre<>"" and espersonanatural <>""  then
-  set @where = concat(@where, " and   e.entidadnombre like'",entidadnombre, "%' ");
+if usuario<>"" and contrasena<> "" then
+  set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' and  contrasena COLLATE latin1_general_cs like '",contrasena,"' ");
+end if;
+
+
+if entidadnombre<>""  then
+  set @where = concat(@where, " and   e.entidadnombre like '",entidadnombre, "%' ");
 end if;
 
 if espersonanatural <>"" then
@@ -1887,7 +1893,8 @@ else
         c.idrol=idrol,
         c.idsucursales=idsucursales,
         c.usu=usu,
-        c.fmodif=fmodif
+        c.fmodif=fmodif,
+        c.estado=estado
   where c.id= id;
 
 end if;
