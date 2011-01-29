@@ -58,7 +58,6 @@ Public Class crtTablaTipoDerivada
         Else
             PanelAccion.lblEstado.Text = "Debe seleccionar un/una " + NombresModuloTablasTipo.NombreModuloTablasTipo(Me.ModuloDerivado).ToLower
         End If
-
     End Sub
 #End Region
 
@@ -78,11 +77,11 @@ Public Class crtTablaTipoDerivada
     Private Sub crtBusqueda_Limpio() Handles crtBusqueda.Limpio
         cmbDerivado.SelectedIndex = -1
     End Sub
+
     Private Sub PanelAccion_Nuevo() Handles PanelAccion.Nuevo
         cmbDerivado.SelectedIndex = -1
     End Sub
 
 #End Region
-
  
 End Class

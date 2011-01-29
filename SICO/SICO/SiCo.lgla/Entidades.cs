@@ -26,7 +26,8 @@ namespace SiCo.lgla
             this.ColeccionParametrosMantenimiento.Add(new Parametro("entidadnombre", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identificacion", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("telefono2", null)); 
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("telefono2", null));
+            this.TablaEliminar = "entidades";
             
         }       
 

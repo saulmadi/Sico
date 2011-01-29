@@ -11,7 +11,7 @@ Public Class Departamentos
         Me.ComandoMantenimiento = "Departamentos_Mant"
         Me.TablaBusqueda = "departamentos"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
-
+        Me.TablaEliminar = Me.TablaBusqueda
     End Sub
 
 #End Region

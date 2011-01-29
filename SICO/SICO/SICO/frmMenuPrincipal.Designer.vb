@@ -373,20 +373,20 @@ Partial Class frmMenuPrincipal
         'SucursalesToolStripMenuItem
         '
         Me.SucursalesToolStripMenuItem.Name = "SucursalesToolStripMenuItem"
-        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.SucursalesToolStripMenuItem.Text = "Sucursales"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'PersonasToolStripMenuItem
         '
         Me.PersonasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonasNaturlaesToolStripMenuItem, Me.PersonasJurídicasToolStripMenuItem})
         Me.PersonasToolStripMenuItem.Name = "PersonasToolStripMenuItem"
-        Me.PersonasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.PersonasToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.PersonasToolStripMenuItem.Text = "Personas"
         '
         'PersonasNaturlaesToolStripMenuItem
@@ -405,7 +405,7 @@ Partial Class frmMenuPrincipal
         '
         Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem})
         Me.SICOToolStripMenuItem.Name = "SICOToolStripMenuItem"
-        Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.SICOToolStripMenuItem.Text = "SICO"
         '
         'MunicipiosToolStripMenuItem

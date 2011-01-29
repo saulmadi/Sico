@@ -49,7 +49,7 @@ namespace SiCo.ctrla
                     case "R":
                         this.ExpresionValidacion = "";
                         this.MaxLength = 45;
-                        this.TipoTexto = TiposTexto.Alfabetico;
+                        this.TipoTexto = TiposTexto.Alfanumerico;
                         this.Enabled = true;
                         break;
 

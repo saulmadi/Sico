@@ -41,6 +41,7 @@ Public Class TablasTipoDerivadas
         Me.ValorParametrosMantenimiento("idderivada", Me.idDerivada)
         MyBase.Guardar()
     End Sub
+
     Public Overrides Function TablaAColeccion() As Object
         MyBase.TablaAColeccion()
         Dim Lista As New List(Of TablasTipoDerivadas)
@@ -49,6 +50,8 @@ Public Class TablasTipoDerivadas
             Dim tem As New TablasTipoDerivadas(Me.Id, Me.descripcion, Me.habilitado, Me.idDerivada)
             tem.ComandoSelect = Me.ComandoSelect
             tem.ComandoMantenimiento = Me.ComandoMantenimiento
+            tem.TablaBusqueda = Me.TablaBusqueda
+            tem.TablaEliminar = Me.TablaBusqueda
             Lista.Add(tem)
         Next
         Me.CargadoPropiedades(0)

@@ -10,9 +10,10 @@ Public Class Marcas
 
         Me.TablaBusqueda = "marcas"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
-
+        Me.TablaEliminar = Me.TablaBusqueda
     End Sub
 #End Region
+
 #Region "metodos"
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()

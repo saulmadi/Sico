@@ -22,6 +22,7 @@ namespace SiCo.lgla
         [NonSerialized]private List<Parametro> _ColeccionParametrosBusqueda= new List<Parametro> ();
         [NonSerialized]protected  List<Parametro> _ColeccionParametrosMantenimiento = new List<Parametro>();
         protected long? _Id =0;
+        private string _tablaEliminar = string.Empty; 
         
         #endregion
 
@@ -139,10 +140,16 @@ namespace SiCo.lgla
             {
                 if (_Usuario ==null )
                 _Usuario= new Usuario();
-                //_Usuario.Cargar(); 
+                _Usuario.Cargar(); 
                 return _Usuario;
             }
             
+        }
+
+        protected string TablaEliminar
+        {
+            get { return _tablaEliminar; }
+            set { _tablaEliminar = value; }
         }
 
         #endregion
@@ -491,6 +498,40 @@ namespace SiCo.lgla
             foreach (Parametro i in _ColeccionParametrosMantenimiento)
             {
                 i.Valor = null;
+            }
+        }
+
+        public Boolean   Eliminar()
+        {
+            try
+            {
+                if (this.Id > 0)
+                {
+                    switch (System.Windows.Forms.MessageBox.Show("¿Esta seguro de eliminar el registro?", "Confirmación", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question))
+                    { 
+                        case System.Windows.Forms.DialogResult.Yes:
+                                InicializarComando();
+                                _Comando.CommandType = CommandType.Text;
+                                _Comando.CommandText = "Delete from " + this.TablaEliminar + " where id = " + this.Id.ToString();
+                                _Comando.Connection = _Conexion.Conexion;
+                                _Conexion.AbrirConexion();
+                                _Comando.ExecuteNonQuery();
+                                _Conexion.CerrarConexion();
+                                System.Windows.Forms.MessageBox.Show("Se ha eliminado correcamete el registro", "Información", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Information);  
+                                return true;                            
+                        default:
+                            return false;
+                    }                   
+                }
+                else 
+                {
+                    throw new ApplicationException("No se puede eliminar el registro porque todavía no esta registrado.");
+                }               
+                
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException("No se puede eliminar el registro, dado que esta siendo utilizada por otra transacción.", ex);  
             }
         }
         

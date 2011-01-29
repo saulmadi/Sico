@@ -133,6 +133,7 @@
             this.Controls.Add(this.PanelPrinipal);
             this.Name = "crtPanelBase";
             this.Size = new System.Drawing.Size(650, 150);
+            this.Load += new System.EventHandler(this.crtPanelBase_Load);
             this.PanelPrinipal.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

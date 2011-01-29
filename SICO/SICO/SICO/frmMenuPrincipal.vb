@@ -214,9 +214,25 @@ Public Class frmMenuPrincipal
 
 #End Region
 
+#Region "Sesion"
+    Private Sub CerrarSesesiónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CerrarSesesiónToolStripMenuItem.Click
+        Dim frm As New frmIniciosesion
+        frm.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub CambiarDeUsuarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CambiarDeUsuarioToolStripMenuItem.Click
+        Dim frm As New frmIniciosesion
+        frm.ShowDialog()
+    End Sub
+
+#End Region
+
 
 #End Region
     
     
     
+   
+  
 End Class

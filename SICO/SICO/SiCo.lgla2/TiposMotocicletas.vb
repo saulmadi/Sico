@@ -9,6 +9,7 @@ Public Class TiposMotocicletas
 
         Me.TablaBusqueda = "tiposmotocicletas"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", Me.TablaBusqueda))
+        Me.TablaEliminar = Me.TablaBusqueda
     End Sub
 #End Region
 

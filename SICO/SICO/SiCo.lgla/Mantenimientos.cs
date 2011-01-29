@@ -11,6 +11,7 @@ namespace SiCo.lgla
         private long? _idEntidades;
         private PersonaNatural  _PersonaNatural = new PersonaNatural();
         private PersonaJuridica  _PersonaJuridica = new PersonaJuridica();
+        private int _Estado = 0;
         #endregion
 
         #region Constructor
@@ -21,6 +22,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
@@ -35,6 +37,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("espersonnatural", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
@@ -109,8 +112,8 @@ namespace SiCo.lgla
 
         public int Estado
         {
-            get;
-            set;
+            get { return _Estado ;}
+            set { _Estado = value; }
         }
 
         #endregion
