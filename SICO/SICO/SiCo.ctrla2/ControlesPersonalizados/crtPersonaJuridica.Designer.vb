@@ -33,12 +33,12 @@ Partial Class crtPersonaJuridica
         Me.btnbuscar = New System.Windows.Forms.Button
         Me.lblEstado = New System.Windows.Forms.Label
         Me.SubProceso = New System.ComponentModel.BackgroundWorker
+        Me.txtrazonsocial = New SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtcorreo = New SiCo.ctrla.CorreoCajaTexto(Me.components)
         Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtfax = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
-        Me.txtrazonsocial = New SiCo.ctrla.CajaTexto(Me.components)
         Me.SuspendLayout()
         '
         'label8
@@ -47,7 +47,7 @@ Partial Class crtPersonaJuridica
         Me.label8.Location = New System.Drawing.Point(3, 63)
         Me.label8.Name = "label8"
         Me.label8.Size = New System.Drawing.Size(30, 13)
-        Me.label8.TabIndex = 10
+        Me.label8.TabIndex = 8
         Me.label8.Text = "RTN"
         '
         'label7
@@ -56,7 +56,7 @@ Partial Class crtPersonaJuridica
         Me.label7.Location = New System.Drawing.Point(303, 63)
         Me.label7.Name = "label7"
         Me.label7.Size = New System.Drawing.Size(38, 13)
-        Me.label7.TabIndex = 13
+        Me.label7.TabIndex = 12
         Me.label7.Text = "Correo"
         '
         'label6
@@ -65,7 +65,7 @@ Partial Class crtPersonaJuridica
         Me.label6.Location = New System.Drawing.Point(3, 89)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(52, 13)
-        Me.label6.TabIndex = 11
+        Me.label6.TabIndex = 9
         Me.label6.Text = "Dirección"
         '
         'label5
@@ -74,7 +74,7 @@ Partial Class crtPersonaJuridica
         Me.label5.Location = New System.Drawing.Point(3, 37)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(49, 13)
-        Me.label5.TabIndex = 9
+        Me.label5.TabIndex = 7
         Me.label5.Text = "Telefono"
         '
         'lblRazonSocial
@@ -83,7 +83,7 @@ Partial Class crtPersonaJuridica
         Me.lblRazonSocial.Location = New System.Drawing.Point(3, 11)
         Me.lblRazonSocial.Name = "lblRazonSocial"
         Me.lblRazonSocial.Size = New System.Drawing.Size(68, 13)
-        Me.lblRazonSocial.TabIndex = 8
+        Me.lblRazonSocial.TabIndex = 6
         Me.lblRazonSocial.Text = "Razón social"
         '
         'Label1
@@ -92,7 +92,7 @@ Partial Class crtPersonaJuridica
         Me.Label1.Location = New System.Drawing.Point(303, 37)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(24, 13)
-        Me.Label1.TabIndex = 12
+        Me.Label1.TabIndex = 11
         Me.Label1.Text = "Fax"
         '
         'btnbuscar
@@ -104,7 +104,7 @@ Partial Class crtPersonaJuridica
         Me.btnbuscar.Location = New System.Drawing.Point(545, 157)
         Me.btnbuscar.Name = "btnbuscar"
         Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
-        Me.btnbuscar.TabIndex = 6
+        Me.btnbuscar.TabIndex = 13
         Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnbuscar.UseVisualStyleBackColor = True
         '
@@ -113,12 +113,37 @@ Partial Class crtPersonaJuridica
         Me.lblEstado.Location = New System.Drawing.Point(181, 158)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(357, 23)
-        Me.lblEstado.TabIndex = 7
+        Me.lblEstado.TabIndex = 10
         Me.lblEstado.Text = "Label12"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'SubProceso
         '
+        '
+        'txtrazonsocial
+        '
+        Me.txtrazonsocial.AutoCompletar = True
+        Me.txtrazonsocial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.txtrazonsocial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
+        Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrazonsocial.CampoMostrar = "razonsocial"
+        Me.txtrazonsocial.CaracteresInicio = 2
+        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
+        Me.txtrazonsocial.EnterPorTab = True
+        Me.txtrazonsocial.EsObligatorio = True
+        Me.txtrazonsocial.ExpresionValidacion = ""
+        Me.txtrazonsocial.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
+        Me.txtrazonsocial.MaxLength = 120
+        Me.txtrazonsocial.MensajeError = "La razón social de la persona jurídica no puede ser vacía"
+        Me.txtrazonsocial.Name = "txtrazonsocial"
+        Me.txtrazonsocial.ParameteroBusqueda = "razonsocial"
+        Me.txtrazonsocial.Procedimiento = Nothing
+        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
+        Me.txtrazonsocial.TabIndex = 0
+        Me.txtrazonsocial.Texto = Nothing
+        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
+        Me.txtrazonsocial.ValorInt = Nothing
         '
         'txtdireccion
         '
@@ -214,33 +239,16 @@ Partial Class crtPersonaJuridica
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txttelefono.ValorInt = Nothing
         '
-        'txtrazonsocial
-        '
-        Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
-        Me.txtrazonsocial.ColorError = System.Drawing.Color.Red
-        Me.txtrazonsocial.EnterPorTab = True
-        Me.txtrazonsocial.EsObligatorio = False
-        Me.txtrazonsocial.ExpresionValidacion = Nothing
-        Me.txtrazonsocial.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtrazonsocial.Location = New System.Drawing.Point(77, 8)
-        Me.txtrazonsocial.MensajeError = Nothing
-        Me.txtrazonsocial.Name = "txtrazonsocial"
-        Me.txtrazonsocial.Size = New System.Drawing.Size(503, 20)
-        Me.txtrazonsocial.TabIndex = 0
-        Me.txtrazonsocial.Texto = Nothing
-        Me.txtrazonsocial.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
-        Me.txtrazonsocial.ValorInt = Nothing
-        '
         'crtPersonaJuridica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.txtdireccion)
         Me.Controls.Add(Me.txtcorreo)
         Me.Controls.Add(Me.txtrtn)
         Me.Controls.Add(Me.txtfax)
         Me.Controls.Add(Me.txttelefono)
-        Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.btnbuscar)
         Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.Label1)
@@ -264,11 +272,11 @@ Partial Class crtPersonaJuridica
     Friend WithEvents btnbuscar As System.Windows.Forms.Button
     Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents SubProceso As System.ComponentModel.BackgroundWorker
-    Friend WithEvents txtrazonsocial As SiCo.ctrla.CajaTexto
     Friend WithEvents txttelefono As SiCo.ctrla.CajaTexto
     Friend WithEvents txtfax As SiCo.ctrla.CajaTexto
     Friend WithEvents txtrtn As SiCo.ctrla.CajaTexto
     Friend WithEvents txtcorreo As SiCo.ctrla.CorreoCajaTexto
     Friend WithEvents txtdireccion As SiCo.ctrla.CajaTexto
+    Friend WithEvents txtrazonsocial As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
 
 End Class

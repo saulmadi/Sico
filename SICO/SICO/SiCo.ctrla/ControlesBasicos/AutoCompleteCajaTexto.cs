@@ -40,7 +40,7 @@ namespace SiCo.ctrla.ControlesBasicos
        
         #region Propiedades
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public  System.Collections.Generic.List<SiCo.lgla.Parametro> ColeccionParametros
 	        {
             get { return null ; }
@@ -78,6 +78,7 @@ namespace SiCo.ctrla.ControlesBasicos
             set { _CaracteresInicio = value; }
         }
 
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden) ]
         public Entidad Entidad
         {
             get { return _Entidad; }
@@ -88,9 +89,7 @@ namespace SiCo.ctrla.ControlesBasicos
         {
             get;
             set;
-        }
-
-        
+        }        
         
         #endregion
 
@@ -124,11 +123,7 @@ namespace SiCo.ctrla.ControlesBasicos
                             this.Cursor = Cursors.WaitCursor; 
                             if (!SubProceso.IsBusy) SubProceso.RunWorkerAsync(arg);
                         }
-                    }
-                    else
-                    {
-                        this.AutoCompleteCustomSource.Clear();  
-                    }
+                    }                    
                 }
             }
             catch (Exception ex)
@@ -148,7 +143,7 @@ namespace SiCo.ctrla.ControlesBasicos
         }
 
         private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
+     {
             this.Cursor = Cursors.Default;
             if (e.Error != null)
             {
@@ -171,18 +166,20 @@ namespace SiCo.ctrla.ControlesBasicos
 
         #endregion
 
+        #region ClaseArgumento
         private class Argumento
         {
-            public Entidad _Entidad ;
-            public string  ParaBusqueda;
+            public Entidad _Entidad;
+            public string ParaBusqueda;
             public string valor;
-            public Argumento(Entidad entidad,string parametro, string val)
+            public Argumento(Entidad entidad, string parametro, string val)
             {
                 this._Entidad = entidad;
                 this.ParaBusqueda = parametro;
                 this.valor = val;
-            } 
+            }
         }        
+        #endregion        
     }
 
 }
