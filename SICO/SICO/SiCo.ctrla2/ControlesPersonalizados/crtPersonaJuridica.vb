@@ -75,6 +75,15 @@ Imports System.Diagnostics
         End Set
     End Property
 
+    Public Property HabilitarRTN() As Boolean
+        Get
+            Return txtrtn.Enabled
+        End Get
+        Set(ByVal value As Boolean)
+            txtrtn.Enabled = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Metodos"
@@ -138,6 +147,7 @@ Imports System.Diagnostics
         lblEstado.Text = ""
         Try
             _Persona = New PersonaJuridica
+            txtrazonsocial.Entidad = New PersonaJuridica()
         Catch ex As Exception
 
         End Try
