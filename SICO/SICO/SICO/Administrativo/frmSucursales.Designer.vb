@@ -27,17 +27,19 @@ Partial Class frmSucursales
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.Label1 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
+        Me.cmbMunicipio = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.cmbDepartamento = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.cmbAdmon = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.ListaHabilitados1 = New SICO.ctrla2.ListaHabilitados(Me.components)
         Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
         Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -49,7 +51,7 @@ Partial Class frmSucursales
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 95)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(270, 345)
+        Me.GroupBox1.Size = New System.Drawing.Size(270, 367)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
@@ -67,21 +69,33 @@ Partial Class frmSucursales
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.cmbMunicipio)
+        Me.GroupBox3.Controls.Add(Me.cmbDepartamento)
+        Me.GroupBox3.Controls.Add(Me.cmbAdmon)
+        Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.ListaHabilitados1)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(Me.CajaTexto1)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.Label2)
-        Me.GroupBox3.Controls.Add(Me.ListaDesplegable1)
-        Me.GroupBox3.Controls.Add(Me.ComboBox2)
         Me.GroupBox3.Controls.Add(Me.Label1)
-        Me.GroupBox3.Controls.Add(Me.ComboBox1)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(288, 307)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(495, 133)
+        Me.GroupBox3.Size = New System.Drawing.Size(495, 155)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Sucursal"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 129)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(40, 13)
+        Me.Label5.TabIndex = 7
+        Me.Label5.Text = "Estado"
         '
         'Label4
         '
@@ -113,14 +127,6 @@ Partial Class frmSucursales
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Departamento"
         '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(106, 44)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(378, 21)
-        Me.ComboBox2.TabIndex = 2
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -131,13 +137,64 @@ Partial Class frmSucursales
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Administrador"
         '
-        'ComboBox1
+        'cmbMunicipio
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(106, 17)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(378, 21)
-        Me.ComboBox1.TabIndex = 0
+        Me.cmbMunicipio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbMunicipio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbMunicipio.CargarAutoCompletar = False
+        Me.cmbMunicipio.DisplayMember = "descripcion"
+        Me.cmbMunicipio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMunicipio.FormattingEnabled = True
+        Me.cmbMunicipio.Location = New System.Drawing.Point(106, 71)
+        Me.cmbMunicipio.Name = "cmbMunicipio"
+        Me.cmbMunicipio.ParametroAutocompletar = Nothing
+        Me.cmbMunicipio.ParametroBusquedaPadre = Nothing
+        Me.cmbMunicipio.Size = New System.Drawing.Size(378, 21)
+        Me.cmbMunicipio.TabIndex = 10
+        '
+        'cmbDepartamento
+        '
+        Me.cmbDepartamento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cmbDepartamento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbDepartamento.CargarAutoCompletar = False
+        Me.cmbDepartamento.DisplayMember = "descripcion"
+        Me.cmbDepartamento.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDepartamento.FormattingEnabled = True
+        Me.cmbDepartamento.Location = New System.Drawing.Point(106, 44)
+        Me.cmbDepartamento.Name = "cmbDepartamento"
+        Me.cmbDepartamento.ParametroAutocompletar = Nothing
+        Me.cmbDepartamento.ParametroBusquedaPadre = Nothing
+        Me.cmbDepartamento.Size = New System.Drawing.Size(378, 21)
+        Me.cmbDepartamento.TabIndex = 9
+        Me.cmbDepartamento.ValueMember = "Id"
+        '
+        'cmbAdmon
+        '
+        Me.cmbAdmon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbAdmon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbAdmon.CargarAutoCompletar = False
+        Me.cmbAdmon.DisplayMember = "NombreMantenimiento"
+        Me.cmbAdmon.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbAdmon.FormattingEnabled = True
+        Me.cmbAdmon.Location = New System.Drawing.Point(106, 17)
+        Me.cmbAdmon.Name = "cmbAdmon"
+        Me.cmbAdmon.ParametroAutocompletar = Nothing
+        Me.cmbAdmon.ParametroBusquedaPadre = Nothing
+        Me.cmbAdmon.Size = New System.Drawing.Size(378, 21)
+        Me.cmbAdmon.TabIndex = 8
+        '
+        'ListaHabilitados1
+        '
+        Me.ListaHabilitados1.DisplayMember = "Descripcion"
+        Me.ListaHabilitados1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ListaHabilitados1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ListaHabilitados1.FormattingEnabled = True
+        Me.ListaHabilitados1.Location = New System.Drawing.Point(106, 126)
+        Me.ListaHabilitados1.Name = "ListaHabilitados1"
+        Me.ListaHabilitados1.SelectedItem = CType(resources.GetObject("ListaHabilitados1.SelectedItem"), SICO.lgla2.Estado)
+        Me.ListaHabilitados1.Size = New System.Drawing.Size(378, 21)
+        Me.ListaHabilitados1.TabIndex = 4
+        Me.ListaHabilitados1.ValueMember = "valor"
         '
         'CajaTexto1
         '
@@ -154,29 +211,6 @@ Partial Class frmSucursales
         Me.CajaTexto1.Texto = Nothing
         Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
         Me.CajaTexto1.ValorInt = Nothing
-        '
-        'ListaDesplegable1
-        '
-        Me.ListaDesplegable1.CargarAutoCompletar = False
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(106, 72)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.ParametroAutocompletar = Nothing
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(378, 21)
-        Me.ListaDesplegable1.TabIndex = 3
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(895, 549)
-        Me.PanelAccion1.TabIndex = 0
-        Me.PanelAccion1.Titulo = "Sucursales"
-        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'CrtPersonaJuridica1
         '
@@ -202,8 +236,20 @@ Partial Class frmSucursales
         Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
         Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
         Me.CrtListadoMantenimiento1.NombreParametroBusqueda = Nothing
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(264, 326)
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(264, 348)
         Me.CrtListadoMantenimiento1.TabIndex = 0
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(895, 549)
+        Me.PanelAccion1.TabIndex = 0
+        Me.PanelAccion1.Titulo = "Sucursales"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'frmSucursales
         '
@@ -233,12 +279,14 @@ Partial Class frmSucursales
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents CrtPersonaJuridica1 As SICO.ctrla2.crtPersonaJuridica
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents ListaDesplegable1 As SICO.ctrla.ListaDesplegable
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents CajaTexto1 As SICO.ctrla.CajaTexto
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents ListaHabilitados1 As SICO.ctrla2.ListaHabilitados
+    Friend WithEvents cmbAdmon As SICO.ctrla.ListaDesplegable
+    Friend WithEvents cmbMunicipio As SiCo.ctrla.ListaDesplegable
+    Friend WithEvents cmbDepartamento As SiCo.ctrla.ListaDesplegable
 End Class

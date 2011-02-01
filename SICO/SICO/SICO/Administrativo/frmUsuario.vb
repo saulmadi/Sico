@@ -12,6 +12,11 @@ Public Class frmUsuario
             txtusuario.Text = value.usuario
             cmbrol.SelectedValue = value.rol
             cmbhabilitado.SelectedIndex = value.Estado
+            If value.rol > 0 Then
+                cmbrol.SelectedIndex = value.rol - 1
+            Else
+                cmbrol.SelectedIndex = 0
+            End If
 
             txtConfirmar.Text = ""
             txtcontrasena.Text = ""
@@ -58,6 +63,7 @@ Public Class frmUsuario
         PanelAccion1.BotonImprimir.Enabled = False
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonEliminar.Enabled = False
+        cmbrol.ValueMember = "valor"
 
     End Sub
 

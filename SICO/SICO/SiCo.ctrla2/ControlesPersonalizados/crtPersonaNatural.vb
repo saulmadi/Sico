@@ -82,20 +82,43 @@ Public Class crtPersonaNatural
             Return txtPrimerNombre.Text
         End Get
     End Property
+
     Public ReadOnly Property SegundoNombre() As String
         Get
             Return txtSegundoNombre.Text
         End Get
     End Property
+
     Public ReadOnly Property PrimerApellido() As String
         Get
             Return txtPrimerApellido.Text
         End Get
     End Property
+
     Public ReadOnly Property SegundoApellido() As String
         Get
             Return txtSegundoApellido.Text
         End Get
+    End Property
+
+    Public Shadows Property Enabled() As Boolean
+        Get
+            Return txtPrimerApellido.Enabled
+        End Get
+        Set(ByVal value As Boolean)
+            txtPrimerNombre.Enabled = value
+            txtSegundoNombre.Enabled = value
+            txtPrimerApellido.Enabled = value
+            txtSegundoApellido.Enabled = value
+            cmbTipoIdentidad.Enabled = value
+            txtidentifiacion.Enabled = value
+            txtCorreo.Enabled = value
+            txtrtn.Enabled = value
+            txttelefono.Enabled = value
+            txtCelular.Enabled = value
+            txtdireccion.Enabled = value
+            btnbuscar.Enabled = value
+        End Set
     End Property
 #End Region
 
@@ -178,6 +201,13 @@ Public Class crtPersonaNatural
         txtCelular.ValorInt = Persona.telefono2
         txtdireccion.Text = Persona.direccion
 
+        If Me.Persona.Id = 0 Then
+            Me.Enabled = True
+            Me.lblEstado.Text = ""
+        Else
+            Me.Enabled = False
+            Me.lblEstado.Text = "Persona natural " + Me.txtPrimerNombre.Text + " " + Me.txtPrimerApellido.Text + " cargado(a)."
+        End If
     End Sub
 
     Private Sub crtPersonaNatural_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -185,6 +215,18 @@ Public Class crtPersonaNatural
             _PersonaNatural = New PersonaNatural
             _PersonaNaturalBusqueda = New PersonaNatural
             lblEstado.Text = ""
+            Dim tool As New ToolTip(Me.components)
+            tool.SetToolTip(btnModificar, "Modificar")
+            tool.Active = True
+
+            Dim tool2 As New ToolTip(Me.components)
+            tool2.SetToolTip(btnNueva, "Nuevo")
+            tool2.Active = True
+
+            Dim tool3 As New ToolTip(Me.components)
+            tool3.SetToolTip(btnbuscar, "Buscar")
+            tool3.Active = True
+
         Catch ex As Exception
         End Try
     End Sub
@@ -305,6 +347,14 @@ Public Class crtPersonaNatural
         End If
     End Sub
 
+    Private Sub btnNueva_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click
+        Me.Nuevo()
+    End Sub
+
+    Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
+        Me.Enabled = True
+    End Sub
+
 #End Region
 
 #Region "Clase Argmentos"
@@ -331,5 +381,5 @@ Public Class crtPersonaNatural
     End Enum
 #End Region
 
-
+   
 End Class

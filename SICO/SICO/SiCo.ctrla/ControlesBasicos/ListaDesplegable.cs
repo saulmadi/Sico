@@ -49,12 +49,18 @@ namespace SiCo.ctrla
             set
             {
                 _ComboBoxPadre = value;
-                if(value!=null)
+                if (value != null)
+                {
                     _ComboBoxPadre.SelectedIndexChanged += new EventHandler(_ListaDesplegable_SelectedIndexChanged);
+                    _ComboBoxPadre.TextChanged += new EventHandler(_ComboBoxPadre_TextChanged);
+                }
+                    
             }
         }
+
         
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Advanced)]
         public Entidad Entidad
         {
             get { return _Entidad; }
@@ -62,9 +68,7 @@ namespace SiCo.ctrla
             set 
             {
                 _Entidad = value;
-                if (value != null)                
-                    value.Errores += new ErroresEventHandler(value_Errores);
-                
+               
             }
 
         }
@@ -89,7 +93,7 @@ namespace SiCo.ctrla
             set;
         }
 
-        [Browsable(false),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),EditorBrowsable(EditorBrowsableState.Advanced) ]
         public List<ParametrosListaDesplegable> ColeccionParametros
         {
             get
@@ -102,34 +106,49 @@ namespace SiCo.ctrla
             }
         }
 
+        public string ParametroBusquedaPadre
+        {
+            get;
+            set;
+        }
+
         #endregion       
 
         #region Eventos
 
         void _ListaDesplegable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    _Entidad = new EntidadInstanciable ();
-            //    _Entidad.LlenadoTabla(this.Comando,this.ColeccionParametroBusqueda) ;
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                if (_ComboBoxPadre.SelectedValue != null && _ComboBoxPadre.SelectedIndex > -1)
+                {
+                    Argumento arg = new Argumento(this.Entidad, this.ColeccionParametros, this.ParametroBusquedaPadre, _ComboBoxPadre.SelectedValue.ToString());
+                    if (!this.SubProceso.IsBusy)
+                    {
+                        this.SubProceso.RunWorkerAsync(arg);
+                    }
+                }               
 
-            //    if (_Entidad.TotalRegistros > 0)
-            //    {
-            //        this.DataSource = null;
-            //        this.DataSource = _Entidad.Tabla;
-            //    }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error)  ;
 
-            //}
-            //catch (Exception ex)
-            //{
-            //    ex.Message.ToString();
- 
-            //}
+            }
         }
-        
-        void value_Errores(string Mensaje)
+
+        void _ComboBoxPadre_TextChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(Mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+            if ( _ComboBoxPadre.SelectedIndex == -1)
+            {
+                string d = DisplayMember;
+                string v = ValueMember;
+                this.DataSource = null;
+                this.DisplayMember = d;
+                this.ValueMember = v;
+ 
+            }
         }
 
         private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -143,8 +162,8 @@ namespace SiCo.ctrla
 
             if (Entidad.TotalRegistros > 0)
             {
-                string d = DisplayMember; 
-                string v= ValueMember ;
+                string d = DisplayMember;
+                string v = ValueMember;
                 this.DataSource = null;
                 this.DataSource = Entidad.TablaAColeccion();
                 this.DisplayMember = d;
@@ -152,25 +171,50 @@ namespace SiCo.ctrla
                 this.Cursor = Cursors.Default;
                 this.SelectedIndex = -1;
             }
+            else
+            {
+                string d = DisplayMember;
+                string v = ValueMember;
+                this.DataSource = null;
+                this.DisplayMember = d;
+                this.ValueMember = v;
+            }
+            this.Cursor = Cursors.Default; 
         }
 
         private void SubProceso_DoWork(object sender, DoWorkEventArgs e)
         {
             Argumento a = (Argumento)e.Argument;
 
-            if (a.Coleccion == null)
+            if (a.Coleccion == null && a.NombreParametro.Length==0 )
             {
                 a.Entidad.Buscar();
             }
             else
             {
-                List<Parametro> p = new List<Parametro>();
-                foreach (ParametrosListaDesplegable i in a.Coleccion)
+                if (a.Coleccion != null && a.NombreParametro.Length == 0)
                 {
-                    p.Add(i);
-                }
+                    List<Parametro> p = new List<Parametro>();
+                    foreach (ParametrosListaDesplegable i in a.Coleccion)
+                    {
+                        p.Add(i);
+                    }
 
-                a.Entidad.Buscar(p);
+                    a.Entidad.Buscar(p);
+                }
+                else
+                {
+                    if (a.Coleccion != null)
+                    {
+                        List<Parametro> p = new List<Parametro>();
+                        foreach (ParametrosListaDesplegable i in a.Coleccion)
+                        {
+                            p.Add(i);
+                        }
+                        p.Add(new Parametro(a.NombreParametro, a.ValorParametro));
+                        a.Entidad.Buscar(p);
+                    }
+                }
             }
         }
 
@@ -202,10 +246,12 @@ namespace SiCo.ctrla
 
         public  void CargarEntidad()
         {
+            this.Cursor = Cursors.WaitCursor;
            if (Entidad !=null)
             {
                 if (!SubProceso.IsBusy)
                 {
+
                     this.Cursor = Cursors.WaitCursor;
                     Argumento o = new Argumento(Entidad);
                     SubProceso.RunWorkerAsync(o); 
@@ -215,17 +261,16 @@ namespace SiCo.ctrla
 
         public void CargarParametros()
         {
+            this.Cursor = Cursors.WaitCursor;
             if (Entidad != null)
             {
-                if (SubProceso.IsBusy)
+                if (!SubProceso.IsBusy)
                 {
                     Argumento o = new Argumento(Entidad, ColeccionParametros);
                     SubProceso.RunWorkerAsync(o);
                 } 
             }
-        }
-
-       
+        }       
 
         #endregion
 
@@ -233,6 +278,11 @@ namespace SiCo.ctrla
         [Serializable() ]
         public class ParametrosListaDesplegable : SiCo.lgla.Parametro
         {
+            public ParametrosListaDesplegable(string nombre, object valor)
+                : base(nombre, valor)
+            {
+ 
+            }
 
         }
 
@@ -243,6 +293,8 @@ namespace SiCo.ctrla
         {
             public List<ParametrosListaDesplegable> Coleccion = null ;
             public Entidad Entidad;
+            public string NombreParametro=string.Empty ;
+            public string ValorParametro = string.Empty;
 
             public Argumento( Entidad entidad)
             {
@@ -252,6 +304,13 @@ namespace SiCo.ctrla
             {
                 Coleccion = coleccion;
                 Entidad = entidad;
+            }
+            public Argumento(Entidad entidad,List<ParametrosListaDesplegable> coleccion, String nombreParametro, string valorParametro)
+            {
+                this.Entidad = entidad;
+                this.NombreParametro = nombreParametro;
+                this.ValorParametro = valorParametro;
+                this.Coleccion = coleccion;  
             }
         }
         #endregion      

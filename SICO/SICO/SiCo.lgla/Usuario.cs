@@ -12,7 +12,8 @@ namespace SiCo.lgla
     public class Usuario : Mantenimientos
     {
         #region Declaraciones
-        private string _contrasena = string.Empty; 
+        private string _contrasena = string.Empty;
+        private int _rol = 1;
         #endregion
 
         #region Constructor
@@ -73,8 +74,8 @@ namespace SiCo.lgla
 
         public int rol
         {
-            get;
-            set;
+            get { return _rol; }
+            set { _rol = value; }
         }
 
         public string Archivo 
@@ -93,7 +94,7 @@ namespace SiCo.lgla
 
         protected override void CargadoPropiedades(int Indice)
         {
-             this.rol =Convert.ToInt32(   this.Registro(Indice, "idrol"));  
+            this.rol =Convert.ToInt32(   this.Registro(Indice, "idrol"));  
             this.usuario =(string) this.Registro(Indice, "usuario");
             this.contrasena =(string) this.Registro(Indice, "contrasena");
             this.sucursal = (long?)this.Registro(Indice, "idsucursales"); 
@@ -183,6 +184,7 @@ namespace SiCo.lgla
                 {
                     this.CargadoPropiedades(x);
                     SiCo.lgla.Usuario tempUsu = new Usuario(this.Id , this.idEntidades, this.Estado, this.usuario, this.contrasena, this.sucursal);
+                    tempUsu.rol  = this.rol;
                     tempUsu.PersonaJuridica = this.PersonaJuridica;
                     tempUsu.PersonaNatural = this.PersonaNatural;                       
  
@@ -193,6 +195,15 @@ namespace SiCo.lgla
             }            
 
             return Lista ;
+        }
+
+        public void Buscar(int idRol, Boolean Solohabilitados)
+        {
+            this.NullParametrosBusqueda();
+            this.ValorParametrosBusqueda("idrol", idRol.ToString());
+            if (Solohabilitados)
+                this.ValorParametrosBusqueda("estado", "1");
+            LlenadoTabla();        
         }
 
         #endregion

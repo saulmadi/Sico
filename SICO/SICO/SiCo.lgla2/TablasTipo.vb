@@ -1,6 +1,7 @@
 ﻿Imports SiCo.lgla
 Public Class TablasTipo
     Inherits SiCo.lgla.Entidad
+
 #Region "Declaraciones"
     Private _Descripcion As String
     Private _habilitado As Integer
@@ -12,6 +13,7 @@ Public Class TablasTipo
         MyBase.New()
         Me.ColeccionParametrosBusqueda.Add(New Parametro("descripcion", Nothing))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("habilitado", Nothing))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("idderivada", Nothing))
 
         Me.ComandoSelect = "Mantenimientos_Buscar"
 
