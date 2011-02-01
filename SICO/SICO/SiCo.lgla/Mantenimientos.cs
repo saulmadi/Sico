@@ -23,6 +23,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
@@ -38,6 +39,7 @@ namespace SiCo.lgla
             this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
@@ -133,7 +135,7 @@ namespace SiCo.lgla
             this.LlenadoTabla(ColeccionParametrosBusqueda);
         }
 
-        public void buscar(string EntidadNombre)
+        public void Buscar(string EntidadNombre)
         {
             this.NullParametrosBusqueda();
             this.ValorParametrosBusqueda("entidadnombre", EntidadNombre);            

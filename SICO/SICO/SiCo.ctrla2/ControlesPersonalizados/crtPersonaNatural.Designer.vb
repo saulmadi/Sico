@@ -56,6 +56,8 @@ Partial Class crtPersonaNatural
         Me.txtdireccion = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtidentifiacion = New SiCo.ctrla.IdentidadCajaTexto(Me.components)
+        Me.btnNueva = New System.Windows.Forms.Button
+        Me.btnModificar = New System.Windows.Forms.Button
         Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
         Me.SuspendLayout()
         '
@@ -163,7 +165,7 @@ Partial Class crtPersonaNatural
         '
         'lblEstado
         '
-        Me.lblEstado.Location = New System.Drawing.Point(220, 187)
+        Me.lblEstado.Location = New System.Drawing.Point(149, 188)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(426, 23)
         Me.lblEstado.TabIndex = 22
@@ -176,7 +178,7 @@ Partial Class crtPersonaNatural
         Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnbuscar.FlatAppearance.BorderSize = 0
         Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnbuscar.Location = New System.Drawing.Point(653, 186)
+        Me.btnbuscar.Location = New System.Drawing.Point(581, 186)
         Me.btnbuscar.Name = "btnbuscar"
         Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
         Me.btnbuscar.TabIndex = 23
@@ -371,6 +373,32 @@ Partial Class crtPersonaNatural
         Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txtidentifiacion.ValorInt = Nothing
         '
+        'btnNueva
+        '
+        Me.btnNueva.BackgroundImage = CType(resources.GetObject("btnNueva.BackgroundImage"), System.Drawing.Image)
+        Me.btnNueva.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnNueva.FlatAppearance.BorderSize = 0
+        Me.btnNueva.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNueva.Location = New System.Drawing.Point(617, 186)
+        Me.btnNueva.Name = "btnNueva"
+        Me.btnNueva.Size = New System.Drawing.Size(30, 27)
+        Me.btnNueva.TabIndex = 24
+        Me.btnNueva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnNueva.UseVisualStyleBackColor = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.BackgroundImage = CType(resources.GetObject("btnModificar.BackgroundImage"), System.Drawing.Image)
+        Me.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnModificar.FlatAppearance.BorderSize = 0
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Location = New System.Drawing.Point(653, 186)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(30, 27)
+        Me.btnModificar.TabIndex = 25
+        Me.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
         'cmbTipoIdentidad
         '
         Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
@@ -386,6 +414,8 @@ Partial Class crtPersonaNatural
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.btnNueva)
         Me.Controls.Add(Me.btnbuscar)
         Me.Controls.Add(Me.lblEstado)
         Me.Controls.Add(Me.cmbTipoIdentidad)
@@ -444,5 +474,7 @@ Partial Class crtPersonaNatural
     Friend WithEvents cmbTipoIdentidad As SiCo.ctrla2.ListaTipoIdentidad
     Friend WithEvents lblEstado As System.Windows.Forms.Label
     Friend WithEvents btnbuscar As System.Windows.Forms.Button
+    Friend WithEvents btnNueva As System.Windows.Forms.Button
+    Friend WithEvents btnModificar As System.Windows.Forms.Button
 
 End Class
