@@ -11,6 +11,7 @@ espersonanatural nvarchar(1),
 usuario nvarchar(45),
 contrasena nvarchar(30),
 estado nvarchar(1),
+idrol nvarchar(55),
 tabla nvarchar(25)
 )
 BEGIN
@@ -38,6 +39,10 @@ end if;
 
 if estado<>"" then
   set @where = concat(@where, " and c.estado = ",estado," ");
+end if;
+
+if idrol<>"" then
+  set @where = concat(@where, " and c.idrol ",idrol," ");
 end if;
 
 
