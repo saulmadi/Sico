@@ -140,7 +140,13 @@ namespace SiCo.lgla
             {
                 if (_Usuario ==null )
                 _Usuario= new Usuario();
-                _Usuario.Cargar(); 
+                try
+                {
+                    _Usuario.Cargar();
+                }
+                catch
+                { 
+                }
                 return _Usuario;
             }
             
