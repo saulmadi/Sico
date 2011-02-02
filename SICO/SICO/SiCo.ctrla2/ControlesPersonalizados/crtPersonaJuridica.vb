@@ -166,8 +166,10 @@ Public Class crtPersonaJuridica
 
         If Persona.Id = 0 Then
             Me.Enabled = True
+            Me.lblEstado.Text = ""
         Else
             Me.Enabled = False
+            Me.lblEstado.Text = "Persona jurídica " + Me.txtrazonsocial.Text + " cargada."
         End If
     End Sub
 
@@ -289,9 +291,11 @@ Public Class crtPersonaJuridica
     Private Sub btnNueva_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click
         Me.Nuevo()
     End Sub
+
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         Me.Enabled = True
     End Sub
+
 #End Region
 
 #Region "ClaseArgumento"

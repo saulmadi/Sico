@@ -14,7 +14,7 @@ namespace SiCo.ctrla
     {
 
         #region Declaraciones
-        private ComboBox _ComboBoxPadre = new ComboBox();       
+        private ComboBox _ComboBoxPadre = new ComboBox();
        
         private List<ParametrosListaDesplegable> _ColeccionParametros = new List<ParametrosListaDesplegable> ();
        [NonSerialized()]  private Entidad _Entidad;
@@ -26,7 +26,8 @@ namespace SiCo.ctrla
 
         public ListaDesplegable()
         {
-            InitializeComponent();          
+            InitializeComponent();
+            this.CargarComboBox = true; 
         }
 
         public ListaDesplegable(IContainer container)
@@ -34,6 +35,7 @@ namespace SiCo.ctrla
             container.Add(this);
 
             InitializeComponent();
+            this.CargarComboBox = true; 
         }
 
         #endregion
@@ -56,9 +58,7 @@ namespace SiCo.ctrla
                 }
                     
             }
-        }
-
-        
+        }        
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Advanced)]
         public Entidad Entidad
@@ -112,6 +112,12 @@ namespace SiCo.ctrla
             set;
         }
 
+        public Boolean CargarComboBox
+        {
+            get;
+            set;
+        }
+
         #endregion       
 
         #region Eventos
@@ -121,14 +127,31 @@ namespace SiCo.ctrla
             try
             {
                 this.Cursor = Cursors.WaitCursor;
-                if (_ComboBoxPadre.SelectedValue != null && _ComboBoxPadre.SelectedIndex > -1)
+                if (this.CargarComboBox)
                 {
-                    Argumento arg = new Argumento(this.Entidad, this.ColeccionParametros, this.ParametroBusquedaPadre, _ComboBoxPadre.SelectedValue.ToString());
-                    if (!this.SubProceso.IsBusy)
+                    if (_ComboBoxPadre.SelectedValue != null && _ComboBoxPadre.SelectedIndex > -1)
                     {
-                        this.SubProceso.RunWorkerAsync(arg);
+                        Argumento arg = new Argumento(this.Entidad, this.ColeccionParametros, this.ParametroBusquedaPadre, _ComboBoxPadre.SelectedValue.ToString());
+
+                        List<Parametro> p = new List<Parametro>();
+                        foreach (ParametrosListaDesplegable i in arg.Coleccion)
+                        {
+                            p.Add(i);
+                        }
+                        p.Add(new Parametro(arg.NombreParametro, arg.ValorParametro));
+                        arg.Entidad.Buscar(p);
+                        string d = DisplayMember;
+                        string v = ValueMember;
+                        this.DataSource = null;
+                        this.DataSource = Entidad.TablaAColeccion();
+                        this.DisplayMember = d;
+                        this.ValueMember = v;
+                        this.Cursor = Cursors.Default;
+                        this.SelectedIndex = -1;  
                     }
-                }               
+                }
+
+                this.Cursor = Cursors.Default ;
 
             }
             catch (Exception ex)
@@ -270,7 +293,30 @@ namespace SiCo.ctrla
                     SubProceso.RunWorkerAsync(o);
                 } 
             }
-        }       
+        }
+       
+
+        public void Limpiar()
+        {
+            try
+            {
+                if (this.SubProceso.IsBusy)
+                {
+                    this.SubProceso.CancelAsync();
+                    while( this.SubProceso.CancellationPending);    
+                }
+
+ 
+                string d = DisplayMember;
+                string v = ValueMember;
+                this.DataSource = null;
+                this.DisplayMember = d;
+                this.ValueMember = v;
+            }
+            catch 
+            { 
+            }
+        }
 
         #endregion
 
