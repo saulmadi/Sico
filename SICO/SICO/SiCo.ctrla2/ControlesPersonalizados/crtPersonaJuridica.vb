@@ -1,7 +1,8 @@
 ﻿Imports SiCo.lgla
 Imports System.ComponentModel
 Imports System.Diagnostics
-<System.ComponentModel.DefaultEvent("CambioPersona")> <System.Serializable()> Public Class crtPersonaJuridica
+
+Public Class crtPersonaJuridica
 
 #Region "Declaraciones"
     Private _Persona As PersonaJuridica
@@ -10,6 +11,7 @@ Imports System.Diagnostics
     Private _RealizarBusquedaPor As BusquedaPor
     Private _SoloLectura As Boolean = False
     Private _RealizarBusquedaAutomatica As Boolean = True
+    Private _HabilitarRTN As Boolean = True
 
     Public Event CambioPersona()
 #End Region
@@ -45,9 +47,9 @@ Imports System.Diagnostics
             Try
                 _SoloLectura = value
                 txtrazonsocial.ReadOnly = value
-                txtFax.ReadOnly = value
+                txtfax.ReadOnly = value
                 txtrtn.ReadOnly = value
-                txtCorreo.ReadOnly = value
+                txtcorreo.ReadOnly = value
                 txttelefono.ReadOnly = value
                 txtdireccion.ReadOnly = value
             Catch ex As Exception
@@ -77,12 +79,32 @@ Imports System.Diagnostics
 
     Public Property HabilitarRTN() As Boolean
         Get
-            Return txtrtn.Enabled
+            Return _HabilitarRTN
         End Get
         Set(ByVal value As Boolean)
+            _HabilitarRTN = value
             txtrtn.Enabled = value
         End Set
     End Property
+
+    Public Shadows Property Enabled() As Boolean
+        Get
+            Return txtrazonsocial.Enabled
+        End Get
+        Set(ByVal value As Boolean)
+            txtrazonsocial.Enabled = value
+            txttelefono.Enabled = value
+            txtfax.Enabled = value
+            If Me.HabilitarRTN Then
+                Me.txtrtn.Enabled = value
+            End If
+            txtcorreo.Enabled = value
+            txtdireccion.Enabled = value
+            txtdireccion.BackColor = txtrazonsocial.BackColor
+            btnbuscar.Enabled = value
+        End Set
+    End Property
+
 
 #End Region
 
@@ -102,13 +124,13 @@ Imports System.Diagnostics
                 Dim validador As New SiCo.ctrla.Validador
                 validador.ColecionCajasTexto.Add(txtrazonsocial)
                 validador.ColecionCajasTexto.Add(txtrtn)
-                validador.ColecionCajasTexto.Add(txtCorreo)
+                validador.ColecionCajasTexto.Add(txtcorreo)
                 If validador.PermitirIngresar Then
                     Me.Persona.RazonSocial = txtrazonsocial.Text
                     Me.Persona.rtn = txtrtn.Texto
-                    Me.Persona.correo = txtCorreo.Texto
+                    Me.Persona.correo = txtcorreo.Texto
                     Me.Persona.telefono = txttelefono.ValorInt
-                    Me.Persona.telefono2 = txtFax.ValorInt
+                    Me.Persona.telefono2 = txtfax.ValorInt
                     Me.Persona.direccion = txtdireccion.Texto
                     Me.Persona.Guardar()
                     Return Persona.Id
@@ -137,10 +159,16 @@ Imports System.Diagnostics
     Private Sub crtPersonaJuridica_CambioPersona() Handles Me.CambioPersona
         txtrazonsocial.Text = Persona.RazonSocial
         txtrtn.Text = Persona.rtn
-        txtCorreo.Text = Persona.correo
+        txtcorreo.Text = Persona.correo
         txttelefono.ValorInt = Persona.telefono
-        txtFax.ValorInt = Persona.telefono2
+        txtfax.ValorInt = Persona.telefono2
         txtdireccion.Text = Persona.direccion
+
+        If Persona.Id = 0 Then
+            Me.Enabled = True
+        Else
+            Me.Enabled = False
+        End If
     End Sub
 
     Private Sub crtPersonaJuridica_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -148,6 +176,19 @@ Imports System.Diagnostics
         Try
             _Persona = New PersonaJuridica
             txtrazonsocial.Entidad = New PersonaJuridica()
+
+            Dim tool As New ToolTip(Me.components)
+            tool.SetToolTip(btnModificar, "Modificar")
+            tool.Active = True
+
+            Dim tool2 As New ToolTip(Me.components)
+            tool2.SetToolTip(btnNueva, "Nuevo")
+            tool2.Active = True
+
+            Dim tool3 As New ToolTip(Me.components)
+            tool3.SetToolTip(btnbuscar, "Buscar")
+            tool3.Active = True
+
         Catch ex As Exception
 
         End Try
@@ -163,7 +204,7 @@ Imports System.Diagnostics
         f.Grid.DarFormato("correo", "Correo", True)
         f.VerParametros = False
 
-        
+
         If txtrazonsocial.Text <> String.Empty Then
             f.cargar("razonsocial", txtrazonsocial.Text)
             If f.ShowDialog() = DialogResult.OK Then
@@ -196,7 +237,7 @@ Imports System.Diagnostics
         Dim argument As Argumento = CType(e.Argument, Argumento)
 
         argument.persona.Buscar(argument.parametro, argument.nombre)
-        
+
     End Sub
 
     Private Sub SubProceso_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles SubProceso.RunWorkerCompleted
@@ -245,6 +286,12 @@ Imports System.Diagnostics
         End If
     End Sub
 
+    Private Sub btnNueva_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click
+        Me.Nuevo()
+    End Sub
+    Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
+        Me.Enabled = True
+    End Sub
 #End Region
 
 #Region "ClaseArgumento"
@@ -257,7 +304,7 @@ Imports System.Diagnostics
             Me.nombre = nombre
             Me.parametro = parametro
         End Sub
-        
+
     End Class
 #End Region
 
@@ -268,6 +315,5 @@ Imports System.Diagnostics
         Nada = 2
     End Enum
 #End Region
-
 
 End Class
