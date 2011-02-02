@@ -39,6 +39,8 @@ Partial Class crtPersonaJuridica
         Me.txtrtn = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txtfax = New SiCo.ctrla.CajaTexto(Me.components)
         Me.txttelefono = New SiCo.ctrla.CajaTexto(Me.components)
+        Me.btnModificar = New System.Windows.Forms.Button
+        Me.btnNueva = New System.Windows.Forms.Button
         Me.SuspendLayout()
         '
         'label8
@@ -101,7 +103,7 @@ Partial Class crtPersonaJuridica
         Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnbuscar.FlatAppearance.BorderSize = 0
         Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnbuscar.Location = New System.Drawing.Point(545, 157)
+        Me.btnbuscar.Location = New System.Drawing.Point(478, 157)
         Me.btnbuscar.Name = "btnbuscar"
         Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
         Me.btnbuscar.TabIndex = 13
@@ -110,9 +112,9 @@ Partial Class crtPersonaJuridica
         '
         'lblEstado
         '
-        Me.lblEstado.Location = New System.Drawing.Point(181, 158)
+        Me.lblEstado.Location = New System.Drawing.Point(23, 159)
         Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(357, 23)
+        Me.lblEstado.Size = New System.Drawing.Size(449, 23)
         Me.lblEstado.TabIndex = 10
         Me.lblEstado.Text = "Label12"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -239,10 +241,38 @@ Partial Class crtPersonaJuridica
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txttelefono.ValorInt = Nothing
         '
+        'btnModificar
+        '
+        Me.btnModificar.BackgroundImage = CType(resources.GetObject("btnModificar.BackgroundImage"), System.Drawing.Image)
+        Me.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnModificar.FlatAppearance.BorderSize = 0
+        Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnModificar.Location = New System.Drawing.Point(550, 157)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(30, 27)
+        Me.btnModificar.TabIndex = 27
+        Me.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnModificar.UseVisualStyleBackColor = True
+        '
+        'btnNueva
+        '
+        Me.btnNueva.BackgroundImage = CType(resources.GetObject("btnNueva.BackgroundImage"), System.Drawing.Image)
+        Me.btnNueva.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnNueva.FlatAppearance.BorderSize = 0
+        Me.btnNueva.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNueva.Location = New System.Drawing.Point(514, 157)
+        Me.btnNueva.Name = "btnNueva"
+        Me.btnNueva.Size = New System.Drawing.Size(30, 27)
+        Me.btnNueva.TabIndex = 26
+        Me.btnNueva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnNueva.UseVisualStyleBackColor = True
+        '
         'crtPersonaJuridica
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btnModificar)
+        Me.Controls.Add(Me.btnNueva)
         Me.Controls.Add(Me.txtrazonsocial)
         Me.Controls.Add(Me.txtdireccion)
         Me.Controls.Add(Me.txtcorreo)
@@ -278,5 +308,7 @@ Partial Class crtPersonaJuridica
     Friend WithEvents txtcorreo As SiCo.ctrla.CorreoCajaTexto
     Friend WithEvents txtdireccion As SiCo.ctrla.CajaTexto
     Friend WithEvents txtrazonsocial As SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto
+    Friend WithEvents btnModificar As System.Windows.Forms.Button
+    Friend WithEvents btnNueva As System.Windows.Forms.Button
 
 End Class
