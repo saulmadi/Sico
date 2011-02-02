@@ -100,19 +100,22 @@ Public Class frmUsuario
                 If txtConfirmar.Text.Trim = txtcontrasena.Text.Trim Then
                     If txtcontrasena.Text.Length = 0 Or txtcontrasena.Text.Length > 7 Then
 
+                        If Me.Usuario.idEntidades > 0 Then
 
-                        If validador.PermitirIngresar Then
-                            Me.Usuario.usuario = txtusuario.Texto
-                            If Not txtcontrasena.Text.Trim = String.Empty Then
-                                Me.Usuario.contrasena = txtcontrasena.Texto
+
+                            If validador.PermitirIngresar Then
+                                Me.Usuario.usuario = txtusuario.Texto
+                                If Not txtcontrasena.Text.Trim = String.Empty Then
+                                    Me.Usuario.contrasena = txtcontrasena.Texto
+                                End If
+                                Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
+                                Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
+                                Me.Usuario.Guardar()
+                                Me.PanelAccion1.BarraProgreso.Value = 100
+                                Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
+                            Else
+                                Me.PanelAccion1.lblEstado.Text = validador.MensajesError
                             End If
-                            Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
-                            Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
-                            Me.Usuario.Guardar()
-                            Me.PanelAccion1.BarraProgreso.Value = 100
-                            Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
-                        Else
-                            Me.PanelAccion1.lblEstado.Text = validador.MensajesError
                         End If
                     Else
                         Me.PanelAccion1.lblEstado.Text = ("Las contraseñas no puede ser menor de 8 caracteres...")

@@ -71,7 +71,6 @@
     <Compile Include="Municipios.vb" />
     <Compile Include="NombresModuloTablasTipo.vb" />
     <Compile Include="Proveedores.vb" />
-    <Compile Include="Sucursales.vb" />
     <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

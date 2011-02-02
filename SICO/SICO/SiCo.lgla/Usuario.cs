@@ -16,7 +16,7 @@ namespace SiCo.lgla
         private int _rol = 1;
         #endregion
 
-        #region Constructor
+        #region Constructor   
         public Usuario(): base()
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
@@ -32,6 +32,7 @@ namespace SiCo.lgla
 
         
         }
+
         public Usuario(long? id, long? idEntidades,int estado,string usuario,string contrasena,long? sucursal): base(id,idEntidades,estado)
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
@@ -49,6 +50,7 @@ namespace SiCo.lgla
             this.TablaEliminar = "usuarios";
 
         }
+
         #endregion
         
         #region Propiedades
@@ -116,13 +118,14 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                UsuarioSerializable usu = new UsuarioSerializable(0, string.Empty);
+                UsuarioSerializable usu = new UsuarioSerializable(0, string.Empty,0);
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Cargar();
                 usu =(UsuarioSerializable) s.Objeto;
                 this._Id = usu.id;
                 this.usuario = usu.usuario;
+                this.rol = usu.rol; 
             }
             catch (Exception ex)
             {
@@ -136,7 +139,7 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                UsuarioSerializable usu = new UsuarioSerializable(this.Id , this.usuario);
+                UsuarioSerializable usu = new UsuarioSerializable(this.Id , this.usuario,this.rol );
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Guardar();
@@ -217,11 +220,12 @@ namespace SiCo.lgla
         {
             public long? id;
             public string usuario;
-
-            public UsuarioSerializable(long? id, string usuario)
+            public int rol;
+            public UsuarioSerializable(long? id, string usuario,int rol)
             {
                 this.id = id;
                 this.usuario = usuario;
+                this.rol = rol;  
             }
 
         }
