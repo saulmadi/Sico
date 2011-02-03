@@ -24,7 +24,9 @@ Public Class frmUsuario
             txtcontrasena.EsObligatorio = False
 
             If Not value.sucursal Is Nothing Then
-                cmbsucursal.SelectedValue = value.sucursal
+                cmbSucursal.SelectedValue = value.sucursal
+            Else
+                cmbSucursal.SelectedIndex = -1
             End If
             If Not value.PersonaNatural Is Nothing Then
                 CrtPersonaNatural1.Persona = value.PersonaNatural
@@ -64,7 +66,7 @@ Public Class frmUsuario
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonEliminar.Enabled = False
         cmbrol.ValueMember = "valor"
-
+        cmbSucursal.Inicialiazar()
     End Sub
 
     Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
@@ -110,6 +112,12 @@ Public Class frmUsuario
                                 End If
                                 Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
                                 Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
+                                If Me.cmbSucursal.SelectedItem Is Nothing Then
+                                    Me.Usuario.sucursal = Nothing
+                                Else
+                                    Me.Usuario.sucursal = cmbSucursal.SelectedItem.Id
+                                End If
+
                                 Me.Usuario.Guardar()
                                 Me.PanelAccion1.BarraProgreso.Value = 100
                                 Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
@@ -143,5 +151,6 @@ Public Class frmUsuario
         CrtPersonaNatural1.Nuevo()
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
+   
    
 End Class

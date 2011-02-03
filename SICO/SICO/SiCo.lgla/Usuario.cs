@@ -13,10 +13,10 @@ namespace SiCo.lgla
     {
         #region Declaraciones
         private string _contrasena = string.Empty;
-        private int _rol = 1;
+        private int  _rol =1 ;
         #endregion
 
-        #region Constructor   
+        #region Constructor
         public Usuario(): base()
         {
             //Texto temporal solo para el ingreso del control de persona natural y de entidad
@@ -74,7 +74,7 @@ namespace SiCo.lgla
 
         }
 
-        public int rol
+        public int  rol
         {
             get { return _rol; }
             set { _rol = value; }
@@ -99,7 +99,7 @@ namespace SiCo.lgla
             this.rol =Convert.ToInt32(   this.Registro(Indice, "idrol"));  
             this.usuario =(string) this.Registro(Indice, "usuario");
             this.contrasena =(string) this.Registro(Indice, "contrasena");
-            this.sucursal = (long?)this.Registro(Indice, "idsucursales"); 
+            this.sucursal = Convert.ToInt64(  this.Registro(Indice, "idsucursales")); 
             base.CargadoPropiedades(Indice);
         }
 

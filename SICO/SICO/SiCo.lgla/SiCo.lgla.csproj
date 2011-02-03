@@ -72,6 +72,7 @@
     <Compile Include="Ticket.cs" />
     <Compile Include="TipoIdentidad.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="Roles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CapaLogica.cd" />

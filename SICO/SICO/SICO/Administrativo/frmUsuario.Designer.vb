@@ -27,9 +27,9 @@ Partial Class frmUsuario
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.cmbSucursal = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.cmbrol = New SICO.ctrla2.ListaRoles(Me.components)
         Me.Label6 = New System.Windows.Forms.Label
-        Me.cmbsucursal = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.txtConfirmar = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label5 = New System.Windows.Forms.Label
         Me.cmbhabilitado = New SICO.ctrla2.ListaHabilitados(Me.components)
@@ -74,9 +74,9 @@ Partial Class frmUsuario
         '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.cmbSucursal)
         Me.GroupBox2.Controls.Add(Me.cmbrol)
         Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.cmbsucursal)
         Me.GroupBox2.Controls.Add(Me.txtConfirmar)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.cmbhabilitado)
@@ -93,6 +93,19 @@ Partial Class frmUsuario
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos de Usuario"
+        '
+        'cmbSucursal
+        '
+        Me.cmbSucursal.CargarAutoCompletar = False
+        Me.cmbSucursal.CargarComboBox = True
+        Me.cmbSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSucursal.FormattingEnabled = True
+        Me.cmbSucursal.Location = New System.Drawing.Point(109, 124)
+        Me.cmbSucursal.Name = "cmbSucursal"
+        Me.cmbSucursal.ParametroAutocompletar = Nothing
+        Me.cmbSucursal.ParametroBusquedaPadre = Nothing
+        Me.cmbSucursal.Size = New System.Drawing.Size(377, 21)
+        Me.cmbSucursal.TabIndex = 12
         '
         'cmbrol
         '
@@ -115,16 +128,6 @@ Partial Class frmUsuario
         Me.Label6.Size = New System.Drawing.Size(75, 13)
         Me.Label6.TabIndex = 9
         Me.Label6.Text = "Rol de usuario"
-        '
-        'cmbsucursal
-        '
-        Me.cmbsucursal.CargarAutoCompletar = False
-        Me.cmbsucursal.FormattingEnabled = True
-        Me.cmbsucursal.Location = New System.Drawing.Point(109, 124)
-        Me.cmbsucursal.Name = "cmbsucursal"
-        Me.cmbsucursal.ParametroAutocompletar = Nothing
-        Me.cmbsucursal.Size = New System.Drawing.Size(377, 21)
-        Me.cmbsucursal.TabIndex = 4
         '
         'txtConfirmar
         '
@@ -165,7 +168,7 @@ Partial Class frmUsuario
         Me.cmbhabilitado.SelectedItem = CType(resources.GetObject("cmbhabilitado.SelectedItem"), SICO.lgla2.Estado)
         Me.cmbhabilitado.Size = New System.Drawing.Size(378, 21)
         Me.cmbhabilitado.TabIndex = 5
-        Me.cmbhabilitado.ValueMember = "Valor"
+        Me.cmbhabilitado.ValueMember = "valor"
         '
         'Label4
         '
@@ -312,7 +315,7 @@ Partial Class frmUsuario
     Friend WithEvents cmbhabilitado As SICO.ctrla2.ListaHabilitados
     Friend WithEvents txtConfirmar As SICO.ctrla.CajaTexto
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents cmbsucursal As SICO.ctrla.ListaDesplegable
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents cmbrol As SICO.ctrla2.ListaRoles
+    Friend WithEvents cmbSucursal As SiCo.ctrla.ControlesBasicos.ListaSucursales
 End Class

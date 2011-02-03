@@ -73,6 +73,12 @@
     <Compile Include="ControlesBasicos\CorreoCajaTexto.Designer.cs">
       <DependentUpon>CorreoCajaTexto.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesBasicos\ListaSucursales.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControlesBasicos\ListaSucursales.Designer.cs">
+      <DependentUpon>ListaSucursales.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesPersonalizados\crtImagen.cs">
       <SubType>UserControl</SubType>
     </Compile>
