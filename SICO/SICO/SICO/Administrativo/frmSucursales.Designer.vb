@@ -29,6 +29,7 @@ Partial Class frmSucursales
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.btnModificar = New System.Windows.Forms.Button
         Me.cmbMunicipio = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.cmbDepartamento = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.cmbAdmon = New SICO.ctrla.ListaDesplegable(Me.components)
@@ -40,7 +41,6 @@ Partial Class frmSucursales
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.btnModificar = New System.Windows.Forms.Button
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -115,6 +115,15 @@ Partial Class frmSucursales
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Sucursal"
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(490, 100)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(34, 20)
+        Me.btnModificar.TabIndex = 4
+        Me.btnModificar.Text = "..."
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'cmbMunicipio
         '
@@ -258,15 +267,6 @@ Partial Class frmSucursales
         Me.PanelAccion1.TabIndex = 3
         Me.PanelAccion1.Titulo = "Sucursales"
         Me.PanelAccion1.VisiblePanelPrincipal = True
-        '
-        'btnModificar
-        '
-        Me.btnModificar.Location = New System.Drawing.Point(490, 100)
-        Me.btnModificar.Name = "btnModificar"
-        Me.btnModificar.Size = New System.Drawing.Size(34, 20)
-        Me.btnModificar.TabIndex = 4
-        Me.btnModificar.Text = "..."
-        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'frmSucursales
         '

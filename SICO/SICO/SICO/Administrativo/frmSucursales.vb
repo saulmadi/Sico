@@ -128,8 +128,10 @@ Public Class frmSucursales
                     Me.PanelAccion1.BarraProgreso.Value = 0
                 End If
             Else
-                Me.PanelAccion1.lblEstado.Text = "Debe de ingresar toda la información. "
-                Me.PanelAccion1.BarraProgreso.Value = 0
+                If flag Then
+                    Me.PanelAccion1.lblEstado.Text = "Debe de ingresar toda la información. "
+                    Me.PanelAccion1.BarraProgreso.Value = 0
+                End If
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -150,4 +152,6 @@ Public Class frmSucursales
                 txtnumerofactura.Focus()
         End Select
     End Sub
+
+ 
 End Class

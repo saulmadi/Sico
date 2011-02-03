@@ -108,13 +108,6 @@
     <Position X="4.75" Y="1.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="SiCo.lgla2.Sucursales">
-    <Position X="7.5" Y="1.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Sucursales.vb</FileName>
-    </TypeIdentifier>
-  </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>

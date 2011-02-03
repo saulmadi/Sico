@@ -3,7 +3,7 @@ Public Class Proveedores
     Inherits Mantenimientos
 
 #Region "Declaraciones"
-    Private _IdContacto As Integer
+    Private _IdContacto As Long
 #End Region
 
 #Region "Constructor"
@@ -11,7 +11,9 @@ Public Class Proveedores
         MyBase.New()
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idcontacto", Nothing))
 
-        Me.ComandoSelect = "Proveedores_Buscar"
+        Me.TablaEliminar = "Proveedores"
+        Me.TablaBusqueda = "Proveedores"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", TablaBusqueda))
         Me.ComandoMantenimiento = "Proveedores_Mant"
 
     End Sub
@@ -19,11 +21,11 @@ Public Class Proveedores
 
 #Region "Propiedadaes"
 
-    Public Property IdContacto() As Integer
+    Public Property IdContacto() As Long
         Get
             Return _IdContacto
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As Long)
             _IdContacto = value
         End Set
     End Property
@@ -41,7 +43,12 @@ Public Class Proveedores
         MyBase.Guardar()
     End Sub
 
-#End Region
+    Public Overrides Function TablaAColeccion() As Object
+        Dim lista As New List(Of Proveedores)
 
+        Return lista
+    End Function
+
+#End Region
 
 End Class

@@ -25,11 +25,11 @@ Partial Class frmRegistroProveedores
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRegistroProveedores))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.CrtPersonaNatural1 = New SICO.ctrla2.crtPersonaNatural
-        Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
-        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -42,29 +42,56 @@ Partial Class frmRegistroProveedores
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 90)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(354, 395)
+        Me.GroupBox1.Size = New System.Drawing.Size(260, 446)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
+        '
+        'CrtListadoMantenimiento1
+        '
+        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento "
+        Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
+        Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
+        Me.CrtListadoMantenimiento1.CargarInicio = False
+        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
+        Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "entidadnombre"
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(254, 427)
+        Me.CrtListadoMantenimiento1.TabIndex = 0
         '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.CrtPersonaJuridica1)
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(372, 90)
+        Me.GroupBox2.Location = New System.Drawing.Point(278, 90)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(496, 206)
+        Me.GroupBox2.Size = New System.Drawing.Size(594, 206)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Proveedor"
+        '
+        'CrtPersonaJuridica1
+        '
+        Me.CrtPersonaJuridica1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPersonaJuridica1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtPersonaJuridica1.HabilitarRTN = True
+        Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
+        Me.CrtPersonaJuridica1.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(588, 187)
+        Me.CrtPersonaJuridica1.SoloLectura = False
+        Me.CrtPersonaJuridica1.TabIndex = 0
+        Me.CrtPersonaJuridica1.TextoRazonSocial = "Proveedor"
         '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.CrtPersonaNatural1)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(372, 302)
+        Me.GroupBox3.Location = New System.Drawing.Point(278, 302)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(496, 183)
+        Me.GroupBox3.Size = New System.Drawing.Size(696, 237)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos del Contacto"
@@ -75,27 +102,10 @@ Partial Class frmRegistroProveedores
         Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 16)
         Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(490, 164)
+        Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(690, 218)
+        Me.CrtPersonaNatural1.SoloLectura = False
         Me.CrtPersonaNatural1.TabIndex = 0
-        '
-        'CrtPersonaJuridica1
-        '
-        Me.CrtPersonaJuridica1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaJuridica1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
-        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(490, 187)
-        Me.CrtPersonaJuridica1.TabIndex = 0
-        Me.CrtPersonaJuridica1.TextoRazonSocial = "Proveedor"
-        '
-        'CrtListadoMantenimiento1
-        '
-        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(348, 376)
-        Me.CrtListadoMantenimiento1.TabIndex = 0
         '
         'PanelAccion1
         '
@@ -104,15 +114,16 @@ Partial Class frmRegistroProveedores
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(882, 549)
+        Me.PanelAccion1.Size = New System.Drawing.Size(992, 603)
         Me.PanelAccion1.TabIndex = 0
         Me.PanelAccion1.Titulo = "Proveedores"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'frmRegistroProveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(882, 549)
+        Me.ClientSize = New System.Drawing.Size(992, 603)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)

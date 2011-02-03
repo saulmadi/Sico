@@ -52,7 +52,13 @@ namespace SiCo.ctrla
                         this.TipoTexto = TiposTexto.Alfanumerico;
                         this.Enabled = true;
                         break;
-
+                    case "N":
+                        this.Enabled = false;
+                        this.ExpresionValidacion = "";
+                        this.MaxLength = 45;
+                        this.TipoTexto = TiposTexto.Alfanumerico;                        
+                        this.Text="";
+                        break;
                 }
 
             }
