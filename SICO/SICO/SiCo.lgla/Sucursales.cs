@@ -15,6 +15,7 @@ namespace SiCo.lgla
         {
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
 
             this.TablaBusqueda = "Sucursales";
             this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
@@ -32,6 +33,7 @@ namespace SiCo.lgla
 
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
             this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
 
             this.TablaBusqueda = "Sucursales";
             this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
@@ -64,6 +66,13 @@ namespace SiCo.lgla
                 return c.Instalacion + "Scx.sco";
             }
         }
+
+        public Int64 NumeroFactura
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region "Metodos"
@@ -72,6 +81,7 @@ namespace SiCo.lgla
         {
             this.idUsuario =Convert.ToInt64(Registro(Indice, "idusuario"));   
             this.idMunicipio = Convert.ToInt64 (Registro(Indice,"idmunicipio"));
+            this.NumeroFactura = Convert.ToInt64(Registro(Indice, "numerofactura"));
             base.CargadoPropiedades(Indice);
         }
 
@@ -79,7 +89,8 @@ namespace SiCo.lgla
         {
             this.NullParametrosMantenimiento();
             this.ValorParametrosMantenimiento("idusuario", this.idUsuario);
-            this.ValorParametrosMantenimiento("idmunicipio", this.idMunicipio );  
+            this.ValorParametrosMantenimiento("idmunicipio", this.idMunicipio );
+            this.ValorParametrosMantenimiento("numerofactura", this.NumeroFactura); 
             base.Guardar();
         }
 
@@ -92,6 +103,7 @@ namespace SiCo.lgla
                 {
                     this.CargadoPropiedades(x);
                     Sucursales tempsucu = new Sucursales(this.Id, this.idEntidades,this.Estado , this.idUsuario,this.idMunicipio );
+                    tempsucu.NumeroFactura = this.NumeroFactura; 
                     tempsucu.PersonaJuridica = this.PersonaJuridica;
                     tempsucu.PersonaNatural = this.PersonaNatural;
 

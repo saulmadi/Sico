@@ -320,4 +320,5 @@ Public Class crtPersonaJuridica
     End Enum
 #End Region
 
+ 
 End Class

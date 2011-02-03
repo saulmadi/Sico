@@ -220,7 +220,7 @@ Partial Class crtPersonaJuridica
         Me.txtfax.Size = New System.Drawing.Size(233, 20)
         Me.txtfax.TabIndex = 2
         Me.txtfax.Texto = Nothing
-        Me.txtfax.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txtfax.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txtfax.ValorInt = Nothing
         '
         'txttelefono
@@ -238,7 +238,7 @@ Partial Class crtPersonaJuridica
         Me.txttelefono.Size = New System.Drawing.Size(220, 20)
         Me.txttelefono.TabIndex = 1
         Me.txttelefono.Texto = Nothing
-        Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
+        Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txttelefono.ValorInt = Nothing
         '
         'btnModificar

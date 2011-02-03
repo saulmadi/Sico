@@ -25,21 +25,22 @@ Partial Class frmSucursales
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSucursales))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.Label4 = New System.Windows.Forms.Label
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.Label1 = New System.Windows.Forms.Label
         Me.cmbMunicipio = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.cmbDepartamento = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.cmbAdmon = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.Label5 = New System.Windows.Forms.Label
         Me.cmbestado = New SICO.ctrla2.ListaHabilitados(Me.components)
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.CrtPersonaJuridica1 = New SICO.ctrla2.crtPersonaJuridica
-        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
+        Me.Label4 = New System.Windows.Forms.Label
+        Me.txtnumerofactura = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.btnModificar = New System.Windows.Forms.Button
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -56,6 +57,20 @@ Partial Class frmSucursales
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
         '
+        'CrtListadoMantenimiento1
+        '
+        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento"
+        Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
+        Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
+        Me.CrtListadoMantenimiento1.CargarInicio = False
+        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
+        Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "entidadnombre"
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(264, 348)
+        Me.CrtListadoMantenimiento1.TabIndex = 0
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.CrtPersonaJuridica1)
@@ -67,75 +82,39 @@ Partial Class frmSucursales
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos Generales"
         '
+        'CrtPersonaJuridica1
+        '
+        Me.CrtPersonaJuridica1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPersonaJuridica1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtPersonaJuridica1.HabilitarRTN = False
+        Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
+        Me.CrtPersonaJuridica1.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(588, 190)
+        Me.CrtPersonaJuridica1.SoloLectura = False
+        Me.CrtPersonaJuridica1.TabIndex = 0
+        Me.CrtPersonaJuridica1.TextoRazonSocial = "Sucursal"
+        '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.btnModificar)
         Me.GroupBox3.Controls.Add(Me.cmbMunicipio)
         Me.GroupBox3.Controls.Add(Me.cmbDepartamento)
         Me.GroupBox3.Controls.Add(Me.cmbAdmon)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.cmbestado)
         Me.GroupBox3.Controls.Add(Me.Label4)
-        Me.GroupBox3.Controls.Add(Me.CajaTexto1)
+        Me.GroupBox3.Controls.Add(Me.txtnumerofactura)
         Me.GroupBox3.Controls.Add(Me.Label3)
         Me.GroupBox3.Controls.Add(Me.Label2)
         Me.GroupBox3.Controls.Add(Me.Label1)
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox3.Location = New System.Drawing.Point(288, 307)
+        Me.GroupBox3.Location = New System.Drawing.Point(291, 310)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(495, 155)
+        Me.GroupBox3.Size = New System.Drawing.Size(530, 155)
         Me.GroupBox3.TabIndex = 2
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de Sucursal"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(6, 129)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(40, 13)
-        Me.Label5.TabIndex = 9
-        Me.Label5.Text = "Estado"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 103)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(95, 13)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Número de factura"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 75)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(52, 13)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Municipio"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 52)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(74, 13)
-        Me.Label2.TabIndex = 6
-        Me.Label2.Text = "Departamento"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(6, 20)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(70, 13)
-        Me.Label1.TabIndex = 5
-        Me.Label1.Text = "Administrador"
         '
         'cmbMunicipio
         '
@@ -188,6 +167,16 @@ Partial Class frmSucursales
         Me.cmbAdmon.TabIndex = 0
         Me.cmbAdmon.ValueMember = "id"
         '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(6, 129)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(40, 13)
+        Me.Label5.TabIndex = 9
+        Me.Label5.Text = "Estado"
+        '
         'cmbestado
         '
         Me.cmbestado.DisplayMember = "Descripcion"
@@ -201,48 +190,62 @@ Partial Class frmSucursales
         Me.cmbestado.TabIndex = 4
         Me.cmbestado.ValueMember = "valor"
         '
-        'CajaTexto1
+        'Label4
         '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EnterPorTab = True
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(106, 100)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(378, 20)
-        Me.CajaTexto1.TabIndex = 3
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.CajaTexto1.ValorInt = Nothing
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(6, 103)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(95, 13)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Número de factura"
         '
-        'CrtPersonaJuridica1
+        'txtnumerofactura
         '
-        Me.CrtPersonaJuridica1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaJuridica1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaJuridica1.HabilitarRTN = False
-        Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
-        Me.CrtPersonaJuridica1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(588, 190)
-        Me.CrtPersonaJuridica1.SoloLectura = False
-        Me.CrtPersonaJuridica1.TabIndex = 0
-        Me.CrtPersonaJuridica1.TextoRazonSocial = "Sucursal"
+        Me.txtnumerofactura.ColorError = System.Drawing.Color.Red
+        Me.txtnumerofactura.EnterPorTab = True
+        Me.txtnumerofactura.EsObligatorio = True
+        Me.txtnumerofactura.ExpresionValidacion = Nothing
+        Me.txtnumerofactura.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtnumerofactura.Location = New System.Drawing.Point(106, 100)
+        Me.txtnumerofactura.MaxLength = 255
+        Me.txtnumerofactura.MensajeError = Nothing
+        Me.txtnumerofactura.Name = "txtnumerofactura"
+        Me.txtnumerofactura.Size = New System.Drawing.Size(378, 20)
+        Me.txtnumerofactura.TabIndex = 3
+        Me.txtnumerofactura.Texto = Nothing
+        Me.txtnumerofactura.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtnumerofactura.ValorInt = Nothing
         '
-        'CrtListadoMantenimiento1
+        'Label3
         '
-        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento"
-        Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
-        Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
-        Me.CrtListadoMantenimiento1.CargarInicio = False
-        Me.CrtListadoMantenimiento1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtListadoMantenimiento1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
-        Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "entidadnombre"
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(264, 348)
-        Me.CrtListadoMantenimiento1.TabIndex = 0
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 75)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Municipio"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(6, 52)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(74, 13)
+        Me.Label2.TabIndex = 6
+        Me.Label2.Text = "Departamento"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 20)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(70, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Administrador"
         '
         'PanelAccion1
         '
@@ -255,6 +258,15 @@ Partial Class frmSucursales
         Me.PanelAccion1.TabIndex = 3
         Me.PanelAccion1.Titulo = "Sucursales"
         Me.PanelAccion1.VisiblePanelPrincipal = True
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(490, 100)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(34, 20)
+        Me.btnModificar.TabIndex = 4
+        Me.btnModificar.Text = "..."
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'frmSucursales
         '
@@ -288,10 +300,11 @@ Partial Class frmSucursales
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto1 As SICO.ctrla.CajaTexto
+    Friend WithEvents txtnumerofactura As SICO.ctrla.CajaTexto
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents cmbestado As SICO.ctrla2.ListaHabilitados
     Friend WithEvents cmbAdmon As SICO.ctrla.ListaDesplegable
     Friend WithEvents cmbMunicipio As SiCo.ctrla.ListaDesplegable
-    Friend WithEvents cmbDepartamento As SiCo.ctrla.ListaDesplegable
+    Friend WithEvents cmbDepartamento As SICO.ctrla.ListaDesplegable
+    Friend WithEvents btnModificar As System.Windows.Forms.Button
 End Class
