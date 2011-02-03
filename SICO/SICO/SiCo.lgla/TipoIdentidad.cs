@@ -13,11 +13,14 @@ namespace SiCo.lgla
             {
                 this.Descripcion = "Identidad";
             }
+            else if (valor.ToUpper() == "R")
+            {
+                this.Descripcion = "Residencia";
+            }
             else
             {
-                this.Descripcion="Residencia";
+                this.Descripcion = "Sin identificación";
             }
-
         }
         public TipoIdentidad()
         { 

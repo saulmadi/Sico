@@ -19,6 +19,7 @@ Public Class ListaTipoIdentidad
         Try
             MyBase.Items.Add(New ListaTipoIdentidad("I"))
             MyBase.Items.Add(New ListaTipoIdentidad("R"))
+            MyBase.Items.Add(New ListaTipoIdentidad("N"))
 
             MyBase.DisplayMember = "Descripcion"
             MyBase.ValueMember = "Valor"

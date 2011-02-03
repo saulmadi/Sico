@@ -142,10 +142,19 @@ Public Class crtPersonaNatural
                 validador.ColecionCajasTexto.Add(txtSegundoApellido)
                 validador.ColecionCajasTexto.Add(txtidentifiacion)
                 validador.ColecionCajasTexto.Add(txtCorreo)
+                If txtidentifiacion.TipoIdentificacion.Valor = "N" Then
+                    txtidentifiacion.EsObligatorio = False
+                Else
+                    txtidentifiacion.EsObligatorio = True
+                End If
+
                 If validador.PermitirIngresar Then
                     Me.Persona.NombreCompleto = PersonaNatural.CrearNombreCompleto("", txtPrimerNombre.Text, txtSegundoNombre.Text, txtPrimerApellido.Text, txtSegundoApellido.Text)
-                    Me.Persona.identificacion = txtidentifiacion.Text
                     Me.Persona.tipoidentidad = cmbTipoIdentidad.SelectedItem
+                    Me.Persona.identificacion = txtidentifiacion.Text
+                    If Me.Persona.tipoidentidad.Valor = "N" Then
+                        Me.Persona.identificacion = Guid.NewGuid().ToString
+                    End If
                     Me.Persona.rtn = txtrtn.Texto
                     Me.Persona.correo = txtCorreo.Texto
                     Me.Persona.telefono = txttelefono.ValorInt
@@ -194,7 +203,13 @@ Public Class crtPersonaNatural
             x += 1
         Next
         cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad
-        txtidentifiacion.Text = Persona.identificacion
+        If Persona.tipoidentidad.Valor = "N" Then
+            txtidentifiacion.Text = ""
+        Else
+            txtidentifiacion.Text = Persona.identificacion
+        End If
+
+
         txtrtn.Text = Persona.rtn
         txtCorreo.Text = Persona.correo
         txttelefono.ValorInt = Persona.telefono
@@ -353,6 +368,13 @@ Public Class crtPersonaNatural
 
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
         Me.Enabled = True
+    End Sub
+
+    Private Sub _PersonaNatural_CambioId() Handles _PersonaNatural.CambioId
+        If _PersonaNatural.Id > 0 Then
+            Me.Persona = _PersonaNatural
+        End If
+
     End Sub
 
 #End Region
