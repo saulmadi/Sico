@@ -49,7 +49,7 @@ Partial Class frmRegistroProveedores
         '
         'CrtListadoMantenimiento1
         '
-        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento "
+        Me.CrtListadoMantenimiento1.CampoAMostrar = "NombreMantenimiento"
         Me.CrtListadoMantenimiento1.CaracteresInicioBusqueda = 3
         Me.CrtListadoMantenimiento1.CaracteresSegundaBusqueda = 6
         Me.CrtListadoMantenimiento1.CargarInicio = False
