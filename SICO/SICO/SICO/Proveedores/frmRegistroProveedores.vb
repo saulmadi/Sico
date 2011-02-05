@@ -70,8 +70,12 @@ Public Class frmRegistroProveedores
                 PanelAccion1.BarraProgreso.Value = 50
                 Me.Proveedores.IdContacto = CrtPersonaNatural1.Guardar
                 Me.Proveedores.idEntidades = CrtPersonaJuridica1.Guardar
-                PanelAccion1.BarraProgreso.Value = 100
-                PanelAccion1.lblEstado.Text = "Proveedor guardado correctamente."
+                If Me.Proveedores.IdContacto > 0 And Me.Proveedores.idEntidades > 0 Then
+                    Me.Proveedores.Guardar()
+                    PanelAccion1.BarraProgreso.Value = 100
+                    PanelAccion1.lblEstado.Text = "Proveedor guardado correctamente."
+                End If
+                
             End If
 
 

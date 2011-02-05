@@ -88,6 +88,12 @@
     <Compile Include="ControlesBasicos\ListaTipoIdentidad.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ControlesPersonalizados\crtClientes.Designer.vb">
+      <DependentUpon>crtClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\crtClientes.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ControlesPersonalizados\crtListadoMantenimiento.Designer.vb">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
     </Compile>
@@ -150,6 +156,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlesBasicos\ListaTipoIdentidad.resx">
       <DependentUpon>ListaTipoIdentidad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\crtClientes.resx">
+      <DependentUpon>crtClientes.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtListadoMantenimiento.resx">
       <DependentUpon>crtListadoMantenimiento.vb</DependentUpon>
