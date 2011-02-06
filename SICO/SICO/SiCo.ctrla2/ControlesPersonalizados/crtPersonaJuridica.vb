@@ -5,7 +5,7 @@ Imports System.Diagnostics
 Public Class crtPersonaJuridica
 
 #Region "Declaraciones"
-    Private _Persona As PersonaJuridica
+    Private WithEvents _Persona As PersonaJuridica
     Private _PersonaBusqueda As PersonaJuridica
     Private _etiquetaError As New ToolStripStatusLabel
     Private _RealizarBusquedaPor As BusquedaPor
@@ -296,6 +296,12 @@ Public Class crtPersonaJuridica
         Me.Enabled = True
     End Sub
 
+    Private Sub _Persona_CambioId() Handles _Persona.CambioId
+        If _Persona.Id > 0 Then
+            Me.Persona = _Persona
+        End If
+    End Sub
+
 #End Region
 
 #Region "ClaseArgumento"
@@ -320,5 +326,6 @@ Public Class crtPersonaJuridica
     End Enum
 #End Region
 
+ 
  
 End Class
