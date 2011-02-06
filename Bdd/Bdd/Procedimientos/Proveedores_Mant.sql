@@ -9,7 +9,7 @@ inout id int,
 identidades int,
 idcontacto int,
 usu int,
-fmodif date
+fmodif datetime
 )
 BEGIN
 
@@ -32,7 +32,7 @@ else
         c.idcontacto=idcontacto,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 

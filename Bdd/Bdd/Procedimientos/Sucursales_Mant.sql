@@ -10,6 +10,7 @@ identidades int,
 estado int(1),
 idusuario int(11),
 idmunicipio int(11),
+numerofactura int,
 usu int,
 fmodif datetime
 )
@@ -21,9 +22,9 @@ select count(c.id) from sucursales c where c.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO sucursales (identidades,estado,idusuario,idmunicipio,usu,fmodif)
+  INSERT INTO sucursales (identidades,estado,idusuario,idmunicipio,usu,fmodif,numerofactura)
 
-  VALUES(identidades,estado,idusuario,idmunicipio,usu,fmodif);
+  VALUES(identidades,estado,idusuario,idmunicipio,usu,fmodif,numerofactura);
 
   select last_insert_id() into id;
 
@@ -35,6 +36,7 @@ else
         c.idusuario = idusuario,
         c.idmunicipio=idmunicipio,
         c.usu=usu,
+        c.numerofactura=numerofactura,
         c.fmodif=fmodif
   where c.id= id;
 
