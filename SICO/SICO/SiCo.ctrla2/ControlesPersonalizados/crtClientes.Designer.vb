@@ -25,8 +25,8 @@ Partial Class crtClientes
         Me.components = New System.ComponentModel.Container
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPersonaNatural = New System.Windows.Forms.TabPage
-        Me.TabPersonaJuridica = New System.Windows.Forms.TabPage
         Me.CrtPersonaNatural1 = New SiCo.ctrla2.crtPersonaNatural
+        Me.TabPersonaJuridica = New System.Windows.Forms.TabPage
         Me.CrtPersonaJuridica1 = New SiCo.ctrla2.crtPersonaJuridica
         Me.TabControl1.SuspendLayout()
         Me.TabPersonaNatural.SuspendLayout()
@@ -41,7 +41,7 @@ Partial Class crtClientes
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(705, 306)
+        Me.TabControl1.Size = New System.Drawing.Size(705, 252)
         Me.TabControl1.TabIndex = 2
         '
         'TabPersonaNatural
@@ -53,22 +53,9 @@ Partial Class crtClientes
         Me.TabPersonaNatural.Location = New System.Drawing.Point(4, 22)
         Me.TabPersonaNatural.Name = "TabPersonaNatural"
         Me.TabPersonaNatural.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPersonaNatural.Size = New System.Drawing.Size(697, 280)
+        Me.TabPersonaNatural.Size = New System.Drawing.Size(697, 226)
         Me.TabPersonaNatural.TabIndex = 0
         Me.TabPersonaNatural.Text = "Persona Naturales"
-        '
-        'TabPersonaJuridica
-        '
-        Me.TabPersonaJuridica.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPersonaJuridica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPersonaJuridica.Controls.Add(Me.CrtPersonaJuridica1)
-        Me.TabPersonaJuridica.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPersonaJuridica.Location = New System.Drawing.Point(4, 22)
-        Me.TabPersonaJuridica.Name = "TabPersonaJuridica"
-        Me.TabPersonaJuridica.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPersonaJuridica.Size = New System.Drawing.Size(697, 280)
-        Me.TabPersonaJuridica.TabIndex = 1
-        Me.TabPersonaJuridica.Text = "Personas Jurídicas"
         '
         'CrtPersonaNatural1
         '
@@ -79,6 +66,19 @@ Partial Class crtClientes
         Me.CrtPersonaNatural1.Size = New System.Drawing.Size(695, 249)
         Me.CrtPersonaNatural1.SoloLectura = False
         Me.CrtPersonaNatural1.TabIndex = 0
+        '
+        'TabPersonaJuridica
+        '
+        Me.TabPersonaJuridica.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPersonaJuridica.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPersonaJuridica.Controls.Add(Me.CrtPersonaJuridica1)
+        Me.TabPersonaJuridica.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabPersonaJuridica.Location = New System.Drawing.Point(4, 22)
+        Me.TabPersonaJuridica.Name = "TabPersonaJuridica"
+        Me.TabPersonaJuridica.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPersonaJuridica.Size = New System.Drawing.Size(697, 226)
+        Me.TabPersonaJuridica.TabIndex = 1
+        Me.TabPersonaJuridica.Text = "Personas Jurídicas"
         '
         'CrtPersonaJuridica1
         '
@@ -98,7 +98,7 @@ Partial Class crtClientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "crtClientes"
-        Me.Size = New System.Drawing.Size(724, 320)
+        Me.Size = New System.Drawing.Size(713, 260)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPersonaNatural.ResumeLayout(False)
         Me.TabPersonaJuridica.ResumeLayout(False)
