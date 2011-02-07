@@ -98,7 +98,7 @@ Partial Class crtClientes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.TabControl1)
         Me.Name = "crtClientes"
-        Me.Size = New System.Drawing.Size(713, 260)
+        Me.Size = New System.Drawing.Size(713, 257)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPersonaNatural.ResumeLayout(False)
         Me.TabPersonaJuridica.ResumeLayout(False)

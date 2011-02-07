@@ -40,7 +40,7 @@ namespace SiCo.ctrla.ControlesBasicos
        
         #region Propiedades
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public  System.Collections.Generic.List<SiCo.lgla.Parametro> ColeccionParametros
 	        {
             get { return null ; }
@@ -78,7 +78,7 @@ namespace SiCo.ctrla.ControlesBasicos
             set { _CaracteresInicio = value; }
         }
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden) ]
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden) ]
         public Entidad Entidad
         {
             get { return _Entidad; }

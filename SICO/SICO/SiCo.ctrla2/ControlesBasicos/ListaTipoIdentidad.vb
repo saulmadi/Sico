@@ -17,13 +17,15 @@ Public Class ListaTipoIdentidad
 
 
         Try
-            MyBase.Items.Add(New ListaTipoIdentidad("I"))
-            MyBase.Items.Add(New ListaTipoIdentidad("R"))
-            MyBase.Items.Add(New ListaTipoIdentidad("N"))
+            Dim list As New List(Of ListaTipoIdentidad)
+            list.Add(New ListaTipoIdentidad("I"))
+            list.Add(New ListaTipoIdentidad("R"))
+            list.Add(New ListaTipoIdentidad("N"))
 
+            MyBase.DataSource = list
             MyBase.DisplayMember = "Descripcion"
             MyBase.ValueMember = "Valor"
-            MyBase.SelectedIndex = 0
+            MyBase.SelectedValue = "I"
         Catch ex As Exception
 
         End Try

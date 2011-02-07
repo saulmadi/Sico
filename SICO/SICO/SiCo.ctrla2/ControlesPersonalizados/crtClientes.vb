@@ -20,6 +20,18 @@ Public Class crtClientes
         End Get
         Set(ByVal value As Clientes)
             _cliente = value
+            If Not _cliente.PersonaJuridica Is Nothing Then
+                CrtPersonaJuridica1.Persona = value.PersonaJuridica
+                CrtPersonaNatural1.Persona = New PersonaNatural
+            Else
+                CrtPersonaJuridica1.Persona = value.PersonaJuridica
+                CrtPersonaNatural1.Persona = New PersonaNatural
+            End If
+            If value.Id > 0 And Not Me.CargarClientePorPersona Then
+                TabControl1.Enabled = False
+            Else
+                TabControl1.Enabled = True
+            End If
         End Set
     End Property
 
@@ -35,6 +47,24 @@ Public Class crtClientes
 #End Region
 
 #Region "Metodos"
+
+    Public Function Guardar() As Long
+        Try
+            If TabControl1.SelectedIndex = 0 Then
+                Me.Cliente.idEntidades = Me.CrtPersonaNatural1.Guardar()
+            Else
+                Me.Cliente.idEntidades = Me.CrtPersonaJuridica1.Guardar
+            End If
+            If Me.Cliente.idEntidades > 0 Then
+                Dim ident As Integer = Me.Cliente.idEntidades
+                Me.Cliente.Buscar("identidades", Me.Cliente.idEntidades.ToString)
+                Me.Cliente.idEntidades = ident
+                Me.Cliente.Guardar()
+            End If
+        Catch ex As Exception
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Function
 
 #End Region
 
@@ -85,6 +115,5 @@ Public Class crtClientes
 
     End Sub
 #End Region
-
     
 End Class
