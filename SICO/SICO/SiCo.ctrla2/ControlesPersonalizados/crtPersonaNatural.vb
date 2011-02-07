@@ -202,7 +202,7 @@ Public Class crtPersonaNatural
             End If
             x += 1
         Next
-        cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad
+        cmbTipoIdentidad.SelectedValue = Persona.tipoidentidad.Valor
         If Persona.tipoidentidad.Valor = "N" Then
             txtidentifiacion.Text = ""
         Else
