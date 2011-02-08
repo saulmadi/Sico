@@ -1,32 +1,38 @@
 ﻿Imports SICO.lgla2
 Imports SICO.lgla
 Public Class frmRegistroClientes
-    Private _Cliente As New Clientes
     Public Property Cliente() As Clientes
         Get
-            Return _Cliente
+            Return CrtClientes1.Cliente
         End Get
         Set(ByVal value As Clientes)
-            _Cliente = value
+            CrtClientes1.Cliente = value
         End Set
     End Property
 
     Private Sub frmRegistroClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        CrtListadoMantenimiento1.Entidad = New Clientes
+        CrtListadoMantenimiento1.lblDescripcion.Text = "Cliente"
+        CrtClientes1.ControlPersonaNatural.EtiquetaError = PanelAccion1.lblEstado
+        CrtClientes1.ControlPersonaJuridicas.EtiquetaError = PanelAccion1.lblEstado
     End Sub
 
-    Private Sub TabControl1_Selecting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TabControlCancelEventArgs) Handles TabControl1.Selecting
-        If Me.Cliente.Id > 0 Then
-            e.Cancel = True
-            Exit Sub
-        End If
+   
+    Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
+        Me.Close()
+    End Sub
 
-        Select Case MessageBox.Show("¿Esta seguro de cambiar ficha? si cambia de ficha perdera toda la información.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            Case Windows.Forms.DialogResult.Yes
-                CrtPersonaJuridica1.Persona = New PersonaJuridica
-                CrtPersonaNatural1.Persona = New PersonaNatural
-            Case Else
-                e.Cancel = True
-        End Select
+    Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Try
+            PanelAccion1.lblEstado.Text = "Guardando..."
+            PanelAccion1.BarraProgreso.Value = 50
+            CrtClientes1.Guardar()
+
+        Catch ex As Exception
+            PanelAccion1.lblEstado.Text = "Error al guardar el cliente"
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            PanelAccion1.BarraProgreso.Value = 0
+        End Try
+
     End Sub
 End Class
