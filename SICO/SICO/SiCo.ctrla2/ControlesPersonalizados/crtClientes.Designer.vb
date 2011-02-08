@@ -41,7 +41,7 @@ Partial Class crtClientes
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(705, 252)
+        Me.TabControl1.Size = New System.Drawing.Size(705, 251)
         Me.TabControl1.TabIndex = 2
         '
         'TabPersonaNatural
@@ -53,7 +53,7 @@ Partial Class crtClientes
         Me.TabPersonaNatural.Location = New System.Drawing.Point(4, 22)
         Me.TabPersonaNatural.Name = "TabPersonaNatural"
         Me.TabPersonaNatural.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPersonaNatural.Size = New System.Drawing.Size(697, 226)
+        Me.TabPersonaNatural.Size = New System.Drawing.Size(697, 225)
         Me.TabPersonaNatural.TabIndex = 0
         Me.TabPersonaNatural.Text = "Persona Naturales"
         '
@@ -63,7 +63,7 @@ Partial Class crtClientes
         Me.CrtPersonaNatural1.Location = New System.Drawing.Point(-1, -1)
         Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
         Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(695, 249)
+        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(695, 222)
         Me.CrtPersonaNatural1.SoloLectura = False
         Me.CrtPersonaNatural1.TabIndex = 0
         '
@@ -108,7 +108,7 @@ Partial Class crtClientes
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents TabPersonaNatural As System.Windows.Forms.TabPage
     Friend WithEvents TabPersonaJuridica As System.Windows.Forms.TabPage
-    Friend WithEvents CrtPersonaNatural1 As SiCo.ctrla2.crtPersonaNatural
-    Friend WithEvents CrtPersonaJuridica1 As SiCo.ctrla2.crtPersonaJuridica
+    Private WithEvents CrtPersonaNatural1 As SiCo.ctrla2.crtPersonaNatural
+    Private WithEvents CrtPersonaJuridica1 As SiCo.ctrla2.crtPersonaJuridica
 
 End Class

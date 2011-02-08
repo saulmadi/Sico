@@ -1,5 +1,8 @@
 ﻿Imports SiCo.lgla
 Imports SiCo.lgla2
+Imports System.ComponentModel
+Imports System.Diagnostics
+
 Public Class crtClientes
 
 #Region "Declaraciones"
@@ -13,7 +16,7 @@ Public Class crtClientes
 #End Region
 
 #Region "Propiedades"
-
+    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public Property Cliente() As Clientes
         Get
             Return _cliente
@@ -44,6 +47,19 @@ Public Class crtClientes
         End Set
     End Property
 
+    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    Public ReadOnly Property ControlPersonaNatural() As crtPersonaNatural
+        Get
+            Return CrtPersonaNatural1
+        End Get
+    End Property
+
+    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    Public ReadOnly Property ControlPersonaJuridicas() As crtPersonaJuridica
+        Get
+            Return CrtPersonaJuridica1
+        End Get
+    End Property
 #End Region
 
 #Region "Metodos"
@@ -61,10 +77,17 @@ Public Class crtClientes
                 Me.Cliente.idEntidades = ident
                 Me.Cliente.Guardar()
             End If
+            Return Cliente.Id
         Catch ex As Exception
             Throw New ApplicationException(ex.Message)
         End Try
     End Function
+
+    Public Sub Nuevo()
+        Me.Cliente = New Clientes
+        Me.CrtPersonaJuridica1.Nuevo()
+        Me.CrtPersonaNatural1.Nuevo()
+    End Sub
 
 #End Region
 
