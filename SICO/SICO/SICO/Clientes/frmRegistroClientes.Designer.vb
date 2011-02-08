@@ -37,7 +37,7 @@ Partial Class frmRegistroClientes
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(12, 93)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(235, 284)
+        Me.GroupBox1.Size = New System.Drawing.Size(235, 261)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Busqueda"
@@ -49,7 +49,7 @@ Partial Class frmRegistroClientes
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(975, 457)
+        Me.PanelAccion1.Size = New System.Drawing.Size(975, 414)
         Me.PanelAccion1.TabIndex = 2
         Me.PanelAccion1.Titulo = "Clientes"
         Me.PanelAccion1.VisiblePanelPrincipal = True
@@ -57,9 +57,9 @@ Partial Class frmRegistroClientes
         'CrtClientes1
         '
         Me.CrtClientes1.CargarClientePorPersona = False
-        Me.CrtClientes1.Location = New System.Drawing.Point(254, 93)
+        Me.CrtClientes1.Location = New System.Drawing.Point(250, 93)
         Me.CrtClientes1.Name = "CrtClientes1"
-        Me.CrtClientes1.Size = New System.Drawing.Size(713, 257)
+        Me.CrtClientes1.Size = New System.Drawing.Size(713, 261)
         Me.CrtClientes1.TabIndex = 4
         '
         'CrtListadoMantenimiento1
@@ -73,14 +73,14 @@ Partial Class frmRegistroClientes
         Me.CrtListadoMantenimiento1.Location = New System.Drawing.Point(3, 16)
         Me.CrtListadoMantenimiento1.Name = "CrtListadoMantenimiento1"
         Me.CrtListadoMantenimiento1.NombreParametroBusqueda = "entidadnombre"
-        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(229, 265)
+        Me.CrtListadoMantenimiento1.Size = New System.Drawing.Size(229, 242)
         Me.CrtListadoMantenimiento1.TabIndex = 0
         '
         'frmRegistroClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(975, 457)
+        Me.ClientSize = New System.Drawing.Size(975, 414)
         Me.Controls.Add(Me.CrtClientes1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PanelAccion1)

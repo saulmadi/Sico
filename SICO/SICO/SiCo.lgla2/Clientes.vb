@@ -16,6 +16,12 @@ Public Class Clientes
     End Sub
     Sub New(ByVal id As Long, ByVal identidades As Long, ByVal estado As Integer)
         MyBase.New(id, identidades, estado)
+
+        Me.TablaBusqueda = "Clientes"
+        Me.TablaEliminar = "Clientes"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", TablaBusqueda))
+        Me.ComandoMantenimiento = "Clientes_Mant"
+
     End Sub
 
 #End Region
@@ -25,6 +31,7 @@ Public Class Clientes
         Me.NullParametrosMantenimiento()
         MyBase.Guardar()
     End Sub
+
     Public Overrides Function TablaAColeccion() As Object
         Dim lista As New List(Of Clientes)
 

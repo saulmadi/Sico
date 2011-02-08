@@ -9,8 +9,8 @@ namespace SiCo.lgla
     {
         #region Declaraciones
         private long? _idEntidades;
-        private PersonaNatural  _PersonaNatural = new PersonaNatural();
-        private PersonaJuridica  _PersonaJuridica = new PersonaJuridica();
+        private PersonaNatural  _PersonaNatural= new PersonaNatural () ;
+        private PersonaJuridica  _PersonaJuridica = new PersonaJuridica() ;
         private int _Estado = 0;
         #endregion
 
@@ -35,7 +35,7 @@ namespace SiCo.lgla
         {
             this.ColeccionParametrosBusqueda.Add(new Parametro("identidades", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("entidadnombre", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("espersonnatural", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
             this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
@@ -86,8 +86,16 @@ namespace SiCo.lgla
         {
             get
             {
+                if (_PersonaNatural != null)
+                {
+                    if (_PersonaNatural.Id  > 0)
+                        return _PersonaNatural;
+                                         
+                }
+                _PersonaNatural = CrearPersonaNatural(0);
                 return _PersonaNatural;
             }
+
             set 
             {
                 _PersonaNatural = value;
@@ -98,8 +106,15 @@ namespace SiCo.lgla
         {
             get
             {
-                return _PersonaJuridica ;
-            }
+                if (_PersonaJuridica != null)
+                {
+                    if (_PersonaJuridica.Id > 0)
+                        return _PersonaJuridica; 
+ 
+                }
+                _PersonaJuridica = CrearPersonaJuridica(0); 
+                return _PersonaJuridica; 
+            }   
             set 
             {
                 _PersonaJuridica = value;
@@ -155,13 +170,17 @@ namespace SiCo.lgla
         protected   PersonaNatural CrearPersonaNatural(int Indice)
         {
             if (this.TotalRegistros > 0)
-            { 
-
+            {
                 
+                PersonaNatural p = new PersonaNatural();
                 if (!(this.idEntidades  == null) && Convert.ToInt32( Registro(Indice,"espersonanatural")) == 1 )
                 {
-                    return new PersonaNatural(this.idEntidades , (string)Registro(Indice,"entidadnombre"), new TipoIdentidad((string)Registro(Indice,"tipoidentidad")), (string)Registro(Indice,"identificacion"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
+                    
+                    p=new PersonaNatural(this.idEntidades , (string)Registro(Indice,"entidadnombre"), new TipoIdentidad((string)Registro(Indice,"tipoidentidad")), (string)Registro(Indice,"identificacion"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
                 }
+
+                
+                return p;                
             
             }
             return null;
@@ -171,11 +190,14 @@ namespace SiCo.lgla
         {
             if (this.TotalRegistros > 0)
             {
-
+                
+                PersonaJuridica p = new PersonaJuridica();
                 if (!(this.idEntidades == null) && Convert.ToInt32 (  Registro(Indice,"espersonanatural")) == 0 )
                 {
-                    return new PersonaJuridica(this.idEntidades , (string)Registro(Indice,"entidadnombre"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
+                    p= new PersonaJuridica(this.idEntidades , (string)Registro(Indice,"entidadnombre"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
                 }
+                
+                return p;
             }
             return null;
         }
