@@ -6,9 +6,10 @@ Imports System.Diagnostics
 Public Class crtClientes
 
 #Region "Declaraciones"
-    Private WithEvents _cliente As New Clientes
+    Private WithEvents _cliente As Clientes
    
     Private _CargarClientePorPersona As Boolean = False
+    Private _premitebloquear As Boolean = True
 #End Region
 
 #Region "Constructor"
@@ -21,20 +22,32 @@ Public Class crtClientes
         Get
             Return _cliente
         End Get
+
         Set(ByVal value As Clientes)
             _cliente = value
-            If Not _cliente.PersonaJuridica Is Nothing Then
-                CrtPersonaJuridica1.Persona = value.PersonaJuridica
-                CrtPersonaNatural1.Persona = New PersonaNatural
+            Me._premitebloquear = False
+            CrtPersonaJuridica1.Persona = New PersonaJuridica
+            CrtPersonaNatural1.Persona = New PersonaNatural
+            If Me.Cliente.Id > 0 Then
+                If Not _cliente.PersonaJuridica Is Nothing Then
+                    CrtPersonaJuridica1.Persona = value.PersonaJuridica
+                    CrtPersonaNatural1.Persona = New PersonaNatural
+                    TabControl1.SelectedIndex = 1
+                ElseIf Not _cliente.PersonaNatural Is Nothing Then
+                    CrtPersonaJuridica1.Persona = New PersonaJuridica
+                    CrtPersonaNatural1.Persona = value.PersonaNatural
+                    TabControl1.SelectedIndex = 0
+                Else
+                    CrtPersonaJuridica1.Nuevo()
+                    CrtPersonaNatural1.Nuevo()
+                    TabControl1.SelectedIndex = 0
+                End If
             Else
-                CrtPersonaJuridica1.Persona = value.PersonaJuridica
+                CrtPersonaJuridica1.Persona = New PersonaJuridica
                 CrtPersonaNatural1.Persona = New PersonaNatural
+                TabControl1.SelectedIndex = 0
             End If
-            If value.Id > 0 And Not Me.CargarClientePorPersona Then
-                TabControl1.Enabled = False
-            Else
-                TabControl1.Enabled = True
-            End If
+            Me._premitebloquear = True
         End Set
     End Property
 
@@ -74,6 +87,10 @@ Public Class crtClientes
             If Me.Cliente.idEntidades > 0 Then
                 Dim ident As Integer = Me.Cliente.idEntidades
                 Me.Cliente.Buscar("identidades", Me.Cliente.idEntidades.ToString)
+                If Me.Cliente.TotalRegistros = 0 Then
+                    _cliente = New Clientes
+                End If
+
                 Me.Cliente.idEntidades = ident
                 Me.Cliente.Guardar()
             End If
@@ -87,6 +104,7 @@ Public Class crtClientes
         Me.Cliente = New Clientes
         Me.CrtPersonaJuridica1.Nuevo()
         Me.CrtPersonaNatural1.Nuevo()
+        Me.TabControl1.SelectedIndex = 0
     End Sub
 
 #End Region
@@ -119,22 +137,29 @@ Public Class crtClientes
     End Sub
 
     Private Sub crtClientes_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-    
+        Try
+            _cliente = New Clientes
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub TabControl1_Selecting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TabControlCancelEventArgs) Handles TabControl1.Selecting
-        If Me.Cliente.Id > 0 Then
-            e.Cancel = True
-            Exit Sub
+        If Me._premitebloquear Then
+            If Me.Cliente.Id > 0 Then
+                e.Cancel = True
+                Exit Sub
+            End If
+
+            Select Case MessageBox.Show("¿Realmente desea cambiar de ficha? si cambia de ficha perdera la información actual.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                Case DialogResult.Yes
+                    CrtPersonaJuridica1.Persona = New PersonaJuridica
+                    CrtPersonaNatural1.Persona = New PersonaNatural
+                Case Else
+                    e.Cancel = True
+            End Select
         End If
 
-        Select Case MessageBox.Show("¿Realmente desea cambiar de ficha? si cambia de ficha perdera la información actual.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            Case DialogResult.Yes
-                CrtPersonaJuridica1.Persona = New PersonaJuridica
-                CrtPersonaNatural1.Persona = New PersonaNatural
-            Case Else
-                e.Cancel = True
-        End Select
 
     End Sub
 #End Region
