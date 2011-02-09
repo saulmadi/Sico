@@ -70,6 +70,7 @@
     <Compile Include="ModulosTablasTipo.vb" />
     <Compile Include="Municipios.vb" />
     <Compile Include="NombresModuloTablasTipo.vb" />
+    <Compile Include="Productos.vb" />
     <Compile Include="Proveedores.vb" />
     <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
