@@ -1,14 +1,14 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `clientes_Mant` $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `clientes_Mant`(
+DROP PROCEDURE IF EXISTS `Clientes_Mant` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Mant`(
 
 /*definicion de parametros*/
 
 inout id int,
 identidades int,
 usu int,
-fmodif date
+fmodif datetime
 )
 BEGIN
 
@@ -30,7 +30,7 @@ else
         c.identidades= identidades,
         c.usu=usu,
         c.fmodif=fmodif
-  where e.id= id;
+  where c.id= id;
 
 end if;
 
