@@ -62,6 +62,17 @@ namespace SiCo.lgla
             set;
         }
 
+        public string IdentificacionMostrar
+        {
+            get 
+            {
+                if (this.tipoidentidad.Valor == "N")
+                    return string.Empty;
+                else
+                    return this.identificacion;
+            } 
+        }
+
         public TipoIdentidad tipoidentidad
         {
             get { return _TipoIdentidad; }

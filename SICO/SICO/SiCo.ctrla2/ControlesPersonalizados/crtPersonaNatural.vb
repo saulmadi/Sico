@@ -331,7 +331,7 @@ Public Class crtPersonaNatural
         Dim f As New frmBusqueda(New PersonaNatural)
         f.Grid.AutoGenerateColumns = True
         f.Grid.DarFormato("NombreCompletoMostrar", "Nombre Completo", True)
-        f.Grid.DarFormato("identificacion", "Identificación", True)
+        f.Grid.DarFormato("IdentificacionMostrar", "Identificación", True)
         f.Grid.DarFormato("telefono", "Télefono", True)
         f.Grid.DarFormato("telefono2", "Celular", True)
         f.Grid.DarFormato("correo", "Correo", True)
@@ -339,20 +339,20 @@ Public Class crtPersonaNatural
 
         Dim p As String = String.Empty
         If txtPrimerNombre.Text <> String.Empty Then
-            p = txtPrimerNombre.Text
+            p = txtPrimerNombre.Text + " "
         End If
 
         If txtSegundoNombre.Text <> String.Empty Then
-            p += " " + txtSegundoNombre.Text
+            p += IIf(p.Trim.Length = 0, "%", "").ToString + txtSegundoNombre.Text + " "
         End If
         If txtPrimerApellido.Text <> String.Empty Then
-            p += " " + txtPrimerApellido.Text
+            p += IIf(p.Trim.Length = 0, "%", "").ToString + txtPrimerApellido.Text + " "
         End If
         If txtSegundoApellido.Text <> String.Empty Then
-            p = txtPrimerNombre.Text
+            p = IIf(p.Trim.Length = 0, "%", "").ToString + txtSegundoApellido.Text
         End If
         If p.Trim <> String.Empty Then
-            f.cargar("nombrecompleto", p)
+            f.cargar("nombrecompleto", p.Trim)
             If f.ShowDialog() = DialogResult.OK Then
                 Me.Persona = f.Entidad
             End If

@@ -8,9 +8,38 @@ Public Class Productos
     Private _Descripcion As String
     Private _PrecioVenta As Decimal
     Private _PrecioCosto As Decimal
+
+    Public Event CambioCodigo()
 #End Region
 
 #Region "Constructor"
+    Public Sub New()
+        MyBase.New()
+
+        Me.TablaEliminar = "Productos"
+        Me.ComandoMantenimiento = "Productos_Mant"
+        Me.ComandoSelect = "Productos_Buscar"
+
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("descripcion", Nothing))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("codigo", Nothing))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("codigoigual", Nothing))
+
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigo", Nothing))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("descripcion", Nothing))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("percioventa", Nothing))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("preciocosto", Nothing))
+
+
+
+    End Sub
+
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal descripcion As String, ByVal preciocosto As Decimal, ByVal precioventa As Decimal)
+        Me.New()
+        Me.Codigo = codigo
+        Me.Descripcion = descripcion
+        Me.PrecioVenta = precioventa
+        Me.PrecioCosto = preciocosto
+    End Sub
 
 #End Region
 
@@ -22,6 +51,16 @@ Public Class Productos
         End Get
         Set(ByVal value As String)
             _Codigo = value
+        End Set
+    End Property
+
+    Public Property CodigoParaBusqueda()
+        Get
+            Return Me.Codigo
+        End Get
+        Set(ByVal value)
+            Me.Codigo = value
+            RaiseEvent CambioCodigo()
         End Set
     End Property
 
@@ -55,12 +94,31 @@ Public Class Productos
 #End Region
 
 #Region "Metodos"
+    Public Overrides Sub Guardar()
+        NullParametrosMantenimiento()
+        ValorParametrosMantenimiento("codigo", Me.Codigo.Trim)
+        ValorParametrosMantenimiento("descripcion", Me.Descripcion.Trim)
+        ValorParametrosMantenimiento("precioventa", Me.PrecioVenta)
+        MyBase.Guardar()
+    End Sub
 
+    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
+        Me.Codigo = Me.Registro(Indice, "codigo")
+        Me.Descripcion = Me.Registro(Indice, "descripcion")
+        Me.PrecioCosto = Me.Registro(Indice, "preciocosto")
+        Me.PrecioVenta = Me.Registro(Indice, "precioventa")
+        MyBase.CargadoPropiedades(Indice)
+    End Sub
+
+    Public Overrides Function TablaAColeccion() As Object
+        Return MyBase.TablaAColeccion()
+    End Function
 #End Region
 
 #Region "Eventos"
-
+    Private Sub Productos_CambioCodigo() Handles Me.CambioCodigo
+        Me.Buscar("codigoigual", Me.Codigo)
+    End Sub
 #End Region
-
-
+ 
 End Class
