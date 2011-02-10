@@ -111,7 +111,15 @@ Public Class Productos
     End Sub
 
     Public Overrides Function TablaAColeccion() As Object
-        Return MyBase.TablaAColeccion()
+        Dim lista As New List(Of Productos)
+        If Me.TotalRegistros > 0 Then
+            For x As Integer = 0 To Me.TotalRegistros - 1
+                Dim temPro As New Productos(Me.Id, Me.Codigo, Me.Descripcion, Me.PrecioCosto, Me.PrecioVenta)
+                lista.Add(temPro)
+            Next
+        End If
+
+        Return lista
     End Function
 #End Region
 
