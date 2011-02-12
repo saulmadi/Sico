@@ -33,6 +33,9 @@ Partial Class frmConfiguracionBDD
         Me.Label5 = New System.Windows.Forms.Label
         Me.Button2 = New System.Windows.Forms.Button
         Me.Button3 = New System.Windows.Forms.Button
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
+        Me.ListaSucursales1 = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.txtbasedatos = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtcontrasena = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtusuario = New SICO.ctrla.CajaTexto(Me.components)
@@ -42,7 +45,7 @@ Partial Class frmConfiguracionBDD
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(22, 81)
+        Me.Label1.Location = New System.Drawing.Point(12, 103)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(46, 13)
         Me.Label1.TabIndex = 0
@@ -51,7 +54,7 @@ Partial Class frmConfiguracionBDD
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(293, 81)
+        Me.Label2.Location = New System.Drawing.Point(283, 103)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 2
@@ -64,7 +67,7 @@ Partial Class frmConfiguracionBDD
         Me.cmbpuerto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbpuerto.FormattingEnabled = True
         Me.cmbpuerto.Items.AddRange(New Object() {"3306", "3307", "3308", "3309"})
-        Me.cmbpuerto.Location = New System.Drawing.Point(337, 78)
+        Me.cmbpuerto.Location = New System.Drawing.Point(327, 100)
         Me.cmbpuerto.Name = "cmbpuerto"
         Me.cmbpuerto.Size = New System.Drawing.Size(94, 21)
         Me.cmbpuerto.TabIndex = 3
@@ -72,7 +75,7 @@ Partial Class frmConfiguracionBDD
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(22, 107)
+        Me.Label3.Location = New System.Drawing.Point(12, 129)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(43, 13)
         Me.Label3.TabIndex = 4
@@ -81,7 +84,7 @@ Partial Class frmConfiguracionBDD
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(22, 133)
+        Me.Label4.Location = New System.Drawing.Point(12, 155)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(61, 13)
         Me.Label4.TabIndex = 6
@@ -89,17 +92,17 @@ Partial Class frmConfiguracionBDD
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(25, 210)
+        Me.Button1.Location = New System.Drawing.Point(15, 289)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(104, 23)
         Me.Button1.TabIndex = 8
-        Me.Button1.Text = "Probar Conexión"
+        Me.Button1.Text = "Aplicar"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(22, 159)
+        Me.Label5.Location = New System.Drawing.Point(12, 181)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(77, 13)
         Me.Label5.TabIndex = 9
@@ -107,7 +110,7 @@ Partial Class frmConfiguracionBDD
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(217, 210)
+        Me.Button2.Location = New System.Drawing.Point(207, 289)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(104, 23)
         Me.Button2.TabIndex = 11
@@ -117,36 +120,71 @@ Partial Class frmConfiguracionBDD
         'Button3
         '
         Me.Button3.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.Button3.Location = New System.Drawing.Point(327, 210)
+        Me.Button3.Location = New System.Drawing.Point(317, 289)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(104, 23)
         Me.Button3.TabIndex = 12
         Me.Button3.Text = "Cancelar"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 207)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(48, 13)
+        Me.Label6.TabIndex = 18
+        Me.Label6.Text = "Sucursal"
+        '
+        'CrtPanelBase1
+        '
+        Me.CrtPanelBase1.Location = New System.Drawing.Point(-2, 0)
+        Me.CrtPanelBase1.Name = "CrtPanelBase1"
+        Me.CrtPanelBase1.Size = New System.Drawing.Size(735, 86)
+        Me.CrtPanelBase1.TabIndex = 19
+        Me.CrtPanelBase1.Titulo = "Configuración"
+        Me.CrtPanelBase1.VisiblePanelPrincipal = True
+        '
+        'ListaSucursales1
+        '
+        Me.ListaSucursales1.CargarAutoCompletar = False
+        Me.ListaSucursales1.CargarComboBox = True
+        Me.ListaSucursales1.Enabled = False
+        Me.ListaSucursales1.FormattingEnabled = True
+        Me.ListaSucursales1.Location = New System.Drawing.Point(95, 204)
+        Me.ListaSucursales1.Name = "ListaSucursales1"
+        Me.ListaSucursales1.ParametroAutocompletar = Nothing
+        Me.ListaSucursales1.ParametroBusquedaPadre = Nothing
+        Me.ListaSucursales1.SelectedItem = Nothing
+        Me.ListaSucursales1.Size = New System.Drawing.Size(182, 21)
+        Me.ListaSucursales1.TabIndex = 17
+        '
         'txtbasedatos
         '
         Me.txtbasedatos.BackColor = System.Drawing.SystemColors.Window
         Me.txtbasedatos.ColorError = System.Drawing.Color.Red
+        Me.txtbasedatos.EnterPorTab = True
         Me.txtbasedatos.EsObligatorio = True
         Me.txtbasedatos.ExpresionValidacion = Nothing
         Me.txtbasedatos.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtbasedatos.Location = New System.Drawing.Point(105, 156)
+        Me.txtbasedatos.Location = New System.Drawing.Point(95, 178)
         Me.txtbasedatos.MensajeError = Nothing
         Me.txtbasedatos.Name = "txtbasedatos"
         Me.txtbasedatos.Size = New System.Drawing.Size(182, 20)
         Me.txtbasedatos.TabIndex = 16
         Me.txtbasedatos.Texto = Nothing
         Me.txtbasedatos.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtbasedatos.ValorInt = Nothing
         '
         'txtcontrasena
         '
         Me.txtcontrasena.BackColor = System.Drawing.SystemColors.Window
         Me.txtcontrasena.ColorError = System.Drawing.Color.Red
+        Me.txtcontrasena.EnterPorTab = True
         Me.txtcontrasena.EsObligatorio = True
         Me.txtcontrasena.ExpresionValidacion = Nothing
         Me.txtcontrasena.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtcontrasena.Location = New System.Drawing.Point(105, 130)
+        Me.txtcontrasena.Location = New System.Drawing.Point(95, 152)
         Me.txtcontrasena.MensajeError = Nothing
         Me.txtcontrasena.Name = "txtcontrasena"
         Me.txtcontrasena.Size = New System.Drawing.Size(182, 20)
@@ -154,36 +192,41 @@ Partial Class frmConfiguracionBDD
         Me.txtcontrasena.Texto = Nothing
         Me.txtcontrasena.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
         Me.txtcontrasena.UseSystemPasswordChar = True
+        Me.txtcontrasena.ValorInt = Nothing
         '
         'txtusuario
         '
         Me.txtusuario.BackColor = System.Drawing.SystemColors.Window
         Me.txtusuario.ColorError = System.Drawing.Color.Red
+        Me.txtusuario.EnterPorTab = True
         Me.txtusuario.EsObligatorio = True
         Me.txtusuario.ExpresionValidacion = Nothing
         Me.txtusuario.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtusuario.Location = New System.Drawing.Point(105, 104)
+        Me.txtusuario.Location = New System.Drawing.Point(95, 126)
         Me.txtusuario.MensajeError = Nothing
         Me.txtusuario.Name = "txtusuario"
         Me.txtusuario.Size = New System.Drawing.Size(182, 20)
         Me.txtusuario.TabIndex = 14
         Me.txtusuario.Texto = Nothing
         Me.txtusuario.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtusuario.ValorInt = Nothing
         '
         'txtservidor
         '
         Me.txtservidor.BackColor = System.Drawing.SystemColors.Window
         Me.txtservidor.ColorError = System.Drawing.Color.Red
+        Me.txtservidor.EnterPorTab = True
         Me.txtservidor.EsObligatorio = True
         Me.txtservidor.ExpresionValidacion = Nothing
         Me.txtservidor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtservidor.Location = New System.Drawing.Point(105, 78)
+        Me.txtservidor.Location = New System.Drawing.Point(95, 100)
         Me.txtservidor.MensajeError = Nothing
         Me.txtservidor.Name = "txtservidor"
         Me.txtservidor.Size = New System.Drawing.Size(182, 20)
         Me.txtservidor.TabIndex = 13
         Me.txtservidor.Texto = Nothing
         Me.txtservidor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtservidor.ValorInt = Nothing
         '
         'frmConfiguracionBDD
         '
@@ -191,7 +234,10 @@ Partial Class frmConfiguracionBDD
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Button3
-        Me.ClientSize = New System.Drawing.Size(443, 263)
+        Me.ClientSize = New System.Drawing.Size(437, 324)
+        Me.Controls.Add(Me.CrtPanelBase1)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.ListaSucursales1)
         Me.Controls.Add(Me.txtbasedatos)
         Me.Controls.Add(Me.txtcontrasena)
         Me.Controls.Add(Me.txtusuario)
@@ -225,5 +271,8 @@ Partial Class frmConfiguracionBDD
     Friend WithEvents txtservidor As SiCo.ctrla.CajaTexto
     Friend WithEvents txtusuario As SiCo.ctrla.CajaTexto
     Friend WithEvents txtcontrasena As SiCo.ctrla.CajaTexto
-    Friend WithEvents txtbasedatos As SiCo.ctrla.CajaTexto
+    Friend WithEvents txtbasedatos As SICO.ctrla.CajaTexto
+    Friend WithEvents ListaSucursales1 As SICO.ctrla.ControlesBasicos.ListaSucursales
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
 End Class

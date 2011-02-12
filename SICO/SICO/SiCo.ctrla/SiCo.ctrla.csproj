@@ -97,6 +97,12 @@
     <Compile Include="ControlesPersonalizados\crtPanelBase.Designer.cs">
       <DependentUpon>crtPanelBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesPersonalizados\frmImagen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlesPersonalizados\frmImagen.Designer.cs">
+      <DependentUpon>frmImagen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Delegados\ErroresEventsArgs.cs" />
     <Compile Include="ControlesBasicos\Grid.cs">
       <SubType>Component</SubType>
@@ -141,6 +147,10 @@
     <None Include="CapaControles.cd" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SiCo.lgla2\SiCo.lgla2.vbproj">
+      <Project>{AAA06334-AE0B-49B8-A76A-531B401D4A5B}</Project>
+      <Name>SiCo.lgla2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SiCo.lgla\SiCo.lgla.csproj">
       <Project>{F160B96F-7309-4701-9D61-70C68E9B517E}</Project>
       <Name>SiCo.lgla</Name>
@@ -149,6 +159,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlesBasicos\AutoCompleteCajaTexto.resx">
       <DependentUpon>AutoCompleteCajaTexto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesBasicos\CajaTexto.resx">
+      <DependentUpon>CajaTexto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesBasicos\ListaDesplegable.resx">
       <DependentUpon>ListaDesplegable.cs</DependentUpon>
@@ -162,6 +175,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\crtPanelBase.resx">
       <DependentUpon>crtPanelBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesPersonalizados\frmImagen.resx">
+      <DependentUpon>frmImagen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesPersonalizados\PanelAccion.resx">
       <DependentUpon>PanelAccion.cs</DependentUpon>

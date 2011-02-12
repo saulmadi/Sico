@@ -67,6 +67,7 @@ Public Class Proveedores
                 lista.Add(tempProveedores)
             Next
         End If
+
         Return lista
     End Function
 
