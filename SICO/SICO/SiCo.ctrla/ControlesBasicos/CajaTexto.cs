@@ -223,6 +223,19 @@ namespace SiCo.ctrla
 
                     if (!char.IsNumber(e.KeyChar))
                         e.Handled = true;
+                    else 
+                    {
+                        if (this.Text.Contains("."))
+                        {
+                            string [] val = this.Text.Split('.') ;
+                            if (val[1].Length == 2)
+                            {
+                                if(this.Text.IndexOf(".")  < SelectionStart)  
+                                e.Handled = true;  
+                            }
+                            
+                        }
+                    }
                     
                     if (e.KeyChar == '.')
                     {

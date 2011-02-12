@@ -73,6 +73,7 @@ namespace SiCo.lgla
             set;
         }
 
+
         #endregion
 
         #region "Metodos"

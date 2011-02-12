@@ -35,7 +35,7 @@ namespace SiCo.ctrla.ControlesBasicos
             }
         }
 
-        public SiCo.lgla.Sucursales  SelectedItem
+        public new SiCo.lgla.Sucursales  SelectedItem
         {
             get
             {

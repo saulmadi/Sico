@@ -108,20 +108,18 @@
     <Position X="4.75" Y="1.5" Width="1.5" />
     <TypeIdentifier />
   </Class>
-  <Class Name="SiCo.lgla2.Productos">
-    <Position X="8.5" Y="1.5" Width="1.5" />
-    <InheritanceLine Type="SiCo.lgla.Entidad" ManuallyRouted="true">
-      <Path>
-        <Point X="4" Y="1.312" />
-        <Point X="4" Y="1.384" />
-        <Point X="7.022" Y="1.384" />
-        <Point X="7.022" Y="2.919" />
-        <Point X="8.5" Y="2.919" />
-      </Path>
-    </InheritanceLine>
+  <Class Name="SiCo.lgla2.Productos" Collapsed="true">
+    <Position X="7.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEAAAAQAAAABAAAAAAAAFgAAAAAAEAAAAAAABAAA=</HashCode>
+      <HashCode>gIACEAAAAQAAAABAAAAAAAAFgAAAAAAEAAABBAARAAA=</HashCode>
       <FileName>Productos.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.Imagenes">
+    <Position X="9.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Imagenes.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">

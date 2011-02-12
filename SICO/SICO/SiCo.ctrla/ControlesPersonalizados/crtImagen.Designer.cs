@@ -65,6 +65,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDoubleClick);
             // 
             // txtArchivo
             // 
@@ -115,6 +116,7 @@
             this.Controls.Add(this.btnBuscar);
             this.Name = "crtImagen";
             this.Size = new System.Drawing.Size(191, 186);
+            this.Load += new System.EventHandler(this.crtImagen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

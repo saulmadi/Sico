@@ -26,7 +26,7 @@ Public Class Productos
 
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigo", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("descripcion", Nothing))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("percioventa", Nothing))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("precioventa", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("preciocosto", Nothing))
 
 
@@ -35,6 +35,7 @@ Public Class Productos
 
     Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal descripcion As String, ByVal preciocosto As Decimal, ByVal precioventa As Decimal)
         Me.New()
+        Me._Id = id
         Me.Codigo = codigo
         Me.Descripcion = descripcion
         Me.PrecioVenta = precioventa
