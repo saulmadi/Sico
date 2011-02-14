@@ -125,7 +125,7 @@ Partial Class crtPersonaJuridica
         'txtrazonsocial
         '
         Me.txtrazonsocial.AutoCompletar = True
-        Me.txtrazonsocial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.txtrazonsocial.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.txtrazonsocial.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
         Me.txtrazonsocial.BackColor = System.Drawing.SystemColors.Window
         Me.txtrazonsocial.CampoMostrar = "razonsocial"

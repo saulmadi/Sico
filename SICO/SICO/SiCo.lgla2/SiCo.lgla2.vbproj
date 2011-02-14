@@ -68,6 +68,7 @@
     <Compile Include="Departamentos.vb" />
     <Compile Include="Estado.vb" />
     <Compile Include="Imagenes.vb" />
+    <Compile Include="Inventario.vb" />
     <Compile Include="Marcas.vb" />
     <Compile Include="Modelos.vb" />
     <Compile Include="ModulosTablasTipo.vb" />

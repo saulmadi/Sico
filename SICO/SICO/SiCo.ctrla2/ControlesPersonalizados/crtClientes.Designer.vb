@@ -38,6 +38,8 @@ Partial Class crtClientes
         Me.TabControl1.Controls.Add(Me.TabPersonaNatural)
         Me.TabControl1.Controls.Add(Me.TabPersonaJuridica)
         Me.TabControl1.Location = New System.Drawing.Point(3, 3)
+        Me.TabControl1.MaximumSize = New System.Drawing.Size(705, 251)
+        Me.TabControl1.MinimumSize = New System.Drawing.Size(705, 251)
         Me.TabControl1.Multiline = True
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -76,7 +78,7 @@ Partial Class crtClientes
         Me.TabPersonaJuridica.Location = New System.Drawing.Point(4, 22)
         Me.TabPersonaJuridica.Name = "TabPersonaJuridica"
         Me.TabPersonaJuridica.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPersonaJuridica.Size = New System.Drawing.Size(697, 226)
+        Me.TabPersonaJuridica.Size = New System.Drawing.Size(697, 225)
         Me.TabPersonaJuridica.TabIndex = 1
         Me.TabPersonaJuridica.Text = "Personas Jurídicas"
         '
