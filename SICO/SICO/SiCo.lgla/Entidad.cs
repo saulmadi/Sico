@@ -257,6 +257,21 @@ namespace SiCo.lgla
         }
 
         /// <summary>
+        /// Modifica el registro de la entidad
+        /// </summary>
+        /// <param name="Parametro">Parametros Necesarios para la modificación</param>
+        protected void MantenimientoTransaccion(ref List<Parametro> Parametro)
+        {
+            InicializarComando();
+            _Comando.CommandType = CommandType.StoredProcedure;
+            _Comando.CommandText = ComandoMantenimiento;
+            LLenadoParametros(ref Parametro);
+
+            EjecutarComando(true);
+            LLenadoParmaetrosSalida(ref Parametro);
+        }
+
+        /// <summary>
         /// Elimina el registro de la entidad
         /// </summary>
         protected void Eliminar(SiCo.lgla.Parametro[] Parametro)
@@ -309,6 +324,24 @@ namespace SiCo.lgla
         }
 
         /// <summary>
+        /// Ejecuta el comando que tenga seleccionado
+        /// </summary>
+        private void EjecutarComando(bool Transccion)
+        {         
+               
+            try
+                {
+                    _Comando.Connection = _Conexion.Conexion; 
+                    _Comando.ExecuteNonQuery();
+                 
+                }
+                catch (Exception ex)
+                {
+                    throw new ApplicationException("Error en la ejecución de guardado \n" + ex.Message);
+                }           
+        }
+
+        /// <summary>
         /// Ejecuta el comando SELECT para llenar la tabla
         /// </summary>
         private void EjecutarDataSet()
@@ -318,7 +351,7 @@ namespace SiCo.lgla
                 _Tabla = new DataTable(); 
                 _Comando.Connection=_Conexion.Conexion;
                 MySqlDataAdapter _Adapter = new MySqlDataAdapter(_Comando);        
-
+                 
                 _Conexion.AbrirConexion();               
                 _Adapter.Fill(Tabla);
                 _Conexion.CerrarConexion();
@@ -335,8 +368,8 @@ namespace SiCo.lgla
                 throw new ApplicationException(ex.Message, ex); 
             }
              
-        }
-
+        }        
+        
         protected object EjecutaFuncion(string comando)
         {
             try
@@ -358,6 +391,7 @@ namespace SiCo.lgla
             }
                        
         }
+
         private void InicializarComando()
         {
             _Comando = new MySqlCommand();  
@@ -461,6 +495,13 @@ namespace SiCo.lgla
             this.ValorParametrosMantenimiento("fmodif", this.fmodif);
             this.Mantenimiento(ref this._ColeccionParametrosMantenimiento);
         }
+        public virtual void Guardar(bool transaccion)
+        {
+            this.ValorParametrosMantenimiento("id", this.Id);
+            this.ValorParametrosMantenimiento("usu", this.Usuario.Id);
+            this.ValorParametrosMantenimiento("fmodif", this.fmodif);
+            this.MantenimientoTransaccion(ref this._ColeccionParametrosMantenimiento);
+        }
 
         protected void ValorParametrosBusqueda(string Nombre, object valor)
         {
@@ -507,7 +548,7 @@ namespace SiCo.lgla
             }
         }
 
-        public Boolean   Eliminar()
+        public Boolean Eliminar()
         {
             try
             {
@@ -540,7 +581,21 @@ namespace SiCo.lgla
                 throw new ApplicationException("No se puede eliminar el registro, dado que esta siendo utilizada por otra transacción.", ex);  
             }
         }
-        
+
+        public void IniciarTransaccion()
+        {
+            _Conexion.InciarTransaccion(); 
+        }
+
+        public void CommitTransaccion()
+        {
+            _Conexion.ComitTransaccion(); 
+        }
+
+        public void RollBackTransaccion()
+        {
+            _Conexion.RollBackTransaccion(); 
+        }
         #endregion             
 
         #region Eventos

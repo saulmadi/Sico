@@ -36,6 +36,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.cajaTexto1 = new SiCo.ctrla.CajaTexto(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +79,7 @@
             // panel1
             // 
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.cajaTexto1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -85,6 +87,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(830, 588);
             this.panel1.TabIndex = 2;
+            // 
+            // cajaTexto1
+            // 
+            this.cajaTexto1.BackColor = System.Drawing.SystemColors.Window;
+            this.cajaTexto1.ColorError = System.Drawing.Color.Red;
+            this.cajaTexto1.EnterPorTab = true;
+            this.cajaTexto1.EsObligatorio = false;
+            this.cajaTexto1.ExpresionValidacion = null;
+            this.cajaTexto1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.cajaTexto1.Location = new System.Drawing.Point(12, 541);
+            this.cajaTexto1.MensajeError = null;
+            this.cajaTexto1.Name = "cajaTexto1";
+            this.cajaTexto1.Size = new System.Drawing.Size(615, 20);
+            this.cajaTexto1.TabIndex = 2;
+            this.cajaTexto1.Texto = null;
+            this.cajaTexto1.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico;
+            this.cajaTexto1.ValorInt = null;
             // 
             // frmImagen
             // 
@@ -100,6 +119,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmImagen";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -112,5 +132,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolTip toolTip2;
+        private CajaTexto cajaTexto1;
     }
 }

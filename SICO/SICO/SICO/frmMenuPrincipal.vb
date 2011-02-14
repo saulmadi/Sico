@@ -148,10 +148,7 @@ Public Class frmMenuPrincipal
 
 #Region "Manejo de la aplicacion"
     Private Sub frmMenuPrincipal_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
-        Me.MdiChildren.GetUpperBound(0)
-        For f As Integer = 0 To Me.MdiChildren.GetUpperBound(0) - 1
-            Me.MdiChildren(f).Close()
-        Next
+        End
     End Sub
 #End Region
 
