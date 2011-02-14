@@ -10,7 +10,7 @@
     <TypeIdentifier />
   </Class>
   <Class Name="SiCo.lgla2.Clientes" Collapsed="true">
-    <Position X="5.75" Y="2.75" Width="1.5" />
+    <Position X="5.5" Y="3" Width="1.5" />
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
@@ -19,8 +19,8 @@
       <FileName>Clientes.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.TablasTipo">
-    <Position X="1.5" Y="1.5" Width="1.5" />
+  <Class Name="SiCo.lgla2.TablasTipo" Collapsed="true">
+    <Position X="1.25" Y="2" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
       <Compartment Name="Methods" Collapsed="true" />
@@ -49,6 +49,14 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
+    <InheritanceLine Type="SiCo.lgla2.TablasTipo" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="2.691" />
+        <Point X="2" Y="4.125" />
+        <Point X="3.5" Y="4.125" />
+        <Point X="3.5" Y="4.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAQgAA=</HashCode>
       <FileName>TablasTipoDerivadas.vb</FileName>
@@ -84,7 +92,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Proveedores" Collapsed="true">
-    <Position X="4" Y="2.75" Width="1.5" />
+    <Position X="3.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAABBAASAAA=</HashCode>
       <FileName>Proveedores.vb</FileName>
@@ -105,21 +113,28 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla.Mantenimientos" Collapsed="true">
-    <Position X="4.75" Y="1.5" Width="1.5" />
+    <Position X="4.75" Y="2" Width="1.5" />
     <TypeIdentifier />
   </Class>
   <Class Name="SiCo.lgla2.Productos" Collapsed="true">
-    <Position X="7.5" Y="2.75" Width="1.5" />
+    <Position X="6.5" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gIACEAAAAQAAAABAAAAAAAAFgAAAAAAEAAABBAARAAA=</HashCode>
       <FileName>Productos.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.Imagenes">
-    <Position X="9.5" Y="2.25" Width="1.5" />
+  <Class Name="SiCo.lgla2.Imagenes" Collapsed="true">
+    <Position X="8.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAgAAAAAAAAAAACAgABAAAAAABAAQAAA=</HashCode>
       <FileName>Imagenes.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.Inventario" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Inventario.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">

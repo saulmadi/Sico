@@ -22,14 +22,21 @@ Partial Class frmVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
-        Dim TipoIdentidad4 As SICO.lgla.TipoIdentidad = New SICO.lgla.TipoIdentidad
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
         Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.inventario = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.PrecioVenta = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
+        Me.Label2 = New System.Windows.Forms.Label
+        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.TextBox5 = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
@@ -40,36 +47,14 @@ Partial Class frmVentas
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.Label2 = New System.Windows.Forms.Label
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
-        Me.CrtPersonaNatural1 = New SICO.ctrla2.crtPersonaNatural
-        Me.txtApellidos = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.txtNombre = New SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto(Me.components)
-        Me.txtrtn = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtCorreo = New SICO.ctrla.CorreoCajaTexto(Me.components)
-        Me.txtdireccion = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txttelefono = New SICO.ctrla.CajaTexto(Me.components)
-        Me.cmbTipoIdentidad = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.txtidentifiacion = New SICO.ctrla.IdentidadCajaTexto(Me.components)
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.inventario = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrecioVenta = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Label7 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,10 +63,6 @@ Partial Class frmVentas
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
-        Me.CrtPersonaNatural1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -90,9 +71,9 @@ Partial Class frmVentas
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 272)
+        Me.Panel2.Location = New System.Drawing.Point(0, 419)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(939, 319)
+        Me.Panel2.Size = New System.Drawing.Size(802, 253)
         Me.Panel2.TabIndex = 12
         '
         'GroupBox5
@@ -103,7 +84,7 @@ Partial Class frmVentas
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(875, 319)
+        Me.GroupBox5.Size = New System.Drawing.Size(738, 253)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
@@ -118,416 +99,8 @@ Partial Class frmVentas
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(869, 155)
+        Me.DataGridView1.Size = New System.Drawing.Size(732, 141)
         Me.DataGridView1.TabIndex = 0
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.Panel8)
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 171)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(869, 145)
-        Me.Panel7.TabIndex = 9
-        '
-        'Panel8
-        '
-        Me.Panel8.Controls.Add(Me.Label2)
-        Me.Panel8.Controls.Add(Me.TextBox2)
-        Me.Panel8.Controls.Add(Me.Label1)
-        Me.Panel8.Controls.Add(Me.TextBox1)
-        Me.Panel8.Controls.Add(Me.Label4)
-        Me.Panel8.Controls.Add(Me.TextBox5)
-        Me.Panel8.Controls.Add(Me.Label5)
-        Me.Panel8.Controls.Add(Me.TextBox4)
-        Me.Panel8.Controls.Add(Me.Label6)
-        Me.Panel8.Controls.Add(Me.TextBox3)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(533, 0)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(336, 145)
-        Me.Panel8.TabIndex = 6
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(104, 12)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(54, 13)
-        Me.Label4.TabIndex = 0
-        Me.Label4.Text = "Subtotal"
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(168, 113)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox5.TabIndex = 5
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(104, 90)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(58, 13)
-        Me.Label5.TabIndex = 1
-        Me.Label5.Text = "Impuesto"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(168, 87)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox4.TabIndex = 4
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(104, 116)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(36, 13)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Total"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(168, 9)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox3.TabIndex = 3
-        '
-        'Panel4
-        '
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(906, 0)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(33, 319)
-        Me.Panel4.TabIndex = 2
-        '
-        'Panel3
-        '
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel3.Location = New System.Drawing.Point(0, 0)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(31, 319)
-        Me.Panel3.TabIndex = 1
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.GroupBox1)
-        Me.Panel1.Controls.Add(Me.Panel5)
-        Me.Panel1.Controls.Add(Me.Panel6)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel1.Location = New System.Drawing.Point(0, 89)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(939, 183)
-        Me.Panel1.TabIndex = 11
-        '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
-        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(31, 0)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(875, 177)
-        Me.GroupBox1.TabIndex = 1
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Datos de Venta"
-        '
-        'Panel5
-        '
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel5.Location = New System.Drawing.Point(906, 0)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(33, 183)
-        Me.Panel5.TabIndex = 3
-        '
-        'Panel6
-        '
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel6.Location = New System.Drawing.Point(0, 0)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(31, 183)
-        Me.Panel6.TabIndex = 0
-        '
-        'CrtPanelBase1
-        '
-        Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.CrtPanelBase1.Location = New System.Drawing.Point(0, 0)
-        Me.CrtPanelBase1.Name = "CrtPanelBase1"
-        Me.CrtPanelBase1.Size = New System.Drawing.Size(939, 89)
-        Me.CrtPanelBase1.TabIndex = 9
-        Me.CrtPanelBase1.Titulo = "Venta"
-        Me.CrtPanelBase1.VisiblePanelPrincipal = True
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 591)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(939, 56)
-        Me.PanelAccion1.TabIndex = 10
-        Me.PanelAccion1.Titulo = "Orden de Compra"
-        Me.PanelAccion1.VisiblePanelPrincipal = False
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(104, 38)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(57, 13)
-        Me.Label1.TabIndex = 6
-        Me.Label1.Text = "Desc (%)"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(168, 35)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox1.TabIndex = 7
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(104, 64)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(36, 13)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Desc"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(168, 61)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox2.TabIndex = 9
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.TabControl1)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 51)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(522, 120)
-        Me.GroupBox2.TabIndex = 0
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Cliente"
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Location = New System.Drawing.Point(6, 19)
-        Me.TabControl1.Multiline = True
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(503, 91)
-        Me.TabControl1.TabIndex = 2
-        '
-        'TabPage1
-        '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage1.Controls.Add(Me.CrtPersonaNatural1)
-        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(495, 65)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Persona Naturales"
-        '
-        'CrtPersonaNatural1
-        '
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtApellidos)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtNombre)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtrtn)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtCorreo)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtdireccion)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txttelefono)
-        Me.CrtPersonaNatural1.Controls.Add(Me.cmbTipoIdentidad)
-        Me.CrtPersonaNatural1.Controls.Add(Me.txtidentifiacion)
-        Me.CrtPersonaNatural1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(3, 3)
-        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(487, 57)
-        Me.CrtPersonaNatural1.TabIndex = 0
-        '
-        'txtApellidos
-        '
-        Me.txtApellidos.AutoCompletar = True
-        Me.txtApellidos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
-        Me.txtApellidos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtApellidos.CampoMostrar = "apellidos"
-        Me.txtApellidos.CaracteresInicio = 3
-        Me.txtApellidos.ColeccionParametros = CType(resources.GetObject("txtApellidos.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.txtApellidos.ColorError = System.Drawing.Color.Red
-        Me.txtApellidos.EsObligatorio = False
-        Me.txtApellidos.ExpresionValidacion = Nothing
-        Me.txtApellidos.Location = New System.Drawing.Point(102, 33)
-        Me.txtApellidos.MaxLength = 255
-        Me.txtApellidos.MensajeError = Nothing
-        Me.txtApellidos.Name = "txtApellidos"
-        Me.txtApellidos.ParameteroBusqueda = "apellidos"
-        Me.txtApellidos.Procedimiento = "PersonaNatural_Buscar"
-        Me.txtApellidos.Size = New System.Drawing.Size(380, 20)
-        Me.txtApellidos.TabIndex = 33
-        Me.txtApellidos.Texto = Nothing
-        Me.txtApellidos.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtNombre
-        '
-        Me.txtNombre.AutoCompletar = True
-        Me.txtNombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.txtNombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource
-        Me.txtNombre.CampoMostrar = "NombreCompleto"
-        Me.txtNombre.CaracteresInicio = 3
-        Me.txtNombre.ColeccionParametros = CType(resources.GetObject("txtNombre.ColeccionParametros"), System.Collections.Generic.List(Of SICO.lgla.Parametro))
-        Me.txtNombre.ColorError = System.Drawing.Color.Red
-        Me.txtNombre.EsObligatorio = False
-        Me.txtNombre.ExpresionValidacion = Nothing
-        Me.txtNombre.Location = New System.Drawing.Point(102, 7)
-        Me.txtNombre.MaxLength = 255
-        Me.txtNombre.MensajeError = Nothing
-        Me.txtNombre.Name = "txtNombre"
-        Me.txtNombre.ParameteroBusqueda = "NombreCompleto"
-        Me.txtNombre.Procedimiento = "PersonaNatural_Buscar"
-        Me.txtNombre.Size = New System.Drawing.Size(380, 20)
-        Me.txtNombre.TabIndex = 32
-        Me.txtNombre.Texto = Nothing
-        Me.txtNombre.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtrtn
-        '
-        Me.txtrtn.ColorError = System.Drawing.Color.Red
-        Me.txtrtn.EsObligatorio = False
-        Me.txtrtn.ExpresionValidacion = Nothing
-        Me.txtrtn.Location = New System.Drawing.Point(102, 236)
-        Me.txtrtn.MaxLength = 255
-        Me.txtrtn.MensajeError = Nothing
-        Me.txtrtn.Name = "txtrtn"
-        Me.txtrtn.Size = New System.Drawing.Size(380, 20)
-        Me.txtrtn.TabIndex = 23
-        Me.txtrtn.Texto = Nothing
-        Me.txtrtn.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtCorreo
-        '
-        Me.txtCorreo.ColorError = System.Drawing.Color.Red
-        Me.txtCorreo.EsObligatorio = False
-        Me.txtCorreo.ExpresionValidacion = "^([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0" & _
-            "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
-            "9][0-9]|[1-9][0-9]|[0-9])\])$"
-        Me.txtCorreo.Location = New System.Drawing.Point(102, 138)
-        Me.txtCorreo.MaxLength = 255
-        Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
-        Me.txtCorreo.Name = "txtCorreo"
-        Me.txtCorreo.Size = New System.Drawing.Size(380, 20)
-        Me.txtCorreo.TabIndex = 22
-        Me.txtCorreo.Texto = Nothing
-        Me.txtCorreo.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'txtdireccion
-        '
-        Me.txtdireccion.ColorError = System.Drawing.Color.Red
-        Me.txtdireccion.EsObligatorio = False
-        Me.txtdireccion.ExpresionValidacion = Nothing
-        Me.txtdireccion.Location = New System.Drawing.Point(102, 164)
-        Me.txtdireccion.MensajeError = Nothing
-        Me.txtdireccion.Multiline = True
-        Me.txtdireccion.Name = "txtdireccion"
-        Me.txtdireccion.Size = New System.Drawing.Size(380, 66)
-        Me.txtdireccion.TabIndex = 21
-        Me.txtdireccion.Texto = Nothing
-        Me.txtdireccion.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'txttelefono
-        '
-        Me.txttelefono.ColorError = System.Drawing.Color.Red
-        Me.txttelefono.EsObligatorio = False
-        Me.txttelefono.ExpresionValidacion = Nothing
-        Me.txttelefono.Location = New System.Drawing.Point(102, 112)
-        Me.txttelefono.MaxLength = 255
-        Me.txttelefono.MensajeError = Nothing
-        Me.txttelefono.Multiline = True
-        Me.txttelefono.Name = "txttelefono"
-        Me.txttelefono.Size = New System.Drawing.Size(380, 20)
-        Me.txttelefono.TabIndex = 20
-        Me.txttelefono.Texto = Nothing
-        Me.txttelefono.TipoTexto = SICO.ctrla.TiposTexto.Parrafo
-        '
-        'cmbTipoIdentidad
-        '
-        Me.cmbTipoIdentidad.Comando = Nothing
-        Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbTipoIdentidad.FormattingEnabled = True
-        Me.cmbTipoIdentidad.ListaDesplegablePadre = Nothing
-        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 85)
-        Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
-        Me.cmbTipoIdentidad.Size = New System.Drawing.Size(380, 21)
-        Me.cmbTipoIdentidad.TabIndex = 19
-        '
-        'txtidentifiacion
-        '
-        Me.txtidentifiacion.ColorError = System.Drawing.Color.Red
-        Me.txtidentifiacion.EsObligatorio = False
-        Me.txtidentifiacion.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
-        Me.txtidentifiacion.Location = New System.Drawing.Point(102, 59)
-        Me.txtidentifiacion.MaxLength = 255
-        Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232"
-        Me.txtidentifiacion.Name = "txtidentifiacion"
-        Me.txtidentifiacion.Size = New System.Drawing.Size(380, 20)
-        Me.txtidentifiacion.TabIndex = 18
-        Me.txtidentifiacion.Texto = Nothing
-        TipoIdentidad4.Descripcion = "Identidad"
-        TipoIdentidad4.Valor = "I"
-        Me.txtidentifiacion.TipoIdentificacion = TipoIdentidad4
-        Me.txtidentifiacion.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage2.Controls.Add(Me.TextBox6)
-        Me.TabPage2.Controls.Add(Me.Label3)
-        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(495, 65)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Personas Jurídicas"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 14)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(68, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Razón social"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(80, 11)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(407, 20)
-        Me.TextBox6.TabIndex = 1
         '
         'codigo
         '
@@ -554,6 +127,171 @@ Partial Class frmVentas
         Me.PrecioVenta.HeaderText = "Precio Venta"
         Me.PrecioVenta.Name = "PrecioVenta"
         '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.Panel8)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel7.Location = New System.Drawing.Point(3, 157)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(732, 93)
+        Me.Panel7.TabIndex = 9
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.Label2)
+        Me.Panel8.Controls.Add(Me.TextBox2)
+        Me.Panel8.Controls.Add(Me.Label1)
+        Me.Panel8.Controls.Add(Me.TextBox1)
+        Me.Panel8.Controls.Add(Me.Label4)
+        Me.Panel8.Controls.Add(Me.TextBox5)
+        Me.Panel8.Controls.Add(Me.Label5)
+        Me.Panel8.Controls.Add(Me.TextBox4)
+        Me.Panel8.Controls.Add(Me.Label6)
+        Me.Panel8.Controls.Add(Me.TextBox3)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel8.Location = New System.Drawing.Point(-1, 0)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(733, 93)
+        Me.Panel8.TabIndex = 6
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(394, 9)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(36, 13)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "Desc"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Enabled = False
+        Me.TextBox2.Location = New System.Drawing.Point(458, 6)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox2.TabIndex = 9
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(160, 38)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.TabIndex = 6
+        Me.Label1.Text = "Desc (%)"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(223, 35)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox1.TabIndex = 7
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(160, 13)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(54, 13)
+        Me.Label4.TabIndex = 0
+        Me.Label4.Text = "Subtotal"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Enabled = False
+        Me.TextBox5.Location = New System.Drawing.Point(458, 58)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox5.TabIndex = 5
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(394, 35)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(58, 13)
+        Me.Label5.TabIndex = 1
+        Me.Label5.Text = "Impuesto"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Enabled = False
+        Me.TextBox4.Location = New System.Drawing.Point(458, 32)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox4.TabIndex = 4
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(394, 61)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(36, 13)
+        Me.Label6.TabIndex = 2
+        Me.Label6.Text = "Total"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Enabled = False
+        Me.TextBox3.Location = New System.Drawing.Point(223, 9)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(165, 20)
+        Me.TextBox3.TabIndex = 3
+        '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.Location = New System.Drawing.Point(769, 0)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(33, 253)
+        Me.Panel4.TabIndex = 2
+        '
+        'Panel3
+        '
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(31, 253)
+        Me.Panel3.TabIndex = 1
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.GroupBox1)
+        Me.Panel1.Controls.Add(Me.Panel5)
+        Me.Panel1.Controls.Add(Me.Panel6)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 84)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(802, 335)
+        Me.Panel1.TabIndex = 11
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.Location = New System.Drawing.Point(31, 0)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(738, 332)
+        Me.GroupBox1.TabIndex = 1
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Datos de Venta"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker1.Location = New System.Drawing.Point(52, 19)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(257, 20)
+        Me.DateTimePicker1.TabIndex = 2
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -564,19 +302,68 @@ Partial Class frmVentas
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Fecha"
         '
-        'DateTimePicker1
+        'GroupBox2
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(52, 19)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(257, 20)
-        Me.DateTimePicker1.TabIndex = 2
+        Me.GroupBox2.Controls.Add(Me.CrtClientes1)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 41)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(722, 284)
+        Me.GroupBox2.TabIndex = 0
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Cliente"
+        '
+        'Panel5
+        '
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel5.Location = New System.Drawing.Point(769, 0)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(33, 335)
+        Me.Panel5.TabIndex = 3
+        '
+        'Panel6
+        '
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel6.Location = New System.Drawing.Point(0, 0)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(31, 335)
+        Me.Panel6.TabIndex = 0
+        '
+        'CrtClientes1
+        '
+        Me.CrtClientes1.CargarClientePorPersona = False
+        Me.CrtClientes1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtClientes1.Location = New System.Drawing.Point(6, 19)
+        Me.CrtClientes1.Name = "CrtClientes1"
+        Me.CrtClientes1.Size = New System.Drawing.Size(710, 259)
+        Me.CrtClientes1.TabIndex = 0
+        '
+        'CrtPanelBase1
+        '
+        Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.CrtPanelBase1.Location = New System.Drawing.Point(0, 0)
+        Me.CrtPanelBase1.Name = "CrtPanelBase1"
+        Me.CrtPanelBase1.Size = New System.Drawing.Size(802, 84)
+        Me.CrtPanelBase1.TabIndex = 9
+        Me.CrtPanelBase1.Titulo = "Venta"
+        Me.CrtPanelBase1.VisiblePanelPrincipal = True
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 672)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(802, 56)
+        Me.PanelAccion1.TabIndex = 10
+        Me.PanelAccion1.Titulo = "Orden de Compra"
+        Me.PanelAccion1.VisiblePanelPrincipal = False
         '
         'frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(939, 647)
+        Me.ClientSize = New System.Drawing.Size(802, 728)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CrtPanelBase1)
@@ -595,12 +382,6 @@ Partial Class frmVentas
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.CrtPersonaNatural1.ResumeLayout(False)
-        Me.CrtPersonaNatural1.PerformLayout()
-        Me.TabPage2.ResumeLayout(False)
-        Me.TabPage2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -628,20 +409,6 @@ Partial Class frmVentas
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents CrtPersonaNatural1 As SICO.ctrla2.crtPersonaNatural
-    Friend WithEvents txtApellidos As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents txtNombre As SICO.ctrla.ControlesBasicos.AutoCompleteCajaTexto
-    Friend WithEvents txtrtn As SICO.ctrla.CajaTexto
-    Friend WithEvents txtCorreo As SICO.ctrla.CorreoCajaTexto
-    Friend WithEvents txtdireccion As SICO.ctrla.CajaTexto
-    Friend WithEvents txttelefono As SICO.ctrla.CajaTexto
-    Friend WithEvents cmbTipoIdentidad As SICO.ctrla.ListaDesplegable
-    Friend WithEvents txtidentifiacion As SICO.ctrla.IdentidadCajaTexto
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -649,4 +416,5 @@ Partial Class frmVentas
     Friend WithEvents PrecioVenta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents CrtClientes1 As SICO.ctrla2.crtClientes
 End Class
