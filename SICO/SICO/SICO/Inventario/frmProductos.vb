@@ -21,6 +21,7 @@ Public Class frmProductos
             txtprecioventa.Text = Producto.PrecioVenta
             If value.Id = 0 Then
                 txtprecioventa.Text = ""
+                CrtImagen1.limpiar()
             Else
                 CrtImagen1.Descargar(value.Id)
             End If

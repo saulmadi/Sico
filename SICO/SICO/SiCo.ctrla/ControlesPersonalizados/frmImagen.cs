@@ -42,7 +42,33 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             if (salvar.ShowDialog() == DialogResult.OK)
             {
-                this.Imagen.Save(salvar.FileName);
+                Microsoft.VisualBasic.Devices.Computer c= new Microsoft.VisualBasic.Devices.Computer ();
+                 
+                this.Imagen.Save(salvar.FileName, System.Drawing.Imaging.ImageFormat.Jpeg);
+                
+                if(cajaTexto1.Text!= "")
+                {
+                    this.Imagen.Save(c.FileSystem.SpecialDirectories.Temp + "\\tmpimg.jpeg");
+                    Image i = Image.FromFile(c.FileSystem.SpecialDirectories.Temp + "\\tmpimg.jpeg");
+                    using (Graphics g = Graphics.FromImage(i))
+                    {
+                        Brush solidBrush = new SolidBrush(Color.Black);
+                        FontFamily family = new FontFamily("Verdana");                     
+                        Font font = new Font(family, (float)10.00);                        
+                        
+                        Brush  p = new SolidBrush(Color.White);                        
+                        PointF location = new PointF(8, 260);                        
+                        
+                        g.FillRectangle(p, 5, 260, 300, 25);
+                        g.DrawString(cajaTexto1.Text, font, solidBrush, location);
+                        Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(salvar.FileName);
+                        i.Save(salvar.FileName,System.Drawing.Imaging.ImageFormat.Jpeg );
+                        i.Dispose();
+                    }
+                    Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(c.FileSystem.SpecialDirectories.Temp + "\\tmpimg.jpeg");
+
+               }
+             
             }
         }
     }

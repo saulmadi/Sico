@@ -15,8 +15,8 @@ namespace SiCo.dtla
             [NonSerialized]private Serializador  _Serializador = new Serializador();
             [NonSerialized]private MySqlConnection _Conexion = new MySqlConnection();
             [NonSerialized]private ConexionMySql _Instancia;
-            [NonSerialized]
-            private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
+            [NonSerialized]private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
+            [NonSerialized]private MySqlTransaction _Transaccion;  
         #endregion                 
 
         #region Construtor
@@ -245,6 +245,59 @@ namespace SiCo.dtla
             CerrarConexion();
             return flag;
              
+        }
+
+        public bool InciarTransaccion()
+        {            
+            try 
+            {
+                this.AbrirConexion ();
+                _Transaccion= _Conexion.BeginTransaction(); 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message); 
+            }
+            
+        }
+
+        public bool ComitTransaccion()
+        {
+            try
+            {
+                if(_Transaccion!= null)
+                {
+                    _Transaccion.Commit();
+                    this.CerrarConexion();
+                    return true;
+                }
+
+                throw new ApplicationException("No inicio un trasacción."); 
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException(e.Message);
+            }
+        }
+
+        public bool RollBackTransaccion()
+        {
+            try
+            {
+                if (_Transaccion != null)
+                {
+                    _Transaccion.Rollback();
+                    this.CerrarConexion();
+                    return true;
+                }
+
+                throw new ApplicationException("No inicio un trasacción."); 
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException(ex.Message); 
+            }
         }
 
         #endregion        

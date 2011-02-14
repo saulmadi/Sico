@@ -24,7 +24,6 @@ Public Class Imagenes
 #End Region
 
 #Region "Propiedades"
-
     Public ReadOnly Property Imagen() As System.Drawing.Image
         Get
             If ImagenBinaria Is Nothing Then Return Nothing
@@ -58,7 +57,7 @@ Public Class Imagenes
             Return _Id
         End Get
         Set(ByVal value As Long)
-            _Id = Value
+            _Id = value
         End Set
     End Property
 #End Region
