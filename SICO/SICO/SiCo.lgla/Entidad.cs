@@ -349,11 +349,13 @@ namespace SiCo.lgla
             try
             {
                 _Tabla = new DataTable(); 
-                _Comando.Connection=_Conexion.Conexion;
+                
                 MySqlDataAdapter _Adapter = new MySqlDataAdapter(_Comando);        
                  
-                _Conexion.AbrirConexion();               
-                _Adapter.Fill(Tabla);
+                _Conexion.AbrirConexion();
+                _Comando.Connection = _Conexion.Conexion.Clone();
+                _Adapter.Fill(Tabla);      
+                
                 _Conexion.CerrarConexion();
                 if (this.TotalRegistros > 0)
                 {
@@ -528,6 +530,7 @@ namespace SiCo.lgla
                     return; 
                 } 
             }
+            
             throw new ApplicationException("El parámetro no se encuentra en la colección");
         }
 

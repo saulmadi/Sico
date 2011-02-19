@@ -26,38 +26,39 @@ Partial Class frmProductos
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProductos))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.CrtImagen1 = New SICO.ctrla.ControlesPersonalizados.crtImagen
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.txtcantidainventario = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.txtpreciocompra = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtprecioventa = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtdescripcion = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label2 = New System.Windows.Forms.Label
-        Me.txtcodigo = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.Grid1 = New SICO.ctrla.Grid(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel1 = New System.Windows.Forms.Panel
-        Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel4 = New System.Windows.Forms.Panel
         Me.Panel5 = New System.Windows.Forms.Panel
+        Me.btnModificar = New System.Windows.Forms.Button
+        Me.Grid1 = New SICO.ctrla.Grid(Me.components)
+        Me.CrtImagen1 = New SICO.ctrla.ControlesPersonalizados.crtImagen
+        Me.txtcantidainventario = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtpreciocompra = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtprecioventa = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtdescripcion = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtcodigo = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CrtListadoMantenimiento1 = New SICO.ctrla2.crtListadoMantenimiento
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.Grid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        CType(Me.Grid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -71,17 +72,9 @@ Partial Class frmProductos
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Imagen"
         '
-        'CrtImagen1
-        '
-        Me.CrtImagen1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtImagen1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtImagen1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtImagen1.Name = "CrtImagen1"
-        Me.CrtImagen1.Size = New System.Drawing.Size(192, 182)
-        Me.CrtImagen1.TabIndex = 0
-        '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.btnModificar)
         Me.GroupBox2.Controls.Add(Me.txtcantidainventario)
         Me.GroupBox2.Controls.Add(Me.Label5)
         Me.GroupBox2.Controls.Add(Me.Label4)
@@ -95,27 +88,10 @@ Partial Class frmProductos
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(207, 3)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(457, 152)
+        Me.GroupBox2.Size = New System.Drawing.Size(497, 152)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Producto"
-        '
-        'txtcantidainventario
-        '
-        Me.txtcantidainventario.ColorError = System.Drawing.Color.Red
-        Me.txtcantidainventario.Enabled = False
-        Me.txtcantidainventario.EnterPorTab = True
-        Me.txtcantidainventario.EsObligatorio = False
-        Me.txtcantidainventario.ExpresionValidacion = Nothing
-        Me.txtcantidainventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcantidainventario.Location = New System.Drawing.Point(125, 120)
-        Me.txtcantidainventario.MensajeError = Nothing
-        Me.txtcantidainventario.Name = "txtcantidainventario"
-        Me.txtcantidainventario.Size = New System.Drawing.Size(319, 20)
-        Me.txtcantidainventario.TabIndex = 4
-        Me.txtcantidainventario.Texto = Nothing
-        Me.txtcantidainventario.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtcantidainventario.ValorInt = Nothing
         '
         'Label5
         '
@@ -147,59 +123,6 @@ Partial Class frmProductos
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Precio de venta"
         '
-        'txtpreciocompra
-        '
-        Me.txtpreciocompra.ColorError = System.Drawing.Color.Red
-        Me.txtpreciocompra.Enabled = False
-        Me.txtpreciocompra.EnterPorTab = True
-        Me.txtpreciocompra.EsObligatorio = False
-        Me.txtpreciocompra.ExpresionValidacion = Nothing
-        Me.txtpreciocompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpreciocompra.Location = New System.Drawing.Point(125, 94)
-        Me.txtpreciocompra.MensajeError = Nothing
-        Me.txtpreciocompra.Name = "txtpreciocompra"
-        Me.txtpreciocompra.Size = New System.Drawing.Size(319, 20)
-        Me.txtpreciocompra.TabIndex = 3
-        Me.txtpreciocompra.Texto = Nothing
-        Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtpreciocompra.ValorInt = Nothing
-        '
-        'txtprecioventa
-        '
-        Me.txtprecioventa.BackColor = System.Drawing.SystemColors.Window
-        Me.txtprecioventa.ColorError = System.Drawing.Color.Red
-        Me.txtprecioventa.EnterPorTab = True
-        Me.txtprecioventa.EsObligatorio = True
-        Me.txtprecioventa.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtprecioventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtprecioventa.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtprecioventa.Location = New System.Drawing.Point(125, 68)
-        Me.txtprecioventa.MaxLength = 12
-        Me.txtprecioventa.MensajeError = "El precio de venta no puede ser vacío no tiene el formato correcto"
-        Me.txtprecioventa.Name = "txtprecioventa"
-        Me.txtprecioventa.Size = New System.Drawing.Size(319, 20)
-        Me.txtprecioventa.TabIndex = 2
-        Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtprecioventa.Texto = Nothing
-        Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtprecioventa.ValorInt = Nothing
-        '
-        'txtdescripcion
-        '
-        Me.txtdescripcion.ColorError = System.Drawing.Color.Red
-        Me.txtdescripcion.EnterPorTab = True
-        Me.txtdescripcion.EsObligatorio = True
-        Me.txtdescripcion.ExpresionValidacion = Nothing
-        Me.txtdescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtdescripcion.Location = New System.Drawing.Point(125, 42)
-        Me.txtdescripcion.MensajeError = "La descripción no puede ser vacía"
-        Me.txtdescripcion.Name = "txtdescripcion"
-        Me.txtdescripcion.Size = New System.Drawing.Size(319, 20)
-        Me.txtdescripcion.TabIndex = 1
-        Me.txtdescripcion.Texto = Nothing
-        Me.txtdescripcion.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtdescripcion.ValorInt = Nothing
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
@@ -209,22 +132,6 @@ Partial Class frmProductos
         Me.Label2.Size = New System.Drawing.Size(63, 13)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Descripción"
-        '
-        'txtcodigo
-        '
-        Me.txtcodigo.ColorError = System.Drawing.Color.Red
-        Me.txtcodigo.EnterPorTab = True
-        Me.txtcodigo.EsObligatorio = True
-        Me.txtcodigo.ExpresionValidacion = Nothing
-        Me.txtcodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtcodigo.Location = New System.Drawing.Point(125, 16)
-        Me.txtcodigo.MensajeError = "El código no puede ser vacío"
-        Me.txtcodigo.Name = "txtcodigo"
-        Me.txtcodigo.Size = New System.Drawing.Size(319, 20)
-        Me.txtcodigo.TabIndex = 0
-        Me.txtcodigo.Texto = Nothing
-        Me.txtcodigo.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtcodigo.ValorInt = Nothing
         '
         'Label1
         '
@@ -243,10 +150,77 @@ Partial Class frmProductos
         Me.GroupBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(0, 0)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(670, 169)
+        Me.GroupBox3.Size = New System.Drawing.Size(742, 169)
         Me.GroupBox3.TabIndex = 0
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Proveedores"
+        '
+        'GroupBox4
+        '
+        Me.GroupBox4.Controls.Add(Me.CrtListadoMantenimiento1)
+        Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox4.Location = New System.Drawing.Point(0, 0)
+        Me.GroupBox4.Name = "GroupBox4"
+        Me.GroupBox4.Size = New System.Drawing.Size(235, 383)
+        Me.GroupBox4.TabIndex = 0
+        Me.GroupBox4.TabStop = False
+        Me.GroupBox4.Text = "Busqueda"
+        '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.GroupBox4)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Location = New System.Drawing.Point(0, 81)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(235, 383)
+        Me.Panel1.TabIndex = 0
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.GroupBox1)
+        Me.Panel2.Controls.Add(Me.GroupBox2)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(742, 214)
+        Me.Panel2.TabIndex = 0
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.GroupBox3)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 214)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(742, 169)
+        Me.Panel3.TabIndex = 1
+        '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.Location = New System.Drawing.Point(977, 81)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(19, 383)
+        Me.Panel4.TabIndex = 3
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Panel3)
+        Me.Panel5.Controls.Add(Me.Panel2)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel5.Location = New System.Drawing.Point(235, 81)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(742, 383)
+        Me.Panel5.TabIndex = 1
+        '
+        'btnModificar
+        '
+        Me.btnModificar.Location = New System.Drawing.Point(450, 120)
+        Me.btnModificar.Name = "btnModificar"
+        Me.btnModificar.Size = New System.Drawing.Size(34, 20)
+        Me.btnModificar.TabIndex = 10
+        Me.btnModificar.Text = "..."
+        Me.btnModificar.UseVisualStyleBackColor = True
         '
         'Grid1
         '
@@ -267,20 +241,110 @@ Partial Class frmProductos
         Me.Grid1.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.Grid1.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Grid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.Grid1.Size = New System.Drawing.Size(664, 150)
+        Me.Grid1.Size = New System.Drawing.Size(736, 150)
         Me.Grid1.TabIndex = 0
         '
-        'GroupBox4
+        'CrtImagen1
         '
-        Me.GroupBox4.Controls.Add(Me.CrtListadoMantenimiento1)
-        Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(0, 0)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(235, 383)
-        Me.GroupBox4.TabIndex = 0
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Busqueda"
+        Me.CrtImagen1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtImagen1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtImagen1.Imagenes = Nothing
+        Me.CrtImagen1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtImagen1.Name = "CrtImagen1"
+        Me.CrtImagen1.Size = New System.Drawing.Size(192, 182)
+        Me.CrtImagen1.TabIndex = 0
+        '
+        'txtcantidainventario
+        '
+        Me.txtcantidainventario.ColorError = System.Drawing.Color.Red
+        Me.txtcantidainventario.Enabled = False
+        Me.txtcantidainventario.EnterPorTab = True
+        Me.txtcantidainventario.EsObligatorio = False
+        Me.txtcantidainventario.ExpresionValidacion = Nothing
+        Me.txtcantidainventario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcantidainventario.Location = New System.Drawing.Point(125, 120)
+        Me.txtcantidainventario.MaxLength = 8
+        Me.txtcantidainventario.MensajeError = Nothing
+        Me.txtcantidainventario.Name = "txtcantidainventario"
+        Me.txtcantidainventario.Size = New System.Drawing.Size(319, 20)
+        Me.txtcantidainventario.TabIndex = 4
+        Me.txtcantidainventario.Texto = Nothing
+        Me.txtcantidainventario.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtcantidainventario.ValorInt = Nothing
+        Me.txtcantidainventario.ValorLong = Nothing
+        '
+        'txtpreciocompra
+        '
+        Me.txtpreciocompra.ColorError = System.Drawing.Color.Red
+        Me.txtpreciocompra.Enabled = False
+        Me.txtpreciocompra.EnterPorTab = True
+        Me.txtpreciocompra.EsObligatorio = False
+        Me.txtpreciocompra.ExpresionValidacion = Nothing
+        Me.txtpreciocompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpreciocompra.Location = New System.Drawing.Point(125, 94)
+        Me.txtpreciocompra.MensajeError = Nothing
+        Me.txtpreciocompra.Name = "txtpreciocompra"
+        Me.txtpreciocompra.Size = New System.Drawing.Size(319, 20)
+        Me.txtpreciocompra.TabIndex = 3
+        Me.txtpreciocompra.Texto = Nothing
+        Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtpreciocompra.ValorInt = Nothing
+        Me.txtpreciocompra.ValorLong = Nothing
+        '
+        'txtprecioventa
+        '
+        Me.txtprecioventa.BackColor = System.Drawing.SystemColors.Window
+        Me.txtprecioventa.ColorError = System.Drawing.Color.Red
+        Me.txtprecioventa.EnterPorTab = True
+        Me.txtprecioventa.EsObligatorio = True
+        Me.txtprecioventa.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtprecioventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtprecioventa.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtprecioventa.Location = New System.Drawing.Point(125, 68)
+        Me.txtprecioventa.MaxLength = 12
+        Me.txtprecioventa.MensajeError = "El precio de venta no puede ser vacío no tiene el formato correcto"
+        Me.txtprecioventa.Name = "txtprecioventa"
+        Me.txtprecioventa.Size = New System.Drawing.Size(319, 20)
+        Me.txtprecioventa.TabIndex = 2
+        Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtprecioventa.Texto = Nothing
+        Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtprecioventa.ValorInt = Nothing
+        Me.txtprecioventa.ValorLong = Nothing
+        '
+        'txtdescripcion
+        '
+        Me.txtdescripcion.ColorError = System.Drawing.Color.Red
+        Me.txtdescripcion.EnterPorTab = True
+        Me.txtdescripcion.EsObligatorio = True
+        Me.txtdescripcion.ExpresionValidacion = Nothing
+        Me.txtdescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtdescripcion.Location = New System.Drawing.Point(125, 42)
+        Me.txtdescripcion.MensajeError = "La descripción no puede ser vacía"
+        Me.txtdescripcion.Name = "txtdescripcion"
+        Me.txtdescripcion.Size = New System.Drawing.Size(319, 20)
+        Me.txtdescripcion.TabIndex = 1
+        Me.txtdescripcion.Texto = Nothing
+        Me.txtdescripcion.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtdescripcion.ValorInt = Nothing
+        Me.txtdescripcion.ValorLong = Nothing
+        '
+        'txtcodigo
+        '
+        Me.txtcodigo.ColorError = System.Drawing.Color.Red
+        Me.txtcodigo.EnterPorTab = True
+        Me.txtcodigo.EsObligatorio = True
+        Me.txtcodigo.ExpresionValidacion = Nothing
+        Me.txtcodigo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcodigo.Location = New System.Drawing.Point(125, 16)
+        Me.txtcodigo.MensajeError = "El código no puede ser vacío"
+        Me.txtcodigo.Name = "txtcodigo"
+        Me.txtcodigo.Size = New System.Drawing.Size(319, 20)
+        Me.txtcodigo.TabIndex = 0
+        Me.txtcodigo.Texto = Nothing
+        Me.txtcodigo.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtcodigo.ValorInt = Nothing
+        Me.txtcodigo.ValorLong = Nothing
         '
         'CrtListadoMantenimiento1
         '
@@ -303,72 +367,26 @@ Partial Class frmProductos
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 464)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(924, 59)
+        Me.PanelAccion1.Size = New System.Drawing.Size(996, 59)
         Me.PanelAccion1.TabIndex = 2
         Me.PanelAccion1.Titulo = "Productos"
         Me.PanelAccion1.VisiblePanelPrincipal = False
-        '
-        'Panel1
-        '
-        Me.Panel1.Controls.Add(Me.GroupBox4)
-        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
-        Me.Panel1.Location = New System.Drawing.Point(0, 81)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(235, 383)
-        Me.Panel1.TabIndex = 0
         '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
         Me.CrtPanelBase1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBase1.Name = "CrtPanelBase1"
-        Me.CrtPanelBase1.Size = New System.Drawing.Size(924, 81)
+        Me.CrtPanelBase1.Size = New System.Drawing.Size(996, 81)
         Me.CrtPanelBase1.TabIndex = 4
         Me.CrtPanelBase1.Titulo = "Productos"
         Me.CrtPanelBase1.VisiblePanelPrincipal = True
-        '
-        'Panel2
-        '
-        Me.Panel2.Controls.Add(Me.GroupBox1)
-        Me.Panel2.Controls.Add(Me.GroupBox2)
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(0, 0)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(670, 214)
-        Me.Panel2.TabIndex = 0
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.GroupBox3)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel3.Location = New System.Drawing.Point(0, 214)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(670, 169)
-        Me.Panel3.TabIndex = 1
-        '
-        'Panel4
-        '
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(905, 81)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(19, 383)
-        Me.Panel4.TabIndex = 3
-        '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.Panel3)
-        Me.Panel5.Controls.Add(Me.Panel2)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel5.Location = New System.Drawing.Point(235, 81)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(670, 383)
-        Me.Panel5.TabIndex = 1
         '
         'frmProductos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(924, 523)
+        Me.ClientSize = New System.Drawing.Size(996, 523)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
@@ -384,12 +402,12 @@ Partial Class frmProductos
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.Grid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
+        CType(Me.Grid1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -417,4 +435,5 @@ Partial Class frmProductos
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents btnModificar As System.Windows.Forms.Button
 End Class

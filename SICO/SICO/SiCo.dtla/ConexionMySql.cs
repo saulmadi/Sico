@@ -13,7 +13,7 @@ namespace SiCo.dtla
     { 
         #region Declaraciones
             [NonSerialized]private Serializador  _Serializador = new Serializador();
-            [NonSerialized]private MySqlConnection _Conexion = new MySqlConnection();
+            [NonSerialized]private static  MySqlConnection _Conexion = new MySqlConnection();            
             [NonSerialized]private ConexionMySql _Instancia;
             [NonSerialized]private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
             [NonSerialized]private MySqlTransaction _Transaccion;  
@@ -26,7 +26,8 @@ namespace SiCo.dtla
             /// </summary>
             /// <param name="Cargar">Indica se van a cargar los datos del archivo de configuración</param>
          public ConexionMySql(bool Cargar)
-        {           
+        {
+            
             _Instancia = this; 
             if (Cargar)
                 this.Cargar();
@@ -36,6 +37,7 @@ namespace SiCo.dtla
 
          public ConexionMySql()
          {
+             
              _Instancia = this;
  
          }
@@ -175,7 +177,7 @@ namespace SiCo.dtla
             {
                 if (this.Conexion.State == System.Data.ConnectionState.Open)
                 {                    
-                    this.Conexion.Close();
+                    this.Conexion.Close ();
                 }
                 if (this.Conexion.State == System.Data.ConnectionState.Closed )
                 {

@@ -5,9 +5,19 @@ Public Class frmProductos
 
 #Region "Declaraciones"
     Private _Producto As New Productos
+    Private _Inventario As New Inventario
 #End Region
 
 #Region "Propiedades"
+
+    Public Property Inventario() As Inventario
+        Get
+            Return _Inventario
+        End Get
+        Set(ByVal value As Inventario)
+            _Inventario = value
+        End Set
+    End Property
 
     Public Property Producto() As Productos
         Get
@@ -15,15 +25,28 @@ Public Class frmProductos
         End Get
 
         Set(ByVal value As Productos)
+            txtcantidainventario.Clear()
+            txtcantidainventario.Enabled = False
+            Me.Inventario = New Inventario
             _Producto = value
             txtcodigo.Text = Producto.Codigo
             txtdescripcion.Text = Producto.Descripcion
             txtprecioventa.Text = Producto.PrecioVenta
             If value.Id = 0 Then
                 txtprecioventa.Text = ""
-                CrtImagen1.limpiar()
+               
             Else
                 CrtImagen1.Descargar(value.Id)
+                CrtImagen1.limpiar()
+                Try
+                    Me.PanelAccion1.Sucursal.Cargar()
+                    Me.Inventario.Buscar(Me.PanelAccion1.Sucursal.Id, value.Id)
+                    If Me.Inventario.TotalRegistros = 1 Then
+                        txtcantidainventario.Text = Me.Inventario.cantidad
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error en la configuración. Debe de configurar la sucursal en la que se encuentra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End Try
             End If
         End Set
     End Property
@@ -75,7 +98,27 @@ Public Class frmProductos
                     Me.Producto.PrecioVenta = txtprecioventa.Texto
                     Me.Producto.Guardar()
                     Me.CrtImagen1.Guardar(Me.Producto.Id)
+                    If txtcantidainventario.Enabled Then
+                        Try
+                            Me.PanelAccion1.Sucursal.Cargar()
+                            Me.Inventario.Buscar(Me.PanelAccion1.Sucursal.Id, Me.Producto.Id)
 
+                            If Me.Inventario.TotalRegistros = 0 Then
+                                Me.Inventario = New Inventario
+                            End If
+
+                            Me.Inventario.idproducto = Producto.Id
+                            Me.Inventario.idSucursal = Me.PanelAccion1.Sucursal.Id
+                            Me.Inventario.cantidad = Val(Me.txtcantidainventario.Text)
+                            Me.Inventario.Guardar()
+
+
+                        Catch ex As Exception
+                            MessageBox.Show("Error en la configuración. Debe de configurar la sucursal en la que se encuentra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End Try
+
+                    End If
+                    
                     Me.PanelAccion1.lblEstado.Text = "Producto guardado correctamente"
                     Me.PanelAccion1.BarraProgreso.Value = 100
 
@@ -94,6 +137,13 @@ Public Class frmProductos
         Me.Producto = New Productos
     End Sub
 
+    Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
+        If MessageBox.Show("¿Desea cambiar la cántidad en inventario para la sucursal, esta cántidad aumenta automaticamente con las compras.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+            txtcantidainventario.Enabled = True
+        End If
+    End Sub
+
 #End Region
 
+   
 End Class
