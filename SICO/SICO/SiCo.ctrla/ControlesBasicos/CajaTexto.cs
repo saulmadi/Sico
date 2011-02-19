@@ -187,6 +187,42 @@ namespace SiCo.ctrla
             }
         }
 
+        public long?  ValorLong
+        {
+            get
+            {
+                try
+                {
+                    long  d = 0;
+                    if (Int64.TryParse(base.Text, out d))
+                    {
+                        return d;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                catch
+                {
+                    return null;
+
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    this.Text = string.Empty;
+                }
+                else
+                {
+                    this.Text = value.ToString();
+                }
+            }
+        }
+
+
         public 
 
         #endregion        
