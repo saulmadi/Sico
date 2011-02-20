@@ -25,12 +25,6 @@ Partial Class frmVentas
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
-        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.inventario = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.PrecioVenta = New System.Windows.Forms.DataGridViewTextBoxColumn
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label2 = New System.Windows.Forms.Label
@@ -50,14 +44,13 @@ Partial Class frmVentas
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -71,67 +64,28 @@ Partial Class frmVentas
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 419)
+        Me.Panel2.Location = New System.Drawing.Point(0, 282)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(802, 253)
+        Me.Panel2.Size = New System.Drawing.Size(802, 390)
         Me.Panel2.TabIndex = 12
         '
         'GroupBox5
         '
-        Me.GroupBox5.Controls.Add(Me.DataGridView1)
         Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(738, 253)
+        Me.GroupBox5.Size = New System.Drawing.Size(738, 390)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.descripcion, Me.cantidad, Me.inventario, Me.PrecioVenta})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(732, 141)
-        Me.DataGridView1.TabIndex = 0
-        '
-        'codigo
-        '
-        Me.codigo.HeaderText = "Código"
-        Me.codigo.Name = "codigo"
-        '
-        'descripcion
-        '
-        Me.descripcion.HeaderText = "Descripción"
-        Me.descripcion.Name = "descripcion"
-        '
-        'cantidad
-        '
-        Me.cantidad.HeaderText = "Cantidad"
-        Me.cantidad.Name = "cantidad"
-        '
-        'inventario
-        '
-        Me.inventario.HeaderText = "Existencia"
-        Me.inventario.Name = "inventario"
-        '
-        'PrecioVenta
-        '
-        Me.PrecioVenta.HeaderText = "Precio Venta"
-        Me.PrecioVenta.Name = "PrecioVenta"
         '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 157)
+        Me.Panel7.Location = New System.Drawing.Point(3, 294)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(732, 93)
         Me.Panel7.TabIndex = 9
@@ -248,7 +202,7 @@ Partial Class frmVentas
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel4.Location = New System.Drawing.Point(769, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(33, 253)
+        Me.Panel4.Size = New System.Drawing.Size(33, 390)
         Me.Panel4.TabIndex = 2
         '
         'Panel3
@@ -256,7 +210,7 @@ Partial Class frmVentas
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(31, 253)
+        Me.Panel3.Size = New System.Drawing.Size(31, 390)
         Me.Panel3.TabIndex = 1
         '
         'Panel1
@@ -267,7 +221,7 @@ Partial Class frmVentas
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 84)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(802, 335)
+        Me.Panel1.Size = New System.Drawing.Size(802, 198)
         Me.Panel1.TabIndex = 11
         '
         'GroupBox1
@@ -307,17 +261,28 @@ Partial Class frmVentas
         Me.GroupBox2.Controls.Add(Me.CrtClientes1)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 41)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(722, 284)
+        Me.GroupBox2.Size = New System.Drawing.Size(722, 157)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cliente"
+        '
+        'CrtClientes1
+        '
+        Me.CrtClientes1.CargarClientePorPersona = False
+        Me.CrtClientes1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtClientes1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtClientes1.Name = "CrtClientes1"
+        Me.CrtClientes1.Size = New System.Drawing.Size(716, 138)
+        Me.CrtClientes1.TabIndex = 0
+        Me.CrtClientes1.VisibleDatosSecundarios = False
         '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel5.Location = New System.Drawing.Point(769, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(33, 335)
+        Me.Panel5.Size = New System.Drawing.Size(33, 198)
         Me.Panel5.TabIndex = 3
         '
         'Panel6
@@ -325,17 +290,8 @@ Partial Class frmVentas
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(31, 335)
+        Me.Panel6.Size = New System.Drawing.Size(31, 198)
         Me.Panel6.TabIndex = 0
-        '
-        'CrtClientes1
-        '
-        Me.CrtClientes1.CargarClientePorPersona = False
-        Me.CrtClientes1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtClientes1.Location = New System.Drawing.Point(6, 19)
-        Me.CrtClientes1.Name = "CrtClientes1"
-        Me.CrtClientes1.Size = New System.Drawing.Size(710, 259)
-        Me.CrtClientes1.TabIndex = 0
         '
         'CrtPanelBase1
         '
@@ -374,7 +330,6 @@ Partial Class frmVentas
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
@@ -387,7 +342,6 @@ Partial Class frmVentas
     End Sub
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -409,12 +363,7 @@ Partial Class frmVentas
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents cantidad As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents inventario As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents PrecioVenta As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents CrtClientes1 As SICO.ctrla2.crtClientes
+    Friend WithEvents CrtClientes1 As SiCo.ctrla2.crtClientes
 End Class

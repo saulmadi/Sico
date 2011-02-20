@@ -10,10 +10,20 @@ Public Class crtClientes
    
     Private _CargarClientePorPersona As Boolean = False
     Private _premitebloquear As Boolean = True
+    Private _size As Size
 #End Region
 
 #Region "Constructor"
+    Public Sub New()
 
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Me.VisibleDatosSecundarios = True
+        Me.Size = New Size(Me.Size)
+
+    End Sub
 #End Region
 
 #Region "Propiedades"
@@ -72,6 +82,37 @@ Public Class crtClientes
         Get
             Return CrtPersonaJuridica1
         End Get
+    End Property
+
+    Public Property VisibleDatosSecundarios() As Boolean
+        Get
+            Return CrtPersonaNatural1.VisibleDatosSecundarios
+        End Get
+        Set(ByVal value As Boolean)
+            CrtPersonaNatural1.VisibleDatosSecundarios = value
+            CrtPersonaJuridica1.VisiblesDatosSecundarios = value
+            Me.Size = New Size(Me.Width, CrtPersonaNatural1.Size.Height + 20)
+            'If Not value Then
+            '    If Me.CrtPersonaJuridica1.Size.Height > System.Drawing.Size.Subtract(Me.Size, CrtPersonaNatural1.Size).Height Then
+            '        Me.Size = New Size(Me.Width, CrtPersonaNatural1.Size.Height + 20)
+            '        Me.TabControl1.Size = New Size(Me.TabControl1.Width, System.Drawing.Size.Subtract(Me.TabControl1.Size, CrtPersonaNatural1.Size).Height)
+            '    Else
+            '        Me.Size = New Size(Me.Width, Me.CrtPersonaNatural1.Size.Height + 20)
+            '        Me.TabControl1.Size = New Size(Me.Width, Me.CrtPersonaNatural1.Size.Height + 20)
+            '    End If
+
+            'Else
+            '    If Me.CrtPersonaJuridica1.Size.Height < System.Drawing.Size.Subtract(Me.Size, CrtPersonaNatural1.Size).Height Then
+            '        Me.Size = New Size(Me.Width, System.Drawing.Size.Add(Me.Size, CrtPersonaNatural1.Size).Height)
+            '        Me.TabControl1.Size = New Size(Me.TabControl1.Width, System.Drawing.Size.Add(Me.TabControl1.Size, CrtPersonaNatural1.Size).Height)
+            '    Else
+            '        Me.Size = New Size(Me.Width, Me.CrtPersonaNatural1.Size.Height + 20)
+            '        Me.TabControl1.Size = New Size(Me.Width, Me.CrtPersonaNatural1.Size.Height + 20)
+            '    End If
+
+
+            'End If
+        End Set
     End Property
 #End Region
 
@@ -139,6 +180,7 @@ Public Class crtClientes
     Private Sub crtClientes_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
             _cliente = New Clientes
+            _size = Me.Size
         Catch ex As Exception
 
         End Try

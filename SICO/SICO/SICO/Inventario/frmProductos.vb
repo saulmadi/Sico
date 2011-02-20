@@ -138,7 +138,7 @@ Public Class frmProductos
     End Sub
 
     Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
-        If MessageBox.Show("¿Desea cambiar la cántidad en inventario para la sucursal, esta cántidad aumenta automaticamente con las compras.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+        If MessageBox.Show("¿Desea cambiar la cántidad en inventario para la sucursal?, esta cántidad aumenta automaticamente con las compras.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
             txtcantidainventario.Enabled = True
         End If
     End Sub

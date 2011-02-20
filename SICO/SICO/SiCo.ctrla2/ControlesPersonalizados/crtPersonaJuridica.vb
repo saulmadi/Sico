@@ -12,8 +12,21 @@ Public Class crtPersonaJuridica
     Private _SoloLectura As Boolean = False
     Private _RealizarBusquedaAutomatica As Boolean = True
     Private _HabilitarRTN As Boolean = True
+    Private _size As Size
 
     Public Event CambioPersona()
+#End Region
+
+#Region "Constructor"
+    Public Sub New()
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        _size = New Size(Me.Size)
+
+    End Sub
 #End Region
 
 #Region "Propiedades"
@@ -105,6 +118,27 @@ Public Class crtPersonaJuridica
         End Set
     End Property
 
+    Public Property VisiblesDatosSecundarios() As Boolean
+        Get
+            Return Panel3.Visible
+        End Get
+        Set(ByVal value As Boolean)
+            Panel3.Visible = value
+            If Not value Then
+                If Me.Size.Height > (Me.Panel1.Size.Height + Me.Panel2.Size.Height) Then
+                    Me.Size = New System.Drawing.Size(Me.Width, System.Drawing.Size.Subtract(Me.Size, Panel3.Size).Height)
+                Else
+                    Me.Size = New Size(_size)
+                End If
+            Else
+                If Me.Size.Height < (Me.Panel3.Size.Height + Me.Panel2.Size.Height + Me.Panel1.Size.Height) Then
+                    Me.Size = New Size(Me.Width, System.Drawing.Size.Add(Me.Size, Panel3.Size).Height)
+                Else
+                    Me.Size = New Size(_size)
+                End If
+            End If
+        End Set
+    End Property
 
 #End Region
 
@@ -326,6 +360,5 @@ Public Class crtPersonaJuridica
     End Enum
 #End Region
 
- 
- 
+
 End Class
