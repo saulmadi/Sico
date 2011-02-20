@@ -4,6 +4,7 @@ using System.Text;
 
 namespace SiCo.lgla
 {
+    [Serializable()]
     public class TipoIdentidad
     {
         public TipoIdentidad(string valor)

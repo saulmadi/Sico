@@ -13,15 +13,7 @@ Partial Class crtPersonaNatural
             MyBase.Dispose(disposing)
         End Try
     End Sub
-    <System.Diagnostics.DebuggerNonUserCode()> _
-    Public Sub New()
-
-        ' Llamada necesaria para el Diseñador de Windows Forms.
-        InitializeComponent()
-
-        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-
-    End Sub
+   
     'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
 
@@ -59,105 +51,111 @@ Partial Class crtPersonaNatural
         Me.btnNueva = New System.Windows.Forms.Button
         Me.btnModificar = New System.Windows.Forms.Button
         Me.cmbTipoIdentidad = New SiCo.ctrla2.ListaTipoIdentidad(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel
+        Me.Panel2 = New System.Windows.Forms.Panel
+        Me.Panel3 = New System.Windows.Forms.Panel
+        Me.Panel1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.SuspendLayout()
         '
         'label2
         '
         Me.label2.AutoSize = True
-        Me.label2.Location = New System.Drawing.Point(346, 62)
+        Me.label2.Location = New System.Drawing.Point(346, 57)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(70, 13)
-        Me.label2.TabIndex = 19
+        Me.label2.TabIndex = 8
         Me.label2.Text = "Identificación"
         '
         'label8
         '
         Me.label8.AutoSize = True
-        Me.label8.Location = New System.Drawing.Point(3, 88)
+        Me.label8.Location = New System.Drawing.Point(3, 5)
         Me.label8.Name = "label8"
         Me.label8.Size = New System.Drawing.Size(30, 13)
-        Me.label8.TabIndex = 14
+        Me.label8.TabIndex = 7
         Me.label8.Text = "RTN"
         '
         'label7
         '
         Me.label7.AutoSize = True
-        Me.label7.Location = New System.Drawing.Point(346, 89)
+        Me.label7.Location = New System.Drawing.Point(346, 6)
         Me.label7.Name = "label7"
         Me.label7.Size = New System.Drawing.Size(38, 13)
-        Me.label7.TabIndex = 20
+        Me.label7.TabIndex = 5
         Me.label7.Text = "Correo"
         '
         'label6
         '
         Me.label6.AutoSize = True
-        Me.label6.Location = New System.Drawing.Point(3, 141)
+        Me.label6.Location = New System.Drawing.Point(3, 58)
         Me.label6.Name = "label6"
         Me.label6.Size = New System.Drawing.Size(52, 13)
-        Me.label6.TabIndex = 16
+        Me.label6.TabIndex = 9
         Me.label6.Text = "Dirección"
         '
         'label5
         '
         Me.label5.AutoSize = True
-        Me.label5.Location = New System.Drawing.Point(3, 114)
+        Me.label5.Location = New System.Drawing.Point(3, 31)
         Me.label5.Name = "label5"
         Me.label5.Size = New System.Drawing.Size(49, 13)
-        Me.label5.TabIndex = 15
+        Me.label5.TabIndex = 8
         Me.label5.Text = "Teléfono"
         '
         'label4
         '
         Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(3, 36)
+        Me.label4.Location = New System.Drawing.Point(3, 31)
         Me.label4.Name = "label4"
         Me.label4.Size = New System.Drawing.Size(75, 13)
-        Me.label4.TabIndex = 12
+        Me.label4.TabIndex = 10
         Me.label4.Text = "Primer apellido"
         '
         'label3
         '
         Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(3, 10)
+        Me.label3.Location = New System.Drawing.Point(3, 5)
         Me.label3.Name = "label3"
         Me.label3.Size = New System.Drawing.Size(74, 13)
-        Me.label3.TabIndex = 11
+        Me.label3.TabIndex = 9
         Me.label3.Text = "Primer nombre"
         '
         'label1
         '
         Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(3, 62)
+        Me.label1.Location = New System.Drawing.Point(3, 57)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(93, 13)
-        Me.label1.TabIndex = 13
+        Me.label1.TabIndex = 11
         Me.label1.Text = "Tipo identificación"
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(346, 10)
+        Me.Label9.Location = New System.Drawing.Point(346, 5)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(88, 13)
-        Me.Label9.TabIndex = 17
+        Me.Label9.TabIndex = 6
         Me.Label9.Text = "Segundo nombre"
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(346, 36)
+        Me.Label10.Location = New System.Drawing.Point(346, 31)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(89, 13)
-        Me.Label10.TabIndex = 18
+        Me.Label10.TabIndex = 7
         Me.Label10.Text = "Segundo apellido"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(346, 115)
+        Me.Label11.Location = New System.Drawing.Point(346, 32)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(39, 13)
-        Me.Label11.TabIndex = 21
+        Me.Label11.TabIndex = 6
         Me.Label11.Text = "Celular"
         '
         'SubProceso
@@ -165,10 +163,10 @@ Partial Class crtPersonaNatural
         '
         'lblEstado
         '
-        Me.lblEstado.Location = New System.Drawing.Point(149, 188)
+        Me.lblEstado.Location = New System.Drawing.Point(149, 4)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(426, 23)
-        Me.lblEstado.TabIndex = 22
+        Me.lblEstado.TabIndex = 3
         Me.lblEstado.Text = "Label12"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
@@ -178,10 +176,10 @@ Partial Class crtPersonaNatural
         Me.btnbuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnbuscar.FlatAppearance.BorderSize = 0
         Me.btnbuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnbuscar.Location = New System.Drawing.Point(581, 186)
+        Me.btnbuscar.Location = New System.Drawing.Point(581, 2)
         Me.btnbuscar.Name = "btnbuscar"
         Me.btnbuscar.Size = New System.Drawing.Size(30, 27)
-        Me.btnbuscar.TabIndex = 23
+        Me.btnbuscar.TabIndex = 0
         Me.btnbuscar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnbuscar.UseVisualStyleBackColor = True
         '
@@ -193,7 +191,7 @@ Partial Class crtPersonaNatural
         Me.txtSegundoApellido.EsObligatorio = False
         Me.txtSegundoApellido.ExpresionValidacion = ""
         Me.txtSegundoApellido.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtSegundoApellido.Location = New System.Drawing.Point(445, 33)
+        Me.txtSegundoApellido.Location = New System.Drawing.Point(445, 28)
         Me.txtSegundoApellido.MaxLength = 30
         Me.txtSegundoApellido.MensajeError = Nothing
         Me.txtSegundoApellido.Name = "txtSegundoApellido"
@@ -202,6 +200,7 @@ Partial Class crtPersonaNatural
         Me.txtSegundoApellido.Texto = Nothing
         Me.txtSegundoApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         Me.txtSegundoApellido.ValorInt = Nothing
+        Me.txtSegundoApellido.ValorLong = Nothing
         '
         'txtSegundoNombre
         '
@@ -211,7 +210,7 @@ Partial Class crtPersonaNatural
         Me.txtSegundoNombre.EsObligatorio = False
         Me.txtSegundoNombre.ExpresionValidacion = ""
         Me.txtSegundoNombre.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtSegundoNombre.Location = New System.Drawing.Point(445, 7)
+        Me.txtSegundoNombre.Location = New System.Drawing.Point(445, 2)
         Me.txtSegundoNombre.MaxLength = 30
         Me.txtSegundoNombre.MensajeError = Nothing
         Me.txtSegundoNombre.Name = "txtSegundoNombre"
@@ -220,6 +219,7 @@ Partial Class crtPersonaNatural
         Me.txtSegundoNombre.Texto = Nothing
         Me.txtSegundoNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         Me.txtSegundoNombre.ValorInt = Nothing
+        Me.txtSegundoNombre.ValorLong = Nothing
         '
         'txtPrimerApellido
         '
@@ -229,7 +229,7 @@ Partial Class crtPersonaNatural
         Me.txtPrimerApellido.EsObligatorio = True
         Me.txtPrimerApellido.ExpresionValidacion = ""
         Me.txtPrimerApellido.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtPrimerApellido.Location = New System.Drawing.Point(102, 33)
+        Me.txtPrimerApellido.Location = New System.Drawing.Point(102, 28)
         Me.txtPrimerApellido.MaxLength = 30
         Me.txtPrimerApellido.MensajeError = "El primer apellido no puede ser vacío"
         Me.txtPrimerApellido.Name = "txtPrimerApellido"
@@ -238,6 +238,7 @@ Partial Class crtPersonaNatural
         Me.txtPrimerApellido.Texto = Nothing
         Me.txtPrimerApellido.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         Me.txtPrimerApellido.ValorInt = Nothing
+        Me.txtPrimerApellido.ValorLong = Nothing
         '
         'txtPrimerNombre
         '
@@ -247,7 +248,7 @@ Partial Class crtPersonaNatural
         Me.txtPrimerNombre.EsObligatorio = True
         Me.txtPrimerNombre.ExpresionValidacion = ""
         Me.txtPrimerNombre.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtPrimerNombre.Location = New System.Drawing.Point(102, 7)
+        Me.txtPrimerNombre.Location = New System.Drawing.Point(102, 2)
         Me.txtPrimerNombre.MaxLength = 30
         Me.txtPrimerNombre.MensajeError = "El primer nombre no puede ser vacío"
         Me.txtPrimerNombre.Name = "txtPrimerNombre"
@@ -256,6 +257,7 @@ Partial Class crtPersonaNatural
         Me.txtPrimerNombre.Texto = Nothing
         Me.txtPrimerNombre.TipoTexto = SiCo.ctrla.TiposTexto.Alfabetico
         Me.txtPrimerNombre.ValorInt = Nothing
+        Me.txtPrimerNombre.ValorLong = Nothing
         '
         'txtCelular
         '
@@ -265,16 +267,17 @@ Partial Class crtPersonaNatural
         Me.txtCelular.EsObligatorio = False
         Me.txtCelular.ExpresionValidacion = Nothing
         Me.txtCelular.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCelular.Location = New System.Drawing.Point(445, 112)
+        Me.txtCelular.Location = New System.Drawing.Point(445, 29)
         Me.txtCelular.MaxLength = 12
         Me.txtCelular.MensajeError = Nothing
         Me.txtCelular.Multiline = True
         Me.txtCelular.Name = "txtCelular"
         Me.txtCelular.Size = New System.Drawing.Size(238, 20)
-        Me.txtCelular.TabIndex = 9
+        Me.txtCelular.TabIndex = 3
         Me.txtCelular.Texto = Nothing
         Me.txtCelular.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txtCelular.ValorInt = Nothing
+        Me.txtCelular.ValorLong = Nothing
         '
         'txtrtn
         '
@@ -285,15 +288,16 @@ Partial Class crtPersonaNatural
         Me.txtrtn.EsObligatorio = False
         Me.txtrtn.ExpresionValidacion = ""
         Me.txtrtn.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtrtn.Location = New System.Drawing.Point(102, 85)
+        Me.txtrtn.Location = New System.Drawing.Point(102, 2)
         Me.txtrtn.MaxLength = 14
         Me.txtrtn.MensajeError = Nothing
         Me.txtrtn.Name = "txtrtn"
         Me.txtrtn.Size = New System.Drawing.Size(238, 20)
-        Me.txtrtn.TabIndex = 6
+        Me.txtrtn.TabIndex = 0
         Me.txtrtn.Texto = Nothing
         Me.txtrtn.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txtrtn.ValorInt = Nothing
+        Me.txtrtn.ValorLong = Nothing
         '
         'txtCorreo
         '
@@ -305,15 +309,16 @@ Partial Class crtPersonaNatural
             "-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-" & _
             "9][0-9]|[1-9][0-9]|[0-9])\])$"
         Me.txtCorreo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtCorreo.Location = New System.Drawing.Point(445, 86)
+        Me.txtCorreo.Location = New System.Drawing.Point(445, 3)
         Me.txtCorreo.MaxLength = 255
         Me.txtCorreo.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com"
         Me.txtCorreo.Name = "txtCorreo"
         Me.txtCorreo.Size = New System.Drawing.Size(238, 20)
-        Me.txtCorreo.TabIndex = 7
+        Me.txtCorreo.TabIndex = 1
         Me.txtCorreo.Texto = Nothing
         Me.txtCorreo.TipoTexto = SiCo.ctrla.TiposTexto.Alfanumerico
         Me.txtCorreo.ValorInt = Nothing
+        Me.txtCorreo.ValorLong = Nothing
         '
         'txtdireccion
         '
@@ -323,17 +328,18 @@ Partial Class crtPersonaNatural
         Me.txtdireccion.EsObligatorio = False
         Me.txtdireccion.ExpresionValidacion = Nothing
         Me.txtdireccion.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtdireccion.Location = New System.Drawing.Point(102, 138)
+        Me.txtdireccion.Location = New System.Drawing.Point(102, 55)
         Me.txtdireccion.MaxLength = 150
         Me.txtdireccion.MensajeError = Nothing
         Me.txtdireccion.Multiline = True
         Me.txtdireccion.Name = "txtdireccion"
         Me.txtdireccion.ReadOnly = True
         Me.txtdireccion.Size = New System.Drawing.Size(581, 41)
-        Me.txtdireccion.TabIndex = 10
+        Me.txtdireccion.TabIndex = 4
         Me.txtdireccion.Texto = Nothing
         Me.txtdireccion.TipoTexto = SiCo.ctrla.TiposTexto.Parrafo
         Me.txtdireccion.ValorInt = Nothing
+        Me.txtdireccion.ValorLong = Nothing
         '
         'txttelefono
         '
@@ -343,16 +349,17 @@ Partial Class crtPersonaNatural
         Me.txttelefono.EsObligatorio = False
         Me.txttelefono.ExpresionValidacion = Nothing
         Me.txttelefono.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txttelefono.Location = New System.Drawing.Point(102, 111)
+        Me.txttelefono.Location = New System.Drawing.Point(102, 28)
         Me.txttelefono.MaxLength = 12
         Me.txttelefono.MensajeError = Nothing
         Me.txttelefono.Multiline = True
         Me.txttelefono.Name = "txttelefono"
         Me.txttelefono.Size = New System.Drawing.Size(238, 20)
-        Me.txttelefono.TabIndex = 8
+        Me.txttelefono.TabIndex = 2
         Me.txttelefono.Texto = Nothing
         Me.txttelefono.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txttelefono.ValorInt = Nothing
+        Me.txttelefono.ValorLong = Nothing
         '
         'txtidentifiacion
         '
@@ -362,7 +369,7 @@ Partial Class crtPersonaNatural
         Me.txtidentifiacion.EsObligatorio = True
         Me.txtidentifiacion.ExpresionValidacion = "[0-1][0-8][0-9][0-9]-[1-2][0-9][0-9][0-9]-[0-9][0-9][0-9][0-9][0-9]"
         Me.txtidentifiacion.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtidentifiacion.Location = New System.Drawing.Point(445, 59)
+        Me.txtidentifiacion.Location = New System.Drawing.Point(445, 54)
         Me.txtidentifiacion.MaxLength = 13
         Me.txtidentifiacion.MensajeError = "El número de identida debe tener este formato: 0301-1933-00232 o no puede ser vac" & _
             "ía"
@@ -372,6 +379,7 @@ Partial Class crtPersonaNatural
         Me.txtidentifiacion.Texto = Nothing
         Me.txtidentifiacion.TipoTexto = SiCo.ctrla.TiposTexto.Entero
         Me.txtidentifiacion.ValorInt = Nothing
+        Me.txtidentifiacion.ValorLong = Nothing
         '
         'btnNueva
         '
@@ -379,10 +387,10 @@ Partial Class crtPersonaNatural
         Me.btnNueva.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnNueva.FlatAppearance.BorderSize = 0
         Me.btnNueva.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnNueva.Location = New System.Drawing.Point(617, 186)
+        Me.btnNueva.Location = New System.Drawing.Point(617, 2)
         Me.btnNueva.Name = "btnNueva"
         Me.btnNueva.Size = New System.Drawing.Size(30, 27)
-        Me.btnNueva.TabIndex = 24
+        Me.btnNueva.TabIndex = 1
         Me.btnNueva.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnNueva.UseVisualStyleBackColor = True
         '
@@ -392,10 +400,10 @@ Partial Class crtPersonaNatural
         Me.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnModificar.FlatAppearance.BorderSize = 0
         Me.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnModificar.Location = New System.Drawing.Point(653, 186)
+        Me.btnModificar.Location = New System.Drawing.Point(653, 2)
         Me.btnModificar.Name = "btnModificar"
         Me.btnModificar.Size = New System.Drawing.Size(30, 27)
-        Me.btnModificar.TabIndex = 25
+        Me.btnModificar.TabIndex = 2
         Me.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnModificar.UseVisualStyleBackColor = True
         '
@@ -404,46 +412,77 @@ Partial Class crtPersonaNatural
         Me.cmbTipoIdentidad.DisplayMember = "Descripcion"
         Me.cmbTipoIdentidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbTipoIdentidad.FormattingEnabled = True
-        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 58)
+        Me.cmbTipoIdentidad.Location = New System.Drawing.Point(102, 53)
         Me.cmbTipoIdentidad.Name = "cmbTipoIdentidad"
         Me.cmbTipoIdentidad.Size = New System.Drawing.Size(238, 21)
         Me.cmbTipoIdentidad.TabIndex = 4
         Me.cmbTipoIdentidad.ValueMember = "Valor"
         '
+        'Panel1
+        '
+        Me.Panel1.Controls.Add(Me.lblEstado)
+        Me.Panel1.Controls.Add(Me.btnModificar)
+        Me.Panel1.Controls.Add(Me.btnbuscar)
+        Me.Panel1.Controls.Add(Me.btnNueva)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel1.Location = New System.Drawing.Point(0, 180)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(692, 33)
+        Me.Panel1.TabIndex = 2
+        '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.label3)
+        Me.Panel2.Controls.Add(Me.label1)
+        Me.Panel2.Controls.Add(Me.cmbTipoIdentidad)
+        Me.Panel2.Controls.Add(Me.label4)
+        Me.Panel2.Controls.Add(Me.txtSegundoApellido)
+        Me.Panel2.Controls.Add(Me.label2)
+        Me.Panel2.Controls.Add(Me.txtSegundoNombre)
+        Me.Panel2.Controls.Add(Me.txtidentifiacion)
+        Me.Panel2.Controls.Add(Me.txtPrimerApellido)
+        Me.Panel2.Controls.Add(Me.Label9)
+        Me.Panel2.Controls.Add(Me.txtPrimerNombre)
+        Me.Panel2.Controls.Add(Me.Label10)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(692, 79)
+        Me.Panel2.TabIndex = 0
+        '
+        'Panel3
+        '
+        Me.Panel3.Controls.Add(Me.label8)
+        Me.Panel3.Controls.Add(Me.label5)
+        Me.Panel3.Controls.Add(Me.label6)
+        Me.Panel3.Controls.Add(Me.txtCelular)
+        Me.Panel3.Controls.Add(Me.label7)
+        Me.Panel3.Controls.Add(Me.Label11)
+        Me.Panel3.Controls.Add(Me.txttelefono)
+        Me.Panel3.Controls.Add(Me.txtrtn)
+        Me.Panel3.Controls.Add(Me.txtdireccion)
+        Me.Panel3.Controls.Add(Me.txtCorreo)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel3.Location = New System.Drawing.Point(0, 79)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(692, 101)
+        Me.Panel3.TabIndex = 1
+        '
         'crtPersonaNatural
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.btnModificar)
-        Me.Controls.Add(Me.btnNueva)
-        Me.Controls.Add(Me.btnbuscar)
-        Me.Controls.Add(Me.lblEstado)
-        Me.Controls.Add(Me.cmbTipoIdentidad)
-        Me.Controls.Add(Me.txtSegundoApellido)
-        Me.Controls.Add(Me.txtSegundoNombre)
-        Me.Controls.Add(Me.txtPrimerApellido)
-        Me.Controls.Add(Me.txtPrimerNombre)
-        Me.Controls.Add(Me.txtCelular)
-        Me.Controls.Add(Me.Label11)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.txtrtn)
-        Me.Controls.Add(Me.txtCorreo)
-        Me.Controls.Add(Me.txtdireccion)
-        Me.Controls.Add(Me.txttelefono)
-        Me.Controls.Add(Me.txtidentifiacion)
-        Me.Controls.Add(Me.label2)
-        Me.Controls.Add(Me.label8)
-        Me.Controls.Add(Me.label7)
-        Me.Controls.Add(Me.label6)
-        Me.Controls.Add(Me.label5)
-        Me.Controls.Add(Me.label4)
-        Me.Controls.Add(Me.label3)
-        Me.Controls.Add(Me.label1)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel2)
+        Me.Controls.Add(Me.Panel1)
         Me.Name = "crtPersonaNatural"
         Me.Size = New System.Drawing.Size(692, 213)
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
+        Me.Panel3.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -476,5 +515,8 @@ Partial Class crtPersonaNatural
     Friend WithEvents btnbuscar As System.Windows.Forms.Button
     Friend WithEvents btnNueva As System.Windows.Forms.Button
     Friend WithEvents btnModificar As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Panel2 As System.Windows.Forms.Panel
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
 
 End Class

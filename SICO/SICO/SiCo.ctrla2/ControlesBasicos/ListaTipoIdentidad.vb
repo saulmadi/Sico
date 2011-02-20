@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports System.Diagnostics
+<Serializable()> _
 Public Class ListaTipoIdentidad
 
 #Region "Declaraciones"
@@ -31,15 +32,10 @@ Public Class ListaTipoIdentidad
         End Try
 
     End Sub
-    <Browsable(False), EditorBrowsable(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
-    Public Shadows ReadOnly Property Items()
-        Get
-            Return MyBase.Items
-        End Get
-    End Property
 #End Region
 
 #Region "ClaseListaTipoIdentidad"
+    <Serializable()> _
     Public Class ListaTipoIdentidad
         Inherits SiCo.lgla.TipoIdentidad
         Public Sub New(ByVal valor As String)
@@ -49,5 +45,14 @@ Public Class ListaTipoIdentidad
     End Class
 #End Region
 
+    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    Public Shadows Property Datasource() As Object
+        Get
+            Return MyBase.DataSource
+        End Get
+        Set(ByVal value)
+            MyBase.DataSource = value
+        End Set
+    End Property
 End Class
 
