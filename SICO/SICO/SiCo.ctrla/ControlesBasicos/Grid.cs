@@ -96,11 +96,13 @@ namespace SiCo.ctrla
         {
             get
             {
+                if(this.CurrentRow !=null)
                 if(this.CurrentRow.DataBoundItem !=null)
                 return this.CurrentRow.DataBoundItem;
 
                 return null;
             }
+            
         }
 
         #endregion
@@ -122,7 +124,7 @@ namespace SiCo.ctrla
                     columna.ReadOnly = true;
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
-
+                    columna.Visible = true;
                     this.Columns.Add(columna);
                     
 
@@ -138,7 +140,7 @@ namespace SiCo.ctrla
                     columna.ReadOnly = true;
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
-
+                    columna.Visible = true;
                     this.Columns.Add(columna);
                     
 
@@ -154,7 +156,7 @@ namespace SiCo.ctrla
                     columna.ReadOnly = true;
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
-
+                    columna.Visible = true;
                     this.Columns.Add(columna);
 
 
@@ -220,8 +222,13 @@ namespace SiCo.ctrla
         void Grid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             MessageBox.Show(e.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }        
+        }
 
+        void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            this.Refresh();
+            
+        }
         #endregion
 
         #region Metodos
@@ -232,8 +239,10 @@ namespace SiCo.ctrla
             this.DataSourceChanged += new EventHandler(Grid_DataSourceChanged);
             this.CellContentClick += new DataGridViewCellEventHandler(Grid_CellContentClick);
             this.DataError += new DataGridViewDataErrorEventHandler(Grid_DataError);
+            this.CellEndEdit += new DataGridViewCellEventHandler(Grid_CellEndEdit); 
         }
 
+       
 
         private void FormatoDefectoGeneral()
         {            

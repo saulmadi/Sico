@@ -66,11 +66,13 @@ namespace SiCo.ctrla.ControlesPersonalizados
             try
             {
                 suc = new SiCo.lgla.Sucursales();
-                suc.Cargar();          
+                suc.Cargar();
+                lblSucursal.Text = suc.NombreSucursal;
             }
             catch
             {
                 suc = null;
+                lblSucursal.Text = "Error al cargar la sucursal";
             }
 
             try

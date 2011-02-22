@@ -25,16 +25,15 @@ Partial Class frmCompras
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompras))
         Me.Panel2 = New System.Windows.Forms.Panel
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label4 = New System.Windows.Forms.Label
-        Me.TextBox5 = New System.Windows.Forms.TextBox
+        Me.txttotal = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
+        Me.txtimpuesto = New System.Windows.Forms.TextBox
         Me.Label6 = New System.Windows.Forms.Label
-        Me.TextBox3 = New System.Windows.Forms.TextBox
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.txtsubtotal = New System.Windows.Forms.TextBox
         Me.Panel4 = New System.Windows.Forms.Panel
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
@@ -48,13 +47,9 @@ Partial Class frmCompras
         Me.TextBox6 = New System.Windows.Forms.TextBox
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.Label12 = New System.Windows.Forms.Label
-        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Button1 = New System.Windows.Forms.Button
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label11 = New System.Windows.Forms.Label
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.Label10 = New System.Windows.Forms.Label
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label9 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.TextBox2 = New System.Windows.Forms.TextBox
@@ -63,18 +58,23 @@ Partial Class frmCompras
         Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
+        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -88,6 +88,19 @@ Partial Class frmCompras
         Me.Panel2.Size = New System.Drawing.Size(919, 262)
         Me.Panel2.TabIndex = 8
         '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.grdDetalle)
+        Me.GroupBox5.Controls.Add(Me.Panel7)
+        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(855, 262)
+        Me.GroupBox5.TabIndex = 0
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Productos"
+        '
         'Panel7
         '
         Me.Panel7.Controls.Add(Me.Panel8)
@@ -100,11 +113,11 @@ Partial Class frmCompras
         'Panel8
         '
         Me.Panel8.Controls.Add(Me.Label4)
-        Me.Panel8.Controls.Add(Me.TextBox5)
+        Me.Panel8.Controls.Add(Me.txttotal)
         Me.Panel8.Controls.Add(Me.Label5)
-        Me.Panel8.Controls.Add(Me.TextBox4)
+        Me.Panel8.Controls.Add(Me.txtimpuesto)
         Me.Panel8.Controls.Add(Me.Label6)
-        Me.Panel8.Controls.Add(Me.TextBox3)
+        Me.Panel8.Controls.Add(Me.txtsubtotal)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel8.Location = New System.Drawing.Point(513, 0)
         Me.Panel8.Name = "Panel8"
@@ -121,13 +134,13 @@ Partial Class frmCompras
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Subtotal"
         '
-        'TextBox5
+        'txttotal
         '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(168, 61)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox5.TabIndex = 5
+        Me.txttotal.Enabled = False
+        Me.txttotal.Location = New System.Drawing.Point(168, 61)
+        Me.txttotal.Name = "txttotal"
+        Me.txttotal.Size = New System.Drawing.Size(165, 20)
+        Me.txttotal.TabIndex = 5
         '
         'Label5
         '
@@ -139,13 +152,13 @@ Partial Class frmCompras
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Impuesto"
         '
-        'TextBox4
+        'txtimpuesto
         '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(168, 35)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox4.TabIndex = 4
+        Me.txtimpuesto.Enabled = False
+        Me.txtimpuesto.Location = New System.Drawing.Point(168, 35)
+        Me.txtimpuesto.Name = "txtimpuesto"
+        Me.txtimpuesto.Size = New System.Drawing.Size(165, 20)
+        Me.txtimpuesto.TabIndex = 4
         '
         'Label6
         '
@@ -157,35 +170,13 @@ Partial Class frmCompras
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Total"
         '
-        'TextBox3
+        'txtsubtotal
         '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(168, 9)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox3.TabIndex = 3
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.DataGridView1)
-        Me.GroupBox5.Controls.Add(Me.Panel7)
-        Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(855, 262)
-        Me.GroupBox5.TabIndex = 0
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Productos"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(849, 156)
-        Me.DataGridView1.TabIndex = 0
+        Me.txtsubtotal.Enabled = False
+        Me.txtsubtotal.Location = New System.Drawing.Point(168, 9)
+        Me.txtsubtotal.Name = "txtsubtotal"
+        Me.txtsubtotal.Size = New System.Drawing.Size(165, 20)
+        Me.txtsubtotal.TabIndex = 3
         '
         'Panel4
         '
@@ -327,23 +318,6 @@ Partial Class frmCompras
         Me.Label12.TabIndex = 8
         Me.Label12.Text = "Precio de compra"
         '
-        'CajaTexto3
-        '
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EsObligatorio = False
-        Me.CajaTexto3.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.CajaTexto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto3.Location = New System.Drawing.Point(643, 19)
-        Me.CajaTexto3.MaxLength = 12
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(100, 20)
-        Me.CajaTexto3.TabIndex = 7
-        Me.CajaTexto3.Text = "0.00"
-        Me.CajaTexto3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.CajaTexto3.Texto = "0.00"
-        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        '
         'Button1
         '
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -353,23 +327,6 @@ Partial Class frmCompras
         Me.Button1.TabIndex = 6
         Me.Button1.Text = "A&gregar"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'CajaTexto2
-        '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CajaTexto2.Location = New System.Drawing.Point(486, 19)
-        Me.CajaTexto2.MaxLength = 12
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(55, 20)
-        Me.CajaTexto2.TabIndex = 5
-        Me.CajaTexto2.Text = "0"
-        Me.CajaTexto2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.CajaTexto2.Texto = "0"
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Entero
         '
         'Label11
         '
@@ -381,16 +338,6 @@ Partial Class frmCompras
         Me.Label11.TabIndex = 4
         Me.Label11.Text = "Cantidad"
         '
-        'ListaDesplegable1
-        '
-        Me.ListaDesplegable1.Comando = Nothing
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(251, 19)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(174, 21)
-        Me.ListaDesplegable1.TabIndex = 3
-        '
         'Label10
         '
         Me.Label10.AutoSize = True
@@ -400,20 +347,6 @@ Partial Class frmCompras
         Me.Label10.Size = New System.Drawing.Size(63, 13)
         Me.Label10.TabIndex = 2
         Me.Label10.Text = "Descripción"
-        '
-        'CajaTexto1
-        '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(52, 19)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(124, 20)
-        Me.CajaTexto1.TabIndex = 1
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
         '
         'Label9
         '
@@ -492,6 +425,99 @@ Partial Class frmCompras
         Me.Panel6.Size = New System.Drawing.Size(31, 205)
         Me.Panel6.TabIndex = 0
         '
+        'grdDetalle
+        '
+        Me.grdDetalle.AllowUserToAddRows = False
+        Me.grdDetalle.AllowUserToDeleteRows = False
+        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdDetalle.BotonBuscar = False
+        Me.grdDetalle.BotonEditar = False
+        Me.grdDetalle.BotonEliminar = False
+        Me.grdDetalle.CampoId = "id"
+        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetalle.MultiSelect = False
+        Me.grdDetalle.Name = "grdDetalle"
+        Me.grdDetalle.RowHeadersVisible = False
+        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.grdDetalle.Size = New System.Drawing.Size(849, 156)
+        Me.grdDetalle.TabIndex = 10
+        '
+        'CajaTexto3
+        '
+        Me.CajaTexto3.BackColor = System.Drawing.SystemColors.Window
+        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto3.EnterPorTab = True
+        Me.CajaTexto3.EsObligatorio = False
+        Me.CajaTexto3.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.CajaTexto3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto3.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CajaTexto3.Location = New System.Drawing.Point(643, 19)
+        Me.CajaTexto3.MaxLength = 12
+        Me.CajaTexto3.MensajeError = Nothing
+        Me.CajaTexto3.Name = "CajaTexto3"
+        Me.CajaTexto3.Size = New System.Drawing.Size(100, 20)
+        Me.CajaTexto3.TabIndex = 7
+        Me.CajaTexto3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.CajaTexto3.Texto = Nothing
+        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.CajaTexto3.ValorInt = Nothing
+        Me.CajaTexto3.ValorLong = Nothing
+        '
+        'CajaTexto2
+        '
+        Me.CajaTexto2.BackColor = System.Drawing.SystemColors.Window
+        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto2.EnterPorTab = True
+        Me.CajaTexto2.EsObligatorio = False
+        Me.CajaTexto2.ExpresionValidacion = Nothing
+        Me.CajaTexto2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto2.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CajaTexto2.Location = New System.Drawing.Point(486, 19)
+        Me.CajaTexto2.MaxLength = 12
+        Me.CajaTexto2.MensajeError = Nothing
+        Me.CajaTexto2.Name = "CajaTexto2"
+        Me.CajaTexto2.Size = New System.Drawing.Size(55, 20)
+        Me.CajaTexto2.TabIndex = 5
+        Me.CajaTexto2.Text = "0"
+        Me.CajaTexto2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.CajaTexto2.Texto = "0"
+        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.CajaTexto2.ValorInt = 0
+        Me.CajaTexto2.ValorLong = CType(0, Long)
+        '
+        'ListaDesplegable1
+        '
+        Me.ListaDesplegable1.CargarAutoCompletar = False
+        Me.ListaDesplegable1.CargarComboBox = True
+        Me.ListaDesplegable1.FormattingEnabled = True
+        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
+        Me.ListaDesplegable1.Location = New System.Drawing.Point(251, 19)
+        Me.ListaDesplegable1.Name = "ListaDesplegable1"
+        Me.ListaDesplegable1.ParametroAutocompletar = Nothing
+        Me.ListaDesplegable1.ParametroBusquedaPadre = Nothing
+        Me.ListaDesplegable1.Size = New System.Drawing.Size(174, 21)
+        Me.ListaDesplegable1.TabIndex = 3
+        '
+        'CajaTexto1
+        '
+        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto1.EnterPorTab = True
+        Me.CajaTexto1.EsObligatorio = False
+        Me.CajaTexto1.ExpresionValidacion = Nothing
+        Me.CajaTexto1.Location = New System.Drawing.Point(52, 19)
+        Me.CajaTexto1.MaxLength = 255
+        Me.CajaTexto1.MensajeError = Nothing
+        Me.CajaTexto1.Name = "CajaTexto1"
+        Me.CajaTexto1.Size = New System.Drawing.Size(124, 20)
+        Me.CajaTexto1.TabIndex = 1
+        Me.CajaTexto1.Texto = Nothing
+        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto1.ValorInt = Nothing
+        Me.CajaTexto1.ValorLong = Nothing
+        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
@@ -529,11 +555,10 @@ Partial Class frmCompras
         Me.Text = "Compras"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel2.ResumeLayout(False)
+        Me.GroupBox5.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
-        Me.GroupBox5.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
@@ -542,12 +567,12 @@ Partial Class frmCompras
         Me.GroupBox4.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -576,9 +601,9 @@ Partial Class frmCompras
     Friend WithEvents CajaTexto3 As SICO.ctrla.CajaTexto
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txttotal As System.Windows.Forms.TextBox
+    Friend WithEvents txtimpuesto As System.Windows.Forms.TextBox
+    Friend WithEvents txtsubtotal As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
@@ -586,4 +611,5 @@ Partial Class frmCompras
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents grdDetalle As SICO.ctrla.Grid
 End Class

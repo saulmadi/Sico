@@ -10,7 +10,7 @@
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Try
-            
+
             Dim forma As New frmMenuPrincipal
             Dim u As New SICO.lgla.Usuario
             If txtcontrasena.Text.Trim.Length = 0 Or txtusuario.Text.Trim.Length = 0 Then

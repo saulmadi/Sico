@@ -109,14 +109,14 @@
     <TypeIdentifier />
   </Class>
   <Class Name="SiCo.lgla2.Productos" Collapsed="true">
-    <Position X="6.5" Y="2" Width="1.5" />
+    <Position X="6.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gIACEAAAAQAAAABAAAAAAAAFgAAAAAAEAAABBAARAAA=</HashCode>
       <FileName>Productos.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Imagenes" Collapsed="true">
-    <Position X="8.25" Y="2" Width="1.5" />
+    <Position X="7.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAAAgAAAAAAAAAAACAgABAAAAAABAAQAAA=</HashCode>
       <FileName>Imagenes.vb</FileName>
@@ -130,10 +130,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.TransaccionesProductos" Collapsed="true">
-    <Position X="10" Y="2" Width="1.5" />
+    <Position X="9.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gQAhQAAAAAAQBAAEAAEABgAAAgAAAAAAAAABBADQAAA=</HashCode>
       <FileName>TransaccionesProductos.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.DetalleCompras" Collapsed="true">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAEAEQA0AAAAQAAAAgABAgAICAAAABABBAAQBIQ=</HashCode>
+      <FileName>DetalleCompras.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.Compras" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAQAAABAAIAABABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Compras.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
@@ -143,5 +157,12 @@
       <FileName>ModulosTablasTipo.vb</FileName>
     </TypeIdentifier>
   </Enum>
+  <Module Name="SiCo.lgla2.GeneralesConstantes" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GeneralesConstantes.vb</FileName>
+    </TypeIdentifier>
+  </Module>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

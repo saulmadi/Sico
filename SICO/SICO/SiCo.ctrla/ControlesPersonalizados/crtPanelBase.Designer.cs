@@ -36,6 +36,7 @@
             this.lblTitulo = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblSucursal = new System.Windows.Forms.Label();
             this.PanelPrinipal.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.lblSucursal);
             this.panel4.Controls.Add(this.lblUsuario);
             this.panel4.Controls.Add(this.lblfecha);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
@@ -126,6 +128,20 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // lblSucursal
+            // 
+            this.lblSucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(251)))));
+            this.lblSucursal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSucursal.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblSucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSucursal.ForeColor = System.Drawing.Color.White;
+            this.lblSucursal.Location = new System.Drawing.Point(0, 25);
+            this.lblSucursal.Name = "lblSucursal";
+            this.lblSucursal.Size = new System.Drawing.Size(260, 38);
+            this.lblSucursal.TabIndex = 4;
+            this.lblSucursal.Text = "Sucursal";
+            this.lblSucursal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // crtPanelBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -151,5 +167,6 @@
         protected System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        protected System.Windows.Forms.Label lblSucursal;
     }
 }

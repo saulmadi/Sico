@@ -28,7 +28,10 @@ Public Class Productos
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("descripcion", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("precioventa", Nothing))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("preciocosto", Nothing))
-
+        _Codigo = String.Empty
+        _Descripcion = String.Empty
+        _PrecioVenta = 0
+        _PrecioCosto = 0
 
 
     End Sub
