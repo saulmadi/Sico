@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`Productos_Buscar` $$
-CREATE PROCEDURE `sico`.`Productos_Buscar` (
+DROP PROCEDURE IF EXISTS `Productos_Buscar` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Productos_Buscar`(
 
 
 id nvarchar(11),
@@ -37,7 +37,7 @@ if codigo<>"" then
 end if;
 
 if codigoigual<>"" then
-  set @where = concat(@where, " and codigoigual = '",codigoigual, "' ");
+  set @where = concat(@where, " and codigo = '",codigoigual, "' ");
 end if;
 
 
