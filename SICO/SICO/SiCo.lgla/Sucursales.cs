@@ -8,6 +8,7 @@ namespace SiCo.lgla
     public class Sucursales:Mantenimientos
     {
         #region "Declaraciones"
+        public string NombreSucursal;
         #endregion
 
         #region Constructor
@@ -121,13 +122,15 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                SucursalSerializable  usu = new SucursalSerializable (0,0);
+                SucursalSerializable  usu = new SucursalSerializable (0,0,"");
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Cargar();
                 usu = (SucursalSerializable )s.Objeto;
                 this._Id = usu.id;
-                this.idUsuario = usu.idusuario;                
+                this.idUsuario = usu.idusuario;
+                this.NombreSucursal = usu.NombreSucursal;
+
             }
             catch (Exception ex)
             {
@@ -141,7 +144,7 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                SucursalSerializable  usu = new SucursalSerializable (this.Id, this.idUsuario);
+                SucursalSerializable  usu = new SucursalSerializable (this.Id, this.idUsuario,this.NombreMantenimiento);
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Guardar();
@@ -164,11 +167,12 @@ namespace SiCo.lgla
         {
             public long? id;
             public long? idusuario;
-
-            public SucursalSerializable(long? id, long? usuario)
+            public string NombreSucursal;
+            public SucursalSerializable(long? id, long? usuario,string nombresucursal)
             {
                 this.id = id;
                 this.idusuario = usuario;
+                this.NombreSucursal = nombresucursal;
             }
 
         }

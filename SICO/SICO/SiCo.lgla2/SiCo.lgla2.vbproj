@@ -65,8 +65,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clientes.vb" />
+    <Compile Include="Compras.vb" />
     <Compile Include="Departamentos.vb" />
+    <Compile Include="DetalleCompras.vb" />
     <Compile Include="Estado.vb" />
+    <Compile Include="GeneralesConstantes.vb" />
     <Compile Include="Imagenes.vb" />
     <Compile Include="Inventario.vb" />
     <Compile Include="Marcas.vb" />

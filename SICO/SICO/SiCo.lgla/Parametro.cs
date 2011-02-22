@@ -23,6 +23,13 @@ namespace SiCo.lgla
             this.Nombre = string.Empty;
         }
 
+        public Parametro(string Nombre)
+        {
+            this.TipoParametro = System.Data.ParameterDirection.Input;
+            this.Valor = null;
+            this.Nombre = Nombre ;
+        }
+
         public Parametro(string Nombre, object Valor)
         {                      
 

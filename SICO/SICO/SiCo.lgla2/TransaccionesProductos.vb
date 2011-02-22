@@ -22,6 +22,7 @@ Public Class TransaccionesProductos
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idproductos", Nothing))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("descripcion", Nothing))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("codigo", Nothing))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("inventarioTotal", Nothing))
 
         Me.descripcion = String.Empty
         Me._codigo = String.Empty
@@ -119,11 +120,12 @@ Public Class TransaccionesProductos
         Return lista
     End Function
 
-    Public Overloads Sub Buscar(ByVal codigo As String, ByVal descripcion As String, ByVal idsucursal As Long, Optional ByVal usuandoSucursal As Boolean = True)
+    Public Overloads Sub Buscar(ByVal codigo As String, ByVal descripcion As String, ByVal idsucursal As Long, Optional ByVal InventarioTotal As Boolean = False, Optional ByVal usuandoSucursal As Boolean = True)
         Try
             Me.NullParametrosBusqueda()
             Me.ValorParametrosBusqueda("codigo", codigo)
             Me.ValorParametrosBusqueda("descripcion", descripcion)
+
 
 
             If usuandoSucursal Then
@@ -134,6 +136,11 @@ Public Class TransaccionesProductos
                 End If
             Else
                 Me.ValorParametrosBusqueda("idsucursales", idsucursal)
+            End If
+
+            If InventarioTotal Then
+                Me.ValorParametrosBusqueda("idsucursales", Nothing)
+                Me.ValorParametrosBusqueda("inventarioTotal", "1")
             End If
 
             Me.LlenadoTabla(ColeccionParametrosBusqueda)
@@ -147,7 +154,7 @@ Public Class TransaccionesProductos
 
 #Region "Eventos"
     Private Sub TransaccionesProductos_CambioCodigo() Handles Me.CambioCodigo
-        Me.Buscar(Me.codigo, Nothing, Nothing)
+        Me.Buscar(Me.codigo, Nothing, Nothing, False)
     End Sub
 #End Region
 

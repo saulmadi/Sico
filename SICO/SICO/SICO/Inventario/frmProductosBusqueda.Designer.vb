@@ -30,6 +30,7 @@ Partial Class frmProductosBusqueda
         Me.txtDescripcion = New SICO.ctrla.CajaTexto(Me.components)
         Me.PanelBusqueda = New SICO.ctrla2.crtPanelBusqueda
         Me.btnBuscar = New System.Windows.Forms.Button
+        Me.chkInventarioTotal = New System.Windows.Forms.CheckBox
         Me.SuspendLayout()
         '
         'Label1
@@ -70,7 +71,7 @@ Partial Class frmProductosBusqueda
         Me.txtDescripcion.EsObligatorio = False
         Me.txtDescripcion.ExpresionValidacion = Nothing
         Me.txtDescripcion.Location = New System.Drawing.Point(114, 127)
-        Me.txtDescripcion.MaxLength = 255
+        Me.txtDescripcion.MaxLength = 45
         Me.txtDescripcion.MensajeError = Nothing
         Me.txtDescripcion.Name = "txtDescripcion"
         Me.txtDescripcion.Size = New System.Drawing.Size(283, 20)
@@ -100,11 +101,22 @@ Partial Class frmProductosBusqueda
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
+        'chkInventarioTotal
+        '
+        Me.chkInventarioTotal.AutoSize = True
+        Me.chkInventarioTotal.Location = New System.Drawing.Point(48, 153)
+        Me.chkInventarioTotal.Name = "chkInventarioTotal"
+        Me.chkInventarioTotal.Size = New System.Drawing.Size(100, 17)
+        Me.chkInventarioTotal.TabIndex = 6
+        Me.chkInventarioTotal.Text = "Inventario Total"
+        Me.chkInventarioTotal.UseVisualStyleBackColor = True
+        '
         'frmProductosBusqueda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(824, 462)
+        Me.Controls.Add(Me.chkInventarioTotal)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.cboSucursales)
@@ -126,4 +138,5 @@ Partial Class frmProductosBusqueda
     Friend WithEvents cboSucursales As SiCo.ctrla.ControlesBasicos.ListaSucursales
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents btnBuscar As System.Windows.Forms.Button
+    Friend WithEvents chkInventarioTotal As System.Windows.Forms.CheckBox
 End Class

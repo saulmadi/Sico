@@ -9,9 +9,9 @@ Public Class frmProductosBusqueda
         cboSucursales.Inicialiazar()
         PanelBusqueda.Entidad = New SICO.lgla2.TransaccionesProductos
         PanelBusqueda.GridResultados.BotonEditar = True
-        PanelBusqueda.GridResultados.BotonBuscar = True
-        PanelBusqueda.GridResultados.BotonEliminar = True
-        PanelBusqueda.SeccionParametros.Size = New Size(PanelBusqueda.Size.Width, 60)
+
+
+        PanelBusqueda.SeccionParametros.Size = New Size(PanelBusqueda.Size.Width, 70)
 
         PanelBusqueda.GridResultados.DarFormato("codigo", "Código")
         PanelBusqueda.GridResultados.DarFormato("descripcion", "Descripción")
@@ -49,43 +49,23 @@ Public Class frmProductosBusqueda
     Private Sub frm_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frm.FormClosed
         Me.Show()
     End Sub
-
-    Private Sub txtDescripcion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescripcion.TextChanged
-        If txtDescripcion.Text.Trim.Length = 2 Or txtDescripcion.Text.Trim.Length = 4 Then
-            Try
-                If cboSucursales.SelectedItem Is Nothing Then
-                    Me.PanelBusqueda.Sucursal.Cargar()
-                    Dim list As New List(Of SICO.lgla.Parametro)
-                    list.Add(New Parametro("descripcion", txtDescripcion.Text))
-                    list.Add(New Parametro("idsucursales", PanelBusqueda.Sucursal.Id))
-                    Me.PanelBusqueda.Cargar(list)
-                Else
-                    Dim list As New List(Of SICO.lgla.Parametro)
-                    list.Add(New Parametro("descripcion", txtDescripcion.Text))
-                    list.Add(New Parametro("idsucursales", cboSucursales.SelectedItem.Id))
-                    Me.PanelBusqueda.Cargar(list)
-                End If
-
-
-            Catch ex As Exception
-                MessageBox.Show("La sucursal no se ha configurado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
-        End If
-    End Sub
-
-   
-    Private Sub btnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
+    Private Sub Cargar()
         Try
-            If cboSucursales.SelectedItem Is Nothing Then
+            If cboSucursales.SelectedItem Is Nothing And cboSucursales.Enabled Then
                 Me.PanelBusqueda.Sucursal.Cargar()
                 Dim list As New List(Of SICO.lgla.Parametro)
                 list.Add(New Parametro("descripcion", txtDescripcion.Text))
                 list.Add(New Parametro("idsucursales", PanelBusqueda.Sucursal.Id))
                 Me.PanelBusqueda.Cargar(list)
-            Else
+            ElseIf cboSucursales.Enabled Then
                 Dim list As New List(Of SICO.lgla.Parametro)
                 list.Add(New Parametro("descripcion", txtDescripcion.Text))
                 list.Add(New Parametro("idsucursales", cboSucursales.SelectedItem.Id))
+                Me.PanelBusqueda.Cargar(list)
+            Else
+                Dim list As New List(Of SICO.lgla.Parametro)
+                list.Add(New Parametro("descripcion", txtDescripcion.Text))
+                list.Add(New Parametro("inventarioTotal", "1"))
                 Me.PanelBusqueda.Cargar(list)
             End If
 
@@ -94,27 +74,60 @@ Public Class frmProductosBusqueda
             MessageBox.Show("La sucursal no se ha configurado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+    Private Sub txtDescripcion_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescripcion.TextChanged
+        If txtDescripcion.Text.Trim.Length = 2 Or txtDescripcion.Text.Trim.Length = 4 Then
+            Cargar()
+        End If
+    End Sub
+
+   
+    Private Sub btnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
+        'Try
+        '    If cboSucursales.SelectedItem Is Nothing Then
+        '        Me.PanelBusqueda.Sucursal.Cargar()
+        '        Dim list As New List(Of SICO.lgla.Parametro)
+        '        list.Add(New Parametro("descripcion", txtDescripcion.Text))
+        '        list.Add(New Parametro("idsucursales", PanelBusqueda.Sucursal.Id))
+        '        Me.PanelBusqueda.Cargar(list)
+        '    Else
+        '        Dim list As New List(Of SICO.lgla.Parametro)
+        '        list.Add(New Parametro("descripcion", txtDescripcion.Text))
+        '        list.Add(New Parametro("idsucursales", cboSucursales.SelectedItem.Id))
+        '        Me.PanelBusqueda.Cargar(list)
+        '    End If
+
+
+        'Catch ex As Exception
+        '    MessageBox.Show("La sucursal no se ha configurado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End Try
+        Cargar()
+    End Sub
 
     Private Sub cboSucursales_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cboSucursales.SelectedIndexChanged
         If txtDescripcion.Text.Trim.Length = 2 Or txtDescripcion.Text.Trim.Length = 4 Then
-            Try
-                If cboSucursales.SelectedItem Is Nothing Then
-                    Me.PanelBusqueda.Sucursal.Cargar()
-                    Dim list As New List(Of SICO.lgla.Parametro)
-                    list.Add(New Parametro("descripcion", txtDescripcion.Text))
-                    list.Add(New Parametro("idsucursales", PanelBusqueda.Sucursal.Id))
-                    Me.PanelBusqueda.Cargar(list)
-                Else
-                    Dim list As New List(Of SICO.lgla.Parametro)
-                    list.Add(New Parametro("descripcion", txtDescripcion.Text))
-                    list.Add(New Parametro("idsucursales", cboSucursales.SelectedItem.Id))
-                    Me.PanelBusqueda.Cargar(list)
-                End If
+            'Try
+            '    If cboSucursales.SelectedItem Is Nothing Then
+            '        Me.PanelBusqueda.Sucursal.Cargar()
+            '        Dim list As New List(Of SICO.lgla.Parametro)
+            '        list.Add(New Parametro("descripcion", txtDescripcion.Text))
+            '        list.Add(New Parametro("idsucursales", PanelBusqueda.Sucursal.Id))
+            '        Me.PanelBusqueda.Cargar(list)
+            '    Else
+            '        Dim list As New List(Of SICO.lgla.Parametro)
+            '        list.Add(New Parametro("descripcion", txtDescripcion.Text))
+            '        list.Add(New Parametro("idsucursales", cboSucursales.SelectedItem.Id))
+            '        Me.PanelBusqueda.Cargar(list)
+            '    End If
 
 
-            Catch ex As Exception
-                MessageBox.Show("La sucursal no se ha configurado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            End Try
+            'Catch ex As Exception
+            '    MessageBox.Show("La sucursal no se ha configurado correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'End Try
+            Cargar()
         End If
+    End Sub
+
+    Private Sub chkInventarioTotal_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkInventarioTotal.CheckedChanged
+        cboSucursales.Enabled = Not chkInventarioTotal.Checked
     End Sub
 End Class

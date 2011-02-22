@@ -177,7 +177,7 @@ namespace SiCo.dtla
             {
                 if (this.Conexion.State == System.Data.ConnectionState.Open)
                 {                    
-                    this.Conexion.Close ();
+                    //this.Conexion.Close ();
                 }
                 if (this.Conexion.State == System.Data.ConnectionState.Closed )
                 {

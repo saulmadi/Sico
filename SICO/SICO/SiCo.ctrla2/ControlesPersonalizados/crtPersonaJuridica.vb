@@ -191,20 +191,26 @@ Public Class crtPersonaJuridica
 #Region "Eventos"
 
     Private Sub crtPersonaJuridica_CambioPersona() Handles Me.CambioPersona
-        txtrazonsocial.Text = Persona.RazonSocial
-        txtrtn.Text = Persona.rtn
-        txtcorreo.Text = Persona.correo
-        txttelefono.ValorInt = Persona.telefono
-        txtfax.ValorInt = Persona.telefono2
-        txtdireccion.Text = Persona.direccion
+        If Not Me.Persona Is Nothing Then
+            txtrazonsocial.Text = Persona.RazonSocial
+            txtrtn.Text = Persona.rtn
+            txtcorreo.Text = Persona.correo
+            txttelefono.ValorInt = Persona.telefono
+            txtfax.ValorInt = Persona.telefono2
+            txtdireccion.Text = Persona.direccion
 
-        If Persona.Id = 0 Then
-            Me.Enabled = True
-            Me.lblEstado.Text = ""
+            If Persona.Id = 0 Then
+                Me.Enabled = True
+                Me.lblEstado.Text = ""
+            Else
+                Me.Enabled = False
+                Me.lblEstado.Text = "Persona jurídica " + Me.txtrazonsocial.Text + " cargada."
+            End If
         Else
-            Me.Enabled = False
-            Me.lblEstado.Text = "Persona jurídica " + Me.txtrazonsocial.Text + " cargada."
+            Me.Persona = New PersonaJuridica
+
         End If
+        
     End Sub
 
     Private Sub crtPersonaJuridica_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

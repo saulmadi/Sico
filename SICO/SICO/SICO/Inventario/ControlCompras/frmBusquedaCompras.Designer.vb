@@ -34,6 +34,7 @@ Partial Class frmBusquedaCompras
         'CrtPanelBusqueda1
         '
         Me.CrtPanelBusqueda1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPanelBusqueda1.Entidad = Nothing
         Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
         Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(813, 336)
@@ -68,11 +69,14 @@ Partial Class frmBusquedaCompras
         '
         'ListaDesplegable1
         '
-        Me.ListaDesplegable1.Comando = Nothing
+        Me.ListaDesplegable1.CargarAutoCompletar = False
+        Me.ListaDesplegable1.CargarComboBox = True
         Me.ListaDesplegable1.FormattingEnabled = True
         Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
         Me.ListaDesplegable1.Location = New System.Drawing.Point(106, 131)
         Me.ListaDesplegable1.Name = "ListaDesplegable1"
+        Me.ListaDesplegable1.ParametroAutocompletar = Nothing
+        Me.ListaDesplegable1.ParametroBusquedaPadre = Nothing
         Me.ListaDesplegable1.Size = New System.Drawing.Size(190, 21)
         Me.ListaDesplegable1.TabIndex = 4
         '
