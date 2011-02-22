@@ -14,11 +14,13 @@ namespace SiCo.ctrla
 
         public event GridEditarEventHandler Editar;
         public event GridEliminarEventHandler Eliminar;
+        public event GridBuscarEventHandler Buscar;
 
         private bool _BotonEditar = false;
         private bool _BotoElimar = false;
-        private bool _AgregadoBotonEditar = false;
-        private bool _AgregadoBotonEliminar = false;
+        private bool _BotonBuscar = false;
+        
+        
         private List<GridFormatoColumnas> _ListaFormatos= new List<GridFormatoColumnas> ();
 
         #endregion
@@ -68,7 +70,7 @@ namespace SiCo.ctrla
 
         public bool BotonEliminar
         {
-            get             
+            get 
             {
                 return _BotoElimar;
             }
@@ -76,6 +78,16 @@ namespace SiCo.ctrla
             {
                 _BotoElimar = value;
 
+                VisiblesColumnasEditarEliminar();
+            }
+        }
+
+        public bool BotonBuscar
+        {
+            get { return _BotonBuscar; }
+            set
+            {
+                _BotonBuscar = value;
                 VisiblesColumnasEditarEliminar();
             }
         }
@@ -100,7 +112,7 @@ namespace SiCo.ctrla
             if (this.DataSource != null)
             {
                 FormatoColumnas();
-                if (this.BotonEditar && !_AgregadoBotonEditar)
+                if (this.BotonEditar )
                 {
                     DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
                     columna.Text = "Editar";
@@ -112,10 +124,27 @@ namespace SiCo.ctrla
                     columna.UseColumnTextForButtonValue = true;
 
                     this.Columns.Add(columna);
-                    _AgregadoBotonEditar = true;
+                    
 
                 }
-                if (this.BotonEliminar && !_AgregadoBotonEliminar)
+
+                if (this.BotonBuscar)
+                {
+                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    columna.Text = "Buscar";
+                    columna.HeaderText = "Buscar";
+                    columna.Name = "BtnBuscar";
+                    columna.Resizable = DataGridViewTriState.False;
+                    columna.ReadOnly = true;
+                    columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                    columna.UseColumnTextForButtonValue = true;
+
+                    this.Columns.Add(columna);
+                    
+
+                }
+
+                if (this.BotonEliminar)
                 {
                     DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
                     columna.Text = "Eliminar";
@@ -127,7 +156,7 @@ namespace SiCo.ctrla
                     columna.UseColumnTextForButtonValue = true;
 
                     this.Columns.Add(columna);
-                    _AgregadoBotonEliminar = true;
+
 
                 }
             }
@@ -154,6 +183,11 @@ namespace SiCo.ctrla
 
                 if (Editar != null)
                     Editar(h);
+            }
+            if (this.Columns[e.ColumnIndex].Name == "BtnBuscar")
+            {
+                if (Buscar  != null)
+                    Buscar();
             }
 
             if (this.Columns[e.ColumnIndex].Name == "BtnEliminar")
@@ -183,6 +217,11 @@ namespace SiCo.ctrla
 
         }
 
+        void Grid_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }        
+
         #endregion
 
         #region Metodos
@@ -192,7 +231,9 @@ namespace SiCo.ctrla
             
             this.DataSourceChanged += new EventHandler(Grid_DataSourceChanged);
             this.CellContentClick += new DataGridViewCellEventHandler(Grid_CellContentClick);
-        }        
+            this.DataError += new DataGridViewDataErrorEventHandler(Grid_DataError);
+        }
+
 
         private void FormatoDefectoGeneral()
         {            
@@ -237,6 +278,10 @@ namespace SiCo.ctrla
             if (this.Columns.Contains("BtnEliminar"))
             {
                 this.Columns["BtnEliminar"].Visible = this.BotonEliminar;
+            }
+            if (this.Columns.Contains("BtnBuscar"))
+            {
+                this.Columns["BtnBuscar"].Visible = this.BotonEliminar;
             }
             
         }

@@ -96,6 +96,7 @@
     <Compile Include="TablasTipoDerivadas.vb" />
     <Compile Include="TiposFacturas.vb" />
     <Compile Include="TiposMotocicletas.vb" />
+    <Compile Include="TransaccionesProductos.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

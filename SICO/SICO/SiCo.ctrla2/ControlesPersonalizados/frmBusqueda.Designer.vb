@@ -139,7 +139,7 @@ Partial Class frmBusqueda
     Friend WithEvents grdbusqueda As SiCo.ctrla.Grid
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents panelparametros As System.Windows.Forms.Panel
     Friend WithEvents btnAceptar As System.Windows.Forms.Button
     Friend WithEvents btnCancelar As System.Windows.Forms.Button
+    Protected WithEvents panelparametros As System.Windows.Forms.Panel
 End Class

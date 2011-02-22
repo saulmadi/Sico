@@ -49,14 +49,6 @@
     <Compartments>
       <Compartment Name="Methods" Collapsed="true" />
     </Compartments>
-    <InheritanceLine Type="SiCo.lgla2.TablasTipo" FixedFromPoint="true">
-      <Path>
-        <Point X="2" Y="2.691" />
-        <Point X="2" Y="4.125" />
-        <Point X="3.5" Y="4.125" />
-        <Point X="3.5" Y="4.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBAAQgAA=</HashCode>
       <FileName>TablasTipoDerivadas.vb</FileName>
@@ -133,8 +125,15 @@
   <Class Name="SiCo.lgla2.Inventario" Collapsed="true">
     <Position X="3" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AUAAAAAAAAAxAAAAAAgAAgAAAgAAAAAAAAAABAAQAAA=</HashCode>
       <FileName>Inventario.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.TransaccionesProductos" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQAhQAAAAAAQBAAEAAEABgAAAgAAAAAAAAABBADQAAA=</HashCode>
+      <FileName>TransaccionesProductos.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
