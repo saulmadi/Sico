@@ -24,7 +24,6 @@ Partial Class crtPanelBusqueda
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(crtPanelBusqueda))
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me._GridResultados = New SiCo.ctrla.Grid(Me.components)
@@ -49,6 +48,10 @@ Partial Class crtPanelBusqueda
         '
         Me.PanelPrinipal.Size = New System.Drawing.Size(781, 84)
         '
+        'lblUsuario
+        '
+        Me.lblUsuario.Text = "Error al cargar el usuario"
+        '
         'lblTitulo
         '
         Me.lblTitulo.Size = New System.Drawing.Size(693, 84)
@@ -70,9 +73,9 @@ Partial Class crtPanelBusqueda
         Me.GroupBox1.Controls.Add(Me._GridResultados)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(0, 76)
+        Me.GroupBox1.Location = New System.Drawing.Point(0, 107)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(725, 321)
+        Me.GroupBox1.Size = New System.Drawing.Size(725, 290)
         Me.GroupBox1.TabIndex = 7
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Resultados de Busqueda"
@@ -81,6 +84,8 @@ Partial Class crtPanelBusqueda
         '
         Me._GridResultados.AllowUserToAddRows = False
         Me._GridResultados.AllowUserToDeleteRows = False
+        Me._GridResultados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me._GridResultados.BotonBuscar = False
         Me._GridResultados.BotonEditar = False
         Me._GridResultados.BotonEliminar = False
         Me._GridResultados.CampoId = Nothing
@@ -92,7 +97,7 @@ Partial Class crtPanelBusqueda
         Me._GridResultados.Name = "_GridResultados"
         Me._GridResultados.RowHeadersVisible = False
         Me._GridResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me._GridResultados.Size = New System.Drawing.Size(719, 302)
+        Me._GridResultados.Size = New System.Drawing.Size(719, 271)
         Me._GridResultados.TabIndex = 6
         '
         '_seccionParametros
@@ -100,7 +105,7 @@ Partial Class crtPanelBusqueda
         Me._seccionParametros.Dock = System.Windows.Forms.DockStyle.Top
         Me._seccionParametros.Location = New System.Drawing.Point(0, 25)
         Me._seccionParametros.Name = "_seccionParametros"
-        Me._seccionParametros.Size = New System.Drawing.Size(725, 51)
+        Me._seccionParametros.Size = New System.Drawing.Size(725, 82)
         Me._seccionParametros.TabIndex = 1
         Me._seccionParametros.TabStop = False
         Me._seccionParametros.Text = "Parámetros de Busqueda"
@@ -108,7 +113,9 @@ Partial Class crtPanelBusqueda
         '_BarraHerramientas
         '
         Me._BarraHerramientas.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me._BarraHerramientas.ImageScalingSize = New System.Drawing.Size(40, 40)
         Me._BarraHerramientas.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevoToolStripButton, Me.ImprimirToolStripButton})
+        Me._BarraHerramientas.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow
         Me._BarraHerramientas.Location = New System.Drawing.Point(0, 0)
         Me._BarraHerramientas.Name = "_BarraHerramientas"
         Me._BarraHerramientas.Size = New System.Drawing.Size(725, 25)
@@ -117,8 +124,10 @@ Partial Class crtPanelBusqueda
         '
         'NuevoToolStripButton
         '
+        Me.NuevoToolStripButton.BackgroundImage = Global.SiCo.ctrla2.My.Resources.Resources.stock_new_text
+        Me.NuevoToolStripButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.NuevoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.NuevoToolStripButton.Image = CType(resources.GetObject("NuevoToolStripButton.Image"), System.Drawing.Image)
+        Me.NuevoToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.NuevoToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.NuevoToolStripButton.Name = "NuevoToolStripButton"
         Me.NuevoToolStripButton.Size = New System.Drawing.Size(23, 22)
@@ -126,8 +135,9 @@ Partial Class crtPanelBusqueda
         '
         'ImprimirToolStripButton
         '
+        Me.ImprimirToolStripButton.BackgroundImage = Global.SiCo.ctrla2.My.Resources.Resources.document_print
+        Me.ImprimirToolStripButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ImprimirToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ImprimirToolStripButton.Image = CType(resources.GetObject("ImprimirToolStripButton.Image"), System.Drawing.Image)
         Me.ImprimirToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ImprimirToolStripButton.Name = "ImprimirToolStripButton"
         Me.ImprimirToolStripButton.Size = New System.Drawing.Size(23, 22)

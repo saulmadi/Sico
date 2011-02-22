@@ -74,6 +74,7 @@ Public Class frmBusqueda
 #Region "Eventos"
 
     Private Sub _entidad_CargoTabla() Handles _entidad.CargoTabla
+        Me.Grid.DataMember = Nothing
         If Entidad.TotalRegistros > 0 Then
             grdbusqueda.DataSource = Entidad.TablaAColeccion
             btnAceptar.Enabled = True

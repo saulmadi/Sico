@@ -3,7 +3,7 @@
   <Class Name="SiCo.ctrla.CajaTexto" Collapsed="true">
     <Position X="1" Y="0.5" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>AAAAUEAAACAAAAABCACACAQSAUBAQIQAAAAAAAACAQk=</HashCode>
+      <HashCode>gAAAUEAAACAAAAABCACACQQSAUhAQIQQAAgAAAACAQk=</HashCode>
       <FileName>ControlesBasicos\CajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -17,7 +17,7 @@
   <Class Name="SiCo.ctrla.IdentidadCajaTexto" Collapsed="true">
     <Position X="2.75" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAABAAAAACAAAACAAAAAAAAAQAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAEAACAABAAAAACAAAACAAAAAAAAAQAAAAAACAI=</HashCode>
       <FileName>ControlesBasicos\IdentidadCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -27,7 +27,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAgAAAAAADAAAIAAAACAAAACAAgAAAUAQAAkAAAAAAA=</HashCode>
+      <HashCode>AAEAAAAAAHAEACIhAQCAABACAAgCEAkBAAAEQAAIAAA=</HashCode>
       <FileName>ControlesBasicos\ListaDesplegable.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -42,8 +42,7 @@
   <Class Name="SiCo.ctrla.Grid" Collapsed="true">
     <Position X="0.5" Y="6.25" Width="2.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABIwGQACAAAAACAQAACBgABAQAAEAAAAAASCgA=</HashCode>
-      <FileName>ControlesBasicos\Grid.cs</FileName>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="System.Windows.Forms.DataGridView" Collapsed="true">
@@ -85,7 +84,7 @@
       <Compartment Name="Events" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAoICABAACQACIAAAACAAQEDCAFABEAICBAAJSAAADA=</HashCode>
+      <HashCode>QSoICQBRACQACIBAAACCBYEDCAFABEAICBAAJSAAADA=</HashCode>
       <FileName>ControlesPersonalizados\PanelAccion.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -106,14 +105,14 @@
   <Class Name="SiCo.ctrla.ControlesBasicos.AutoCompleteCajaTexto" Collapsed="true">
     <Position X="1.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAQCAAAAIAAACEAgACAACAEAMAAQEgEAAABBA=</HashCode>
+      <HashCode>AAEAAAAASCAAACAAAACEAgACAACAEAsAAQEgAAAIBBA=</HashCode>
       <FileName>ControlesBasicos\AutoCompleteCajaTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.ctrla.ControlesPersonalizados.crtPanelBase" Collapsed="true">
     <Position X="6" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAQAAACAAAACAQAAAAAAAAAAAQBEABA=</HashCode>
+      <HashCode>AAAAFAAAACAAAAQABACAAAACAQAAAAABBIAEAQBEQBA=</HashCode>
       <FileName>ControlesPersonalizados\crtPanelBase.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -150,6 +149,13 @@
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Delegados\PanelAccionEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SiCo.ctrla.GridBuscarEventHandler">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GridBuscarEventHandler.cs</FileName>
     </TypeIdentifier>
   </Delegate>
   <Font Name="Segoe UI" Size="9" />

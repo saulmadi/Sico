@@ -8,6 +8,22 @@ Public Class frmProductos
     Private _Inventario As New Inventario
 #End Region
 
+#Region "Constructor"
+    Public Sub New()
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        Try
+            Me.CrtImagen1.Imagenes = New Imagenes
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+#End Region
+
 #Region "Propiedades"
 
     Public Property Inventario() As Inventario
@@ -27,6 +43,7 @@ Public Class frmProductos
         Set(ByVal value As Productos)
             txtcantidainventario.Clear()
             txtcantidainventario.Enabled = False
+            CrtImagen1.limpiar()
             Me.Inventario = New Inventario
             _Producto = value
             txtcodigo.Text = Producto.Codigo
@@ -37,10 +54,12 @@ Public Class frmProductos
                
             Else
                 CrtImagen1.Descargar(value.Id)
-                CrtImagen1.limpiar()
+
                 Try
-                    Me.PanelAccion1.Sucursal.Cargar()
-                    Me.Inventario.Buscar(Me.PanelAccion1.Sucursal.Id, value.Id)
+
+                    Dim s As New Sucursales
+                    s.Cargar()
+                    Me.Inventario.Buscar(s.Id, value.Id)
                     If Me.Inventario.TotalRegistros = 1 Then
                         txtcantidainventario.Text = Me.Inventario.cantidad
                     End If

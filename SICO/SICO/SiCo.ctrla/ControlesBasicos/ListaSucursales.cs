@@ -29,6 +29,8 @@ namespace SiCo.ctrla.ControlesBasicos
                 this.CargarEntidad();
                 this.DisplayMember = "NombreMantenimiento";
                 this.ValueMember = "Id";
+                this.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+                this.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             }
             catch
             { 
