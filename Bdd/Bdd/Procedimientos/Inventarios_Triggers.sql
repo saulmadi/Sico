@@ -25,9 +25,7 @@ if @conteo =0 then
 else
 
   UPDATE inventario c set
-        c.cantidad=c.cantidad + cantidad,
-        c.usu=usu,
-        c.fmodif=fmodif
+        c.cantidad=c.cantidad + cantidad
   where c.idsucursales=idsucursales and c.idproductos = idproductos;
 
 end if;
