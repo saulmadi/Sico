@@ -53,4 +53,16 @@ Public Class frmBusquedaCompras
         Cargar()
 
     End Sub
+
+    Private Sub CrtPanelBusqueda1_Editar() Handles CrtPanelBusqueda1.Editar
+        Me.Hide()
+        frm = New frmCompras
+
+        frm.MdiParent = Me.MdiParent
+
+        frm.Show()
+        frm.Compras = Me.CrtPanelBusqueda1.GridResultados.Item
+
+
+    End Sub
 End Class

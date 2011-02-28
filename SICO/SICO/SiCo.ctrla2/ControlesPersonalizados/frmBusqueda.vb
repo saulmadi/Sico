@@ -54,7 +54,10 @@ Public Class frmBusqueda
 #Region "Metodos"
     Public Sub cargar(ByVal Parametros As List(Of SiCo.lgla.Parametro))
         Try
-            btnAceptar.Enabled = False
+            If Entidad.TotalRegistros = 0 Then
+                btnAceptar.Enabled = False
+            End If
+
             Me.Entidad.Buscar(Parametros)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -74,7 +77,7 @@ Public Class frmBusqueda
 #Region "Eventos"
 
     Private Sub _entidad_CargoTabla() Handles _entidad.CargoTabla
-        Me.Grid.DataMember = Nothing
+        Me.Grid.DataSource = Nothing
         If Entidad.TotalRegistros > 0 Then
             grdbusqueda.DataSource = Entidad.TablaAColeccion
             btnAceptar.Enabled = True

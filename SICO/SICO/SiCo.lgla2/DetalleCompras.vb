@@ -37,6 +37,7 @@ Public Class DetalleCompras
         Me.New()
 
         Me._Id = id
+        Me.idproducto = idproductos
         Me.idcompras = idcompras
         Me.idproducto = idproducto
         Me.cantidad = cantidad

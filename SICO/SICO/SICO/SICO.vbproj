@@ -65,16 +65,23 @@
     <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="MySql.Data, Version=6.3.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core">
@@ -178,6 +185,18 @@
       <DependentUpon>crEncabezado.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="crPie.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crPie.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="crTitulo.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crTitulo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Factuacion\ControlCaja\frmAperturaCaja.Designer.vb">
       <DependentUpon>frmAperturaCaja.vb</DependentUpon>
     </Compile>
@@ -250,6 +269,12 @@
     <Compile Include="frmPantallaInicio.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmVistaPrevia.Designer.vb">
+      <DependentUpon>frmVistaPrevia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVistaPrevia.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Inventario\ControlCompras\frmBusquedaCompras.Designer.vb">
       <DependentUpon>frmBusquedaCompras.vb</DependentUpon>
     </Compile>
@@ -273,6 +298,18 @@
     </Compile>
     <Compile Include="Inventario\ControlCompras\frmOrdenesCompra.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\Reportes\crCompras.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crCompras.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Inventario\ControlCompras\Reportes\crProveedor.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crProveedor.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Inventario\frmMotocicletasBusqueda.Designer.vb">
       <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>
@@ -385,6 +422,14 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crEncabezado.vb</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="crPie.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crPie.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="crTitulo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crTitulo.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Factuacion\ControlCaja\frmAperturaCaja.resx">
       <DependentUpon>frmAperturaCaja.vb</DependentUpon>
     </EmbeddedResource>
@@ -421,6 +466,9 @@
     <EmbeddedResource Include="frmPantallaInicio.resx">
       <DependentUpon>frmPantallaInicio.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVistaPrevia.resx">
+      <DependentUpon>frmVistaPrevia.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inventario\ControlCompras\frmBusquedaCompras.resx">
       <DependentUpon>frmBusquedaCompras.vb</DependentUpon>
     </EmbeddedResource>
@@ -432,6 +480,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\ControlCompras\frmOrdenesCompra.resx">
       <DependentUpon>frmOrdenesCompra.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\Reportes\crCompras.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crCompras.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\Reportes\crProveedor.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crProveedor.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\frmMotocicletasBusqueda.resx">
       <DependentUpon>frmMotocicletasBusqueda.vb</DependentUpon>
