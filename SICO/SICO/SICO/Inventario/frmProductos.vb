@@ -49,8 +49,10 @@ Public Class frmProductos
             txtcodigo.Text = Producto.Codigo
             txtdescripcion.Text = Producto.Descripcion
             txtprecioventa.Text = Producto.PrecioVenta
+            txtpreciocompra.Text = Producto.PrecioCosto
             If value.Id = 0 Then
                 txtprecioventa.Text = ""
+                txtpreciocompra.Text = ""
                
             Else
                 CrtImagen1.Descargar(value.Id)

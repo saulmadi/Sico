@@ -44,6 +44,7 @@ Public Class crtPanelBusqueda
 #Region "Metodos"
     Public Sub Cargar(ByVal ColeccionParametros As List(Of SiCo.lgla.Parametro))
         Try
+            Me.GridResultados.DataSource = Nothing
 
             Me.Entidad.Buscar(ColeccionParametros)
         Catch ex As Exception
@@ -52,6 +53,7 @@ Public Class crtPanelBusqueda
     End Sub
     Public Sub cargar(ByVal Parametro As String, ByVal valorBusqueda As String)
         Try
+            Me.GridResultados.DataSource = Nothing
             Me.Entidad.Buscar(Parametro, valorBusqueda)
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -65,7 +67,7 @@ Public Class crtPanelBusqueda
     End Sub
 
     Private Sub _Entidad_CargoTabla() Handles _Entidad.CargoTabla
-        Me.GridResultados.DataMember = Nothing
+        Me.GridResultados.DataSource = Nothing
         If Entidad.TotalRegistros > 0 Then
             Me.GridResultados.DataSource = Entidad.TablaAColeccion
         End If

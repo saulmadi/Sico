@@ -118,6 +118,7 @@ Public Class Productos
         Dim lista As New List(Of Productos)
         If Me.TotalRegistros > 0 Then
             For x As Integer = 0 To Me.TotalRegistros - 1
+                Me.CargadoPropiedades(x)
                 Dim temPro As New Productos(Me.Id, Me.Codigo, Me.Descripcion, Me.PrecioCosto, Me.PrecioVenta)
                 lista.Add(temPro)
             Next
