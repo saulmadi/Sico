@@ -28,69 +28,91 @@ Public Class frmCompras
             cmbProveedor.Enabled = True
 
             txtTelefono.Clear()
-            txtimpuesto.Text = value.Impuesto
-            txtsubtotal.Text = value.CalcularTotal
-            txttotal.Text = value.CalcularTotal
+            
 
             txtFacturCompra.Text = ""
-            cmbProveedor.SelectedIndex = -1
-            cmbSucursales.SelectedIndex = -1
+            
 
-            If cmbProveedor.Items.Count = 0 Then
-                cmbProveedor.CargarEntidad()
-            End If
-
-            If cmbSucursales.Items.Count = 0 Then
-                cmbSucursales.Inicialiazar()
-            End If
+         
 
             If value.Id = 0 Then
+                If cmbProveedor.Items.Count = 0 Then
+                    cmbProveedor.Entidad = New Proveedores
+
+                    cmbProveedor.CargarEntidad()
+                    cmbProveedor.DisplayMember = "NombreMantenimiento"
+                    cmbProveedor.ValueMember = "Id"
+                End If
+
+                If cmbSucursales.Items.Count = 0 Then
+                    cmbSucursales.Inicialiazar()
+                    cmbProveedor.DisplayMember = "NombreMantenimiento"
+                    cmbProveedor.ValueMember = "Id"
+                End If
+                Me.grdDetalle.BotonEliminar = True
+                Me.grdDetalle.BotonBuscar = True
+
+                cmbProveedor.SelectedIndex = -1
+                cmbSucursales.SelectedIndex = -1
                 PanelAccion1.BotonGuardar.Enabled = True
                 PanelAccion1.BotonImprimir.Enabled = False
+
+                dteFechaCompra.Value = Now
+
                 value.ListaDetalle.Clear()
+
                 For i As Integer = 1 To 50
                     value.ListaDetalle.Add(New DetalleCompras)
                 Next
 
                 grdDetalle.DataSource = value.ListaDetalle
-                PanelAccion1.BotonImprimir.Enabled = True
                 PanelAccion1.BotonNuevo.Enabled = True
 
             Else
-                PanelAccion1.BotonGuardar.Enabled = False
-                PanelAccion1.BotonImprimir.Enabled = False
-                txtFacturCompra.Text = value.facturacompra
                 If cmbProveedor.Items.Count = 0 Then
+                    cmbProveedor.Entidad = New Proveedores
+
                     cmbProveedor.IncializarCarga()
-                End If
-                If cmbSucursales.Items.Count = 0 Then
-                    cmbSucursales.IncializarCarga()
+                    cmbProveedor.DisplayMember = "NombreMantenimiento"
+                    cmbProveedor.ValueMember = "Id"
                 End If
 
-                cmbProveedor.SelectedValue = value.idproveedor
-                cmbSucursales.SelectedValue = value.idsucursal
+                If cmbSucursales.Items.Count = 0 Then
+                    cmbSucursales.Entidad = New SICO.lgla.Sucursales
+                    cmbSucursales.IncializarCarga()
+                    cmbSucursales.DisplayMember = "NombreMantenimiento"
+                    cmbSucursales.ValueMember = "Id"
+                End If
+                PanelAccion1.BotonGuardar.Enabled = True
+                PanelAccion1.BotonImprimir.Enabled = True
+                dteFechaCompra.Value = value.fechacompra
+                txtFacturCompra.Text = value.facturacompra
+                cmbProveedor.SelectedIndex = 0
+                cmbProveedor.SelectedValue = Compras.idproveedor
+                cmbSucursales.SelectedValue = Compras.idsucursal
+
                 Me.grdDetalle.BotonEliminar = False
                 Me.grdDetalle.BotonBuscar = False
                 value.CargarDetalle()
                 grdDetalle.DataSource = _compras.ListaDetalle
-            End If
 
+            End If
+            txtimpuesto.Text = value.Impuesto
+            txtsubtotal.Text = value.CalcularTotal
+            txttotal.Text = value.CalcularTotal
         End Set
     End Property
 #End Region
 
 #Region "Eventos"
     Private Sub frmCompras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        cmbProveedor.DisplayMember = "NombreMantenimiento"
-        cmbProveedor.ValueMember = "Id"
-        cmbProveedor.Entidad = New Proveedores
+
+        Me.WindowState = FormWindowState.Maximized
 
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonImprimir.Enabled = False
         PanelAccion1.BotonGuardar.Enabled = False
 
-
-        
         grdDetalle.BotonBuscar = True
         grdDetalle.BotonEliminar = True
         grdDetalle.RowHeadersVisible = True
@@ -100,7 +122,7 @@ Public Class frmCompras
         grdDetalle.DarFormato("PrecioEditable", "Precio de Compra", False)
         grdDetalle.DarFormato("SubtotalString", "Subtotal", True)
 
-        Me.WindowState = FormWindowState.Maximized
+       
 
     End Sub
 
@@ -190,6 +212,31 @@ Public Class frmCompras
         Me.Compras.ListaDetalle(grdDetalle.CurrentRow.Index) = New DetalleCompras
     End Sub
 
+    Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
+        Dim re As New crCompras
+        Dim f As New frmVistaPrevia
+
+        _compras.Id = Me.Compras.Id
+        cmbProveedor.SelectedValue = Me.Compras.idproveedor
+        cmbSucursales.SelectedValue = Me.Compras.idsucursal
+        re.Subreports("crProveedor.rpt").DataDefinition.FormulaFields("Proveedor").Text = "'" + Me.Compras.DescripcionProveedor + "'"
+        re.Subreports("crProveedor.rpt").DataDefinition.FormulaFields("Telefono").Text = "'" + txtTelefono.Text + "'"
+
+        re.DataDefinition.FormulaFields("Sucursal").Text = "'" + cmbSucursales.SelectedItem.NombreMantenimiento + "'"
+        re.DataDefinition.FormulaFields("Fecha").Text = "'" + Me.Compras.fechacompra.ToString("dd/MM/yyyy") + "'"
+        re.DataDefinition.FormulaFields("Factura").Text = "'" + Me.Compras.facturacompra.ToString + "'"
+
+        Dim d As New DetalleCompras
+        d.Buscar(Me.Compras.Id.ToString, Nothing)
+
+        re.SetDataSource(d.Tabla)
+        
+        f.MdiParent = Me.MdiParent
+        Me.WindowState = FormWindowState.Minimized
+        f.Show(re, "Compras")
+
+    End Sub
 #End Region
+  
    
 End Class

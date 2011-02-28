@@ -10,7 +10,7 @@ using SiCo.lgla;
 
 namespace SiCo.ctrla
 {
-    public partial class ListaDesplegable : ComboBox
+    public partial class ListaDesplegable : System.Windows.Forms.ComboBox 
     {
 
         #region Declaraciones
@@ -118,6 +118,7 @@ namespace SiCo.ctrla
             set;
         }
 
+       
         #endregion       
 
         #region Eventos
@@ -309,7 +310,7 @@ namespace SiCo.ctrla
                     this.DisplayMember = d;
                     this.ValueMember = v;
                     this.Cursor = Cursors.Default;
-                    this.SelectedIndex = -1;
+                    //this.SelectedIndex = -1;
                 }
                 else
                 {

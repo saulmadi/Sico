@@ -71,7 +71,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
             }
             catch
             {
-                suc = null;
+                
                 lblSucursal.Text = "Error al cargar la sucursal";
             }
 

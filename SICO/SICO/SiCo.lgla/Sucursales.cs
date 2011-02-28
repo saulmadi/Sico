@@ -9,6 +9,7 @@ namespace SiCo.lgla
     {
         #region "Declaraciones"
         public string NombreSucursal;
+        public string PieSucursal;
         #endregion
 
         #region Constructor
@@ -122,12 +123,15 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                SucursalSerializable  usu = new SucursalSerializable (0,0,"");
+                
+
+                SucursalSerializable  usu = new SucursalSerializable (0,0,"",PieSucursal);
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Cargar();
                 usu = (SucursalSerializable )s.Objeto;
                 this._Id = usu.id;
+                this.PieSucursal = usu.PieReporte;
                 this.idUsuario = usu.idusuario;
                 this.NombreSucursal = usu.NombreSucursal;
 
@@ -144,7 +148,16 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                SucursalSerializable  usu = new SucursalSerializable (this.Id, this.idUsuario,this.NombreMantenimiento);
+                PieSucursal = this.PersonaJuridica.RazonSocial.Trim() + ";";
+                if (this.PersonaJuridica.telefono != null)
+                    PieSucursal += " Teléfonos: " + this.PersonaJuridica.telefono.ToString();
+
+                if (this.PersonaJuridica.telefono2 != null)
+                    PieSucursal += "/ " + this.PersonaJuridica.telefono2;
+
+                if (this.PersonaJuridica.direccion != null)
+                    PieSucursal += "; " + this.PersonaJuridica.direccion;
+                SucursalSerializable  usu = new SucursalSerializable (this.Id, this.idUsuario,this.NombreMantenimiento,PieSucursal);
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Guardar();
@@ -168,11 +181,13 @@ namespace SiCo.lgla
             public long? id;
             public long? idusuario;
             public string NombreSucursal;
-            public SucursalSerializable(long? id, long? usuario,string nombresucursal)
+            public string PieReporte;
+            public SucursalSerializable(long? id, long? usuario,string nombresucursal,string  PieReporte)
             {
                 this.id = id;
                 this.idusuario = usuario;
                 this.NombreSucursal = nombresucursal;
+                this.PieReporte = PieReporte;
             }
 
         }
