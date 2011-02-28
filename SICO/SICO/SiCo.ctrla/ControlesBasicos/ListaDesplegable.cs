@@ -294,7 +294,37 @@ namespace SiCo.ctrla
                 } 
             }
         }
-       
+
+        public void IncializarCarga()
+        {
+            try
+            {
+                Entidad.Buscar();
+                if (Entidad.TotalRegistros > 0)
+                {
+                    string d = DisplayMember;
+                    string v = ValueMember;
+                    this.DataSource = null;
+                    this.DataSource = Entidad.TablaAColeccion();
+                    this.DisplayMember = d;
+                    this.ValueMember = v;
+                    this.Cursor = Cursors.Default;
+                    this.SelectedIndex = -1;
+                }
+                else
+                {
+                    string d = DisplayMember;
+                    string v = ValueMember;
+                    this.DataSource = null;
+                    this.DisplayMember = d;
+                    this.ValueMember = v;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+            }
+        }
 
         public void Limpiar()
         {

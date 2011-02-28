@@ -117,8 +117,8 @@ namespace SiCo.ctrla
                 if (this.BotonEditar )
                 {
                     DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
-                    columna.Text = "Editar";
-                    columna.HeaderText = "Editar";
+                    columna.Text = "Ver";
+                    columna.HeaderText = "Ver";
                     columna.Name = "BtnEditar";
                     columna.Resizable = DataGridViewTriState.False;
                     columna.ReadOnly = true;
@@ -169,50 +169,72 @@ namespace SiCo.ctrla
 
             if (this.Columns[e.ColumnIndex].Name == "BtnEditar")
             {
-                GridEditarEventArg h = new GridEditarEventArg();
-
-                h.Fila = this.Rows[e.RowIndex];
-                if (CampoId != null)
+                if (e.RowIndex >= 0)
                 {
-                    h.Id = Convert.ToInt32 (this.Rows[e.RowIndex].Cells[CampoId].ToString());
-                }
-                {
-                    h.Id = 0;
-                }
+                    GridEditarEventArg h = new GridEditarEventArg();
+                    try
+                    {
+                        if (CampoId != null)
+                        {
+                            h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].ToString());
+                        }
+                        {
+                            h.Id = 0;
+                        }
+                        if (e.RowIndex > 0)
+                            h.Fila = this.Rows[e.RowIndex];
+                    }
+                    catch
+                    {
+                    }
 
-                h.IndiceColumna = e.ColumnIndex;
-                h.IndiceFila = e.RowIndex;
 
-                if (Editar != null)
-                    Editar(h);
+                    h.IndiceColumna = e.ColumnIndex;
+                    h.IndiceFila = e.RowIndex;
+
+                    if (Editar != null)
+                        Editar(h);
+                }
             }
             if (this.Columns[e.ColumnIndex].Name == "BtnBuscar")
             {
+                if (e.RowIndex >= 0)
                 if (Buscar  != null)
                     Buscar();
             }
 
             if (this.Columns[e.ColumnIndex].Name == "BtnEliminar")
             {
-
-                GridEliminarEventArg h = new GridEliminarEventArg();
-
-                h.Fila = this.Rows[e.RowIndex];
-                if (CampoId != null)
+                if (e.RowIndex >= 0)
                 {
-                    
-                    h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].ToString());
-                }
-                else
-                {
-                    h.Id = 0 ;
+                    GridEliminarEventArg h = new GridEliminarEventArg();
+
+                    h.Fila = this.Rows[e.RowIndex];
+                    if (CampoId != null)
+                    {
+                        try
+                        {
+                            h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].Value.ToString());
+                        }
+                        catch
+                        {
+                            h.Id = 0;
+                        }
+
+                    }
+                    else
+                    {
+                        h.Id = 0;
+                    }
+
+                    h.IndiceColumna = e.ColumnIndex;
+                    h.IndiceFila = e.RowIndex;
+
+                    if (Eliminar != null)
+                        Eliminar(h);
                 }
 
-                h.IndiceColumna = e.ColumnIndex;
-                h.IndiceFila = e.RowIndex;
-
-                if (Eliminar  != null)
-                    Eliminar (h);
+                this.Refresh();
                 
             }
 

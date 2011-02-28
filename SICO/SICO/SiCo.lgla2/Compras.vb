@@ -10,6 +10,7 @@ Public Class Compras
     Private _totalcompra As Decimal
     Private _listaDetalle As New List(Of DetalleCompras)
     Private _proveedor As New Proveedores
+    Private _diccionario As New Dictionary(Of Long, DetalleCompras)
 #End Region
 
 #Region "Constructor"
@@ -81,11 +82,7 @@ Public Class Compras
 
     Public Property ListaDetalle() As List(Of DetalleCompras)
         Get
-            If Me.Id > 0 Then
-                Dim d As New DetalleCompras
-                d.Buscar(Me.Id, Nothing)
-                _listaDetalle = d.TablaAColeccion
-            End If
+            
 
             Return _listaDetalle
         End Get
@@ -143,6 +140,7 @@ Public Class Compras
 
     Public Overrides Sub Guardar()
         Me.NullParametrosMantenimiento()
+        Me.totalcompra = Me.CalcularTotal
         Me.ValorParametrosMantenimiento("facturacompra", Me.facturacompra)
         Me.ValorParametrosMantenimiento("idsucursal", Me.idsucursal)
         Me.ValorParametrosMantenimiento("idproveedor", Me.idproveedor)
@@ -174,15 +172,15 @@ Public Class Compras
     Public Sub GuardarCompra()
         Try
             Me.IniciarTransaccion()
-
+            Me.CalcularDetalle()
             Me.Guardar()
             Dim flag As Boolean = False
-            For i As Integer = 0 To Me.ListaDetalle.Count - 1
-                If Me.ListaDetalle(i).idproducto > 0 Then
-                    Me.ListaDetalle(i).idcompras = Me.Id
-                    Me.ListaDetalle(i).idsucursal = Me.idsucursal
-                    If Me.ListaDetalle(i).cantidad > 0 And Me.ListaDetalle(i).preciocompra > 0 Then
-                        Me.ListaDetalle(i).Guardar()
+            For Each i In _diccionario
+                If i.Value.idproducto > 0 Then
+                    i.Value.idcompras  = Me.Id
+                    i.Value.idsucursal = Me.idsucursal
+                    If i.Value.cantidad > 0 And i.Value.preciocompra > 0 Then
+                        i.Value.Guardar()
                     Else
                         Throw New ApplicationException("La cantidad o el precio de compra de un producto no puede ser 0")
                     End If
@@ -198,11 +196,42 @@ Public Class Compras
 
     Public Function CalcularTotal() As Decimal
         Dim d As Decimal = 0
-        For Each i In Me.ListaDetalle
+        For Each i In Me._listaDetalle
             d += i.Subtotal
         Next
         Return d
     End Function
+
+    Private Sub CalcularDetalle()
+        Me._diccionario.Clear()
+
+        For Each i In Me.ListaDetalle
+            If i.idproducto > 0 Then
+                If Me._diccionario.ContainsKey(i.idproducto) Then
+                    If Me._diccionario(i.idproducto).preciocompra = i.preciocompra Then
+                        Me._diccionario(i.idproducto).cantidad = i.cantidad
+                    Else
+                        Throw New ApplicationException("Debe de ingresar el mismo percio de compra para el producto")
+                    End If
+                Else
+                    Me._diccionario.Add(i.idproducto, i)
+                End If
+            End If
+        Next
+        If Me._diccionario.Count = 0 Then
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la compra")
+        End If
+
+    End Sub
+
+    Public Sub CargarDetalle()
+        _listaDetalle.Clear()
+        If Me.Id > 0 Then
+            Dim d As New DetalleCompras
+            d.Buscar(Me.Id, Nothing)
+            _listaDetalle = d.TablaAColeccion
+        End If
+    End Sub
 
 #End Region
 

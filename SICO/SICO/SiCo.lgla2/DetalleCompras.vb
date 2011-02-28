@@ -143,7 +143,7 @@ Public Class DetalleCompras
             Return cantidad.ToString
         End Get
         Set(ByVal value As String)
-            Dim reg As New Regex("\D{8}")
+            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
             If reg.IsMatch(value) Then
                 Dim s As Long = value
                 If s < 0 Then
@@ -167,7 +167,7 @@ Public Class DetalleCompras
             Return Me.preciocompra.ToString
         End Get
         Set(ByVal value As String)
-            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$")
+            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,2})?$")
             If reg.IsMatch(value) Then
                 Dim d As Decimal = value
                 If d > 0 Then
@@ -202,7 +202,7 @@ Public Class DetalleCompras
 
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idcompras = Registro(Indice, "idcompras")
-        Me.idproducto = Registro(Indice, "idproductos")
+        Me.idproducto = Registro(Indice, "idproducto")
         Me.cantidad = Registro(Indice, "cantidad")
         Me.preciocompra = Registro(Indice, "preciocompra")
         Me.idsucursal = Registro(Indice, "idsucursal")
@@ -214,8 +214,9 @@ Public Class DetalleCompras
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
         Me.ValorParametrosMantenimiento("idcompras", Me.idcompras)
-        Me.ValorParametrosMantenimiento("idproductos", Me.idproducto)
+        Me.ValorParametrosMantenimiento("idproducto", Me.idproducto)
         Me.ValorParametrosMantenimiento("cantidad", Me.cantidad)
+        Me.ValorParametrosMantenimiento("preciocompra", Me.preciocompra)
         Me.ValorParametrosMantenimiento("idsucursal", Me.idsucursal)
         MyBase.Guardar(True)
     End Sub
@@ -237,8 +238,8 @@ Public Class DetalleCompras
 
     Public Overloads Sub Buscar(ByVal idcompras As String, ByVal idproducto As String)
         Me.NullParametrosBusqueda()
-        Me.ValorParametrosBusqueda("idcompras", idcompras.ToString)
-        Me.ValorParametrosBusqueda("idproducto", idproducto.ToString)
+        Me.ValorParametrosBusqueda("idcompras", idcompras)
+        Me.ValorParametrosBusqueda("idproducto", idproducto)
 
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
 
