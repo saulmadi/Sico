@@ -39,27 +39,33 @@ namespace SiCo.sgla
 
         public static string DesEncriptar(string TextoEncriptado)
         {
-            byte[] TextoByte = Convert.FromBase64String  (TextoEncriptado)
-;
-            MemoryStream ms = new MemoryStream();
+            try
+            {
+                byte[] TextoByte = Convert.FromBase64String(TextoEncriptado);
+                MemoryStream ms = new MemoryStream();
+
+                PasswordDeriveBytes generadorLlave = new PasswordDeriveBytes(Keys.LLaveCryptografica, null);
+
+                //cr.IV = Keys.VectorIncialiazacion; 
+
+                byte[] bytesLlaveSHA1 = generadorLlave.CryptDeriveKey("TripleDES", "SHA1", 192, Keys.VectorIncialiazacion);
+
+                //cr.Key = bytesLlaveSHA1;
+                //cr.Mode = CipherMode.ECB;
+                //cr.Padding = PaddingMode.PKCS7;
+
+
+                CryptoStream encStream = new CryptoStream(ms, cr.CreateDecryptor(bytesLlaveSHA1, Keys.VectorIncialiazacion), CryptoStreamMode.Write);
+                encStream.Write(TextoByte, 0, TextoByte.Length);
+                encStream.FlushFinalBlock();
+
+                return System.Text.Encoding.Unicode.GetString(ms.ToArray());
+            }
+            catch 
+            {
+                return string.Empty; 
+            }
             
-            PasswordDeriveBytes generadorLlave = new PasswordDeriveBytes(Keys.LLaveCryptografica, null);
-
-            //cr.IV = Keys.VectorIncialiazacion; 
-
-            byte[] bytesLlaveSHA1 = generadorLlave.CryptDeriveKey("TripleDES", "SHA1", 192, Keys.VectorIncialiazacion );
-             
-            //cr.Key = bytesLlaveSHA1;
-            //cr.Mode = CipherMode.ECB;
-            //cr.Padding = PaddingMode.PKCS7;
-
-            
-            CryptoStream encStream = new CryptoStream(ms, cr.CreateDecryptor(bytesLlaveSHA1,Keys.VectorIncialiazacion) , CryptoStreamMode.Write );
-            encStream.Write(TextoByte, 0, TextoByte.Length);
-            encStream.FlushFinalBlock();
-
-            return System.Text.Encoding.Unicode.GetString(ms.ToArray());
-
         }        
     }
 
