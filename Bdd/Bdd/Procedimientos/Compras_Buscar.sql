@@ -1,13 +1,13 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`Compra_Buscar` $$
-CREATE PROCEDURE `sico`.`Compra_Buscar` (
+DROP PROCEDURE IF EXISTS `Compra_Buscar` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Compra_Buscar`(
 
 
 id nvarchar(11),
 facturacompra nvarchar(11),
 idproveedor nvarchar(11),
-fechacompra nvarchar(11)
+fechacompra nvarchar(50)
 )
 BEGIN
 

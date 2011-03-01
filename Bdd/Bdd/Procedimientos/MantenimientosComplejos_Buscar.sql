@@ -50,6 +50,10 @@ if usuario<>"" and contrasena<> "" then
   set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' and  contrasena COLLATE latin1_general_cs like '",contrasena,"' ");
 end if;
 
+if usuario<>"" and contrasena= "" then
+  set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' " );
+end if;
+
 
 if entidadnombre<>""  then
   set @where = concat(@where, " and   e.entidadnombre like '",entidadnombre, "%' ");
