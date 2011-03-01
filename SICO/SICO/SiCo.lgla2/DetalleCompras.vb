@@ -106,7 +106,7 @@ Public Class DetalleCompras
         Set(ByVal value As Productos)
             _Producto = value
 
-            Me.idproducto = value.Id
+            Me._idprodcutos = value.Id
         End Set
     End Property
 
@@ -208,6 +208,8 @@ Public Class DetalleCompras
         Me.preciocompra = Registro(Indice, "preciocompra")
         Me.idsucursal = Registro(Indice, "idsucursal")
 
+        Me.Producto = New Productos(Me.idproducto, Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, 0)
+
 
         MyBase.CargadoPropiedades(Indice)
     End Sub
@@ -221,6 +223,7 @@ Public Class DetalleCompras
         Me.ValorParametrosMantenimiento("idsucursal", Me.idsucursal)
         MyBase.Guardar(True)
     End Sub
+
     <Obsolete("El metodo no se puede utilizar", True)> _
     Public Overrides Sub Guardar(ByVal transaccion As Boolean)
 
