@@ -22,17 +22,8 @@ Partial Class frmOrdenesCompra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrdenesCompra))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Label11 = New System.Windows.Forms.Label
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Label9 = New System.Windows.Forms.Label
         Me.TextBox6 = New System.Windows.Forms.TextBox
         Me.Label8 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
@@ -62,7 +53,6 @@ Partial Class frmOrdenesCompra
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox4.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -73,7 +63,6 @@ Partial Class frmOrdenesCompra
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.GroupBox4)
         Me.GroupBox1.Controls.Add(Me.TextBox6)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
@@ -89,102 +78,9 @@ Partial Class frmOrdenesCompra
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
-        'GroupBox4
-        '
-        Me.GroupBox4.Controls.Add(Me.Button1)
-        Me.GroupBox4.Controls.Add(Me.CajaTexto2)
-        Me.GroupBox4.Controls.Add(Me.Label11)
-        Me.GroupBox4.Controls.Add(Me.ListaDesplegable1)
-        Me.GroupBox4.Controls.Add(Me.Label10)
-        Me.GroupBox4.Controls.Add(Me.CajaTexto1)
-        Me.GroupBox4.Controls.Add(Me.Label9)
-        Me.GroupBox4.Location = New System.Drawing.Point(12, 194)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(811, 58)
-        Me.GroupBox4.TabIndex = 10
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "Agregar Producto"
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(610, 17)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "A&gregar"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'CajaTexto2
-        '
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.Location = New System.Drawing.Point(504, 19)
-        Me.CajaTexto2.MaxLength = 255
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(100, 20)
-        Me.CajaTexto2.TabIndex = 5
-        Me.CajaTexto2.Texto = Nothing
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(449, 22)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(49, 13)
-        Me.Label11.TabIndex = 4
-        Me.Label11.Text = "Cantidad"
-        '
-        'ListaDesplegable1
-        '
-        Me.ListaDesplegable1.Comando = Nothing
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.ListaDesplegablePadre = Nothing
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(269, 19)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(174, 21)
-        Me.ListaDesplegable1.TabIndex = 3
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(199, 22)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(63, 13)
-        Me.Label10.TabIndex = 2
-        Me.Label10.Text = "Descripción"
-        '
-        'CajaTexto1
-        '
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.Location = New System.Drawing.Point(52, 19)
-        Me.CajaTexto1.MaxLength = 255
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(141, 20)
-        Me.CajaTexto1.TabIndex = 1
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(6, 22)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(40, 13)
-        Me.Label9.TabIndex = 0
-        Me.Label9.Text = "Código"
-        '
         'TextBox6
         '
+        Me.TextBox6.Enabled = False
         Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox6.Location = New System.Drawing.Point(114, 27)
         Me.TextBox6.Name = "TextBox6"
@@ -236,6 +132,7 @@ Partial Class frmOrdenesCompra
         '
         'TextBox5
         '
+        Me.TextBox5.Enabled = False
         Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox5.Location = New System.Drawing.Point(62, 19)
         Me.TextBox5.Name = "TextBox5"
@@ -244,6 +141,7 @@ Partial Class frmOrdenesCompra
         '
         'TextBox3
         '
+        Me.TextBox3.Enabled = False
         Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox3.Location = New System.Drawing.Point(62, 71)
         Me.TextBox3.Name = "TextBox3"
@@ -252,6 +150,7 @@ Partial Class frmOrdenesCompra
         '
         'TextBox4
         '
+        Me.TextBox4.Enabled = False
         Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox4.Location = New System.Drawing.Point(62, 45)
         Me.TextBox4.Name = "TextBox4"
@@ -305,6 +204,7 @@ Partial Class frmOrdenesCompra
         '
         'TextBox2
         '
+        Me.TextBox2.Enabled = False
         Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox2.Location = New System.Drawing.Point(68, 72)
         Me.TextBox2.Name = "TextBox2"
@@ -313,6 +213,7 @@ Partial Class frmOrdenesCompra
         '
         'TextBox1
         '
+        Me.TextBox1.Enabled = False
         Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox1.Location = New System.Drawing.Point(68, 46)
         Me.TextBox1.Name = "TextBox1"
@@ -367,7 +268,7 @@ Partial Class frmOrdenesCompra
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 112)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(898, 269)
+        Me.Panel1.Size = New System.Drawing.Size(898, 191)
         Me.Panel1.TabIndex = 3
         '
         'Panel5
@@ -375,7 +276,7 @@ Partial Class frmOrdenesCompra
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel5.Location = New System.Drawing.Point(865, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(33, 269)
+        Me.Panel5.Size = New System.Drawing.Size(33, 191)
         Me.Panel5.TabIndex = 3
         '
         'Panel6
@@ -383,7 +284,7 @@ Partial Class frmOrdenesCompra
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(31, 269)
+        Me.Panel6.Size = New System.Drawing.Size(31, 191)
         Me.Panel6.TabIndex = 0
         '
         'Panel2
@@ -392,9 +293,9 @@ Partial Class frmOrdenesCompra
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 381)
+        Me.Panel2.Location = New System.Drawing.Point(0, 303)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(898, 229)
+        Me.Panel2.Size = New System.Drawing.Size(898, 307)
         Me.Panel2.TabIndex = 4
         '
         'GroupBox5
@@ -404,7 +305,7 @@ Partial Class frmOrdenesCompra
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(834, 229)
+        Me.GroupBox5.Size = New System.Drawing.Size(834, 307)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
@@ -415,7 +316,7 @@ Partial Class frmOrdenesCompra
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(828, 210)
+        Me.DataGridView1.Size = New System.Drawing.Size(828, 288)
         Me.DataGridView1.TabIndex = 0
         '
         'Panel4
@@ -423,7 +324,7 @@ Partial Class frmOrdenesCompra
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel4.Location = New System.Drawing.Point(865, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(33, 229)
+        Me.Panel4.Size = New System.Drawing.Size(33, 307)
         Me.Panel4.TabIndex = 2
         '
         'Panel3
@@ -431,7 +332,7 @@ Partial Class frmOrdenesCompra
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(31, 229)
+        Me.Panel3.Size = New System.Drawing.Size(31, 307)
         Me.Panel3.TabIndex = 1
         '
         'CrtPanelBase1
@@ -472,8 +373,6 @@ Partial Class frmOrdenesCompra
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -507,14 +406,6 @@ Partial Class frmOrdenesCompra
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents CajaTexto1 As SICO.ctrla.CajaTexto
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents CajaTexto2 As SICO.ctrla.CajaTexto
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents ListaDesplegable1 As SICO.ctrla.ListaDesplegable
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
