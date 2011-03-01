@@ -4,7 +4,7 @@ using System.Text;
 using System.Data;
 using MySql.Data.MySqlClient;
 using SiCo.dtla;
-
+using SiCo.sgla; 
 
 namespace SiCo.lgla
 {
@@ -98,7 +98,7 @@ namespace SiCo.lgla
         {
             this.rol =Convert.ToInt32(   this.Registro(Indice, "idrol"));  
             this.usuario =(string) this.Registro(Indice, "usuario");
-            this.contrasena =(string) this.Registro(Indice, "contrasena");
+            this.contrasena = SiCo.sgla.Cripto.DesEncriptar((string)this.Registro(Indice, "contrasena"));
             this.sucursal = Convert.ToInt64(  this.Registro(Indice, "idsucursales")); 
             base.CargadoPropiedades(Indice);
         }
@@ -107,7 +107,7 @@ namespace SiCo.lgla
         {
             NullParametrosMantenimiento();
             ValorParametrosMantenimiento("usuario",this.usuario);
-            ValorParametrosMantenimiento("contrasena",this.contrasena);
+            ValorParametrosMantenimiento("contrasena",SiCo.sgla.Cripto.Encriptar (this.contrasena));
             ValorParametrosMantenimiento("idrol", this.rol); 
             ValorParametrosMantenimiento("idsucursales",this.sucursal);              
             base.Guardar();
@@ -154,12 +154,11 @@ namespace SiCo.lgla
         public bool Autenticar(string usuario, string contrasena)
         {
             NullParametrosBusqueda();
-            ValorParametrosBusqueda("usuario", usuario);
-            ValorParametrosBusqueda("contrasena", contrasena);
+            ValorParametrosBusqueda("usuario", usuario);            
             ValorParametrosBusqueda("estado", "1");
 
             LlenadoTabla(ColeccionParametrosBusqueda);
-            if (this.TotalRegistros == 1)
+            if (this.contrasena == contrasena)
                 return true;
 
             return false;         
