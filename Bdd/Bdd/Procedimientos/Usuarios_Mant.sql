@@ -7,7 +7,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usuarios_Mant`(
 
 inout id int,
 identidades int,
-contrasena nvarchar(30),
+contrasena nvarchar(8000),
 usuario nvarchar(45),
 estado int(1),
 idrol int,

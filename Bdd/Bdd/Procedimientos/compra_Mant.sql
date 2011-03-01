@@ -6,11 +6,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Compras_Mant`(
 /*definicion de parametros*/
 
 inout id int,
-facturacompra int,
+facturacompra int(18),
 idsucursal int,
 idproveedor int,
 fechacompra date,
-totalcompra decimal(10,4),
+totalcompra decimal(16,4),
 usu int,
 fmodif datetime
 )

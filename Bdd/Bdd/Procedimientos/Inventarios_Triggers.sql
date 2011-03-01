@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`Inventarios_Triggers` $$
-CREATE PROCEDURE `sico`.`Inventarios_Triggers` (
+DROP PROCEDURE IF EXISTS `Inventarios_Triggers` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Inventarios_Triggers`(
 
 idsucursales int,
 idproductos int,
@@ -25,7 +25,9 @@ if @conteo =0 then
 else
 
   UPDATE inventario c set
-        c.cantidad=c.cantidad + cantidad
+        c.cantidad=c.cantidad + cantidad,
+        c.usu=usu,
+        c.fmodif=fmodif
   where c.idsucursales=idsucursales and c.idproductos = idproductos;
 
 end if;
