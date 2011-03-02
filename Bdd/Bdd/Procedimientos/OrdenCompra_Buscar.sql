@@ -1,13 +1,13 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `Compra_Buscar` $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Compra_Buscar`(
-
+DROP PROCEDURE IF EXISTS `sico`.`OrdenCompra_Buscar` $$
+CREATE PROCEDURE `sico`.`OrdenCompra_Buscar` (
 
 id nvarchar(11),
-facturacompra nvarchar(11),
+codigo nvarchar(11),
+elaboradopor nvarchar(11),
 idproveedor nvarchar(11),
-fechacompra nvarchar(50)
+fechaorden nvarchar(50)
 )
 BEGIN
 
@@ -19,7 +19,7 @@ set @sql="";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from compras");
+set @from= concat(@from," from ordenescompras");
 
 
 
@@ -28,8 +28,8 @@ if id<>"" then
 end if;
 
 
-if facturacompra<>"" then
-  set @where= concat(@where, " and facturacompra = '", facturacompra, "' ");
+if codigo<>"" then
+  set @where= concat(@where, " and codigo = '", codigo, "' ");
 end if;
 
 
@@ -37,8 +37,13 @@ if idproveedor<>"" then
   set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
 end if;
 
-if fechacompra<>"" then
-  set @where= concat(@where, " and ", fechacompra, " ");
+if elaboradopor<>"" then
+  set @where= concat(@where, " and elaboradopor = ", elaboradopor, " ");
+end if;
+
+
+if fechaorden<>"" then
+  set @where= concat(@where, " and ", fechaorden, " ");
 end if;
 
 
