@@ -12,6 +12,7 @@
         Try
             Dim forma As New frmMenuPrincipal
             Dim u As New SICO.lgla.Usuario
+
             If txtcontrasena.Text.Trim.Length = 0 Or txtusuario.Text.Trim.Length = 0 Then
                 MessageBox.Show("Ingrese toda la infromación para iniciar sesión", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 txtcontrasena.Text = ""
