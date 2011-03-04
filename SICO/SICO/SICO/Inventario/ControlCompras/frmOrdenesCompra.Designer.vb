@@ -22,32 +22,37 @@ Partial Class frmOrdenesCompra
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmOrdenesCompra))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
-        Me.TextBox6 = New System.Windows.Forms.TextBox
+        Me.txtSucursal = New System.Windows.Forms.TextBox
+        Me.txtElaboradoPor = New System.Windows.Forms.TextBox
+        Me.Label10 = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.txtNumeroOrden = New System.Windows.Forms.TextBox
         Me.Label8 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
+        Me.dteFechaEmision = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.TextBox5 = New System.Windows.Forms.TextBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
-        Me.TextBox4 = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
+        Me.txtContacto = New System.Windows.Forms.TextBox
+        Me.txtTelefonoContacto = New System.Windows.Forms.TextBox
+        Me.txtCorreoContacto = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.Label6 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.TextBox2 = New System.Windows.Forms.TextBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.cmbProveedor = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.txtTelefonoProveedor = New System.Windows.Forms.TextBox
+        Me.txtCorreoProveedor = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
+        Me.Grid = New SICO.ctrla.Grid(Me.components)
         Me.Panel4 = New System.Windows.Forms.Panel
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
@@ -58,14 +63,18 @@ Partial Class frmOrdenesCompra
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
+        Me.GroupBox1.Controls.Add(Me.txtSucursal)
+        Me.GroupBox1.Controls.Add(Me.txtElaboradoPor)
+        Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.txtNumeroOrden)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox1.Controls.Add(Me.dteFechaEmision)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -78,14 +87,52 @@ Partial Class frmOrdenesCompra
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
-        'TextBox6
+        'txtSucursal
         '
-        Me.TextBox6.Enabled = False
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(114, 27)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox6.TabIndex = 0
+        Me.txtSucursal.Enabled = False
+        Me.txtSucursal.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSucursal.Location = New System.Drawing.Point(506, 53)
+        Me.txtSucursal.Name = "txtSucursal"
+        Me.txtSucursal.Size = New System.Drawing.Size(317, 20)
+        Me.txtSucursal.TabIndex = 10
+        '
+        'txtElaboradoPor
+        '
+        Me.txtElaboradoPor.Enabled = False
+        Me.txtElaboradoPor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtElaboradoPor.Location = New System.Drawing.Point(506, 27)
+        Me.txtElaboradoPor.Name = "txtElaboradoPor"
+        Me.txtElaboradoPor.Size = New System.Drawing.Size(317, 20)
+        Me.txtElaboradoPor.TabIndex = 9
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(427, 56)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(73, 13)
+        Me.Label10.TabIndex = 8
+        Me.Label10.Text = "Elaborado en:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(427, 30)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(76, 13)
+        Me.Label9.TabIndex = 7
+        Me.Label9.Text = "Elaborado por:"
+        '
+        'txtNumeroOrden
+        '
+        Me.txtNumeroOrden.Enabled = False
+        Me.txtNumeroOrden.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNumeroOrden.Location = New System.Drawing.Point(114, 27)
+        Me.txtNumeroOrden.Name = "txtNumeroOrden"
+        Me.txtNumeroOrden.Size = New System.Drawing.Size(300, 20)
+        Me.txtNumeroOrden.TabIndex = 0
         '
         'Label8
         '
@@ -97,13 +144,13 @@ Partial Class frmOrdenesCompra
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Número de orden"
         '
-        'DateTimePicker1
+        'dteFechaEmision
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(114, 53)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(301, 20)
-        Me.DateTimePicker1.TabIndex = 4
+        Me.dteFechaEmision.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dteFechaEmision.Location = New System.Drawing.Point(114, 53)
+        Me.dteFechaEmision.Name = "dteFechaEmision"
+        Me.dteFechaEmision.Size = New System.Drawing.Size(301, 20)
+        Me.dteFechaEmision.TabIndex = 4
         '
         'Label7
         '
@@ -117,10 +164,10 @@ Partial Class frmOrdenesCompra
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.TextBox5)
-        Me.GroupBox3.Controls.Add(Me.TextBox3)
-        Me.GroupBox3.Controls.Add(Me.TextBox4)
         Me.GroupBox3.Controls.Add(Me.Label4)
+        Me.GroupBox3.Controls.Add(Me.txtContacto)
+        Me.GroupBox3.Controls.Add(Me.txtTelefonoContacto)
+        Me.GroupBox3.Controls.Add(Me.txtCorreoContacto)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.Label6)
         Me.GroupBox3.Location = New System.Drawing.Point(421, 79)
@@ -130,42 +177,42 @@ Partial Class frmOrdenesCompra
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos del Contácto"
         '
-        'TextBox5
-        '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(62, 19)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(307, 20)
-        Me.TextBox5.TabIndex = 0
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(62, 71)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(307, 20)
-        Me.TextBox3.TabIndex = 5
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(62, 45)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(307, 20)
-        Me.TextBox4.TabIndex = 1
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(6, 74)
+        Me.Label4.Location = New System.Drawing.Point(6, 75)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(49, 13)
-        Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Telefono"
+        Me.Label4.TabIndex = 6
+        Me.Label4.Text = "Teléfono"
+        '
+        'txtContacto
+        '
+        Me.txtContacto.Enabled = False
+        Me.txtContacto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtContacto.Location = New System.Drawing.Point(62, 19)
+        Me.txtContacto.Name = "txtContacto"
+        Me.txtContacto.Size = New System.Drawing.Size(334, 20)
+        Me.txtContacto.TabIndex = 0
+        '
+        'txtTelefonoContacto
+        '
+        Me.txtTelefonoContacto.Enabled = False
+        Me.txtTelefonoContacto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefonoContacto.Location = New System.Drawing.Point(62, 71)
+        Me.txtTelefonoContacto.Name = "txtTelefonoContacto"
+        Me.txtTelefonoContacto.Size = New System.Drawing.Size(334, 20)
+        Me.txtTelefonoContacto.TabIndex = 5
+        '
+        'txtCorreoContacto
+        '
+        Me.txtCorreoContacto.Enabled = False
+        Me.txtCorreoContacto.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCorreoContacto.Location = New System.Drawing.Point(62, 45)
+        Me.txtCorreoContacto.Name = "txtCorreoContacto"
+        Me.txtCorreoContacto.Size = New System.Drawing.Size(334, 20)
+        Me.txtCorreoContacto.TabIndex = 1
         '
         'Label5
         '
@@ -189,12 +236,12 @@ Partial Class frmOrdenesCompra
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
+        Me.GroupBox2.Controls.Add(Me.cmbProveedor)
+        Me.GroupBox2.Controls.Add(Me.txtTelefonoProveedor)
+        Me.GroupBox2.Controls.Add(Me.txtCorreoProveedor)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 79)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(402, 109)
@@ -202,23 +249,37 @@ Partial Class frmOrdenesCompra
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Proveedor"
         '
-        'TextBox2
+        'cmbProveedor
         '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(68, 72)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(307, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.cmbProveedor.CargarAutoCompletar = False
+        Me.cmbProveedor.CargarComboBox = True
+        Me.cmbProveedor.DisplayMember = "NombreMantenimiento"
+        Me.cmbProveedor.FormattingEnabled = True
+        Me.cmbProveedor.Location = New System.Drawing.Point(68, 19)
+        Me.cmbProveedor.Name = "cmbProveedor"
+        Me.cmbProveedor.ParametroAutocompletar = Nothing
+        Me.cmbProveedor.ParametroBusquedaPadre = Nothing
+        Me.cmbProveedor.Size = New System.Drawing.Size(328, 21)
+        Me.cmbProveedor.TabIndex = 6
+        Me.cmbProveedor.ValueMember = "Id"
         '
-        'TextBox1
+        'txtTelefonoProveedor
         '
-        Me.TextBox1.Enabled = False
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(68, 46)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(307, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.txtTelefonoProveedor.Enabled = False
+        Me.txtTelefonoProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTelefonoProveedor.Location = New System.Drawing.Point(68, 72)
+        Me.txtTelefonoProveedor.Name = "txtTelefonoProveedor"
+        Me.txtTelefonoProveedor.Size = New System.Drawing.Size(328, 20)
+        Me.txtTelefonoProveedor.TabIndex = 5
+        '
+        'txtCorreoProveedor
+        '
+        Me.txtCorreoProveedor.Enabled = False
+        Me.txtCorreoProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCorreoProveedor.Location = New System.Drawing.Point(68, 46)
+        Me.txtCorreoProveedor.Name = "txtCorreoProveedor"
+        Me.txtCorreoProveedor.Size = New System.Drawing.Size(328, 20)
+        Me.txtCorreoProveedor.TabIndex = 4
         '
         'Label3
         '
@@ -228,7 +289,7 @@ Partial Class frmOrdenesCompra
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 13)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Telefono"
+        Me.Label3.Text = "Teléfono"
         '
         'Label2
         '
@@ -249,16 +310,6 @@ Partial Class frmOrdenesCompra
         Me.Label1.Size = New System.Drawing.Size(56, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Proveedor"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(68, 19)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(307, 21)
-        Me.ComboBox1.Sorted = True
-        Me.ComboBox1.TabIndex = 3
         '
         'Panel1
         '
@@ -300,7 +351,7 @@ Partial Class frmOrdenesCompra
         '
         'GroupBox5
         '
-        Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Controls.Add(Me.Grid)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
@@ -310,14 +361,25 @@ Partial Class frmOrdenesCompra
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
         '
-        'DataGridView1
+        'Grid
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(828, 288)
-        Me.DataGridView1.TabIndex = 0
+        Me.Grid.AllowUserToAddRows = False
+        Me.Grid.AllowUserToDeleteRows = False
+        Me.Grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.Grid.BotonBuscar = False
+        Me.Grid.BotonEditar = False
+        Me.Grid.BotonEliminar = False
+        Me.Grid.CampoId = Nothing
+        Me.Grid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Grid.Location = New System.Drawing.Point(3, 16)
+        Me.Grid.MultiSelect = False
+        Me.Grid.Name = "Grid"
+        Me.Grid.RowHeadersVisible = False
+        Me.Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.Grid.Size = New System.Drawing.Size(828, 288)
+        Me.Grid.TabIndex = 0
         '
         'Panel4
         '
@@ -380,7 +442,7 @@ Partial Class frmOrdenesCompra
         Me.Panel1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -390,27 +452,31 @@ Partial Class frmOrdenesCompra
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtTelefonoProveedor As System.Windows.Forms.TextBox
+    Friend WithEvents txtCorreoProveedor As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtTelefonoContacto As System.Windows.Forms.TextBox
+    Friend WithEvents txtCorreoContacto As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dteFechaEmision As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtContacto As System.Windows.Forms.TextBox
+    Friend WithEvents txtNumeroOrden As System.Windows.Forms.TextBox
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents txtSucursal As System.Windows.Forms.TextBox
+    Friend WithEvents txtElaboradoPor As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents cmbProveedor As SICO.ctrla.ListaDesplegable
+    Friend WithEvents Grid As SiCo.ctrla.Grid
 End Class

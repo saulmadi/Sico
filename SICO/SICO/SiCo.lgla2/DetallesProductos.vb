@@ -3,7 +3,7 @@ Imports System.Text.RegularExpressions
 Public MustInherit Class DetallesProductos
     Inherits SiCo.lgla.Entidad
 #Region "Declaraciones"
-    Protected _Producto As Productos
+    Protected _Producto As New Productos
     Protected _cantidad As Long
 #End Region
 
