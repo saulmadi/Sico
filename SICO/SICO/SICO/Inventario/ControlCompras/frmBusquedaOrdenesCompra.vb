@@ -2,6 +2,7 @@
     Public WithEvents frm As New frmOrdenesCompra
     Private Sub CrtPanelBusqueda1_Nuevo() Handles CrtPanelBusqueda1.Nuevo
         Me.Hide()
+        frm = New frmOrdenesCompra
         frm.MdiParent = Me.MdiParent
         frm.Show()
 

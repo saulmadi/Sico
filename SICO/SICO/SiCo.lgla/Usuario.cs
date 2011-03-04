@@ -14,6 +14,7 @@ namespace SiCo.lgla
         #region Declaraciones
         private string _contrasena = string.Empty;
         private int  _rol =1 ;
+        public  string NombreUsuario;
         #endregion
 
         #region Constructor
@@ -118,14 +119,15 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                UsuarioSerializable usu = new UsuarioSerializable(0, string.Empty,0);
+                UsuarioSerializable usu = new UsuarioSerializable(0, string.Empty,0,"");
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Cargar();
                 usu =(UsuarioSerializable) s.Objeto;
                 this._Id = usu.id;
                 this.usuario = usu.usuario;
-                this.rol = usu.rol; 
+                this.rol = usu.rol;
+                this.NombreUsuario = usu.Nombre; 
             }
             catch (Exception ex)
             {
@@ -139,7 +141,7 @@ namespace SiCo.lgla
             try
             {
                 Serializador s = new Serializador();
-                UsuarioSerializable usu = new UsuarioSerializable(this.Id , this.usuario,this.rol );
+                UsuarioSerializable usu = new UsuarioSerializable(this.Id , this.usuario,this.rol,this.NombreMantenimiento  );
                 s.Objeto = usu;
                 s.Directorio = this.Archivo;
                 s.Guardar();
@@ -220,11 +222,13 @@ namespace SiCo.lgla
             public long? id;
             public string usuario;
             public int rol;
-            public UsuarioSerializable(long? id, string usuario,int rol)
+            public string Nombre;
+            public UsuarioSerializable(long? id, string usuario,int rol,string nombre)
             {
                 this.id = id;
                 this.usuario = usuario;
-                this.rol = rol;  
+                this.rol = rol;
+                this.Nombre = nombre; 
             }
 
         }
