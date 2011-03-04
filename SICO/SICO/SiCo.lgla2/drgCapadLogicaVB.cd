@@ -139,15 +139,36 @@
   <Class Name="SiCo.lgla2.DetalleCompras" Collapsed="true">
     <Position X="11" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAEAEQA0AAAAQAAAAgABAgAICAAAABABBAAQBIQ=</HashCode>
+      <HashCode>AQAAAAEAEQA0AAAAQAAAAgABAgAICAAAABABBAAQhIQ=</HashCode>
       <FileName>DetalleCompras.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Compras" Collapsed="true">
     <Position X="10.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAGAAAAQAAABAAIAABABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AIAAAAGAECAUAgCJAAIAIhABAAUAAAAAACABJAAQAAA=</HashCode>
       <FileName>Compras.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.DetallesProductos" Collapsed="true">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAQAgAAAAQAAAAAABAgAIAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>DetallesProductos.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.DetalleOrdenCompra" Collapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAABAAAAAAAAAAAAAAAAABAAQAAA=</HashCode>
+      <FileName>DetalleOrdeCompra.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.OrdenCompra">
+    <Position X="16.25" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAQEAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrdenCompra.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">

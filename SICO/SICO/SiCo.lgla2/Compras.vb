@@ -185,9 +185,11 @@ Public Class Compras
                         Throw New ApplicationException("La cantidad o el precio de compra de un producto no puede ser 0")
                     End If
                 End If
+
             Next
 
             Me.CommitTransaccion()
+
         Catch ex As Exception
             Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
@@ -211,7 +213,7 @@ Public Class Compras
                     If Me._diccionario(i.idproducto).preciocompra = i.preciocompra Then
                         Me._diccionario(i.idproducto).cantidad = i.cantidad
                     Else
-                        Throw New ApplicationException("Debe de ingresar el mismo percio de compra para el producto")
+                        Throw New ApplicationException("Debe de ingresar el mismo precio de compra para el producto")
                     End If
                 Else
                     Me._diccionario.Add(i.idproducto, i)

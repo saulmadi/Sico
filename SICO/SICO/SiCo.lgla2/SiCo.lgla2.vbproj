@@ -68,6 +68,8 @@
     <Compile Include="Compras.vb" />
     <Compile Include="Departamentos.vb" />
     <Compile Include="DetalleCompras.vb" />
+    <Compile Include="DetalleOrdenCompra.vb" />
+    <Compile Include="DetallesProductos.vb" />
     <Compile Include="Estado.vb" />
     <Compile Include="GeneralesConstantes.vb" />
     <Compile Include="Imagenes.vb" />
@@ -77,6 +79,7 @@
     <Compile Include="ModulosTablasTipo.vb" />
     <Compile Include="Municipios.vb" />
     <Compile Include="NombresModuloTablasTipo.vb" />
+    <Compile Include="OrdenCompra.vb" />
     <Compile Include="Productos.vb" />
     <Compile Include="Proveedores.vb" />
     <Compile Include="TablasTipo.vb" />
