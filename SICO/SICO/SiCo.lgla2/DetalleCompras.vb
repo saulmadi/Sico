@@ -208,7 +208,7 @@ Public Class DetalleCompras
         Me.preciocompra = Registro(Indice, "preciocompra")
         Me.idsucursal = Registro(Indice, "idsucursal")
 
-        Me.Producto = New Productos(Me.idproducto, Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, 0)
+        Me._Producto = New Productos(Me.idproducto, Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, 0)
 
 
         MyBase.CargadoPropiedades(Indice)
