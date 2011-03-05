@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`DetalleOrden_Mant` $$
-CREATE PROCEDURE `sico`.`DetalleOrden_Mant` (
+DROP PROCEDURE IF EXISTS `DetalleOrden_Mant` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleOrden_Mant`(
 
 /*definicion de parametros*/
 
@@ -20,7 +20,7 @@ select count(id) from detalleorden m where m.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO detallecompras(idordencompra,idproducto,cantidad,usu,fmodif)
+  INSERT INTO detalleorden(idordencompra,idproducto,cantidad,usu,fmodif)
 
   VALUES(idordencompra,idproducto,cantidad,usu,fmodif);
 
@@ -28,7 +28,7 @@ if @conteo =0 then
 
 else
 
-  UPDATE detallecompras c set
+  UPDATE detalleorden c set
         c.idordencompra=idordencompra,
         c.idproducto=idproducto,
         c.cantidad=cantidad,
