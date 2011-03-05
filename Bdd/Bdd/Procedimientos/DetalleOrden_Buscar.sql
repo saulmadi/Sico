@@ -1,7 +1,7 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`DetalleOrden_Buscar` $$
-CREATE PROCEDURE `sico`.`DetalleOrden_Buscar` (
+DROP PROCEDURE IF EXISTS `DetalleOrden_Buscar` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleOrden_Buscar`(
 
 
 id nvarchar(11),
@@ -30,7 +30,7 @@ end if;
 
 
 if idordencompra<>"" then
-  set @where= concat(@where, " and d.idcompras = ", idordencompra, " ");
+  set @where= concat(@where, " and d.idordencompra = ", idordencompra, " ");
 end if;
 
 

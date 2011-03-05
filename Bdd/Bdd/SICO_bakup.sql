@@ -136,7 +136,7 @@ CREATE TABLE `compras` (
   KEY `FK_compras_proveedor` (`idproveedor`),
   CONSTRAINT `FK_compras_proveedor` FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`id`),
   CONSTRAINT `FK_compras_Sucursal` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `compras`
@@ -156,7 +156,9 @@ INSERT INTO `compras` VALUES  (20,'878789',1,'2011-02-26',1,2,'2011-02-26 11:32:
  (31,'32432',1,'2011-02-27',2,2,'2011-02-27 19:30:41','132.00'),
  (32,'4234',1,'2011-02-27',1,2,'2011-02-27 19:34:31','16848.00'),
  (33,'34234',3,'2011-02-28',2,2,'2011-02-28 00:53:48','30450.00'),
- (34,'456465',2,'2011-02-28',1,2,'2011-02-28 00:56:18','27775.00');
+ (34,'456465',2,'2011-02-28',1,2,'2011-02-28 00:56:18','27775.00'),
+ (35,'24324223434',3,'2011-03-03',2,2,'2011-03-03 21:14:32','69.00'),
+ (38,'43234',2,'2011-03-03',1,2,'2011-03-03 23:14:01','110144.00');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
 
 
@@ -211,7 +213,7 @@ CREATE TABLE `detallecompras` (
   CONSTRAINT `FK_detallecompras_Producto` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`),
   CONSTRAINT `FK_detallecompras_ResumenCompras` FOREIGN KEY (`idcompras`) REFERENCES `compras` (`id`),
   CONSTRAINT `FK_detallecompras_Sucursal` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallecompras`
@@ -232,7 +234,9 @@ INSERT INTO `detallecompras` VALUES  (12,20,2,5,'5.00',1,2,'2011-02-26 11:32:29'
  (23,32,2,312,'54.00',1,2,'2011-02-27 19:34:31'),
  (24,33,9,45,'5.00',2,2,'2011-02-28 00:53:48'),
  (25,33,6,65,'465.00',2,2,'2011-02-28 00:53:49'),
- (26,34,9,5555,'5.00',1,2,'2011-02-28 00:56:18');
+ (26,34,9,5555,'5.00',1,2,'2011-02-28 00:56:18'),
+ (27,35,2,3,'23.00',2,2,'2011-03-03 21:14:32'),
+ (28,38,2,32,'3442.00',1,2,'2011-03-03 23:14:01');
 /*!40000 ALTER TABLE `detallecompras` ENABLE KEYS */;
 
 
@@ -262,6 +266,40 @@ CREATE DEFINER = `root`@`localhost` TRIGGER `DetalleCompra_trigg` AFTER INSERT O
 DELIMITER ;
 
 --
+-- Definition of table `detalleorden`
+--
+
+DROP TABLE IF EXISTS `detalleorden`;
+CREATE TABLE `detalleorden` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idordencompra` int(11) NOT NULL,
+  `idproducto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `IdOrden_IdProducto_Unico` (`idordencompra`,`idproducto`),
+  KEY `Producto_Detalle` (`idproducto`),
+  KEY `Orden_Detalle` (`idordencompra`),
+  CONSTRAINT `Orden_Detalle` FOREIGN KEY (`idordencompra`) REFERENCES `ordenescompras` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Producto_Detalle` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detalleorden`
+--
+
+/*!40000 ALTER TABLE `detalleorden` DISABLE KEYS */;
+INSERT INTO `detalleorden` VALUES  (1,6,2,4324,2,'2011-03-04 22:51:54'),
+ (2,7,2,4156,2,'2011-03-04 22:58:07'),
+ (3,8,2,5465,2,'2011-03-05 00:22:57'),
+ (4,9,2,46978,2,'2011-03-05 00:30:53'),
+ (5,10,2,5464,2,'2011-03-05 00:35:37'),
+ (6,11,2,54,2,'2011-03-05 00:38:40');
+/*!40000 ALTER TABLE `detalleorden` ENABLE KEYS */;
+
+
+--
 -- Definition of table `entidades`
 --
 
@@ -289,9 +327,9 @@ CREATE TABLE `entidades` (
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-03-01','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
+INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-03-02','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
  (5,NULL,NULL,NULL,1,NULL,2,'2011-02-09','asdf asdf asdf%','34f83cac-180f-4355-89e3-f0dce27714fe','N',NULL),
- (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',2,'2011-02-09','Varideades Canezu','a34de009-959e-4fdb-ade4-366fbfd7a1f0','J',34872342),
+ (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',2,'2011-03-04','Varideades Canezu','c4b7213f-8a54-4d91-ae3b-25e9a20e6f59','J',34872342),
  (7,NULL,NULL,NULL,1,NULL,1,'2011-01-27','carlos diaz@','0301-1989-12345','I',NULL),
  (8,34234,'fdsdfsdfsdf',NULL,0,NULL,2,'2011-02-09','ENEE','dcc75552-7454-4f88-9829-c124225baac2','J',342443),
  (9,NULL,NULL,NULL,1,'S33DD343',2,'2011-03-01','Pamela castro@','fdfdfd','R',NULL),
@@ -309,7 +347,7 @@ INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. mir
  (21,323432,NULL,NULL,0,NULL,2,'2011-02-03','Ultra Motor','52c4467a-93e7-4e9c-9e1f-fcf64283363c','J',424234),
  (22,434342,NULL,NULL,0,NULL,2,'2011-02-07','SANAA','0b1dc0fa-70a9-4b02-badb-05ef777d85dc','J',34234234),
  (23,NULL,NULL,NULL,1,NULL,2,'2011-02-09','Raul Valladares@','189e0c80-2b7d-49f5-8841-f61c0b9c814e','N',NULL),
- (24,NULL,NULL,NULL,1,NULL,2,'2011-02-09','Hector valladares@','04c13af7-a6bd-4033-aaaf-d5b88fab4dc5','N',NULL);
+ (24,43533535,NULL,'sadkjkldf@ddd.df',1,NULL,2,'2011-03-04','Hector valladares@','7b28fd99-db02-47b2-a987-c5d20a7c34c3','N',NULL);
 /*!40000 ALTER TABLE `entidades` ENABLE KEYS */;
 
 
@@ -404,9 +442,9 @@ CREATE TABLE `inventario` (
 --
 
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-INSERT INTO `inventario` VALUES  (8,2,1,324,2,'2011-02-27 19:34:31'),
+INSERT INTO `inventario` VALUES  (8,2,1,356,2,'2011-03-03 23:14:01'),
  (9,9,1,5567,2,'2011-02-28 00:56:18'),
- (10,2,2,15,2,'2011-02-27 19:30:41'),
+ (10,2,2,18,2,'2011-03-03 21:14:32'),
  (11,6,1,5,2,'2011-02-26 12:03:44'),
  (12,5,2,5,2,'2011-02-26 14:59:26'),
  (13,10,1,4,2,'2011-02-26 19:24:10'),
@@ -567,6 +605,44 @@ INSERT INTO `municipios` VALUES  (2,'Lepaterique',37,1,1,'2011-01-12 00:00:00'),
 
 
 --
+-- Definition of table `ordenescompras`
+--
+
+DROP TABLE IF EXISTS `ordenescompras`;
+CREATE TABLE `ordenescompras` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(70) NOT NULL,
+  `elaboradopor` int(11) NOT NULL,
+  `idproveedor` int(11) NOT NULL,
+  `fechaorden` date NOT NULL,
+  `idsucursal` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `Codigo_Unico` (`codigo`),
+  KEY `Sucursal_Orden` (`idsucursal`),
+  KEY `Proveedor_Orden` (`idproveedor`),
+  KEY `Usuario_Orden` (`elaboradopor`),
+  CONSTRAINT `Proveedor_Orden` FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Sucursal_Orden` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `Usuario_Orden` FOREIGN KEY (`elaboradopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ordenescompras`
+--
+
+/*!40000 ALTER TABLE `ordenescompras` DISABLE KEYS */;
+INSERT INTO `ordenescompras` VALUES  (6,'OC-001-20110304-002-0000001',2,2,'2011-03-04',1,2,'2011-03-04 22:51:50'),
+ (7,'OC-001-20110304-002-0000002',2,3,'2011-03-04',1,2,'2011-03-04 22:58:07'),
+ (8,'OC-001-20110305-002-0000003',2,1,'2011-03-05',1,2,'2011-03-05 00:22:57'),
+ (9,'OC-001-20110305-002-0000004',2,2,'2011-03-05',1,2,'2011-03-05 00:30:53'),
+ (10,'OC-001-20110305-002-0000005',2,3,'2011-03-05',1,2,'2011-03-05 00:35:37'),
+ (11,'OC-001-20110305-002-0000006',2,3,'2011-03-05',1,2,'2011-03-05 00:38:40');
+/*!40000 ALTER TABLE `ordenescompras` ENABLE KEYS */;
+
+
+--
 -- Definition of table `productos`
 --
 
@@ -590,7 +666,7 @@ CREATE TABLE `productos` (
 
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES  (1,'asdfadf','dfsadf','5.00','11.00',2,'2011-02-11 20:48:51'),
- (2,'XXX-XXX','Abrazadera','54.00','11454.00',2,'2011-02-20 22:23:10'),
+ (2,'XXX-XXX','Abrazadera','3442.00','11454.00',2,'2011-02-20 22:23:10'),
  (3,'d','d',NULL,'145849111.11',2,'2011-02-11 21:17:42'),
  (5,'hhj-jjkk-klk-df','cluch','45.00','465.45',2,'2011-02-12 00:54:50'),
  (6,'FSADF','hule de hierro','465.00','123.00',2,'2011-02-26 11:54:54'),
@@ -659,7 +735,7 @@ CREATE TABLE `proveedores` (
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
 INSERT INTO `proveedores` VALUES  (1,8,9,2,'2011-02-09',NULL),
  (2,14,23,2,'2011-02-09',NULL),
- (3,6,24,2,'2011-02-09',NULL);
+ (3,6,24,2,'2011-03-04',NULL);
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 
 
@@ -803,11 +879,30 @@ CREATE TABLE `usuarios` (
 --
 
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES  (2,4,'XJEX6MwlFZr0IQF2sZbxGuDJmK1KXhTL','smayorquin',1,1,2,'2011-03-01 01:01:30',4),
+INSERT INTO `usuarios` VALUES  (2,4,'OMKo9I4+ikzQp9ahaG2jINHeUAQpJ5eK','smayorquin',1,1,2,'2011-03-02 00:59:28',4),
  (3,9,'OMKo9I4+ikzQp9ahaG2jINHeUAQpJ5eK','pcastro',1,NULL,2,'2011-03-01 00:59:34',5),
  (4,11,'OMKo9I4+ikzQp9ahaG2jINHeUAQpJ5eK','cmaldonado',0,NULL,2,'2011-03-01 00:59:55',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
+
+--
+-- Definition of function `CrearCorrelativoCodigo`
+--
+
+DROP FUNCTION IF EXISTS `CrearCorrelativoCodigo`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CrearCorrelativoCodigo`(iniciales nvarchar(2),sucursal int, usuario int, correlativo int) RETURNS varchar(70) CHARSET utf8
+BEGIN
+
+return concat(upper(iniciales),"-",repeat("0",3-CHARACTER_LENGTH(sucursal)),upper(sucursal),"-", upper(year(now())),repeat("0",2-CHARACTER_LENGTH(upper(month(now())))) , upper(month(now())), repeat("0",2-CHARACTER_LENGTH(upper(day(now())))), upper(day(now())),"-",repeat("0",3-CHARACTER_LENGTH(usuario)),upper(usuario),"-", repeat("0",7-CHARACTER_LENGTH(correlativo)),upper(correlativo) );
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
 
 --
 -- Definition of function `CrearUsuario`
@@ -1013,9 +1108,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Compra_Buscar`(
 
 
 id nvarchar(11),
-facturacompra nvarchar(11),
+facturacompra nvarchar(50),
 idproveedor nvarchar(11),
-fechacompra nvarchar(50)
+fechacompra nvarchar(150)
 )
 BEGIN
 
@@ -1037,7 +1132,7 @@ end if;
 
 
 if facturacompra<>"" then
-  set @where= concat(@where, " and facturacompra = ", facturacompra, " ");
+  set @where= concat(@where, " and facturacompra = '", facturacompra, "' ");
 end if;
 
 
@@ -1273,6 +1368,118 @@ else
   where c.id= id;
 
 end if;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `DetalleOrden_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `DetalleOrden_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleOrden_Buscar`(
+
+
+id nvarchar(11),
+idordencompra nvarchar(11),
+idproducto nvarchar(11)
+
+)
+BEGIN
+
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @join = "join vproductos p on d.idproducto=p.idproducto ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from detalleorden d ");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and d.id = ", id, " ");
+end if;
+
+
+if idordencompra<>"" then
+  set @where= concat(@where, " and d.idordencompra = ", idordencompra, " ");
+end if;
+
+
+if idproducto<>"" then
+  set @where= concat(@where, " and d.idproducto = ", idproducto, " ");
+end if;
+
+
+
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `DetalleOrden_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `DetalleOrden_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleOrden_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+idordencompra int,
+idproducto int,
+cantidad int,
+usu int,
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from detalleorden m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO detalleorden(idordencompra,idproducto,cantidad,usu,fmodif)
+
+  VALUES(idordencompra,idproducto,cantidad,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE detalleorden c set
+        c.idordencompra=idordencompra,
+        c.idproducto=idproducto,
+        c.cantidad=cantidad,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
@@ -1598,7 +1805,7 @@ if usuario<>"" and contrasena<> "" then
   set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' and  contrasena COLLATE latin1_general_cs like '",contrasena,"' ");
 end if;
 
-if usuario<>"" and contrasena= "" then
+if usuario<>"" then
   set @where = concat(@where, " and c.usuario COLLATE latin1_general_cs like '",usuario,"' " );
 end if;
 
@@ -1993,6 +2200,166 @@ else
 
 end if;
 
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `ObtnerCorrelativo`
+--
+
+DROP PROCEDURE IF EXISTS `ObtnerCorrelativo`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ObtnerCorrelativo`(
+
+tabla nvarchar(50),
+out correlativo int(11)
+)
+BEGIN
+
+
+set @correlativo= 0;
+set @sql="select count(id) from ";
+set @sql=concat(@sql, tabla," into @correlativo; ");
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+select @correlativo into correlativo;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenCompra_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenCompra_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenCompra_Buscar`(
+
+id nvarchar(11),
+codigo nvarchar(11),
+elaboradopor nvarchar(11),
+idproveedor nvarchar(11),
+fechaorden nvarchar(50)
+)
+BEGIN
+
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from ordenescompras");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+
+if codigo<>"" then
+  set @where= concat(@where, " and codigo = '", codigo, "' ");
+end if;
+
+
+if idproveedor<>"" then
+  set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
+end if;
+
+if elaboradopor<>"" then
+  set @where= concat(@where, " and elaboradopor = ", elaboradopor, " ");
+end if;
+
+
+if fechaorden<>"" then
+  set @where= concat(@where, " and ", fechaorden, " ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenCompra_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenCompra_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenCompra_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+inout codigo nvarchar(70),
+idsucursal int,
+idproveedor int,
+fechaorden date,
+elaboradopor int,
+usu int,
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from ordenescompras m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  set @correlativo=0;
+
+  select count(id)+1 from ordenescompras into @correlativo;
+
+  select CrearCorrelativoCodigo("oc",idsucursal,elaboradopor,@correlativo) into codigo;
+
+  INSERT INTO ordenescompras(codigo,idproveedor,fechaorden,idsucursal,elaboradopor,usu,fmodif)
+
+  VALUES(codigo,idproveedor,fechaorden,idsucursal,elaboradopor,usu,fmodif);
+
+  select last_insert_id() into id;
+
+
+else
+
+  UPDATE ordenescompras c set
+        c.idsucursal=idsucursal,
+        c.idproveedor=idproveedor,
+        c.fechaorden=fechaorden,
+        c.elaboradopor=elaboradopor,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
 
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
