@@ -113,7 +113,7 @@ Partial Class frmBusquedaOrdenSalida
         Me.MinimumSize = New System.Drawing.Size(907, 482)
         Me.Name = "frmBusquedaOrdenSalida"
         Me.Text = "Busqueda Ordens de Salida"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

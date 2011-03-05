@@ -20,7 +20,7 @@ Public Class frmProductosBusqueda
 
 
 
-        Me.WindowState = FormWindowState.Maximized
+        Me.WindowState = FormWindowState.Normal
         Try
             PanelBusqueda.Sucursal.Cargar()
             cboSucursales.SelectedValue = PanelBusqueda.Sucursal.Id

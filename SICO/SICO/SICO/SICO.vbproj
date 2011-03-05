@@ -305,6 +305,12 @@
       <DependentUpon>crCompras.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Inventario\ControlCompras\Reportes\crOrdenCompra.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crOrdenCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Inventario\ControlCompras\Reportes\crProveedor.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -484,6 +490,10 @@
     <EmbeddedResource Include="Inventario\ControlCompras\Reportes\crCompras.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crCompras.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\ControlCompras\Reportes\crOrdenCompra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crOrdenCompra.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Inventario\ControlCompras\Reportes\crProveedor.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

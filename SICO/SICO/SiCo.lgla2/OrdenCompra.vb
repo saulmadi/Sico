@@ -4,7 +4,7 @@ Public Class OrdenCompra
     Inherits SiCo.lgla.Entidad
 
 #Region "Declaraciones"
-    Private _codigo As String
+    Private _codigo As String = String.Empty
     Private _elaboradopor As Long
     Private _idproveedor As Long
     Private _fechaorden As Date
@@ -129,13 +129,15 @@ Public Class OrdenCompra
 
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
+        Me.codigo = " "
         Me.ValorParametrosMantenimiento("codigo", Me.codigo)
         Me.ValorParametrosMantenimiento("elaboradopor", Me.elaboradopor)
-        Me.ValorParametrosMantenimiento("idproveedor", Me.Proveedor)
+        Me.ValorParametrosMantenimiento("idproveedor", Me.Proveedor.Id)
         Me.ValorParametrosMantenimiento("fechaorden", Me.fechaorden)
         Me.ValorParametrosMantenimiento("idsucursal", Me.idsucursal)
 
         MyBase.Guardar(True)
+        Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
 
     Private Sub CalcularDetalle()

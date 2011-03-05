@@ -424,7 +424,8 @@ Partial Class frmCompras
         Me.MinimumSize = New System.Drawing.Size(935, 650)
         Me.Name = "frmCompras"
         Me.Text = "Compras"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
+
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)

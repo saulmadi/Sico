@@ -161,7 +161,7 @@ namespace SiCo.lgla
 
             LlenadoTabla(ColeccionParametrosBusqueda);
             if (this.contrasena == contrasena)
-                return true;
+                return true ;
 
             return false;         
         }

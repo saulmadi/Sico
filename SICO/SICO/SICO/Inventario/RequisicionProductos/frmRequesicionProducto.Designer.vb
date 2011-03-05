@@ -556,7 +556,7 @@ Partial Class frmRequesicionProducto
         Me.MinimumSize = New System.Drawing.Size(885, 654)
         Me.Name = "frmRequesicionProducto"
         Me.Text = "Requisición Productos"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.Panel2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)

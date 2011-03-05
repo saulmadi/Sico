@@ -97,7 +97,8 @@ Public MustInherit Class DetallesProductos
 #Region "Metodos"
 
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
-        Me._Producto = New Productos(Me.idproducto, Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, Registro(Indice, "precioventa"))
+        Me._Producto = New Productos(Registro(Indice, "idproducto"), Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, Registro(Indice, "precioventa"))
+
         MyBase.CargadoPropiedades(Indice)
     End Sub
 

@@ -2,7 +2,7 @@
     Dim WithEvents frm As New frmMotociletas
     Private Sub frmMotocicletasBusqueda_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Me.WindowState = FormWindowState.Maximized
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub CrtPanelBusqueda1_Nuevo() Handles CrtPanelBusqueda1.Nuevo

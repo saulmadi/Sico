@@ -15,7 +15,7 @@ Public Class frmBusquedaCompras
     End Sub
 
     Private Sub frmBusquedaCompras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+
         cmbProveedor.DisplayMember = "NombreMantenimiento"
         cmbProveedor.ValueMember = "Id"
         CrtPanelBusqueda1.GridResultados.BotonEditar = True
@@ -29,14 +29,18 @@ Public Class frmBusquedaCompras
         cmbProveedor.Entidad = New Proveedores
 
         cmbProveedor.CargarEntidad()
-        CrtPanelBusqueda1.SeccionParametros.Size = New Size(CrtPanelBusqueda1.SeccionParametros.Size.Width, 60)
+        CrtPanelBusqueda1.SeccionParametros.Size = New Size(CrtPanelBusqueda1.SeccionParametros.Size.Width, 80)
+
+        fecha.Value = Now.AddDays(-30)
+
+
     End Sub
 
     Public Sub Cargar()
         Try
             Dim p As New List(Of SICO.lgla.Parametro)
 
-            p.Add(New Parametro("fechacompra", " fechacompra >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' "))
+            p.Add(New Parametro("fechacompra", " fechacompra >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' and fechacompra <= '" + fechahasta.Value.ToString("yyyy-MM-dd") + "' "))
 
             If Not cmbProveedor.SelectedItem Is Nothing Then
                 p.Add(New Parametro("idproveedor", cmbProveedor.SelectedValue))
