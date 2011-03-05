@@ -107,7 +107,7 @@ Public Class frmCompras
 #Region "Eventos"
     Private Sub frmCompras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Me.WindowState = FormWindowState.Maximized
+        Me.WindowState = FormWindowState.Normal
 
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonImprimir.Enabled = False

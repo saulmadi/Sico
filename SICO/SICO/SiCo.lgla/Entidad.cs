@@ -534,6 +534,20 @@ namespace SiCo.lgla
             throw new ApplicationException("El parámetro no se encuentra en la colección");
         }
 
+        protected object  ValorParametrosMantenimiento(string Nombre)
+        {
+            foreach (Parametro i in this.ColeccionParametrosMantenimiento)
+            {
+                if (i.Nombre.ToLower() == Nombre.ToLower())
+                {
+                    return i.Valor;
+                    
+                }
+            }
+
+            throw new ApplicationException("El parámetro no se encuentra en la colección");
+        }
+
         protected void NullParametrosBusqueda()
         {
             foreach (Parametro i in _ColeccionParametrosBusqueda)

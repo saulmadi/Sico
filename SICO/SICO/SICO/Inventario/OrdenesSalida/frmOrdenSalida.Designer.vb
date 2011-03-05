@@ -555,7 +555,7 @@ Partial Class frmOrdenSalida
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmOrdenSalida"
         Me.Text = "Orden de Salida"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.Panel2.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)

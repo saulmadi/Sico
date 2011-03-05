@@ -823,7 +823,7 @@ Partial Class frmFacturacion
         Me.MinimumSize = New System.Drawing.Size(996, 612)
         Me.Name = "frmFacturacion"
         Me.Text = "Facturación"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()

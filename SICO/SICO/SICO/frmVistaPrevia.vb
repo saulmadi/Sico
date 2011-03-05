@@ -17,7 +17,7 @@ Public Class frmVistaPrevia
             s.Cargar()
             Me.Reporte.Subreports("crPie.rpt").DataDefinition.FormulaFields("PieReporte").Text = "'" + s.PieSucursal + "'"
             Me.Reporte.Subreports("crTitulo.rpt").DataDefinition.FormulaFields("Titulo").Text = "'" + Titulo.Trim + "'"
-            Me.Reporteador.ReportSource = Me.Reporte
+
         Catch ex As Exception
 
         End Try
@@ -26,10 +26,16 @@ Public Class frmVistaPrevia
     End Function
 
     Private Sub frmVistaPrevia_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.WindowState = FormWindowState.Maximized
+        Me.WindowState = FormWindowState.Normal
     End Sub
 
     Private Sub Reporteador_DrillDownSubreport(ByVal source As System.Object, ByVal e As CrystalDecisions.Windows.Forms.DrillSubreportEventArgs) Handles Reporteador.DrillDownSubreport
         e.Handled = True
+    End Sub
+
+    Private Sub frmVistaPrevia_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+
+
+        Me.Reporteador.ReportSource = Me.Reporte
     End Sub
 End Class

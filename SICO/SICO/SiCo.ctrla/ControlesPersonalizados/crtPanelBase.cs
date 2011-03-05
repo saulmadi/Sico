@@ -12,12 +12,62 @@ namespace SiCo.ctrla.ControlesPersonalizados
 {
     public partial class crtPanelBase : UserControl
     {
-        SiCo.lgla.Usuario usu;
-        SiCo.lgla.Sucursales suc;
+        [NonSerialized ]
+        private static    SiCo.lgla.Usuario usu;
+        [NonSerialized ]
+        private static  SiCo.lgla.Sucursales suc;
+
+
+       
+
         public crtPanelBase()
         {
             InitializeComponent();
-            lblfecha.Text = DateTime.Now.ToLongDateString ();            
+            lblfecha.Text = DateTime.Now.ToLongDateString ();
+
+            try
+            {
+                if (suc == null)
+                {
+                    suc = new SiCo.lgla.Sucursales();
+                    suc.Cargar();
+
+                    lblSucursal.Text = suc.NombreSucursal;
+                }
+                else
+                {
+                    lblSucursal.Text = suc.NombreSucursal;
+                }
+
+            }
+            catch
+            {
+                if (suc != null)
+                    suc = null;
+                lblSucursal.Text = "Error al cargar la sucursal";
+            }
+
+            try
+            {
+                if (usu == null)
+                {
+                    usu = new SiCo.lgla.Usuario();
+                    usu.Cargar();
+                    lblUsuario.Text = usu.usuario;
+                }
+                else
+                {
+                    lblUsuario.Text = usu.usuario;
+                }
+
+            }
+            catch
+            {
+                if (usu != null)
+                    usu = null;
+                lblUsuario.Text = "Error al cargar el usuario";
+            }            
+           
         }
 
         public string Titulo
@@ -33,23 +83,22 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),EditorBrowsable( EditorBrowsableState.Advanced)]     
-        public SiCo.lgla.Usuario Usuario
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Advanced)]
+        public  SiCo.lgla.Usuario Usuario
         {
-            get 
-            {
-                return usu;
-            }
+            get { return usu; }
+            set {usu = value; }
         }
 
-        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),EditorBrowsable( EditorBrowsableState.Advanced)]     
-        public SiCo.lgla.Sucursales Sucursal
+
+        [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Advanced)]
+        public  SiCo.lgla.Sucursales sucursal
         {
-            get 
-            {
-                return suc;
-            }
+            get { return suc; }
+            set { suc = value; }
         }
+
         
         [Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),EditorBrowsable( EditorBrowsableState.Advanced)]     
         public Label Etiqueta
@@ -63,29 +112,6 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         private void crtPanelBase_Load(object sender, EventArgs e)
         {
-            try
-            {
-                suc = new SiCo.lgla.Sucursales();
-                suc.Cargar();
-                lblSucursal.Text = suc.NombreSucursal;
-            }
-            catch
-            {
-                
-                lblSucursal.Text = "Error al cargar la sucursal";
-            }
-
-            try
-            {
-                       
-                 usu = new SiCo.lgla.Usuario();
-                usu.Cargar();
-                lblUsuario.Text = usu.usuario; 
-            }
-            catch
-            {
-                lblUsuario.Text = "Error al cargar el usuario";
-            }            
            
         }
     }

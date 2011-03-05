@@ -146,6 +146,7 @@ Partial Class frmOrdenesCompra
         '
         'dteFechaEmision
         '
+        Me.dteFechaEmision.Enabled = False
         Me.dteFechaEmision.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.dteFechaEmision.Location = New System.Drawing.Point(114, 53)
         Me.dteFechaEmision.Name = "dteFechaEmision"
@@ -254,6 +255,7 @@ Partial Class frmOrdenesCompra
         Me.cmbProveedor.CargarAutoCompletar = False
         Me.cmbProveedor.CargarComboBox = True
         Me.cmbProveedor.DisplayMember = "NombreMantenimiento"
+        Me.cmbProveedor.Enabled = False
         Me.cmbProveedor.FormattingEnabled = True
         Me.cmbProveedor.Location = New System.Drawing.Point(68, 19)
         Me.cmbProveedor.Name = "cmbProveedor"
@@ -432,7 +434,6 @@ Partial Class frmOrdenesCompra
         Me.MinimumSize = New System.Drawing.Size(914, 704)
         Me.Name = "frmOrdenesCompra"
         Me.Text = "Orden de Compra"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)

@@ -113,7 +113,7 @@ Partial Class frmBusquedaRequsicion
         Me.MinimumSize = New System.Drawing.Size(950, 356)
         Me.Name = "frmBusquedaRequsicion"
         Me.Text = "Busquedas de Productos"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -327,7 +327,7 @@ Partial Class frmVentas
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmVentas"
         Me.Text = "Ventas"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
+        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)

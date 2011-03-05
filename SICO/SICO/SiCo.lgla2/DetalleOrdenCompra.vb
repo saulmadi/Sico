@@ -50,8 +50,11 @@ Public Class DetalleOrdenCompra
 #Region "Metodos"
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idordencompra = Registro(Indice, "idordencompra")
+        Me.Cantidad = Registro(Indice, "cantidad")
         MyBase.CargadoPropiedades(Indice)
+
     End Sub
+
 
     Public Overrides Sub Guardar()
         Me.NullParametrosMantenimiento()

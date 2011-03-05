@@ -173,11 +173,13 @@ namespace SiCo.lgla
             {
                 
                 PersonaNatural p = new PersonaNatural();
-                if (!(this.idEntidades  == null) && Convert.ToInt32( Registro(Indice,"espersonanatural")) == 1 )
+                if (!(this.idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 1)
                 {
-                    
-                    p=new PersonaNatural(this.idEntidades , (string)Registro(Indice,"entidadnombre"), new TipoIdentidad((string)Registro(Indice,"tipoidentidad")), (string)Registro(Indice,"identificacion"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
+
+                    p = new PersonaNatural(this.idEntidades, (string)Registro(Indice, "entidadnombre"), new TipoIdentidad((string)Registro(Indice, "tipoidentidad")), (string)Registro(Indice, "identificacion"), (string)Registro(Indice, "correo"), (string)Registro(Indice, "direccion"), (string)Registro(Indice, "rtn"), (int?)Registro(Indice, "telefono"), (int?)Registro(Indice, "telefono2"));
                 }
+                else
+                    p = null;
 
                 
                 return p;                
@@ -192,10 +194,12 @@ namespace SiCo.lgla
             {
                 
                 PersonaJuridica p = new PersonaJuridica();
-                if (!(this.idEntidades == null) && Convert.ToInt32 (  Registro(Indice,"espersonanatural")) == 0 )
+                if (!(this.idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 0)
                 {
-                    p= new PersonaJuridica(this.idEntidades , (string)Registro(Indice,"entidadnombre"), (string)Registro(Indice,"correo"), (string)Registro(Indice,"direccion"), (string)Registro(Indice,"rtn"), (int?)Registro(Indice,"telefono"), (int?)Registro(Indice,"telefono2"));
+                    p = new PersonaJuridica(this.idEntidades, (string)Registro(Indice, "entidadnombre"), (string)Registro(Indice, "correo"), (string)Registro(Indice, "direccion"), (string)Registro(Indice, "rtn"), (int?)Registro(Indice, "telefono"), (int?)Registro(Indice, "telefono2"));
                 }
+                else
+                    p = null;
                 
                 return p;
             }
