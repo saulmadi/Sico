@@ -1,6 +1,18 @@
 ﻿Imports CrystalDecisions.CrystalReports.Engine
 Public Class frmVistaPrevia
-    
+    Private frmProgreso As New frmGeneracionReporte
+    Public Sub New()
+
+        ' Llamada necesaria para el Diseñador de Windows Forms.
+        InitializeComponent()
+
+        ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
+        frmProgreso = New frmGeneracionReporte
+        frmProgreso.TopMost = True
+
+        frmProgreso.Show()
+    End Sub
+
     Public Property Reporte() As CrystalDecisions.CrystalReports.Engine.ReportDocument
         Get
             Return _CrReporte
@@ -10,6 +22,7 @@ Public Class frmVistaPrevia
 
         End Set
     End Property
+
     Public Overloads Function Show(ByVal Reporte As ReportDocument, Optional ByVal Titulo As String = "") As DialogResult
         Me._CrReporte = Reporte
         Try
@@ -17,7 +30,7 @@ Public Class frmVistaPrevia
             s.Cargar()
             Me.Reporte.Subreports("crPie.rpt").DataDefinition.FormulaFields("PieReporte").Text = "'" + s.PieSucursal + "'"
             Me.Reporte.Subreports("crTitulo.rpt").DataDefinition.FormulaFields("Titulo").Text = "'" + Titulo.Trim + "'"
-
+            Me.Reporteador.ReportSource = Me.Reporte
         Catch ex As Exception
 
         End Try
@@ -35,7 +48,11 @@ Public Class frmVistaPrevia
 
     Private Sub frmVistaPrevia_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
 
+        frmProgreso.Close()
 
-        Me.Reporteador.ReportSource = Me.Reporte
+    End Sub
+
+    Private Sub Reporteador_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Reporteador.Load
+
     End Sub
 End Class

@@ -40,7 +40,7 @@ Partial Class frmBusquedaOrdenesCompra
         Me.CrtPanelBusqueda1.Entidad = Nothing
         Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
-        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(851, 418)
+        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(851, 528)
         Me.CrtPanelBusqueda1.TabIndex = 0
         Me.CrtPanelBusqueda1.Titulo = "Ordenes de Compra"
         Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
@@ -112,7 +112,7 @@ Partial Class frmBusquedaOrdenesCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(851, 418)
+        Me.ClientSize = New System.Drawing.Size(851, 528)
         Me.Controls.Add(Me.fechahasta)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button1)

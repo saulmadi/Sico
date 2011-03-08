@@ -251,6 +251,12 @@
     <Compile Include="frmConfiguracionBDD.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmGeneracionReporte.Designer.vb">
+      <DependentUpon>frmGeneracionReporte.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGeneracionReporte.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmIniciosesion.Designer.vb">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
     </Compile>
@@ -462,6 +468,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConfiguracionBDD.resx">
       <DependentUpon>frmConfiguracionBDD.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGeneracionReporte.resx">
+      <DependentUpon>frmGeneracionReporte.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmIniciosesion.resx">
       <DependentUpon>frmIniciosesion.vb</DependentUpon>
