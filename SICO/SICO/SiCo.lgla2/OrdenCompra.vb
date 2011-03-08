@@ -123,7 +123,7 @@ Public Class OrdenCompra
         Me.idsucursal = Me.Registro(Indice, "idsucursal")
         Me.codigo = Me.Registro(Indice, "codigo")
         Me.elaboradopor = Me.Registro(Indice, "elaboradopor")
-
+        Me.fechaorden = Me.Registro(Indice, "fechaorden")
         MyBase.CargadoPropiedades(Indice)
     End Sub
 

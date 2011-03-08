@@ -112,7 +112,11 @@ namespace SiCo.ctrla.ControlesPersonalizados
 
         private void crtPanelBase_Load(object sender, EventArgs e)
         {
-           
+            if (suc !=null)
+            lblSucursal.Text = suc.NombreSucursal;
+
+            if(usu !=null)
+            lblUsuario.Text = usu.usuario;
         }
     }
 }

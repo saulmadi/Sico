@@ -66,8 +66,8 @@ Public Class frmOrdenesCompra
 
             Grid.BotonBuscar = False
             Grid.BotonEliminar = False
-
-            If cmbProveedor.Items.Count Then
+            Me.dteFechaEmision.Value = Me.OrdenCompar.fechaorden
+            If cmbProveedor.Items.Count = 0 Then
                 cmbProveedor.Entidad = New Proveedores
                 cmbProveedor.IncializarCarga()
 
