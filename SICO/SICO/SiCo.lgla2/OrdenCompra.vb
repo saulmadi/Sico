@@ -23,6 +23,7 @@ Public Class OrdenCompra
         Me.ColeccionParametrosBusqueda.Add(New Parametro("elaboradopor"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idproveedor"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("fechaorden"))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("codigoparecido"))
 
         Me.ComandoMantenimiento = "OrdenCompra_Mant"
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigo", Nothing, ParameterDirection.InputOutput))
