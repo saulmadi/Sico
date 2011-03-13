@@ -32,7 +32,7 @@ Public Class OrdenCompra
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("fechaorden"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("elaboradopor"))
     End Sub
-    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal elaboradopor As Long, ByVal idproveedor As Long, ByVal fechaorden As Date, ByVal idsucursal As Long)
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal elaboradopor As Long, ByVal idproveedor As Long, ByVal fechaorden As Date, ByVal idsucursal As Long, ByVal proveedore As Proveedores)
         Me.New()
         Me._Id = id
         Me.codigo = codigo
@@ -40,6 +40,7 @@ Public Class OrdenCompra
         Me.idproveedor = idproveedor
         Me.fechaorden = fechaorden
         Me.idsucursal = idsucursal
+        _proveedor = proveedore
     End Sub
 #End Region
 
@@ -125,6 +126,7 @@ Public Class OrdenCompra
         Me.codigo = Me.Registro(Indice, "codigo")
         Me.elaboradopor = Me.Registro(Indice, "elaboradopor")
         Me.fechaorden = Me.Registro(Indice, "fechaorden")
+        _proveedor = New Proveedores(Registro(Indice, "idproveedor"), Registro(Indice, "identidades"), Registro(Indice, "estado"), Registro(Indice, "idcontacto"), Registro(Indice, "descripcion"))
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
@@ -197,7 +199,7 @@ Public Class OrdenCompra
         Dim list As New List(Of OrdenCompra)
         For i As Integer = 0 To Me.TotalRegistros - 1
             Me.CargadoPropiedades(i)
-            Dim tempC As New OrdenCompra(Me.Id, Me.codigo, Me.elaboradopor, Me.idproveedor, Me.fechaorden, Me.idsucursal)
+            Dim tempC As New OrdenCompra(Me.Id, Me.codigo, Me.elaboradopor, Me.idproveedor, Me.fechaorden, Me.idsucursal, Me.Proveedor)
             list.Add(tempC)
         Next
         Return list

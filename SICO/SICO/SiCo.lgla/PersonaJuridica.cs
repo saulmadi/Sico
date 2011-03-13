@@ -40,6 +40,21 @@ namespace SiCo.lgla
             this.telefono = Telefono;
             this.telefono2 = Telefono2;
         }
+
+        public PersonaJuridica(long? id, string RazonSocial)
+            : base()
+        {
+            this.ComandoSelect = "PersonaJuridica_Buscar";
+            this._espersonanatural = false;
+
+            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
+            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
+
+            this._Id = id;
+            this.RazonSocial = RazonSocial;
+       
+        }
         #endregion
 
         #region Propiedades

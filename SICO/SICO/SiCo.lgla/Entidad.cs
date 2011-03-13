@@ -367,7 +367,7 @@ namespace SiCo.lgla
             {
                 if (Errores != null)
                 Errores(ex.Message);
-                throw new ApplicationException(ex.Message, ex); 
+                throw new ApplicationException("Error en conexión al servidor. se presento el siguinete error: \n"+ex.Message, ex); 
             }
              
         }        

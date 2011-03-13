@@ -39,60 +39,67 @@ Public Class frmOrdenesCompra
 #Region "Eventos"
 
     Private Sub frmOrdenesCompra_CambioOrdenCompra() Handles Me.CambioOrdenCompra
-        limpiar(Me)
-        cmbProveedor.Enabled = True
-        dteFechaEmision.Enabled = True
+        Try
 
-        If Me.OrdenCompar.Id = 0 Then
-            Grid.BotonBuscar = True
-            Grid.BotonEliminar = True
+        
+            limpiar(Me)
+            cmbProveedor.Enabled = True
 
-            txtSucursal.Text = CrtPanelBase1.Sucursal.NombreSucursal
+            dteFechaEmision.Enabled = True
 
-            txtElaboradoPor.Text = CrtPanelBase1.Usuario.NombreUsuario
-            If cmbProveedor.Items.Count = 0 Then
-                cmbProveedor.Entidad = New Proveedores
-                cmbProveedor.CargarEntidad()
+            If Me.OrdenCompar.Id = 0 Then
+                Grid.BotonBuscar = True
+                Grid.BotonEliminar = True
+
+                txtSucursal.Text = CrtPanelBase1.sucursal.NombreSucursal
+
+                txtElaboradoPor.Text = CrtPanelBase1.Usuario.NombreUsuario
+                If cmbProveedor.Items.Count = 0 Then
+                    cmbProveedor.Entidad = New Proveedores
+                    cmbProveedor.CargarEntidad()
+                Else
+                    cmbProveedor.SelectedIndex = -1
+                End If
+
+                For h As Integer = 0 To 49
+                    Me.OrdenCompar.ListaDetalle.Add(New DetalleOrdenCompra())
+                Next
+                PanelAccion1.btnGuardar.Enabled = True
+                Grid.DataSource = Me.OrdenCompar.ListaDetalle
             Else
-                cmbProveedor.SelectedIndex = -1
+
+                Grid.BotonBuscar = False
+                Grid.BotonEliminar = False
+                Me.dteFechaEmision.Value = Me.OrdenCompar.fechaorden
+                If cmbProveedor.Items.Count = 0 Then
+                    cmbProveedor.Entidad = New Proveedores
+                    cmbProveedor.IncializarCarga()
+
+                End If
+
+                cmbProveedor.SelectedValue = Me.OrdenCompar.idproveedor
+
+                Dim us As New Usuario
+                us.Id = Me.OrdenCompar.elaboradopor
+
+                Dim su As New Sucursales
+                su.Id = Me.OrdenCompar.idsucursal
+
+                txtElaboradoPor.Text = us.NombreMantenimiento
+                txtSucursal.Text = su.NombreMantenimiento
+
+                txtNumeroOrden.Text = Me.OrdenCompar.codigo
+
+                Me.PanelAccion1.BtnImprimir.Enabled = True
+
+                Me.OrdenCompar.CargarDetalle()
+                Grid.DataSource = Me.OrdenCompar.ListaDetalle
+
+
             End If
-
-            For h As Integer = 0 To 49
-                Me.OrdenCompar.ListaDetalle.Add(New DetalleOrdenCompra())
-            Next
-            PanelAccion1.btnGuardar.Enabled = True
-            Grid.DataSource = Me.OrdenCompar.ListaDetalle
-        Else
-
-            Grid.BotonBuscar = False
-            Grid.BotonEliminar = False
-            Me.dteFechaEmision.Value = Me.OrdenCompar.fechaorden
-            If cmbProveedor.Items.Count = 0 Then
-                cmbProveedor.Entidad = New Proveedores
-                cmbProveedor.IncializarCarga()
-
-            End If
-
-            cmbProveedor.SelectedValue = Me.OrdenCompar.idproveedor
-
-            Dim us As New Usuario
-            us.Id = Me.OrdenCompar.elaboradopor
-
-            Dim su As New Sucursales
-            su.Id = Me.OrdenCompar.idsucursal
-
-            txtElaboradoPor.Text = us.NombreMantenimiento
-            txtSucursal.Text = su.NombreMantenimiento
-
-            txtNumeroOrden.Text = Me.OrdenCompar.codigo
-
-            Me.PanelAccion1.BtnImprimir.Enabled = True
-
-            Me.OrdenCompar.CargarDetalle()
-            Grid.DataSource = Me.OrdenCompar.ListaDetalle
-
-
-        End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub frmOrdenesCompra_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -199,7 +206,6 @@ Public Class frmOrdenesCompra
             limpiar(GroupBox2)
         End If
     End Sub
-
 
     Private Sub Grid_Buscar() Handles Grid.Buscar
         Dim f As New SICO.ctrla2.frmBusquedaProductos

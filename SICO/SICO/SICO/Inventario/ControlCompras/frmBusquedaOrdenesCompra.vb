@@ -51,6 +51,7 @@ Public Class frmBusquedaOrdenesCompra
 
             p.Add(New Parametro("fechaorden", " fechaorden >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' and fechaorden <= '" + fechahasta.Value.ToString("yyyy-MM-dd") + "' "))
 
+            p.Add(New Parametro("codigoparecido", txtcodigo.Text))
             If Not cmbProveedor.SelectedItem Is Nothing Then
                 p.Add(New Parametro("idproveedor", cmbProveedor.SelectedValue))
             End If

@@ -32,6 +32,8 @@ Partial Class frmBusquedaOrdenesCompra
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
         Me.fecha = New System.Windows.Forms.DateTimePicker
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.txtcodigo = New SICO.ctrla.CajaTexto(Me.components)
         Me.SuspendLayout()
         '
         'CrtPanelBusqueda1
@@ -108,11 +110,40 @@ Partial Class frmBusquedaOrdenesCompra
         Me.fecha.Size = New System.Drawing.Size(224, 20)
         Me.fecha.TabIndex = 10
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(42, 156)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.TabIndex = 17
+        Me.Label1.Text = "Código"
+        '
+        'txtcodigo
+        '
+        Me.txtcodigo.BackColor = System.Drawing.SystemColors.Window
+        Me.txtcodigo.ColorError = System.Drawing.Color.Red
+        Me.txtcodigo.EnterPorTab = True
+        Me.txtcodigo.EsObligatorio = False
+        Me.txtcodigo.ExpresionValidacion = Nothing
+        Me.txtcodigo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtcodigo.Location = New System.Drawing.Point(104, 153)
+        Me.txtcodigo.MensajeError = Nothing
+        Me.txtcodigo.Name = "txtcodigo"
+        Me.txtcodigo.Size = New System.Drawing.Size(190, 20)
+        Me.txtcodigo.TabIndex = 18
+        Me.txtcodigo.Texto = Nothing
+        Me.txtcodigo.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtcodigo.ValorInt = Nothing
+        Me.txtcodigo.ValorLong = Nothing
+        '
         'frmBusquedaOrdenesCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(851, 528)
+        Me.Controls.Add(Me.txtcodigo)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.fechahasta)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Button1)
@@ -136,4 +167,6 @@ Partial Class frmBusquedaOrdenesCompra
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents fecha As System.Windows.Forms.DateTimePicker
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtcodigo As SICO.ctrla.CajaTexto
 End Class
