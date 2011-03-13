@@ -30,9 +30,6 @@ Public Class DetalleOrdenCompra
         Me.Cantidad = cantidad
         Me._Id = id
         Me.idordencompra = idordencompra
-
-
-
     End Sub
 #End Region
 
@@ -48,13 +45,13 @@ Public Class DetalleOrdenCompra
 #End Region
 
 #Region "Metodos"
+
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idordencompra = Registro(Indice, "idordencompra")
         Me.Cantidad = Registro(Indice, "cantidad")
         MyBase.CargadoPropiedades(Indice)
 
     End Sub
-
 
     Public Overrides Sub Guardar()
         Me.NullParametrosMantenimiento()
@@ -64,9 +61,11 @@ Public Class DetalleOrdenCompra
         MyBase.Guardar(True)
     End Sub
 
-    <Obsolete("El metodo no se puede utilizar", True)> _
-   Public Overrides Sub Guardar(ByVal transaccion As Boolean)
+    Protected Sub GuardarTransaccion(ByVal transaccion As Boolean)
 
+        Me.ValorParametrosMantenimiento("idproducto", Me.idproducto)
+        Me.ValorParametrosMantenimiento("cantidad", Me.Cantidad)
+        MyBase.Guardar(True)
     End Sub
 
     Public Overloads Sub Buscar(ByVal idordencompra As String)
@@ -87,7 +86,6 @@ Public Class DetalleOrdenCompra
         Next
         Return lista
     End Function
-
 
 #End Region
 End Class

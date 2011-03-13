@@ -30,6 +30,20 @@ Public Class Proveedores
         Me.ComandoMantenimiento = "Proveedores_Mant"
 
     End Sub
+
+    Sub New(ByVal id As Long, ByVal identidades As Long, ByVal estado As Integer, ByVal idContacto As Long, ByVal descripcion As String)
+        MyBase.New(id, identidades, estado)
+        Me.IdContacto = idContacto
+
+        Me.PersonaJuridica = New PersonaJuridica(identidades, descripcion)
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idcontacto", Nothing))
+
+        Me.TablaEliminar = "Proveedores"
+        Me.TablaBusqueda = "Proveedores"
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", TablaBusqueda))
+        Me.ComandoMantenimiento = "Proveedores_Mant"
+
+    End Sub
 #End Region
 
 #Region "Propiedadaes"
