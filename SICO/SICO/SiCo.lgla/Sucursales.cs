@@ -43,6 +43,22 @@ namespace SiCo.lgla
             this.TablaEliminar = "Sucursales";
         }
 
+        public Sucursales(long? id, long? identidad, string descripcion)
+            : base(id, identidad, 1)
+        {
+
+            PersonaJuridica = new PersonaJuridica(identidad, descripcion);
+
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
+
+            this.TablaBusqueda = "Sucursales";
+            this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
+            this.ComandoMantenimiento = "Sucursales_Mant";
+            this.TablaEliminar = "Sucursales";
+        }
+
         #endregion
 
         #region "Propiedades"

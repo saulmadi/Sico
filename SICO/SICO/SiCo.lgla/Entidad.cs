@@ -405,10 +405,17 @@ namespace SiCo.lgla
         /// <param name="Fila">Número de fila en el que se encuentra el registro</param>
         /// <param name="Columna">Nombre de la columna en el que se encuentra el registro</param>
         public  object Registro(int Fila, String Columna)
-        {            
+        {
+            try
+            {
                 if (_Tabla.Rows[Fila][Columna] != DBNull.Value)
                     return _Tabla.Rows[Fila][Columna];
                 else return null;                       
+            }
+            catch
+            {
+                return null;
+            }              
             
         }
 

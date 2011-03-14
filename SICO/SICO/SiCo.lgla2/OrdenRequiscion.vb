@@ -11,8 +11,8 @@ Public Class OrdenRequiscion
     Private _sucursalenvia As Long
     Private _sucursalrecibe As Long
 
-    Private _ListaDetalle As List(Of DetalleRequisicion)
-    Private _diccionariodetalle As Dictionary(Of Long, DetalleRequisicion)
+    Private _ListaDetalle As New List(Of DetalleRequisicion)
+    Private _diccionariodetalle As New Dictionary(Of Long, DetalleRequisicion)
 
     Private _sucursalEn As New Sucursales
     Private _sucursalRe As New Sucursales
@@ -111,11 +111,11 @@ Public Class OrdenRequiscion
         End Set
     End Property
 
-    Public Property estado() As Integer
+    Public Property estado() As String
         Get
             Return _estado
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _estado = value
         End Set
     End Property
@@ -131,28 +131,73 @@ Public Class OrdenRequiscion
 
     Public ReadOnly Property TotalItems() As Long
         Get
-            CalcularDetalle()
+            Try
+                CalcularDetalle()
+            Catch ex As Exception
+
+            End Try
+
             Return _diccionariodetalle.Count
         End Get
     End Property
 
     Public ReadOnly Property CantidadTotalProductos() As Long
         Get
-            Return CalcularDetalle()
+            Try
+                Return CalcularDetalle()
+            Catch ex As Exception
+                Return 0
+            End Try
+
         End Get
     End Property
 
     Public Property SucursalEn() As Sucursales
         Get
+            If sucursalenvia = Nothing Then
+
+                _sucursalEn = New Sucursales
+                Return _sucursalEn
+            End If
+
             If Me.sucursalenvia > 0 And _sucursalEn.Id <> Me.sucursalenvia Then
                 _sucursalEn.Id = Me.sucursalenvia
             End If
+            Return _sucursalEn
+        End Get
+        Set(ByVal value As Sucursales)
+            _sucursalEn = value
+        End Set
+    End Property
+
+    Public Property SucursalRec() As Sucursales
+        Get
+            If Me.sucursalrecibe = Nothing Then
+                _sucursalRe = New Sucursales
+                Return _sucursalRe
+            End If
+            If Me.sucursalrecibe > 0 And _sucursalRe.Id <> Me.sucursalrecibe Then
+                _sucursalRe.Id = Me.sucursalrecibe
+            End If
+            Return _sucursalRe
         End Get
         Set(ByVal value As Sucursales)
 
         End Set
     End Property
 
+    Public ReadOnly Property DescripcionEstado() As String
+        Get
+            If Me.estado = "E" Then
+                Return "Enviada"
+
+            End If
+            If Me.estado = "R" Then
+                Return "Recibida"
+            End If
+            Return String.Empty
+        End Get
+    End Property
 
 #End Region
 
@@ -164,6 +209,15 @@ Public Class OrdenRequiscion
         Me.recibidopor = Registro(Indice, "recibidopor")
         Me.sucursalenvia = Registro(Indice, "sucursalenvia")
         Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
+
+        If Not sucursalenvia = Nothing Then
+            Me._sucursalEn = New Sucursales(sucursalenvia, Registro(Indice, "identidadesenvia"), Registro(Indice, "descripcionenvia"))
+        End If
+
+        If Not sucursalrecibe = Nothing Then
+            Me._sucursalRe = New Sucursales(sucursalrecibe, Registro(Indice, "identidadesrecibe"), Registro(Indice, "descripcionrecibe"))
+        End If
+
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
@@ -175,7 +229,7 @@ Public Class OrdenRequiscion
             Dim i As DetalleRequisicion = Listadetalle(g)
             If i.idproducto > 0 Then
                 If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
-                    Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
                     cantot += i.Cantidad
                 Else
                     Me._diccionariodetalle.Add(i.idproducto, i)
@@ -184,7 +238,29 @@ Public Class OrdenRequiscion
             End If
         Next
         If Me._diccionariodetalle.Count = 0 Then
-            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de compra")
+            'Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de compra")
+        End If
+        Return cantot
+    End Function
+
+    Private Function CalcularDetalleGuardar() As Long
+        Me._diccionariodetalle.Clear()
+        Dim cantot As Long = 0
+
+        For g As Integer = 0 To Me.Listadetalle.Count - 1
+            Dim i As DetalleRequisicion = Listadetalle(g)
+            If i.idproducto > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    cantot += i.Cantidad
+                Else
+                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    cantot += i.Cantidad
+                End If
+            End If
+        Next
+        If Me._diccionariodetalle.Count = 0 Then
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de requisición")
         End If
         Return cantot
     End Function
@@ -203,7 +279,12 @@ Public Class OrdenRequiscion
         Me.codigo = " "
         Me.ValorParametrosMantenimiento("codigo", Me.codigo)
         Me.ValorParametrosMantenimiento("enviadopor", Me.enviadopor)
-        Me.ValorParametrosMantenimiento("recibidopor", Me.recibidopor)
+        If Me.estado = "R" Then
+            Me.ValorParametrosMantenimiento("recibidopor", Me.recibidopor)
+        Else
+            Me.ValorParametrosMantenimiento("recibidopor", Nothing)
+        End If
+
         Me.ValorParametrosMantenimiento("fechaemision", Me.fechaemision)
         Me.ValorParametrosMantenimiento("sucursalenvia", Me.sucursalenvia)
         Me.ValorParametrosMantenimiento("sucursalrecibe", Me.sucursalrecibe)
@@ -217,12 +298,12 @@ Public Class OrdenRequiscion
     Public Sub GuardarOrdenRequisicion()
         Try
             Me.IniciarTransaccion()
-            Me.CalcularDetalle()
+            Me.CalcularDetalleGuardar()
             Me.Guardar()
             Dim flag As Boolean = False
             For Each i In _diccionariodetalle
                 If i.Value.idproducto > 0 Then
-                    i.Value.idordencompra = Me.Id
+                    i.Value.idRequisicion = Me.Id
                     If i.Value.Cantidad > 0 Then
                         i.Value.Guardar()
                     Else
