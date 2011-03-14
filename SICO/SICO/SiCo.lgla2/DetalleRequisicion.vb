@@ -11,7 +11,7 @@ Public Class DetalleRequisicion
         MyBase.New()
 
         Me.ComandoSelect = "DetalleRequisicion_Buscar"
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("idrequesicion"))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("idrequisicion"))
         
         Me.ComandoMantenimiento = "DetalleRequisicion_Mant"
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idrequisicion"))

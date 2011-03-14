@@ -83,8 +83,10 @@ Public MustInherit Class DetallesProductos
                 If s < 0 Then
                     Throw New ApplicationException("La cantidad tiene que ser mayor a 0")
                     Me.Cantidad = 1
-                Else
+                ElseIf Me.Producto.Id > 0 Then
                     Me.Cantidad = s
+                Else
+                    Me.Cantidad = 0
                 End If
             Else
                 Throw New ApplicationException("El número no tiene el formato correcto")

@@ -22,46 +22,48 @@ Partial Class frmRequesicionProducto
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRequesicionProducto))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.txtTotalProductos = New System.Windows.Forms.TextBox
+        Me.txtTotalItems = New System.Windows.Forms.TextBox
         Me.Panel4 = New System.Windows.Forms.Panel
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
+        Me.txtcorreorecibidopor = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
         Me.TextBox6 = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox
         Me.Label8 = New System.Windows.Forms.Label
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox
         Me.Label7 = New System.Windows.Forms.Label
         Me.Label13 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
+        Me.dteFechaemision = New System.Windows.Forms.DateTimePicker
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.txtcorreoenviadopor = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.grid = New SICO.ctrla.Grid(Me.components)
+        Me.txtrecibidopor = New SICO.ctrla.CajaTexto(Me.components)
+        Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
+        Me.txtsucursalrecibe = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtsucuralenvia = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtenviadopor = New SICO.ctrla.CajaTexto(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.lblestado = New System.Windows.Forms.Label
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -69,6 +71,7 @@ Partial Class frmRequesicionProducto
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -84,7 +87,7 @@ Partial Class frmRequesicionProducto
         '
         'GroupBox5
         '
-        Me.GroupBox5.Controls.Add(Me.DataGridView1)
+        Me.GroupBox5.Controls.Add(Me.grid)
         Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -94,15 +97,6 @@ Partial Class frmRequesicionProducto
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
-        '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(799, 194)
-        Me.DataGridView1.TabIndex = 0
         '
         'Panel7
         '
@@ -117,8 +111,8 @@ Partial Class frmRequesicionProducto
         '
         Me.Panel8.Controls.Add(Me.Label4)
         Me.Panel8.Controls.Add(Me.Label5)
-        Me.Panel8.Controls.Add(Me.TextBox4)
-        Me.Panel8.Controls.Add(Me.TextBox3)
+        Me.Panel8.Controls.Add(Me.txtTotalProductos)
+        Me.Panel8.Controls.Add(Me.txtTotalItems)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel8.Location = New System.Drawing.Point(463, 0)
         Me.Panel8.Name = "Panel8"
@@ -145,21 +139,21 @@ Partial Class frmRequesicionProducto
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Total Productos"
         '
-        'TextBox4
+        'txtTotalProductos
         '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(165, 29)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox4.TabIndex = 4
+        Me.txtTotalProductos.Enabled = False
+        Me.txtTotalProductos.Location = New System.Drawing.Point(165, 29)
+        Me.txtTotalProductos.Name = "txtTotalProductos"
+        Me.txtTotalProductos.Size = New System.Drawing.Size(165, 20)
+        Me.txtTotalProductos.TabIndex = 4
         '
-        'TextBox3
+        'txtTotalItems
         '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(165, 3)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox3.TabIndex = 3
+        Me.txtTotalItems.Enabled = False
+        Me.txtTotalItems.Location = New System.Drawing.Point(165, 3)
+        Me.txtTotalItems.Name = "txtTotalItems"
+        Me.txtTotalItems.Size = New System.Drawing.Size(165, 20)
+        Me.txtTotalItems.TabIndex = 3
         '
         'Panel4
         '
@@ -190,6 +184,7 @@ Partial Class frmRequesicionProducto
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblestado)
         Me.GroupBox1.Controls.Add(Me.GroupBox6)
         Me.GroupBox1.Controls.Add(Me.GroupBox3)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -204,10 +199,10 @@ Partial Class frmRequesicionProducto
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.TextBox1)
+        Me.GroupBox6.Controls.Add(Me.txtrecibidopor)
+        Me.GroupBox6.Controls.Add(Me.txtcorreorecibidopor)
         Me.GroupBox6.Controls.Add(Me.Label2)
         Me.GroupBox6.Controls.Add(Me.Label12)
-        Me.GroupBox6.Controls.Add(Me.ComboBox4)
         Me.GroupBox6.Location = New System.Drawing.Point(431, 97)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(373, 75)
@@ -215,23 +210,24 @@ Partial Class frmRequesicionProducto
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Recibido por"
         '
-        'TextBox1
+        'txtcorreorecibidopor
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(61, 46)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox1.TabIndex = 5
+        Me.txtcorreorecibidopor.Enabled = False
+        Me.txtcorreorecibidopor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcorreorecibidopor.Location = New System.Drawing.Point(61, 45)
+        Me.txtcorreorecibidopor.Name = "txtcorreorecibidopor"
+        Me.txtcorreorecibidopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtcorreorecibidopor.TabIndex = 5
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 49)
+        Me.Label2.Location = New System.Drawing.Point(6, 48)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 13)
+        Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Telefono"
+        Me.Label2.Text = "Correo"
         '
         'Label12
         '
@@ -243,26 +239,17 @@ Partial Class frmRequesicionProducto
         Me.Label12.TabIndex = 0
         Me.Label12.Text = "Usuario"
         '
-        'ComboBox4
-        '
-        Me.ComboBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(61, 19)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox4.Sorted = True
-        Me.ComboBox4.TabIndex = 3
-        '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.cmbSucursales)
+        Me.GroupBox3.Controls.Add(Me.txtsucursalrecibe)
+        Me.GroupBox3.Controls.Add(Me.txtsucuralenvia)
         Me.GroupBox3.Controls.Add(Me.TextBox6)
         Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.ComboBox3)
         Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.ComboBox2)
         Me.GroupBox3.Controls.Add(Me.Label7)
         Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Controls.Add(Me.DateTimePicker1)
+        Me.GroupBox3.Controls.Add(Me.dteFechaemision)
         Me.GroupBox3.Location = New System.Drawing.Point(6, 25)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(423, 147)
@@ -272,6 +259,7 @@ Partial Class frmRequesicionProducto
         '
         'TextBox6
         '
+        Me.TextBox6.Enabled = False
         Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TextBox6.Location = New System.Drawing.Point(110, 20)
         Me.TextBox6.Name = "TextBox6"
@@ -288,16 +276,6 @@ Partial Class frmRequesicionProducto
         Me.Label14.TabIndex = 13
         Me.Label14.Text = "Número requisición"
         '
-        'ComboBox3
-        '
-        Me.ComboBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(110, 46)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox3.Sorted = True
-        Me.ComboBox3.TabIndex = 12
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -308,21 +286,11 @@ Partial Class frmRequesicionProducto
         Me.Label8.TabIndex = 1
         Me.Label8.Text = "Sucursal solicitante"
         '
-        'ComboBox2
-        '
-        Me.ComboBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(110, 73)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox2.Sorted = True
-        Me.ComboBox2.TabIndex = 6
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(6, 99)
+        Me.Label7.Location = New System.Drawing.Point(6, 104)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(90, 13)
         Me.Label7.TabIndex = 0
@@ -332,26 +300,26 @@ Partial Class frmRequesicionProducto
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(6, 76)
+        Me.Label13.Location = New System.Drawing.Point(6, 75)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(85, 13)
         Me.Label13.TabIndex = 11
         Me.Label13.Text = "Sucursal destino"
         '
-        'DateTimePicker1
+        'dteFechaemision
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(110, 100)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(300, 20)
-        Me.DateTimePicker1.TabIndex = 4
+        Me.dteFechaemision.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dteFechaemision.Location = New System.Drawing.Point(110, 98)
+        Me.dteFechaemision.Name = "dteFechaemision"
+        Me.dteFechaemision.Size = New System.Drawing.Size(300, 20)
+        Me.dteFechaemision.TabIndex = 4
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
+        Me.GroupBox2.Controls.Add(Me.txtenviadopor)
+        Me.GroupBox2.Controls.Add(Me.txtcorreoenviadopor)
         Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.ComboBox1)
         Me.GroupBox2.Location = New System.Drawing.Point(431, 25)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(373, 75)
@@ -359,23 +327,24 @@ Partial Class frmRequesicionProducto
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Enviado por"
         '
-        'TextBox2
+        'txtcorreoenviadopor
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(61, 46)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(300, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.txtcorreoenviadopor.Enabled = False
+        Me.txtcorreoenviadopor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtcorreoenviadopor.Location = New System.Drawing.Point(61, 45)
+        Me.txtcorreoenviadopor.Name = "txtcorreoenviadopor"
+        Me.txtcorreoenviadopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtcorreoenviadopor.TabIndex = 5
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 49)
+        Me.Label3.Location = New System.Drawing.Point(4, 48)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(49, 13)
+        Me.Label3.Size = New System.Drawing.Size(38, 13)
         Me.Label3.TabIndex = 2
-        Me.Label3.Text = "Telefono"
+        Me.Label3.Text = "Correo"
         '
         'Label1
         '
@@ -386,16 +355,6 @@ Partial Class frmRequesicionProducto
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Usuario"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(61, 19)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(300, 21)
-        Me.ComboBox1.Sorted = True
-        Me.ComboBox1.TabIndex = 3
         '
         'Panel5
         '
@@ -412,6 +371,117 @@ Partial Class frmRequesicionProducto
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(31, 195)
         Me.Panel6.TabIndex = 0
+        '
+        'grid
+        '
+        Me.grid.AllowUserToAddRows = False
+        Me.grid.AllowUserToDeleteRows = False
+        Me.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grid.BotonBuscar = False
+        Me.grid.BotonEditar = False
+        Me.grid.BotonEliminar = False
+        Me.grid.CampoId = Nothing
+        Me.grid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid.Location = New System.Drawing.Point(3, 16)
+        Me.grid.MultiSelect = False
+        Me.grid.Name = "grid"
+        Me.grid.RowHeadersVisible = False
+        Me.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.grid.Size = New System.Drawing.Size(799, 194)
+        Me.grid.TabIndex = 10
+        '
+        'txtrecibidopor
+        '
+        Me.txtrecibidopor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrecibidopor.ColorError = System.Drawing.Color.Red
+        Me.txtrecibidopor.Enabled = False
+        Me.txtrecibidopor.EnterPorTab = True
+        Me.txtrecibidopor.EsObligatorio = False
+        Me.txtrecibidopor.ExpresionValidacion = Nothing
+        Me.txtrecibidopor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtrecibidopor.Location = New System.Drawing.Point(61, 19)
+        Me.txtrecibidopor.MensajeError = Nothing
+        Me.txtrecibidopor.Name = "txtrecibidopor"
+        Me.txtrecibidopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtrecibidopor.TabIndex = 7
+        Me.txtrecibidopor.Texto = Nothing
+        Me.txtrecibidopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtrecibidopor.ValorInt = Nothing
+        Me.txtrecibidopor.ValorLong = Nothing
+        '
+        'cmbSucursales
+        '
+        Me.cmbSucursales.CargarAutoCompletar = False
+        Me.cmbSucursales.CargarComboBox = True
+        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSucursales.FormattingEnabled = True
+        Me.cmbSucursales.Location = New System.Drawing.Point(110, 71)
+        Me.cmbSucursales.Name = "cmbSucursales"
+        Me.cmbSucursales.ParametroAutocompletar = Nothing
+        Me.cmbSucursales.ParametroBusquedaPadre = Nothing
+        Me.cmbSucursales.SelectedItem = Nothing
+        Me.cmbSucursales.Size = New System.Drawing.Size(300, 21)
+        Me.cmbSucursales.TabIndex = 16
+        Me.cmbSucursales.Visible = False
+        '
+        'txtsucursalrecibe
+        '
+        Me.txtsucursalrecibe.BackColor = System.Drawing.SystemColors.Window
+        Me.txtsucursalrecibe.ColorError = System.Drawing.Color.Red
+        Me.txtsucursalrecibe.Enabled = False
+        Me.txtsucursalrecibe.EnterPorTab = True
+        Me.txtsucursalrecibe.EsObligatorio = False
+        Me.txtsucursalrecibe.ExpresionValidacion = Nothing
+        Me.txtsucursalrecibe.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtsucursalrecibe.Location = New System.Drawing.Point(110, 72)
+        Me.txtsucursalrecibe.MensajeError = Nothing
+        Me.txtsucursalrecibe.Name = "txtsucursalrecibe"
+        Me.txtsucursalrecibe.Size = New System.Drawing.Size(300, 20)
+        Me.txtsucursalrecibe.TabIndex = 15
+        Me.txtsucursalrecibe.Texto = Nothing
+        Me.txtsucursalrecibe.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtsucursalrecibe.ValorInt = Nothing
+        Me.txtsucursalrecibe.ValorLong = Nothing
+        '
+        'txtsucuralenvia
+        '
+        Me.txtsucuralenvia.BackColor = System.Drawing.SystemColors.Window
+        Me.txtsucuralenvia.ColorError = System.Drawing.Color.Red
+        Me.txtsucuralenvia.Enabled = False
+        Me.txtsucuralenvia.EnterPorTab = True
+        Me.txtsucuralenvia.EsObligatorio = False
+        Me.txtsucuralenvia.ExpresionValidacion = Nothing
+        Me.txtsucuralenvia.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtsucuralenvia.Location = New System.Drawing.Point(110, 46)
+        Me.txtsucuralenvia.MensajeError = Nothing
+        Me.txtsucuralenvia.Name = "txtsucuralenvia"
+        Me.txtsucuralenvia.Size = New System.Drawing.Size(300, 20)
+        Me.txtsucuralenvia.TabIndex = 7
+        Me.txtsucuralenvia.Texto = Nothing
+        Me.txtsucuralenvia.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtsucuralenvia.ValorInt = Nothing
+        Me.txtsucuralenvia.ValorLong = Nothing
+        '
+        'txtenviadopor
+        '
+        Me.txtenviadopor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtenviadopor.ColorError = System.Drawing.Color.Red
+        Me.txtenviadopor.Enabled = False
+        Me.txtenviadopor.EnterPorTab = True
+        Me.txtenviadopor.EsObligatorio = False
+        Me.txtenviadopor.ExpresionValidacion = Nothing
+        Me.txtenviadopor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtenviadopor.Location = New System.Drawing.Point(61, 19)
+        Me.txtenviadopor.MensajeError = Nothing
+        Me.txtenviadopor.Name = "txtenviadopor"
+        Me.txtenviadopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtenviadopor.TabIndex = 6
+        Me.txtenviadopor.Texto = Nothing
+        Me.txtenviadopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtenviadopor.ValorInt = Nothing
+        Me.txtenviadopor.ValorLong = Nothing
         '
         'CrtPanelBase1
         '
@@ -435,6 +505,15 @@ Partial Class frmRequesicionProducto
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
+        'lblestado
+        '
+        Me.lblestado.Location = New System.Drawing.Point(492, 16)
+        Me.lblestado.Name = "lblestado"
+        Me.lblestado.Size = New System.Drawing.Size(310, 13)
+        Me.lblestado.TabIndex = 13
+        Me.lblestado.Text = "lblestado"
+        Me.lblestado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'frmRequesicionProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -450,7 +529,6 @@ Partial Class frmRequesicionProducto
         Me.Text = "Requisición Productos"
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
@@ -462,6 +540,7 @@ Partial Class frmRequesicionProducto
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -470,35 +549,37 @@ Partial Class frmRequesicionProducto
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotalProductos As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotalItems As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dteFechaemision As System.Windows.Forms.DateTimePicker
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtcorreoenviadopor As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
     Friend WithEvents PanelAccion1 As SICO.ctrla.PanelAccion
-    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents txtcorreorecibidopor As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
-    Friend WithEvents ComboBox4 As System.Windows.Forms.ComboBox
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents txtrecibidopor As SICO.ctrla.CajaTexto
+    Friend WithEvents txtenviadopor As SICO.ctrla.CajaTexto
+    Friend WithEvents txtsucursalrecibe As SiCo.ctrla.CajaTexto
+    Friend WithEvents txtsucuralenvia As SICO.ctrla.CajaTexto
+    Friend WithEvents cmbSucursales As SICO.ctrla.ControlesBasicos.ListaSucursales
+    Friend WithEvents grid As SICO.ctrla.Grid
+    Friend WithEvents lblestado As System.Windows.Forms.Label
 End Class
