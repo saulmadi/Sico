@@ -4,7 +4,7 @@ DROP PROCEDURE IF EXISTS `MantenimientosComplejos_Buscar` $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `MantenimientosComplejos_Buscar`(
 
 /*defiicion de parametros*/
-id nvarchar(11),
+id nvarchar(75),
 identidades nvarchar(11),
 entidadnombre nvarchar(120),
 espersonanatural nvarchar(1),

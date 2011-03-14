@@ -1,0 +1,2 @@
+﻿DROP VIEW IF EXISTS `vsucursal`;
+CREATE OR REPLACE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsucursal` AS select `p`.`id` AS `idsurcusal`,`p`.`identidades` AS `identidades`,`p`.`idusuario` AS `idusuario`,`p`.`idmunicipio` AS `idmunicipio`,`p`.`estado` AS `estado`,`p`.`numerofactura` AS `numerofactura`,`v`.`RazonSocial` AS `descripcion` from (`sucursales` `p` join `personasjuridicas` `v` on((`p`.`identidades` = `v`.`id`)));

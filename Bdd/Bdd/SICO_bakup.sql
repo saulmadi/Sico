@@ -300,6 +300,35 @@ INSERT INTO `detalleorden` VALUES  (1,6,2,4324,2,'2011-03-04 22:51:54'),
 
 
 --
+-- Definition of table `detallerequisicion`
+--
+
+DROP TABLE IF EXISTS `detallerequisicion`;
+CREATE TABLE `detallerequisicion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idrequisicion` int(11) NOT NULL,
+  `idproducto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  `usu` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `LLave_Requisicion` (`idrequisicion`,`idproducto`),
+  KEY `idproducto_productos_requiscion` (`idproducto`),
+  KEY `idrequicion_detalle` (`idrequisicion`),
+  CONSTRAINT `idproducto_productos_requiscion` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idrequicion_detalle` FOREIGN KEY (`idrequisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detallerequisicion`
+--
+
+/*!40000 ALTER TABLE `detallerequisicion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detallerequisicion` ENABLE KEYS */;
+
+
+--
 -- Definition of table `entidades`
 --
 
@@ -643,6 +672,43 @@ INSERT INTO `ordenescompras` VALUES  (6,'OC-001-20110304-002-0000001',2,2,'2011-
 
 
 --
+-- Definition of table `ordenesrequisicion`
+--
+
+DROP TABLE IF EXISTS `ordenesrequisicion`;
+CREATE TABLE `ordenesrequisicion` (
+  `id` int(11) NOT NULL,
+  `codigo` varchar(70) NOT NULL,
+  `fechaemision` date NOT NULL,
+  `enviadopor` int(11) NOT NULL,
+  `recibidopor` int(11) DEFAULT NULL,
+  `sucursalenvia` int(11) NOT NULL,
+  `sucursalrecibe` int(11) DEFAULT NULL,
+  `estado` varchar(3) NOT NULL COMMENT 'E enviado\nR recibida\n',
+  `fmodif` datetime NOT NULL,
+  `usu` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `codigo_unico` (`codigo`),
+  KEY `recibido_usuario` (`recibidopor`),
+  KEY `enviado_usuario` (`enviadopor`),
+  KEY `sucursalenvia_usuario` (`sucursalenvia`),
+  KEY `sucursalrecibe_usuario` (`sucursalrecibe`),
+  CONSTRAINT `recibido_usuario` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `enviado_usuario` FOREIGN KEY (`enviadopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `sucursalenvia_usuario` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `sucursalrecibe_usuario` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ordenesrequisicion`
+--
+
+/*!40000 ALTER TABLE `ordenesrequisicion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordenesrequisicion` ENABLE KEYS */;
+
+
+--
 -- Definition of table `productos`
 --
 
@@ -753,8 +819,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -2250,10 +2316,11 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenCompra_Buscar`(
 
 id nvarchar(11),
-codigo nvarchar(11),
+codigo nvarchar(70),
+codigoparecido nvarchar(70),
 elaboradopor nvarchar(11),
 idproveedor nvarchar(11),
-fechaorden nvarchar(50)
+fechaorden nvarchar(150)
 )
 BEGIN
 
@@ -2278,6 +2345,9 @@ if codigo<>"" then
   set @where= concat(@where, " and codigo = '", codigo, "' ");
 end if;
 
+if codigoparecido<>"" then
+  set @where= concat(@where, " and codigo like '", codigo, "%' ");
+end if;
 
 if idproveedor<>"" then
   set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
@@ -2355,6 +2425,146 @@ else
         c.idproveedor=idproveedor,
         c.fechaorden=fechaorden,
         c.elaboradopor=elaboradopor,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenRequisicion_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenRequisicion_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenRequisicion_Buscar`(
+
+id nvarchar(11),
+codigo nvarchar(70),
+codigoparecido nvarchar(70),
+sucursalenvia nvarchar(11),
+sucursalrecibe nvarchar(11),
+estado nvarchar(11),
+fechaemision nvarchar(150)
+)
+BEGIN
+
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from ordenescompras");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+
+if codigo<>"" then
+  set @where= concat(@where, " and codigo = '", codigo, "' ");
+end if;
+
+if codigoparecido<>"" then
+  set @where= concat(@where, " and codigo like '", codigo, "%' ");
+end if;
+
+if sucursalenvia<>"" then
+  set @where= concat(@where, " and sucursalenvia = ", sucursalenvia, " ");
+end if;
+
+if sucursalrecibe<>"" then
+  set @where= concat(@where, " and sucursalrecibe = ", sucursalrecibe, " ");
+end if;
+
+if estado<>"" then
+  set @where= concat(@where, " and estado = '", estado, "' ");
+end if;
+
+
+if fechaemision<>"" then
+  set @where= concat(@where, " and ", fechaemision, " ");
+end if;
+
+
+set @sql = concat(@campos,@from,@where,@orden);
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenRequisicion_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenRequisicion_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenRequisicion_Mant`(
+
+/*definicion de parametros*/
+
+inout id int,
+inout codigo nvarchar(70),
+enviadopor int(11),
+recibidopor int(11),
+fechaemision date,
+sucursalenvia int(11),
+sucursalrecibe int(11),
+estado nvarchar(11),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from ordenesrequisicion m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  set @correlativo=0;
+
+  select count(id)+1 from ordenesrequisicion into @correlativo;
+
+  select CrearCorrelativoCodigo("OR",sucursalenvia,enviadopor,@correlativo) into codigo;
+
+  INSERT INTO ordenescompras(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif)
+
+  VALUES(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+
+else
+
+  UPDATE ordenesrequisicion c set
+        c.fechaemision=fechaemision,
+        c.enviadopor=enviadopor,
+        c.recibidopor=recibidopor,
+        c.sucursalenvia=sucursalenvia,
+        c.estado=estado,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
