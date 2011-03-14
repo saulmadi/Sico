@@ -4,7 +4,8 @@ DROP PROCEDURE IF EXISTS `OrdenCompra_Buscar` $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenCompra_Buscar`(
 
 id nvarchar(11),
-codigo nvarchar(11),
+codigo nvarchar(70),
+codigoparecido nvarchar(70),
 elaboradopor nvarchar(11),
 idproveedor nvarchar(11),
 fechaorden nvarchar(150)
@@ -16,10 +17,11 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
+set @join=" join vproveedores v on v.idproveedor= o.idproveedor ";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from ordenescompras");
+set @from= concat(@from," from ordenescompras o");
 
 
 
@@ -32,6 +34,9 @@ if codigo<>"" then
   set @where= concat(@where, " and codigo = '", codigo, "' ");
 end if;
 
+if codigoparecido<>"" then
+  set @where= concat(@where, " and codigo like '", codigoparecido, "%' ");
+end if;
 
 if idproveedor<>"" then
   set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
@@ -47,7 +52,7 @@ if fechaorden<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;
