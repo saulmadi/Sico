@@ -19,9 +19,11 @@ set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
 
-set @campos= concat( @campos," * ");
+set @join=" join vsucursal v on v.idsucursal = o.sucursalenvia join vsucursal vr on vr.idsucursal= o.sucursalrecibe ";
 
-set @from= concat(@from," from ordenescompras");
+set @campos= concat( @campos," o.*, v.idsucursal idsucursalenvia, v.identidades as identidadesenvia, v.descripcion as descripcionenvia, vr.idsucursal idsucursalrecibe, vr.identidades as identidadesrecibe, vr.descripcion as descripcionrecibe  ");
+
+set @from= concat(@from," from ordenesrequisicion o ");
 
 
 
@@ -35,7 +37,7 @@ if codigo<>"" then
 end if;
 
 if codigoparecido<>"" then
-  set @where= concat(@where, " and codigo like '", codigo, "%' ");
+  set @where= concat(@where, " and codigo like '", codigoparecido, "%' ");
 end if;
 
 if sucursalenvia<>"" then
@@ -56,7 +58,7 @@ if fechaemision<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;

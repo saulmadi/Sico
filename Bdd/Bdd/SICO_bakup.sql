@@ -88,6 +88,34 @@ CREATE TABLE `vproductos` (
 );
 
 --
+-- Temporary table structure for view `vproveedores`
+--
+DROP TABLE IF EXISTS `vproveedores`;
+DROP VIEW IF EXISTS `vproveedores`;
+CREATE TABLE `vproveedores` (
+  `idproveedor` int(11),
+  `identidades` int(11),
+  `idcontacto` int(11),
+  `estado` int(1) unsigned,
+  `descripcion` varchar(120)
+);
+
+--
+-- Temporary table structure for view `vsucursal`
+--
+DROP TABLE IF EXISTS `vsucursal`;
+DROP VIEW IF EXISTS `vsucursal`;
+CREATE TABLE `vsucursal` (
+  `idsucursal` int(11),
+  `identidades` int(11),
+  `idusuario` int(11),
+  `idmunicipio` int(11),
+  `estado` int(1),
+  `numerofactura` int(11),
+  `descripcion` varchar(120)
+);
+
+--
 -- Definition of table `clientes`
 --
 
@@ -168,27 +196,22 @@ INSERT INTO `compras` VALUES  (20,'878789',1,'2011-02-26',1,2,'2011-02-26 11:32:
 
 DROP TABLE IF EXISTS `departamentos`;
 CREATE TABLE `departamentos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   `habilitado` int(1) NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripcion` (`descripcion`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `departamentos`
 --
 
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES  (34,'Comayagua',1,1,'2011-01-16 00:00:00'),
- (35,'Francisco Morazan',1,1,'2011-01-09 00:00:00'),
- (37,'Copan',1,1,'2011-01-09 00:00:00'),
- (38,'Cortes',1,1,'2011-01-09 00:00:00'),
- (39,'La Paz',1,1,'2011-01-16 00:00:00'),
- (40,'Choluteca',0,2,'2011-01-31 00:00:00'),
- (41,'Valle',1,2,'2011-02-19 00:00:00');
+INSERT INTO `departamentos` VALUES  (3,'Comayagua',1,1,'2010-01-01 00:00:00'),
+ (8,'Francisco Morazan',1,1,'2010-01-01 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
 
@@ -318,13 +341,23 @@ CREATE TABLE `detallerequisicion` (
   KEY `idrequicion_detalle` (`idrequisicion`),
   CONSTRAINT `idproducto_productos_requiscion` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idrequicion_detalle` FOREIGN KEY (`idrequisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallerequisicion`
 --
 
 /*!40000 ALTER TABLE `detallerequisicion` DISABLE KEYS */;
+INSERT INTO `detallerequisicion` VALUES  (2,6,2,65,'2011-03-14 23:50:41',2),
+ (3,7,2,45,'2011-03-13 18:34:46',2),
+ (4,7,9,1,'2011-03-13 18:34:46',2),
+ (5,7,10,45,'2011-03-13 18:34:46',2),
+ (6,8,2,45,'2011-03-13 18:43:47',2),
+ (7,8,9,25,'2011-03-13 18:43:47',2),
+ (8,9,2,5265,'2011-03-13 18:52:06',2),
+ (9,10,2,45,'2011-03-13 18:54:12',2),
+ (10,11,2,5,'2011-03-13 19:00:58',2),
+ (11,12,2,5,'2011-03-13 19:02:40',2);
 /*!40000 ALTER TABLE `detallerequisicion` ENABLE KEYS */;
 
 
@@ -613,23 +646,13 @@ CREATE TABLE `municipios` (
   PRIMARY KEY (`id`),
   KEY `fk_Municipio_Departamentos1` (`idderivada`),
   CONSTRAINT `fk_Municipio_Departamentos1` FOREIGN KEY (`idderivada`) REFERENCES `departamentos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `municipios`
 --
 
 /*!40000 ALTER TABLE `municipios` DISABLE KEYS */;
-INSERT INTO `municipios` VALUES  (2,'Lepaterique',37,1,1,'2011-01-12 00:00:00'),
- (3,'San Juan del Potrero',34,0,1,'2011-01-13 00:00:00'),
- (4,'fgsd',37,1,1,'2011-01-12 00:00:00'),
- (6,'Ojona',35,1,1,'2011-01-13 00:00:00'),
- (7,'Talanga',35,1,1,'2011-01-13 00:00:00'),
- (8,'La paz',39,0,1,'2011-01-16 00:00:00'),
- (9,'Salama',35,1,1,'2011-01-26 00:00:00'),
- (10,'San Antonio',34,1,2,'2011-01-31 00:00:00'),
- (11,'Comayagua',34,1,2,'2011-01-31 00:00:00'),
- (12,'San Pedro Sula',38,1,2,'2011-01-31 00:00:00');
 /*!40000 ALTER TABLE `municipios` ENABLE KEYS */;
 
 
@@ -677,7 +700,7 @@ INSERT INTO `ordenescompras` VALUES  (6,'OC-001-20110304-002-0000001',2,2,'2011-
 
 DROP TABLE IF EXISTS `ordenesrequisicion`;
 CREATE TABLE `ordenesrequisicion` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(70) NOT NULL,
   `fechaemision` date NOT NULL,
   `enviadopor` int(11) NOT NULL,
@@ -694,17 +717,24 @@ CREATE TABLE `ordenesrequisicion` (
   KEY `enviado_usuario` (`enviadopor`),
   KEY `sucursalenvia_usuario` (`sucursalenvia`),
   KEY `sucursalrecibe_usuario` (`sucursalrecibe`),
-  CONSTRAINT `recibido_usuario` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `enviado_usuario` FOREIGN KEY (`enviadopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `recibido_usuario` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalenvia_usuario` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalrecibe_usuario` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenesrequisicion`
 --
 
 /*!40000 ALTER TABLE `ordenesrequisicion` DISABLE KEYS */;
+INSERT INTO `ordenesrequisicion` VALUES  (6,'OR-002-20110313-002-0000001','2011-03-13',2,3,2,1,'R','2011-03-14 23:50:41',2),
+ (7,'OR-002-20110313-002-0000002','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:34:46',2),
+ (8,'OR-002-20110313-002-0000003','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:43:47',2),
+ (9,'OR-002-20110313-002-0000004','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:52:06',2),
+ (10,'OR-002-20110313-002-0000005','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:54:12',2),
+ (11,'OR-002-20110313-002-0000006','2011-03-13',2,NULL,2,2,'E','2011-03-13 19:00:58',2),
+ (12,'OR-002-20110313-002-0000007','2011-03-13',2,NULL,2,1,'E','2011-03-13 19:02:40',2);
 /*!40000 ALTER TABLE `ordenesrequisicion` ENABLE KEYS */;
 
 
@@ -819,8 +849,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -840,7 +870,7 @@ CREATE TABLE `sucursales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `identidades` int(11) NOT NULL,
   `idusuario` int(11) DEFAULT NULL COMMENT 'Administrador de la Sucursal',
-  `idmunicipio` int(11) NOT NULL,
+  `idmunicipio` int(11) DEFAULT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` datetime NOT NULL,
   `estado` int(1) NOT NULL,
@@ -859,8 +889,8 @@ CREATE TABLE `sucursales` (
 --
 
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
-INSERT INTO `sucursales` VALUES  (1,18,3,11,2,'2011-02-11 00:02:07',1,12345),
- (2,19,2,11,2,'2011-02-02 22:29:15',1,0);
+INSERT INTO `sucursales` VALUES  (1,18,3,NULL,2,'2011-02-11 00:02:07',1,12345),
+ (2,19,2,NULL,2,'2011-02-02 22:29:15',1,0);
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 
 
@@ -960,7 +990,7 @@ DROP FUNCTION IF EXISTS `CrearCorrelativoCodigo`;
 DELIMITER $$
 
 /*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `CrearCorrelativoCodigo`(iniciales nvarchar(2),sucursal int, usuario int, correlativo int) RETURNS varchar(70) CHARSET utf8
+CREATE DEFINER=`root`@`localhost` FUNCTION `CrearCorrelativoCodigo`(iniciales nvarchar(2),sucursal int(11), usuario int(11), correlativo int) RETURNS varchar(70) CHARSET utf8
 BEGIN
 
 return concat(upper(iniciales),"-",repeat("0",3-CHARACTER_LENGTH(sucursal)),upper(sucursal),"-", upper(year(now())),repeat("0",2-CHARACTER_LENGTH(upper(month(now())))) , upper(month(now())), repeat("0",2-CHARACTER_LENGTH(upper(day(now())))), upper(day(now())),"-",repeat("0",3-CHARACTER_LENGTH(usuario)),upper(usuario),"-", repeat("0",7-CHARACTER_LENGTH(correlativo)),upper(correlativo) );
@@ -1071,9 +1101,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Clientes_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-identidades int,
-usu int,
+inout id int(11),
+identidades int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1119,13 +1149,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Compras_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 facturacompra nvarchar(18),
-idsucursal int,
-idproveedor int,
+idsucursal int(11),
+idproveedor int(11),
 fechacompra date,
 totalcompra decimal(16,4),
-usu int,
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1288,10 +1318,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Departamentos_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
-habilitado tinyint,
-usu int,
+habilitado tinyint(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -1398,13 +1428,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleCompras_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-idcompras int,
-idproducto int,
-cantidad int,
+inout id int(11),
+idcompras int(11),
+idproducto int(11),
+cantidad int(11),
 preciocompra decimal(16,2),
-idsucursal int,
-usu int,
+idsucursal int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1513,11 +1543,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleOrden_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-idordencompra int,
-idproducto int,
-cantidad int,
-usu int,
+inout id int(11),
+idordencompra int(11),
+idproducto int(11),
+cantidad int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1552,6 +1582,117 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `DetalleRequisicion_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `DetalleRequisicion_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleRequisicion_Buscar`(
+
+
+id nvarchar(11),
+idrequisicion nvarchar(11),
+idproducto nvarchar(11)
+
+)
+BEGIN
+
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @join = "join vproductos p on d.idproducto=p.idproducto ";
+set @sql="";
+
+set @campos= concat( @campos," * ");
+
+set @from= concat(@from," from detallerequisicion d ");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and d.id = ", id, " ");
+end if;
+
+
+if idrequisicion<>"" then
+  set @where= concat(@where, " and d.idrequisicion = ", idrequisicion, " ");
+end if;
+
+
+if idproducto<>"" then
+  set @where= concat(@where, " and d.idproducto = ", idproducto, " ");
+end if;
+
+
+
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `DetalleRequisicion_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `DetalleRequisicion_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleRequisicion_Mant`(
+
+/*definicion de parametros*/
+
+inout id int(11),
+idrequisicion int(11),
+idproducto int(11),
+cantidad int(11),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from detallerequisicion m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO detallerequisicion(idrequisicion,idproducto,cantidad,usu,fmodif)
+
+  VALUES(idrequisicion,idproducto,cantidad,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE detallerequisicion c set
+        c.idrequisicion=idrequisicion,
+        c.idproducto=idproducto,
+        c.cantidad=cantidad,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Entidades_Mant`
 --
 
@@ -1564,8 +1705,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Entidades_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-telefono int,
+inout id int(11),
+telefono int(11),
 direccion varchar(150),
 correo varchar (45),
 espersonanatural bool,
@@ -1573,8 +1714,8 @@ rtn varchar(18),
 entidadnombre varchar(120),
 identificacion varchar(45),
 tipoidentidad varchar(1),
-telefono2 int,
-usu int,
+telefono2 int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -1672,10 +1813,10 @@ DELIMITER $$
 /*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `Inventarios_Triggers`(
 
-idsucursales int,
-idproductos int,
-cantidad int,
-usu int,
+idsucursales int(11),
+idproductos int(11),
+cantidad int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1775,11 +1916,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Inventario_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-idsucursales int,
-idproductos int,
-cantidad int,
-usu int,
+inout id int(11),
+idsucursales int(11),
+idproductos int(11),
+cantidad int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -1825,7 +1966,7 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `MantenimientosComplejos_Buscar`(
 
 /*defiicion de parametros*/
-id nvarchar(11),
+id nvarchar(75),
 identidades nvarchar(11),
 entidadnombre nvarchar(120),
 espersonanatural nvarchar(1),
@@ -2027,10 +2168,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Marcas_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
-habilitado int,
-usu int,
+habilitado int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -2129,11 +2270,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Modelos_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
 habilitado bool,
-idderivada int,
-usu int,
+idderivada int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -2233,11 +2374,11 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Municipios_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
 habilitado bool,
-idderivada int,
-usu int,
+idderivada int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -2329,10 +2470,11 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
+set @join=" join vproveedores v on v.idproveedor= o.idproveedor ";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from ordenescompras");
+set @from= concat(@from," from ordenescompras o");
 
 
 
@@ -2346,7 +2488,7 @@ if codigo<>"" then
 end if;
 
 if codigoparecido<>"" then
-  set @where= concat(@where, " and codigo like '", codigo, "%' ");
+  set @where= concat(@where, " and codigo like '", codigoparecido, "%' ");
 end if;
 
 if idproveedor<>"" then
@@ -2363,7 +2505,7 @@ if fechaorden<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;
@@ -2388,13 +2530,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenCompra_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 inout codigo nvarchar(70),
-idsucursal int,
-idproveedor int,
+idsucursal int(11),
+idproveedor int(11),
 fechaorden date,
-elaboradopor int,
-usu int,
+elaboradopor int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -2463,9 +2605,11 @@ set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
 
-set @campos= concat( @campos," * ");
+set @join=" join vsucursal v on v.idsucursal = o.sucursalenvia join vsucursal vr on vr.idsucursal= o.sucursalrecibe ";
 
-set @from= concat(@from," from ordenescompras");
+set @campos= concat( @campos," o.*, v.idsucursal idsucursalenvia, v.identidades as identidadesenvia, v.descripcion as descripcionenvia, vr.idsucursal idsucursalrecibe, vr.identidades as identidadesrecibe, vr.descripcion as descripcionrecibe  ");
+
+set @from= concat(@from," from ordenesrequisicion o ");
 
 
 
@@ -2479,7 +2623,7 @@ if codigo<>"" then
 end if;
 
 if codigoparecido<>"" then
-  set @where= concat(@where, " and codigo like '", codigo, "%' ");
+  set @where= concat(@where, " and codigo like '", codigoparecido, "%' ");
 end if;
 
 if sucursalenvia<>"" then
@@ -2500,7 +2644,7 @@ if fechaemision<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;
@@ -2525,7 +2669,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenRequisicion_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 inout codigo nvarchar(70),
 enviadopor int(11),
 recibidopor int(11),
@@ -2550,7 +2694,7 @@ if @conteo =0 then
 
   select CrearCorrelativoCodigo("OR",sucursalenvia,enviadopor,@correlativo) into codigo;
 
-  INSERT INTO ordenescompras(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif)
+  INSERT INTO ordenesrequisicion(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif)
 
   VALUES(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif);
 
@@ -2727,9 +2871,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ProductosImagenes_Mant`(
 
 /*definicion de parametros*/
 
-id int,
+id int(11),
 imagen longblob,
-usu int,
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -2832,12 +2976,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Productos_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 codigo nvarchar(45),
 descripcion nvarchar(45),
 preciocosto decimal(15,2),
 precioventa decimal(15,2),
-usu int,
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -2945,10 +3089,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Proveedores_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-identidades int,
-idcontacto int,
-usu int,
+inout id int(11),
+identidades int(11),
+idcontacto int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -2996,8 +3140,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `ProveedorProducto_Trigg`(
 /*definicion de parametros*/
 
 
-idproveedores int,
-idproducto int,
+idproveedores int(11),
+idproducto int(11),
 preciocompra decimal(10,2)
 
 )
@@ -3041,13 +3185,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Sucursales_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-identidades int,
+inout id int(11),
+identidades int(11),
 estado int(1),
 idusuario int(11),
 idmunicipio int(11),
-numerofactura int,
-usu int,
+numerofactura int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -3147,10 +3291,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposFacturas_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
-habilitado int,
-usu int,
+habilitado int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -3249,10 +3393,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `TiposMotocicletas_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
+inout id int(11),
 descripcion nvarchar(45),
-habilitado int,
-usu int,
+habilitado int(11),
+usu int(11),
 fmodif date
 )
 BEGIN
@@ -3382,14 +3526,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Usuarios_Mant`(
 
 /*definicion de parametros*/
 
-inout id int,
-identidades int,
+inout id int(11),
+identidades int(11),
 contrasena nvarchar(8000),
 usuario nvarchar(45),
 estado int(1),
-idrol int,
-idsucursales int,
-usu int,
+idrol int(11),
+idsucursales int(11),
+usu int(11),
 fmodif datetime
 )
 BEGIN
@@ -3457,6 +3601,22 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vproductos`;
 DROP VIEW IF EXISTS `vproductos`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vproductos` AS select `productos`.`id` AS `idproducto`,`productos`.`codigo` AS `codigo`,`productos`.`descripcion` AS `descripcion`,`productos`.`precioventa` AS `precioventa`,`productos`.`usu` AS `usuario`,`productos`.`fmodif` AS `fmodifica` from `productos`;
+
+--
+-- Definition of view `vproveedores`
+--
+
+DROP TABLE IF EXISTS `vproveedores`;
+DROP VIEW IF EXISTS `vproveedores`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vproveedores` AS select `p`.`id` AS `idproveedor`,`p`.`identidades` AS `identidades`,`p`.`idcontacto` AS `idcontacto`,`p`.`estado` AS `estado`,`v`.`RazonSocial` AS `descripcion` from (`proveedores` `p` join `personasjuridicas` `v` on((`p`.`identidades` = `v`.`id`)));
+
+--
+-- Definition of view `vsucursal`
+--
+
+DROP TABLE IF EXISTS `vsucursal`;
+DROP VIEW IF EXISTS `vsucursal`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vsucursal` AS select `p`.`id` AS `idsucursal`,`p`.`identidades` AS `identidades`,`p`.`idusuario` AS `idusuario`,`p`.`idmunicipio` AS `idmunicipio`,`p`.`estado` AS `estado`,`p`.`numerofactura` AS `numerofactura`,`v`.`RazonSocial` AS `descripcion` from (`sucursales` `p` join `personasjuridicas` `v` on((`p`.`identidades` = `v`.`id`)));
 
 
 
