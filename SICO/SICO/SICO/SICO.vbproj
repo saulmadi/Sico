@@ -613,6 +613,7 @@
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Inventario\RequisicionProductos\Reportes\" />
     <Folder Include="Proveedores\CuentasPorPagar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
