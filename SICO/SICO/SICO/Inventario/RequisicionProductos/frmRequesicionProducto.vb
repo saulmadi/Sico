@@ -60,7 +60,7 @@ Public Class frmRequesicionProducto
             grid.DataSource = OrdenRequisicion.Listadetalle
 
         Else
-            calculartotales()
+            TextBox6.Text = Me.OrdenRequisicion.codigo
             PanelAccion1.BotonImprimir.Visible = True
             lblestado.Text = OrdenRequisicion.DescripcionEstado
             grid.BotonBuscar = False
@@ -74,7 +74,7 @@ Public Class frmRequesicionProducto
             txtsucuralenvia.Text = OrdenRequisicion.SucursalEn.NombreMantenimiento
             txtsucursalrecibe.Text = OrdenRequisicion.SucursalRec.NombreMantenimiento
 
-            If PanelAccion1.sucursal.Id <> OrdenRequisicion.sucursalenvia Then
+            If PanelAccion1.sucursal.Id <> OrdenRequisicion.sucursalenvia And OrdenRequisicion.estado = "E" Then
                 PanelAccion1.BotonEliminar.Enabled = True
                 PanelAccion1.BotonEliminar.Visible = True
             Else
@@ -85,7 +85,7 @@ Public Class frmRequesicionProducto
 
             Dim usu As New Usuario()
             If Not Me.OrdenRequisicion.recibidopor = Nothing Then
-                usu.Buscar("id", Me.OrdenRequisicion.ToString + " and c.id = " + Me.OrdenRequisicion.recibidopor.ToString)
+                usu.Buscar("id", Me.OrdenRequisicion.enviadopor.ToString + " or c.id = " + Me.OrdenRequisicion.recibidopor.ToString)
             Else
                 usu.Buscar(Me.OrdenRequisicion.enviadopor)
             End If
@@ -106,6 +106,7 @@ Public Class frmRequesicionProducto
             grid.DataSource = Nothing
             Me.OrdenRequisicion.CargarDetalle()
             grid.DataSource = Me.OrdenRequisicion.Listadetalle
+            calculartotales()
 
         End If
     End Sub
@@ -122,7 +123,7 @@ Public Class frmRequesicionProducto
         Me.grid.DarFormato("descripcion", "Descripción", True)
         Me.grid.DarFormato("CantidadEditable", "Cantidad", True)
 
-        PanelAccion1.BotonEliminar.Text = "Enviar"
+        PanelAccion1.BotonEliminar.Text = "Recibir"
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonEliminar.Enabled = False
         PanelAccion1.BotonImprimir.Visible = False
@@ -162,8 +163,9 @@ Public Class frmRequesicionProducto
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
-            If Me.OrdenRequisicion.Id = 0 Then
-                If Not cmbSucursales.SelectedItem Is Nothing Then
+            If Not cmbSucursales.SelectedItem Is Nothing Then
+                If Me.OrdenRequisicion.Id = 0 Then
+
                     PanelAccion1.lblEstado.Text = "Guardando..."
                     PanelAccion1.BarraProgreso.Value = 50
 
@@ -179,13 +181,24 @@ Public Class frmRequesicionProducto
 
                     PanelAccion1.lblEstado.Text = "Orden de requisición guardada correctamente"
                     PanelAccion1.BarraProgreso.Value = 100
-                Else
-                    MessageBox.Show("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    PanelAccion1.lblEstado.Text = "Eliga una sucursal"
-                End If
                 
-            Else
 
+                Else
+                    PanelAccion1.lblEstado.Text = "Guardando..."
+                    PanelAccion1.BarraProgreso.Value = 50
+                    OrdenRequisicion.fechaemision = dteFechaemision.Value
+                    OrdenRequisicion.sucursalrecibe = cmbSucursales.SelectedValue
+
+                    OrdenRequisicion.GuardarOrdenRequisicion()
+                    Me.OrdenRequisicion = _OrdenRequisicion
+
+                    PanelAccion1.lblEstado.Text = "Orden de requisición guardada correctamente"
+                    PanelAccion1.BarraProgreso.Value = 100
+
+                End If
+            Else
+                MessageBox.Show("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                PanelAccion1.lblEstado.Text = "Eliga una sucursal"
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -193,5 +206,36 @@ Public Class frmRequesicionProducto
             PanelAccion1.BarraProgreso.Value = 0
         End Try
     End Sub
+
+    Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
+        Me.Close()
+    End Sub
+
+    Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
+        Try
+            If OrdenRequisicion.sucursalenvia <> Me.PanelAccion1.sucursal.Id Then
+
+                PanelAccion1.lblEstado.Text = "Guardando..."
+                PanelAccion1.BarraProgreso.Value = 50
+
+                OrdenRequisicion.estado = "R"
+
+                OrdenRequisicion.recibidopor = Me.PanelAccion1.Usuario.Id
+
+                OrdenRequisicion.GuardarOrdenRequisicion()
+                Me.OrdenRequisicion = _OrdenRequisicion
+
+                PanelAccion1.lblEstado.Text = "Orden de requisición guardada correctamente"
+                PanelAccion1.BarraProgreso.Value = 100
+
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        End Try
+    End Sub
+
 #End Region
+
+   
 End Class

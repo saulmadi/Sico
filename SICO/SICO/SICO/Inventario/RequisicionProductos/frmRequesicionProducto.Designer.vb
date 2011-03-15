@@ -26,6 +26,7 @@ Partial Class frmRequesicionProducto
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRequesicionProducto))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
+        Me.grid = New SICO.ctrla.Grid(Me.components)
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label4 = New System.Windows.Forms.Label
@@ -36,11 +37,16 @@ Partial Class frmRequesicionProducto
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.lblestado = New System.Windows.Forms.Label
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
+        Me.txtrecibidopor = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtcorreorecibidopor = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label12 = New System.Windows.Forms.Label
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
+        Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
+        Me.txtsucursalrecibe = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtsucuralenvia = New SICO.ctrla.CajaTexto(Me.components)
         Me.TextBox6 = New System.Windows.Forms.TextBox
         Me.Label14 = New System.Windows.Forms.Label
         Me.Label8 = New System.Windows.Forms.Label
@@ -48,22 +54,17 @@ Partial Class frmRequesicionProducto
         Me.Label13 = New System.Windows.Forms.Label
         Me.dteFechaemision = New System.Windows.Forms.DateTimePicker
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.txtenviadopor = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtcorreoenviadopor = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.grid = New SICO.ctrla.Grid(Me.components)
-        Me.txtrecibidopor = New SICO.ctrla.CajaTexto(Me.components)
-        Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
-        Me.txtsucursalrecibe = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtsucuralenvia = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtenviadopor = New SICO.ctrla.CajaTexto(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.lblestado = New System.Windows.Forms.Label
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
@@ -71,7 +72,6 @@ Partial Class frmRequesicionProducto
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.grid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -97,6 +97,26 @@ Partial Class frmRequesicionProducto
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
+        '
+        'grid
+        '
+        Me.grid.AllowUserToAddRows = False
+        Me.grid.AllowUserToDeleteRows = False
+        Me.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grid.BotonBuscar = False
+        Me.grid.BotonEditar = False
+        Me.grid.BotonEliminar = False
+        Me.grid.CampoId = Nothing
+        Me.grid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grid.Location = New System.Drawing.Point(3, 16)
+        Me.grid.MultiSelect = False
+        Me.grid.Name = "grid"
+        Me.grid.RowHeadersVisible = False
+        Me.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.grid.Size = New System.Drawing.Size(799, 194)
+        Me.grid.TabIndex = 10
         '
         'Panel7
         '
@@ -197,6 +217,15 @@ Partial Class frmRequesicionProducto
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
+        'lblestado
+        '
+        Me.lblestado.Location = New System.Drawing.Point(492, 16)
+        Me.lblestado.Name = "lblestado"
+        Me.lblestado.Size = New System.Drawing.Size(310, 13)
+        Me.lblestado.TabIndex = 13
+        Me.lblestado.Text = "lblestado"
+        Me.lblestado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.txtrecibidopor)
@@ -209,6 +238,25 @@ Partial Class frmRequesicionProducto
         Me.GroupBox6.TabIndex = 6
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Recibido por"
+        '
+        'txtrecibidopor
+        '
+        Me.txtrecibidopor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtrecibidopor.ColorError = System.Drawing.Color.Red
+        Me.txtrecibidopor.Enabled = False
+        Me.txtrecibidopor.EnterPorTab = True
+        Me.txtrecibidopor.EsObligatorio = False
+        Me.txtrecibidopor.ExpresionValidacion = Nothing
+        Me.txtrecibidopor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtrecibidopor.Location = New System.Drawing.Point(61, 19)
+        Me.txtrecibidopor.MensajeError = Nothing
+        Me.txtrecibidopor.Name = "txtrecibidopor"
+        Me.txtrecibidopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtrecibidopor.TabIndex = 7
+        Me.txtrecibidopor.Texto = Nothing
+        Me.txtrecibidopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtrecibidopor.ValorInt = Nothing
+        Me.txtrecibidopor.ValorLong = Nothing
         '
         'txtcorreorecibidopor
         '
@@ -256,6 +304,59 @@ Partial Class frmRequesicionProducto
         Me.GroupBox3.TabIndex = 12
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Datos de requisición"
+        '
+        'cmbSucursales
+        '
+        Me.cmbSucursales.CargarAutoCompletar = False
+        Me.cmbSucursales.CargarComboBox = True
+        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSucursales.FormattingEnabled = True
+        Me.cmbSucursales.Location = New System.Drawing.Point(110, 71)
+        Me.cmbSucursales.Name = "cmbSucursales"
+        Me.cmbSucursales.ParametroAutocompletar = Nothing
+        Me.cmbSucursales.ParametroBusquedaPadre = Nothing
+        Me.cmbSucursales.SelectedItem = Nothing
+        Me.cmbSucursales.Size = New System.Drawing.Size(300, 21)
+        Me.cmbSucursales.TabIndex = 16
+        Me.cmbSucursales.Visible = False
+        '
+        'txtsucursalrecibe
+        '
+        Me.txtsucursalrecibe.BackColor = System.Drawing.SystemColors.Window
+        Me.txtsucursalrecibe.ColorError = System.Drawing.Color.Red
+        Me.txtsucursalrecibe.Enabled = False
+        Me.txtsucursalrecibe.EnterPorTab = True
+        Me.txtsucursalrecibe.EsObligatorio = False
+        Me.txtsucursalrecibe.ExpresionValidacion = Nothing
+        Me.txtsucursalrecibe.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtsucursalrecibe.Location = New System.Drawing.Point(110, 72)
+        Me.txtsucursalrecibe.MensajeError = Nothing
+        Me.txtsucursalrecibe.Name = "txtsucursalrecibe"
+        Me.txtsucursalrecibe.Size = New System.Drawing.Size(300, 20)
+        Me.txtsucursalrecibe.TabIndex = 15
+        Me.txtsucursalrecibe.Texto = Nothing
+        Me.txtsucursalrecibe.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtsucursalrecibe.ValorInt = Nothing
+        Me.txtsucursalrecibe.ValorLong = Nothing
+        '
+        'txtsucuralenvia
+        '
+        Me.txtsucuralenvia.BackColor = System.Drawing.SystemColors.Window
+        Me.txtsucuralenvia.ColorError = System.Drawing.Color.Red
+        Me.txtsucuralenvia.Enabled = False
+        Me.txtsucuralenvia.EnterPorTab = True
+        Me.txtsucuralenvia.EsObligatorio = False
+        Me.txtsucuralenvia.ExpresionValidacion = Nothing
+        Me.txtsucuralenvia.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtsucuralenvia.Location = New System.Drawing.Point(110, 46)
+        Me.txtsucuralenvia.MensajeError = Nothing
+        Me.txtsucuralenvia.Name = "txtsucuralenvia"
+        Me.txtsucuralenvia.Size = New System.Drawing.Size(300, 20)
+        Me.txtsucuralenvia.TabIndex = 7
+        Me.txtsucuralenvia.Texto = Nothing
+        Me.txtsucuralenvia.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtsucuralenvia.ValorInt = Nothing
+        Me.txtsucuralenvia.ValorLong = Nothing
         '
         'TextBox6
         '
@@ -327,6 +428,25 @@ Partial Class frmRequesicionProducto
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Enviado por"
         '
+        'txtenviadopor
+        '
+        Me.txtenviadopor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtenviadopor.ColorError = System.Drawing.Color.Red
+        Me.txtenviadopor.Enabled = False
+        Me.txtenviadopor.EnterPorTab = True
+        Me.txtenviadopor.EsObligatorio = False
+        Me.txtenviadopor.ExpresionValidacion = Nothing
+        Me.txtenviadopor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtenviadopor.Location = New System.Drawing.Point(61, 19)
+        Me.txtenviadopor.MensajeError = Nothing
+        Me.txtenviadopor.Name = "txtenviadopor"
+        Me.txtenviadopor.Size = New System.Drawing.Size(300, 20)
+        Me.txtenviadopor.TabIndex = 6
+        Me.txtenviadopor.Texto = Nothing
+        Me.txtenviadopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtenviadopor.ValorInt = Nothing
+        Me.txtenviadopor.ValorLong = Nothing
+        '
         'txtcorreoenviadopor
         '
         Me.txtcorreoenviadopor.Enabled = False
@@ -372,117 +492,6 @@ Partial Class frmRequesicionProducto
         Me.Panel6.Size = New System.Drawing.Size(31, 195)
         Me.Panel6.TabIndex = 0
         '
-        'grid
-        '
-        Me.grid.AllowUserToAddRows = False
-        Me.grid.AllowUserToDeleteRows = False
-        Me.grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grid.BotonBuscar = False
-        Me.grid.BotonEditar = False
-        Me.grid.BotonEliminar = False
-        Me.grid.CampoId = Nothing
-        Me.grid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grid.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grid.Location = New System.Drawing.Point(3, 16)
-        Me.grid.MultiSelect = False
-        Me.grid.Name = "grid"
-        Me.grid.RowHeadersVisible = False
-        Me.grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.grid.Size = New System.Drawing.Size(799, 194)
-        Me.grid.TabIndex = 10
-        '
-        'txtrecibidopor
-        '
-        Me.txtrecibidopor.BackColor = System.Drawing.SystemColors.Window
-        Me.txtrecibidopor.ColorError = System.Drawing.Color.Red
-        Me.txtrecibidopor.Enabled = False
-        Me.txtrecibidopor.EnterPorTab = True
-        Me.txtrecibidopor.EsObligatorio = False
-        Me.txtrecibidopor.ExpresionValidacion = Nothing
-        Me.txtrecibidopor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtrecibidopor.Location = New System.Drawing.Point(61, 19)
-        Me.txtrecibidopor.MensajeError = Nothing
-        Me.txtrecibidopor.Name = "txtrecibidopor"
-        Me.txtrecibidopor.Size = New System.Drawing.Size(300, 20)
-        Me.txtrecibidopor.TabIndex = 7
-        Me.txtrecibidopor.Texto = Nothing
-        Me.txtrecibidopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtrecibidopor.ValorInt = Nothing
-        Me.txtrecibidopor.ValorLong = Nothing
-        '
-        'cmbSucursales
-        '
-        Me.cmbSucursales.CargarAutoCompletar = False
-        Me.cmbSucursales.CargarComboBox = True
-        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSucursales.FormattingEnabled = True
-        Me.cmbSucursales.Location = New System.Drawing.Point(110, 71)
-        Me.cmbSucursales.Name = "cmbSucursales"
-        Me.cmbSucursales.ParametroAutocompletar = Nothing
-        Me.cmbSucursales.ParametroBusquedaPadre = Nothing
-        Me.cmbSucursales.SelectedItem = Nothing
-        Me.cmbSucursales.Size = New System.Drawing.Size(300, 21)
-        Me.cmbSucursales.TabIndex = 16
-        Me.cmbSucursales.Visible = False
-        '
-        'txtsucursalrecibe
-        '
-        Me.txtsucursalrecibe.BackColor = System.Drawing.SystemColors.Window
-        Me.txtsucursalrecibe.ColorError = System.Drawing.Color.Red
-        Me.txtsucursalrecibe.Enabled = False
-        Me.txtsucursalrecibe.EnterPorTab = True
-        Me.txtsucursalrecibe.EsObligatorio = False
-        Me.txtsucursalrecibe.ExpresionValidacion = Nothing
-        Me.txtsucursalrecibe.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtsucursalrecibe.Location = New System.Drawing.Point(110, 72)
-        Me.txtsucursalrecibe.MensajeError = Nothing
-        Me.txtsucursalrecibe.Name = "txtsucursalrecibe"
-        Me.txtsucursalrecibe.Size = New System.Drawing.Size(300, 20)
-        Me.txtsucursalrecibe.TabIndex = 15
-        Me.txtsucursalrecibe.Texto = Nothing
-        Me.txtsucursalrecibe.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtsucursalrecibe.ValorInt = Nothing
-        Me.txtsucursalrecibe.ValorLong = Nothing
-        '
-        'txtsucuralenvia
-        '
-        Me.txtsucuralenvia.BackColor = System.Drawing.SystemColors.Window
-        Me.txtsucuralenvia.ColorError = System.Drawing.Color.Red
-        Me.txtsucuralenvia.Enabled = False
-        Me.txtsucuralenvia.EnterPorTab = True
-        Me.txtsucuralenvia.EsObligatorio = False
-        Me.txtsucuralenvia.ExpresionValidacion = Nothing
-        Me.txtsucuralenvia.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtsucuralenvia.Location = New System.Drawing.Point(110, 46)
-        Me.txtsucuralenvia.MensajeError = Nothing
-        Me.txtsucuralenvia.Name = "txtsucuralenvia"
-        Me.txtsucuralenvia.Size = New System.Drawing.Size(300, 20)
-        Me.txtsucuralenvia.TabIndex = 7
-        Me.txtsucuralenvia.Texto = Nothing
-        Me.txtsucuralenvia.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtsucuralenvia.ValorInt = Nothing
-        Me.txtsucuralenvia.ValorLong = Nothing
-        '
-        'txtenviadopor
-        '
-        Me.txtenviadopor.BackColor = System.Drawing.SystemColors.Window
-        Me.txtenviadopor.ColorError = System.Drawing.Color.Red
-        Me.txtenviadopor.Enabled = False
-        Me.txtenviadopor.EnterPorTab = True
-        Me.txtenviadopor.EsObligatorio = False
-        Me.txtenviadopor.ExpresionValidacion = Nothing
-        Me.txtenviadopor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtenviadopor.Location = New System.Drawing.Point(61, 19)
-        Me.txtenviadopor.MensajeError = Nothing
-        Me.txtenviadopor.Name = "txtenviadopor"
-        Me.txtenviadopor.Size = New System.Drawing.Size(300, 20)
-        Me.txtenviadopor.TabIndex = 6
-        Me.txtenviadopor.Texto = Nothing
-        Me.txtenviadopor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtenviadopor.ValorInt = Nothing
-        Me.txtenviadopor.ValorLong = Nothing
-        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
@@ -505,15 +514,6 @@ Partial Class frmRequesicionProducto
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
-        'lblestado
-        '
-        Me.lblestado.Location = New System.Drawing.Point(492, 16)
-        Me.lblestado.Name = "lblestado"
-        Me.lblestado.Size = New System.Drawing.Size(310, 13)
-        Me.lblestado.TabIndex = 13
-        Me.lblestado.Text = "lblestado"
-        Me.lblestado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'frmRequesicionProducto
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -529,6 +529,7 @@ Partial Class frmRequesicionProducto
         Me.Text = "Requisición Productos"
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
+        CType(Me.grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
@@ -540,7 +541,6 @@ Partial Class frmRequesicionProducto
         Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        CType(Me.grid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

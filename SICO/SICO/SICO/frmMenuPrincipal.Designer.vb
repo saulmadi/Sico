@@ -240,14 +240,14 @@ Partial Class frmMenuPrincipal
         'RequisicionesSalientesToolStripMenuItem
         '
         Me.RequisicionesSalientesToolStripMenuItem.Name = "RequisicionesSalientesToolStripMenuItem"
-        Me.RequisicionesSalientesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
-        Me.RequisicionesSalientesToolStripMenuItem.Text = "Requisiciones salientes"
+        Me.RequisicionesSalientesToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.RequisicionesSalientesToolStripMenuItem.Text = "Requisiciones enviadas"
         '
         'RequisicionesEntrantesToolStripMenuItem
         '
         Me.RequisicionesEntrantesToolStripMenuItem.Name = "RequisicionesEntrantesToolStripMenuItem"
-        Me.RequisicionesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(198, 22)
-        Me.RequisicionesEntrantesToolStripMenuItem.Text = "Requisiciones entrantes"
+        Me.RequisicionesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(196, 22)
+        Me.RequisicionesEntrantesToolStripMenuItem.Text = "Requisiciones recibidas"
         '
         'OrdenDeSalidaToolStripMenuItem
         '
@@ -259,14 +259,14 @@ Partial Class frmMenuPrincipal
         'OrdenesSalientesToolStripMenuItem
         '
         Me.OrdenesSalientesToolStripMenuItem.Name = "OrdenesSalientesToolStripMenuItem"
-        Me.OrdenesSalientesToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.OrdenesSalientesToolStripMenuItem.Text = "Ordenes salientes"
+        Me.OrdenesSalientesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.OrdenesSalientesToolStripMenuItem.Text = "Ordenes enviadas"
         '
         'OrdenesEntrantesToolStripMenuItem
         '
         Me.OrdenesEntrantesToolStripMenuItem.Name = "OrdenesEntrantesToolStripMenuItem"
-        Me.OrdenesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.OrdenesEntrantesToolStripMenuItem.Text = "Ordenes entrantes"
+        Me.OrdenesEntrantesToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.OrdenesEntrantesToolStripMenuItem.Text = "Ordenes recibidas"
         '
         'EstadoInventarioToolStripMenuItem
         '

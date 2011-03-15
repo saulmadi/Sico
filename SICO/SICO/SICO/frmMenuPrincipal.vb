@@ -1,7 +1,6 @@
 ﻿Imports System.Windows.Forms
 
 Public Class frmMenuPrincipal
-
 #Region "Eventos"
 
 #Region "Administrativo"
@@ -107,12 +106,14 @@ Public Class frmMenuPrincipal
     Private Sub RequisicionesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesSalientesToolStripMenuItem.Click
         Dim frm As New frmBusquedaRequsicion
         frm.MdiParent = Me
+        frm.Enviadas = True
         frm.Show()
     End Sub
 
     Private Sub RequisicionesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesEntrantesToolStripMenuItem.Click
         Dim frm As New frmBusquedaRequsicion
         frm.MdiParent = Me
+        frm.Enviadas = False
         frm.Show()
     End Sub
 

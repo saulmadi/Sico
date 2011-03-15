@@ -44,8 +44,9 @@ Public Class OrdenRequiscion
 
     End Sub
 
-    Public Sub New(ByVal id As Long, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String)
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String)
         Me.New()
+        Me.codigo = codigo
         Me._Id = id
         Me.fechaemision = fechaemision
         Me.enviadopor = enviadopor
@@ -53,6 +54,21 @@ Public Class OrdenRequiscion
         Me.sucursalenvia = sucursalenvia
         Me.sucursalrecibe = sucursalrecibe
         Me.estado = estado
+    End Sub
+
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String, ByVal sucen As Sucursales, ByVal sucre As Sucursales)
+        Me.New()
+        Me._Id = id
+        Me.codigo = codigo
+        Me.fechaemision = fechaemision
+        Me.enviadopor = enviadopor
+        Me.recibidopor = recibidopor
+        Me.sucursalenvia = sucursalenvia
+        Me.sucursalrecibe = sucursalrecibe
+        Me.estado = estado
+
+        Me.SucursalEn = sucen
+        Me.SucursalRec = sucre
     End Sub
 #End Region
 
@@ -182,7 +198,7 @@ Public Class OrdenRequiscion
             Return _sucursalRe
         End Get
         Set(ByVal value As Sucursales)
-
+            _sucursalRe = value
         End Set
     End Property
 
@@ -199,23 +215,35 @@ Public Class OrdenRequiscion
         End Get
     End Property
 
+    Public ReadOnly Property DescripcionSucursalEnvia() As String
+        Get
+            Return SucursalEn.NombreMantenimiento
+        End Get
+    End Property
+
+    Public ReadOnly Property DescripcionSucursalRecibe() As String
+        Get
+            Return SucursalRec.NombreMantenimiento
+        End Get
+    End Property
+
 #End Region
 
 #Region "Metodos"
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.codigo = Registro(Indice, "codigo")
-        Me.fechaemision = Registro(Indice, "fechaemsion")
+        Me.fechaemision = Registro(Indice, "fechaemision")
         Me.enviadopor = Registro(Indice, "enviadopor")
         Me.recibidopor = Registro(Indice, "recibidopor")
         Me.sucursalenvia = Registro(Indice, "sucursalenvia")
         Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
-
+        Me.estado = Registro(Indice, "estado")
         If Not sucursalenvia = Nothing Then
-            Me._sucursalEn = New Sucursales(sucursalenvia, Registro(Indice, "identidadesenvia"), Registro(Indice, "descripcionenvia"))
+            Me._sucursalEn = New Sucursales(sucursalenvia, Convert.ToInt64(Registro(Indice, "identidadesenvia")), Registro(Indice, "descripcionenvia").ToString)
         End If
 
         If Not sucursalrecibe = Nothing Then
-            Me._sucursalRe = New Sucursales(sucursalrecibe, Registro(Indice, "identidadesrecibe"), Registro(Indice, "descripcionrecibe"))
+            Me._sucursalRe = New Sucursales(sucursalrecibe, Convert.ToInt64(Registro(Indice, "identidadesrecibe")), Registro(Indice, "descripcionrecibe").ToString)
         End If
 
         MyBase.CargadoPropiedades(Indice)
@@ -318,6 +346,20 @@ Public Class OrdenRequiscion
             Throw New ApplicationException(ex.Message)
         End Try
     End Sub
+
+    Public Overrides Function TablaAColeccion() As Object
+        Dim lista As New List(Of OrdenRequiscion)
+
+        For i As Integer = 0 To Me.TotalRegistros - 1
+            Me.CargadoPropiedades(i)
+            Dim tmpr As New OrdenRequiscion(Me.Id, Me.codigo, Me.fechaemision, Me.enviadopor, Me.recibidopor, Me.sucursalenvia, Me.sucursalrecibe, Me.estado, Me.SucursalEn, Me.SucursalRec)
+
+            lista.Add(tmpr)
+        Next
+
+
+        Return lista
+    End Function
 
 #End Region
 
