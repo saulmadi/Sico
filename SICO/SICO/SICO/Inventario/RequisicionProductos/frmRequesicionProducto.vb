@@ -235,7 +235,33 @@ Public Class frmRequesicionProducto
         End Try
     End Sub
 
+    Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
+        Try
+            Dim f As New frmVistaPrevia
+            Dim d As New DetalleRequisicion
+            Dim cr As New crOrdenRequisicion
+
+            d.Buscar(Me.OrdenRequisicion.Id.ToString)
+
+
+
+            cr.DataDefinition.FormulaFields("codigo").Text = "'" + Me.OrdenRequisicion.codigo + "'"
+            cr.DataDefinition.FormulaFields("sucursalenvia").Text = "'" + Me.OrdenRequisicion.SucursalEn.NombreMantenimiento + "'"
+            cr.DataDefinition.FormulaFields("sucursalrecibe").Text = "'" + Me.OrdenRequisicion.SucursalRec.NombreMantenimiento + "'"
+            cr.DataDefinition.FormulaFields("fechaemision").Text = "'" + Me.OrdenRequisicion.fechaemision.ToString("dd/MM/yyyy") + "'"
+            cr.DataDefinition.FormulaFields("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
+            cr.DataDefinition.FormulaFields("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
+
+            cr.SetDataSource(d.Tabla)
+
+            f.Show(cr, "Orden de Requisición")
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
 #End Region
 
    
+    
 End Class
