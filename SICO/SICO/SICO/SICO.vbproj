@@ -371,6 +371,12 @@
     <Compile Include="Inventario\RequisicionProductos\frmRequesicionProducto.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Inventario\RequisicionProductos\Reportes\crOrdenRequisicion.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crOrdenRequisicion.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -532,6 +538,10 @@
     <EmbeddedResource Include="Inventario\RequisicionProductos\frmRequesicionProducto.resx">
       <DependentUpon>frmRequesicionProducto.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Inventario\RequisicionProductos\Reportes\crOrdenRequisicion.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crOrdenRequisicion.vb</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -613,7 +623,6 @@
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Inventario\RequisicionProductos\Reportes\" />
     <Folder Include="Proveedores\CuentasPorPagar\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
