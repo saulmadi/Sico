@@ -73,6 +73,7 @@
     <Compile Include="DetallesProductos.vb" />
     <Compile Include="Estado.vb" />
     <Compile Include="GeneralesConstantes.vb" />
+    <Compile Include="HistoricoCompras.vb" />
     <Compile Include="Imagenes.vb" />
     <Compile Include="Inventario.vb" />
     <Compile Include="Marcas.vb" />

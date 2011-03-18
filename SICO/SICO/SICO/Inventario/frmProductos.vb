@@ -81,6 +81,16 @@ Public Class frmProductos
         CrtListadoMantenimiento1.Entidad = New Productos
         PanelAccion1.BotonEliminar.Visible = False
         PanelAccion1.BotonImprimir.Visible = False
+        dteFecha.Value = Now.AddDays(-30)
+
+        Grid1.DarFormato("proveedor", "Proveedor", True)
+        Grid1.DarFormato("fechacompra", "Fecha de Compra", True)
+        Grid1.DarFormato("facturacompra", "Factura de Compra", True)
+        Grid1.DarFormato("cantidad", "Cantidad Comprada", True)
+        Grid1.DarFormato("preciocompra", "Precio de Compra", True)
+
+
+
     End Sub
 
     Private Sub CrtListadoMantenimiento1_Limpio() Handles CrtListadoMantenimiento1.Limpio
@@ -164,7 +174,28 @@ Public Class frmProductos
         End If
     End Sub
 
-#End Region
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Try
 
-   
+            Dim hist As New HistoricoCompras
+            Dim lisata As New List(Of Parametro)
+
+            lisata.Add(New Parametro("fechacompra", " fechacompra >= '" + dteFecha.Value.ToString("yyyy-MM-dd") + "' and fechacompra <= '" + dteFechahasta.Value.ToString("yyyy-MM-dd") + "' "))
+
+            Grid1.DataSource = Nothing
+            lisata.Add(New Parametro("idproducto", Me.Producto.Id))
+            hist.Buscar(lisata)
+
+            Grid1.DataSource = hist.Tabla
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+
+
+    End Sub
+
+#End Region
+    
+    
 End Class
