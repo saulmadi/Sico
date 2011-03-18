@@ -184,8 +184,15 @@
   <Class Name="SiCo.lgla2.OrdenRequiscion">
     <Position X="16.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACRDgAAAAAQBAAAAAAAAABAAAAACAAAACQBAAAAAAg=</HashCode>
+      <HashCode>AACRTiAAMCAQBAAAAAAAIAFAAEQACRAQASQJBAAQBgg=</HashCode>
       <FileName>OrdenRequiscion.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.HistoricoCompras">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HistoricoCompras.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
