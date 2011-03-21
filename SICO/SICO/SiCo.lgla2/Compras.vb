@@ -32,7 +32,7 @@ Public Class Compras
         Me.TablaEliminar = "compras"
 
     End Sub
-    Public Sub New(ByVal id As Long, ByVal facturacompra As Long, ByVal idsucursal As Long, ByVal idproveedor As Long, ByVal fechacompra As Date, ByVal totalcompra As Decimal)
+    Public Sub New(ByVal id As Long, ByVal facturacompra As Long, ByVal idsucursal As Long, ByVal idproveedor As Long, ByVal fechacompra As Date, ByVal totalcompra As Decimal, ByVal Proveedor As Proveedores)
         Me.New()
         Me._Id = id
         Me.facturacompra = facturacompra
@@ -40,6 +40,7 @@ Public Class Compras
         Me.idproveedor = idproveedor
         Me.fechacompra = fechacompra
         Me.totalcompra = totalcompra
+        _proveedor = Proveedor
     End Sub
 #End Region
 
@@ -135,6 +136,8 @@ Public Class Compras
         Me.idsucursal = Registro(Indice, "idsucursal")
         Me.totalcompra = Registro(Indice, "totalcompra")
 
+        _proveedor = New Proveedores(Registro(Indice, "idproveedor"), Registro(Indice, "identidades"), Registro(Indice, "estado"), Registro(Indice, "idcontacto"), Registro(Indice, "descripcion"))
+
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
@@ -154,7 +157,7 @@ Public Class Compras
         Dim list As New List(Of Compras)
         For i As Integer = 0 To Me.TotalRegistros - 1
             Me.CargadoPropiedades(i)
-            Dim tempC As New Compras(Me.Id, Me.facturacompra, Me.idsucursal, Me.idproveedor, Me.fechacompra, Me.totalcompra)
+            Dim tempC As New Compras(Me.Id, Me.facturacompra, Me.idsucursal, Me.idproveedor, Me.fechacompra, Me.totalcompra, Me.Proveedor)
             list.Add(tempC)
         Next
         Return list

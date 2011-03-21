@@ -68,8 +68,10 @@ Public Class frmBusquedaRequsicion
 
         CrtPanelBusqueda1.GridResultados.BotonEditar = True
 
-        cmbSucursalDestinatario.Inicialiazar()
-        cmbSucursalSolicitante.Inicialiazar()
+        Dim s As New Sucursales
+        s.Buscar()
+        cmbSucursalDestinatario.DataSource = s.TablaAColeccion
+        cmbSucursalSolicitante.DataSource = s.TablaAColeccion
 
         CrtPanelBusqueda1.GridResultados.DarFormato("codigo", "Número de Orden", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalEnvia", "Sucursal Solicitante", True)

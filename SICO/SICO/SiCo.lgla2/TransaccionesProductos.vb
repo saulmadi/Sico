@@ -98,6 +98,7 @@ Public Class TransaccionesProductos
 #End Region
 
 #Region "Metodos"
+
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idproductos = Registro(Indice, "idproducto")
         Me.idsucursales = Registro(Indice, "idSucursales")
@@ -149,7 +150,7 @@ Public Class TransaccionesProductos
         End Try
     End Sub
 
-   
+
 #End Region
 
 #Region "Eventos"
