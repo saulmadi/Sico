@@ -5,9 +5,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `Compra_Buscar`(
 
 
 id nvarchar(11),
-facturacompra nvarchar(11),
+facturacompra nvarchar(50),
 idproveedor nvarchar(11),
-fechacompra nvarchar(50)
+fechacompra nvarchar(150)
 )
 BEGIN
 
@@ -16,10 +16,11 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
+set @join=" join vproveedores v on v.idproveedor= o.idproveedor ";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from compras");
+set @from= concat(@from," from compras o");
 
 
 
@@ -34,7 +35,7 @@ end if;
 
 
 if idproveedor<>"" then
-  set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
+  set @where= concat(@where, " and o.idproveedor = ", idproveedor, " ");
 end if;
 
 if fechacompra<>"" then
@@ -42,7 +43,7 @@ if fechacompra<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;
