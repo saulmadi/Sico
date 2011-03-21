@@ -559,7 +559,7 @@ namespace SiCo.lgla
         {
             foreach (Parametro i in _ColeccionParametrosBusqueda)
             {
-                if(i.Nombre !="tabla")
+                if(i.Nombre !="tabla" && i.Nombre !="campos")
                 i.Valor = null;
             }
         }
