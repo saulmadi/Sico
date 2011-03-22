@@ -85,6 +85,7 @@
     <Compile Include="NombresModuloTablasTipo.vb" />
     <Compile Include="OrdenCompra.vb" />
     <Compile Include="OrdenRequiscion.vb" />
+    <Compile Include="OrdenSalida.vb" />
     <Compile Include="Productos.vb" />
     <Compile Include="ProductosInventario.vb" />
     <Compile Include="Proveedores.vb" />
