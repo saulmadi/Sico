@@ -1,10 +1,11 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `sico`.`DetalleSalida_Mant` $$
-CREATE PROCEDURE `sico`.`DetalleSalida_Mant` (
+DROP PROCEDURE IF EXISTS `DetalleSalida_Mant` $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleSalida_Mant`(
 /*definicion de parametros*/
 
 inout id int(11),
+idsucursal int(11),
 idsalida int(11),
 idproducto int(11),
 cantidad int(11),
@@ -22,6 +23,9 @@ if @conteo =0 then
   INSERT INTO detallesalida(idsalida,idproducto,cantidad,usu,fmodif)
 
   VALUES(idsalida,idproducto,cantidad,usu,fmodif);
+
+  CALL Inventarios_Triggers(idsucursal,idproducto,(cantidad * -1),usu,fmodif);
+
 
   select last_insert_id() into id;
 
