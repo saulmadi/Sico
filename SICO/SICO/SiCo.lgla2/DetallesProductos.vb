@@ -79,6 +79,7 @@ Public MustInherit Class DetallesProductos
         Set(ByVal value As String)
             Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
             If reg.IsMatch(value) Then
+
                 Dim s As Long = value
                 If s < 0 Then
                     Throw New ApplicationException("La cantidad tiene que ser mayor a 0")
