@@ -362,6 +362,34 @@ INSERT INTO `detallerequisicion` VALUES  (2,6,2,65,'2011-03-14 23:50:41',2),
 
 
 --
+-- Definition of table `detallesalida`
+--
+
+DROP TABLE IF EXISTS `detallesalida`;
+CREATE TABLE `detallesalida` (
+  `id` int(11) NOT NULL,
+  `idsalida` int(11) NOT NULL,
+  `idproducto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  `usu` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `detalles_salida` (`idsalida`),
+  KEY `detalles_productos` (`idproducto`),
+  CONSTRAINT `detalles_productos` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `detalles_salida` FOREIGN KEY (`idsalida`) REFERENCES `ordenessalida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detallesalida`
+--
+
+/*!40000 ALTER TABLE `detallesalida` DISABLE KEYS */;
+/*!40000 ALTER TABLE `detallesalida` ENABLE KEYS */;
+
+
+--
 -- Definition of table `entidades`
 --
 
@@ -736,6 +764,45 @@ INSERT INTO `ordenesrequisicion` VALUES  (6,'OR-002-20110313-002-0000001','2011-
  (11,'OR-002-20110313-002-0000006','2011-03-13',2,NULL,2,2,'E','2011-03-13 19:00:58',2),
  (12,'OR-002-20110313-002-0000007','2011-03-13',2,NULL,2,1,'E','2011-03-13 19:02:40',2);
 /*!40000 ALTER TABLE `ordenesrequisicion` ENABLE KEYS */;
+
+
+--
+-- Definition of table `ordenessalida`
+--
+
+DROP TABLE IF EXISTS `ordenessalida`;
+CREATE TABLE `ordenessalida` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(70) NOT NULL,
+  `enviadopor` int(11) NOT NULL,
+  `recibidopor` int(11) NOT NULL,
+  `sucursalenvia` int(11) NOT NULL,
+  `sucursalrecibe` int(11) NOT NULL,
+  `estado` varchar(11) NOT NULL,
+  `requicicion` int(11) DEFAULT NULL,
+  `fmodif` datetime NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fechaemision` date NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  KEY `salida_sucursalenvia` (`sucursalenvia`),
+  KEY `salida_sucursalrecibe` (`sucursalrecibe`),
+  KEY `salida_enviadopor` (`enviadopor`),
+  KEY `salida_recibidopor` (`recibidopor`),
+  KEY `salida_requisicion` (`requicicion`),
+  CONSTRAINT `salida_enviadopor` FOREIGN KEY (`enviadopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `salida_recibidopor` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `salida_requisicion` FOREIGN KEY (`requicicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `salida_sucursalenvia` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `salida_sucursalrecibe` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ordenessalida`
+--
+
+/*!40000 ALTER TABLE `ordenessalida` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordenessalida` ENABLE KEYS */;
 
 
 --
@@ -1215,10 +1282,11 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @orden= "order by id ";
 set @sql="";
+set @join=" join vproveedores v on v.idproveedor= o.idproveedor ";
 
 set @campos= concat( @campos," * ");
 
-set @from= concat(@from," from compras");
+set @from= concat(@from," from compras o");
 
 
 
@@ -1233,7 +1301,7 @@ end if;
 
 
 if idproveedor<>"" then
-  set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
+  set @where= concat(@where, " and o.idproveedor = ", idproveedor, " ");
 end if;
 
 if fechacompra<>"" then
@@ -1241,7 +1309,7 @@ if fechacompra<>"" then
 end if;
 
 
-set @sql = concat(@campos,@from,@where,@orden);
+set @sql = concat(@campos,@from,@join,@where,@orden);
 
 
 PREPARE stmt FROM @sql;
@@ -1693,6 +1761,60 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `DetalleSalida_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `DetalleSalida_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DetalleSalida_Mant`(
+/*definicion de parametros*/
+
+inout id int(11),
+idsucursal int(11),
+idsalida int(11),
+idproducto int(11),
+cantidad int(11),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from detallesalida m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO detallesalida(idsalida,idproducto,cantidad,usu,fmodif)
+
+  VALUES(idsalida,idproducto,cantidad,usu,fmodif);
+
+  CALL Inventarios_Triggers(idsucursal,idproducto,(cantidad * -1),usu,fmodif);
+
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE detallesalida c set
+        c.idsalida=idsalida,
+        c.idproducto=idproducto,
+        c.cantidad=cantidad,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Entidades_Mant`
 --
 
@@ -1751,6 +1873,64 @@ else
 end if;
 
 
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `HistoricoCompras_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `HistoricoCompras_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `HistoricoCompras_Buscar`(
+
+id nvarchar(11),
+idproducto nvarchar(11),
+fechacompra nvarchar(150)
+)
+BEGIN
+
+set @Campos="select c.id, v.descripcion as proveedor, fechacompra,facturacompra,cantidad, preciocompra ";
+set @from=" ";
+set @where=" where 1=1 and ";
+set @join = "";
+set @orden= "order by c.fechacompra desc ";
+set @sql="";
+
+
+
+
+
+set @from= concat(@from," from compras c ");
+
+
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+
+if idproducto<>"" then
+  set @join= concat(@join, " inner join detallecompras d on d.idcompras=c.id and d.idproducto = ", idproducto, " ");
+else
+  set @join= concat(@join, " inner join detallecompras d on d.idcompras=c.id  ");
+end if;
+
+if fechacompra<>"" then
+  set @where= concat(@where,fechacompra,"  " );
+end if;
+
+set @join= concat(@join, " inner join vproveedores v on c.idproveedor = v.idproveedor ");
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
@@ -2492,7 +2672,7 @@ if codigoparecido<>"" then
 end if;
 
 if idproveedor<>"" then
-  set @where= concat(@where, " and idproveedor = ", idproveedor, " ");
+  set @where= concat(@where, " and o.idproveedor = ", idproveedor, " ");
 end if;
 
 if elaboradopor<>"" then
@@ -2709,6 +2889,149 @@ else
         c.recibidopor=recibidopor,
         c.sucursalenvia=sucursalenvia,
         c.estado=estado,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenSalida_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenSalida_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenSalida_Buscar`(
+
+id nvarchar(11),
+codigo nvarchar(70),
+codigoparecido nvarchar(70),
+sucursalenvia nvarchar(11),
+sucursalrecibe nvarchar(11),
+estado nvarchar(11),
+fechaemision nvarchar(150)
+)
+BEGIN
+
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by id ";
+set @sql="";
+
+set @join=" join vsucursal v on v.idsucursal = o.sucursalenvia join vsucursal vr on vr.idsucursal= o.sucursalrecibe ";
+
+set @campos= concat( @campos," o.*, v.idsucursal idsucursalenvia, v.identidades as identidadesenvia, v.descripcion as descripcionenvia, vr.idsucursal idsucursalrecibe, vr.identidades as identidadesrecibe, vr.descripcion as descripcionrecibe  ");
+
+set @from= concat(@from," from ordensalida o ");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+
+if codigo<>"" then
+  set @where= concat(@where, " and codigo = '", codigo, "' ");
+end if;
+
+if codigoparecido<>"" then
+  set @where= concat(@where, " and codigo like '", codigoparecido, "%' ");
+end if;
+
+if sucursalenvia<>"" then
+  set @where= concat(@where, " and sucursalenvia = ", sucursalenvia, " ");
+end if;
+
+if sucursalrecibe<>"" then
+  set @where= concat(@where, " and sucursalrecibe = ", sucursalrecibe, " ");
+end if;
+
+if estado<>"" then
+  set @where= concat(@where, " and estado = '", estado, "' ");
+end if;
+
+
+if fechaemision<>"" then
+  set @where= concat(@where, " and ", fechaemision, " ");
+end if;
+
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `OrdenSalida_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `OrdenSalida_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `OrdenSalida_Mant`(
+
+/*definicion de parametros*/
+
+inout id int(11),
+inout codigo nvarchar(70),
+enviadopor int(11),
+recibidopor int(11),
+fechaemision date,
+sucursalenvia int(11),
+sucursalrecibe int(11),
+estado nvarchar(11),
+requisicion int(11),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from ordenessalida m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  set @correlativo=0;
+
+  select count(id)+1 from ordenessalida into @correlativo;
+
+  select CrearCorrelativoCodigo("OS",sucursalenvia,enviadopor,@correlativo) into codigo;
+
+  INSERT INTO ordenessalida(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,requisicion,usu,fmodif)
+
+  VALUES(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,requisicion,usu,fmodif);
+
+  select last_insert_id() into id;
+
+
+else
+
+  UPDATE ordenessalida c set
+        c.fechaemision=fechaemision,
+        c.enviadopor=enviadopor,
+        c.recibidopor=recibidopor,
+        c.sucursalenvia=sucursalenvia,
+        c.estado=estado,
+        c.requicion=requisicion,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
@@ -3425,6 +3748,79 @@ else
 end if;
 
 
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `TransaccionesProductosComplejo_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `TransaccionesProductosComplejo_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TransaccionesProductosComplejo_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+idproductos nvarchar(11),
+idsucursales nvarchar(11),
+tabla nvarchar(500),
+campos nvarchar(500),
+parametro nvarchar(500)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by descripcion ";
+set @join = "join vproductos p on p.idproducto = i.idproductos";
+set @sql="";
+set @group = "";
+
+set @campos= concat( @campos," ",campos," ");
+
+set @from= concat(@from," from inventario i ");
+
+set @join=concat(@join," ",tabla," ");
+
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and t.id = ", id, " ");
+end if;
+
+/*defiicion de filtros*/
+if idproductos<>"" then
+  set @join= concat(@join, " and p.idproducto = ", idproductos, " ");
+end if;
+
+/*defiicion de filtros*/
+if idsucursales<>"" then
+  set @join= concat(@join, " and i.idsucursales = ", idsucursales, " ");
+end if;
+
+/*defiicion de filtros*/
+if codigo<>"" then
+  set @join= concat(@join, " and p.codigo = '", codigo, "'  ");
+end if;
+
+
+
+
+
+
+set @sql = concat(@campos,@from,@join,@where,@group,@orden);
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
