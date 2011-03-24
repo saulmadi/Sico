@@ -5,6 +5,7 @@ using System.Text;
 using MySql.Data.MySqlClient;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime;
+using System.Windows.Forms; 
 
 namespace SiCo.dtla
 {
@@ -146,22 +147,27 @@ namespace SiCo.dtla
             bool flag =false;
             try
             {
-                if (this.Conexion.State == System.Data.ConnectionState.Closed)
+                 
+               
+                if (this.Conexion.State  != System.Data.ConnectionState.Open )
                 {
+                   _Conexion = new MySqlConnection(CadenaConexion);
                     this.Conexion.ConnectionString = CadenaConexion;
                     this.Conexion.Open();                                        
                 }
+               
                 if (this.Conexion.State==System.Data.ConnectionState.Open)
                 {
+                   
                     flag = true;
                 }
             }
             catch( Exception ex)
             {
-                
 
+                
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n        Contacte al administador de Sistema o intente más tarde.  " , ex);  
+              "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
             }
             return flag;  
 
@@ -175,9 +181,10 @@ namespace SiCo.dtla
             bool flag = false;
             try
             {
-                if (this.Conexion.State == System.Data.ConnectionState.Open)
-                {                    
-                    //this.Conexion.Close ();
+                if (this.Conexion.State != System.Data.ConnectionState.Closed )
+                {
+                    
+                    //this.Conexion.Close(); 
                 }
                 if (this.Conexion.State == System.Data.ConnectionState.Closed )
                 {
@@ -189,6 +196,29 @@ namespace SiCo.dtla
                 
                 throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
                      "\n       Contacte al administador de Sistema  ", ex);  
+            }
+            return flag;
+        }
+
+        public bool CerrarConexionVerdadero()
+        {
+            bool flag = false;
+            try
+            {
+                if (this.Conexion.State != System.Data.ConnectionState.Closed)
+                {
+                    this.Conexion.Close(); 
+                }
+                if (this.Conexion.State == System.Data.ConnectionState.Closed)
+                {
+                    flag = true;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n       Contacte al administador de Sistema  ", ex);
             }
             return flag;
         }
@@ -253,13 +283,38 @@ namespace SiCo.dtla
         {            
             try 
             {
+                CerrarConexionVerdadero();
                 this.AbrirConexion ();
-                _Transaccion= _Conexion.BeginTransaction(); 
-                return true;
+                _Transaccion = null  ;
+                _Transaccion = _Conexion.BeginTransaction();
+
+                
+                
+                if (_Transaccion == null)
+                {
+                    _Transaccion = null;
+                    this.AbrirConexion();
+                    _Transaccion = _Conexion.BeginTransaction();
+                    if (_Transaccion != null)
+                    {
+                     
+                        return true;
+                    }
+                }
+                else
+                {
+                    return true;
+                }
+                
+
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n        Contacte al administador de Sistema o intente más tarde.");
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message); 
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                 "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
+                 
             }
             
         }
@@ -268,18 +323,23 @@ namespace SiCo.dtla
         {
             try
             {
-                if(_Transaccion!= null)
+                if (_Transaccion != null)
                 {
                     _Transaccion.Commit();
                     this.CerrarConexion();
                     return true;
                 }
 
-                throw new ApplicationException("No inicio un trasacción."); 
-            }
-            catch (Exception e)
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n        Contacte al administador de Sistema o intente más tarde.  ");
+                
+            }            
+            catch (Exception ex)
             {
-                throw new ApplicationException(e.Message);
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
+                
+            
             }
         }
 
@@ -294,11 +354,14 @@ namespace SiCo.dtla
                     return true;
                 }
 
-                throw new ApplicationException("No inicio un trasacción."); 
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                     "\n        Contacte al administador de Sistema o intente más tarde.  ");
             }
             catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message); 
+                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+      "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
+                
             }
         }
 

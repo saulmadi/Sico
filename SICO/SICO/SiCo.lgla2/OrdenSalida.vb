@@ -10,12 +10,16 @@ Public Class OrdenSalida
     Private _recibidopor As Long
     Private _sucursalenvia As Long
     Private _sucursalrecibe As Long
+    Private _requisicion As Long?
 
     Private _ListaDetalle As New List(Of DetalleOrdenSalida)
     Private _diccionariodetalle As New Dictionary(Of Long, DetalleOrdenSalida)
 
     Private _sucursalEn As New Sucursales
     Private _sucursalRe As New Sucursales
+
+    Private _OrdenRequisicion As New OrdenRequiscion()
+
 #End Region
 
 #Region "constructor"
@@ -178,9 +182,54 @@ Public Class OrdenSalida
         End Get
     End Property
 
+    Public Property requisicion() As Long?
+        Get
+            Return _requisicion
+        End Get
+        Set(ByVal value As Long?)
+            _requisicion = value
+        End Set
+    End Property
+
+    Public Property OredenRequicion() As OrdenRequiscion
+        Get
+            Return _OrdenRequisicion
+        End Get
+        Set(ByVal value As OrdenRequiscion)
+            _OrdenRequisicion = value
+        End Set
+    End Property
 #End Region
 
 #Region "Metodos"
+    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
+        Me.codigo = Registro(Indice, "codigo")
+        Me.fechaemision = Registro(Indice, "fechaemision")
+        Me.enviadopor = Registro(Indice, "enviadopor")
+        Me.recibidopor = Registro(Indice, "recibidopor")
+        Me.sucursalenvia = Registro(Indice, "sucursalenvia")
+        Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
+        Me.estado = Registro(Indice, "estado")
+        Me.requisicion = Registro(Indice, "requisicion")
 
+        If Not sucursalenvia = Nothing Then
+            Me._sucursalEn = New Sucursales(sucursalenvia, Convert.ToInt64(Registro(Indice, "identidadesenvia")), Registro(Indice, "descripcionenvia").ToString)
+        End If
+
+        If Not sucursalrecibe = Nothing Then
+            Me._sucursalRe = New Sucursales(sucursalrecibe, Convert.ToInt64(Registro(Indice, "identidadesrecibe")), Registro(Indice, "descripcionrecibe").ToString)
+        End If
+
+        MyBase.CargadoPropiedades(Indice)
+    End Sub
+
+    Public Overrides Sub Guardar()
+        NullParametrosMantenimiento()
+        ValorParametrosMantenimiento("codigo", "")
+        ValorParametrosMantenimiento("enviadopor", Me.enviadopor)
+
+        MyBase.Guardar(True)
+    End Sub
 #End Region
+
 End Class

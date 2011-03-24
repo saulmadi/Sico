@@ -70,6 +70,10 @@ Public Class frmBusquedaRequsicion
 
         Dim s As New Sucursales
         s.Buscar()
+        cmbSucursalDestinatario.DisplayMember = "NombreMantenimiento"
+        cmbSucursalDestinatario.ValueMember = "id"
+        cmbSucursalSolicitante.DisplayMember = "NombreMantenimiento"
+        cmbSucursalSolicitante.ValueMember = "id"
         cmbSucursalDestinatario.DataSource = s.TablaAColeccion
         cmbSucursalSolicitante.DataSource = s.TablaAColeccion
 
