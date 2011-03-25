@@ -40,6 +40,8 @@ Public Class frmRequesicionProducto
             PanelAccion1.BotonEliminar.Visible = False
             PanelAccion1.BotonImprimir.Visible = False
 
+            PanelAccion1.BotonGuardar.Enabled = True
+
             lblestado.Text = ""
             grid.BotonBuscar = True
             grid.BotonEliminar = True
@@ -61,10 +63,14 @@ Public Class frmRequesicionProducto
 
         Else
             TextBox6.Text = Me.OrdenRequisicion.codigo
+
             PanelAccion1.BotonImprimir.Visible = True
+            PanelAccion1.BotonGuardar.Enabled = False
+
             lblestado.Text = OrdenRequisicion.DescripcionEstado
             grid.BotonBuscar = False
             grid.BotonEliminar = False
+
 
             txtsucursalrecibe.Visible = True
             cmbSucursales.Visible = False
@@ -128,6 +134,7 @@ Public Class frmRequesicionProducto
         PanelAccion1.BotonEliminar.Enabled = False
         PanelAccion1.BotonImprimir.Visible = False
 
+        PanelAccion1.BotonGuardar.Enabled = False
 
         lblestado.Text = ""
 
@@ -181,7 +188,7 @@ Public Class frmRequesicionProducto
 
                     PanelAccion1.lblEstado.Text = "Orden de requisición guardada correctamente"
                     PanelAccion1.BarraProgreso.Value = 100
-                
+
 
                 Else
                     PanelAccion1.lblEstado.Text = "Guardando..."
@@ -262,6 +269,6 @@ Public Class frmRequesicionProducto
 
 #End Region
 
-   
-    
+
+
 End Class
