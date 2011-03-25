@@ -4,7 +4,7 @@ Public Class ProductosInventario
     Inherits Entidad
 
 #Region "Declaraciones"
-    Private _producto As Productos
+    Private _producto As New Productos
     Private _existencia As Long
     Private _idSucursal As Long
     Private _cantidad As Long
@@ -44,7 +44,10 @@ Public Class ProductosInventario
             Return _producto
         End Get
         Set(ByVal value As Productos)
-            _producto = value
+            If _producto.Id <> value.Id Then
+                Me.Buscar(value.Id, Me.idSucursal, "")
+            End If
+
         End Set
     End Property
 
@@ -145,8 +148,8 @@ Public Class ProductosInventario
     End Sub
     Public Overloads Sub Buscar(ByVal idproducto As String, ByVal idSucursal As String, ByVal codigo As String)
         Me.NullParametrosBusqueda()
-        Me.ValorParametrosBusqueda("idproducto", idproducto)
-        Me.ValorParametrosBusqueda("idsucursal", idSucursal)
+        Me.ValorParametrosBusqueda("idproductos", idproducto)
+        Me.ValorParametrosBusqueda("idsucursales", idSucursal)
         Me.ValorParametrosBusqueda("codigo", codigo)
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
     End Sub

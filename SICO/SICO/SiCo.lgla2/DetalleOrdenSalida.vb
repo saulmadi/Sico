@@ -8,6 +8,7 @@ Public Class DetalleOrdenSalida
 #End Region
 
 #Region "constructor"
+
     Public Sub New()
         Me.ComandoSelect = "TransaccionesProductosComplejo_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idproductos"))
@@ -25,6 +26,12 @@ Public Class DetalleOrdenSalida
 
 
     End Sub
+
+    Public Sub New(ByVal idsucursal As Long)
+        Me.New()
+        Producto = New ProductosInventario(idsucursal)
+    End Sub
+
     Public Sub New(ByVal id As Long, ByVal idsalida As Long, ByVal idproducto As Long, ByVal producto As ProductosInventario)
         Me.New()
     End Sub
@@ -58,11 +65,13 @@ Public Class DetalleOrdenSalida
             _ProductoInventario = value
         End Set
     End Property
+
     Public ReadOnly Property ProductoDescripcion() As String
         Get
             Return Me.Producto.Producto.Descripcion
         End Get
     End Property
+
     Public Property Cantidad() As Long
         Get
             Return Me.Producto.Cantidad
@@ -71,6 +80,7 @@ Public Class DetalleOrdenSalida
             Me.Producto.Cantidad = value
         End Set
     End Property
+
     Public Property CantidadEditable() As String
         Get
             Return Producto.CantidadEditable
@@ -78,6 +88,24 @@ Public Class DetalleOrdenSalida
         Set(ByVal value As String)
             Producto.CantidadEditable = value
         End Set
+    End Property
+
+    Public Property Codigo() As String
+        Get
+            Return (Producto.Codigo)
+        End Get
+        Set(ByVal value As String)
+            Producto.Codigo = value
+        End Set
+    End Property
+
+    Public ReadOnly Property Existencia() As String
+        Get
+            If Producto.Existencia = 0 Then
+                Return String.Empty
+            End If
+            Return Producto.Existencia
+        End Get
     End Property
 #End Region
 
@@ -101,7 +129,7 @@ Public Class DetalleOrdenSalida
         MyBase.Guardar(True)
     End Sub
 
-    Public Overloads Sub Buscar(ByVal idsalida As Long, ByVal idproducto As Long)
+    Public Overloads Sub Buscar(ByVal idsalida As Long, ByVal idproducto As String)
         Me.NullParametrosBusqueda()
         Me.ValorParametrosBusqueda("parametro", " idsalida = " + idsalida.ToString() + " ")
         Me.ValorParametrosBusqueda("idproducto", idproducto.ToString)

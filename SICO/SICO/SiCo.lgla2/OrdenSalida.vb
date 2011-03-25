@@ -7,7 +7,7 @@ Public Class OrdenSalida
     Private _enviadopor As Long
     Private _estado As String
     Private _fechaemision As Date
-    Private _recibidopor As Long
+    Private _recibidopor As Long?
     Private _sucursalenvia As Long
     Private _sucursalrecibe As Long
     Private _requisicion As Long?
@@ -78,11 +78,11 @@ Public Class OrdenSalida
         End Set
     End Property
 
-    Public Property recibidopor() As Long
+    Public Property recibidopor() As Long?
         Get
             Return _recibidopor
         End Get
-        Set(ByVal value As Long)
+        Set(ByVal value As Long?)
             _recibidopor = value
         End Set
     End Property
@@ -199,6 +199,29 @@ Public Class OrdenSalida
             _OrdenRequisicion = value
         End Set
     End Property
+
+    Public ReadOnly Property TotalItems() As Long
+        Get
+            Try
+                CalcularDetalle()
+            Catch ex As Exception
+
+            End Try
+
+            Return _diccionariodetalle.Count
+        End Get
+    End Property
+
+    Public ReadOnly Property CantidadTotalProductos() As Long
+        Get
+            Try
+                Return CalcularDetalle()
+            Catch ex As Exception
+                Return 0
+            End Try
+
+        End Get
+    End Property
 #End Region
 
 #Region "Metodos"
@@ -223,13 +246,97 @@ Public Class OrdenSalida
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
+    Private Function CalcularDetalle() As Long
+        Me._diccionariodetalle.Clear()
+        Dim cantot As Long = 0
+
+        For g As Integer = 0 To Me.Listadetalle.Count - 1
+            Dim i As DetalleOrdenSalida = Listadetalle(g)
+            If i.idproducto > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    cantot += i.Cantidad
+                Else
+                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    cantot += i.Cantidad
+                End If
+            End If
+        Next
+        If Me._diccionariodetalle.Count = 0 Then
+            'Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de compra")
+        End If
+        Return cantot
+    End Function
+
+    Private Function CalcularDetalleGuardar() As Long
+        Me._diccionariodetalle.Clear()
+        Dim cantot As Long = 0
+
+        For g As Integer = 0 To Me.Listadetalle.Count - 1
+            Dim i As DetalleOrdenSalida = Listadetalle(g)
+            If i.idproducto > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    cantot += i.Cantidad
+                Else
+                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    cantot += i.Cantidad
+                End If
+            End If
+        Next
+        If Me._diccionariodetalle.Count = 0 Then
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de requisición")
+        End If
+        Return cantot
+    End Function
+
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
         ValorParametrosMantenimiento("codigo", "")
         ValorParametrosMantenimiento("enviadopor", Me.enviadopor)
-
+        ValorParametrosMantenimiento("recibidopor", Me.recibidopor)
+        ValorParametrosMantenimiento("fechaemision", Me.fechaemision)
+        ValorParametrosMantenimiento("sucursalenvia", Me.sucursalenvia)
+        ValorParametrosMantenimiento("sucursalrecibe", Me.sucursalrecibe)
+        ValorParametrosMantenimiento("estado", Me.estado)
+        ValorParametrosMantenimiento("requicicion", Me.requisicion)
         MyBase.Guardar(True)
+        Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
+
+    Public Sub GuardarOrdenSalida()
+        Try
+            Me.IniciarTransaccion()
+            Me.CalcularDetalleGuardar()
+            Me.Guardar()
+            Dim flag As Boolean = False
+            For Each i In _diccionariodetalle
+                If i.Value.idProducto > 0 Then
+                    i.Value.idsalida = Me.Id
+                    If i.Value.Cantidad > 0 Then
+                        i.Value.Guardar()
+                    Else
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
+                    End If
+                End If
+            Next
+            Me.CommitTransaccion()
+
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub CargarDetalle()
+        _listaDetalle.Clear()
+        If Me.Id > 0 Then
+            Dim d As New DetalleOrdenSalida
+            d.Buscar(CType(Me.Id, Long), "")
+            _listaDetalle = d.TablaAColeccion
+        End If
+    End Sub
+
 #End Region
 
 End Class
