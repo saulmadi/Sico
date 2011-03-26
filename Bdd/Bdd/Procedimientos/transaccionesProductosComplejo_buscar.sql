@@ -36,18 +36,18 @@ end if;
 
 /*defiicion de filtros*/
 if idproductos<>"" then
-  set @where= concat(@where, " and p.idproducto = ", idproductos, " ");
+  set @join= concat(@join, " and p.idproducto = ", idproductos, " ");
 end if;
 
 /*defiicion de filtros*/
 if idsucursales<>"" then
-  set @where= concat(@where, " and i.idsucursales = ", idsucursales, " ");
+  set @join= concat(@join, " and i.idsucursales = ", idsucursales, " ");
 end if;
 
+/*defiicion de filtros*/
 if parametro<>"" then
-  set @where= concat(@where," ", parametro, " ");
+  set @where= concat(@where," and ",parametro ,"   ");
 end if;
-
 
 
 
@@ -55,6 +55,7 @@ end if;
 
 
 set @sql = concat(@campos,@from,@join,@where,@group,@orden);
+
 
 /*ejecucion de consulta*/
 PREPARE stmt FROM @sql;
