@@ -210,7 +210,7 @@ CREATE TABLE `departamentos` (
 --
 
 /*!40000 ALTER TABLE `departamentos` DISABLE KEYS */;
-INSERT INTO `departamentos` VALUES  (3,'Comayagua',1,1,'2010-01-01 00:00:00'),
+INSERT INTO `departamentos` VALUES  (3,'Comayagua',1,2,'2011-03-23 00:00:00'),
  (8,'Francisco Morazan',1,1,'2010-01-01 00:00:00');
 /*!40000 ALTER TABLE `departamentos` ENABLE KEYS */;
 
@@ -306,7 +306,7 @@ CREATE TABLE `detalleorden` (
   KEY `Orden_Detalle` (`idordencompra`),
   CONSTRAINT `Orden_Detalle` FOREIGN KEY (`idordencompra`) REFERENCES `ordenescompras` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Producto_Detalle` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detalleorden`
@@ -318,7 +318,16 @@ INSERT INTO `detalleorden` VALUES  (1,6,2,4324,2,'2011-03-04 22:51:54'),
  (3,8,2,5465,2,'2011-03-05 00:22:57'),
  (4,9,2,46978,2,'2011-03-05 00:30:53'),
  (5,10,2,5464,2,'2011-03-05 00:35:37'),
- (6,11,2,54,2,'2011-03-05 00:38:40');
+ (6,11,2,54,2,'2011-03-05 00:38:40'),
+ (7,12,10,54,2,'2011-03-23 19:32:22'),
+ (8,12,2,454,2,'2011-03-23 19:32:22'),
+ (9,13,2,45454,2,'2011-03-23 19:35:54'),
+ (10,14,6,267,2,'2011-03-23 19:36:42'),
+ (11,15,2,54545,2,'2011-03-23 20:45:25'),
+ (12,16,2,2,2,'2011-03-23 21:26:26'),
+ (13,17,2,454,2,'2011-03-23 21:36:17'),
+ (14,18,2,4154,2,'2011-03-23 21:36:52'),
+ (15,19,2,4234,2,'2011-03-23 22:57:59');
 /*!40000 ALTER TABLE `detalleorden` ENABLE KEYS */;
 
 
@@ -341,7 +350,7 @@ CREATE TABLE `detallerequisicion` (
   KEY `idrequicion_detalle` (`idrequisicion`),
   CONSTRAINT `idproducto_productos_requiscion` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idrequicion_detalle` FOREIGN KEY (`idrequisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallerequisicion`
@@ -357,7 +366,32 @@ INSERT INTO `detallerequisicion` VALUES  (2,6,2,65,'2011-03-14 23:50:41',2),
  (8,9,2,5265,'2011-03-13 18:52:06',2),
  (9,10,2,45,'2011-03-13 18:54:12',2),
  (10,11,2,5,'2011-03-13 19:00:58',2),
- (11,12,2,5,'2011-03-13 19:02:40',2);
+ (11,12,2,5,'2011-03-13 19:02:40',2),
+ (13,14,2,554,'2011-03-23 19:24:03',2),
+ (14,14,10,45,'2011-03-23 19:24:03',2),
+ (15,15,9,454,'2011-03-23 19:39:20',2),
+ (16,15,6,78,'2011-03-23 19:39:20',2),
+ (17,16,2,454,'2011-03-23 20:15:01',2),
+ (18,17,2,45,'2011-03-23 21:06:13',2),
+ (19,18,2,5,'2011-03-23 21:37:29',2),
+ (20,19,2,45,'2011-03-23 21:37:53',2),
+ (21,20,2,24154,'2011-03-23 21:38:50',2),
+ (22,20,6,1121,'2011-03-23 21:38:51',2),
+ (23,20,9,1212,'2011-03-23 21:38:51',2),
+ (24,21,2,33,'2011-03-23 21:59:05',2),
+ (25,22,2,89,'2011-03-23 22:21:05',2),
+ (26,23,2,888,'2011-03-23 22:23:40',2),
+ (27,23,9,4334,'2011-03-23 22:23:41',2),
+ (28,23,10,4343,'2011-03-23 22:23:41',2),
+ (29,24,2,323,'2011-03-23 22:24:39',2),
+ (30,25,2,4234,'2011-03-23 22:42:37',2),
+ (31,25,10,234,'2011-03-23 22:42:40',2),
+ (32,26,9,433,'2011-03-23 22:56:09',2),
+ (33,26,6,32434,'2011-03-23 22:56:12',2),
+ (34,26,2,32,'2011-03-23 22:56:15',2),
+ (35,27,9,67,'2011-03-23 23:18:49',2),
+ (36,27,6,56,'2011-03-23 23:18:49',2),
+ (37,28,2,7567,'2011-03-23 23:20:26',2);
 /*!40000 ALTER TABLE `detallerequisicion` ENABLE KEYS */;
 
 
@@ -367,7 +401,7 @@ INSERT INTO `detallerequisicion` VALUES  (2,6,2,65,'2011-03-14 23:50:41',2),
 
 DROP TABLE IF EXISTS `detallesalida`;
 CREATE TABLE `detallesalida` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idsalida` int(11) NOT NULL,
   `idproducto` int(11) NOT NULL,
   `cantidad` int(11) NOT NULL,
@@ -379,13 +413,23 @@ CREATE TABLE `detallesalida` (
   KEY `detalles_productos` (`idproducto`),
   CONSTRAINT `detalles_productos` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `detalles_salida` FOREIGN KEY (`idsalida`) REFERENCES `ordenessalida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallesalida`
 --
 
 /*!40000 ALTER TABLE `detallesalida` DISABLE KEYS */;
+INSERT INTO `detallesalida` VALUES  (1,2,2,55,'2011-03-25 21:36:00',2),
+ (2,3,2,5,'2011-03-25 21:48:20',2),
+ (3,4,2,5,'2011-03-25 21:54:08',2),
+ (4,5,2,5,'2011-03-25 21:59:22',2),
+ (5,5,6,3,'2011-03-25 21:59:22',2),
+ (6,6,6,2,'2011-03-25 22:09:07',2),
+ (7,7,9,1000,'2011-03-25 22:25:17',2),
+ (8,7,2,100,'2011-03-25 22:25:17',2),
+ (9,8,2,5,'2011-03-25 22:28:47',2),
+ (10,9,2,55,'2011-03-25 22:33:04',2);
 /*!40000 ALTER TABLE `detallesalida` ENABLE KEYS */;
 
 
@@ -532,10 +576,10 @@ CREATE TABLE `inventario` (
 --
 
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-INSERT INTO `inventario` VALUES  (8,2,1,356,2,'2011-03-03 23:14:01'),
- (9,9,1,5567,2,'2011-02-28 00:56:18'),
+INSERT INTO `inventario` VALUES  (8,2,1,126,2,'2011-03-25 22:33:04'),
+ (9,9,1,4567,2,'2011-03-25 22:25:17'),
  (10,2,2,18,2,'2011-03-03 21:14:32'),
- (11,6,1,5,2,'2011-02-26 12:03:44'),
+ (11,6,1,0,2,'2011-03-25 22:09:07'),
  (12,5,2,5,2,'2011-02-26 14:59:26'),
  (13,10,1,4,2,'2011-02-26 19:24:10'),
  (14,9,2,48,2,'2011-02-28 00:53:48'),
@@ -556,7 +600,7 @@ CREATE TABLE `marcas` (
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripción` (`descripcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marcas`
@@ -564,7 +608,8 @@ CREATE TABLE `marcas` (
 
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
 INSERT INTO `marcas` VALUES  (10,'KMF',1,1,'2011-01-09 00:00:00'),
- (11,'YAMAHA',1,1,'2011-01-09 00:00:00');
+ (11,'YAMAHA',1,1,'2011-01-09 00:00:00'),
+ (12,'HONDA',1,2,'2011-03-23 00:00:00');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 
@@ -706,7 +751,7 @@ CREATE TABLE `ordenescompras` (
   CONSTRAINT `Proveedor_Orden` FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Sucursal_Orden` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Usuario_Orden` FOREIGN KEY (`elaboradopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenescompras`
@@ -718,7 +763,15 @@ INSERT INTO `ordenescompras` VALUES  (6,'OC-001-20110304-002-0000001',2,2,'2011-
  (8,'OC-001-20110305-002-0000003',2,1,'2011-03-05',1,2,'2011-03-05 00:22:57'),
  (9,'OC-001-20110305-002-0000004',2,2,'2011-03-05',1,2,'2011-03-05 00:30:53'),
  (10,'OC-001-20110305-002-0000005',2,3,'2011-03-05',1,2,'2011-03-05 00:35:37'),
- (11,'OC-001-20110305-002-0000006',2,3,'2011-03-05',1,2,'2011-03-05 00:38:40');
+ (11,'OC-001-20110305-002-0000006',2,3,'2011-03-05',1,2,'2011-03-05 00:38:40'),
+ (12,'OC-001-20110323-002-0000007',2,3,'2011-03-23',1,2,'2011-03-23 19:32:21'),
+ (13,'OC-001-20110323-002-0000008',2,2,'2011-03-23',1,2,'2011-03-23 19:35:54'),
+ (14,'OC-001-20110323-002-0000009',2,3,'2011-03-23',1,2,'2011-03-23 19:36:41'),
+ (15,'OC-001-20110323-002-0000010',2,1,'2011-03-23',1,2,'2011-03-23 20:45:24'),
+ (16,'OC-001-20110323-002-0000011',2,1,'2011-03-23',1,2,'2011-03-23 21:26:25'),
+ (17,'OC-001-20110323-002-0000012',2,2,'2011-03-23',1,2,'2011-03-23 21:36:16'),
+ (18,'OC-001-20110323-002-0000013',2,1,'2011-03-23',1,2,'2011-03-23 21:36:51'),
+ (19,'OC-001-20110323-002-0000014',2,3,'2011-03-23',1,2,'2011-03-23 22:57:59');
 /*!40000 ALTER TABLE `ordenescompras` ENABLE KEYS */;
 
 
@@ -749,7 +802,7 @@ CREATE TABLE `ordenesrequisicion` (
   CONSTRAINT `recibido_usuario` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalenvia_usuario` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalrecibe_usuario` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenesrequisicion`
@@ -762,7 +815,22 @@ INSERT INTO `ordenesrequisicion` VALUES  (6,'OR-002-20110313-002-0000001','2011-
  (9,'OR-002-20110313-002-0000004','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:52:06',2),
  (10,'OR-002-20110313-002-0000005','2011-03-13',2,NULL,2,1,'E','2011-03-13 18:54:12',2),
  (11,'OR-002-20110313-002-0000006','2011-03-13',2,NULL,2,2,'E','2011-03-13 19:00:58',2),
- (12,'OR-002-20110313-002-0000007','2011-03-13',2,NULL,2,1,'E','2011-03-13 19:02:40',2);
+ (12,'OR-002-20110313-002-0000007','2011-03-13',2,NULL,2,1,'E','2011-03-13 19:02:40',2),
+ (14,'OR-001-20110323-002-0000008','2011-03-23',2,NULL,1,2,'E','2011-03-23 19:24:03',2),
+ (15,'OR-001-20110323-002-0000009','2011-03-23',2,NULL,1,1,'E','2011-03-23 19:39:20',2),
+ (16,'OR-001-20110323-002-0000010','2011-03-23',2,NULL,1,2,'E','2011-03-23 20:15:01',2),
+ (17,'OR-001-20110323-002-0000011','2011-03-23',2,NULL,1,1,'E','2011-03-23 21:06:12',2),
+ (18,'OR-001-20110323-002-0000012','2011-03-23',2,NULL,1,1,'E','2011-03-23 21:37:29',2),
+ (19,'OR-001-20110323-002-0000013','2011-03-23',2,NULL,1,1,'E','2011-03-23 21:37:53',2),
+ (20,'OR-001-20110323-002-0000014','2011-03-23',2,NULL,1,2,'E','2011-03-23 21:38:50',2),
+ (21,'OR-001-20110323-002-0000015','2011-03-23',2,NULL,1,1,'E','2011-03-23 21:59:00',2),
+ (22,'OR-001-20110323-002-0000016','2011-03-23',2,NULL,1,2,'E','2011-03-23 22:21:04',2),
+ (23,'OR-001-20110323-002-0000017','2011-03-23',2,NULL,1,2,'E','2011-03-23 22:23:40',2),
+ (24,'OR-001-20110323-002-0000018','2011-03-23',2,NULL,1,2,'E','2011-03-23 22:24:39',2),
+ (25,'OR-001-20110323-002-0000019','2011-03-23',2,NULL,1,1,'E','2011-03-23 22:42:34',2),
+ (26,'OR-001-20110323-002-0000020','2011-03-23',2,NULL,1,2,'E','2011-03-23 22:56:06',2),
+ (27,'OR-001-20110323-002-0000021','2011-03-23',2,NULL,1,2,'E','2011-03-23 23:18:49',2),
+ (28,'OR-001-20110323-002-0000022','2011-03-23',2,NULL,1,2,'E','2011-03-23 23:20:26',2);
 /*!40000 ALTER TABLE `ordenesrequisicion` ENABLE KEYS */;
 
 
@@ -775,11 +843,11 @@ CREATE TABLE `ordenessalida` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `codigo` varchar(70) NOT NULL,
   `enviadopor` int(11) NOT NULL,
-  `recibidopor` int(11) NOT NULL,
+  `recibidopor` int(11) DEFAULT NULL,
   `sucursalenvia` int(11) NOT NULL,
   `sucursalrecibe` int(11) NOT NULL,
   `estado` varchar(11) NOT NULL,
-  `requicicion` int(11) DEFAULT NULL,
+  `requisicion` int(11) DEFAULT NULL,
   `fmodif` datetime NOT NULL,
   `usu` int(11) NOT NULL,
   `fechaemision` date NOT NULL,
@@ -789,19 +857,27 @@ CREATE TABLE `ordenessalida` (
   KEY `salida_sucursalrecibe` (`sucursalrecibe`),
   KEY `salida_enviadopor` (`enviadopor`),
   KEY `salida_recibidopor` (`recibidopor`),
-  KEY `salida_requisicion` (`requicicion`),
+  KEY `salida_requisicion` (`requisicion`),
   CONSTRAINT `salida_enviadopor` FOREIGN KEY (`enviadopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_recibidopor` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `salida_requisicion` FOREIGN KEY (`requicicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `salida_requisicion` FOREIGN KEY (`requisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalenvia` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalrecibe` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenessalida`
 --
 
 /*!40000 ALTER TABLE `ordenessalida` DISABLE KEYS */;
+INSERT INTO `ordenessalida` VALUES  (2,'OS-001-20110325-002-0000001',2,NULL,1,2,'E',NULL,'2011-03-25 21:35:43',2,'2011-03-25'),
+ (3,'OS-001-20110325-002-0000002',2,NULL,1,1,'E',NULL,'2011-03-25 21:48:20',2,'2011-03-25'),
+ (4,'OS-001-20110325-002-0000003',2,NULL,1,2,'E',NULL,'2011-03-25 21:54:07',2,'2011-03-25'),
+ (5,'OS-001-20110325-002-0000004',2,NULL,1,2,'E',NULL,'2011-03-25 21:59:22',2,'2011-03-25'),
+ (6,'OS-001-20110325-002-0000005',2,NULL,1,1,'E',NULL,'2011-03-25 22:09:06',2,'2011-03-25'),
+ (7,'OS-001-20110325-002-0000006',2,NULL,1,2,'E',NULL,'2011-03-25 22:25:17',2,'2011-03-25'),
+ (8,'OS-001-20110325-002-0000007',2,NULL,1,1,'E',NULL,'2011-03-25 22:28:47',2,'2011-03-25'),
+ (9,'OS-001-20110325-002-0000008',2,NULL,1,1,'E',NULL,'2011-03-25 22:33:04',2,'2011-03-25');
 /*!40000 ALTER TABLE `ordenessalida` ENABLE KEYS */;
 
 
@@ -916,8 +992,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -3806,8 +3882,8 @@ if idsucursales<>"" then
 end if;
 
 /*defiicion de filtros*/
-if codigo<>"" then
-  set @join= concat(@join, " and p.codigo = '", codigo, "'  ");
+if parametro<>"" then
+  set @where= concat(@where," and ",parametro ,"   ");
 end if;
 
 
@@ -3816,6 +3892,7 @@ end if;
 
 
 set @sql = concat(@campos,@from,@join,@where,@group,@orden);
+
 
 /*ejecucion de consulta*/
 PREPARE stmt FROM @sql;
