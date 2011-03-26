@@ -64,7 +64,7 @@ Public Class frmOrdenSalida
 
             Next
             Grid.DataSource = OrdenSalidas.Listadetalle
-
+            Grid.ReadOnly = False
         Else
             TextBox6.Text = Me.OrdenSalidas.codigo
 
@@ -87,6 +87,7 @@ Public Class frmOrdenSalida
             If PanelAccion1.sucursal.Id <> OrdenSalidas.sucursalenvia And OrdenSalidas.estado = "E" Then
                 PanelAccion1.BotonEliminar.Enabled = True
                 PanelAccion1.BotonEliminar.Visible = True
+                Grid.ReadOnly = False
             Else
                 PanelAccion1.BotonEliminar.Enabled = False
                 PanelAccion1.BotonEliminar.Visible = False
@@ -116,6 +117,7 @@ Public Class frmOrdenSalida
             grid.DataSource = Nothing
             Me.OrdenSalidas.CargarDetalle()
             Grid.DataSource = Me.OrdenSalidas.Listadetalle
+
             calculartotales()
 
         End If
@@ -138,9 +140,11 @@ Public Class frmOrdenSalida
 
         lblestado.Text = ""
     End Sub
+
     Private Sub grid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grid.CellEndEdit
         calculartotales()
     End Sub
+
     Private Sub grid_Buscar() Handles Grid.Buscar
         Dim f As New SICO.ctrla2.frmBusquedaProductos
         f.Entidad = New Productos
@@ -153,11 +157,13 @@ Public Class frmOrdenSalida
         End If
         calculartotales()
     End Sub
+
     Private Sub grid_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles Grid.Eliminar
         Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index) = New DetalleOrdenSalida
         grid.Refresh()
         calculartotales()
     End Sub
+
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
         Me.OrdenSalidas = New OrdenSalida
         calculartotales()
@@ -181,6 +187,7 @@ Public Class frmOrdenSalida
                     OrdenSalidas.sucursalrecibe = cmbSucursales.SelectedValue
 
                     OrdenSalidas.recibidopor = Nothing
+                    OrdenSalidas.requisicion = Nothing
                     OrdenSalidas.enviadopor = PanelAccion1.Usuario.Id
                     OrdenSalidas.GuardarOrdenSalida()
                     Me.OrdenSalidas = OrdenSalidas
@@ -238,6 +245,7 @@ Public Class frmOrdenSalida
 
 
     End Sub
+
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
         Try
            
