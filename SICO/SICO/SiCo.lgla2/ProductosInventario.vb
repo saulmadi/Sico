@@ -31,7 +31,7 @@ Public Class ProductosInventario
     End Sub
 
     Public Sub New(ByVal producto As Productos, ByVal idsucursal As Long, ByVal existencia As Long)
-        Me.Producto = producto
+        Me._producto = producto
         Me.idSucursal = idsucursal
         Me._existencia = existencia
     End Sub
@@ -143,7 +143,7 @@ Public Class ProductosInventario
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idSucursal = Registro(Indice, "idSucursales")
         Me._existencia = Registro(Indice, "cantidad")
-        Me.Producto = New Productos(Registro(Indice, "idproductos"), Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, Registro(Indice, "precioventa"))
+        Me._producto = New Productos(Registro(Indice, "idproductos"), Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, Registro(Indice, "precioventa"))
         MyBase.CargadoPropiedades(Indice)
     End Sub
     Public Overloads Sub Buscar(ByVal idproducto As String, ByVal idSucursal As String, ByVal codigo As String)

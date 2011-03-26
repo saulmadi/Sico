@@ -13,9 +13,8 @@ Public Class DetalleOrdenSalida
         Me.ComandoSelect = "TransaccionesProductosComplejo_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idproductos"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idsucursales"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("idproductos"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", " inner join detallesalida t on i.idproductos= t.idproducto"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("campos", " t.id,t.isalida,t.idproducto,t.cantidad,t.fmodif,t.usu,i.cantidad as existencia,p.codigo,p.descripcion,p.precioventa "))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", " inner join detallesalida t on i.idproductos= t.idproducto  "))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("campos", " t.id,t.idsalida,t.idproducto,t.cantidad,t.fmodif,t.usu,i.idsucursales as idsucursal,i.cantidad as existencia,p.codigo,p.descripcion,p.precioventa "))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("parametro"))
 
         Me.ComandoMantenimiento = "DetalleSalida_Mant"
@@ -34,6 +33,10 @@ Public Class DetalleOrdenSalida
 
     Public Sub New(ByVal id As Long, ByVal idsalida As Long, ByVal idproducto As Long, ByVal producto As ProductosInventario)
         Me.New()
+        Me._Id = id
+        Me.idsalida = idsalida
+        Me.idProducto = idproducto
+        Me._ProductoInventario = producto
     End Sub
 
 #End Region
@@ -129,10 +132,11 @@ Public Class DetalleOrdenSalida
         MyBase.Guardar(True)
     End Sub
 
-    Public Overloads Sub Buscar(ByVal idsalida As Long, ByVal idproducto As String)
+    Public Overloads Sub Buscar(ByVal idsalida As Long, ByVal idproducto As String, ByVal idsucursales As String)
         Me.NullParametrosBusqueda()
-        Me.ValorParametrosBusqueda("parametro", " idsalida = " + idsalida.ToString() + " ")
-        Me.ValorParametrosBusqueda("idproducto", idproducto.ToString)
+        Me.ValorParametrosBusqueda("idsucursales", idsucursales)
+        Me.ValorParametrosBusqueda("parametro", " t.idsalida = " + idsalida.ToString() + " ")
+        Me.ValorParametrosBusqueda("idproductos", idproducto.ToString)
 
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
     End Sub
@@ -140,7 +144,7 @@ Public Class DetalleOrdenSalida
     Public Overrides Function TablaAColeccion() As Object
         Dim lista As New List(Of DetalleOrdenSalida)
 
-        For i As Integer = 0 To Me.TotalRegistros
+        For i As Integer = 0 To Me.TotalRegistros - 1
             Me.CargadoPropiedades(i)
             Dim temp As New DetalleOrdenSalida(Me.Id, Me.idsalida, Me.idProducto, Me.Producto)
             lista.Add(temp)

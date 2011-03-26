@@ -252,12 +252,12 @@ Public Class OrdenSalida
 
         For g As Integer = 0 To Me.Listadetalle.Count - 1
             Dim i As DetalleOrdenSalida = Listadetalle(g)
-            If i.idproducto > 0 Then
-                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+            If i.Producto.Producto.Id > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.Producto.Producto.Id) Then
                     'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
                     cantot += i.Cantidad
                 Else
-                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    Me._diccionariodetalle.Add(i.Producto.Producto.Id, i)
                     cantot += i.Cantidad
                 End If
             End If
@@ -274,18 +274,18 @@ Public Class OrdenSalida
 
         For g As Integer = 0 To Me.Listadetalle.Count - 1
             Dim i As DetalleOrdenSalida = Listadetalle(g)
-            If i.idproducto > 0 Then
-                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+            If i.Producto.Producto.Id > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.Producto.Producto.Id) Then
                     'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
                     cantot += i.Cantidad
                 Else
-                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    Me._diccionariodetalle.Add(i.Producto.Producto.Id, i)
                     cantot += i.Cantidad
                 End If
             End If
         Next
         If Me._diccionariodetalle.Count = 0 Then
-            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de requisición")
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de salida")
         End If
         Return cantot
     End Function
@@ -299,7 +299,7 @@ Public Class OrdenSalida
         ValorParametrosMantenimiento("sucursalenvia", Me.sucursalenvia)
         ValorParametrosMantenimiento("sucursalrecibe", Me.sucursalrecibe)
         ValorParametrosMantenimiento("estado", Me.estado)
-        ValorParametrosMantenimiento("requicicion", Me.requisicion)
+        ValorParametrosMantenimiento("requisicion", Me.requisicion)
         MyBase.Guardar(True)
         Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
@@ -311,8 +311,11 @@ Public Class OrdenSalida
             Me.Guardar()
             Dim flag As Boolean = False
             For Each i In _diccionariodetalle
-                If i.Value.idProducto > 0 Then
+                If i.Value.Producto.Producto.Id > 0 Then
                     i.Value.idsalida = Me.Id
+                    If i.Value.Cantidad > i.Value.Existencia Then
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser mayor que la existencia")
+                    End If
                     If i.Value.Cantidad > 0 Then
                         i.Value.Guardar()
                     Else
@@ -332,7 +335,9 @@ Public Class OrdenSalida
         _listaDetalle.Clear()
         If Me.Id > 0 Then
             Dim d As New DetalleOrdenSalida
-            d.Buscar(CType(Me.Id, Long), "")
+            Dim s As New Sucursales
+            s.Cargar()
+            d.Buscar(CType(Me.Id, Long), "", s.Id)
             _listaDetalle = d.TablaAColeccion
         End If
     End Sub
