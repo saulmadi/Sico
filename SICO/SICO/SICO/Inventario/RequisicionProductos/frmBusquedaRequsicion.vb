@@ -77,6 +77,9 @@ Public Class frmBusquedaRequsicion
         cmbSucursalDestinatario.DataSource = s.TablaAColeccion
         cmbSucursalSolicitante.DataSource = s.TablaAColeccion
 
+        cmbSucursalDestinatario.SelectedIndex = -1
+        cmbSucursalSolicitante.SelectedIndex = -1
+
         CrtPanelBusqueda1.GridResultados.DarFormato("codigo", "Número de Orden", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalEnvia", "Sucursal Solicitante", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalRecibe", "Sucursal Destinataria", True)
@@ -86,7 +89,6 @@ Public Class frmBusquedaRequsicion
         fecha.Value = Now.AddDays(-30)
 
     End Sub
-
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         cargar()
@@ -100,4 +102,5 @@ Public Class frmBusquedaRequsicion
         frm.Show()
         frm.OrdenRequisicion = CrtPanelBusqueda1.GridResultados.Item()
     End Sub
+
 End Class

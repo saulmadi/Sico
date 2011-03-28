@@ -123,12 +123,14 @@ Public Class frmMenuPrincipal
     Private Sub OrdenesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesSalientesToolStripMenuItem.Click
         Dim frm As New frmBusquedaOrdenSalida
         frm.MdiParent = Me
+        frm.Enviadas = True
         frm.Show()
     End Sub
 
     Private Sub OrdenesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesEntrantesToolStripMenuItem.Click
         Dim frm As New frmBusquedaOrdenSalida
         frm.MdiParent = Me
+        frm.Enviadas = False
         frm.Show()
     End Sub
 

@@ -48,6 +48,20 @@ Public Class OrdenSalida
 
     End Sub
 
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long?, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String, ByVal sucen As Sucursales, ByVal sucre As Sucursales)
+        Me.New()
+        Me._Id = id
+        Me.codigo = codigo
+        Me.fechaemision = fechaemision
+        Me.enviadopor = enviadopor
+        Me.recibidopor = recibidopor
+        Me.sucursalenvia = sucursalenvia
+        Me.sucursalrecibe = sucursalrecibe
+        Me.estado = estado
+
+        Me.SucursalEn = sucen
+        Me.SucursalRec = sucre
+    End Sub
 #End Region
 
 #Region "Propiedades"
@@ -229,7 +243,13 @@ Public Class OrdenSalida
         Me.codigo = Registro(Indice, "codigo")
         Me.fechaemision = Registro(Indice, "fechaemision")
         Me.enviadopor = Registro(Indice, "enviadopor")
-        Me.recibidopor = Registro(Indice, "recibidopor")
+        If Registro(Indice, "recibidopor") Is Nothing Then
+            Me.recibidopor = Nothing
+        Else
+            Dim d As Long = Registro(Indice, "recibidopor")
+            Me.recibidopor = d
+        End If
+
         Me.sucursalenvia = Registro(Indice, "sucursalenvia")
         Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
         Me.estado = Registro(Indice, "estado")
@@ -341,6 +361,40 @@ Public Class OrdenSalida
             _listaDetalle = d.TablaAColeccion
         End If
     End Sub
+
+    Public Overrides Function TablaAColeccion() As Object
+        Dim lista As New List(Of OrdenSalida)
+
+        For x As Integer = 0 To TotalRegistros - 1
+            Me.CargadoPropiedades(x)
+            Dim tempOs As New OrdenSalida(Me.Id, Me.codigo, Me.fechaemision, Me.enviadopor, Me.recibidopor, Me.sucursalenvia, Me.sucursalrecibe, Me.estado, Me.SucursalEn, Me.SucursalRec)
+            lista.Add(tempOs)
+        Next
+
+        Return lista
+    End Function
+
+    Public Sub RecibirSalida()
+        Try
+            Me.IniciarTransaccion()
+            Me.estado = "R"
+            Me.Guardar()
+            Me.CargarDetalle()
+            Dim lista As List(Of DetalleOrdenSalida) = Me.Listadetalle
+            For Each i In lista
+
+                Dim inv As New InventarioTrigger()
+                inv.ModificarInventario(Me.sucursalrecibe, i.idProducto, i.Cantidad)
+
+            Next
+
+            Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
 
 #End Region
 
