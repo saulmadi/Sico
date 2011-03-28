@@ -80,7 +80,8 @@ Public Class frmRequesicionProducto
             txtsucuralenvia.Text = OrdenRequisicion.SucursalEn.NombreMantenimiento
             txtsucursalrecibe.Text = OrdenRequisicion.SucursalRec.NombreMantenimiento
 
-            If PanelAccion1.sucursal.Id <> OrdenRequisicion.sucursalenvia And OrdenRequisicion.estado = "E" Then
+            If OrdenRequisicion.sucursalrecibe = PanelAccion1.sucursal.Id And Me.OrdenRequisicion.estado = "E" Then
+
                 PanelAccion1.BotonEliminar.Enabled = True
                 PanelAccion1.BotonEliminar.Visible = True
             Else
@@ -91,6 +92,7 @@ Public Class frmRequesicionProducto
 
             Dim usu As New Usuario()
             If Not Me.OrdenRequisicion.recibidopor = Nothing Then
+
                 usu.Buscar("id", Me.OrdenRequisicion.enviadopor.ToString + " or c.id = " + Me.OrdenRequisicion.recibidopor.ToString)
             Else
                 usu.Buscar(Me.OrdenRequisicion.enviadopor)
@@ -258,6 +260,7 @@ Public Class frmRequesicionProducto
             cr.DataDefinition.FormulaFields("fechaemision").Text = "'" + Me.OrdenRequisicion.fechaemision.ToString("dd/MM/yyyy") + "'"
             cr.DataDefinition.FormulaFields("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
             cr.DataDefinition.FormulaFields("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
+            cr.DataDefinition.FormulaFields("orden").Text = "'Requisición'"
 
             cr.SetDataSource(d.Tabla)
 

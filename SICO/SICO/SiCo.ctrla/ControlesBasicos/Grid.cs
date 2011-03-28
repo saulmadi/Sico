@@ -105,6 +105,11 @@ namespace SiCo.ctrla
             
         }
 
+        public List<GridFormatoColumnas> ListaFormatos
+        {
+            get { return _ListaFormatos; }
+        }
+
         #endregion
 
         #region Eventos
