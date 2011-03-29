@@ -46,7 +46,7 @@ else
         c.recibidopor=recibidopor,
         c.sucursalenvia=sucursalenvia,
         c.estado=estado,
-        c.requicion=requisicion,
+        c.requisicion=requisicion,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
