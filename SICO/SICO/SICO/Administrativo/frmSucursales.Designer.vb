@@ -94,6 +94,7 @@ Partial Class frmSucursales
         Me.CrtPersonaJuridica1.SoloLectura = False
         Me.CrtPersonaJuridica1.TabIndex = 0
         Me.CrtPersonaJuridica1.TextoRazonSocial = "Sucursal"
+        Me.CrtPersonaJuridica1.VisiblesDatosSecundarios = True
         '
         'GroupBox3
         '
@@ -225,6 +226,7 @@ Partial Class frmSucursales
         Me.txtnumerofactura.Texto = Nothing
         Me.txtnumerofactura.TipoTexto = SICO.ctrla.TiposTexto.Entero
         Me.txtnumerofactura.ValorInt = Nothing
+        Me.txtnumerofactura.ValorLong = Nothing
         '
         'Label3
         '

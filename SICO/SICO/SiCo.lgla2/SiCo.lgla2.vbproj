@@ -82,6 +82,7 @@
     <Compile Include="Marcas.vb" />
     <Compile Include="Modelos.vb" />
     <Compile Include="ModulosTablasTipo.vb" />
+    <Compile Include="Motocicletas.vb" />
     <Compile Include="Municipios.vb" />
     <Compile Include="NombresModuloTablasTipo.vb" />
     <Compile Include="OrdenCompra.vb" />

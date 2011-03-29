@@ -205,15 +205,22 @@
   <Class Name="SiCo.lgla2.DetalleOrdenSalida">
     <Position X="17.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAAAgAAgAQAAAAgAAAAAoCAAAAAABBgBQAAA=</HashCode>
+      <HashCode>AAAAAAEAAQAgAAgAQAAEAgAAAAAoCAAAAAABBgBQAAA=</HashCode>
       <FileName>DetalleOrdenSalida.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.OrdenSalida">
     <Position X="15" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACRTiAIMCAQBQAAIAAAIAFAAAQgCRAQASQJBAAQBgg=</HashCode>
       <FileName>OrdenSalida.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.Motocicletas" Collapsed="true">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAgDAKQEAAABgMAiAIAQAAAAgAAgABAACABAAAAAAA=</HashCode>
+      <FileName>Motocicletas.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
