@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics; 
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -25,10 +26,12 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             InitializeComponent();
 
+            
         }
         #endregion
 
         #region  Propiedades
+        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden )]
         public SiCo.lgla2.Imagenes Imagenes
         {
             get
@@ -36,6 +39,12 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 return _imagenes;
             }
             set { _imagenes = value; }
+        }
+
+        public string Tabla
+        {
+            get;
+            set;
         }
         #endregion 
 
@@ -136,7 +145,9 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             try
             {
-                _imagenes = new SiCo.lgla2.Imagenes();                
+                _imagenes = new SiCo.lgla2.Imagenes();
+               
+                
             }
             catch 
             {
