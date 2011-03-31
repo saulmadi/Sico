@@ -1,5 +1,7 @@
 ﻿Imports SICO.lgla
 Imports SICO.lgla2
+Imports SICO.ctrla
+Imports SICO.ctrla2
 Public Class frmMotociletas
 #Region "Declaraciones"
     Private _mototicletas As Motocicletas
@@ -35,6 +37,24 @@ Public Class frmMotociletas
         End Try
         
     End Sub
+    Private Function ListaCajaTexto(ByVal crt As Control) As List(Of CajaTexto)
+        Dim lista As New List(Of CajaTexto)
+        Try
+
+            For Each i In crt.Controls
+                Dim g As Control = CType(i, Control)
+
+                If TypeOf i Is CajaTexto Then
+                    lista.Add(i)
+                Else
+                    lista.AddRange(ListaCajaTexto(g).ToArray.AsQueryable)
+                End If
+            Next
+            Return lista
+        Catch ex As Exception
+            Return lista
+        End Try
+    End Function
 
     Private Sub CargarEntidad()
         
@@ -123,7 +143,19 @@ Public Class frmMotociletas
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Try
+            Dim valida As New Validador
+            valida.ColecionCajasTexto.AddRange(ListaCajaTexto(Me).ToArray.AsQueryable)
+            If valida.PermitirIngresar Then
 
+            Else
+                PanelAccion1.EstadoMensaje = valida.MensajesError
+
+            End If
+            
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo

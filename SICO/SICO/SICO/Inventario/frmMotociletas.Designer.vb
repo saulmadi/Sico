@@ -23,7 +23,6 @@ Partial Class frmMotociletas
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Dim Imagenes1 As SICO.lgla2.Imagenes = New SICO.lgla2.Imagenes
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMotociletas))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.CrtImagen1 = New SICO.ctrla.ControlesPersonalizados.crtImagen
@@ -73,7 +72,7 @@ Partial Class frmMotociletas
         Me.GroupBox1.Location = New System.Drawing.Point(12, 90)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(199, 201)
-        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Imagen"
         '
@@ -81,14 +80,11 @@ Partial Class frmMotociletas
         '
         Me.CrtImagen1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrtImagen1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Imagenes1.Id = CType(0, Long)
-        Imagenes1.IdImagenes = CType(0, Long)
-        Imagenes1.ImagenBinaria = Nothing
-        Imagenes1.TablaBusqueda = "ProductosImagenes"
         Me.CrtImagen1.Location = New System.Drawing.Point(3, 16)
         Me.CrtImagen1.Name = "CrtImagen1"
         Me.CrtImagen1.Size = New System.Drawing.Size(193, 182)
-        Me.CrtImagen1.TabIndex = 1
+        Me.CrtImagen1.TabIndex = 0
+        Me.CrtImagen1.Tabla = "MotocicletasImagenes"
         '
         'TabControl1
         '
@@ -100,7 +96,7 @@ Partial Class frmMotociletas
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(473, 259)
-        Me.TabControl1.TabIndex = 16
+        Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
@@ -142,7 +138,7 @@ Partial Class frmMotociletas
         Me.cmbTipoMotocicleta.ParametroAutocompletar = Nothing
         Me.cmbTipoMotocicleta.ParametroBusquedaPadre = Nothing
         Me.cmbTipoMotocicleta.Size = New System.Drawing.Size(335, 21)
-        Me.cmbTipoMotocicleta.TabIndex = 36
+        Me.cmbTipoMotocicleta.TabIndex = 7
         Me.cmbTipoMotocicleta.ValueMember = "id"
         '
         'cmbModelo
@@ -157,7 +153,7 @@ Partial Class frmMotociletas
         Me.cmbModelo.ParametroAutocompletar = Nothing
         Me.cmbModelo.ParametroBusquedaPadre = Nothing
         Me.cmbModelo.Size = New System.Drawing.Size(335, 21)
-        Me.cmbModelo.TabIndex = 35
+        Me.cmbModelo.TabIndex = 6
         Me.cmbModelo.ValueMember = "id"
         '
         'cmbMarca
@@ -172,7 +168,7 @@ Partial Class frmMotociletas
         Me.cmbMarca.ParametroAutocompletar = Nothing
         Me.cmbMarca.ParametroBusquedaPadre = Nothing
         Me.cmbMarca.Size = New System.Drawing.Size(335, 21)
-        Me.cmbMarca.TabIndex = 34
+        Me.cmbMarca.TabIndex = 5
         Me.cmbMarca.ValueMember = "id"
         '
         'Label13
@@ -182,7 +178,7 @@ Partial Class frmMotociletas
         Me.Label13.Location = New System.Drawing.Point(6, 92)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(68, 13)
-        Me.Label13.TabIndex = 33
+        Me.Label13.TabIndex = 11
         Me.Label13.Text = "Horse Power"
         '
         'txthp
@@ -197,7 +193,7 @@ Partial Class frmMotociletas
         Me.txthp.MensajeError = "Ingrese los HP"
         Me.txthp.Name = "txthp"
         Me.txthp.Size = New System.Drawing.Size(335, 20)
-        Me.txthp.TabIndex = 32
+        Me.txthp.TabIndex = 3
         Me.txthp.Texto = Nothing
         Me.txthp.TipoTexto = SICO.ctrla.TiposTexto.Entero
         Me.txthp.ValorInt = Nothing
@@ -210,7 +206,7 @@ Partial Class frmMotociletas
         Me.Label8.Location = New System.Drawing.Point(6, 118)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(26, 13)
-        Me.Label8.TabIndex = 31
+        Me.Label8.TabIndex = 12
         Me.Label8.Text = "Año"
         '
         'txtanio
@@ -227,7 +223,7 @@ Partial Class frmMotociletas
         Me.txtanio.MensajeError = "Ingrese el año"
         Me.txtanio.Name = "txtanio"
         Me.txtanio.Size = New System.Drawing.Size(335, 20)
-        Me.txtanio.TabIndex = 30
+        Me.txtanio.TabIndex = 4
         Me.txtanio.Texto = Nothing
         Me.txtanio.TipoTexto = SICO.ctrla.TiposTexto.Entero
         Me.txtanio.ValorInt = Nothing
@@ -240,7 +236,7 @@ Partial Class frmMotociletas
         Me.Label7.Location = New System.Drawing.Point(6, 198)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(100, 13)
-        Me.Label7.TabIndex = 28
+        Me.Label7.TabIndex = 15
         Me.Label7.Text = "Tipo de motocicleta"
         '
         'Label6
@@ -250,7 +246,7 @@ Partial Class frmMotociletas
         Me.Label6.Location = New System.Drawing.Point(6, 171)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(42, 13)
-        Me.Label6.TabIndex = 26
+        Me.Label6.TabIndex = 14
         Me.Label6.Text = "Modelo"
         '
         'Label5
@@ -260,7 +256,7 @@ Partial Class frmMotociletas
         Me.Label5.Location = New System.Drawing.Point(6, 144)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(37, 13)
-        Me.Label5.TabIndex = 24
+        Me.Label5.TabIndex = 13
         Me.Label5.Text = "Marca"
         '
         'Label3
@@ -270,7 +266,7 @@ Partial Class frmMotociletas
         Me.Label3.Location = New System.Drawing.Point(6, 66)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(49, 13)
-        Me.Label3.TabIndex = 22
+        Me.Label3.TabIndex = 10
         Me.Label3.Text = "Cilindraje"
         '
         'txtcilindraje
@@ -287,7 +283,7 @@ Partial Class frmMotociletas
         Me.txtcilindraje.MensajeError = "Ingrese el cilindraje"
         Me.txtcilindraje.Name = "txtcilindraje"
         Me.txtcilindraje.Size = New System.Drawing.Size(335, 20)
-        Me.txtcilindraje.TabIndex = 20
+        Me.txtcilindraje.TabIndex = 2
         Me.txtcilindraje.Texto = Nothing
         Me.txtcilindraje.TipoTexto = SICO.ctrla.TiposTexto.Entero
         Me.txtcilindraje.ValorInt = Nothing
@@ -305,7 +301,7 @@ Partial Class frmMotociletas
         Me.txtChasis.MensajeError = "Ingrese el chasis"
         Me.txtChasis.Name = "txtChasis"
         Me.txtChasis.Size = New System.Drawing.Size(335, 20)
-        Me.txtChasis.TabIndex = 19
+        Me.txtChasis.TabIndex = 1
         Me.txtChasis.Texto = Nothing
         Me.txtChasis.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
         Me.txtChasis.ValorInt = Nothing
@@ -318,7 +314,7 @@ Partial Class frmMotociletas
         Me.Label2.Location = New System.Drawing.Point(6, 40)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(38, 13)
-        Me.Label2.TabIndex = 18
+        Me.Label2.TabIndex = 9
         Me.Label2.Text = "Chasis"
         '
         'txtMotor
@@ -334,7 +330,7 @@ Partial Class frmMotociletas
         Me.txtMotor.MensajeError = "Ingrese el motor"
         Me.txtMotor.Name = "txtMotor"
         Me.txtMotor.Size = New System.Drawing.Size(335, 20)
-        Me.txtMotor.TabIndex = 17
+        Me.txtMotor.TabIndex = 0
         Me.txtMotor.Texto = Nothing
         Me.txtMotor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
         Me.txtMotor.ValorInt = Nothing
@@ -347,7 +343,7 @@ Partial Class frmMotociletas
         Me.Label1.Location = New System.Drawing.Point(6, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(34, 13)
-        Me.Label1.TabIndex = 16
+        Me.Label1.TabIndex = 8
         Me.Label1.Text = "Motor"
         '
         'TabPage2
@@ -474,9 +470,8 @@ Partial Class frmMotociletas
         Me.txtpreciocompra.Name = "txtpreciocompra"
         Me.txtpreciocompra.Size = New System.Drawing.Size(335, 20)
         Me.txtpreciocompra.TabIndex = 21
-        Me.txtpreciocompra.Text = "0.00"
         Me.txtpreciocompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtpreciocompra.Texto = "0.00"
+        Me.txtpreciocompra.Texto = Nothing
         Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtpreciocompra.ValorInt = Nothing
         Me.txtpreciocompra.ValorLong = Nothing
@@ -496,9 +491,8 @@ Partial Class frmMotociletas
         Me.txtprecioventa.Name = "txtprecioventa"
         Me.txtprecioventa.Size = New System.Drawing.Size(335, 20)
         Me.txtprecioventa.TabIndex = 19
-        Me.txtprecioventa.Text = "0.00"
         Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtprecioventa.Texto = "0.00"
+        Me.txtprecioventa.Texto = Nothing
         Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtprecioventa.ValorInt = Nothing
         Me.txtprecioventa.ValorLong = Nothing
@@ -536,7 +530,7 @@ Partial Class frmMotociletas
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
         Me.PanelAccion1.Size = New System.Drawing.Size(696, 432)
-        Me.PanelAccion1.TabIndex = 0
+        Me.PanelAccion1.TabIndex = 2
         Me.PanelAccion1.Titulo = "Motocicletas"
         Me.PanelAccion1.VisiblePanelPrincipal = True
         '
@@ -546,7 +540,7 @@ Partial Class frmMotociletas
         Me.lblEstado.Location = New System.Drawing.Point(469, 90)
         Me.lblEstado.Name = "lblEstado"
         Me.lblEstado.Size = New System.Drawing.Size(217, 14)
-        Me.lblEstado.TabIndex = 37
+        Me.lblEstado.TabIndex = 3
         Me.lblEstado.Text = "Label14"
         Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
