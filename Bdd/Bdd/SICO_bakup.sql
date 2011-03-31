@@ -413,7 +413,7 @@ CREATE TABLE `detallesalida` (
   KEY `detalles_productos` (`idproducto`),
   CONSTRAINT `detalles_productos` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `detalles_salida` FOREIGN KEY (`idsalida`) REFERENCES `ordenessalida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallesalida`
@@ -429,7 +429,9 @@ INSERT INTO `detallesalida` VALUES  (1,2,2,55,'2011-03-25 21:36:00',2),
  (7,7,9,1000,'2011-03-25 22:25:17',2),
  (8,7,2,100,'2011-03-25 22:25:17',2),
  (9,8,2,5,'2011-03-25 22:28:47',2),
- (10,9,2,55,'2011-03-25 22:33:04',2);
+ (10,9,2,55,'2011-03-25 22:33:04',2),
+ (11,10,2,4,'2011-03-27 16:08:06',2),
+ (12,11,2,32,'2011-03-27 23:38:56',2);
 /*!40000 ALTER TABLE `detallesalida` ENABLE KEYS */;
 
 
@@ -560,7 +562,7 @@ CREATE TABLE `inventario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idproductos` int(11) NOT NULL,
   `idsucursales` int(11) NOT NULL,
-  `cantidad` int(11) NOT NULL,
+  `cantidad` int(11) unsigned NOT NULL,
   `usu` int(11) DEFAULT NULL,
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -576,14 +578,14 @@ CREATE TABLE `inventario` (
 --
 
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-INSERT INTO `inventario` VALUES  (8,2,1,126,2,'2011-03-25 22:33:04'),
+INSERT INTO `inventario` VALUES  (8,2,1,0,2,'2011-03-27 16:08:06'),
  (9,9,1,4567,2,'2011-03-25 22:25:17'),
- (10,2,2,18,2,'2011-03-03 21:14:32'),
+ (10,2,2,146,2,'2011-03-27 23:48:44'),
  (11,6,1,0,2,'2011-03-25 22:09:07'),
  (12,5,2,5,2,'2011-02-26 14:59:26'),
  (13,10,1,4,2,'2011-02-26 19:24:10'),
- (14,9,2,48,2,'2011-02-28 00:53:48'),
- (15,6,2,65,2,'2011-02-28 00:53:49');
+ (14,9,2,1048,2,'2011-03-27 23:34:11'),
+ (15,6,2,68,2,'2011-03-27 23:47:32');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -629,14 +631,15 @@ CREATE TABLE `modelos` (
   KEY `fk_Modelos_Marcas1` (`idderivada`),
   KEY `Descripcion` (`descripcion`),
   CONSTRAINT `fk_Modelos_Marcas1` FOREIGN KEY (`idderivada`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modelos`
 --
 
 /*!40000 ALTER TABLE `modelos` DISABLE KEYS */;
-INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00');
+INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00'),
+ (2,'XT200',1,10,2,'2011-03-29 00:00:00');
 /*!40000 ALTER TABLE `modelos` ENABLE KEYS */;
 
 
@@ -646,30 +649,33 @@ INSERT INTO `modelos` VALUES  (1,'YZ250M',1,11,1,'2011-01-12 00:00:00');
 
 DROP TABLE IF EXISTS `motocicletas`;
 CREATE TABLE `motocicletas` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `motor` varchar(45) NOT NULL,
   `chasis` varchar(45) NOT NULL,
   `idmarcas` int(11) NOT NULL,
   `idmodelos` int(11) NOT NULL,
   `idtiposmotocicletas` int(11) NOT NULL,
-  `idsucurasales` int(11) NOT NULL,
+  `idsucursales` int(11) NOT NULL,
   `cilindraje` int(11) NOT NULL,
   `anio` int(11) NOT NULL,
-  `precioventa` decimal(10,4) NOT NULL,
-  `preciocompra` decimal(10,4) NOT NULL,
-  `fechaIngreso` date DEFAULT NULL,
+  `precioventa` decimal(10,2) NOT NULL,
+  `preciocompra` decimal(10,2) NOT NULL,
+  `fechaIngreso` date NOT NULL,
   `usu` int(11) NOT NULL,
-  `fmodif` date NOT NULL,
+  `fmodif` datetime NOT NULL,
+  `estado` varchar(5) NOT NULL COMMENT 'V vendida, P pendiente',
+  `hp` int(10) unsigned NOT NULL,
+  `idproveedor` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `motor_UNIQUE` (`motor`),
   UNIQUE KEY `chasis_UNIQUE` (`chasis`),
   KEY `fk_Motocicletas_Marcas1` (`idmarcas`),
   KEY `fk_Motocicletas_Modelos1` (`idmodelos`),
   KEY `fk_Motocicletas_TiposMotocicletas1` (`idtiposmotocicletas`),
-  KEY `fk_Motocicletas_Sucursales1` (`idsucurasales`),
+  KEY `fk_Motocicletas_Sucursales1` (`idsucursales`),
   CONSTRAINT `fk_Motocicletas_Marcas1` FOREIGN KEY (`idmarcas`) REFERENCES `marcas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Motocicletas_Modelos1` FOREIGN KEY (`idmodelos`) REFERENCES `modelos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Motocicletas_Sucursales1` FOREIGN KEY (`idsucurasales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Motocicletas_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Motocicletas_TiposMotocicletas1` FOREIGN KEY (`idtiposmotocicletas`) REFERENCES `tiposmotocicletas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -863,21 +869,23 @@ CREATE TABLE `ordenessalida` (
   CONSTRAINT `salida_requisicion` FOREIGN KEY (`requisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalenvia` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalrecibe` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenessalida`
 --
 
 /*!40000 ALTER TABLE `ordenessalida` DISABLE KEYS */;
-INSERT INTO `ordenessalida` VALUES  (2,'OS-001-20110325-002-0000001',2,NULL,1,2,'E',NULL,'2011-03-25 21:35:43',2,'2011-03-25'),
+INSERT INTO `ordenessalida` VALUES  (2,'OS-001-20110325-002-0000001',2,2,1,2,'R',NULL,'2011-03-27 23:48:44',2,'2011-03-25'),
  (3,'OS-001-20110325-002-0000002',2,NULL,1,1,'E',NULL,'2011-03-25 21:48:20',2,'2011-03-25'),
  (4,'OS-001-20110325-002-0000003',2,NULL,1,2,'E',NULL,'2011-03-25 21:54:07',2,'2011-03-25'),
- (5,'OS-001-20110325-002-0000004',2,NULL,1,2,'E',NULL,'2011-03-25 21:59:22',2,'2011-03-25'),
+ (5,'OS-001-20110325-002-0000004',2,2,1,2,'R',NULL,'2011-03-27 23:47:32',2,'2011-03-25'),
  (6,'OS-001-20110325-002-0000005',2,NULL,1,1,'E',NULL,'2011-03-25 22:09:06',2,'2011-03-25'),
- (7,'OS-001-20110325-002-0000006',2,NULL,1,2,'E',NULL,'2011-03-25 22:25:17',2,'2011-03-25'),
+ (7,'OS-001-20110325-002-0000006',2,2,1,2,'R',NULL,'2011-03-27 23:32:19',2,'2011-03-25'),
  (8,'OS-001-20110325-002-0000007',2,NULL,1,1,'E',NULL,'2011-03-25 22:28:47',2,'2011-03-25'),
- (9,'OS-001-20110325-002-0000008',2,NULL,1,1,'E',NULL,'2011-03-25 22:33:04',2,'2011-03-25');
+ (9,'OS-001-20110325-002-0000008',2,NULL,1,1,'E',NULL,'2011-03-25 22:33:04',2,'2011-03-25'),
+ (10,'OS-001-20110327-002-0000009',2,NULL,1,2,'E',NULL,'2011-03-27 16:08:06',2,'2011-03-27'),
+ (11,'OS-002-20110327-002-0000010',2,NULL,2,1,'E',NULL,'2011-03-27 23:38:56',2,'2011-03-27');
 /*!40000 ALTER TABLE `ordenessalida` ENABLE KEYS */;
 
 
@@ -992,8 +1000,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -2566,6 +2574,132 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `Motocicletas_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `Motocicletas_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Motocicletas_Buscar`(
+
+
+id nvarchar(11),
+idmarca nvarchar(45),
+idmodelo nvarchar(45),
+motor nvarchar(45),
+chasis nvarchar(45),
+estado nvarchar(45),
+idsucursal nvarchar(45)
+
+
+)
+BEGIN
+
+set @Campos="select  ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @orden= "order by motor ";
+set @sql="";
+set @join="";
+set @join = " inner join marcas ma on m.idmarcas=ma.id
+              inner join modelos mo on m.idmodelos=mo.id
+              inner join vsucursal s on m.idsucursales= s.idsucursal ";
+
+set @campos= concat( @campos," m.*,s.*,mo.descripcion as descricpionmodelos , ma.descripcion as descripcionmarcas ");
+
+set @from= concat(@from," from motocicletas m ");
+
+
+
+if id<>"" then
+  set @where= concat(@where, " and m.id = ", id, " ");
+end if;
+
+if idmarca<>"" then
+  set @where= concat(@where, " and m.idmarcas = ", idmarca, " ");
+end if;
+
+if idmodelo<>"" then
+  set @where= concat(@where, " and m.idmodelos = ", idmodelo, " ");
+end if;
+
+if motor<>"" then
+  set @where= concat(@where, " and m.motor = '", motor, "' ");
+end if;
+
+if chasis<>"" then
+  set @where= concat(@where, " and m.chasis = '", chasis, "' ");
+end if;
+
+if idsucursal<>"" then
+  set @where= concat(@where, " and m.idsucursales = ", idsucursal, " ");
+end if;
+
+if estado<>"" then
+  set @where= concat(@where, " and m.estado = '",estado , "' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@join,@where,@orden);
+
+
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `Motocicletas_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `Motocicletas_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `Motocicletas_Mant`(
+
+/*definicion de parametros*/
+
+id int(11),
+imagen longblob,
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(c.id) from motocilectasimgenes c where c.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO productosimagenes (id,imagen,usu,fmodif)
+  VALUES(id,imagen,usu,fmodif);
+
+
+else
+
+  UPDATE motocilectasimgenes c set
+        c.imagen= imagen,
+        c.usu=usu,
+        c.fmodif = fmodif
+  where c.id= id;
+
+end if;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Municipios_Buscar`
 --
 
@@ -3007,7 +3141,7 @@ set @join=" join vsucursal v on v.idsucursal = o.sucursalenvia join vsucursal vr
 
 set @campos= concat( @campos," o.*, v.idsucursal idsucursalenvia, v.identidades as identidadesenvia, v.descripcion as descripcionenvia, vr.idsucursal idsucursalrecibe, vr.identidades as identidadesrecibe, vr.descripcion as descripcionrecibe  ");
 
-set @from= concat(@from," from ordensalida o ");
+set @from= concat(@from," from ordenessalida o ");
 
 
 
@@ -3107,7 +3241,7 @@ else
         c.recibidopor=recibidopor,
         c.sucursalenvia=sucursalenvia,
         c.estado=estado,
-        c.requicion=requisicion,
+        c.requisicion=requisicion,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
