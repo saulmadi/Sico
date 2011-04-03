@@ -85,7 +85,7 @@ Public Class frmBusquedaOrdenSalida
 
 
         CrtPanelBusqueda1.GridResultados.DarFormato("codigo", "Número de Orden", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalEnvia", "Sucursal Solicitante", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalEnvia", "Sucursal Proveedora", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalRecibe", "Sucursal Destinataria", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("fechaemision", "Fecha de Orden", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionEstado", "Estado", True)

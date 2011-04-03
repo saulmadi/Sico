@@ -73,13 +73,16 @@ Public Class frmOrdenSalida
             Grid.ReadOnly = False
         Else
 
+            
+
             Me.Grid.ListaFormatos.Clear()
 
             Me.Grid.DarFormato("codigo", "Código", True)
             Me.Grid.DarFormato("ProductoDescripcion", "Descripción", True)
-
             Me.Grid.DarFormato("CantidadEditable", "Cantidad", True)
+
             TextBox6.Text = Me.OrdenSalidas.codigo
+
 
             PanelAccion1.BotonImprimir.Visible = True
             PanelAccion1.BotonGuardar.Enabled = False
@@ -100,12 +103,15 @@ Public Class frmOrdenSalida
             If PanelAccion1.sucursal.Id = OrdenSalidas.sucursalrecibe And OrdenSalidas.estado = "E" Then
                 PanelAccion1.BotonEliminar.Enabled = True
                 PanelAccion1.BotonEliminar.Visible = True
+
                 Grid.ReadOnly = True
             Else
                 PanelAccion1.BotonEliminar.Enabled = False
                 PanelAccion1.BotonEliminar.Visible = False
                 Grid.ReadOnly = True
             End If
+
+
 
             Dim usu As New Usuario()
             If Not Me.OrdenSalidas.recibidopor = Nothing Then
@@ -127,8 +133,41 @@ Public Class frmOrdenSalida
                     End If
                 Next
             End If
+            If Me.OrdenSalidas.estado.ToUpper = "P" And Me.OrdenSalidas.sucursalenvia = PanelAccion1.sucursal.Id Then
+                Me.Grid.ListaFormatos.Clear()
+                If cmbSucursales.Items.Count = 0 Then
+                    Dim s As New Sucursales
+                    s.Buscar()
+                    cmbSucursales.DisplayMember = "NombreMantenimiento"
+                    cmbSucursales.ValueMember = "id"
+                    cmbSucursales.DataSource = s.TablaAColeccion
+                End If
+
+                Me.Grid.DarFormato("codigo", "Código", True)
+                Me.Grid.DarFormato("ProductoDescripcion", "Descripción", True)
+                Me.Grid.DarFormato("Existencia", "Existencia", True)
+                Me.Grid.DarFormato("CantidadEditable", "Cantidad", True)
+                Me.Grid.BotonEliminar = True
+                Me.Grid.BotonBuscar = True
+                PanelAccion1.BotonEliminar.Enabled = True
+                PanelAccion1.BotonEliminar.Text = "Enviar"
+                PanelAccion1.BotonEliminar.Visible = True
+
+
+                PanelAccion1.BotonGuardar.Enabled = True
+
+                txtsucursalrecibe.Visible = False
+                cmbSucursales.Visible = True
+                cmbSucursales.SelectedValue = OrdenSalidas.sucursalrecibe
+                Grid.ReadOnly = False
+            End If
+
+
             Grid.DataSource = Nothing
             Me.OrdenSalidas.CargarDetalle()
+            For i As Integer = OrdenSalidas.Listadetalle.Count To 50
+                OrdenSalidas.Listadetalle.Add(New DetalleOrdenSalida(PanelAccion1.sucursal.Id))
+            Next
             Grid.DataSource = Me.OrdenSalidas.Listadetalle
 
             calculartotales()
@@ -191,7 +230,7 @@ Public Class frmOrdenSalida
                     PanelAccion1.lblEstado.Text = "Guardando..."
                     PanelAccion1.BarraProgreso.Value = 50
 
-                    OrdenSalidas.estado = "E"
+                    OrdenSalidas.estado = "P"
                     OrdenSalidas.fechaemision = dteFechaEmision.Value
                     OrdenSalidas.sucursalenvia = PanelAccion1.sucursal.Id
                     OrdenSalidas.sucursalrecibe = cmbSucursales.SelectedValue
@@ -252,12 +291,21 @@ Public Class frmOrdenSalida
 
 
 
+            If Me.OrdenSalidas.estado = "P" Then
+                If Not cmbSucursales.SelectedIndex = -1 Then
+                    OrdenSalidas.enviadopor = PanelAccion1.Usuario.Id
+                    OrdenSalidas.sucursalrecibe = cmbSucursales.SelectedItem.Id
+                    OrdenSalidas.EnviarSalida()
+                Else
+                    MessageBox.Show("Seleccione una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+                
+            Else
+                OrdenSalidas.recibidopor = PanelAccion1.Usuario.Id
+                OrdenSalidas.RecibirSalida()
+            End If
 
-
-            OrdenSalidas.recibidopor = PanelAccion1.Usuario.Id
-
-
-            OrdenSalidas.RecibirSalida()
+            
             Me.OrdenSalidas.Id = _OrdenSalida.Id
             Me.OrdenSalidas = OrdenSalidas
 

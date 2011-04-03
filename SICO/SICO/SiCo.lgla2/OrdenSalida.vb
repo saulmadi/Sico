@@ -173,12 +173,15 @@ Public Class OrdenSalida
 
     Public ReadOnly Property DescripcionEstado() As String
         Get
-            If Me.estado = "E" Then
+            If Me.estado.ToUpper = "E" Then
                 Return "Enviada"
 
             End If
-            If Me.estado = "R" Then
+            If Me.estado.ToUpper = "R" Then
                 Return "Recibida"
+            End If
+            If Me.estado.ToUpper = "P" Then
+                Return "En Proceso"
             End If
             Return String.Empty
         End Get
@@ -390,6 +393,42 @@ Public Class OrdenSalida
 
             Me.CommitTransaccion()
         Catch ex As Exception
+            Me.estado = "E"
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub EnviarSalida()
+        Dim s As String = Me.estado
+        Try
+            Me.IniciarTransaccion()
+            Me.estado = "E"
+            Me.CalcularDetalleGuardar()
+            Me.Guardar()
+            Dim flag As Boolean = False
+            For Each i In _diccionariodetalle
+                If i.Value.Producto.Producto.Id > 0 Then
+                    i.Value.idsalida = Me.Id
+                    If i.Value.Cantidad > i.Value.Existencia Then
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser mayor que la existencia")
+                    End If
+                    If i.Value.Cantidad > 0 Then
+                        i.Value.Guardar()
+                        Dim inv As New InventarioTrigger()
+                        inv.ModificarInventario(Me.sucursalenvia, i.Value.Producto.Producto.Id, i.Value.Cantidad * -1)
+                    Else
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
+                    End If
+                End If
+            Next
+
+
+            
+            
+            Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.OredenRequicion.estado = s
             Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try

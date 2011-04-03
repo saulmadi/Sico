@@ -291,9 +291,9 @@ Partial Class frmOrdenSalida
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label8.Location = New System.Drawing.Point(6, 49)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(98, 13)
+        Me.Label8.Size = New System.Drawing.Size(105, 13)
         Me.Label8.TabIndex = 1
-        Me.Label8.Text = "Sucursal solicitante"
+        Me.Label8.Text = "Sucursal proveedora"
         '
         'Label7
         '
