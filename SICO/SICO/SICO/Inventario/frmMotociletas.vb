@@ -3,6 +3,7 @@ Imports SICO.lgla2
 Imports SICO.ctrla
 Imports SICO.ctrla2
 Public Class frmMotociletas
+
 #Region "Declaraciones"
     Private _mototicletas As Motocicletas
 #End Region
@@ -35,8 +36,9 @@ Public Class frmMotociletas
         Catch ex As Exception
 
         End Try
-        
+
     End Sub
+
     Private Function ListaCajaTexto(ByVal crt As Control) As List(Of CajaTexto)
         Dim lista As New List(Of CajaTexto)
         Try
@@ -56,12 +58,35 @@ Public Class frmMotociletas
         End Try
     End Function
 
+
+    Private Function ValidaCombox(ByVal crt As Control, Optional ByVal valor As Boolean = True) As Boolean
+
+        Try
+
+            For Each i In crt.Controls
+                Dim g As Control = CType(i, Control)
+
+                If TypeOf i Is ComboBox Then
+                    If i.selectedindex = -1 Then
+                        valor = False
+                        i.focus()
+                    End If
+                Else
+                    valor = ValidaCombox(i, valor)
+                End If
+            Next
+            Return valor
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
     Private Sub CargarEntidad()
-        
+
 
         If Me.Motocicletas.Id = 0 Then
             limpiar(Me)
-            
+
         Else
             If Me.cmbMarca.Items.Count = 0 Then
                 cmbMarca.IncializarCarga()
@@ -146,13 +171,32 @@ Public Class frmMotociletas
         Try
             Dim valida As New Validador
             valida.ColecionCajasTexto.AddRange(ListaCajaTexto(Me).ToArray.AsQueryable)
-            If valida.PermitirIngresar Then
 
+            If ValidaCombox(TabControl1) Then
+                If valida.PermitirIngresar Then
+                    Me.Motocicletas.Motor = txtMotor.Text
+                    Me.Motocicletas.Chasis = txtChasis.Text
+                    Me.Motocicletas.cilindraje = txtcilindraje.Text
+                    Me.Motocicletas.HP = txthp.Text
+                    Me.Motocicletas.anio = txtanio.Text
+                    Me.Motocicletas.idmarcas = cmbMarca.SelectedValue
+                    Me.Motocicletas.idmodelos = cmbModelo.SelectedValue
+                    Me.Motocicletas.idTiposMotocicletas = cmbTipoMotocicleta.SelectedValue
+
+                    Me.Motocicletas.precioventa = txtprecioventa.Text
+                    Me.Motocicletas.preciocompra = txtpreciocompra.Text
+                    Me.Motocicletas.fechaingreso = dtefechacompra.Value
+                    Me.Motocicletas.idSucursales = cmbSucursales.SelectedItem.Id
+                    Me.Motocicletas.idProveedor = cmbProveedor.SelectedValue
+                    Motocicletas.Guardar()
+
+                Else
+                    PanelAccion1.EstadoMensaje = valida.MensajesError
+
+                End If
             Else
-                PanelAccion1.EstadoMensaje = valida.MensajesError
-
+                PanelAccion1.EstadoMensaje = "Ingrese toda la información."
             End If
-            
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -163,5 +207,5 @@ Public Class frmMotociletas
     End Sub
 #End Region
 
-    
+
 End Class
