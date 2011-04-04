@@ -20,7 +20,10 @@ Public Class frmBusquedaOrdenSalida
 
             p.Add(New Parametro("fechaemision", " fechaemision >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' and fechaemision <= '" + fechahasta.Value.ToString("yyyy-MM-dd") + "' "))
 
-            p.Add(New Parametro("codigoparecido", txtcodigo.Text))
+            If txtcodigo.Text.Length > 0 Then
+                p.Add(New Parametro("codigoparecido", txtcodigo.Text))
+            End If
+
 
             If Enviadas Then
                 If cmbSucursalSolicitante.SelectedItem Is Nothing Then
