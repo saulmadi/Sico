@@ -67,7 +67,7 @@ Public Class frmCompras
 
                 grdDetalle.DataSource = value.ListaDetalle
                 PanelAccion1.BotonNuevo.Enabled = True
-
+                lblEstado.Text = value.DescripcionEstado
             Else
                 If cmbProveedor.Items.Count = 0 Then
                     cmbProveedor.Entidad = New Proveedores
@@ -93,9 +93,27 @@ Public Class frmCompras
 
                 Me.grdDetalle.BotonEliminar = False
                 Me.grdDetalle.BotonBuscar = False
+                
+                lblEstado.Text = value.DescripcionEstado
+                If value.Estado.ToUpper = "P" Then
+                    Me.grdDetalle.BotonBuscar = True
+                    Me.grdDetalle.BotonEliminar = True
+                    Me.grdDetalle.ReadOnly = False
+                    PanelAccion1.BotonEliminar.Visible = True
+                    PanelAccion1.BotonEliminar.Text = "Confirmar"
+
+                    BloquearDesbloquarControles(Me, True, System.Type.GetType("ComboBox"))
+
+
+                Else
+                    BloquearDesbloquarControles(Me, True, System.Type.GetType("ComboBox"))
+                    BloquearDesbloquarControles(Me, True, System.Type.GetType("TextBox"))
+                    grdDetalle.ReadOnly = True
+
+                End If
+
                 value.CargarDetalle()
                 grdDetalle.DataSource = _compras.ListaDetalle
-
             End If
             txtimpuesto.Text = value.Impuesto
             txtsubtotal.Text = value.CalcularTotal
@@ -106,7 +124,7 @@ Public Class frmCompras
 
 #Region "Eventos"
     Private Sub frmCompras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
+        lblEstado.Text = ""
         Me.WindowState = FormWindowState.Normal
 
         PanelAccion1.BotonEliminar.Visible = False

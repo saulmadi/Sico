@@ -24,30 +24,19 @@ Partial Class frmBusquedaOrdenSalida
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBusquedaOrdenSalida))
-        Me.CrtPanelBusqueda1 = New SICO.ctrla2.crtPanelBusqueda
         Me.fechahasta = New System.Windows.Forms.DateTimePicker
         Me.Label5 = New System.Windows.Forms.Label
-        Me.cmbSucursalDestinatario = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
-        Me.cmbSucursalSolicitante = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.Label4 = New System.Windows.Forms.Label
-        Me.txtcodigo = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.fecha = New System.Windows.Forms.DateTimePicker
         Me.Label1 = New System.Windows.Forms.Label
         Me.Button1 = New System.Windows.Forms.Button
+        Me.cmbSucursalDestinatario = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
+        Me.cmbSucursalSolicitante = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
+        Me.txtcodigo = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CrtPanelBusqueda1 = New SICO.ctrla2.crtPanelBusqueda
         Me.SuspendLayout()
-        '
-        'CrtPanelBusqueda1
-        '
-        Me.CrtPanelBusqueda1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtPanelBusqueda1.Entidad = Nothing
-        Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
-        Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
-        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(949, 444)
-        Me.CrtPanelBusqueda1.TabIndex = 0
-        Me.CrtPanelBusqueda1.Titulo = "Orden de Salida"
-        Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
         '
         'fechahasta
         '
@@ -64,6 +53,58 @@ Partial Class frmBusquedaOrdenSalida
         Me.Label5.Size = New System.Drawing.Size(66, 13)
         Me.Label5.TabIndex = 21
         Me.Label5.Text = "Fecha hasta"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(35, 129)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 18
+        Me.Label4.Text = "Código"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(528, 154)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(105, 13)
+        Me.Label3.TabIndex = 16
+        Me.Label3.Text = "Sucursal destinataria"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(528, 129)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(105, 13)
+        Me.Label2.TabIndex = 15
+        Me.Label2.Text = "Sucursal proveedora"
+        '
+        'fecha
+        '
+        Me.fecha.Location = New System.Drawing.Point(322, 125)
+        Me.fecha.Name = "fecha"
+        Me.fecha.Size = New System.Drawing.Size(200, 20)
+        Me.fecha.TabIndex = 14
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(251, 131)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.TabIndex = 13
+        Me.Label1.Text = "Fecha desde"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(840, 123)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(68, 23)
+        Me.Button1.TabIndex = 23
+        Me.Button1.Text = "Buscar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'cmbSucursalDestinatario
         '
@@ -91,15 +132,6 @@ Partial Class frmBusquedaOrdenSalida
         Me.cmbSucursalSolicitante.Size = New System.Drawing.Size(201, 21)
         Me.cmbSucursalSolicitante.TabIndex = 19
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(35, 129)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 13)
-        Me.Label4.TabIndex = 18
-        Me.Label4.Text = "Código"
-        '
         'txtcodigo
         '
         Me.txtcodigo.BackColor = System.Drawing.SystemColors.Window
@@ -118,48 +150,16 @@ Partial Class frmBusquedaOrdenSalida
         Me.txtcodigo.ValorInt = Nothing
         Me.txtcodigo.ValorLong = Nothing
         '
-        'Label3
+        'CrtPanelBusqueda1
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(528, 154)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(105, 13)
-        Me.Label3.TabIndex = 16
-        Me.Label3.Text = "Sucursal destinataria"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(528, 129)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(98, 13)
-        Me.Label2.TabIndex = 15
-        Me.Label2.Text = "Sucursal solicitante"
-        '
-        'fecha
-        '
-        Me.fecha.Location = New System.Drawing.Point(322, 125)
-        Me.fecha.Name = "fecha"
-        Me.fecha.Size = New System.Drawing.Size(200, 20)
-        Me.fecha.TabIndex = 14
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(251, 131)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
-        Me.Label1.TabIndex = 13
-        Me.Label1.Text = "Fecha desde"
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(840, 123)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(68, 23)
-        Me.Button1.TabIndex = 23
-        Me.Button1.Text = "Buscar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CrtPanelBusqueda1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtPanelBusqueda1.Entidad = Nothing
+        Me.CrtPanelBusqueda1.Location = New System.Drawing.Point(0, 0)
+        Me.CrtPanelBusqueda1.Name = "CrtPanelBusqueda1"
+        Me.CrtPanelBusqueda1.Size = New System.Drawing.Size(949, 444)
+        Me.CrtPanelBusqueda1.TabIndex = 0
+        Me.CrtPanelBusqueda1.Titulo = "Orden de Salida"
+        Me.CrtPanelBusqueda1.VisiblePanelPrincipal = True
         '
         'frmBusquedaOrdenSalida
         '

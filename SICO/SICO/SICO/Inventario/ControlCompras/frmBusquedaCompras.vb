@@ -25,6 +25,7 @@ Public Class frmBusquedaCompras
         CrtPanelBusqueda1.GridResultados.DarFormato("facturacompra", "Factura de Compra", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("fechacompra", "Fecha de Compra", True)
         CrtPanelBusqueda1.GridResultados.DarFormato("totalcompra", "Total", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionEstado", "Estado", True)
 
         cmbProveedor.Entidad = New Proveedores
 

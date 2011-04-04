@@ -11,6 +11,7 @@ Public Class Compras
     Private _listaDetalle As New List(Of DetalleCompras)
     Private _proveedor As New Proveedores
     Private _diccionario As New Dictionary(Of Long, DetalleCompras)
+    Private _estado As String = ""
 #End Region
 
 #Region "Constructor"
@@ -28,6 +29,7 @@ Public Class Compras
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idproveedor"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("fechacompra"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("totalcompra"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("estado"))
 
         Me.TablaEliminar = "compras"
 
@@ -125,6 +127,30 @@ Public Class Compras
             Return CalcularTotal() * GeneralesConstantes.Impuesto
         End Get
     End Property
+
+    Public Property Estado() As String
+        Get
+            Return _estado
+        End Get
+        Set(ByVal value As String)
+            _estado = value
+        End Set
+    End Property
+
+    Public ReadOnly Property DescripcionEstado() As String
+        Get
+            If Estado.ToUpper = "P" Then
+                Return "En Proceso"
+            End If
+            If Estado.ToUpper = "C" Then
+                Return "Confirmada"
+            End If
+
+
+            Return String.Empty
+        End Get
+    End Property
+
 #End Region
 
 #Region "Metodos"
@@ -135,8 +161,9 @@ Public Class Compras
         Me.fechacompra = Registro(Indice, "fechacompra")
         Me.idsucursal = Registro(Indice, "idsucursal")
         Me.totalcompra = Registro(Indice, "totalcompra")
+        Me.Estado = Registro(Indice, "estadocompra")
 
-        _proveedor = New Proveedores(Registro(Indice, "idproveedor"), Registro(Indice, "identidades"), Registro(Indice, "estado"), Registro(Indice, "idcontacto"), Registro(Indice, "descripcion"))
+        _proveedor = New Proveedores(Registro(Indice, "idproveedor"), Registro(Indice, "identidades"), Registro(Indice, "estadoproveedor"), Registro(Indice, "idcontacto"), Registro(Indice, "descripcion"))
 
         MyBase.CargadoPropiedades(Indice)
     End Sub
@@ -149,6 +176,7 @@ Public Class Compras
         Me.ValorParametrosMantenimiento("idproveedor", Me.idproveedor)
         Me.ValorParametrosMantenimiento("fechacompra", Me.fechacompra)
         Me.ValorParametrosMantenimiento("totalcompra", Me.totalcompra)
+        Me.ValorParametrosMantenimiento("estado", Me.Estado)
 
         MyBase.Guardar(True)
     End Sub
@@ -158,6 +186,7 @@ Public Class Compras
         For i As Integer = 0 To Me.TotalRegistros - 1
             Me.CargadoPropiedades(i)
             Dim tempC As New Compras(Me.Id, Me.facturacompra, Me.idsucursal, Me.idproveedor, Me.fechacompra, Me.totalcompra, Me.Proveedor)
+            tempC.Estado = Me.Estado
             list.Add(tempC)
         Next
         Return list
@@ -176,11 +205,12 @@ Public Class Compras
         Try
             Me.IniciarTransaccion()
             Me.CalcularDetalle()
+            Me.Estado = "P"
             Me.Guardar()
             Dim flag As Boolean = False
             For Each i In _diccionario
                 If i.Value.idproducto > 0 Then
-                    i.Value.idcompras  = Me.Id
+                    i.Value.idcompras = Me.Id
                     i.Value.idsucursal = Me.idsucursal
                     If i.Value.cantidad > 0 And i.Value.preciocompra > 0 Then
                         i.Value.Guardar()
@@ -236,6 +266,40 @@ Public Class Compras
             d.Buscar(Me.Id, Nothing)
             _listaDetalle = d.TablaAColeccion
         End If
+    End Sub
+
+    Public Sub ConfirmarCompra()
+        Dim e As String = Estado
+        Try
+            Me.IniciarTransaccion()
+            Me.CalcularDetalle()
+            Me.Estado = "C"
+            Me.Guardar()
+            Dim flag As Boolean = False
+            For Each i In _diccionario
+                If i.Value.idproducto > 0 Then
+                    i.Value.idcompras = Me.Id
+                    i.Value.idsucursal = Me.idsucursal
+                    If i.Value.cantidad > 0 And i.Value.preciocompra > 0 Then
+                        i.Value.Guardar()
+                        Dim inv As New InventarioTrigger
+                        inv.ModificarInventario(Me.idsucursal, i.Value.idproducto, i.Value.cantidad)
+
+                    Else
+                        Throw New ApplicationException("La cantidad o el precio de compra de un producto no puede ser 0")
+                    End If
+                End If
+
+            Next
+
+            Me.CommitTransaccion()
+
+        Catch ex As Exception
+            Me.Estado = e
+
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
     End Sub
 
 #End Region
