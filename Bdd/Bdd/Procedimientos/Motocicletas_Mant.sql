@@ -31,11 +31,11 @@ select count(c.id) from motocicletas c where c.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO motocicletas(motor,chasis,idmarca,idmodelos,idtiposmotocicletas,idsucursales,cilindraje
-                           ,anio,precioventa,precioingreso,estado,hp,idproveedor,usu,fmodif)
+  INSERT INTO motocicletas(motor,chasis,idmarcas,idmodelos,idtiposmotocicletas,idsucursales,cilindraje
+                           ,anio,precioventa,precioingreso,fechaingreso,estado,hp,idproveedor,usu,fmodif)
 
-  VALUES(motor,chasis,idmarca,idmodelos,idtiposmotocicletas,idsucursales,cilindraje
-                           ,anio,precioventa,precioingreso,estado,hp,idproveedor,usu,fmodif);
+  VALUES(motor,chasis,idmarcas,idmodelos,idtiposmotocicletas,idsucursales,cilindraje
+                           ,anio,precioventa,precioingreso,fechaingreso,estado,hp,idproveedor,usu,fmodif);
 
   select last_insert_id() into id;
 

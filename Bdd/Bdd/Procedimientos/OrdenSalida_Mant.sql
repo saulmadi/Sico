@@ -45,6 +45,7 @@ else
         c.enviadopor=enviadopor,
         c.recibidopor=recibidopor,
         c.sucursalenvia=sucursalenvia,
+        c.sucursalrecibe=sucursalrecibe,
         c.estado=estado,
         c.requisicion=requisicion,
         c.usu=usu,
