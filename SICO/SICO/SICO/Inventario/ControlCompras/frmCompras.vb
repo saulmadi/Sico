@@ -43,12 +43,15 @@ Public Class frmCompras
                     cmbProveedor.DisplayMember = "NombreMantenimiento"
                     cmbProveedor.ValueMember = "Id"
                 End If
+                cmbProveedor.Enabled = True
 
                 If cmbSucursales.Items.Count = 0 Then
                     cmbSucursales.Inicialiazar()
+
                     cmbProveedor.DisplayMember = "NombreMantenimiento"
                     cmbProveedor.ValueMember = "Id"
                 End If
+                cmbSucursales.Enabled = True
                 Me.grdDetalle.BotonEliminar = True
                 Me.grdDetalle.BotonBuscar = True
 
@@ -60,14 +63,17 @@ Public Class frmCompras
                 dteFechaCompra.Value = Now
 
                 value.ListaDetalle.Clear()
-
+                txtFacturCompra.Enabled = True
                 For i As Integer = 1 To 50
                     value.ListaDetalle.Add(New DetalleCompras)
                 Next
 
                 grdDetalle.DataSource = value.ListaDetalle
+                grdDetalle.ReadOnly = False
                 PanelAccion1.BotonNuevo.Enabled = True
                 lblEstado.Text = value.DescripcionEstado
+                
+                PanelAccion1.BotonEliminar.Visible = False
             Else
                 If cmbProveedor.Items.Count = 0 Then
                     cmbProveedor.Entidad = New Proveedores
@@ -102,17 +108,25 @@ Public Class frmCompras
                     PanelAccion1.BotonEliminar.Visible = True
                     PanelAccion1.BotonEliminar.Text = "Confirmar"
 
-                    BloquearDesbloquarControles(Me, True, System.Type.GetType("ComboBox"))
-
+                    BloquearDesbloquarControles(Me, True, (New ComboBox).GetType)
+                    BloquearDesbloquarControles(Me, True, (New CajaTexto).GetType)
 
                 Else
-                    BloquearDesbloquarControles(Me, True, System.Type.GetType("ComboBox"))
-                    BloquearDesbloquarControles(Me, True, System.Type.GetType("TextBox"))
+                    BloquearDesbloquarControles(Me, False, (New ListaDesplegable).GetType)
+                    BloquearDesbloquarControles(Me, False, (New CajaTexto).GetType)
                     grdDetalle.ReadOnly = True
+                    PanelAccion1.BotonEliminar.Visible = False
+
+                    Me.PanelAccion1.BotonGuardar.Enabled = False
 
                 End If
 
                 value.CargarDetalle()
+                If value.Estado.ToUpper = "P" Then
+                    For i As Integer = value.ListaDetalle.Count To 50
+                        value.ListaDetalle.Add(New DetalleCompras())
+                    Next
+                End If
                 grdDetalle.DataSource = _compras.ListaDetalle
             End If
             txtimpuesto.Text = value.Impuesto
@@ -254,7 +268,41 @@ Public Class frmCompras
         f.Show(re, "Compras")
 
     End Sub
+
+    Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
+        Try
+            Dim vali As New Validador
+            vali.ColecionCajasTexto.Add(txtFacturCompra)
+            If vali.PermitirIngresar Then
+                If Not cmbProveedor.SelectedItem Is Nothing Then
+                    If Not cmbSucursales.SelectedItem Is Nothing Then
+                        Me.PanelAccion1.BarraProgreso.Value = 50
+                        Me.PanelAccion1.lblEstado.Text = "Guardando..."
+                        Me.Compras.facturacompra = txtFacturCompra.ValorLong
+                        Me.Compras.idproveedor = cmbProveedor.SelectedValue
+                        Me.Compras.idsucursal = cmbSucursales.SelectedValue
+                        Me.Compras.fechacompra = dteFechaCompra.Value
+
+                        Me.Compras.ConfirmarCompra()
+                        _compras.Id = Compras.Id
+                        Me.Compras = _compras
+                        Me.PanelAccion1.BarraProgreso.Value = 100
+                        Me.PanelAccion1.lblEstado.Text = "Compra guardada exitosamente"
+
+                    Else
+                        PanelAccion1.lblEstado.Text = "Seleccione la sucursal destino del prodcuto"
+                    End If
+                Else
+                    PanelAccion1.lblEstado.Text = "Seleccione un proveedor.."
+                End If
+            Else
+                PanelAccion1.lblEstado.Text = vali.MensajesError
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
 #End Region
-  
-   
+    
 End Class
