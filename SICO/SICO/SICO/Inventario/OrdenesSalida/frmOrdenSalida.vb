@@ -165,14 +165,17 @@ Public Class frmOrdenSalida
 
             Grid.DataSource = Nothing
             Me.OrdenSalidas.CargarDetalle()
-            For i As Integer = OrdenSalidas.Listadetalle.Count To 50
-                OrdenSalidas.Listadetalle.Add(New DetalleOrdenSalida(PanelAccion1.sucursal.Id))
-            Next
+            If OrdenSalidas.estado.ToUpper = "P" Then
+                For i As Integer = OrdenSalidas.Listadetalle.Count To 50
+                    OrdenSalidas.Listadetalle.Add(New DetalleOrdenSalida(PanelAccion1.sucursal.Id))
+                Next
+            End If
+
             Grid.DataSource = Me.OrdenSalidas.Listadetalle
 
             calculartotales()
 
-        End If
+            End If
     End Sub
 #End Region
 
