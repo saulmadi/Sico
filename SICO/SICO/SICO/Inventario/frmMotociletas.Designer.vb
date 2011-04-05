@@ -350,6 +350,8 @@ Partial Class frmMotociletas
         '
         Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
         Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TabPage2.Controls.Add(Me.txtpreciocompra)
+        Me.TabPage2.Controls.Add(Me.txtprecioventa)
         Me.TabPage2.Controls.Add(Me.cmbProveedor)
         Me.TabPage2.Controls.Add(Me.cmbSucursales)
         Me.TabPage2.Controls.Add(Me.Label12)
@@ -358,8 +360,6 @@ Partial Class frmMotociletas
         Me.TabPage2.Controls.Add(Me.Label10)
         Me.TabPage2.Controls.Add(Me.Label9)
         Me.TabPage2.Controls.Add(Me.Label4)
-        Me.TabPage2.Controls.Add(Me.txtpreciocompra)
-        Me.TabPage2.Controls.Add(Me.txtprecioventa)
         Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
@@ -470,9 +470,8 @@ Partial Class frmMotociletas
         Me.txtpreciocompra.Name = "txtpreciocompra"
         Me.txtpreciocompra.Size = New System.Drawing.Size(335, 20)
         Me.txtpreciocompra.TabIndex = 21
-        Me.txtpreciocompra.Text = "0.00"
         Me.txtpreciocompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtpreciocompra.Texto = "0.00"
+        Me.txtpreciocompra.Texto = Nothing
         Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtpreciocompra.ValorInt = Nothing
         Me.txtpreciocompra.ValorLong = Nothing
@@ -492,9 +491,8 @@ Partial Class frmMotociletas
         Me.txtprecioventa.Name = "txtprecioventa"
         Me.txtprecioventa.Size = New System.Drawing.Size(335, 20)
         Me.txtprecioventa.TabIndex = 19
-        Me.txtprecioventa.Text = "0.00"
         Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtprecioventa.Texto = "0.00"
+        Me.txtprecioventa.Texto = Nothing
         Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtprecioventa.ValorInt = Nothing
         Me.txtprecioventa.ValorLong = Nothing

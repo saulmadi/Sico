@@ -182,7 +182,7 @@ Public Class frmMotociletas
                     Me.Motocicletas.idmarcas = cmbMarca.SelectedValue
                     Me.Motocicletas.idmodelos = cmbModelo.SelectedValue
                     Me.Motocicletas.idTiposMotocicletas = cmbTipoMotocicleta.SelectedValue
-
+                    Me.Motocicletas.estado = "I"
                     Me.Motocicletas.precioventa = txtprecioventa.Text
                     Me.Motocicletas.preciocompra = txtpreciocompra.Text
                     Me.Motocicletas.fechaingreso = dtefechacompra.Value
