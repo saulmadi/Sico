@@ -273,7 +273,7 @@ Public Class Motocicletas
         Me.fechaingreso = Registro(Indice, "fechaingreso")
         Me.DescripcionMarcas = Registro(Indice, "descripcionmarcas")
         Me.DescripcionModelos = Registro(Indice, "descripcionmodelos")
-        Me.Sucursal = New Sucursales(Me.idSucursales, Registro(Indice, "identidades"), Registro(Indice, "descripcion"))
+        Me.Sucursal = New Sucursales(Me.idSucursales, Convert.ToInt64(Registro(Indice, "identidades")), Registro(Indice, "descripcion"))
         Me.HP = Registro(Indice, "hp")
         Me.idProveedor = Registro(Indice, "idproveedor")
 
@@ -332,7 +332,7 @@ Public Class Motocicletas
             tempMoto.HP = Me.HP
             tempMoto.idProveedor = Me.idProveedor
             tempMoto.Sucursal = Me.Sucursal
-
+            lista.Add(tempMoto)
         Next
         Return lista
     End Function
