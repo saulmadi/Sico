@@ -26,7 +26,6 @@ Partial Class frmCompras
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCompras))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label4 = New System.Windows.Forms.Label
@@ -39,32 +38,33 @@ Partial Class frmCompras
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.lblEstado = New System.Windows.Forms.Label
         Me.grpCompra = New System.Windows.Forms.GroupBox
-        Me.txtFacturCompra = New SICO.ctrla.CajaTexto(Me.components)
-        Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.Label8 = New System.Windows.Forms.Label
         Me.Label7 = New System.Windows.Forms.Label
         Me.Label13 = New System.Windows.Forms.Label
         Me.dteFechaCompra = New System.Windows.Forms.DateTimePicker
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.cmbProveedor = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.txtTelefono = New System.Windows.Forms.TextBox
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label1 = New System.Windows.Forms.Label
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
+        Me.txtFacturCompra = New SICO.ctrla.CajaTexto(Me.components)
+        Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
+        Me.cmbProveedor = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.lblEstado = New System.Windows.Forms.Label
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
-        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.grpCompra.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -90,26 +90,6 @@ Partial Class frmCompras
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
-        '
-        'grdDetalle
-        '
-        Me.grdDetalle.AllowUserToAddRows = False
-        Me.grdDetalle.AllowUserToDeleteRows = False
-        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grdDetalle.BotonBuscar = False
-        Me.grdDetalle.BotonEditar = False
-        Me.grdDetalle.BotonEliminar = False
-        Me.grdDetalle.CampoId = "id"
-        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetalle.MultiSelect = False
-        Me.grdDetalle.Name = "grdDetalle"
-        Me.grdDetalle.RowHeadersVisible = False
-        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.grdDetalle.Size = New System.Drawing.Size(849, 225)
-        Me.grdDetalle.TabIndex = 10
         '
         'Panel7
         '
@@ -229,6 +209,15 @@ Partial Class frmCompras
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos Generales"
         '
+        'lblEstado
+        '
+        Me.lblEstado.Location = New System.Drawing.Point(620, 8)
+        Me.lblEstado.Name = "lblEstado"
+        Me.lblEstado.Size = New System.Drawing.Size(223, 21)
+        Me.lblEstado.TabIndex = 13
+        Me.lblEstado.Text = "Label2"
+        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'grpCompra
         '
         Me.grpCompra.Controls.Add(Me.txtFacturCompra)
@@ -244,40 +233,6 @@ Partial Class frmCompras
         Me.grpCompra.TabIndex = 12
         Me.grpCompra.TabStop = False
         Me.grpCompra.Text = "Datos de compra"
-        '
-        'txtFacturCompra
-        '
-        Me.txtFacturCompra.BackColor = System.Drawing.SystemColors.Window
-        Me.txtFacturCompra.ColorError = System.Drawing.Color.Red
-        Me.txtFacturCompra.EnterPorTab = True
-        Me.txtFacturCompra.EsObligatorio = True
-        Me.txtFacturCompra.ExpresionValidacion = Nothing
-        Me.txtFacturCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFacturCompra.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtFacturCompra.Location = New System.Drawing.Point(112, 13)
-        Me.txtFacturCompra.MaxLength = 11
-        Me.txtFacturCompra.MensajeError = Nothing
-        Me.txtFacturCompra.Name = "txtFacturCompra"
-        Me.txtFacturCompra.Size = New System.Drawing.Size(300, 20)
-        Me.txtFacturCompra.TabIndex = 13
-        Me.txtFacturCompra.Texto = Nothing
-        Me.txtFacturCompra.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.txtFacturCompra.ValorInt = Nothing
-        Me.txtFacturCompra.ValorLong = Nothing
-        '
-        'cmbSucursales
-        '
-        Me.cmbSucursales.CargarAutoCompletar = False
-        Me.cmbSucursales.CargarComboBox = True
-        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbSucursales.FormattingEnabled = True
-        Me.cmbSucursales.Location = New System.Drawing.Point(112, 65)
-        Me.cmbSucursales.Name = "cmbSucursales"
-        Me.cmbSucursales.ParametroAutocompletar = Nothing
-        Me.cmbSucursales.ParametroBusquedaPadre = Nothing
-        Me.cmbSucursales.SelectedItem = Nothing
-        Me.cmbSucursales.Size = New System.Drawing.Size(300, 21)
-        Me.cmbSucursales.TabIndex = 12
         '
         'Label8
         '
@@ -330,22 +285,6 @@ Partial Class frmCompras
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos del Proveedor"
         '
-        'cmbProveedor
-        '
-        Me.cmbProveedor.CargarAutoCompletar = False
-        Me.cmbProveedor.CargarComboBox = True
-        Me.cmbProveedor.DisplayMember = "NombreMantenimiento"
-        Me.cmbProveedor.Enabled = False
-        Me.cmbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbProveedor.FormattingEnabled = True
-        Me.cmbProveedor.Location = New System.Drawing.Point(69, 19)
-        Me.cmbProveedor.Name = "cmbProveedor"
-        Me.cmbProveedor.ParametroAutocompletar = Nothing
-        Me.cmbProveedor.ParametroBusquedaPadre = Nothing
-        Me.cmbProveedor.Size = New System.Drawing.Size(332, 21)
-        Me.cmbProveedor.TabIndex = 6
-        Me.cmbProveedor.ValueMember = "Id"
-        '
         'txtTelefono
         '
         Me.txtTelefono.Enabled = False
@@ -391,6 +330,76 @@ Partial Class frmCompras
         Me.Panel6.Size = New System.Drawing.Size(31, 136)
         Me.Panel6.TabIndex = 0
         '
+        'grdDetalle
+        '
+        Me.grdDetalle.AllowUserToAddRows = False
+        Me.grdDetalle.AllowUserToDeleteRows = False
+        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdDetalle.BotonBuscar = False
+        Me.grdDetalle.BotonEditar = False
+        Me.grdDetalle.BotonEliminar = False
+        Me.grdDetalle.CampoId = "id"
+        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetalle.MultiSelect = False
+        Me.grdDetalle.Name = "grdDetalle"
+        Me.grdDetalle.RowHeadersVisible = False
+        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.grdDetalle.Size = New System.Drawing.Size(849, 225)
+        Me.grdDetalle.TabIndex = 10
+        '
+        'txtFacturCompra
+        '
+        Me.txtFacturCompra.BackColor = System.Drawing.SystemColors.Window
+        Me.txtFacturCompra.ColorError = System.Drawing.Color.Red
+        Me.txtFacturCompra.EnterPorTab = True
+        Me.txtFacturCompra.EsObligatorio = True
+        Me.txtFacturCompra.ExpresionValidacion = Nothing
+        Me.txtFacturCompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFacturCompra.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtFacturCompra.Location = New System.Drawing.Point(112, 13)
+        Me.txtFacturCompra.MaxLength = 11
+        Me.txtFacturCompra.MensajeError = Nothing
+        Me.txtFacturCompra.Name = "txtFacturCompra"
+        Me.txtFacturCompra.Size = New System.Drawing.Size(300, 20)
+        Me.txtFacturCompra.TabIndex = 13
+        Me.txtFacturCompra.Texto = Nothing
+        Me.txtFacturCompra.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtFacturCompra.ValorInt = Nothing
+        Me.txtFacturCompra.ValorLong = Nothing
+        '
+        'cmbSucursales
+        '
+        Me.cmbSucursales.CargarAutoCompletar = False
+        Me.cmbSucursales.CargarComboBox = True
+        Me.cmbSucursales.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbSucursales.FormattingEnabled = True
+        Me.cmbSucursales.Location = New System.Drawing.Point(112, 65)
+        Me.cmbSucursales.Name = "cmbSucursales"
+        Me.cmbSucursales.ParametroAutocompletar = Nothing
+        Me.cmbSucursales.ParametroBusquedaPadre = Nothing
+        Me.cmbSucursales.SelectedItem = Nothing
+        Me.cmbSucursales.Size = New System.Drawing.Size(300, 21)
+        Me.cmbSucursales.TabIndex = 12
+        '
+        'cmbProveedor
+        '
+        Me.cmbProveedor.CargarAutoCompletar = False
+        Me.cmbProveedor.CargarComboBox = True
+        Me.cmbProveedor.DisplayMember = "NombreMantenimiento"
+        Me.cmbProveedor.Enabled = False
+        Me.cmbProveedor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbProveedor.FormattingEnabled = True
+        Me.cmbProveedor.Location = New System.Drawing.Point(69, 19)
+        Me.cmbProveedor.Name = "cmbProveedor"
+        Me.cmbProveedor.ParametroAutocompletar = Nothing
+        Me.cmbProveedor.ParametroBusquedaPadre = Nothing
+        Me.cmbProveedor.Size = New System.Drawing.Size(332, 21)
+        Me.cmbProveedor.TabIndex = 6
+        Me.cmbProveedor.ValueMember = "Id"
+        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
@@ -413,15 +422,6 @@ Partial Class frmCompras
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
-        'lblEstado
-        '
-        Me.lblEstado.Location = New System.Drawing.Point(620, 8)
-        Me.lblEstado.Name = "lblEstado"
-        Me.lblEstado.Size = New System.Drawing.Size(223, 21)
-        Me.lblEstado.TabIndex = 13
-        Me.lblEstado.Text = "Label2"
-        Me.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
         'frmCompras
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -437,7 +437,6 @@ Partial Class frmCompras
         Me.Text = "Compras"
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
-        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
@@ -447,6 +446,7 @@ Partial Class frmCompras
         Me.grpCompra.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
