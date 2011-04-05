@@ -26,7 +26,7 @@ set @join = " inner join marcas ma on m.idmarcas=ma.id
               inner join modelos mo on m.idmodelos=mo.id
               inner join vsucursal s on m.idsucursales= s.idsucursal ";
 
-set @campos= concat( @campos," m.*,s.*,mo.descripcion as descricpionmodelos , ma.descripcion as descripcionmarcas ");
+set @campos= concat( @campos," m.*,s.*,mo.descripcion as descripcionmodelos , ma.descripcion as descripcionmarcas ");
 
 set @from= concat(@from," from motocicletas m ");
 

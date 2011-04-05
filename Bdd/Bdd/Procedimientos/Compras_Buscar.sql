@@ -18,7 +18,7 @@ set @orden= "order by id ";
 set @sql="";
 set @join=" join vproveedores v on v.idproveedor= o.idproveedor ";
 
-set @campos= concat( @campos," * ");
+set @campos= concat( @campos," o.*,v.*, v.estado as estadoproveedor,o.estado as estadocompra ");
 
 set @from= concat(@from," from compras o");
 

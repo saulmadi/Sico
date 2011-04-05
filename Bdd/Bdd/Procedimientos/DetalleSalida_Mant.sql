@@ -24,7 +24,7 @@ if @conteo =0 then
 
   VALUES(idsalida,idproducto,cantidad,usu,fmodif);
 
-  CALL Inventarios_Triggers(idsucursal,idproducto,(cantidad * -1),usu,fmodif);
+  /*CALL Inventarios_Triggers(idsucursal,idproducto,(cantidad * -1),usu,fmodif);*/
 
 
   select last_insert_id() into id;
