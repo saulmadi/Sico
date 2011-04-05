@@ -219,7 +219,7 @@ Partial Class frmMotociletas
         Me.txtanio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtanio.ForeColor = System.Drawing.SystemColors.ControlText
         Me.txtanio.Location = New System.Drawing.Point(112, 115)
-        Me.txtanio.MaxLength = 3
+        Me.txtanio.MaxLength = 4
         Me.txtanio.MensajeError = "Ingrese el año"
         Me.txtanio.Name = "txtanio"
         Me.txtanio.Size = New System.Drawing.Size(335, 20)
@@ -470,8 +470,9 @@ Partial Class frmMotociletas
         Me.txtpreciocompra.Name = "txtpreciocompra"
         Me.txtpreciocompra.Size = New System.Drawing.Size(335, 20)
         Me.txtpreciocompra.TabIndex = 21
+        Me.txtpreciocompra.Text = "0.00"
         Me.txtpreciocompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtpreciocompra.Texto = Nothing
+        Me.txtpreciocompra.Texto = "0.00"
         Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtpreciocompra.ValorInt = Nothing
         Me.txtpreciocompra.ValorLong = Nothing
@@ -491,8 +492,9 @@ Partial Class frmMotociletas
         Me.txtprecioventa.Name = "txtprecioventa"
         Me.txtprecioventa.Size = New System.Drawing.Size(335, 20)
         Me.txtprecioventa.TabIndex = 19
+        Me.txtprecioventa.Text = "0.00"
         Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtprecioventa.Texto = Nothing
+        Me.txtprecioventa.Texto = "0.00"
         Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
         Me.txtprecioventa.ValorInt = Nothing
         Me.txtprecioventa.ValorLong = Nothing

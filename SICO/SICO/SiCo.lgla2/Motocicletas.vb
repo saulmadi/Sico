@@ -7,7 +7,7 @@ Public Class Motocicletas
     Private _Motor As String
     Private _Chasis As String
     Private _Cilindraje As Integer
-    Private _estado As String
+    Private _estado As String = String.Empty
     Private _anio As Integer
     Private _fechaingreso As Date
     Private _idmarcas As Long
@@ -15,6 +15,7 @@ Public Class Motocicletas
     Private _idSucursales As Long
     Private _idTiposMotocicletas As Long
     Private _PrecioCompra As Decimal
+
     Private _PrecionVenta As Decimal
     Private _descripcionMarcas As String
     Private _descripcionModelos As String
@@ -43,7 +44,7 @@ Public Class Motocicletas
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("chasis"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idmarcas"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idmodelos"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idtipomotociletas"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idtiposmotocicletas"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idsucursales"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("cilindraje"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("anio"))
@@ -168,7 +169,7 @@ Public Class Motocicletas
             Return _PrecioCompra
         End Get
         Set(ByVal value As Integer)
-            _PrecionVenta = value
+            _PrecioCompra = value
         End Set
     End Property
 
@@ -286,12 +287,14 @@ Public Class Motocicletas
         Me.ValorParametrosMantenimiento("chasis", Me.Chasis)
         Me.ValorParametrosMantenimiento("idmarcas", Me.idmarcas)
         Me.ValorParametrosMantenimiento("idmodelos", Me.idmodelos)
-        Me.ValorParametrosMantenimiento("idTiposMotociletas", Me.idTiposMotocicletas)
+        Me.ValorParametrosMantenimiento("idtiposmotocicletas", Me.idTiposMotocicletas)
         Me.ValorParametrosMantenimiento("idSucursales", Me.idSucursales)
         Me.ValorParametrosMantenimiento("cilindraje", Me.cilindraje)
         Me.ValorParametrosMantenimiento("anio", Me.anio)
         Me.ValorParametrosMantenimiento("precioventa", Me.precioventa)
         Me.ValorParametrosMantenimiento("precioingreso", Me.preciocompra)
+        Me.ValorParametrosMantenimiento("fechaingreso", Me.fechaingreso)
+
         Me.ValorParametrosMantenimiento("estado", Me.estado)
         Me.ValorParametrosMantenimiento("hp", Me.HP)
         Me.ValorParametrosMantenimiento("idproveedor", Me.idProveedor)

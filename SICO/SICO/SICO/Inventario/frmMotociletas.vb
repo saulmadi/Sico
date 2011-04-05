@@ -5,7 +5,7 @@ Imports SICO.ctrla2
 Public Class frmMotociletas
 
 #Region "Declaraciones"
-    Private _mototicletas As Motocicletas
+    Private _mototicletas As New Motocicletas
 #End Region
 
 #Region "Propidades"
