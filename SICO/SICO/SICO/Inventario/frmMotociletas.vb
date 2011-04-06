@@ -86,7 +86,10 @@ Public Class frmMotociletas
 
         If Me.Motocicletas.Id = 0 Then
             limpiar(Me)
-
+            cmbMarca.SelectedIndex = -1
+            cmbTipoMotocicleta.SelectedIndex = -1
+            cmbProveedor.SelectedIndex = -1
+            cmbSucursales.SelectedIndex = -1
         Else
             If Me.cmbMarca.Items.Count = 0 Then
                 cmbMarca.IncializarCarga()
