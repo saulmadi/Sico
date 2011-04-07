@@ -85,4 +85,11 @@ Public Class frmMotocicletasBusqueda
     Private Sub btnBuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
         cargar()
     End Sub
+
+    Private Sub CrtPanelBusqueda1_Editar() Handles CrtPanelBusqueda1.Editar
+        frm = New frmMotociletas
+        frm.MdiParent = Me.MdiParent
+        frm.Show()
+        frm.Motocicletas = CrtPanelBusqueda1.GridResultados.Item
+    End Sub
 End Class

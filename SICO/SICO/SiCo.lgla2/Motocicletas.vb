@@ -60,6 +60,7 @@ Public Class Motocicletas
     Public Sub New(ByVal id As Long, ByVal motor As String, ByVal chasis As String, ByVal idmarcas As Long, ByVal idmodelos As Long, ByVal idTiposMotocicletas As Long _
                    , ByVal idsucursales As Long, ByVal cilindraje As Long, ByVal anio As Integer, ByVal precioventa As Decimal, ByVal preciocompra As Decimal, _
                    ByVal fechaingreso As Date, ByVal estado As String)
+        Me.New()
         Me._Id = id
         Me.Motor = motor
         Me.Chasis = chasis

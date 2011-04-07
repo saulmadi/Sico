@@ -24,7 +24,7 @@ Partial Class frmProductos
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Dim Imagenes1 As SICO.lgla2.Imagenes = New SICO.lgla2.Imagenes
+
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmProductos))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
@@ -318,11 +318,8 @@ Partial Class frmProductos
         '
         Me.CrtImagen1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.CrtImagen1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Imagenes1.Id = CType(0, Long)
-        Imagenes1.IdImagenes = CType(0, Long)
-        Imagenes1.ImagenBinaria = Nothing
-        Imagenes1.TablaBusqueda = "ProductosImagenes"
-        Me.CrtImagen1.Imagenes = Imagenes1
+        
+
         Me.CrtImagen1.Location = New System.Drawing.Point(3, 16)
         Me.CrtImagen1.Name = "CrtImagen1"
         Me.CrtImagen1.Size = New System.Drawing.Size(192, 182)
