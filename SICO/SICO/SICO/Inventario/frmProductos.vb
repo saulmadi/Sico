@@ -89,7 +89,7 @@ Public Class frmProductos
         Grid1.DarFormato("cantidad", "Cantidad Comprada", True)
         Grid1.DarFormato("preciocompra", "Precio de Compra", True)
 
-
+        Me.CrtImagen1.Tabla = "ProductosImagenes"
 
     End Sub
 

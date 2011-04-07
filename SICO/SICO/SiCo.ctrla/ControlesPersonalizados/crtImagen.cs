@@ -25,8 +25,8 @@ namespace SiCo.ctrla.ControlesPersonalizados
         public crtImagen()
         {
             InitializeComponent();
+            this.Tabla = "";
 
-            
         }
         #endregion
 
@@ -51,12 +51,14 @@ namespace SiCo.ctrla.ControlesPersonalizados
         #region Metodos
         public void Descargar(long id)
         {
+            this._imagenes.TablaBusqueda = this.Tabla;
             Argumento arg = new Argumento(this._imagenes,id );
             tread.RunWorkerAsync(arg); 
         }
 
         public void Guardar(long id)
         {
+            this.Imagenes.TablaBusqueda = this.Tabla;
             if (_Cambio)
             { 
                 if (pictureBox1.Image != null)
@@ -174,7 +176,9 @@ namespace SiCo.ctrla.ControlesPersonalizados
             public long  _id;
             public Argumento(SiCo.lgla2 .Imagenes imagen,long id)
             {
+
                 _imagen = imagen;
+                
                 _id = id;
             }
         }        
