@@ -45,6 +45,8 @@ Partial Class frmMotociletas
         Me.txtMotor = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
         Me.TabPage2 = New System.Windows.Forms.TabPage
+        Me.txtpreciocompra = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtprecioventa = New SICO.ctrla.CajaTexto(Me.components)
         Me.cmbProveedor = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.cmbSucursales = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.Label12 = New System.Windows.Forms.Label
@@ -53,8 +55,6 @@ Partial Class frmMotociletas
         Me.Label10 = New System.Windows.Forms.Label
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
-        Me.txtpreciocompra = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtprecioventa = New SICO.ctrla.CajaTexto(Me.components)
         Me.TabPage3 = New System.Windows.Forms.TabPage
         Me.TabPage4 = New System.Windows.Forms.TabPage
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
@@ -368,6 +368,48 @@ Partial Class frmMotociletas
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Datos Adminístrativos"
         '
+        'txtpreciocompra
+        '
+        Me.txtpreciocompra.BackColor = System.Drawing.SystemColors.Window
+        Me.txtpreciocompra.ColorError = System.Drawing.Color.Red
+        Me.txtpreciocompra.EnterPorTab = True
+        Me.txtpreciocompra.EsObligatorio = False
+        Me.txtpreciocompra.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtpreciocompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtpreciocompra.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtpreciocompra.Location = New System.Drawing.Point(112, 43)
+        Me.txtpreciocompra.MaxLength = 12
+        Me.txtpreciocompra.MensajeError = Nothing
+        Me.txtpreciocompra.Name = "txtpreciocompra"
+        Me.txtpreciocompra.Size = New System.Drawing.Size(335, 20)
+        Me.txtpreciocompra.TabIndex = 21
+        Me.txtpreciocompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtpreciocompra.Texto = Nothing
+        Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtpreciocompra.ValorInt = Nothing
+        Me.txtpreciocompra.ValorLong = Nothing
+        '
+        'txtprecioventa
+        '
+        Me.txtprecioventa.BackColor = System.Drawing.SystemColors.Window
+        Me.txtprecioventa.ColorError = System.Drawing.Color.Red
+        Me.txtprecioventa.EnterPorTab = True
+        Me.txtprecioventa.EsObligatorio = True
+        Me.txtprecioventa.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtprecioventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtprecioventa.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtprecioventa.Location = New System.Drawing.Point(112, 17)
+        Me.txtprecioventa.MaxLength = 12
+        Me.txtprecioventa.MensajeError = "Ingresar precio de venta"
+        Me.txtprecioventa.Name = "txtprecioventa"
+        Me.txtprecioventa.Size = New System.Drawing.Size(335, 20)
+        Me.txtprecioventa.TabIndex = 19
+        Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtprecioventa.Texto = Nothing
+        Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtprecioventa.ValorInt = Nothing
+        Me.txtprecioventa.ValorLong = Nothing
+        '
         'cmbProveedor
         '
         Me.cmbProveedor.CargarAutoCompletar = False
@@ -455,48 +497,6 @@ Partial Class frmMotociletas
         Me.Label4.TabIndex = 18
         Me.Label4.Text = "Precio de venta"
         '
-        'txtpreciocompra
-        '
-        Me.txtpreciocompra.BackColor = System.Drawing.SystemColors.Window
-        Me.txtpreciocompra.ColorError = System.Drawing.Color.Red
-        Me.txtpreciocompra.EnterPorTab = True
-        Me.txtpreciocompra.EsObligatorio = False
-        Me.txtpreciocompra.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtpreciocompra.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtpreciocompra.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtpreciocompra.Location = New System.Drawing.Point(112, 43)
-        Me.txtpreciocompra.MaxLength = 12
-        Me.txtpreciocompra.MensajeError = Nothing
-        Me.txtpreciocompra.Name = "txtpreciocompra"
-        Me.txtpreciocompra.Size = New System.Drawing.Size(335, 20)
-        Me.txtpreciocompra.TabIndex = 21
-        Me.txtpreciocompra.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtpreciocompra.Texto = Nothing
-        Me.txtpreciocompra.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtpreciocompra.ValorInt = Nothing
-        Me.txtpreciocompra.ValorLong = Nothing
-        '
-        'txtprecioventa
-        '
-        Me.txtprecioventa.BackColor = System.Drawing.SystemColors.Window
-        Me.txtprecioventa.ColorError = System.Drawing.Color.Red
-        Me.txtprecioventa.EnterPorTab = True
-        Me.txtprecioventa.EsObligatorio = True
-        Me.txtprecioventa.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtprecioventa.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtprecioventa.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtprecioventa.Location = New System.Drawing.Point(112, 17)
-        Me.txtprecioventa.MaxLength = 12
-        Me.txtprecioventa.MensajeError = "Ingresar precio de venta"
-        Me.txtprecioventa.Name = "txtprecioventa"
-        Me.txtprecioventa.Size = New System.Drawing.Size(335, 20)
-        Me.txtprecioventa.TabIndex = 19
-        Me.txtprecioventa.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtprecioventa.Texto = Nothing
-        Me.txtprecioventa.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtprecioventa.ValorInt = Nothing
-        Me.txtprecioventa.ValorLong = Nothing
-        '
         'TabPage3
         '
         Me.TabPage3.BackColor = System.Drawing.SystemColors.Control
@@ -555,6 +555,7 @@ Partial Class frmMotociletas
         Me.Controls.Add(Me.PanelAccion1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "frmMotociletas"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Motocicletas"

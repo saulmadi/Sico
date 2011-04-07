@@ -84,11 +84,29 @@ Public Class frmMotociletas
 
 
         If Me.Motocicletas.Id = 0 Then
+
             limpiar(Me)
+            If Me.cmbMarca.Items.Count = 0 Then
+                cmbMarca.CargarParametros()
+            End If
+
+            If Me.cmbProveedor.Items.Count = 0 Then
+                cmbProveedor.CargarParametros()
+            End If
+
+            If Me.cmbSucursales.Items.Count = 0 Then
+                cmbSucursales.Inicialiazar()
+            End If
+
+            If Me.cmbTipoMotocicleta.Items.Count = 0 Then
+                cmbTipoMotocicleta.CargarParametros()
+            End If
+
             cmbMarca.SelectedIndex = -1
             cmbTipoMotocicleta.SelectedIndex = -1
             cmbProveedor.SelectedIndex = -1
             cmbSucursales.SelectedIndex = -1
+            CrtImagen1.limpiar()
         Else
             CrtImagen1.Descargar(Motocicletas.Id)
             If Me.cmbMarca.Items.Count = 0 Then
@@ -100,7 +118,13 @@ Public Class frmMotociletas
             End If
 
             If Me.cmbSucursales.Items.Count = 0 Then
-                cmbSucursales.Inicialiazar()
+                Dim s As New Sucursales
+                s.Buscar()
+
+                cmbSucursales.DisplayMember = "NombreMantenimiento"
+                cmbSucursales.ValueMember = "id"
+                cmbSucursales.DataSource = s.TablaAColeccion
+
             End If
 
             If Me.cmbTipoMotocicleta.Items.Count = 0 Then
@@ -145,21 +169,6 @@ Public Class frmMotociletas
 
         cmbTipoMotocicleta.ColeccionParametros.Add(New SICO.ctrla.ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
 
-        If Me.cmbMarca.Items.Count = 0 Then
-            cmbMarca.CargarParametros()
-        End If
-
-        If Me.cmbProveedor.Items.Count = 0 Then
-            cmbProveedor.CargarParametros()
-        End If
-
-        If Me.cmbSucursales.Items.Count = 0 Then
-            cmbSucursales.Inicialiazar()
-        End If
-
-        If Me.cmbTipoMotocicleta.Items.Count = 0 Then
-            cmbTipoMotocicleta.CargarParametros()
-        End If
 
         Me.PanelAccion1.BotonImprimir.Visible = False
         Me.PanelAccion1.BotonEliminar.Visible = False

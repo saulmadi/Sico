@@ -26,6 +26,11 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             InitializeComponent();
             this.Tabla = "";
+            try
+            { 
+                _imagenes = new SiCo.lgla2.Imagenes(); 
+            }
+            catch { }
 
         }
         #endregion
