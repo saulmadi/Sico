@@ -39,6 +39,7 @@ namespace SiCo.lgla
                 this.ColeccionParametrosMantenimiento.Add(new Parametro("id", null, ParameterDirection.InputOutput));
                 this.ColeccionParametrosMantenimiento.Add(new Parametro("usu", null));
                 this.ColeccionParametrosMantenimiento.Add(new Parametro("fmodif", null));
+                
             }
             catch(Exception ex)
             {

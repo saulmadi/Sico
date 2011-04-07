@@ -58,7 +58,6 @@ Public Class frmMotociletas
         End Try
     End Function
 
-
     Private Function ValidaCombox(ByVal crt As Control, Optional ByVal valor As Boolean = True) As Boolean
 
         Try
@@ -91,6 +90,7 @@ Public Class frmMotociletas
             cmbProveedor.SelectedIndex = -1
             cmbSucursales.SelectedIndex = -1
         Else
+            CrtImagen1.Descargar(Motocicletas.Id)
             If Me.cmbMarca.Items.Count = 0 Then
                 cmbMarca.IncializarCarga()
             End If
@@ -192,6 +192,7 @@ Public Class frmMotociletas
                     Me.Motocicletas.idSucursales = cmbSucursales.SelectedItem.Id
                     Me.Motocicletas.idProveedor = cmbProveedor.SelectedValue
                     Motocicletas.Guardar()
+                    Me.CrtImagen1.Guardar(Motocicletas.Id)
 
                 Else
                     PanelAccion1.EstadoMensaje = valida.MensajesError
