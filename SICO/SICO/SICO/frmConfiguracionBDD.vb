@@ -63,8 +63,10 @@ Public Class frmConfiguracionBDD
 
                     If Not Me.ListaSucursales1.SelectedItem Is Nothing Then
                         Me.ListaSucursales1.SelectedItem.Serializar()
+                        Me.CrtPanelBase1.sucursal.Cargar()
                     End If
                     MessageBox.Show("Se guardado correctamente la configuración", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+
                     Me.Close()
                 End If
             Catch ex As Exception

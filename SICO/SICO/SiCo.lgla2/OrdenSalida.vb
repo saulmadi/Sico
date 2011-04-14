@@ -341,6 +341,8 @@ Public Class OrdenSalida
                     End If
                     If i.Value.Cantidad > 0 Then
                         i.Value.Guardar()
+                        Dim inv As New InventarioTrigger()
+                        inv.ModificarInventario(Me.sucursalrecibe, i.Value.Producto.Producto.Id, 0)
                     Else
                         Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
                     End If
@@ -360,7 +362,8 @@ Public Class OrdenSalida
             Dim d As New DetalleOrdenSalida
             Dim s As New Sucursales
             s.Cargar()
-            d.Buscar(CType(Me.Id, Long), "", s.Id)
+            Dim a As Long = Me.Id
+            d.Buscar(a, "", s.Id)
             _listaDetalle = d.TablaAColeccion
         End If
     End Sub
