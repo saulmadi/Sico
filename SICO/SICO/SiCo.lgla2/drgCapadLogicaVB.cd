@@ -146,7 +146,7 @@
   <Class Name="SiCo.lgla2.Compras" Collapsed="true">
     <Position X="10.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAGAECAUAgCJAAIAIhABAAUAAAAAACABJAAQAAA=</HashCode>
+      <HashCode>AIAARAGAECIUAgCJAAIAIhABAAUAAAAAACABJAAQAAg=</HashCode>
       <FileName>Compras.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -203,24 +203,31 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.DetalleOrdenSalida">
-    <Position X="17.25" Y="3" Width="1.5" />
+    <Position X="19" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAQAgAAgAQAAEAgAAAAAoCAAAAAABBgBQAAA=</HashCode>
       <FileName>DetalleOrdenSalida.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.OrdenSalida">
+  <Class Name="SiCo.lgla2.OrdenSalida" Collapsed="true">
     <Position X="15" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AACRTiAIMCAQBQAAIAAAIAFAAAQgCRAQASQJBAAQBgg=</HashCode>
+      <HashCode>AACRTiAIMCAQBQAAIAAAIAFAAAQgCRAQASQJRAAQBgg=</HashCode>
       <FileName>OrdenSalida.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Motocicletas" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAgDAKQEAAABgMAiAIAQAAAAgAAgABAACABAAAAAAA=</HashCode>
+      <HashCode>AIEgTAKQEAAABwMAiAsYQBAAQgAAgABBACABDAAQAEA=</HashCode>
       <FileName>Motocicletas.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.FacturaDetalle">
+    <Position X="17" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAQAgAAAAQAAEAAAAAAAICAAAAAEAAkBAAAA=</HashCode>
+      <FileName>FacturaDetalle.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
