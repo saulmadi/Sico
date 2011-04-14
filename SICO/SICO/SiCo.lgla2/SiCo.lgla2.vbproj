@@ -74,6 +74,7 @@
     <Compile Include="DetalleRequisicion.vb" />
     <Compile Include="DetallesProductos.vb" />
     <Compile Include="Estado.vb" />
+    <Compile Include="FacturaDetalle.vb" />
     <Compile Include="GeneralesConstantes.vb" />
     <Compile Include="HistoricoCompras.vb" />
     <Compile Include="Imagenes.vb" />
