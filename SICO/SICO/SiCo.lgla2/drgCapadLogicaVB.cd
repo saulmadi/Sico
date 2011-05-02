@@ -144,7 +144,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="SiCo.lgla2.Compras" Collapsed="true">
-    <Position X="10.5" Y="3.25" Width="1.5" />
+    <Position X="9.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAARAGAECIUAgCJAAIAIhABAAUAAAAAACABJAAQAAg=</HashCode>
       <FileName>Compras.vb</FileName>
@@ -223,11 +223,29 @@
       <FileName>Motocicletas.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.FacturaDetalle">
+  <Class Name="SiCo.lgla2.FacturaDetalle" Collapsed="true">
     <Position X="17" Y="4.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEAAQAgAAAAQAAEAAAAAAAICAAAAAEAAkBAAAA=</HashCode>
+      <HashCode>AAAAAAEAAQAgAAAAQAAEAgAAAAAICAAAAAEBBkBQAAA=</HashCode>
       <FileName>FacturaDetalle.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.FacturaEncabezado">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="SiCo.lgla2.FacturaEncabezado.TipoFactura" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FacturaEncabezado.vb</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAChXASJgQBQAAAACAAEIAIgAAgAAEKAQGEAIACQAAA=</HashCode>
+      <FileName>FacturaEncabezado.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
