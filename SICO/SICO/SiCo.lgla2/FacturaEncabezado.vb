@@ -208,29 +208,40 @@ Public Class FacturaEncabezado
         Me.idsucursales = Registro(Indice, "idsucursales")
         Me.numerofactura = Registro(Indice, "numerofactura")
         Me.fecha = Registro(Indice, "fecha")
-        Me.enviadopor = Registro(Indice, "enviadopor")
-        If Registro(Indice, "recibidopor") Is Nothing Then
-            Me.recibidopor = Nothing
-        Else
-            Dim d As Long = Registro(Indice, "recibidopor")
-            Me.recibidopor = d
-        End If
-
-        Me.sucursalenvia = Registro(Indice, "sucursalenvia")
-        Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
-        Me.estado = Registro(Indice, "estado")
-        Me.requisicion = Registro(Indice, "requisicion")
-
-        If Not sucursalenvia = Nothing Then
-            Me._sucursalEn = New Sucursales(sucursalenvia, Convert.ToInt64(Registro(Indice, "identidadesenvia")), Registro(Indice, "descripcionenvia").ToString)
-        End If
-
-        If Not sucursalrecibe = Nothing Then
-            Me._sucursalRe = New Sucursales(sucursalrecibe, Convert.ToInt64(Registro(Indice, "identidadesrecibe")), Registro(Indice, "descripcionrecibe").ToString)
-        End If
+        Me.idclientes = Registro(Indice, "idclientes")
+        Me.idtiposfacturas = Registro(Indice, "idtiposfacturas")
+        Me.total = Me.Registro(Indice, "total")
+        Me.isv = Me.Registro(Indice, "isv")
+        Me.subtotal = Me.Registro(Indice, "subtotal")
+        Me.descuentovalor = Me.Registro(Indice, "descuentovalor")
+        Me.descuento = Me.Registro(Indice, "descuento")
+        Me.ventaexcenta = Me.Registro(Indice, "ventaexcenta")
+        Me.estado = Me.Registro(Indice, "estado")
+        Me.motoproducto = Me.Registro(Indice, "motoproducto")
 
         MyBase.CargadoPropiedades(Indice)
     End Sub
+
+    Public Overrides Sub Guardar()
+        NullParametrosMantenimiento()
+        ValorParametrosMantenimiento("codigo", "")
+        ValorParametrosMantenimiento("idsucursales", Me.idsucursales)
+        ValorParametrosMantenimiento("numerofactura", Me.numerofactura)
+        ValorParametrosMantenimiento("fecha", Me.fecha)
+        ValorParametrosMantenimiento("idclientes", Me.idclientes)
+        ValorParametrosMantenimiento("idtiposfacturas", Me.idtiposfacturas)
+        ValorParametrosMantenimiento("total", Me.total)
+        ValorParametrosMantenimiento("isv", Me.isv)
+        ValorParametrosMantenimiento("subtotal", Me.subtotal)
+        ValorParametrosMantenimiento("descuentovalor", Me.descuentovalor)
+        ValorParametrosMantenimiento("descuento", Me.descuentovalor)
+        ValorParametrosMantenimiento("idtiposfacturas", Me.idtiposfacturas)
+        ValorParametrosMantenimiento("estado", Me.estado)
+        ValorParametrosMantenimiento("motoproducto", Me.motoproducto)
+        MyBase.Guardar(True)
+        Me.codigo = Me.ValorParametrosMantenimiento("codigo")
+    End Sub
+
 #End Region
 
 #Region "EnumeradorTipoFactura"
