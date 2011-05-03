@@ -21,7 +21,7 @@ Public Class FacturaEncabezado
     Private _motoproducto As String
     Private _motocicleta As Motocicletas
     Private _listaDetalle As List(Of FacturaDetalle)
-    Private _diccionario As Dictionary(Of String, FacturaDetalle)
+    Private _diccionariodetalle As Dictionary(Of String, FacturaDetalle)
 
 #End Region
 
@@ -53,7 +53,27 @@ Public Class FacturaEncabezado
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("motoproducto"))
 
     End Sub
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal idsucursales As Long, ByVal numerofactura As Long, ByVal idclientes As Long, ByVal fecha As Date, ByVal idtiposfacturas As Long, _
+                   ByVal total As Decimal, ByVal isv As Decimal, ByVal subtotal As Decimal, ByVal descuentovalor As Decimal, ByVal descuento As Integer, ByVal ventaexcenta As Integer, _
+                   ByVal estado As String, ByVal motoproducto As String)
+        Me.New()
 
+        Me._Id = id
+        Me.Codigo = codigo
+        Me.idsucursales = idsucursales
+        Me.numerofactura = numerofactura
+        Me.idclientes = idclientes
+        Me.fecha = fecha
+        Me.idtiposfacturas = idtiposfacturas
+        Me.total = total
+        Me.isv = isv
+        Me.subtotal = subtotal
+        Me.descuentovalor = descuentovalor
+        Me.descuento = descuento
+        Me.ventaexcenta = ventaexcenta
+        Me.estado = estado
+        Me.motoproducto = motoproducto
+    End Sub
     
 #End Region
 
@@ -192,6 +212,7 @@ Public Class FacturaEncabezado
             _motocicleta = value
         End Set
     End Property
+
     Public Property ListaDetalle() As List(Of FacturaDetalle)
         Get
             Return _listaDetalle
@@ -222,6 +243,50 @@ Public Class FacturaEncabezado
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
+    Private Function CalcularDetalle() As Long
+        Me._diccionariodetalle.Clear()
+        Dim cantot As Long = 0
+
+        For g As Integer = 0 To Me.Listadetalle.Count - 1
+            Dim i As FacturaDetalle = ListaDetalle(g)
+            If i.Producto.Producto.Id > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.Producto.Producto.Id) Then
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    cantot += i.Cantidad
+                Else
+                    Me._diccionariodetalle.Add(i.Producto.Producto.Id, i)
+                    cantot += i.Cantidad
+                End If
+            End If
+        Next
+        If Me._diccionariodetalle.Count = 0 Then
+            'Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de compra")
+        End If
+        Return cantot
+    End Function
+
+    Private Function CalcularDetalleGuardar() As Long
+        Me._diccionariodetalle.Clear()
+        Dim cantot As Long = 0
+
+        For g As Integer = 0 To Me.Listadetalle.Count - 1
+            Dim i As FacturaDetalle = ListaDetalle(g)
+            If i.Producto.Producto.Id > 0 Then
+                If Me._diccionariodetalle.ContainsKey(i.Producto.Producto.Id) Then
+                    'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
+                    cantot += i.Cantidad
+                Else
+                    Me._diccionariodetalle.Add(i.Producto.Producto.Id, i)
+                    cantot += i.Cantidad
+                End If
+            End If
+        Next
+        If Me._diccionariodetalle.Count = 0 Then
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de salida")
+        End If
+        Return cantot
+    End Function
+
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
         ValorParametrosMantenimiento("codigo", "")
@@ -241,6 +306,56 @@ Public Class FacturaEncabezado
         MyBase.Guardar(True)
         Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
+
+    Public Sub GuardarFacturaProducto()
+        Try
+            Me.IniciarTransaccion()
+            Me.CalcularDetalleGuardar()
+            Me.Guardar()
+            Dim flag As Boolean = False
+            For Each i In _diccionariodetalle
+                If i.Value.Producto.Producto.Id > 0 Then
+                    If i.Value.Cantidad > i.Value.Existencia Then
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser mayor que la existencia")
+                    End If
+                    If i.Value.Cantidad > 0 Then
+                        i.Value.Guardar()
+
+                    Else
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
+                    End If
+                End If
+            Next
+            Me.CommitTransaccion()
+
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
+
+    Public Sub CargarDetalle()
+        _listaDetalle.Clear()
+        If Me.Id > 0 Then
+            Dim d As New FacturaDetalle
+            Dim a As Long = Me.Id
+            d.Buscar(a, "", Me.idsucursales)
+            _listaDetalle = d.TablaAColeccion
+        End If
+    End Sub
+
+    Public Overrides Function TablaAColeccion() As Object
+        Dim lista As New List(Of FacturaEncabezado)
+
+        For x As Integer = 0 To TotalRegistros - 1
+            Me.CargadoPropiedades(x)
+            Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto)
+            lista.Add(tempOs)
+        Next
+
+        Return lista
+    End Function
 
 #End Region
 

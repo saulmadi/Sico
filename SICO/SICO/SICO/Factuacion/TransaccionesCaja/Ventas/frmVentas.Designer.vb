@@ -22,6 +22,7 @@ Partial Class frmVentas
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
@@ -30,7 +31,6 @@ Partial Class frmVentas
         Me.Label2 = New System.Windows.Forms.Label
         Me.TextBox2 = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
-        Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.Label4 = New System.Windows.Forms.Label
         Me.TextBox5 = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
@@ -44,9 +44,16 @@ Partial Class frmVentas
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.chkVentaExcenta = New System.Windows.Forms.CheckBox
+        Me.lblNumeroFactura = New System.Windows.Forms.Label
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
+        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
@@ -56,6 +63,7 @@ Partial Class frmVentas
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -66,17 +74,18 @@ Partial Class frmVentas
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 282)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(802, 390)
+        Me.Panel2.Size = New System.Drawing.Size(800, 390)
         Me.Panel2.TabIndex = 12
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.grdDetalle)
         Me.GroupBox5.Controls.Add(Me.Panel7)
         Me.GroupBox5.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(738, 390)
+        Me.GroupBox5.Size = New System.Drawing.Size(736, 390)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
@@ -87,15 +96,15 @@ Partial Class frmVentas
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(3, 294)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(732, 93)
+        Me.Panel7.Size = New System.Drawing.Size(730, 93)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
         '
+        Me.Panel8.Controls.Add(Me.CajaTexto1)
         Me.Panel8.Controls.Add(Me.Label2)
         Me.Panel8.Controls.Add(Me.TextBox2)
         Me.Panel8.Controls.Add(Me.Label1)
-        Me.Panel8.Controls.Add(Me.TextBox1)
         Me.Panel8.Controls.Add(Me.Label4)
         Me.Panel8.Controls.Add(Me.TextBox5)
         Me.Panel8.Controls.Add(Me.Label5)
@@ -103,7 +112,7 @@ Partial Class frmVentas
         Me.Panel8.Controls.Add(Me.Label6)
         Me.Panel8.Controls.Add(Me.TextBox3)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(-1, 0)
+        Me.Panel8.Location = New System.Drawing.Point(-3, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(733, 93)
         Me.Panel8.TabIndex = 6
@@ -135,13 +144,6 @@ Partial Class frmVentas
         Me.Label1.Size = New System.Drawing.Size(57, 13)
         Me.Label1.TabIndex = 6
         Me.Label1.Text = "Desc (%)"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(223, 35)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox1.TabIndex = 7
         '
         'Label4
         '
@@ -200,7 +202,7 @@ Partial Class frmVentas
         'Panel4
         '
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(769, 0)
+        Me.Panel4.Location = New System.Drawing.Point(767, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(33, 390)
         Me.Panel4.TabIndex = 2
@@ -221,11 +223,16 @@ Partial Class frmVentas
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 84)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(802, 198)
+        Me.Panel1.Size = New System.Drawing.Size(800, 198)
         Me.Panel1.TabIndex = 11
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.lblNumeroFactura)
+        Me.GroupBox1.Controls.Add(Me.chkVentaExcenta)
+        Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.cmbTiposFacturas)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.GroupBox2)
@@ -233,7 +240,7 @@ Partial Class frmVentas
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(738, 332)
+        Me.GroupBox1.Size = New System.Drawing.Size(736, 208)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de Venta"
@@ -243,7 +250,7 @@ Partial Class frmVentas
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DateTimePicker1.Location = New System.Drawing.Point(52, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(257, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(192, 20)
         Me.DateTimePicker1.TabIndex = 2
         '
         'Label7
@@ -258,7 +265,7 @@ Partial Class frmVentas
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.CrtClientes1)
+        Me.GroupBox2.Controls.Add(Me.CrtClientes)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 41)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(722, 157)
@@ -266,21 +273,10 @@ Partial Class frmVentas
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cliente"
         '
-        'CrtClientes1
-        '
-        Me.CrtClientes1.CargarClientePorPersona = False
-        Me.CrtClientes1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtClientes1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtClientes1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtClientes1.Name = "CrtClientes1"
-        Me.CrtClientes1.Size = New System.Drawing.Size(716, 138)
-        Me.CrtClientes1.TabIndex = 0
-        Me.CrtClientes1.VisibleDatosSecundarios = False
-        '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel5.Location = New System.Drawing.Point(769, 0)
+        Me.Panel5.Location = New System.Drawing.Point(767, 0)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(33, 198)
         Me.Panel5.TabIndex = 3
@@ -293,12 +289,115 @@ Partial Class frmVentas
         Me.Panel6.Size = New System.Drawing.Size(31, 198)
         Me.Panel6.TabIndex = 0
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(250, 22)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(64, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Tipo factura"
+        '
+        'chkVentaExcenta
+        '
+        Me.chkVentaExcenta.AutoSize = True
+        Me.chkVentaExcenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkVentaExcenta.Location = New System.Drawing.Point(458, 22)
+        Me.chkVentaExcenta.Name = "chkVentaExcenta"
+        Me.chkVentaExcenta.Size = New System.Drawing.Size(95, 17)
+        Me.chkVentaExcenta.TabIndex = 5
+        Me.chkVentaExcenta.Text = "Venta excenta"
+        Me.chkVentaExcenta.UseVisualStyleBackColor = True
+        '
+        'lblNumeroFactura
+        '
+        Me.lblNumeroFactura.Location = New System.Drawing.Point(559, 27)
+        Me.lblNumeroFactura.Name = "lblNumeroFactura"
+        Me.lblNumeroFactura.Size = New System.Drawing.Size(164, 13)
+        Me.lblNumeroFactura.TabIndex = 6
+        Me.lblNumeroFactura.Text = "Label8"
+        Me.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(632, 11)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(97, 13)
+        Me.Label9.TabIndex = 7
+        Me.Label9.Text = "Número Factura"
+        '
+        'grdDetalle
+        '
+        Me.grdDetalle.AllowUserToAddRows = False
+        Me.grdDetalle.AllowUserToDeleteRows = False
+        Me.grdDetalle.BotonBuscar = True
+        Me.grdDetalle.BotonEditar = False
+        Me.grdDetalle.BotonEliminar = True
+        Me.grdDetalle.CampoId = Nothing
+        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetalle.MultiSelect = False
+        Me.grdDetalle.Name = "grdDetalle"
+        Me.grdDetalle.RowHeadersVisible = False
+        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdDetalle.Size = New System.Drawing.Size(730, 278)
+        Me.grdDetalle.TabIndex = 10
+        '
+        'CajaTexto1
+        '
+        Me.CajaTexto1.BackColor = System.Drawing.SystemColors.Window
+        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto1.EnterPorTab = True
+        Me.CajaTexto1.EsObligatorio = False
+        Me.CajaTexto1.ExpresionValidacion = "^([1-9]|[1-9]\d|100)$"
+        Me.CajaTexto1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CajaTexto1.Location = New System.Drawing.Point(224, 35)
+        Me.CajaTexto1.MaxLength = 3
+        Me.CajaTexto1.MensajeError = "El número debe estar entre 1-100"
+        Me.CajaTexto1.Name = "CajaTexto1"
+        Me.CajaTexto1.Size = New System.Drawing.Size(164, 20)
+        Me.CajaTexto1.TabIndex = 10
+        Me.CajaTexto1.Texto = Nothing
+        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.CajaTexto1.ValorInt = Nothing
+        Me.CajaTexto1.ValorLong = Nothing
+        '
+        'cmbTiposFacturas
+        '
+        Me.cmbTiposFacturas.CargarAutoCompletar = False
+        Me.cmbTiposFacturas.CargarComboBox = True
+        Me.cmbTiposFacturas.DisplayMember = "descripcion"
+        Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTiposFacturas.FormattingEnabled = True
+        Me.cmbTiposFacturas.Location = New System.Drawing.Point(323, 19)
+        Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
+        Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
+        Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
+        Me.cmbTiposFacturas.Size = New System.Drawing.Size(129, 21)
+        Me.cmbTiposFacturas.TabIndex = 3
+        Me.cmbTiposFacturas.ValueMember = "id"
+        '
+        'CrtClientes
+        '
+        Me.CrtClientes.CargarClientePorPersona = False
+        Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
+        Me.CrtClientes.Name = "CrtClientes"
+        Me.CrtClientes.Size = New System.Drawing.Size(716, 138)
+        Me.CrtClientes.TabIndex = 0
+        Me.CrtClientes.VisibleDatosSecundarios = False
+        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
         Me.CrtPanelBase1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBase1.Name = "CrtPanelBase1"
-        Me.CrtPanelBase1.Size = New System.Drawing.Size(802, 84)
+        Me.CrtPanelBase1.Size = New System.Drawing.Size(800, 84)
         Me.CrtPanelBase1.TabIndex = 9
         Me.CrtPanelBase1.Titulo = "Venta"
         Me.CrtPanelBase1.VisiblePanelPrincipal = True
@@ -310,7 +409,7 @@ Partial Class frmVentas
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 672)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(802, 56)
+        Me.PanelAccion1.Size = New System.Drawing.Size(800, 56)
         Me.PanelAccion1.TabIndex = 10
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
@@ -319,7 +418,7 @@ Partial Class frmVentas
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(802, 728)
+        Me.ClientSize = New System.Drawing.Size(800, 728)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CrtPanelBase1)
@@ -327,7 +426,6 @@ Partial Class frmVentas
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmVentas"
         Me.Text = "Ventas"
-        Me.WindowState = System.Windows.Forms.FormWindowState.Normal
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
@@ -337,6 +435,7 @@ Partial Class frmVentas
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -361,9 +460,15 @@ Partial Class frmVentas
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents CrtClientes1 As SiCo.ctrla2.crtClientes
+    Friend WithEvents CrtClientes As SICO.ctrla2.crtClientes
+    Friend WithEvents grdDetalle As SICO.ctrla.Grid
+    Friend WithEvents chkVentaExcenta As System.Windows.Forms.CheckBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents cmbTiposFacturas As SICO.ctrla.ListaDesplegable
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblNumeroFactura As System.Windows.Forms.Label
+    Friend WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
 End Class
