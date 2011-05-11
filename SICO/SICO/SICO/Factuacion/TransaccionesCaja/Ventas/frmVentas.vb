@@ -2,9 +2,12 @@
 Imports SICO.lgla2
 Imports SICO.ctrla
 Public Class frmVentas
+
 #Region "Declaraciones"
     Private _factura As New FacturaEncabezado
+
 #End Region
+
 #Region "Propiedades"
     Public Property Factura() As FacturaEncabezado
         Get
@@ -16,56 +19,137 @@ Public Class frmVentas
         End Set
     End Property
 #End Region
+
 #Region "Metodos"
     Private Sub cargarentidad()
+        grdDetalle.ListaFormatos.Clear()
+        grdDetalle.DataSource = Nothing
+
         If Factura.Id = 0 Then
             CrtClientes.Nuevo()
             cmbTiposFacturas.SelectedIndex = -1
             chkVentaExcenta.Checked = False
-            Factura.ListaDetalle.Clear()
+            chkVentaExcenta.Enabled = True
+            cmbTiposFacturas.Enabled = True
+            CrtClientes.Enabled = True
 
+            PanelAccion1.BotonGuardar.Enabled = True
+            Factura.ListaDetalle = New List(Of FacturaDetalle)
+            txtDescPor.Enabled = True
             For i As Integer = 0 To 10
                 Factura.ListaDetalle.Add(New FacturaDetalle(PanelAccion1.sucursal.Id))
             Next
+
+
+            Me.grdDetalle.DarFormato("Codigo", "Código", True)
+            Me.grdDetalle.DarFormato("ProductoDescripcion", "Descripción", True)
+            Me.grdDetalle.DarFormato("Existencia", "Existencia", True)
+            Me.grdDetalle.DarFormato("Precio", "Precio", True)
+            Me.grdDetalle.DarFormato("CantidadEditable", "Cantidad", True)
+
+            Me.grdDetalle.DarFormato("TotalLinea", "Total Linea")
             grdDetalle.DataSource = Factura.ListaDetalle
             grdDetalle.ReadOnly = False
+
+
+
         Else
 
         End If
     End Sub
 
     Private Sub calculartotales()
-        txtTotalItems.Text = Me.Factura.TotalItems
-        txtTotalProductos.Text = Me.Factura.CantidadTotalProductos
+        Factura.CalcularDetalle()
+        txtSubtotal.Text = Factura.subtotal.ToString("#######0.00")
+        txtDesc.Text = Factura.descuentovalor.ToString("#########0.00")
+        txtImpto.Text = Factura.isv.ToString("########0.00")
+        txtTotal.Text = Factura.total.ToString("########0.00")
+        grdDetalle.Refresh()
     End Sub
 #End Region
+
 #Region "Eventos"
     Private Sub frmVentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cmbTiposFacturas.Entidad = New TiposFacturas
         cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
         cmbTiposFacturas.CargarParametros()
         lblNumeroFactura.Text = ""
+
+        PanelAccion1.BotonImprimir.Text = "Facturar"
+        PanelAccion1.BotonImprimir.Visible = False
+
+        PanelAccion1.BotonEliminar.Visible = False
+        PanelAccion1.BotonEliminar.Text = ""
+
+        PanelAccion1.BotonGuardar.Enabled = False
+
     End Sub
+
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
         Me.Factura = New FacturaEncabezado
     End Sub
+
     Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
         Me.Close()
     End Sub
+
     Private Sub grdDetalle_Buscar() Handles grdDetalle.Buscar
+
         Dim f As New SICO.ctrla2.frmBusquedaProductos
         f.Entidad = New Productos
         If f.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
-            Me.Factura.ListaDetalle(grdDetalle.CurrentRow.Index).Producto = New ProductosInventario(PanelAccion1.sucursal.Id)
-            Me.Factura.ListaDetalle(grdDetalle.CurrentRow.Index).Producto.Producto = f.Entidad
+            Factura.ListaDetalle(grdDetalle.CurrentRow.Index).setProducto(f.Entidad)
+
             grdDetalle.Refresh()
+
+
         End If
         calculartotales()
     End Sub
+
+    Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
+
+    End Sub
+
+    Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+
+    End Sub
+
+    Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
+
+    End Sub
+
+    Private Sub grdDetalle_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdDetalle.CellEndEdit
+        Me.calculartotales()
+    End Sub
+
+    Private Sub grdDetalle_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles grdDetalle.Eliminar
+        Me.Factura.ListaDetalle(grdDetalle.CurrentRow.Index) = New FacturaDetalle(PanelAccion1.sucursal.Id)
+
+        grdDetalle.Refresh()
+        calculartotales()
+    End Sub
+
+    Private Sub txtDescPor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescPor.TextChanged
+        If txtDescPor.Text <> String.Empty Then
+            Me.Factura.descuento = txtDescPor.Text
+        Else
+            Me.Factura.descuento = 0
+        End If
+        calculartotales()
+    End Sub
+
+    Private Sub chkVentaExcenta_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkVentaExcenta.CheckedChanged
+        If chkVentaExcenta.Checked Then
+            Factura.ventaexcenta = 1
+        Else
+            Factura.ventaexcenta = 0
+        End If
+        calculartotales()
+
+    End Sub
+
 #End Region
-    
-   
-   
     
 End Class

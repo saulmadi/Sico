@@ -29,29 +29,29 @@ Partial Class frmVentas
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
         Me.Label2 = New System.Windows.Forms.Label
-        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.txtDesc = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
-        Me.TextBox5 = New System.Windows.Forms.TextBox
+        Me.txtTotal = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
-        Me.TextBox4 = New System.Windows.Forms.TextBox
+        Me.txtImpto = New System.Windows.Forms.TextBox
         Me.Label6 = New System.Windows.Forms.Label
-        Me.TextBox3 = New System.Windows.Forms.TextBox
+        Me.txtSubtotal = New System.Windows.Forms.TextBox
         Me.Panel4 = New System.Windows.Forms.Panel
         Me.Panel3 = New System.Windows.Forms.Panel
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
+        Me.Label9 = New System.Windows.Forms.Label
+        Me.lblNumeroFactura = New System.Windows.Forms.Label
+        Me.chkVentaExcenta = New System.Windows.Forms.CheckBox
+        Me.Label3 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.Label3 = New System.Windows.Forms.Label
-        Me.chkVentaExcenta = New System.Windows.Forms.CheckBox
-        Me.lblNumeroFactura = New System.Windows.Forms.Label
-        Me.Label9 = New System.Windows.Forms.Label
         Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtDescPor = New SICO.ctrla.CajaTexto(Me.components)
         Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
@@ -101,16 +101,16 @@ Partial Class frmVentas
         '
         'Panel8
         '
-        Me.Panel8.Controls.Add(Me.CajaTexto1)
+        Me.Panel8.Controls.Add(Me.txtDescPor)
         Me.Panel8.Controls.Add(Me.Label2)
-        Me.Panel8.Controls.Add(Me.TextBox2)
+        Me.Panel8.Controls.Add(Me.txtDesc)
         Me.Panel8.Controls.Add(Me.Label1)
         Me.Panel8.Controls.Add(Me.Label4)
-        Me.Panel8.Controls.Add(Me.TextBox5)
+        Me.Panel8.Controls.Add(Me.txtTotal)
         Me.Panel8.Controls.Add(Me.Label5)
-        Me.Panel8.Controls.Add(Me.TextBox4)
+        Me.Panel8.Controls.Add(Me.txtImpto)
         Me.Panel8.Controls.Add(Me.Label6)
-        Me.Panel8.Controls.Add(Me.TextBox3)
+        Me.Panel8.Controls.Add(Me.txtSubtotal)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel8.Location = New System.Drawing.Point(-3, 0)
         Me.Panel8.Name = "Panel8"
@@ -127,13 +127,13 @@ Partial Class frmVentas
         Me.Label2.TabIndex = 8
         Me.Label2.Text = "Desc"
         '
-        'TextBox2
+        'txtDesc
         '
-        Me.TextBox2.Enabled = False
-        Me.TextBox2.Location = New System.Drawing.Point(458, 6)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox2.TabIndex = 9
+        Me.txtDesc.Enabled = False
+        Me.txtDesc.Location = New System.Drawing.Point(458, 6)
+        Me.txtDesc.Name = "txtDesc"
+        Me.txtDesc.Size = New System.Drawing.Size(165, 20)
+        Me.txtDesc.TabIndex = 9
         '
         'Label1
         '
@@ -155,13 +155,13 @@ Partial Class frmVentas
         Me.Label4.TabIndex = 0
         Me.Label4.Text = "Subtotal"
         '
-        'TextBox5
+        'txtTotal
         '
-        Me.TextBox5.Enabled = False
-        Me.TextBox5.Location = New System.Drawing.Point(458, 58)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox5.TabIndex = 5
+        Me.txtTotal.Enabled = False
+        Me.txtTotal.Location = New System.Drawing.Point(458, 58)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(165, 20)
+        Me.txtTotal.TabIndex = 5
         '
         'Label5
         '
@@ -173,13 +173,13 @@ Partial Class frmVentas
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Impuesto"
         '
-        'TextBox4
+        'txtImpto
         '
-        Me.TextBox4.Enabled = False
-        Me.TextBox4.Location = New System.Drawing.Point(458, 32)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox4.TabIndex = 4
+        Me.txtImpto.Enabled = False
+        Me.txtImpto.Location = New System.Drawing.Point(458, 32)
+        Me.txtImpto.Name = "txtImpto"
+        Me.txtImpto.Size = New System.Drawing.Size(165, 20)
+        Me.txtImpto.TabIndex = 4
         '
         'Label6
         '
@@ -191,13 +191,13 @@ Partial Class frmVentas
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Total"
         '
-        'TextBox3
+        'txtSubtotal
         '
-        Me.TextBox3.Enabled = False
-        Me.TextBox3.Location = New System.Drawing.Point(223, 9)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(165, 20)
-        Me.TextBox3.TabIndex = 3
+        Me.txtSubtotal.Enabled = False
+        Me.txtSubtotal.Location = New System.Drawing.Point(223, 9)
+        Me.txtSubtotal.Name = "txtSubtotal"
+        Me.txtSubtotal.Size = New System.Drawing.Size(165, 20)
+        Me.txtSubtotal.TabIndex = 3
         '
         'Panel4
         '
@@ -245,6 +245,47 @@ Partial Class frmVentas
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de Venta"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(632, 11)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(97, 13)
+        Me.Label9.TabIndex = 7
+        Me.Label9.Text = "Número Factura"
+        '
+        'lblNumeroFactura
+        '
+        Me.lblNumeroFactura.Location = New System.Drawing.Point(559, 27)
+        Me.lblNumeroFactura.Name = "lblNumeroFactura"
+        Me.lblNumeroFactura.Size = New System.Drawing.Size(164, 13)
+        Me.lblNumeroFactura.TabIndex = 6
+        Me.lblNumeroFactura.Text = "Label8"
+        Me.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'chkVentaExcenta
+        '
+        Me.chkVentaExcenta.AutoSize = True
+        Me.chkVentaExcenta.Checked = True
+        Me.chkVentaExcenta.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.chkVentaExcenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chkVentaExcenta.Location = New System.Drawing.Point(458, 22)
+        Me.chkVentaExcenta.Name = "chkVentaExcenta"
+        Me.chkVentaExcenta.Size = New System.Drawing.Size(95, 17)
+        Me.chkVentaExcenta.TabIndex = 5
+        Me.chkVentaExcenta.Text = "Venta excenta"
+        Me.chkVentaExcenta.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(250, 22)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(64, 13)
+        Me.Label3.TabIndex = 4
+        Me.Label3.Text = "Tipo factura"
+        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -289,49 +330,11 @@ Partial Class frmVentas
         Me.Panel6.Size = New System.Drawing.Size(31, 198)
         Me.Panel6.TabIndex = 0
         '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(250, 22)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(64, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Tipo factura"
-        '
-        'chkVentaExcenta
-        '
-        Me.chkVentaExcenta.AutoSize = True
-        Me.chkVentaExcenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkVentaExcenta.Location = New System.Drawing.Point(458, 22)
-        Me.chkVentaExcenta.Name = "chkVentaExcenta"
-        Me.chkVentaExcenta.Size = New System.Drawing.Size(95, 17)
-        Me.chkVentaExcenta.TabIndex = 5
-        Me.chkVentaExcenta.Text = "Venta excenta"
-        Me.chkVentaExcenta.UseVisualStyleBackColor = True
-        '
-        'lblNumeroFactura
-        '
-        Me.lblNumeroFactura.Location = New System.Drawing.Point(559, 27)
-        Me.lblNumeroFactura.Name = "lblNumeroFactura"
-        Me.lblNumeroFactura.Size = New System.Drawing.Size(164, 13)
-        Me.lblNumeroFactura.TabIndex = 6
-        Me.lblNumeroFactura.Text = "Label8"
-        Me.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(632, 11)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(97, 13)
-        Me.Label9.TabIndex = 7
-        Me.Label9.Text = "Número Factura"
-        '
         'grdDetalle
         '
         Me.grdDetalle.AllowUserToAddRows = False
         Me.grdDetalle.AllowUserToDeleteRows = False
+        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.grdDetalle.BotonBuscar = True
         Me.grdDetalle.BotonEditar = False
         Me.grdDetalle.BotonEliminar = True
@@ -343,34 +346,36 @@ Partial Class frmVentas
         Me.grdDetalle.MultiSelect = False
         Me.grdDetalle.Name = "grdDetalle"
         Me.grdDetalle.RowHeadersVisible = False
-        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.grdDetalle.Size = New System.Drawing.Size(730, 278)
         Me.grdDetalle.TabIndex = 10
         '
-        'CajaTexto1
+        'txtDescPor
         '
-        Me.CajaTexto1.BackColor = System.Drawing.SystemColors.Window
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EnterPorTab = True
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = "^([1-9]|[1-9]\d|100)$"
-        Me.CajaTexto1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto1.Location = New System.Drawing.Point(224, 35)
-        Me.CajaTexto1.MaxLength = 3
-        Me.CajaTexto1.MensajeError = "El número debe estar entre 1-100"
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(164, 20)
-        Me.CajaTexto1.TabIndex = 10
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.CajaTexto1.ValorInt = Nothing
-        Me.CajaTexto1.ValorLong = Nothing
+        Me.txtDescPor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtDescPor.ColorError = System.Drawing.Color.Red
+        Me.txtDescPor.Enabled = False
+        Me.txtDescPor.EnterPorTab = True
+        Me.txtDescPor.EsObligatorio = False
+        Me.txtDescPor.ExpresionValidacion = "^([1-9]|[1-9]\d|100)$"
+        Me.txtDescPor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtDescPor.Location = New System.Drawing.Point(224, 35)
+        Me.txtDescPor.MaxLength = 3
+        Me.txtDescPor.MensajeError = "El número debe estar entre 1-100"
+        Me.txtDescPor.Name = "txtDescPor"
+        Me.txtDescPor.Size = New System.Drawing.Size(164, 20)
+        Me.txtDescPor.TabIndex = 10
+        Me.txtDescPor.Texto = Nothing
+        Me.txtDescPor.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtDescPor.ValorInt = Nothing
+        Me.txtDescPor.ValorLong = Nothing
         '
         'cmbTiposFacturas
         '
         Me.cmbTiposFacturas.CargarAutoCompletar = False
         Me.cmbTiposFacturas.CargarComboBox = True
         Me.cmbTiposFacturas.DisplayMember = "descripcion"
+        Me.cmbTiposFacturas.Enabled = False
         Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTiposFacturas.FormattingEnabled = True
         Me.cmbTiposFacturas.Location = New System.Drawing.Point(323, 19)
@@ -385,6 +390,7 @@ Partial Class frmVentas
         '
         Me.CrtClientes.CargarClientePorPersona = False
         Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes.Enabled = False
         Me.CrtClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
         Me.CrtClientes.Name = "CrtClientes"
@@ -444,11 +450,11 @@ Partial Class frmVentas
     Friend WithEvents Panel7 As System.Windows.Forms.Panel
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtImpto As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtSubtotal As System.Windows.Forms.TextBox
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -458,17 +464,17 @@ Partial Class frmVentas
     Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
     Friend WithEvents PanelAccion1 As SICO.ctrla.PanelAccion
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtDesc As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents CrtClientes As SICO.ctrla2.crtClientes
-    Friend WithEvents grdDetalle As SICO.ctrla.Grid
     Friend WithEvents chkVentaExcenta As System.Windows.Forms.CheckBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents cmbTiposFacturas As SICO.ctrla.ListaDesplegable
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents lblNumeroFactura As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
+    Friend WithEvents txtDescPor As SICO.ctrla.CajaTexto
+    Friend WithEvents grdDetalle As SICO.ctrla.Grid
 End Class

@@ -36,6 +36,8 @@ Public Class FacturaDetalle
         Me.idProducto = idproducto
         Me._ProductoInventario = producto
     End Sub
+
+
 #End Region
 
 #Region "Propiedades"
@@ -102,11 +104,58 @@ Public Class FacturaDetalle
 
     Public ReadOnly Property Existencia() As String
         Get
-            If Producto.Existencia = 0 Then
+            If Me.Producto.Producto.Id = 0 Then
                 Return String.Empty
             End If
             Return Producto.Existencia
         End Get
+    End Property
+
+    Public ReadOnly Property TotalLinea() As String
+        Get
+            Try
+                Dim valor As Decimal = Cantidad * Producto.Producto.PrecioVenta
+                If Me.Producto.Producto.Id = 0 Then
+                    Return String.Empty
+                End If
+                Return IIf(valor > 0, valor.ToString("#############.##"), "0.00")
+            Catch ex As Exception
+                Return "0.00"
+            End Try
+
+        End Get
+    End Property
+
+    'Public ReadOnly Property Impuesto() As String
+    '    Get
+    '        Try
+    '            Dim valor As Decimal = (Cantidad * Producto.Producto.PrecioVenta) * GeneralesConstantes.Impuesto
+    '            If Me.Producto.Producto.Id = 0 Then
+    '                Return String.Empty
+    '            End If
+    '            Return IIf(valor > 0, valor.ToString("#############.##"), "0.00")
+    '        Catch ex As Exception
+    '            Return "0.00"
+    '        End Try
+
+    '    End Get
+    'End Property
+
+    Public Property Precio() As String
+        Get
+            Try
+                If Me.Producto.Producto.Id = 0 Then
+                    Return String.Empty
+                End If
+                Return IIf(Producto.Producto.PrecioVenta > 0, Producto.Producto.PrecioVenta.ToString("#############.##"), "0.00")
+            Catch ex As Exception
+                Return String.Empty
+            End Try
+
+        End Get
+        Set(ByVal value As String)
+            Producto.Producto.PrecioVenta = value
+        End Set
     End Property
 
 #End Region
@@ -150,6 +199,15 @@ Public Class FacturaDetalle
 
         Return lista
     End Function
+
+    Public Sub setProducto(ByVal producto As Productos)
+        Dim su As Integer = Me.Producto.idSucursal
+
+        Me.Producto = New ProductosInventario(su)
+        Me.Producto.Producto = producto
+
+
+    End Sub
 #End Region
 
 End Class

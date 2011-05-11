@@ -20,8 +20,8 @@ Public Class FacturaEncabezado
     Private _estado As String
     Private _motoproducto As String
     Private _motocicleta As Motocicletas
-    Private _listaDetalle As List(Of FacturaDetalle)
-    Private _diccionariodetalle As Dictionary(Of String, FacturaDetalle)
+    Private _listaDetalle As New List(Of FacturaDetalle)
+    Private _diccionariodetalle As New Dictionary(Of String, FacturaDetalle)
 
 #End Region
 
@@ -221,6 +221,9 @@ Public Class FacturaEncabezado
             _listaDetalle = value
         End Set
     End Property
+    
+
+
 #End Region
 
 #Region "Metodos"
@@ -243,25 +246,32 @@ Public Class FacturaEncabezado
         MyBase.CargadoPropiedades(Indice)
     End Sub
 
-    Private Function CalcularDetalle() As Long
+    Public Function CalcularDetalle() As Decimal
         Me._diccionariodetalle.Clear()
-        Dim cantot As Long = 0
+        Dim cantot As Decimal = 0
 
-        For g As Integer = 0 To Me.Listadetalle.Count - 1
+        For g As Integer = 0 To Me.ListaDetalle.Count - 1
             Dim i As FacturaDetalle = ListaDetalle(g)
             If i.Producto.Producto.Id > 0 Then
                 If Me._diccionariodetalle.ContainsKey(i.Producto.Producto.Id) Then
                     'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
-                    cantot += i.Cantidad
+                    cantot += i.Producto.Producto.PrecioVenta * i.Cantidad
                 Else
                     Me._diccionariodetalle.Add(i.Producto.Producto.Id, i)
-                    cantot += i.Cantidad
+                    cantot += i.Producto.Producto.PrecioVenta * i.Cantidad
                 End If
             End If
         Next
         If Me._diccionariodetalle.Count = 0 Then
             'Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de compra")
         End If
+        subtotal = cantot
+        descuentovalor = subtotal * (IIf(descuento <= 100 And descuento >= 0, descuento, 0) / 100)
+        Dim valor As Decimal = subtotal - descuentovalor
+
+        isv = IIf(ventaexcenta = 0, (valor) * GeneralesConstantes.Impuesto, 0)
+
+        total = valor - IIf(ventaexcenta = 1, valor * GeneralesConstantes.Impuesto, 0)
         Return cantot
     End Function
 
@@ -333,7 +343,6 @@ Public Class FacturaEncabezado
             Throw New ApplicationException(ex.Message)
         End Try
     End Sub
-
 
     Public Sub CargarDetalle()
         _listaDetalle.Clear()
