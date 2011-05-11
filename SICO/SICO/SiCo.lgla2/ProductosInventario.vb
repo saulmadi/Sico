@@ -111,6 +111,10 @@ Public Class ProductosInventario
         End Get
         Set(ByVal value As String)
             Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
+            If value = String.Empty Then
+                Cantidad = 0
+                Exit Property
+            End If
             If reg.IsMatch(value) Then
                 Dim s As Long = value
                 If s < 0 Then

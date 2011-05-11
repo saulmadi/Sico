@@ -211,7 +211,7 @@ Public Class frmOrdenSalida
     End Sub
 
     Private Sub grid_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles Grid.Eliminar
-        Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index) = New DetalleOrdenSalida
+        Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index) = New DetalleOrdenSalida(PanelAccion1.sucursal.Id)
         grid.Refresh()
         calculartotales()
     End Sub
