@@ -266,8 +266,6 @@ Partial Class frmVentas
         'chkVentaExcenta
         '
         Me.chkVentaExcenta.AutoSize = True
-        Me.chkVentaExcenta.Checked = True
-        Me.chkVentaExcenta.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkVentaExcenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chkVentaExcenta.Location = New System.Drawing.Point(458, 22)
         Me.chkVentaExcenta.Name = "chkVentaExcenta"

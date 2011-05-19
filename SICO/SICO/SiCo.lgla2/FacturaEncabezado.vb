@@ -22,6 +22,8 @@ Public Class FacturaEncabezado
     Private _motocicleta As Motocicletas
     Private _listaDetalle As New List(Of FacturaDetalle)
     Private _diccionariodetalle As New Dictionary(Of String, FacturaDetalle)
+    Private _elabora As Long
+    Private _factura As Long
 
 #End Region
 
@@ -41,6 +43,7 @@ Public Class FacturaEncabezado
         Me.ComandoMantenimiento = "FacturaEncabezado_Mant"
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigo", Nothing, ParameterDirection.InputOutput))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idsucursales"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idtiposfacturas"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("numerofactura"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idclientes"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("fecha"))
@@ -51,11 +54,13 @@ Public Class FacturaEncabezado
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("descuento"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("ventaexcenta"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("motoproducto"))
-
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("estado"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("elabora"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("factura"))
     End Sub
     Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal idsucursales As Long, ByVal numerofactura As Long, ByVal idclientes As Long, ByVal fecha As Date, ByVal idtiposfacturas As Long, _
                    ByVal total As Decimal, ByVal isv As Decimal, ByVal subtotal As Decimal, ByVal descuentovalor As Decimal, ByVal descuento As Integer, ByVal ventaexcenta As Integer, _
-                   ByVal estado As String, ByVal motoproducto As String)
+                   ByVal estado As String, ByVal motoproducto As String, ByVal elabora As Long, ByVal factura As Long)
         Me.New()
 
         Me._Id = id
@@ -73,6 +78,9 @@ Public Class FacturaEncabezado
         Me.ventaexcenta = ventaexcenta
         Me.estado = estado
         Me.motoproducto = motoproducto
+        Me.Factura = factura
+        Me.Elabora = elabora
+
     End Sub
     
 #End Region
@@ -221,7 +229,24 @@ Public Class FacturaEncabezado
             _listaDetalle = value
         End Set
     End Property
-    
+
+    Public Property Elabora() As Long
+        Get
+            Return _elabora
+        End Get
+        Set(ByVal value As Long)
+            _elabora = value
+        End Set
+    End Property
+
+    Public Property Factura() As Long
+        Get
+            Return _factura
+        End Get
+        Set(ByVal value As Long)
+            _factura = value
+        End Set
+    End Property
 
 
 #End Region
@@ -242,6 +267,9 @@ Public Class FacturaEncabezado
         Me.ventaexcenta = Me.Registro(Indice, "ventaexcenta")
         Me.estado = Me.Registro(Indice, "estado")
         Me.motoproducto = Me.Registro(Indice, "motoproducto")
+        Me.Factura = Registro(Indice, "factura")
+        Me.Elabora = Me.Registro(Indice, "elabora")
+
 
         MyBase.CargadoPropiedades(Indice)
     End Sub
@@ -292,7 +320,7 @@ Public Class FacturaEncabezado
             End If
         Next
         If Me._diccionariodetalle.Count = 0 Then
-            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de salida")
+            Throw New ApplicationException("Debe de ingresar un producto, para realizar la venta")
         End If
         Return cantot
     End Function
@@ -303,7 +331,11 @@ Public Class FacturaEncabezado
         ValorParametrosMantenimiento("idsucursales", Me.idsucursales)
         ValorParametrosMantenimiento("numerofactura", Me.numerofactura)
         ValorParametrosMantenimiento("fecha", Me.fecha)
-        ValorParametrosMantenimiento("idclientes", Me.idclientes)
+        If Me.idclientes = 0 Or Me.idclientes = Nothing Then
+            ValorParametrosMantenimiento("idclientes", Nothing)
+        Else
+            ValorParametrosMantenimiento("idclientes", Me.idclientes)
+        End If
         ValorParametrosMantenimiento("idtiposfacturas", Me.idtiposfacturas)
         ValorParametrosMantenimiento("total", Me.total)
         ValorParametrosMantenimiento("isv", Me.isv)
@@ -313,6 +345,8 @@ Public Class FacturaEncabezado
         ValorParametrosMantenimiento("idtiposfacturas", Me.idtiposfacturas)
         ValorParametrosMantenimiento("estado", Me.estado)
         ValorParametrosMantenimiento("motoproducto", Me.motoproducto)
+        ValorParametrosMantenimiento("elabora", Me.Elabora)
+        ValorParametrosMantenimiento("factura", Me.Factura)
         MyBase.Guardar(True)
         Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
@@ -329,6 +363,7 @@ Public Class FacturaEncabezado
                         Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser mayor que la existencia")
                     End If
                     If i.Value.Cantidad > 0 Then
+                        i.Value.idFacturaEncabezado = Me.Id
                         i.Value.Guardar()
 
                     Else
@@ -359,7 +394,7 @@ Public Class FacturaEncabezado
 
         For x As Integer = 0 To TotalRegistros - 1
             Me.CargadoPropiedades(x)
-            Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto)
+            Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto, Me.Elabora, Me.Factura)
             lista.Add(tempOs)
         Next
 
