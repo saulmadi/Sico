@@ -22,6 +22,7 @@ Public Class FacturaDetalle
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idfacturaencabezado"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idproductos"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("cantidad"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("precioventa"))
     End Sub
 
     Public Sub New(ByVal idsucursal As Long)
@@ -172,9 +173,10 @@ Public Class FacturaDetalle
     Public Overrides Sub Guardar()
         Me.NullParametrosMantenimiento()
 
-        Me.ValorParametrosMantenimiento("idproducto", Me.Producto.Producto.Id)
+        Me.ValorParametrosMantenimiento("idproductos", Me.Producto.Producto.Id)
         Me.ValorParametrosMantenimiento("idfacturaencabezado", Me.idFacturaEncabezado)
         Me.ValorParametrosMantenimiento("cantidad", Me.Cantidad)
+        Me.ValorParametrosMantenimiento("precioventa", Me.Producto.Producto.PrecioVenta)
 
         MyBase.Guardar(True)
     End Sub

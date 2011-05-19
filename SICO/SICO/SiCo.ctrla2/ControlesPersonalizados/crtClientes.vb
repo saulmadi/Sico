@@ -70,14 +70,14 @@ Public Class crtClientes
         End Set
     End Property
 
-    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    <Browsable(True), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property ControlPersonaNatural() As crtPersonaNatural
         Get
             Return CrtPersonaNatural1
         End Get
     End Property
 
-    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    <Browsable(True), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property ControlPersonaJuridicas() As crtPersonaJuridica
         Get
             Return CrtPersonaJuridica1

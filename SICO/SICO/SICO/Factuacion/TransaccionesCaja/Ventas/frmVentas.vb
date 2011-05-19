@@ -69,6 +69,7 @@ Public Class frmVentas
 #End Region
 
 #Region "Eventos"
+
     Private Sub frmVentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cmbTiposFacturas.Entidad = New TiposFacturas
         cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
@@ -83,6 +84,8 @@ Public Class frmVentas
 
         PanelAccion1.BotonGuardar.Enabled = False
 
+        CrtClientes.ControlPersonaJuridicas.EtiquetaError = PanelAccion1.lblEstado
+        CrtClientes.ControlPersonaNatural.EtiquetaError = PanelAccion1.lblEstado
     End Sub
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
@@ -113,7 +116,22 @@ Public Class frmVentas
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Try
+            If cmbTiposFacturas.SelectedIndex > -1 Then
+                Factura.idclientes = CrtClientes.Guardar()
 
+                Factura.estado = "P"
+                Factura.Elabora = PanelAccion1.Usuario.Id
+                Factura.idsucursales = PanelAccion1.sucursal.Id
+                Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                Factura.GuardarFacturaProducto()
+
+            Else
+                MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
