@@ -23,7 +23,6 @@ Partial Class frmFacturacion
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
-        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmFacturacion))
         Dim TipoIdentidad3 As SICO.lgla.TipoIdentidad = New SICO.lgla.TipoIdentidad
         Dim TipoIdentidad4 As SICO.lgla.TipoIdentidad = New SICO.lgla.TipoIdentidad
