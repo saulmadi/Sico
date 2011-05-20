@@ -119,11 +119,12 @@ Public Class frmVentas
         Try
             If cmbTiposFacturas.SelectedIndex > -1 Then
                 Factura.idclientes = CrtClientes.Guardar()
-
+                Factura.fecha = DateTimePicker1.Value
                 Factura.estado = "P"
                 Factura.Elabora = PanelAccion1.Usuario.Id
                 Factura.idsucursales = PanelAccion1.sucursal.Id
                 Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                Factura.motoproducto = "P"
                 Factura.GuardarFacturaProducto()
 
             Else

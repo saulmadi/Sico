@@ -24,7 +24,7 @@ Public Class FacturaEncabezado
     Private _diccionariodetalle As New Dictionary(Of String, FacturaDetalle)
     Private _elabora As Long
     Private _factura As Long
-
+    Private _nombrecliente As String
 #End Region
 
 #Region "Constructor"
@@ -38,6 +38,7 @@ Public Class FacturaEncabezado
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idtiposfacturas"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("estado"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("fecha"))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("motoproducto"))
 
 
         Me.ComandoMantenimiento = "FacturaEncabezado_Mant"
@@ -248,6 +249,32 @@ Public Class FacturaEncabezado
         End Set
     End Property
 
+    Public ReadOnly Property DescripcionEstado() As String
+        Get
+            If Me.estado.ToUpper = "P" Then
+                Return "En Proceso"
+            ElseIf Me.estado.ToUpper = "F" Then
+                Return "Facturada"
+            Else
+                Return String.Empty
+            End If
+        End Get
+    End Property
+
+    Public ReadOnly Property NombreCliente() As String
+        Get
+            Return _nombrecliente
+        End Get
+    End Property
+
+    Public ReadOnly Property NumeroFacturaS() As String
+        Get
+            If Me.numerofactura = 0 Then
+                Return String.Empty
+            End If
+            Return numerofactura
+        End Get
+    End Property
 
 #End Region
 
@@ -264,11 +291,20 @@ Public Class FacturaEncabezado
         Me.subtotal = Me.Registro(Indice, "subtotal")
         Me.descuentovalor = Me.Registro(Indice, "descuentovalor")
         Me.descuento = Me.Registro(Indice, "descuento")
-        Me.ventaexcenta = Me.Registro(Indice, "ventaexcenta")
+        Me.ventaexcenta = Me.Registro(Indice, "ventaexenta")
         Me.estado = Me.Registro(Indice, "estado")
         Me.motoproducto = Me.Registro(Indice, "motoproducto")
         Me.Factura = Registro(Indice, "factura")
         Me.Elabora = Me.Registro(Indice, "elabora")
+        Me._nombrecliente = Me.Registro(Indice, "nombrecliente")
+        If Not String.IsNullOrEmpty(_nombrecliente) Then
+            Select Case _nombrecliente.Substring(_nombrecliente.Length - 1)
+                Case "@", "$", "%", "&"
+                    _nombrecliente = _nombrecliente.Remove(_nombrecliente.Length - 1)
+            End Select
+        End If
+
+        
 
 
         MyBase.CargadoPropiedades(Indice)
@@ -327,11 +363,12 @@ Public Class FacturaEncabezado
 
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
+        ValorParametrosMantenimiento("ventaexcenta", Me.ventaexcenta)
         ValorParametrosMantenimiento("codigo", "")
         ValorParametrosMantenimiento("idsucursales", Me.idsucursales)
         ValorParametrosMantenimiento("numerofactura", Me.numerofactura)
         ValorParametrosMantenimiento("fecha", Me.fecha)
-        If Me.idclientes = 0 Or Me.idclientes = Nothing Then
+        If Me.idclientes <= 0 Or Me.idclientes = Nothing Then
             ValorParametrosMantenimiento("idclientes", Nothing)
         Else
             ValorParametrosMantenimiento("idclientes", Me.idclientes)
@@ -346,7 +383,12 @@ Public Class FacturaEncabezado
         ValorParametrosMantenimiento("estado", Me.estado)
         ValorParametrosMantenimiento("motoproducto", Me.motoproducto)
         ValorParametrosMantenimiento("elabora", Me.Elabora)
-        ValorParametrosMantenimiento("factura", Me.Factura)
+        If Me.Factura <= 0 Then
+            ValorParametrosMantenimiento("factura", Nothing)
+        Else
+            ValorParametrosMantenimiento("factura", Me.Factura)
+        End If
+
         MyBase.Guardar(True)
         Me.codigo = Me.ValorParametrosMantenimiento("codigo")
     End Sub
@@ -395,6 +437,7 @@ Public Class FacturaEncabezado
         For x As Integer = 0 To TotalRegistros - 1
             Me.CargadoPropiedades(x)
             Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto, Me.Elabora, Me.Factura)
+            tempOs._nombrecliente = Me._nombrecliente
             lista.Add(tempOs)
         Next
 
