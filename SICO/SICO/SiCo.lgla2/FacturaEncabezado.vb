@@ -444,6 +444,28 @@ Public Class FacturaEncabezado
         Return lista
     End Function
 
+    Public Sub Facturar()
+        Try
+            Me.IniciarTransaccion()
+            Me.estado = "F"
+            Me.Guardar()
+            Me.CargarDetalle()
+            Dim lista As List(Of DetalleOrdenSalida) = Me.ListaDetalle
+            For Each i In lista
+
+                Dim inv As New InventarioTrigger()
+                inv.ModificarInventario(Me.sucursalrecibe, i.idProducto, i.Cantidad)
+
+            Next
+
+            Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.estado = "E"
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
 #End Region
 
 #Region "EnumeradorTipoFactura"

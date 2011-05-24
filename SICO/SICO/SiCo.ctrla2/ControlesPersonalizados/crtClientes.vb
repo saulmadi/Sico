@@ -145,6 +145,7 @@ Public Class crtClientes
         Me.Cliente = New Clientes
         Me.CrtPersonaJuridica1.Nuevo()
         Me.CrtPersonaNatural1.Nuevo()
+
         Me.TabControl1.SelectedIndex = 0
     End Sub
 
