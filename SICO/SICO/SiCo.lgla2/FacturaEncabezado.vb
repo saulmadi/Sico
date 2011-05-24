@@ -444,17 +444,30 @@ Public Class FacturaEncabezado
         Return lista
     End Function
 
-    Public Sub Facturar()
+    Public Sub FacturarProducto()
         Try
             Me.IniciarTransaccion()
             Me.estado = "F"
+            Me.CalcularDetalleGuardar()
             Me.Guardar()
-            Me.CargarDetalle()
-            Dim lista As List(Of DetalleOrdenSalida) = Me.ListaDetalle
-            For Each i In lista
-
-                Dim inv As New InventarioTrigger()
-                inv.ModificarInventario(Me.sucursalrecibe, i.idProducto, i.Cantidad)
+            Dim faca As New GenerarNumeroFactura
+            faca.GenerarNumero(Me.Id, Me.idsucursales, "F")
+            Dim lista As List(Of FacturaDetalle) = Me.ListaDetalle
+            For Each i In _diccionariodetalle
+                If i.Value.Producto.Producto.Id > 0 Then
+                    If i.Value.Cantidad > i.Value.Existencia Then
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser mayor que la existencia")
+                    End If
+                    If i.Value.Cantidad > 0 Then
+                        i.Value.idFacturaEncabezado = Me.Id
+                        i.Value.Guardar()
+                        Dim inv As New InventarioTrigger()
+                        inv.ModificarInventario(Me.idsucursales, i.Value.Producto.Producto.Id, i.Value.Cantidad * -1)
+                        
+                    Else
+                        Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
+                    End If
+                End If
 
             Next
 

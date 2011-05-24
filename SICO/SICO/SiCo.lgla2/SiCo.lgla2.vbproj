@@ -77,6 +77,7 @@
     <Compile Include="FacturaDetalle.vb" />
     <Compile Include="FacturaEncabezado.vb" />
     <Compile Include="GeneralesConstantes.vb" />
+    <Compile Include="GenerarNumeroFactura.vb" />
     <Compile Include="HistoricoCompras.vb" />
     <Compile Include="Imagenes.vb" />
     <Compile Include="Inventario.vb" />

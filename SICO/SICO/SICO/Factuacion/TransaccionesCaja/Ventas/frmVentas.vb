@@ -166,7 +166,31 @@ Public Class frmVentas
     End Sub
 
     Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
+        Try
+            Me.PanelAccion1.BarraProgreso.Value = 50
+            Me.PanelAccion1.lblEstado.Text = "Guardando..."
+            If cmbTiposFacturas.SelectedIndex > -1 Then
+                Factura.idclientes = CrtClientes.Guardar()
+                If Factura.idclientes = 0 Then
+                    CrtClientes.Nuevo()
+                End If
+                Factura.fecha = DateTimePicker1.Value
+                Factura.Elabora = PanelAccion1.Usuario.Id
+                Factura.idsucursales = PanelAccion1.sucursal.Id
+                Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                Factura.motoproducto = "P"
+                Factura.FacturarProducto()
+                _factura.Id = Me.Factura.Id
+                Me.Factura = _factura
+                Me.PanelAccion1.BarraProgreso.Value = 100
+                Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
 
+            Else
+                MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
