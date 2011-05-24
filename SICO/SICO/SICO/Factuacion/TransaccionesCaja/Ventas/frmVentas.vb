@@ -24,7 +24,15 @@ Public Class frmVentas
     Private Sub cargarentidad()
         grdDetalle.ListaFormatos.Clear()
         grdDetalle.DataSource = Nothing
+        If cmbTiposFacturas.Items.Count = 0 Then
+            cmbTiposFacturas.Entidad = New TiposFacturas
+            cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+            cmbTiposFacturas.IncializarCarga()
 
+        End If
+        
+
+        Me.PanelAccion1.BotonEliminar.Visible = False
         If Factura.Id = 0 Then
             CrtClientes.Nuevo()
             cmbTiposFacturas.SelectedIndex = -1
@@ -54,6 +62,52 @@ Public Class frmVentas
 
 
         Else
+            
+            Me.grdDetalle.DarFormato("Codigo", "Código", True)
+            Me.grdDetalle.DarFormato("ProductoDescripcion", "Descripción", True)
+            Me.grdDetalle.DarFormato("Existencia", "Existencia", True)
+            Me.grdDetalle.DarFormato("Precio", "Precio", True)
+            Me.grdDetalle.DarFormato("CantidadEditable", "Cantidad", True)
+
+            Me.txtDesc.Text = Factura.descuento
+
+            lblNumeroFactura.Text = Factura.NumeroFacturaS
+            Dim cliente As New Clientes
+            cliente.Buscar("id", Factura.idclientes)
+            If cliente.Id > 0 Then
+                CrtClientes.Cliente = cliente
+            Else
+                CrtClientes.Nuevo()
+            End If
+
+            cmbTiposFacturas.SelectedValue = Factura.idtiposfacturas
+            chkVentaExcenta.Checked = Factura.ventaexcenta
+
+            Factura.CargarDetalle()
+            If Factura.estado.ToUpper = "P" Then
+                Me.PanelAccion1.BotonEliminar.Text = "Facturar"
+                Me.PanelAccion1.BotonEliminar.Visible = True
+
+                txtDescPor.Enabled = True
+                chkVentaExcenta.Enabled = True
+                cmbTiposFacturas.Enabled = True
+                CrtClientes.Enabled = True
+                Me.PanelAccion1.BotonGuardar.Enabled = True
+                While Factura.ListaDetalle.Count < 12
+                    Factura.ListaDetalle.Add(New FacturaDetalle(Factura.idsucursales))
+                End While
+            Else
+
+                Me.PanelAccion1.BotonEliminar.Visible = False
+                txtDescPor.Enabled = False
+                chkVentaExcenta.Enabled = False
+                cmbTiposFacturas.Enabled = False
+                CrtClientes.Enabled = True
+                Me.PanelAccion1.BotonGuardar.Enabled = False
+            End If
+
+            grdDetalle.DataSource = Factura.ListaDetalle
+            calculartotales()
 
         End If
     End Sub
@@ -71,9 +125,9 @@ Public Class frmVentas
 #Region "Eventos"
 
     Private Sub frmVentas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        cmbTiposFacturas.Entidad = New TiposFacturas
-        cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
-        cmbTiposFacturas.CargarParametros()
+        'cmbTiposFacturas.Entidad = New TiposFacturas
+        'cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+        'cmbTiposFacturas.CargarParametros()
         lblNumeroFactura.Text = ""
 
         PanelAccion1.BotonImprimir.Text = "Facturar"
@@ -117,8 +171,13 @@ Public Class frmVentas
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
+            Me.PanelAccion1.BarraProgreso.Value = 50
+            Me.PanelAccion1.lblEstado.Text = "Guardando..."
             If cmbTiposFacturas.SelectedIndex > -1 Then
                 Factura.idclientes = CrtClientes.Guardar()
+                If Factura.idclientes = 0 Then
+                    CrtClientes.Nuevo()
+                End If
                 Factura.fecha = DateTimePicker1.Value
                 Factura.estado = "P"
                 Factura.Elabora = PanelAccion1.Usuario.Id
@@ -126,6 +185,9 @@ Public Class frmVentas
                 Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
                 Factura.motoproducto = "P"
                 Factura.GuardarFacturaProducto()
+                Factura = _factura
+                Me.PanelAccion1.BarraProgreso.Value = 100
+                Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
 
             Else
                 MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -170,5 +232,5 @@ Public Class frmVentas
     End Sub
 
 #End Region
-    
+
 End Class

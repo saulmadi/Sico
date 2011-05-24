@@ -300,7 +300,19 @@ namespace SiCo.ctrla
         {
             try
             {
-                Entidad.Buscar();
+                if (this.ColeccionParametros.Count == 0)
+                    Entidad.Buscar();
+                else
+                {
+                    List<Parametro> p = new List<Parametro>();
+                    foreach (ParametrosListaDesplegable i in this.ColeccionParametros )
+                    {
+                        p.Add(i);
+                    }
+                   ;
+                    Entidad.Buscar(p);
+                }
+
                 if (Entidad.TotalRegistros > 0)
                 {
                     string d = DisplayMember;

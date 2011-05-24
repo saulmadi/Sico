@@ -26,8 +26,10 @@ Partial Class frmVentas
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentas))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
+        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
+        Me.txtDescPor = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label2 = New System.Windows.Forms.Label
         Me.txtDesc = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
@@ -45,25 +47,23 @@ Partial Class frmVentas
         Me.lblNumeroFactura = New System.Windows.Forms.Label
         Me.chkVentaExcenta = New System.Windows.Forms.CheckBox
         Me.Label3 = New System.Windows.Forms.Label
+        Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
-        Me.grdDetalle = New SICO.ctrla.Grid(Me.components)
-        Me.txtDescPor = New SICO.ctrla.CajaTexto(Me.components)
-        Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -89,6 +89,26 @@ Partial Class frmVentas
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Productos"
+        '
+        'grdDetalle
+        '
+        Me.grdDetalle.AllowUserToAddRows = False
+        Me.grdDetalle.AllowUserToDeleteRows = False
+        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdDetalle.BotonBuscar = True
+        Me.grdDetalle.BotonEditar = False
+        Me.grdDetalle.BotonEliminar = True
+        Me.grdDetalle.CampoId = Nothing
+        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
+        Me.grdDetalle.MultiSelect = False
+        Me.grdDetalle.Name = "grdDetalle"
+        Me.grdDetalle.RowHeadersVisible = False
+        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
+        Me.grdDetalle.Size = New System.Drawing.Size(730, 278)
+        Me.grdDetalle.TabIndex = 10
         '
         'Panel7
         '
@@ -116,6 +136,26 @@ Partial Class frmVentas
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(733, 93)
         Me.Panel8.TabIndex = 6
+        '
+        'txtDescPor
+        '
+        Me.txtDescPor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtDescPor.ColorError = System.Drawing.Color.Red
+        Me.txtDescPor.Enabled = False
+        Me.txtDescPor.EnterPorTab = True
+        Me.txtDescPor.EsObligatorio = False
+        Me.txtDescPor.ExpresionValidacion = "^([1-9]|[1-9]\d|100)$"
+        Me.txtDescPor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtDescPor.Location = New System.Drawing.Point(224, 35)
+        Me.txtDescPor.MaxLength = 3
+        Me.txtDescPor.MensajeError = "El número debe estar entre 1-100"
+        Me.txtDescPor.Name = "txtDescPor"
+        Me.txtDescPor.Size = New System.Drawing.Size(164, 20)
+        Me.txtDescPor.TabIndex = 10
+        Me.txtDescPor.Texto = Nothing
+        Me.txtDescPor.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtDescPor.ValorInt = Nothing
+        Me.txtDescPor.ValorLong = Nothing
         '
         'Label2
         '
@@ -284,6 +324,22 @@ Partial Class frmVentas
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Tipo factura"
         '
+        'cmbTiposFacturas
+        '
+        Me.cmbTiposFacturas.CargarAutoCompletar = False
+        Me.cmbTiposFacturas.CargarComboBox = True
+        Me.cmbTiposFacturas.DisplayMember = "descripcion"
+        Me.cmbTiposFacturas.Enabled = False
+        Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTiposFacturas.FormattingEnabled = True
+        Me.cmbTiposFacturas.Location = New System.Drawing.Point(323, 19)
+        Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
+        Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
+        Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
+        Me.cmbTiposFacturas.Size = New System.Drawing.Size(129, 21)
+        Me.cmbTiposFacturas.TabIndex = 3
+        Me.cmbTiposFacturas.ValueMember = "id"
+        '
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -312,6 +368,18 @@ Partial Class frmVentas
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cliente"
         '
+        'CrtClientes
+        '
+        Me.CrtClientes.CargarClientePorPersona = True
+        Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes.Enabled = False
+        Me.CrtClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
+        Me.CrtClientes.Name = "CrtClientes"
+        Me.CrtClientes.Size = New System.Drawing.Size(716, 138)
+        Me.CrtClientes.TabIndex = 0
+        Me.CrtClientes.VisibleDatosSecundarios = False
+        '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
@@ -327,74 +395,6 @@ Partial Class frmVentas
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(31, 198)
         Me.Panel6.TabIndex = 0
-        '
-        'grdDetalle
-        '
-        Me.grdDetalle.AllowUserToAddRows = False
-        Me.grdDetalle.AllowUserToDeleteRows = False
-        Me.grdDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.grdDetalle.BotonBuscar = True
-        Me.grdDetalle.BotonEditar = False
-        Me.grdDetalle.BotonEliminar = True
-        Me.grdDetalle.CampoId = Nothing
-        Me.grdDetalle.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
-        Me.grdDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.grdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.grdDetalle.Location = New System.Drawing.Point(3, 16)
-        Me.grdDetalle.MultiSelect = False
-        Me.grdDetalle.Name = "grdDetalle"
-        Me.grdDetalle.RowHeadersVisible = False
-        Me.grdDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.grdDetalle.Size = New System.Drawing.Size(730, 278)
-        Me.grdDetalle.TabIndex = 10
-        '
-        'txtDescPor
-        '
-        Me.txtDescPor.BackColor = System.Drawing.SystemColors.Window
-        Me.txtDescPor.ColorError = System.Drawing.Color.Red
-        Me.txtDescPor.Enabled = False
-        Me.txtDescPor.EnterPorTab = True
-        Me.txtDescPor.EsObligatorio = False
-        Me.txtDescPor.ExpresionValidacion = "^([1-9]|[1-9]\d|100)$"
-        Me.txtDescPor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtDescPor.Location = New System.Drawing.Point(224, 35)
-        Me.txtDescPor.MaxLength = 3
-        Me.txtDescPor.MensajeError = "El número debe estar entre 1-100"
-        Me.txtDescPor.Name = "txtDescPor"
-        Me.txtDescPor.Size = New System.Drawing.Size(164, 20)
-        Me.txtDescPor.TabIndex = 10
-        Me.txtDescPor.Texto = Nothing
-        Me.txtDescPor.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.txtDescPor.ValorInt = Nothing
-        Me.txtDescPor.ValorLong = Nothing
-        '
-        'cmbTiposFacturas
-        '
-        Me.cmbTiposFacturas.CargarAutoCompletar = False
-        Me.cmbTiposFacturas.CargarComboBox = True
-        Me.cmbTiposFacturas.DisplayMember = "descripcion"
-        Me.cmbTiposFacturas.Enabled = False
-        Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTiposFacturas.FormattingEnabled = True
-        Me.cmbTiposFacturas.Location = New System.Drawing.Point(323, 19)
-        Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
-        Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
-        Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
-        Me.cmbTiposFacturas.Size = New System.Drawing.Size(129, 21)
-        Me.cmbTiposFacturas.TabIndex = 3
-        Me.cmbTiposFacturas.ValueMember = "id"
-        '
-        'CrtClientes
-        '
-        Me.CrtClientes.CargarClientePorPersona = False
-        Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtClientes.Enabled = False
-        Me.CrtClientes.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
-        Me.CrtClientes.Name = "CrtClientes"
-        Me.CrtClientes.Size = New System.Drawing.Size(716, 138)
-        Me.CrtClientes.TabIndex = 0
-        Me.CrtClientes.VisibleDatosSecundarios = False
         '
         'CrtPanelBase1
         '
@@ -432,6 +432,7 @@ Partial Class frmVentas
         Me.Text = "Ventas"
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
+        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
@@ -439,7 +440,6 @@ Partial Class frmVentas
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        CType(Me.grdDetalle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

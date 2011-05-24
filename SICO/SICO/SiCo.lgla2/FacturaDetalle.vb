@@ -14,7 +14,7 @@ Public Class FacturaDetalle
         Me.ComandoSelect = "TransaccionesProductosComplejo_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idproductos"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idsucursales"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", " inner join facturadetalle t on i.idproducto= t.idproductos  "))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("tabla", " inner join facturadetalle t on i.idproductos= t.idproductos  "))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("campos", " t.id,t.idfacturaencabezado,t.idproductos,t.cantidad,t.precioventa,t.fmodif,t.usu,i.idsucursales as idsucursal,i.cantidad as existencia,p.codigo,p.descripcion,p.precioventa "))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("parametro"))
 
@@ -184,7 +184,7 @@ Public Class FacturaDetalle
     Public Overloads Sub Buscar(ByVal idfacutraencabezado As Long, ByVal idproducto As String, ByVal idsucursales As String)
         Me.NullParametrosBusqueda()
         Me.ValorParametrosBusqueda("idsucursales", idsucursales)
-        Me.ValorParametrosBusqueda("parametro", " t.idfacutraencabezado = " + idfacutraencabezado.ToString() + " ")
+        Me.ValorParametrosBusqueda("parametro", " t.idfacturaencabezado = " + idfacutraencabezado.ToString() + " ")
         Me.ValorParametrosBusqueda("idproductos", idproducto.ToString)
 
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
