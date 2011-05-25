@@ -7,7 +7,7 @@ Public Class FacturaEncabezado
 #Region "Declaraciones"
     Private _codigo As String
     Private _idsucursales As Long
-    Private _numerofactura As Long
+    Private _numerofactura As String
     Private _idclientes As Long
     Private _fecha As Date
     Private _idtiposfacturas As Long
@@ -59,7 +59,7 @@ Public Class FacturaEncabezado
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("elabora"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("factura"))
     End Sub
-    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal idsucursales As Long, ByVal numerofactura As Long, ByVal idclientes As Long, ByVal fecha As Date, ByVal idtiposfacturas As Long, _
+    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal idsucursales As Long, ByVal numerofactura As String, ByVal idclientes As Long, ByVal fecha As Date, ByVal idtiposfacturas As Long, _
                    ByVal total As Decimal, ByVal isv As Decimal, ByVal subtotal As Decimal, ByVal descuentovalor As Decimal, ByVal descuento As Integer, ByVal ventaexcenta As Integer, _
                    ByVal estado As String, ByVal motoproducto As String, ByVal elabora As Long, ByVal factura As Long)
         Me.New()
@@ -105,11 +105,11 @@ Public Class FacturaEncabezado
         End Set
     End Property
 
-    Public Property numerofactura() As Long
+    Public Property numerofactura() As String
         Get
             Return _numerofactura
         End Get
-        Set(ByVal value As Long)
+        Set(ByVal value As String)
             _numerofactura = value
         End Set
     End Property
@@ -269,10 +269,13 @@ Public Class FacturaEncabezado
 
     Public ReadOnly Property NumeroFacturaS() As String
         Get
-            If Me.numerofactura = 0 Then
+            Dim valor As Integer = 0
+            If Integer.TryParse(Me.numerofactura, valor) Then
+                Return numerofactura
+            Else
                 Return String.Empty
             End If
-            Return numerofactura
+
         End Get
     End Property
 
