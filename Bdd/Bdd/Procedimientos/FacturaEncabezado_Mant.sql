@@ -8,7 +8,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `FacturaEncabezado_Mant`(
 inout id int(11),
 inout codigo nvarchar(150),
 idsucursales int(11),
-numerofactura int(15),
+numerofactura varchar(100),
 idclientes int(11),
 fecha date,
 idtiposfacturas int(11),
