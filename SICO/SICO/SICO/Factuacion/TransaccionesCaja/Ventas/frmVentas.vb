@@ -128,7 +128,7 @@ Public Class frmVentas
         'cmbTiposFacturas.Entidad = New TiposFacturas
         'cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
         'cmbTiposFacturas.CargarParametros()
-        lblNumeroFactura.Text = ""
+        'lblNumeroFactura.Text = ""
 
         PanelAccion1.BotonImprimir.Text = "Facturar"
         PanelAccion1.BotonImprimir.Visible = False
@@ -177,6 +177,7 @@ Public Class frmVentas
                 Factura.fecha = DateTimePicker1.Value
                 Factura.Elabora = PanelAccion1.Usuario.Id
                 Factura.idsucursales = PanelAccion1.sucursal.Id
+                Factura.Factura = PanelAccion1.Usuario.Id
                 Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
                 Factura.motoproducto = "P"
                 Factura.FacturarProducto()
@@ -207,6 +208,7 @@ Public Class frmVentas
                 Factura.Elabora = PanelAccion1.Usuario.Id
                 Factura.idsucursales = PanelAccion1.sucursal.Id
                 Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                Factura.numerofactura = Guid.NewGuid.ToString
                 Factura.motoproducto = "P"
                 Factura.GuardarFacturaProducto()
                 Factura = _factura
