@@ -29,7 +29,7 @@ set @from= concat(@from," from facturaencabezado o ");
 
 
 if id<>"" then
-  set @where= concat(@where, " and id = ", id, " ");
+  set @where= concat(@where, " and o.id = ", id, " ");
 end if;
 
 
