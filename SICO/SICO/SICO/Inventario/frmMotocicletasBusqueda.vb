@@ -73,6 +73,12 @@ Public Class frmMotocicletasBusqueda
                 p.Add(New Parametro("idsucursal", CrtPanelBusqueda1.sucursal.Id))
             End If
 
+            If cmbEstado.SelectedIndex = 0 Then
+                p.Add(New Parametro("estado", "I"))
+            ElseIf cmbEstado.SelectedIndex = 1 Then
+                p.Add(New Parametro("estado", "F"))
+            End If
+
             Me.CrtPanelBusqueda1.Cargar(p)
 
 

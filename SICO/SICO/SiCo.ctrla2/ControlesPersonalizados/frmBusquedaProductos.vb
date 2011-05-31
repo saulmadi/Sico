@@ -17,4 +17,5 @@ Public Class frmBusquedaProductos
         Grid.DarFormato("precioventa", "Precio Venta", True, True)
 
     End Sub
+
 End Class
