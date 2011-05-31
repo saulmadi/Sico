@@ -61,13 +61,12 @@ Partial Class frmVentaMotocicleta
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
+        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.TabPage2 = New System.Windows.Forms.TabPage
-        Me.TabControl1 = New System.Windows.Forms.TabControl
-        Me.TabPage1 = New System.Windows.Forms.TabPage
+        Me.Button1 = New System.Windows.Forms.Button
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Panel7.SuspendLayout()
@@ -75,7 +74,6 @@ Partial Class frmVentaMotocicleta
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.TabControl1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -84,13 +82,14 @@ Partial Class frmVentaMotocicleta
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 272)
+        Me.Panel2.Location = New System.Drawing.Point(0, 322)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(807, 374)
+        Me.Panel2.Size = New System.Drawing.Size(807, 239)
         Me.Panel2.TabIndex = 16
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Button1)
         Me.GroupBox5.Controls.Add(Me.Label13)
         Me.GroupBox5.Controls.Add(Me.CajaTexto9)
         Me.GroupBox5.Controls.Add(Me.Label8)
@@ -112,7 +111,7 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(743, 374)
+        Me.GroupBox5.Size = New System.Drawing.Size(743, 239)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Motocicleta"
@@ -130,6 +129,7 @@ Partial Class frmVentaMotocicleta
         'CajaTexto9
         '
         Me.CajaTexto9.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto9.EnterPorTab = True
         Me.CajaTexto9.EsObligatorio = False
         Me.CajaTexto9.ExpresionValidacion = Nothing
         Me.CajaTexto9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -141,6 +141,8 @@ Partial Class frmVentaMotocicleta
         Me.CajaTexto9.TabIndex = 48
         Me.CajaTexto9.Texto = Nothing
         Me.CajaTexto9.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto9.ValorInt = Nothing
+        Me.CajaTexto9.ValorLong = Nothing
         '
         'Label8
         '
@@ -155,6 +157,7 @@ Partial Class frmVentaMotocicleta
         'CajaTexto5
         '
         Me.CajaTexto5.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto5.EnterPorTab = True
         Me.CajaTexto5.EsObligatorio = False
         Me.CajaTexto5.ExpresionValidacion = Nothing
         Me.CajaTexto5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -166,6 +169,8 @@ Partial Class frmVentaMotocicleta
         Me.CajaTexto5.TabIndex = 46
         Me.CajaTexto5.Texto = Nothing
         Me.CajaTexto5.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto5.ValorInt = Nothing
+        Me.CajaTexto5.ValorLong = Nothing
         '
         'ComboBox2
         '
@@ -188,11 +193,13 @@ Partial Class frmVentaMotocicleta
         'ListaDesplegable2
         '
         Me.ListaDesplegable2.CargarAutoCompletar = False
+        Me.ListaDesplegable2.CargarComboBox = True
         Me.ListaDesplegable2.FormattingEnabled = True
         Me.ListaDesplegable2.ListaDesplegablePadre = Nothing
         Me.ListaDesplegable2.Location = New System.Drawing.Point(122, 176)
         Me.ListaDesplegable2.Name = "ListaDesplegable2"
         Me.ListaDesplegable2.ParametroAutocompletar = Nothing
+        Me.ListaDesplegable2.ParametroBusquedaPadre = Nothing
         Me.ListaDesplegable2.Size = New System.Drawing.Size(335, 21)
         Me.ListaDesplegable2.TabIndex = 43
         '
@@ -237,6 +244,7 @@ Partial Class frmVentaMotocicleta
         'CajaTexto4
         '
         Me.CajaTexto4.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto4.EnterPorTab = True
         Me.CajaTexto4.EsObligatorio = False
         Me.CajaTexto4.ExpresionValidacion = Nothing
         Me.CajaTexto4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -248,10 +256,13 @@ Partial Class frmVentaMotocicleta
         Me.CajaTexto4.TabIndex = 38
         Me.CajaTexto4.Texto = Nothing
         Me.CajaTexto4.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto4.ValorInt = Nothing
+        Me.CajaTexto4.ValorLong = Nothing
         '
         'CajaTexto6
         '
         Me.CajaTexto6.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto6.EnterPorTab = True
         Me.CajaTexto6.EsObligatorio = False
         Me.CajaTexto6.ExpresionValidacion = Nothing
         Me.CajaTexto6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -263,6 +274,8 @@ Partial Class frmVentaMotocicleta
         Me.CajaTexto6.TabIndex = 37
         Me.CajaTexto6.Texto = Nothing
         Me.CajaTexto6.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto6.ValorInt = Nothing
+        Me.CajaTexto6.ValorLong = Nothing
         '
         'Label14
         '
@@ -277,6 +290,7 @@ Partial Class frmVentaMotocicleta
         'CajaTexto7
         '
         Me.CajaTexto7.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto7.EnterPorTab = True
         Me.CajaTexto7.EsObligatorio = False
         Me.CajaTexto7.ExpresionValidacion = Nothing
         Me.CajaTexto7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -289,6 +303,8 @@ Partial Class frmVentaMotocicleta
         Me.CajaTexto7.TabIndex = 35
         Me.CajaTexto7.Texto = Nothing
         Me.CajaTexto7.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.CajaTexto7.ValorInt = Nothing
+        Me.CajaTexto7.ValorLong = Nothing
         '
         'Label15
         '
@@ -304,9 +320,9 @@ Partial Class frmVentaMotocicleta
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 226)
+        Me.Panel7.Location = New System.Drawing.Point(3, 67)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(737, 145)
+        Me.Panel7.Size = New System.Drawing.Size(737, 169)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
@@ -322,9 +338,9 @@ Partial Class frmVentaMotocicleta
         Me.Panel8.Controls.Add(Me.Label6)
         Me.Panel8.Controls.Add(Me.TextBox3)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(401, 0)
+        Me.Panel8.Location = New System.Drawing.Point(420, 0)
         Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(336, 145)
+        Me.Panel8.Size = New System.Drawing.Size(317, 169)
         Me.Panel8.TabIndex = 6
         '
         'Label2
@@ -421,7 +437,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel4.Location = New System.Drawing.Point(774, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(33, 374)
+        Me.Panel4.Size = New System.Drawing.Size(33, 239)
         Me.Panel4.TabIndex = 2
         '
         'Panel3
@@ -429,7 +445,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(31, 374)
+        Me.Panel3.Size = New System.Drawing.Size(31, 239)
         Me.Panel3.TabIndex = 1
         '
         'Panel1
@@ -440,7 +456,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 89)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(807, 183)
+        Me.Panel1.Size = New System.Drawing.Size(807, 233)
         Me.Panel1.TabIndex = 15
         '
         'GroupBox1
@@ -452,7 +468,7 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(743, 177)
+        Me.GroupBox1.Size = New System.Drawing.Size(743, 227)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de Venta"
@@ -477,20 +493,30 @@ Partial Class frmVentaMotocicleta
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.TabControl1)
+        Me.GroupBox2.Controls.Add(Me.CrtClientes1)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 51)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(731, 120)
+        Me.GroupBox2.Size = New System.Drawing.Size(731, 162)
         Me.GroupBox2.TabIndex = 0
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Cliente"
+        '
+        'CrtClientes1
+        '
+        Me.CrtClientes1.CargarClientePorPersona = False
+        Me.CrtClientes1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes1.Location = New System.Drawing.Point(3, 16)
+        Me.CrtClientes1.Name = "CrtClientes1"
+        Me.CrtClientes1.Size = New System.Drawing.Size(725, 143)
+        Me.CrtClientes1.TabIndex = 0
+        Me.CrtClientes1.VisibleDatosSecundarios = False
         '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel5.Location = New System.Drawing.Point(774, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(33, 183)
+        Me.Panel5.Size = New System.Drawing.Size(33, 233)
         Me.Panel5.TabIndex = 3
         '
         'Panel6
@@ -498,7 +524,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(31, 183)
+        Me.Panel6.Size = New System.Drawing.Size(31, 233)
         Me.Panel6.TabIndex = 0
         '
         'CrtPanelBase1
@@ -516,60 +542,34 @@ Partial Class frmVentaMotocicleta
         Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
         Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 646)
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 561)
         Me.PanelAccion1.Name = "PanelAccion1"
         Me.PanelAccion1.Size = New System.Drawing.Size(807, 56)
         Me.PanelAccion1.TabIndex = 14
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
         '
-        'TabPage2
+        'Button1
         '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(717, 75)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Personas Jurídicas"
-        '
-        'TabControl1
-        '
-        Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
-        Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(3, 16)
-        Me.TabControl1.Multiline = True
-        Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(725, 101)
-        Me.TabControl1.TabIndex = 2
-        '
-        'TabPage1
-        '
-        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TabPage1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(717, 75)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Persona Naturales"
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(475, 19)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 50
+        Me.Button1.Text = "Buscar"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmVentaMotocicleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(807, 702)
+        Me.ClientSize = New System.Drawing.Size(807, 617)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CrtPanelBase1)
         Me.Controls.Add(Me.PanelAccion1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(823, 740)
+        Me.MinimumSize = New System.Drawing.Size(823, 500)
         Me.Name = "frmVentaMotocicleta"
         Me.Text = "Venta Motocicleta"
         Me.Panel2.ResumeLayout(False)
@@ -582,7 +582,6 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        Me.TabControl1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -606,7 +605,6 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
@@ -627,7 +625,7 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents CajaTexto7 As SICO.ctrla.CajaTexto
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
-    Friend WithEvents TabPage1 As System.Windows.Forms.TabPage
-    Friend WithEvents TabPage2 As System.Windows.Forms.TabPage
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents CrtClientes1 As SICO.ctrla2.crtClientes
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 End Class

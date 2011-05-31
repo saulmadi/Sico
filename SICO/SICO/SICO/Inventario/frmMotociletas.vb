@@ -81,7 +81,8 @@ Public Class frmMotociletas
     End Function
 
     Private Sub CargarEntidad()
-
+        TabControl1.Enabled = True
+        PanelAccion1.BotonGuardar.Enabled = True
 
         If Me.Motocicletas.Id = 0 Then
 
@@ -155,6 +156,9 @@ Public Class frmMotociletas
 
 #Region "Eventos"
     Private Sub frmMotociletas_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        TabControl1.Enabled = False
+        PanelAccion1.BotonGuardar.Enabled = False
+
         Me.cmbMarca.Entidad = New Marcas
         Me.cmbModelo.Entidad = New Modelos
         Me.cmbProveedor.Entidad = New Proveedores

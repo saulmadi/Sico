@@ -36,6 +36,8 @@ Partial Class frmMotocicletasBusqueda
         Me.Label5 = New System.Windows.Forms.Label
         Me.cmbSucursal = New SICO.ctrla.ControlesBasicos.ListaSucursales(Me.components)
         Me.btnBuscar = New System.Windows.Forms.Button
+        Me.Label6 = New System.Windows.Forms.Label
+        Me.cmbEstado = New System.Windows.Forms.ComboBox
         Me.SuspendLayout()
         '
         'CrtPanelBusqueda1
@@ -174,11 +176,33 @@ Partial Class frmMotocicletasBusqueda
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = True
         '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(492, 160)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(40, 13)
+        Me.Label6.TabIndex = 12
+        Me.Label6.Text = "Estado"
+        '
+        'cmbEstado
+        '
+        Me.cmbEstado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbEstado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cmbEstado.FormattingEnabled = True
+        Me.cmbEstado.Items.AddRange(New Object() {"En Inventario", "Facturada"})
+        Me.cmbEstado.Location = New System.Drawing.Point(547, 159)
+        Me.cmbEstado.Name = "cmbEstado"
+        Me.cmbEstado.Size = New System.Drawing.Size(121, 21)
+        Me.cmbEstado.TabIndex = 13
+        '
         'frmMotocicletasBusqueda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(878, 366)
+        Me.Controls.Add(Me.cmbEstado)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.cmbSucursal)
         Me.Controls.Add(Me.Label5)
@@ -212,4 +236,6 @@ Partial Class frmMotocicletasBusqueda
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents cmbSucursal As SICO.ctrla.ControlesBasicos.ListaSucursales
     Friend WithEvents btnBuscar As System.Windows.Forms.Button
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents cmbEstado As System.Windows.Forms.ComboBox
 End Class

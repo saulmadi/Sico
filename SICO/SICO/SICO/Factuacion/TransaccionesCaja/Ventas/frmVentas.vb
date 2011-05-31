@@ -33,6 +33,7 @@ Public Class frmVentas
         
 
         Me.PanelAccion1.BotonEliminar.Visible = False
+        lblNumeroFactura.Text = ""
         If Factura.Id = 0 Then
             CrtClientes.Nuevo()
             cmbTiposFacturas.SelectedIndex = -1
@@ -128,7 +129,7 @@ Public Class frmVentas
         'cmbTiposFacturas.Entidad = New TiposFacturas
         'cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
         'cmbTiposFacturas.CargarParametros()
-        'lblNumeroFactura.Text = ""
+        lblNumeroFactura.Text = ""
 
         PanelAccion1.BotonImprimir.Text = "Facturar"
         PanelAccion1.BotonImprimir.Visible = False
