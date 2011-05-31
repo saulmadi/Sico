@@ -19,12 +19,14 @@ Public Class FacturaEncabezado
     Private _ventaexecenta As Integer
     Private _estado As String
     Private _motoproducto As String
-    Private _motocicleta As Motocicletas
+    Private _motocicleta As New Motocicletas
     Private _listaDetalle As New List(Of FacturaDetalle)
     Private _diccionariodetalle As New Dictionary(Of String, FacturaDetalle)
     Private _elabora As Long
     Private _factura As Long
     Private _nombrecliente As String
+
+    Public Event CambioMotocicleta()
 #End Region
 
 #Region "Constructor"
@@ -219,6 +221,8 @@ Public Class FacturaEncabezado
         End Get
         Set(ByVal value As Motocicletas)
             _motocicleta = value
+            RaiseEvent CambioMotocicleta()
+
         End Set
     End Property
 
@@ -341,6 +345,18 @@ Public Class FacturaEncabezado
         total = valor - IIf(ventaexcenta = 1, valor * GeneralesConstantes.Impuesto, 0)
         Return cantot
     End Function
+
+    Public Sub CalcularValoreMotocicleta()
+        If Motocicleta.Id > 0 Then
+            subtotal = Motocicleta.precioventa
+            descuentovalor = subtotal * (IIf(descuento <= 100 And descuento >= 0, descuento, 0) / 100)
+            Dim valor As Decimal = subtotal - descuentovalor
+
+            isv = IIf(ventaexcenta = 0, (valor) * GeneralesConstantes.Impuesto, 0)
+
+            total = valor - IIf(ventaexcenta = 1, valor * GeneralesConstantes.Impuesto, 0)
+        End If
+    End Sub
 
     Private Function CalcularDetalleGuardar() As Long
         Me._diccionariodetalle.Clear()
