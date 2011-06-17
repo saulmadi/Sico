@@ -20,16 +20,69 @@ Public Class frmVentaMotocicleta
 #End Region
 
 #Region "Metodos"
-    Private Sub CargarEntidad()
+    Private Sub cargarentidad()
         If cmbTiposFacturas.Items.Count = 0 Then
             cmbTiposFacturas.Entidad = New TiposFacturas
             cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
             cmbTiposFacturas.IncializarCarga()
 
         End If
+
+
+        Me.PanelAccion1.BotonEliminar.Visible = False
+        lblNumeroFactura.Text = ""
         If Factura.Id = 0 Then
+            CrtClientes.Nuevo()
+            cmbTiposFacturas.SelectedIndex = -1
+            chkVentaExcenta.Checked = False
+            chkVentaExcenta.Enabled = True
+            cmbTiposFacturas.Enabled = True
+            CrtClientes.Enabled = True
+
+            PanelAccion1.BotonGuardar.Enabled = True
+            Factura.ListaDetalle = New List(Of FacturaDetalle)
+            txtDescuentoPor.Enabled = True
+
             Factura.Motocicleta = New Motocicletas
         Else
+            Me.txtDescuento.Text = Factura.descuento
+
+            lblNumeroFactura.Text = Factura.NumeroFacturaS
+            Dim cliente As New Clientes
+            cliente.Buscar("id", Factura.idclientes)
+            If cliente.Id > 0 Then
+                CrtClientes.Cliente = cliente
+            Else
+                CrtClientes.Nuevo()
+            End If
+
+            cmbTiposFacturas.SelectedValue = Factura.idtiposfacturas
+            chkVentaExcenta.Checked = Factura.ventaexcenta
+            Dim m = New Motocicletas
+            m.Buscar("id", Factura.idMotocicletas)
+            Factura.Motocicleta = m
+            txtPrecioVenta.Enabled = True
+            If Factura.estado.ToUpper = "P" Then
+                Me.PanelAccion1.BotonEliminar.Text = "Facturar"
+                Me.PanelAccion1.BotonEliminar.Visible = True
+
+                txtDescuentoPor.Enabled = True
+                chkVentaExcenta.Enabled = True
+                cmbTiposFacturas.Enabled = True
+                CrtClientes.Enabled = True
+                Me.PanelAccion1.BotonGuardar.Enabled = True
+
+            Else
+
+                Me.PanelAccion1.BotonEliminar.Visible = False
+                txtDescuentoPor.Enabled = False
+                chkVentaExcenta.Enabled = False
+                cmbTiposFacturas.Enabled = False
+                CrtClientes.Enabled = True
+                Me.PanelAccion1.BotonGuardar.Enabled = False
+            End If
+
+            calculartotales()
 
         End If
     End Sub
@@ -48,7 +101,7 @@ Public Class frmVentaMotocicleta
         Dim frm As New ctrla2.frmBusquedaMotocileta
         If frm.ShowDialog() = DialogResult.OK Then
             Factura.Motocicleta = frm.Entidad
-
+            txtPrecioVenta.Enabled = True
         End If
 
     End Sub
@@ -62,6 +115,11 @@ Public Class frmVentaMotocicleta
         Me.cmbModelo.IncializarCarga()
         Me.cmbTipoMotocicleta.IncializarCarga()
 
+        Me.PanelAccion1.BotonGuardar.Enabled = False
+        Me.PanelAccion1.BotonImprimir.Visible = False
+        Me.PanelAccion1.BotonEliminar.Visible = False
+
+
     End Sub
 
     Private Sub _factura_CambioMotocicleta() Handles _factura.CambioMotocicleta
@@ -74,7 +132,9 @@ Public Class frmVentaMotocicleta
             cmbModelo.SelectedValue = Factura.Motocicleta.idmodelos
             cmbTipoMotocicleta.SelectedValue = Factura.Motocicleta.idTiposMotocicletas
             txtPrecioVenta.Text = Factura.Motocicleta.precioventa
+            txtPrecioVenta.Enabled = True
         Else
+            txtPrecioVenta.Enabled = False
             txtMotor.Clear()
             txtChasis.Clear()
             txtCilindraje.Clear()
@@ -100,15 +160,80 @@ Public Class frmVentaMotocicleta
     End Sub
 
     Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
+        Try
+            Me.PanelAccion1.BarraProgreso.Value = 50
+            Me.PanelAccion1.lblEstado.Text = "Guardando..."
+            If cmbTiposFacturas.SelectedIndex > -1 Then
+                If Factura.Motocicleta.Id > 0 Then
 
+
+                    Factura.idclientes = CrtClientes.Guardar()
+                    If Factura.idclientes = 0 Then
+                        CrtClientes.Nuevo()
+                        Throw New ApplicationException("Ingrese el un cliente")
+                    End If
+                    Factura.fecha = DateTimePicker1.Value
+                    Factura.estado = "F"
+                    Factura.idMotocicletas = Factura.Motocicleta.Id
+                    Factura.Elabora = PanelAccion1.Usuario.Id
+                    Factura.idsucursales = PanelAccion1.sucursal.Id
+                    Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                    Factura.numerofactura = Guid.NewGuid.ToString
+                    Factura.motoproducto = "M"
+                    Factura.FacturarMotocicleta()
+                    Factura.Id = _factura.Id
+                    Factura = _factura
+                    Me.PanelAccion1.BarraProgreso.Value = 100
+                    Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
+                Else
+                    MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Try
+            Me.PanelAccion1.BarraProgreso.Value = 50
+            Me.PanelAccion1.lblEstado.Text = "Guardando..."
+            If cmbTiposFacturas.SelectedIndex > -1 Then
+                If Factura.Motocicleta.Id > 0 Then
 
+
+                    Factura.idclientes = CrtClientes.Guardar()
+                    If Factura.idclientes = 0 Then
+                        CrtClientes.Nuevo()
+
+                    End If
+                    Factura.fecha = DateTimePicker1.Value
+                    Factura.estado = "P"
+                    Factura.idMotocicletas = Factura.Motocicleta.Id
+                    Factura.Elabora = PanelAccion1.Usuario.Id
+                    Factura.idsucursales = PanelAccion1.sucursal.Id
+                    Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                    Factura.numerofactura = Guid.NewGuid.ToString
+                    Factura.motoproducto = "M"
+                    Factura.GuardarFacturaMotocicleta()
+                    Factura = _factura
+                    Me.PanelAccion1.BarraProgreso.Value = 100
+                    Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
+                Else
+                    MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
-
+       
     End Sub
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
@@ -139,7 +264,5 @@ Public Class frmVentaMotocicleta
     End Sub
 
 #End Region
-
-    
     
 End Class

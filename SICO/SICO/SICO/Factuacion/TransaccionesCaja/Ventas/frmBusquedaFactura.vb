@@ -2,7 +2,7 @@
 Imports SICO.lgla
 
 Public Class frmBusquedaFactura
-    Dim WithEvents frm As frmVentas
+    Dim WithEvents frm As Form
 
 
 
@@ -54,11 +54,22 @@ Public Class frmBusquedaFactura
     Private Sub Grid_Editar(ByVal EditarArg As SICO.ctrla.GridEditarEventArg) Handles Grid.Editar
         Try
             Me.Hide()
-            frm = New frmVentas
+            Dim frmv = New frmVentas
+            Dim frmm = New frmVentaMotocicleta
 
-            frm.MdiParent = Me.MdiParent
-            frm.Show()
-            frm.Factura = Grid.Item()
+            Dim itema = CType(Grid.Item(), FacturaEncabezado)
+            If itema.motoproducto.ToUpper = "P" Then
+                frmv.MdiParent = Me.MdiParent
+                frmv.Show()
+                frmv.Factura = itema
+                frm = frmv
+            Else
+                frmm.MdiParent = Me.MdiParent
+                frmm.Show()
+                frmm.Factura = itema
+                frm = frmm
+            End If
+            
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try

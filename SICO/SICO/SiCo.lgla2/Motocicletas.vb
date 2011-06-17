@@ -54,7 +54,7 @@ Public Class Motocicletas
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("estado"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("hp"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idproveedor"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idfacturaencabezado"))
+
 
     End Sub
 
@@ -257,14 +257,7 @@ Public Class Motocicletas
         End Set
     End Property
 
-    Public Property idFacturaEncabezado() As Long?
-        Get
-            Return _idfacturaencabezado
-        End Get
-        Set(ByVal value As Long?)
-            _idfacturaencabezado = value
-        End Set
-    End Property
+    
 #End Region
 
 #Region "Metodos"
@@ -287,7 +280,7 @@ Public Class Motocicletas
         Me.Sucursal = New Sucursales(Me.idSucursales, Convert.ToInt64(Registro(Indice, "identidades")), Registro(Indice, "descripcion"))
         Me.HP = Registro(Indice, "hp")
         Me.idProveedor = Registro(Indice, "idproveedor")
-        Me.idFacturaEncabezado = Registro(Indice, "idfacturaencabezado")
+
 
         MyBase.CargadoPropiedades(Indice)
 
@@ -307,7 +300,7 @@ Public Class Motocicletas
         Me.ValorParametrosMantenimiento("precioingreso", Me.preciocompra)
         Me.ValorParametrosMantenimiento("fechaingreso", Me.fechaingreso)
 
-        Me.ValorParametrosMantenimiento("idfacturaencabezado",Me.idFacturaEncabezado)
+
 
 
         Me.ValorParametrosMantenimiento("estado", Me.estado)
@@ -323,7 +316,7 @@ Public Class Motocicletas
         Me.ValorParametrosMantenimiento("chasis", Me.Chasis)
         Me.ValorParametrosMantenimiento("idmarcas", Me.idmarcas)
         Me.ValorParametrosMantenimiento("idmodelos", Me.idmodelos)
-        Me.ValorParametrosMantenimiento("idTiposMotociletas", Me.idTiposMotocicletas)
+        Me.ValorParametrosMantenimiento("idtiposmotocicletas", Me.idTiposMotocicletas)
         Me.ValorParametrosMantenimiento("idSucursales", Me.idSucursales)
         Me.ValorParametrosMantenimiento("cilindraje", Me.cilindraje)
         Me.ValorParametrosMantenimiento("anio", Me.anio)
