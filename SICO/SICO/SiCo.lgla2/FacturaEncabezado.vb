@@ -25,6 +25,7 @@ Public Class FacturaEncabezado
     Private _elabora As Long
     Private _factura As Long
     Private _nombrecliente As String
+    Private _idmotocicletas As Long
 
     Public Event CambioMotocicleta()
 #End Region
@@ -60,10 +61,11 @@ Public Class FacturaEncabezado
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("estado"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("elabora"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("factura"))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idmotocicletas"))
     End Sub
     Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal idsucursales As Long, ByVal numerofactura As String, ByVal idclientes As Long, ByVal fecha As Date, ByVal idtiposfacturas As Long, _
                    ByVal total As Decimal, ByVal isv As Decimal, ByVal subtotal As Decimal, ByVal descuentovalor As Decimal, ByVal descuento As Integer, ByVal ventaexcenta As Integer, _
-                   ByVal estado As String, ByVal motoproducto As String, ByVal elabora As Long, ByVal factura As Long)
+                   ByVal estado As String, ByVal motoproducto As String, ByVal elabora As Long, ByVal factura As Long, ByVal idMotocicletas As Long)
         Me.New()
 
         Me._Id = id
@@ -83,6 +85,7 @@ Public Class FacturaEncabezado
         Me.motoproducto = motoproducto
         Me.Factura = factura
         Me.Elabora = elabora
+        Me.idMotocicletas = idMotocicletas
 
     End Sub
     
@@ -283,6 +286,15 @@ Public Class FacturaEncabezado
         End Get
     End Property
 
+    Public Property idMotocicletas() As Long
+        Get
+            Return _idmotocicletas
+        End Get
+        Set(ByVal value As Long)
+            _idmotocicletas = value
+        End Set
+    End Property
+
 #End Region
 
 #Region "Metodos"
@@ -304,6 +316,7 @@ Public Class FacturaEncabezado
         Me.Factura = Registro(Indice, "factura")
         Me.Elabora = Me.Registro(Indice, "elabora")
         Me._nombrecliente = Me.Registro(Indice, "nombrecliente")
+        Me._idmotocicletas = Me.Registro(Indice, "idmotocicletas")
         If Not String.IsNullOrEmpty(_nombrecliente) Then
             Select Case _nombrecliente.Substring(_nombrecliente.Length - 1)
                 Case "@", "$", "%", "&"
@@ -402,6 +415,12 @@ Public Class FacturaEncabezado
         ValorParametrosMantenimiento("estado", Me.estado)
         ValorParametrosMantenimiento("motoproducto", Me.motoproducto)
         ValorParametrosMantenimiento("elabora", Me.Elabora)
+        If Me.idMotocicletas <= 0 Then
+            ValorParametrosMantenimiento("idmotocicletas", Nothing)
+        Else
+            ValorParametrosMantenimiento("idmotocicletas", Me.idMotocicletas)
+        End If
+
         If Me.Factura <= 0 Then
             ValorParametrosMantenimiento("factura", Nothing)
         Else
@@ -440,6 +459,28 @@ Public Class FacturaEncabezado
         End Try
     End Sub
 
+    Public Sub GuardarFacturaMotocicleta()
+        Try
+            Me.IniciarTransaccion()
+            Me.Guardar()
+
+            If Me.Motocicleta.Id >= 0 Then
+
+                Me.Motocicleta.GuardarTransaccion()
+            Else
+                Throw New ApplicationException("Seleccione una motocicleta")
+            End If
+
+            Dim flag As Boolean = False
+
+            Me.CommitTransaccion()
+
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
     Public Sub CargarDetalle()
         _listaDetalle.Clear()
         If Me.Id > 0 Then
@@ -455,7 +496,7 @@ Public Class FacturaEncabezado
 
         For x As Integer = 0 To TotalRegistros - 1
             Me.CargadoPropiedades(x)
-            Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto, Me.Elabora, Me.Factura)
+            Dim tempOs As New FacturaEncabezado(Me.Id, Me.Codigo, Me.idsucursales, Me.numerofactura, Me.idclientes, Me.fecha, Me.idtiposfacturas, Me.total, Me.isv, Me.subtotal, Me.descuentovalor, Me.descuento, Me.ventaexcenta, Me.estado, Me.motoproducto, Me.Elabora, Me.Factura, Me.idMotocicletas)
             tempOs._nombrecliente = Me._nombrecliente
             lista.Add(tempOs)
         Next
@@ -498,6 +539,31 @@ Public Class FacturaEncabezado
         End Try
     End Sub
 
+    Public Sub FacturarMotocicleta()
+        Try
+            Me.IniciarTransaccion()
+            Me.estado = "F"
+            Me.Guardar()
+            Dim faca As New GenerarNumeroFactura
+            faca.GenerarNumero(Me.Id, Me.idsucursales, "F")
+
+            If Me.Motocicleta.Id >= 0 Then
+                Me.Motocicleta.estado = "F"
+                Me.Motocicleta.GuardarTransaccion()
+            Else
+                Throw New ApplicationException("Seleccione una motocicleta")
+            End If
+
+            Dim flag As Boolean = False
+
+
+            Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.estado = "E"
+            Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
 #End Region
 
 #Region "EnumeradorTipoFactura"

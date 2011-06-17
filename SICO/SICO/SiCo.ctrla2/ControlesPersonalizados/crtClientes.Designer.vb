@@ -24,8 +24,8 @@ Partial Class crtClientes
     Private Sub InitializeComponent()
         Me.TabControl1 = New System.Windows.Forms.TabControl
         Me.TabPersonaNatural = New System.Windows.Forms.TabPage
-        Me.TabPersonaJuridica = New System.Windows.Forms.TabPage
         Me.CrtPersonaNatural1 = New SiCo.ctrla2.crtPersonaNatural
+        Me.TabPersonaJuridica = New System.Windows.Forms.TabPage
         Me.CrtPersonaJuridica1 = New SiCo.ctrla2.crtPersonaJuridica
         Me.TabControl1.SuspendLayout()
         Me.TabPersonaNatural.SuspendLayout()
@@ -59,6 +59,17 @@ Partial Class crtClientes
         Me.TabPersonaNatural.TabIndex = 0
         Me.TabPersonaNatural.Text = "Persona Naturales"
         '
+        'CrtPersonaNatural1
+        '
+        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(-1, 3)
+        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
+        Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
+        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(692, 213)
+        Me.CrtPersonaNatural1.SoloLectura = False
+        Me.CrtPersonaNatural1.TabIndex = 0
+        Me.CrtPersonaNatural1.VisibleDatosSecundarios = False
+        '
         'TabPersonaJuridica
         '
         Me.TabPersonaJuridica.BackColor = System.Drawing.SystemColors.Control
@@ -72,17 +83,6 @@ Partial Class crtClientes
         Me.TabPersonaJuridica.TabIndex = 1
         Me.TabPersonaJuridica.Text = "Personas Jurídicas"
         '
-        'CrtPersonaNatural1
-        '
-        Me.CrtPersonaNatural1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CrtPersonaNatural1.Location = New System.Drawing.Point(-1, 3)
-        Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
-        Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(692, 112)
-        Me.CrtPersonaNatural1.SoloLectura = False
-        Me.CrtPersonaNatural1.TabIndex = 0
-        Me.CrtPersonaNatural1.VisibleDatosSecundarios = False
-        '
         'CrtPersonaJuridica1
         '
         Me.CrtPersonaJuridica1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -90,7 +90,7 @@ Partial Class crtClientes
         Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(6, 5)
         Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
         Me.CrtPersonaJuridica1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(583, 194)
+        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(583, 94)
         Me.CrtPersonaJuridica1.SoloLectura = False
         Me.CrtPersonaJuridica1.TabIndex = 0
         Me.CrtPersonaJuridica1.TextoRazonSocial = "Razón social"

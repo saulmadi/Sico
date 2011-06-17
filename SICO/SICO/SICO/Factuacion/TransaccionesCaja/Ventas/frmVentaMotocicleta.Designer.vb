@@ -69,7 +69,7 @@ Partial Class frmVentaMotocicleta
         Me.txtMotor = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtDescuentoPor = New SICO.ctrla.CajaTexto(Me.components)
         Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.CrtClientes1 = New SICO.ctrla2.crtClientes
+        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
@@ -425,7 +425,7 @@ Partial Class frmVentaMotocicleta
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.CrtClientes1)
+        Me.GroupBox2.Controls.Add(Me.CrtClientes)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 51)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(731, 162)
@@ -619,7 +619,6 @@ Partial Class frmVentaMotocicleta
         Me.cmbTiposFacturas.CargarAutoCompletar = False
         Me.cmbTiposFacturas.CargarComboBox = True
         Me.cmbTiposFacturas.DisplayMember = "descripcion"
-        Me.cmbTiposFacturas.Enabled = False
         Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTiposFacturas.FormattingEnabled = True
         Me.cmbTiposFacturas.Location = New System.Drawing.Point(325, 22)
@@ -630,15 +629,15 @@ Partial Class frmVentaMotocicleta
         Me.cmbTiposFacturas.TabIndex = 8
         Me.cmbTiposFacturas.ValueMember = "id"
         '
-        'CrtClientes1
+        'CrtClientes
         '
-        Me.CrtClientes1.CargarClientePorPersona = False
-        Me.CrtClientes1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtClientes1.Location = New System.Drawing.Point(3, 16)
-        Me.CrtClientes1.Name = "CrtClientes1"
-        Me.CrtClientes1.Size = New System.Drawing.Size(725, 143)
-        Me.CrtClientes1.TabIndex = 0
-        Me.CrtClientes1.VisibleDatosSecundarios = False
+        Me.CrtClientes.CargarClientePorPersona = True
+        Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
+        Me.CrtClientes.Name = "CrtClientes"
+        Me.CrtClientes.Size = New System.Drawing.Size(725, 143)
+        Me.CrtClientes.TabIndex = 0
+        Me.CrtClientes.VisibleDatosSecundarios = False
         '
         'CrtPanelBase1
         '
@@ -720,7 +719,7 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents txtMotor As SICO.ctrla.CajaTexto
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents CrtClientes1 As SICO.ctrla2.crtClientes
+    Friend WithEvents CrtClientes As SICO.ctrla2.crtClientes
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtPrecioVenta As SICO.ctrla.CajaTexto
