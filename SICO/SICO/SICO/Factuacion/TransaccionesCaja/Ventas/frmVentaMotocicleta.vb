@@ -170,7 +170,7 @@ Public Class frmVentaMotocicleta
                     Factura.idclientes = CrtClientes.Guardar()
                     If Factura.idclientes = 0 Then
                         CrtClientes.Nuevo()
-                        Throw New ApplicationException("Ingrese el un cliente")
+                        Throw New ApplicationException("Ingrese un cliente")
                     End If
                     Factura.fecha = DateTimePicker1.Value
                     Factura.estado = "F"
@@ -207,7 +207,7 @@ Public Class frmVentaMotocicleta
                     Factura.idclientes = CrtClientes.Guardar()
                     If Factura.idclientes = 0 Then
                         CrtClientes.Nuevo()
-
+                        Throw New ApplicationException("Ingrese un cliente")
                     End If
                     Factura.fecha = DateTimePicker1.Value
                     Factura.estado = "P"

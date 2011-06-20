@@ -56,7 +56,6 @@ Partial Class frmVentaMotocicleta
         Me.Label16 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.cmbTipoMotocicleta = New SICO.ctrla.ListaDesplegable(Me.components)
@@ -69,16 +68,18 @@ Partial Class frmVentaMotocicleta
         Me.txtMotor = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtDescuentoPor = New SICO.ctrla.CajaTexto(Me.components)
         Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
+        Me.Panel9 = New System.Windows.Forms.Panel
+        Me.Label17 = New System.Windows.Forms.Label
+        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.Panel9.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel2
@@ -89,7 +90,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(0, 322)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(807, 236)
+        Me.Panel2.Size = New System.Drawing.Size(818, 236)
         Me.Panel2.TabIndex = 16
         '
         'GroupBox5
@@ -116,7 +117,7 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(743, 236)
+        Me.GroupBox5.Size = New System.Drawing.Size(754, 236)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Motocicleta"
@@ -217,7 +218,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel7.Location = New System.Drawing.Point(3, 64)
         Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(737, 169)
+        Me.Panel7.Size = New System.Drawing.Size(748, 169)
         Me.Panel7.TabIndex = 9
         '
         'Panel8
@@ -233,7 +234,7 @@ Partial Class frmVentaMotocicleta
         Me.Panel8.Controls.Add(Me.Label6)
         Me.Panel8.Controls.Add(Me.txtSubtotal)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel8.Location = New System.Drawing.Point(420, 0)
+        Me.Panel8.Location = New System.Drawing.Point(431, 0)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(317, 169)
         Me.Panel8.TabIndex = 6
@@ -323,7 +324,7 @@ Partial Class frmVentaMotocicleta
         'Panel4
         '
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(774, 0)
+        Me.Panel4.Location = New System.Drawing.Point(785, 0)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(33, 236)
         Me.Panel4.TabIndex = 2
@@ -344,24 +345,17 @@ Partial Class frmVentaMotocicleta
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 89)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(807, 233)
+        Me.Panel1.Size = New System.Drawing.Size(818, 233)
         Me.Panel1.TabIndex = 15
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Label13)
-        Me.GroupBox1.Controls.Add(Me.lblNumeroFactura)
-        Me.GroupBox1.Controls.Add(Me.chkVentaExcenta)
-        Me.GroupBox1.Controls.Add(Me.Label16)
-        Me.GroupBox1.Controls.Add(Me.cmbTiposFacturas)
-        Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.GroupBox2)
+        Me.GroupBox1.Controls.Add(Me.Panel9)
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox1.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(743, 227)
+        Me.GroupBox1.Size = New System.Drawing.Size(754, 227)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Datos de Venta"
@@ -369,7 +363,7 @@ Partial Class frmVentaMotocicleta
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(634, 14)
+        Me.Label13.Location = New System.Drawing.Point(618, 4)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(97, 13)
         Me.Label13.TabIndex = 12
@@ -377,9 +371,9 @@ Partial Class frmVentaMotocicleta
         '
         'lblNumeroFactura
         '
-        Me.lblNumeroFactura.Location = New System.Drawing.Point(561, 30)
+        Me.lblNumeroFactura.Location = New System.Drawing.Point(557, 20)
         Me.lblNumeroFactura.Name = "lblNumeroFactura"
-        Me.lblNumeroFactura.Size = New System.Drawing.Size(164, 13)
+        Me.lblNumeroFactura.Size = New System.Drawing.Size(155, 13)
         Me.lblNumeroFactura.TabIndex = 11
         Me.lblNumeroFactura.Text = "Label8"
         Me.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -388,7 +382,7 @@ Partial Class frmVentaMotocicleta
         '
         Me.chkVentaExcenta.AutoSize = True
         Me.chkVentaExcenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkVentaExcenta.Location = New System.Drawing.Point(460, 25)
+        Me.chkVentaExcenta.Location = New System.Drawing.Point(461, 15)
         Me.chkVentaExcenta.Name = "chkVentaExcenta"
         Me.chkVentaExcenta.Size = New System.Drawing.Size(95, 17)
         Me.chkVentaExcenta.TabIndex = 10
@@ -399,7 +393,7 @@ Partial Class frmVentaMotocicleta
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(252, 25)
+        Me.Label16.Location = New System.Drawing.Point(253, 15)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(64, 13)
         Me.Label16.TabIndex = 9
@@ -408,7 +402,7 @@ Partial Class frmVentaMotocicleta
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(52, 19)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(53, 9)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(194, 20)
         Me.DateTimePicker1.TabIndex = 2
@@ -417,26 +411,16 @@ Partial Class frmVentaMotocicleta
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(9, 25)
+        Me.Label7.Location = New System.Drawing.Point(10, 15)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(37, 13)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Fecha"
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.CrtClientes)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 51)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(731, 162)
-        Me.GroupBox2.TabIndex = 0
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Cliente"
-        '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel5.Location = New System.Drawing.Point(774, 0)
+        Me.Panel5.Location = New System.Drawing.Point(785, 0)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(33, 233)
         Me.Panel5.TabIndex = 3
@@ -621,7 +605,7 @@ Partial Class frmVentaMotocicleta
         Me.cmbTiposFacturas.DisplayMember = "descripcion"
         Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbTiposFacturas.FormattingEnabled = True
-        Me.cmbTiposFacturas.Location = New System.Drawing.Point(325, 22)
+        Me.cmbTiposFacturas.Location = New System.Drawing.Point(326, 12)
         Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
         Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
         Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
@@ -629,22 +613,12 @@ Partial Class frmVentaMotocicleta
         Me.cmbTiposFacturas.TabIndex = 8
         Me.cmbTiposFacturas.ValueMember = "id"
         '
-        'CrtClientes
-        '
-        Me.CrtClientes.CargarClientePorPersona = True
-        Me.CrtClientes.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CrtClientes.Location = New System.Drawing.Point(3, 16)
-        Me.CrtClientes.Name = "CrtClientes"
-        Me.CrtClientes.Size = New System.Drawing.Size(725, 143)
-        Me.CrtClientes.TabIndex = 0
-        Me.CrtClientes.VisibleDatosSecundarios = False
-        '
         'CrtPanelBase1
         '
         Me.CrtPanelBase1.Dock = System.Windows.Forms.DockStyle.Top
         Me.CrtPanelBase1.Location = New System.Drawing.Point(0, 0)
         Me.CrtPanelBase1.Name = "CrtPanelBase1"
-        Me.CrtPanelBase1.Size = New System.Drawing.Size(807, 89)
+        Me.CrtPanelBase1.Size = New System.Drawing.Size(818, 89)
         Me.CrtPanelBase1.TabIndex = 13
         Me.CrtPanelBase1.Titulo = "Venta"
         Me.CrtPanelBase1.VisiblePanelPrincipal = True
@@ -656,16 +630,52 @@ Partial Class frmVentaMotocicleta
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 558)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(807, 56)
+        Me.PanelAccion1.Size = New System.Drawing.Size(818, 56)
         Me.PanelAccion1.TabIndex = 14
         Me.PanelAccion1.Titulo = "Orden de Compra"
         Me.PanelAccion1.VisiblePanelPrincipal = False
+        '
+        'Panel9
+        '
+        Me.Panel9.AutoScroll = True
+        Me.Panel9.Controls.Add(Me.Label17)
+        Me.Panel9.Controls.Add(Me.CrtClientes)
+        Me.Panel9.Controls.Add(Me.Label7)
+        Me.Panel9.Controls.Add(Me.Label13)
+        Me.Panel9.Controls.Add(Me.DateTimePicker1)
+        Me.Panel9.Controls.Add(Me.lblNumeroFactura)
+        Me.Panel9.Controls.Add(Me.cmbTiposFacturas)
+        Me.Panel9.Controls.Add(Me.chkVentaExcenta)
+        Me.Panel9.Controls.Add(Me.Label16)
+        Me.Panel9.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel9.Location = New System.Drawing.Point(3, 16)
+        Me.Panel9.Name = "Panel9"
+        Me.Panel9.Size = New System.Drawing.Size(748, 208)
+        Me.Panel9.TabIndex = 13
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(10, 34)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(46, 13)
+        Me.Label17.TabIndex = 14
+        Me.Label17.Text = "Cliente"
+        '
+        'CrtClientes
+        '
+        Me.CrtClientes.CargarClientePorPersona = True
+        Me.CrtClientes.Location = New System.Drawing.Point(8, 50)
+        Me.CrtClientes.Name = "CrtClientes"
+        Me.CrtClientes.Size = New System.Drawing.Size(726, 233)
+        Me.CrtClientes.TabIndex = 13
+        Me.CrtClientes.VisibleDatosSecundarios = True
         '
         'frmVentaMotocicleta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(807, 614)
+        Me.ClientSize = New System.Drawing.Size(818, 614)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.CrtPanelBase1)
@@ -682,8 +692,8 @@ Partial Class frmVentaMotocicleta
         Me.Panel8.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
+        Me.Panel9.ResumeLayout(False)
+        Me.Panel9.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -718,8 +728,6 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents txtMotor As SICO.ctrla.CajaTexto
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents CrtClientes As SICO.ctrla2.crtClientes
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtPrecioVenta As SICO.ctrla.CajaTexto
@@ -735,4 +743,7 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents cmbTiposFacturas As SICO.ctrla.ListaDesplegable
     Friend WithEvents txtDescuentoPor As SiCo.ctrla.CajaTexto
+    Friend WithEvents Panel9 As System.Windows.Forms.Panel
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents CrtClientes As SiCo.ctrla2.crtClientes
 End Class
