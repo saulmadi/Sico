@@ -65,7 +65,7 @@ Partial Class crtClientes
         Me.CrtPersonaNatural1.Location = New System.Drawing.Point(-1, 3)
         Me.CrtPersonaNatural1.Name = "CrtPersonaNatural1"
         Me.CrtPersonaNatural1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(692, 213)
+        Me.CrtPersonaNatural1.Size = New System.Drawing.Size(692, 112)
         Me.CrtPersonaNatural1.SoloLectura = False
         Me.CrtPersonaNatural1.TabIndex = 0
         Me.CrtPersonaNatural1.VisibleDatosSecundarios = False
@@ -90,7 +90,7 @@ Partial Class crtClientes
         Me.CrtPersonaJuridica1.Location = New System.Drawing.Point(6, 5)
         Me.CrtPersonaJuridica1.Name = "CrtPersonaJuridica1"
         Me.CrtPersonaJuridica1.RealizarBusquedaAutomarita = True
-        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(583, 94)
+        Me.CrtPersonaJuridica1.Size = New System.Drawing.Size(583, 194)
         Me.CrtPersonaJuridica1.SoloLectura = False
         Me.CrtPersonaJuridica1.TabIndex = 0
         Me.CrtPersonaJuridica1.TextoRazonSocial = "Razón social"
