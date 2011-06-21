@@ -22,6 +22,7 @@ estado nvarchar(5),
 motoproducto nvarchar(5),
 elabora int(11),
 factura int(11),
+idmotocicletas int(11),
 usu int(11),
 fmodif datetime
 )
@@ -42,10 +43,10 @@ if @conteo =0 then
 
 
   INSERT INTO facturaencabezado(codigo,idsucursales,numerofactura,idclientes,fecha,idtiposfacturas,total,isv,subtotal,
-              descuentovalor,descuento,ventaexenta,estado,motoproducto,elabora,factura,usu,fmodif)
+              descuentovalor,descuento,ventaexenta,estado,motoproducto,elabora,factura,idmotocicletas,usu,fmodif)
 
   VALUES(codigo,idsucursales,numerofactura,idclientes,fecha,idtiposfacturas,total,isv,subtotal,
-              descuentovalor,descuento,ventaexcenta,estado,motoproducto,elabora,factura,usu,fmodif);
+              descuentovalor,descuento,ventaexcenta,estado,motoproducto,elabora,factura,idmotocicletas,usu,fmodif);
 
   select last_insert_id() into id;
 
@@ -67,6 +68,7 @@ else
         c.motoproducto=motoproducto,
         c.elabora=elabora,
         c.factura=factura,
+        c.idmotocicletas=idmotocicletas,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;

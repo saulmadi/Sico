@@ -152,7 +152,7 @@ CREATE TABLE `clientes` (
 --
 
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES  (1,4,2,'2011-05-24 00:50:28',NULL),
+INSERT INTO `clientes` VALUES  (1,4,2,'2011-06-16 20:16:23',NULL),
  (2,8,2,'2011-02-09 22:32:06',NULL),
  (3,6,2,'2011-02-07 00:00:00',NULL),
  (4,22,2,'2011-02-07 21:43:56',NULL),
@@ -210,6 +210,39 @@ INSERT INTO `compras` VALUES  (20,'878789',1,'2011-02-26',1,2,'2011-02-26 11:32:
  (42,'34234',1,'2011-04-04',2,2,'2011-04-04 22:03:00','22037.00','C'),
  (43,'124',1,'2011-04-04',1,2,'2011-04-04 22:06:12','80750.00','C');
 /*!40000 ALTER TABLE `compras` ENABLE KEYS */;
+
+
+--
+-- Definition of table `controlcaja`
+--
+
+DROP TABLE IF EXISTS `controlcaja`;
+CREATE TABLE `controlcaja` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idtransaccionescaja` int(11) NOT NULL,
+  `monto` decimal(18,2) NOT NULL,
+  `fecha` date NOT NULL,
+  `cajero` int(11) NOT NULL,
+  `idsucursales` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` varchar(45) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idusuario_cajero` (`cajero`),
+  KEY `idtrasnsacciones_transaccionse` (`idtransaccionescaja`),
+  KEY `idsucursale_sucursales` (`idsucursales`),
+  CONSTRAINT `idsucursale_sucursales` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idtrasnsacciones_transaccionse` FOREIGN KEY (`idtransaccionescaja`) REFERENCES `transaccionescaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idusuario_cajero` FOREIGN KEY (`cajero`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `controlcaja`
+--
+
+/*!40000 ALTER TABLE `controlcaja` DISABLE KEYS */;
+INSERT INTO `controlcaja` VALUES  (1,4,'4234.00','2011-06-21',2,2,2,'2011-06-21 00:13:21','Apertura de caja para el usuario saul antonio mayorquin diaz');
+/*!40000 ALTER TABLE `controlcaja` ENABLE KEYS */;
 
 
 --
@@ -522,7 +555,7 @@ CREATE TABLE `entidades` (
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-05-24','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
+INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-06-16','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
  (5,NULL,NULL,NULL,1,NULL,2,'2011-02-09','asdf asdf asdf%','34f83cac-180f-4355-89e3-f0dce27714fe','N',NULL),
  (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',2,'2011-03-04','Varideades Canezu','c4b7213f-8a54-4d91-ae3b-25e9a20e6f59','J',34872342),
  (7,NULL,NULL,NULL,1,NULL,1,'2011-01-27','carlos diaz@','0301-1989-12345','I',NULL),
@@ -566,7 +599,7 @@ CREATE TABLE `facturadetalle` (
   KEY `fk_FacturaDetalle_Productos1` (`idproductos`),
   CONSTRAINT `fk_FacturaDetalle_FacturaEncabezado1` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaDetalle_Productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturadetalle`
@@ -577,13 +610,15 @@ INSERT INTO `facturadetalle` VALUES  (2,10,2,1,'11454.0000',2,'2011-05-24 00:46:
  (3,12,2,2,'11454.0000',2,'2011-05-24 00:50:29'),
  (4,13,2,1,'12.0000',2,'2011-05-24 00:50:11'),
  (5,13,10,1,'13.0000',2,'2011-05-24 00:50:11'),
- (6,14,2,2,'11454.0000',2,'2011-05-20 23:38:37'),
- (7,14,10,1,'2.0000',2,'2011-05-20 23:38:37'),
+ (6,14,2,2,'11454.0000',2,'2011-05-25 23:22:46'),
+ (7,14,10,1,'2.0000',2,'2011-05-25 23:22:46'),
  (8,16,2,2,'11454.0000',2,'2011-05-20 23:46:45'),
  (9,16,9,12,'456.4000',2,'2011-05-20 23:46:45'),
  (10,17,2,1,'100.0000',2,'2011-05-24 00:49:18'),
  (11,19,2,1,'11454.0000',2,'2011-05-24 21:40:38'),
- (12,21,2,1,'11454.0000',2,'2011-05-24 22:51:02');
+ (12,21,2,1,'11454.0000',2,'2011-05-24 22:51:02'),
+ (13,22,2,12,'11454.0000',2,'2011-06-02 20:34:56'),
+ (14,27,2,1,'11454.0000',2,'2011-06-16 20:07:23');
 /*!40000 ALTER TABLE `facturadetalle` ENABLE KEYS */;
 
 
@@ -612,6 +647,7 @@ CREATE TABLE `facturaencabezado` (
   `fmodif` date NOT NULL,
   `elabora` int(11) unsigned NOT NULL,
   `factura` int(11) unsigned DEFAULT NULL,
+  `idmotocicletas` int(11) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_FacturaEncabezado_Sucursales1` (`idsucursales`),
   KEY `fk_FacturaEncabezado_Clientes1` (`idclientes`),
@@ -620,21 +656,27 @@ CREATE TABLE `facturaencabezado` (
   CONSTRAINT `fk_FacturaEncabezado_Clientes1` FOREIGN KEY (`idclientes`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Tiposfacturas1` FOREIGN KEY (`idtiposfacturas`) REFERENCES `tiposfacturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturaencabezado`
 --
 
 /*!40000 ALTER TABLE `facturaencabezado` DISABLE KEYS */;
-INSERT INTO `facturaencabezado` VALUES  (10,'FE-002-20110519-002-0000001',2,'2',NULL,'2011-05-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,NULL),
- (12,'FE-002-20110519-002-0000002',2,'5',1,'2011-05-24',1,'22908.0000','2748.9600','22908.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,NULL),
- (13,'FE-002-20110519-002-0000003',2,'4',6,'2011-05-24',1,'22.0000','0.0000','25.0000','0.0000',0,1,'F','P',2,'2011-05-24',2,NULL),
- (14,'FE-002-20110520-002-0000004',2,'0',NULL,'2011-05-20',1,'22910.0000','2749.2000','22910.0000','0.0000',0,0,'P','P',2,'2011-05-20',2,NULL),
- (16,'FE-002-20110520-002-0000005',2,'0',NULL,'2011-05-20',1,'28384.8000','3406.1760','28384.8000','0.0000',0,0,'P','P',2,'2011-05-20',2,NULL),
- (17,'FE-002-20110522-002-0000006',2,'3',NULL,'2011-05-24',2,'77.4400','0.0000','100.0000','12.0000',12,1,'F','P',2,'2011-05-24',2,NULL),
- (19,'FE-002-20110524-002-0000007',2,'6',NULL,'2011-05-24',2,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,2),
- (21,'FE-002-20110524-002-0000008',2,'7',NULL,'2011-05-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,2);
+INSERT INTO `facturaencabezado` VALUES  (10,'FE-002-20110519-002-0000001',2,'2',NULL,'2011-05-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,NULL,NULL),
+ (12,'FE-002-20110519-002-0000002',2,'5',1,'2011-05-24',1,'22908.0000','2748.9600','22908.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,NULL,NULL),
+ (13,'FE-002-20110519-002-0000003',2,'4',6,'2011-05-24',1,'22.0000','0.0000','25.0000','0.0000',0,1,'F','P',2,'2011-05-24',2,NULL,NULL),
+ (14,'FE-002-20110520-002-0000004',2,'8',NULL,'2011-05-25',1,'22910.0000','2749.2000','22910.0000','0.0000',0,0,'F','P',2,'2011-05-25',2,2,NULL),
+ (16,'FE-002-20110520-002-0000005',2,'0',NULL,'2011-05-20',1,'28384.8000','3406.1760','28384.8000','0.0000',0,0,'P','P',2,'2011-05-20',2,NULL,NULL),
+ (17,'FE-002-20110522-002-0000006',2,'3',NULL,'2011-05-24',2,'77.4400','0.0000','100.0000','12.0000',12,1,'F','P',2,'2011-05-24',2,NULL,NULL),
+ (19,'FE-002-20110524-002-0000007',2,'6',NULL,'2011-05-24',2,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,2,NULL),
+ (21,'FE-002-20110524-002-0000008',2,'7',NULL,'2011-05-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-05-24',2,2,NULL),
+ (22,'FE-002-20110602-002-0000009',2,'9',NULL,'2011-06-02',1,'120954.2400','0.0000','137448.0000','0.0000',0,1,'F','P',2,'2011-06-02',2,2,NULL),
+ (25,'FE-002-20110609-002-0000010',2,'8a19b567-d765-44d8-b664-4bd2d3cafea4',NULL,'2011-06-09',1,'342342.0000','41081.0400','342342.0000','0.0000',0,0,'P','M',2,'2011-06-09',2,NULL,NULL),
+ (26,'FE-002-20110609-002-0000011',2,'f5da4808-c5a1-4fa0-b8d1-03f3cbb79608',NULL,'2011-06-09',1,'342342.0000','41081.0400','342342.0000','0.0000',0,0,'P','M',2,'2011-06-09',2,NULL,5),
+ (27,'FE-002-20110615-002-0000012',2,'11',NULL,'2011-06-16',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-06-16',2,2,NULL),
+ (28,'FE-002-20110615-002-0000013',2,'10',NULL,'2011-06-16',1,'342342.0000','41081.0400','342342.0000','0.0000',0,0,'F','M',2,'2011-06-16',2,NULL,5),
+ (29,'FE-002-20110616-002-0000014',2,'12',1,'2011-06-16',1,'23123.0000','2774.7600','23123.0000','0.0000',0,0,'F','M',2,'2011-06-16',2,NULL,11);
 /*!40000 ALTER TABLE `facturaencabezado` ENABLE KEYS */;
 
 
@@ -669,8 +711,8 @@ INSERT INTO `inventario` VALUES  (8,2,1,2522,2,'2011-05-23 23:25:59'),
  (13,10,1,358,2,'2011-04-04 22:22:31'),
  (14,9,2,149,2,'2011-04-04 22:13:58'),
  (15,6,2,24,2,'2011-04-04 22:13:58'),
- (16,10,2,1775,2,'2011-05-24 00:50:11'),
- (17,2,2,87,2,'2011-05-24 22:51:02');
+ (16,10,2,1774,2,'2011-05-25 23:22:46'),
+ (17,2,2,72,2,'2011-06-16 20:07:23');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -762,20 +804,23 @@ CREATE TABLE `motocicletas` (
   CONSTRAINT `fk_Motocicletas_Modelos1` FOREIGN KEY (`idmodelos`) REFERENCES `modelos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Motocicletas_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Motocicletas_TiposMotocicletas1` FOREIGN KEY (`idtiposmotocicletas`) REFERENCES `tiposmotocicletas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `motocicletas`
 --
 
 /*!40000 ALTER TABLE `motocicletas` DISABLE KEYS */;
-INSERT INTO `motocicletas` VALUES  (1,'jdfk33kjfd3','kdkj43d34',10,2,10,1,434,3343,'34434.00','0.00','2011-04-04',2,'2011-04-04 23:41:21','',334,1),
- (2,'kdie43dki3','kdk43',10,2,10,2,343,343,'578548754.00','433.00','2011-04-04',2,'2011-04-04 23:56:54','',343,1),
+INSERT INTO `motocicletas` VALUES  (1,'jdfk33kjfd3','kdkj43d34',10,2,10,1,434,3343,'34434.00','0.00','2011-04-04',2,'2011-04-04 23:41:21','I',334,1),
+ (2,'kdie43dki3','kdk43',10,2,10,2,343,343,'578548754.00','433.00','2011-04-04',2,'2011-04-04 23:56:54','I',343,1),
  (3,'432r34e','432d232dd43',11,1,11,1,234,2222,'3424.00','424234.00','2011-04-05',2,'2011-04-05 02:04:05','I',343,1),
  (4,'jd9j349k','kjkd93jk',11,1,10,1,933,3333,'4323.00','4234.00','2011-04-06',2,'2011-04-06 20:10:35','I',343,1),
- (5,'034io3io','343242lljkjk34',10,2,10,2,342,3424,'342342.00','34234.00','2011-04-06',2,'2011-04-06 20:59:03','I',342,1),
+ (5,'034io3io','343242lljkjk34',10,2,10,2,342,3424,'342342.00','34234.00','2011-04-06',2,'2011-06-16 20:05:21','F',342,1),
  (6,'34234w','3423',10,2,10,2,32,3423,'45345.00','43535.00','2011-04-06',2,'2011-04-06 22:12:35','I',342,2),
- (8,'34324','3423dsfdewerse234',11,1,10,1,34,3333,'43242.00','2343.00','2011-04-04',2,'2011-04-06 20:26:55','I',3,2);
+ (8,'34324','3423dsfdewerse234',11,1,10,1,34,3333,'43242.00','2343.00','2011-04-04',2,'2011-04-06 20:26:55','I',3,2),
+ (9,'jkdfjk3939jidi','993jds932jd9jk9',10,2,10,1,333,3234,'434234.00','342.00','2011-05-30',2,'2011-05-30 23:26:58','I',333,1),
+ (10,'saulmayorquin22299','kjdskjdkfs934234k9',10,2,10,2,342,3434,'34234.00','34234.00','2011-05-30',2,'2011-05-30 23:31:00','I',342,1),
+ (11,'1324234dfdfssdfkl42342','342343421234fsdfw4r4234fdsfs32',10,2,10,1,342,3424,'23123.00','32132.00','2011-06-09',2,'2011-06-16 20:16:23','F',342,1);
 /*!40000 ALTER TABLE `motocicletas` ENABLE KEYS */;
 
 
@@ -1155,7 +1200,7 @@ CREATE TABLE `sucursales` (
 
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
 INSERT INTO `sucursales` VALUES  (1,18,3,NULL,2,'2011-02-11 00:02:07',1,1),
- (2,19,2,NULL,2,'2011-02-02 22:29:15',1,7);
+ (2,19,2,NULL,2,'2011-02-02 22:29:15',1,12);
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 
 
@@ -1208,6 +1253,34 @@ INSERT INTO `tiposmotocicletas` VALUES  (9,'Turismo',1,1,'2011-01-09 00:00:00'),
  (10,'Montañeza',1,1,'2011-01-09 00:00:00'),
  (11,'Todo Terreno',1,2,'2011-02-19 00:00:00');
 /*!40000 ALTER TABLE `tiposmotocicletas` ENABLE KEYS */;
+
+
+--
+-- Definition of table `transaccionescaja`
+--
+
+DROP TABLE IF EXISTS `transaccionescaja`;
+CREATE TABLE `transaccionescaja` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) DEFAULT NULL,
+  `usu` int(11) DEFAULT NULL,
+  `fmodif` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaccionescaja`
+--
+
+/*!40000 ALTER TABLE `transaccionescaja` DISABLE KEYS */;
+INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:00'),
+ (2,'Pago Contado',1,'2011-06-19 00:00:00'),
+ (3,'Pago Tarjeta Credito',1,'2011-06-19 00:00:00'),
+ (4,'Apertura Caja',1,'2011-06-19 00:00:00'),
+ (5,'Cierre Caja',1,'2011-06-19 00:00:00'),
+ (6,'Retiro Efectivo',1,'2011-06-19 00:00:00'),
+ (7,'Deposito Efectivo',1,'2011-06-19 00:00:00');
+/*!40000 ALTER TABLE `transaccionescaja` ENABLE KEYS */;
 
 
 --
@@ -1515,6 +1588,130 @@ set @sql = concat(@campos,@from,@join,@where,@orden);
 PREPARE stmt FROM @sql;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `ControlCaja_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `ControlCaja_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ControlCaja_Buscar`(
+
+/*defiicion de parametros*/
+id nvarchar(11),
+idtransacciones nvarchar(150),
+fecha nvarchar(200),
+cajero nvarchar(11),
+idsucursales nvarchar(11)
+
+)
+BEGIN
+/*defiicion de consulta*/
+set @Campos="select ";
+set @from=" ";
+set @where=" where 1=1 ";
+set @sql="";
+
+set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion ");
+
+set @from= concat(@from," from controlcaja c ");
+
+set @join = (" inner join transaccionescaja t on c.idtransaccionescaja=t.id");
+
+/*defiicion de filtros*/
+if id<>"" then
+  set @where= concat(@where, " and id = ", id, " ");
+end if;
+
+if cajero<>"" then
+  set @where= concat(@where, " and cajero = ", cajero, " ");
+end if;
+
+if idtransacciones<>"" then
+  set @where = concat(@where, " and idtransaccionescaja = '",idtransacciones, "%' ");
+end if;
+
+if fecha<>"" then
+  set @where = concat(@where, " and ",fecha, " ");
+end if;
+
+if idsucursales<>"" then
+  set @where = concat(@where, " and idsucursales '",idsucursales, "%' ");
+end if;
+
+
+set @sql = concat(@campos,@from,@join,@where);
+
+
+/*ejecucion de consulta*/
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `ControlCaja_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `ControlCaja_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ControlCaja_Mant`(
+
+/*definicion de parametros*/
+
+inout id int(11),
+idtransaccionescaja nvarchar(18),
+idsucursales int(11),
+monto decimal(18,2),
+fecha datetime,
+cajero int(11),
+descripcion nvarchar(500),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from controlcaja m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO controlcaja(idtransaccionescaja,monto,fecha,cajero,idsucursales,descripcion,usu,fmodif)
+
+  VALUES(idtransaccionescaja,monto,fecha,cajero,idsucursales,descripcion,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE controlcaja c set
+        c.idtransaccionescaja=idtransaccionescaja,
+        c.idsucursales=idsucursales,
+        c.monto=monto,
+        c.fecha=fecha,
+        c.cajero=cajero,
+        c.descripcion=descripcion,
+        c.usu=usu,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
 
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
@@ -2241,6 +2438,7 @@ estado nvarchar(5),
 motoproducto nvarchar(5),
 elabora int(11),
 factura int(11),
+idmotocicletas int(11),
 usu int(11),
 fmodif datetime
 )
@@ -2261,10 +2459,10 @@ if @conteo =0 then
 
 
   INSERT INTO facturaencabezado(codigo,idsucursales,numerofactura,idclientes,fecha,idtiposfacturas,total,isv,subtotal,
-              descuentovalor,descuento,ventaexenta,estado,motoproducto,elabora,factura,usu,fmodif)
+              descuentovalor,descuento,ventaexenta,estado,motoproducto,elabora,factura,idmotocicletas,usu,fmodif)
 
   VALUES(codigo,idsucursales,numerofactura,idclientes,fecha,idtiposfacturas,total,isv,subtotal,
-              descuentovalor,descuento,ventaexcenta,estado,motoproducto,elabora,factura,usu,fmodif);
+              descuentovalor,descuento,ventaexcenta,estado,motoproducto,elabora,factura,idmotocicletas,usu,fmodif);
 
   select last_insert_id() into id;
 
@@ -2286,6 +2484,7 @@ else
         c.motoproducto=motoproducto,
         c.elabora=elabora,
         c.factura=factura,
+        c.idmotocicletas=idmotocicletas,
         c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
