@@ -153,11 +153,12 @@ namespace SiCo.lgla
             }
         }
 
-        public bool Autenticar(string usuario, string contrasena)
+        public bool Autenticar(string usuario, string contrasena,Parametro p )
         {
             NullParametrosBusqueda();
             ValorParametrosBusqueda("usuario", usuario);            
             ValorParametrosBusqueda("estado", "1");
+           ValorParametrosBusqueda(p.Nombre, p.Valor); 
 
             LlenadoTabla(ColeccionParametrosBusqueda);
             if (this.contrasena == contrasena)

@@ -19,6 +19,7 @@ Public Class ControlCaja
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idtransacciones"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("fecha"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idsucursales"))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("cajero"))
 
         Me.ComandoMantenimiento = "ControlCaja_Mant"
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idtransaccionescaja"))
@@ -125,9 +126,61 @@ Public Class ControlCaja
     End Sub
 
     Public Overrides Function TablaAColeccion() As Object
+        Dim lista As New List(Of ControlCaja)
+        For i As Integer = 0 To Me.TotalRegistros - 1
+            Me.CargadoPropiedades(i)
+            Dim tempControl = New ControlCaja(Me.Id, Me.idTransaccionesCaja, Me.idSucursales, Me.Monto, Me.Fecha, Me.Cajero, Me.Descripcion)
+            lista.Add(tempControl)
+        Next
+        Return lista
+    End Function
 
+    Public Sub IngresarTransaccion(ByVal idtransaccion As Long, ByVal idsucursal As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal cajero As Long, ByVal descripcion As String)
+        Try
+            Me.idTransaccionesCaja = idtransaccion
+            Me.idSucursales = idsucursal
+            Me.Monto = monto
+            Me.Fecha = fecha
+            Me.Cajero = cajero
+            Me.Descripcion = descripcion
+            Me.Guardar()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Public Overloads Sub Buscar(ByVal idtransaccion As Long, ByVal cajero As Long, ByVal fecha As DateTime, ByVal sucursal As String)
+        Me.NullParametrosBusqueda()
+        Me.ValorParametrosBusqueda("idtransacciones", idtransaccion.ToString)
+        Me.ValorParametrosBusqueda("cajero", cajero.ToString)
+        Me.ValorParametrosBusqueda("fecha", " fecha ='" + fecha.ToString("yyyy-MM-dd") + "'")
+        Me.ValorParametrosBusqueda("idsucursales", sucursal)
+        Me.LlenadoTabla(ColeccionParametrosBusqueda)
+    End Sub
+
+
+
+    Public Function AperturaCaja(ByVal cajero As Long, ByVal fecha As DateTime, ByVal sucursal As String)
+        Me.Buscar(4, cajero, fecha, sucursal)
+        If Me.TotalRegistros = 1 Then
+            Return True
+        End If
+        Return False
+    End Function
+
+    Public Function RealizarApertura(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario)
+        Try
+            Me.IniciarTransaccion()
+            Me.IngresarTransaccion(4, sucursal, monto, fecha, cajero, "Apertura de caja para el usuario " + usuario.NombreUsuario)
+            Me.CommitTransaccion()
+            Return True
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw ex
+        End Try
     End Function
 #End Region
-    
+
 
 End Class
