@@ -41,6 +41,12 @@ Public Class frmMenuPrincipal
         frm.MdiParent = Me
         frm.Show()
     End Sub
+    Private Sub TarjetasCreditoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TarjetasCreditoToolStripMenuItem.Click
+        Dim frm As New frmTarjetaCredito
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
 #End Region
 
 #Region "Personas"
@@ -230,4 +236,7 @@ Public Class frmMenuPrincipal
 
 
 #End Region
+
+    
+    
 End Class

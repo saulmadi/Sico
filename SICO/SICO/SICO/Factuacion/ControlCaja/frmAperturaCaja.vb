@@ -2,6 +2,7 @@
 Imports SICO.lgla2
 Public Class frmAperturaCaja
     Private _controlCaja As New ControlCaja
+
     Private Sub frmAperturaCaja_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
             PanelAccion1.BotonEliminar.Visible = False
@@ -9,10 +10,12 @@ Public Class frmAperturaCaja
             PanelAccion1.BotonNuevo.Visible = False
             PanelAccion1.BotonGuardar.Enabled = True
             txtCajero.Text = PanelAccion1.Usuario.NombreUsuario
+            txtEfectivo.Enabled = True
             If _controlCaja.AperturaCaja(PanelAccion1.Usuario.Id, dteFecha.Value, "") Then
                 txtEfectivo.Text = _controlCaja.Monto
                 dteFecha.Value = _controlCaja.Fecha
                 PanelAccion1.BotonGuardar.Enabled = False
+                txtEfectivo.Enabled = False
             End If
 
 

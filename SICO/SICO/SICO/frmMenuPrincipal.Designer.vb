@@ -79,6 +79,7 @@ Partial Class frmMenuPrincipal
         Me.TipoDeMotocicletasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.MarcasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ModelosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.TarjetasCreditoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CambiarDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CerrarSesesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -373,20 +374,20 @@ Partial Class frmMenuPrincipal
         'SucursalesToolStripMenuItem
         '
         Me.SucursalesToolStripMenuItem.Name = "SucursalesToolStripMenuItem"
-        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SucursalesToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SucursalesToolStripMenuItem.Text = "Sucursales"
         '
         'UsuariosToolStripMenuItem
         '
         Me.UsuariosToolStripMenuItem.Name = "UsuariosToolStripMenuItem"
-        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.UsuariosToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.UsuariosToolStripMenuItem.Text = "Usuarios"
         '
         'PersonasToolStripMenuItem
         '
         Me.PersonasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonasNaturlaesToolStripMenuItem, Me.PersonasJurídicasToolStripMenuItem})
         Me.PersonasToolStripMenuItem.Name = "PersonasToolStripMenuItem"
-        Me.PersonasToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.PersonasToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.PersonasToolStripMenuItem.Text = "Personas"
         '
         'PersonasNaturlaesToolStripMenuItem
@@ -403,9 +404,9 @@ Partial Class frmMenuPrincipal
         '
         'SICOToolStripMenuItem
         '
-        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem})
+        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem, Me.TarjetasCreditoToolStripMenuItem})
         Me.SICOToolStripMenuItem.Name = "SICOToolStripMenuItem"
-        Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+        Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SICOToolStripMenuItem.Text = "SICO"
         '
         'MunicipiosToolStripMenuItem
@@ -443,6 +444,12 @@ Partial Class frmMenuPrincipal
         Me.ModelosToolStripMenuItem.Name = "ModelosToolStripMenuItem"
         Me.ModelosToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.ModelosToolStripMenuItem.Text = "Modelos de motocicletas"
+        '
+        'TarjetasCreditoToolStripMenuItem
+        '
+        Me.TarjetasCreditoToolStripMenuItem.Name = "TarjetasCreditoToolStripMenuItem"
+        Me.TarjetasCreditoToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.TarjetasCreditoToolStripMenuItem.Text = "Tarjetas Crédito"
         '
         'SesiónToolStripMenuItem
         '
@@ -561,5 +568,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents OrdenesSalientesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OrdenesEntrantesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CambiarDeUsuarioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TarjetasCreditoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

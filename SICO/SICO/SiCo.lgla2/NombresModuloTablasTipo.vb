@@ -48,6 +48,11 @@ Public Class NombresModuloTablasTipo
                 Return "Modelo"
             Case ModulosTablasTipo.Municipios
                 Return "Municipio"
+            Case ModulosTablasTipo.TarjetaCredito
+                Return "Tarjeta de crédito"
+
+
+
 
         End Select
 
@@ -68,6 +73,8 @@ Public Class NombresModuloTablasTipo
                 Return New Modelos
             Case ModulosTablasTipo.Municipios
                 Return New Municipios
+            Case ModulosTablasTipo.TarjetaCredito
+                Return New TarjetaCredito
 
         End Select
         Return Nothing
