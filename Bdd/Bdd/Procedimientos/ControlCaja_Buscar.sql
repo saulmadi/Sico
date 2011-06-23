@@ -18,7 +18,7 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @sql="";
 
-set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion ");
+set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion, t.tipo as tipo ");
 
 set @from= concat(@from," from controlcaja c ");
 

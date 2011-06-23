@@ -234,15 +234,45 @@ CREATE TABLE `controlcaja` (
   CONSTRAINT `idsucursale_sucursales` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtrasnsacciones_transaccionse` FOREIGN KEY (`idtransaccionescaja`) REFERENCES `transaccionescaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idusuario_cajero` FOREIGN KEY (`cajero`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcaja`
 --
 
 /*!40000 ALTER TABLE `controlcaja` DISABLE KEYS */;
-INSERT INTO `controlcaja` VALUES  (1,4,'4234.00','2011-06-21',2,2,2,'2011-06-21 00:13:21','Apertura de caja para el usuario saul antonio mayorquin diaz');
+INSERT INTO `controlcaja` VALUES  (1,4,'4234.00','2011-06-21',2,2,2,'2011-06-21 00:13:21','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (2,7,'122.12','2011-06-21',2,2,2,'2011-06-21 21:00:39','Se ingreso efectivo para el usuario saul antonio mayorquin diaz'),
+ (3,4,'343242.00','2011-06-22',2,2,2,'2011-06-22 18:49:52','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (4,7,'93939.33','2011-06-22',2,2,2,'2011-06-22 18:50:24','Se ingreso efectivo para el usuario saul antonio mayorquin diaz');
 /*!40000 ALTER TABLE `controlcaja` ENABLE KEYS */;
+
+
+--
+-- Definition of table `controlcajafactura`
+--
+
+DROP TABLE IF EXISTS `controlcajafactura`;
+CREATE TABLE `controlcajafactura` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idfacturaencabezado` int(11) NOT NULL,
+  `idcontrolcaja` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `FacturaEncabazadoControlCajaUnico` (`idfacturaencabezado`,`idcontrolcaja`),
+  KEY `facturaencabezado_Tintermedia` (`idfacturaencabezado`),
+  KEY `ControlCaja_Tintermedia` (`idcontrolcaja`),
+  CONSTRAINT `facturaencabezado_Tintermedia` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `ControlCaja_Tintermedia` FOREIGN KEY (`idcontrolcaja`) REFERENCES `controlcaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `controlcajafactura`
+--
+
+/*!40000 ALTER TABLE `controlcajafactura` DISABLE KEYS */;
+/*!40000 ALTER TABLE `controlcajafactura` ENABLE KEYS */;
 
 
 --
@@ -729,7 +759,7 @@ CREATE TABLE `marcas` (
   `fmodif` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Descripción` (`descripcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `marcas`
@@ -738,7 +768,8 @@ CREATE TABLE `marcas` (
 /*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
 INSERT INTO `marcas` VALUES  (10,'KMF',1,1,'2011-01-09 00:00:00'),
  (11,'YAMAHA',1,1,'2011-01-09 00:00:00'),
- (12,'HONDA',1,2,'2011-03-23 00:00:00');
+ (12,'HONDA',1,2,'2011-03-23 00:00:00'),
+ (13,'KAWASAKI',0,2,'2011-06-22 00:00:00');
 /*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
 
 
@@ -1205,6 +1236,31 @@ INSERT INTO `sucursales` VALUES  (1,18,3,NULL,2,'2011-02-11 00:02:07',1,1),
 
 
 --
+-- Definition of table `tarjetacredito`
+--
+
+DROP TABLE IF EXISTS `tarjetacredito`;
+CREATE TABLE `tarjetacredito` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(45) NOT NULL,
+  `habilitado` int(1) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tarjetacredito`
+--
+
+/*!40000 ALTER TABLE `tarjetacredito` DISABLE KEYS */;
+INSERT INTO `tarjetacredito` VALUES  (2,'CREDOMATIC',0,2,'2011-06-22 00:00:00'),
+ (3,'VISA',1,2,'2011-06-22 00:00:00'),
+ (4,'DISCOVERY',0,2,'2011-06-22 00:00:00');
+/*!40000 ALTER TABLE `tarjetacredito` ENABLE KEYS */;
+
+
+--
 -- Definition of table `tiposfacturas`
 --
 
@@ -1265,6 +1321,7 @@ CREATE TABLE `transaccionescaja` (
   `descripcion` varchar(50) DEFAULT NULL,
   `usu` int(11) DEFAULT NULL,
   `fmodif` datetime DEFAULT NULL,
+  `tipo` varchar(3) DEFAULT NULL COMMENT 'C=credito\nD=debito\nN=neutral\n',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
@@ -1273,14 +1330,43 @@ CREATE TABLE `transaccionescaja` (
 --
 
 /*!40000 ALTER TABLE `transaccionescaja` DISABLE KEYS */;
-INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:00'),
- (2,'Pago Contado',1,'2011-06-19 00:00:00'),
- (3,'Pago Tarjeta Credito',1,'2011-06-19 00:00:00'),
- (4,'Apertura Caja',1,'2011-06-19 00:00:00'),
- (5,'Cierre Caja',1,'2011-06-19 00:00:00'),
- (6,'Retiro Efectivo',1,'2011-06-19 00:00:00'),
- (7,'Deposito Efectivo',1,'2011-06-19 00:00:00');
+INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:00','N'),
+ (2,'Pago Contado',1,'2011-06-19 00:00:00','C'),
+ (3,'Pago Tarjeta Credito',1,'2011-06-19 00:00:00','T'),
+ (4,'Apertura Caja',1,'2011-06-19 00:00:00','C'),
+ (5,'Cierre Caja',1,'2011-06-19 00:00:00','D'),
+ (6,'Retiro Efectivo',1,'2011-06-19 00:00:00','D'),
+ (7,'Ingreso Efectivo',1,'2011-06-19 00:00:00','C');
 /*!40000 ALTER TABLE `transaccionescaja` ENABLE KEYS */;
+
+
+--
+-- Definition of table `transaccionestarjetacredito`
+--
+
+DROP TABLE IF EXISTS `transaccionestarjetacredito`;
+CREATE TABLE `transaccionestarjetacredito` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idfacturaencabezado` int(11) NOT NULL,
+  `numerotarjeta` varchar(45) NOT NULL,
+  `codigoaprobacion` varchar(45) NOT NULL,
+  `vencimiento` varchar(45) NOT NULL,
+  `idtarjetacredito` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idfacturaencabezado_transcaciontarjetacredito` (`idfacturaencabezado`),
+  KEY `idtarejtacredit_transaccionestarjetacredito` (`idtarjetacredito`),
+  CONSTRAINT `idfacturaencabezado_transcaciontarjetacredito` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idtarejtacredit_transaccionestarjetacredito` FOREIGN KEY (`idtarjetacredito`) REFERENCES `tarjetacredito` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaccionestarjetacredito`
+--
+
+/*!40000 ALTER TABLE `transaccionestarjetacredito` DISABLE KEYS */;
+/*!40000 ALTER TABLE `transaccionestarjetacredito` ENABLE KEYS */;
 
 
 --
@@ -1620,7 +1706,7 @@ set @from=" ";
 set @where=" where 1=1 ";
 set @sql="";
 
-set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion ");
+set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion, t.tipo as tipo ");
 
 set @from= concat(@from," from controlcaja c ");
 
@@ -4402,6 +4488,54 @@ else
         c.idmunicipio=idmunicipio,
         c.usu=usu,
         c.numerofactura=numerofactura,
+        c.fmodif=fmodif
+  where c.id= id;
+
+end if;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `TarjetaCredito_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `TarjetaCredito_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TarjetaCredito_Mant`(
+
+/*definicion de parametros*/
+
+inout id int(11),
+descripcion nvarchar(45),
+habilitado int(11),
+usu int(11),
+fmodif date
+)
+BEGIN
+
+
+set @conteo =0;
+select count(id) from tarjetacredito m where m.id=id into @conteo;
+
+if @conteo =0 then
+
+  INSERT INTO tarjetacredito(descripcion,habilitado,usu,fmodif)
+
+  VALUES(descripcion,habilitado,usu,fmodif);
+
+  select last_insert_id() into id;
+
+else
+
+  UPDATE tarjetacredito c set
+        c.descripcion= descripcion,
+        c.habilitado =habilitado,
+        c.usu=usu,
         c.fmodif=fmodif
   where c.id= id;
 
