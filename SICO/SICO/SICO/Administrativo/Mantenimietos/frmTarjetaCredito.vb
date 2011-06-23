@@ -11,6 +11,7 @@
         AddHandler Me.crtTablaTipo1.PanelAccion.Cancelar, AddressOf Me.Cancelar
         Me.AcceptButton = Me.crtTablaTipo1.PanelAccion.BotonGuardar
         Me.CancelButton = Me.crtTablaTipo1.PanelAccion.BotonCancelar
+        Me.crtTablaTipo1.Titulo = "Tarjeta Crédito"
     End Sub
 #End Region
 

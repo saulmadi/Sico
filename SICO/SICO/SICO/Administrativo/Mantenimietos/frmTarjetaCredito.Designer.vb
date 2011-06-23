@@ -37,7 +37,7 @@ Partial Class frmTarjetaCredito
         Me.crtTablaTipo1.Size = New System.Drawing.Size(792, 468)
         Me.crtTablaTipo1.TabIndex = 0
         Me.crtTablaTipo1.TablaTipo = Nothing
-        Me.crtTablaTipo1.Titulo = "Marcas Motociletas"
+        Me.crtTablaTipo1.Titulo = "Tarjeta Crédito"
         '
         'frmMarcas
         '
@@ -48,9 +48,9 @@ Partial Class frmTarjetaCredito
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "frmMarcas"
+        Me.Name = "frmTarjetCredito"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Marcas "
+        Me.Text = "Tarjeta Crédito "
         Me.ResumeLayout(False)
 
     End Sub
