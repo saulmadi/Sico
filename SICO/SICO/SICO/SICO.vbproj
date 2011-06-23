@@ -131,6 +131,12 @@
     <Compile Include="Administrativo\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTarjetaCredito.Designer.vb">
+      <DependentUpon>frmTarjetaCredito.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmTarjetaCredito.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmDepartamentos.Designer.vb">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </Compile>
@@ -196,6 +202,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>crTitulo.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmCobro.Designer.vb">
+      <DependentUpon>frmCobro.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmCobro.vb">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Factuacion\ControlCaja\frmAperturaCaja.Designer.vb">
       <DependentUpon>frmAperturaCaja.vb</DependentUpon>
@@ -413,6 +425,9 @@
     <EmbeddedResource Include="Administrativo\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmTarjetaCredito.resx">
+      <DependentUpon>frmTarjetaCredito.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmDepartamentos.resx">
       <DependentUpon>frmDepartamentos.vb</DependentUpon>
     </EmbeddedResource>
@@ -448,6 +463,9 @@
     <EmbeddedResource Include="crTitulo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crTitulo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmCobro.resx">
+      <DependentUpon>frmCobro.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Factuacion\ControlCaja\frmAperturaCaja.resx">
       <DependentUpon>frmAperturaCaja.vb</DependentUpon>

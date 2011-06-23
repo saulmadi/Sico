@@ -159,8 +159,6 @@ Public Class ControlCaja
         Me.LlenadoTabla(ColeccionParametrosBusqueda)
     End Sub
 
-
-
     Public Function AperturaCaja(ByVal cajero As Long, ByVal fecha As DateTime, ByVal sucursal As String)
         Me.Buscar(4, cajero, fecha, sucursal)
         If Me.TotalRegistros = 1 Then
@@ -168,6 +166,8 @@ Public Class ControlCaja
         End If
         Return False
     End Function
+
+    
 
     Public Function RealizarApertura(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario)
         Try
@@ -180,6 +180,32 @@ Public Class ControlCaja
             Throw ex
         End Try
     End Function
+
+    Public Function RealizarIngresoEfectivo(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario)
+        Try
+            Me.IniciarTransaccion()
+            Me.IngresarTransaccion(7, sucursal, monto, fecha, cajero, "Se ingreso efectivo para el usuario " + usuario.NombreUsuario)
+            Me.CommitTransaccion()
+            Return True
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw ex
+        End Try
+    End Function
+
+    Public Function RealizarRetiroEfectivo(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario)
+        Try
+            Me.IniciarTransaccion()
+            Me.IngresarTransaccion(6, sucursal, monto, fecha, cajero, "Se retiro efectivo para el usuario " + usuario.NombreUsuario)
+            Me.CommitTransaccion()
+            Return True
+        Catch ex As Exception
+            Me.RollBackTransaccion()
+            Throw ex
+        End Try
+    End Function
+
+
 #End Region
 
 

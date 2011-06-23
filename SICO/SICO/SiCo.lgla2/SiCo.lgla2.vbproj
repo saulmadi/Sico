@@ -113,6 +113,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="TablasTipoDerivadas.vb" />
+    <Compile Include="TarjetaCredito.vb" />
     <Compile Include="TiposFacturas.vb" />
     <Compile Include="TiposMotocicletas.vb" />
     <Compile Include="TransaccionesProductos.vb" />

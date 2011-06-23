@@ -7,4 +7,5 @@ Public Enum ModulosTablasTipo
     TiposFacturas = 4
     Modelos = 5
     Municipios = 6
+    TarjetaCredito = 7
 End Enum
