@@ -248,17 +248,24 @@
       <FileName>FacturaEncabezado.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.ControlCaja">
+  <Class Name="SiCo.lgla2.ControlCaja" Collapsed="true">
     <Position X="0.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAjAAACEAAAAAFEAAAAEgMJAAAAAAAAIEABBACQQAA=</HashCode>
       <FileName>ControlCaja.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.TransaccionesTrajetaCredito">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TransaccionesTrajetaCredito.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
     <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAAAAAAAAAAAAAAIAAAABAQAAgAAAAAAAAAAIA=</HashCode>
+      <HashCode>AAAAABAAAAAAAAAAAAAAIAAAABAQAAgAAAAAAAABAIA=</HashCode>
       <FileName>ModulosTablasTipo.vb</FileName>
     </TypeIdentifier>
   </Enum>

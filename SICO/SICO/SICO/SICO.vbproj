@@ -203,6 +203,12 @@
       <DependentUpon>crTitulo.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmTC.Designer.vb">
+      <DependentUpon>frmTC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\frmTC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Factuacion\ControlCaja\frmCobro.Designer.vb">
       <DependentUpon>frmCobro.vb</DependentUpon>
     </Compile>
@@ -463,6 +469,9 @@
     <EmbeddedResource Include="crTitulo.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crTitulo.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\frmTC.resx">
+      <DependentUpon>frmTC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Factuacion\ControlCaja\frmCobro.resx">
       <DependentUpon>frmCobro.vb</DependentUpon>
