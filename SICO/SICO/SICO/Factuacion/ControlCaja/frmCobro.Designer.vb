@@ -24,30 +24,18 @@ Partial Class frmCobro
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCobro))
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Label1 = New System.Windows.Forms.Label
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.Label5 = New System.Windows.Forms.Label
-        Me.txtTotal = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtTC = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtCambio = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtBalance = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtCambio = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtTC = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtTotal = New SICO.ctrla.CajaTexto(Me.components)
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.SuspendLayout()
-        '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(503, 409)
-        Me.PanelAccion1.TabIndex = 0
-        Me.PanelAccion1.Titulo = "Cobro Factura"
-        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'Label1
         '
@@ -99,72 +87,28 @@ Partial Class frmCobro
         Me.Label5.TabIndex = 5
         Me.Label5.Text = "Balance"
         '
-        'txtTotal
+        'txtBalance
         '
-        Me.txtTotal.BackColor = System.Drawing.SystemColors.Window
-        Me.txtTotal.ColorError = System.Drawing.Color.Red
-        Me.txtTotal.Enabled = False
-        Me.txtTotal.EnterPorTab = True
-        Me.txtTotal.EsObligatorio = False
-        Me.txtTotal.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtTotal.Location = New System.Drawing.Point(156, 95)
-        Me.txtTotal.MaxLength = 12
-        Me.txtTotal.MensajeError = Nothing
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(325, 44)
-        Me.txtTotal.TabIndex = 6
-        Me.txtTotal.Text = "0.00"
-        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtTotal.Texto = "0.00"
-        Me.txtTotal.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtTotal.ValorInt = Nothing
-        Me.txtTotal.ValorLong = Nothing
-        '
-        'txtEfectivo
-        '
-        Me.txtEfectivo.BackColor = System.Drawing.SystemColors.Window
-        Me.txtEfectivo.ColorError = System.Drawing.Color.Red
-        Me.txtEfectivo.EnterPorTab = True
-        Me.txtEfectivo.EsObligatorio = False
-        Me.txtEfectivo.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEfectivo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtEfectivo.Location = New System.Drawing.Point(156, 145)
-        Me.txtEfectivo.MaxLength = 12
-        Me.txtEfectivo.MensajeError = Nothing
-        Me.txtEfectivo.Name = "txtEfectivo"
-        Me.txtEfectivo.Size = New System.Drawing.Size(325, 44)
-        Me.txtEfectivo.TabIndex = 7
-        Me.txtEfectivo.Text = "0.00"
-        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtEfectivo.Texto = "0.00"
-        Me.txtEfectivo.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtEfectivo.ValorInt = Nothing
-        Me.txtEfectivo.ValorLong = Nothing
-        '
-        'txtTC
-        '
-        Me.txtTC.BackColor = System.Drawing.SystemColors.Window
-        Me.txtTC.ColorError = System.Drawing.Color.Red
-        Me.txtTC.EnterPorTab = True
-        Me.txtTC.EsObligatorio = False
-        Me.txtTC.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtTC.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTC.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtTC.Location = New System.Drawing.Point(156, 195)
-        Me.txtTC.MaxLength = 12
-        Me.txtTC.MensajeError = Nothing
-        Me.txtTC.Name = "txtTC"
-        Me.txtTC.Size = New System.Drawing.Size(325, 44)
-        Me.txtTC.TabIndex = 8
-        Me.txtTC.Text = "0.00"
-        Me.txtTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtTC.Texto = "0.00"
-        Me.txtTC.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtTC.ValorInt = Nothing
-        Me.txtTC.ValorLong = Nothing
+        Me.txtBalance.BackColor = System.Drawing.SystemColors.Window
+        Me.txtBalance.ColorError = System.Drawing.Color.Red
+        Me.txtBalance.Enabled = False
+        Me.txtBalance.EnterPorTab = True
+        Me.txtBalance.EsObligatorio = False
+        Me.txtBalance.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBalance.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtBalance.Location = New System.Drawing.Point(156, 295)
+        Me.txtBalance.MaxLength = 12
+        Me.txtBalance.MensajeError = Nothing
+        Me.txtBalance.Name = "txtBalance"
+        Me.txtBalance.Size = New System.Drawing.Size(325, 44)
+        Me.txtBalance.TabIndex = 10
+        Me.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtBalance.Texto = Nothing
+        Me.txtBalance.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtBalance.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtBalance.ValorInt = Nothing
+        Me.txtBalance.ValorLong = Nothing
         '
         'txtCambio
         '
@@ -182,35 +126,91 @@ Partial Class frmCobro
         Me.txtCambio.Name = "txtCambio"
         Me.txtCambio.Size = New System.Drawing.Size(325, 44)
         Me.txtCambio.TabIndex = 9
-        Me.txtCambio.Text = "0.00"
         Me.txtCambio.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtCambio.Texto = "0.00"
+        Me.txtCambio.Texto = Nothing
         Me.txtCambio.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtCambio.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
         Me.txtCambio.ValorInt = Nothing
         Me.txtCambio.ValorLong = Nothing
         '
-        'txtBalance
+        'txtTC
         '
-        Me.txtBalance.BackColor = System.Drawing.SystemColors.Window
-        Me.txtBalance.ColorError = System.Drawing.Color.Red
-        Me.txtBalance.Enabled = False
-        Me.txtBalance.EnterPorTab = True
-        Me.txtBalance.EsObligatorio = False
-        Me.txtBalance.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBalance.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtBalance.Location = New System.Drawing.Point(156, 295)
-        Me.txtBalance.MaxLength = 12
-        Me.txtBalance.MensajeError = Nothing
-        Me.txtBalance.Name = "txtBalance"
-        Me.txtBalance.Size = New System.Drawing.Size(325, 44)
-        Me.txtBalance.TabIndex = 10
-        Me.txtBalance.Text = "0.00"
-        Me.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtBalance.Texto = "0.00"
-        Me.txtBalance.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtBalance.ValorInt = Nothing
-        Me.txtBalance.ValorLong = Nothing
+        Me.txtTC.BackColor = System.Drawing.SystemColors.Window
+        Me.txtTC.ColorError = System.Drawing.Color.Red
+        Me.txtTC.EnterPorTab = True
+        Me.txtTC.EsObligatorio = False
+        Me.txtTC.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtTC.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTC.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtTC.Location = New System.Drawing.Point(156, 195)
+        Me.txtTC.MaxLength = 12
+        Me.txtTC.MensajeError = Nothing
+        Me.txtTC.Name = "txtTC"
+        Me.txtTC.Size = New System.Drawing.Size(325, 44)
+        Me.txtTC.TabIndex = 8
+        Me.txtTC.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTC.Texto = Nothing
+        Me.txtTC.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtTC.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtTC.ValorInt = Nothing
+        Me.txtTC.ValorLong = Nothing
+        '
+        'txtEfectivo
+        '
+        Me.txtEfectivo.BackColor = System.Drawing.SystemColors.Window
+        Me.txtEfectivo.ColorError = System.Drawing.Color.Red
+        Me.txtEfectivo.EnterPorTab = True
+        Me.txtEfectivo.EsObligatorio = False
+        Me.txtEfectivo.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEfectivo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtEfectivo.Location = New System.Drawing.Point(156, 145)
+        Me.txtEfectivo.MaxLength = 12
+        Me.txtEfectivo.MensajeError = Nothing
+        Me.txtEfectivo.Name = "txtEfectivo"
+        Me.txtEfectivo.Size = New System.Drawing.Size(325, 44)
+        Me.txtEfectivo.TabIndex = 7
+        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtEfectivo.Texto = Nothing
+        Me.txtEfectivo.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtEfectivo.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtEfectivo.ValorInt = Nothing
+        Me.txtEfectivo.ValorLong = Nothing
+        '
+        'txtTotal
+        '
+        Me.txtTotal.BackColor = System.Drawing.SystemColors.Window
+        Me.txtTotal.ColorError = System.Drawing.Color.Red
+        Me.txtTotal.Enabled = False
+        Me.txtTotal.EnterPorTab = True
+        Me.txtTotal.EsObligatorio = False
+        Me.txtTotal.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTotal.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtTotal.Location = New System.Drawing.Point(156, 95)
+        Me.txtTotal.MaxLength = 12
+        Me.txtTotal.MensajeError = Nothing
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.Size = New System.Drawing.Size(325, 44)
+        Me.txtTotal.TabIndex = 6
+        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtTotal.Texto = Nothing
+        Me.txtTotal.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtTotal.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtTotal.ValorInt = Nothing
+        Me.txtTotal.ValorLong = Nothing
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(503, 409)
+        Me.PanelAccion1.TabIndex = 0
+        Me.PanelAccion1.Titulo = "Cobro Factura"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
         '
         'frmCobro
         '
@@ -232,8 +232,11 @@ Partial Class frmCobro
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.Name = "frmCobro"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cobro"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

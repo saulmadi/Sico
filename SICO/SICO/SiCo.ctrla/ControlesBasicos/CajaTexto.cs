@@ -223,7 +223,40 @@ namespace SiCo.ctrla
         }
 
 
-        public 
+        public Decimal ValorDecimal
+        {
+            get
+            {
+                try
+                {
+                    Decimal  d = 0;
+                    if (Decimal.TryParse(base.Text, out d))
+                    {
+                        return d;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                catch
+                {
+                    return 0;
+
+                }
+            }
+            set
+            {
+                if (value == null)
+                {
+                    this.Text = string.Empty;
+                }
+                else
+                {
+                    this.Text = value.ToString();
+                }
+            }
+        }
 
         #endregion        
 
