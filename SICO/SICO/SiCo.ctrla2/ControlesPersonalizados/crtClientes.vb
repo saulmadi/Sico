@@ -34,6 +34,7 @@ Public Class crtClientes
         End Get
 
         Set(ByVal value As Clientes)
+            _cliente = New Clientes
             _cliente = value
             Me._premitebloquear = False
             CrtPersonaJuridica1.Persona = New PersonaJuridica
@@ -45,7 +46,7 @@ Public Class crtClientes
                     TabControl1.SelectedIndex = 1
                 ElseIf Not _cliente.PersonaNatural Is Nothing Then
                     CrtPersonaJuridica1.Persona = New PersonaJuridica
-                    CrtPersonaNatural1.Persona = value.PersonaNatural
+                    CrtPersonaNatural1.Persona = _cliente.PersonaNatural
                     TabControl1.SelectedIndex = 0
                 Else
                     CrtPersonaJuridica1.Nuevo()
@@ -142,9 +143,10 @@ Public Class crtClientes
     End Function
 
     Public Sub Nuevo()
-        Me.Cliente = New Clientes
         Me.CrtPersonaJuridica1.Nuevo()
         Me.CrtPersonaNatural1.Nuevo()
+        Me.Cliente = New Clientes
+
 
         Me.TabControl1.SelectedIndex = 0
     End Sub

@@ -230,7 +230,7 @@ Public Class crtPersonaNatural
             txtSegundoNombre.Text = ""
         End If
         Dim x As Integer = 0
-        cmbTipoIdentidad.SelectedIndex = 0
+        ''cmbTipoIdentidad.SelectedIndex = 0
         For Each i As Object In cmbTipoIdentidad.Items
             If CType(i, ListaTipoIdentidad.ListaTipoIdentidad).Valor = Persona.tipoidentidad.Valor Then
                 cmbTipoIdentidad.SelectedIndex = x

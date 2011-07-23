@@ -26,15 +26,15 @@ Partial Class frmTC
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmTC))
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
-        Me.ListaDesplegable1 = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.cmbTarjetaCredito = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.Label1 = New System.Windows.Forms.Label
-        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtNumeroTarjeta = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label2 = New System.Windows.Forms.Label
-        Me.CajaTexto2 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtExpira = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label3 = New System.Windows.Forms.Label
-        Me.CajaTexto3 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtAprobacion = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label4 = New System.Windows.Forms.Label
-        Me.CajaTexto4 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtMonto = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label5 = New System.Windows.Forms.Label
         Me.SuspendLayout()
         '
@@ -50,17 +50,17 @@ Partial Class frmTC
         Me.PanelAccion1.Titulo = "T/C"
         Me.PanelAccion1.VisiblePanelPrincipal = True
         '
-        'ListaDesplegable1
+        'cmbTarjetaCredito
         '
-        Me.ListaDesplegable1.CargarAutoCompletar = False
-        Me.ListaDesplegable1.CargarComboBox = True
-        Me.ListaDesplegable1.FormattingEnabled = True
-        Me.ListaDesplegable1.Location = New System.Drawing.Point(89, 103)
-        Me.ListaDesplegable1.Name = "ListaDesplegable1"
-        Me.ListaDesplegable1.ParametroAutocompletar = Nothing
-        Me.ListaDesplegable1.ParametroBusquedaPadre = Nothing
-        Me.ListaDesplegable1.Size = New System.Drawing.Size(320, 21)
-        Me.ListaDesplegable1.TabIndex = 1
+        Me.cmbTarjetaCredito.CargarAutoCompletar = False
+        Me.cmbTarjetaCredito.CargarComboBox = True
+        Me.cmbTarjetaCredito.FormattingEnabled = True
+        Me.cmbTarjetaCredito.Location = New System.Drawing.Point(89, 103)
+        Me.cmbTarjetaCredito.Name = "cmbTarjetaCredito"
+        Me.cmbTarjetaCredito.ParametroAutocompletar = Nothing
+        Me.cmbTarjetaCredito.ParametroBusquedaPadre = Nothing
+        Me.cmbTarjetaCredito.Size = New System.Drawing.Size(320, 21)
+        Me.cmbTarjetaCredito.TabIndex = 1
         '
         'Label1
         '
@@ -71,23 +71,24 @@ Partial Class frmTC
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "Tarjeta"
         '
-        'CajaTexto1
+        'txtNumeroTarjeta
         '
-        Me.CajaTexto1.BackColor = System.Drawing.SystemColors.Window
-        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto1.EnterPorTab = True
-        Me.CajaTexto1.EsObligatorio = False
-        Me.CajaTexto1.ExpresionValidacion = Nothing
-        Me.CajaTexto1.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto1.Location = New System.Drawing.Point(89, 157)
-        Me.CajaTexto1.MensajeError = Nothing
-        Me.CajaTexto1.Name = "CajaTexto1"
-        Me.CajaTexto1.Size = New System.Drawing.Size(320, 20)
-        Me.CajaTexto1.TabIndex = 3
-        Me.CajaTexto1.Texto = Nothing
-        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.CajaTexto1.ValorInt = Nothing
-        Me.CajaTexto1.ValorLong = Nothing
+        Me.txtNumeroTarjeta.BackColor = System.Drawing.SystemColors.Window
+        Me.txtNumeroTarjeta.ColorError = System.Drawing.Color.Red
+        Me.txtNumeroTarjeta.EnterPorTab = True
+        Me.txtNumeroTarjeta.EsObligatorio = True
+        Me.txtNumeroTarjeta.ExpresionValidacion = Nothing
+        Me.txtNumeroTarjeta.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtNumeroTarjeta.Location = New System.Drawing.Point(89, 157)
+        Me.txtNumeroTarjeta.MensajeError = "Ingrese el número de aprobación"
+        Me.txtNumeroTarjeta.Name = "txtNumeroTarjeta"
+        Me.txtNumeroTarjeta.Size = New System.Drawing.Size(320, 20)
+        Me.txtNumeroTarjeta.TabIndex = 3
+        Me.txtNumeroTarjeta.Texto = Nothing
+        Me.txtNumeroTarjeta.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtNumeroTarjeta.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtNumeroTarjeta.ValorInt = Nothing
+        Me.txtNumeroTarjeta.ValorLong = Nothing
         '
         'Label2
         '
@@ -98,23 +99,25 @@ Partial Class frmTC
         Me.Label2.TabIndex = 4
         Me.Label2.Text = "Número"
         '
-        'CajaTexto2
+        'txtExpira
         '
-        Me.CajaTexto2.BackColor = System.Drawing.SystemColors.Window
-        Me.CajaTexto2.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto2.EnterPorTab = True
-        Me.CajaTexto2.EsObligatorio = False
-        Me.CajaTexto2.ExpresionValidacion = Nothing
-        Me.CajaTexto2.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto2.Location = New System.Drawing.Point(89, 183)
-        Me.CajaTexto2.MensajeError = Nothing
-        Me.CajaTexto2.Name = "CajaTexto2"
-        Me.CajaTexto2.Size = New System.Drawing.Size(320, 20)
-        Me.CajaTexto2.TabIndex = 5
-        Me.CajaTexto2.Texto = Nothing
-        Me.CajaTexto2.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.CajaTexto2.ValorInt = Nothing
-        Me.CajaTexto2.ValorLong = Nothing
+        Me.txtExpira.BackColor = System.Drawing.SystemColors.Window
+        Me.txtExpira.ColorError = System.Drawing.Color.Red
+        Me.txtExpira.EnterPorTab = True
+        Me.txtExpira.EsObligatorio = True
+        Me.txtExpira.ExpresionValidacion = Nothing
+        Me.txtExpira.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtExpira.Location = New System.Drawing.Point(89, 183)
+        Me.txtExpira.MaxLength = 4
+        Me.txtExpira.MensajeError = "Ingrese la fecha de expiracion"
+        Me.txtExpira.Name = "txtExpira"
+        Me.txtExpira.Size = New System.Drawing.Size(320, 20)
+        Me.txtExpira.TabIndex = 5
+        Me.txtExpira.Texto = Nothing
+        Me.txtExpira.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtExpira.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtExpira.ValorInt = Nothing
+        Me.txtExpira.ValorLong = Nothing
         '
         'Label3
         '
@@ -125,23 +128,24 @@ Partial Class frmTC
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Expira"
         '
-        'CajaTexto3
+        'txtAprobacion
         '
-        Me.CajaTexto3.BackColor = System.Drawing.SystemColors.Window
-        Me.CajaTexto3.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto3.EnterPorTab = True
-        Me.CajaTexto3.EsObligatorio = False
-        Me.CajaTexto3.ExpresionValidacion = Nothing
-        Me.CajaTexto3.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto3.Location = New System.Drawing.Point(89, 209)
-        Me.CajaTexto3.MensajeError = Nothing
-        Me.CajaTexto3.Name = "CajaTexto3"
-        Me.CajaTexto3.Size = New System.Drawing.Size(320, 20)
-        Me.CajaTexto3.TabIndex = 7
-        Me.CajaTexto3.Texto = Nothing
-        Me.CajaTexto3.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.CajaTexto3.ValorInt = Nothing
-        Me.CajaTexto3.ValorLong = Nothing
+        Me.txtAprobacion.BackColor = System.Drawing.SystemColors.Window
+        Me.txtAprobacion.ColorError = System.Drawing.Color.Red
+        Me.txtAprobacion.EnterPorTab = True
+        Me.txtAprobacion.EsObligatorio = True
+        Me.txtAprobacion.ExpresionValidacion = Nothing
+        Me.txtAprobacion.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtAprobacion.Location = New System.Drawing.Point(89, 209)
+        Me.txtAprobacion.MensajeError = "Ingrese el código de aprobación"
+        Me.txtAprobacion.Name = "txtAprobacion"
+        Me.txtAprobacion.Size = New System.Drawing.Size(320, 20)
+        Me.txtAprobacion.TabIndex = 7
+        Me.txtAprobacion.Texto = Nothing
+        Me.txtAprobacion.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtAprobacion.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtAprobacion.ValorInt = Nothing
+        Me.txtAprobacion.ValorLong = Nothing
         '
         'Label4
         '
@@ -152,27 +156,27 @@ Partial Class frmTC
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Aprobación"
         '
-        'CajaTexto4
+        'txtMonto
         '
-        Me.CajaTexto4.BackColor = System.Drawing.SystemColors.Window
-        Me.CajaTexto4.ColorError = System.Drawing.Color.Red
-        Me.CajaTexto4.Enabled = False
-        Me.CajaTexto4.EnterPorTab = True
-        Me.CajaTexto4.EsObligatorio = False
-        Me.CajaTexto4.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.CajaTexto4.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.CajaTexto4.Location = New System.Drawing.Point(89, 131)
-        Me.CajaTexto4.MaxLength = 12
-        Me.CajaTexto4.MensajeError = Nothing
-        Me.CajaTexto4.Name = "CajaTexto4"
-        Me.CajaTexto4.Size = New System.Drawing.Size(320, 20)
-        Me.CajaTexto4.TabIndex = 3
-        Me.CajaTexto4.Text = "0.00"
-        Me.CajaTexto4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.CajaTexto4.Texto = "0.00"
-        Me.CajaTexto4.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.CajaTexto4.ValorInt = Nothing
-        Me.CajaTexto4.ValorLong = Nothing
+        Me.txtMonto.BackColor = System.Drawing.SystemColors.Window
+        Me.txtMonto.ColorError = System.Drawing.Color.Red
+        Me.txtMonto.Enabled = False
+        Me.txtMonto.EnterPorTab = True
+        Me.txtMonto.EsObligatorio = False
+        Me.txtMonto.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtMonto.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtMonto.Location = New System.Drawing.Point(89, 131)
+        Me.txtMonto.MaxLength = 12
+        Me.txtMonto.MensajeError = Nothing
+        Me.txtMonto.Name = "txtMonto"
+        Me.txtMonto.Size = New System.Drawing.Size(320, 20)
+        Me.txtMonto.TabIndex = 3
+        Me.txtMonto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtMonto.Texto = Nothing
+        Me.txtMonto.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtMonto.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtMonto.ValorInt = Nothing
+        Me.txtMonto.ValorLong = Nothing
         '
         'Label5
         '
@@ -189,15 +193,15 @@ Partial Class frmTC
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(439, 300)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.CajaTexto3)
+        Me.Controls.Add(Me.txtAprobacion)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.CajaTexto2)
+        Me.Controls.Add(Me.txtExpira)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.CajaTexto4)
-        Me.Controls.Add(Me.CajaTexto1)
+        Me.Controls.Add(Me.txtMonto)
+        Me.Controls.Add(Me.txtNumeroTarjeta)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ListaDesplegable1)
+        Me.Controls.Add(Me.cmbTarjetaCredito)
         Me.Controls.Add(Me.PanelAccion1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -205,19 +209,20 @@ Partial Class frmTC
         Me.Name = "frmTC"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Cobro"
+        Me.TopMost = True
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents PanelAccion1 As SICO.ctrla.PanelAccion
-    Friend WithEvents ListaDesplegable1 As SICO.ctrla.ListaDesplegable
+    Friend WithEvents cmbTarjetaCredito As SICO.ctrla.ListaDesplegable
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto1 As SICO.ctrla.CajaTexto
+    Friend WithEvents txtNumeroTarjeta As SICO.ctrla.CajaTexto
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto2 As SICO.ctrla.CajaTexto
+    Friend WithEvents txtExpira As SICO.ctrla.CajaTexto
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto3 As SICO.ctrla.CajaTexto
+    Friend WithEvents txtAprobacion As SICO.ctrla.CajaTexto
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents CajaTexto4 As SICO.ctrla.CajaTexto
+    Friend WithEvents txtMonto As SICO.ctrla.CajaTexto
     Friend WithEvents Label5 As System.Windows.Forms.Label
 End Class

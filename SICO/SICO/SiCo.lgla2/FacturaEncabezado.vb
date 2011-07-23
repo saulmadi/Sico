@@ -461,7 +461,7 @@ Public Class FacturaEncabezado
 
     Public Sub GuardarFacturaMotocicleta()
         Try
-            Me.IniciarTransaccion()
+            ''Me.IniciarTransaccion()
             Me.Guardar()
 
             If Me.Motocicleta.Id >= 0 Then
@@ -473,10 +473,10 @@ Public Class FacturaEncabezado
 
             Dim flag As Boolean = False
 
-            Me.CommitTransaccion()
+            ''Me.CommitTransaccion()
 
         Catch ex As Exception
-            Me.RollBackTransaccion()
+            ''Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try
     End Sub
@@ -506,7 +506,7 @@ Public Class FacturaEncabezado
 
     Public Sub FacturarProducto()
         Try
-            Me.IniciarTransaccion()
+            ''Me.IniciarTransaccion()
             Me.estado = "F"
             Me.CalcularDetalleGuardar()
             Me.Guardar()
@@ -531,17 +531,17 @@ Public Class FacturaEncabezado
 
             Next
 
-            Me.CommitTransaccion()
+            ''Me.CommitTransaccion()
         Catch ex As Exception
             Me.estado = "E"
-            Me.RollBackTransaccion()
+            ''Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try
     End Sub
 
     Public Sub FacturarMotocicleta()
         Try
-            Me.IniciarTransaccion()
+            ''Me.IniciarTransaccion()
             Me.estado = "F"
             Me.Guardar()
             Dim faca As New GenerarNumeroFactura
@@ -557,10 +557,10 @@ Public Class FacturaEncabezado
             Dim flag As Boolean = False
 
 
-            Me.CommitTransaccion()
+            ''Me.CommitTransaccion()
         Catch ex As Exception
             Me.estado = "E"
-            Me.RollBackTransaccion()
+            ''Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try
     End Sub

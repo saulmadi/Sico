@@ -38,6 +38,9 @@ Public Class frmIniciosesion
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Try
+            
+
+
 
             _Autorizo = False
             Dim forma As New frmMenuPrincipal
