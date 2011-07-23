@@ -34,7 +34,7 @@ if cajero<>"" then
 end if;
 
 if idtransacciones<>"" then
-  set @where = concat(@where, " and idtransaccionescaja = '",idtransacciones, "%' ");
+  set @where = concat(@where, " and idtransaccionescaja = ",idtransacciones, " ");
 end if;
 
 if fecha<>"" then
@@ -42,7 +42,7 @@ if fecha<>"" then
 end if;
 
 if idsucursales<>"" then
-  set @where = concat(@where, " and idsucursales '",idsucursales, "%' ");
+  set @where = concat(@where, " and idsucursales = ",idsucursales, " ");
 end if;
 
 
