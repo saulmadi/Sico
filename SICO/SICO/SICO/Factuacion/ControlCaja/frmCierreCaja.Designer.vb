@@ -22,11 +22,11 @@ Partial Class frmCierreCaja
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCierreCaja))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
         Me.GroupBox3 = New System.Windows.Forms.GroupBox
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView
         Me.GroupBox4 = New System.Windows.Forms.GroupBox
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
@@ -41,36 +41,24 @@ Partial Class frmCierreCaja
         Me.Panel1 = New System.Windows.Forms.Panel
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.TextBox2 = New System.Windows.Forms.TextBox
+        Me.txtCajero = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
-        Me.TextBox6 = New System.Windows.Forms.TextBox
-        Me.Label3 = New System.Windows.Forms.Label
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox6 = New System.Windows.Forms.GroupBox
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker
-        Me.Label8 = New System.Windows.Forms.Label
+        Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.dteFecha = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox
-        Me.Label9 = New System.Windows.Forms.Label
-        Me.Label10 = New System.Windows.Forms.Label
-        Me.TextBox8 = New System.Windows.Forms.TextBox
-        Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.valor = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn
+        Me.CajaTexto1 = New SICO.ctrla.CajaTexto(Me.components)
+        Me.Label3 = New System.Windows.Forms.Label
+        Me.grdEntrantes = New SICO.ctrla.Grid(Me.components)
+        Me.grdSalientes = New SICO.ctrla.Grid(Me.components)
         Me.Panel2.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -78,7 +66,8 @@ Partial Class frmCierreCaja
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdEntrantes, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.grdSalientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel2
@@ -87,9 +76,9 @@ Partial Class frmCierreCaja
         Me.Panel2.Controls.Add(Me.Panel4)
         Me.Panel2.Controls.Add(Me.Panel3)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel2.Location = New System.Drawing.Point(0, 258)
+        Me.Panel2.Location = New System.Drawing.Point(0, 218)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(881, 274)
+        Me.Panel2.Size = New System.Drawing.Size(881, 314)
         Me.Panel2.TabIndex = 12
         '
         'GroupBox5
@@ -101,46 +90,31 @@ Partial Class frmCierreCaja
         Me.GroupBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox5.Location = New System.Drawing.Point(31, 0)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(817, 274)
+        Me.GroupBox5.Size = New System.Drawing.Size(817, 314)
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Resumen"
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.DataGridView1)
+        Me.GroupBox3.Controls.Add(Me.grdEntrantes)
         Me.GroupBox3.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox3.Location = New System.Drawing.Point(3, 16)
         Me.GroupBox3.MinimumSize = New System.Drawing.Size(153, 132)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(387, 168)
+        Me.GroupBox3.Size = New System.Drawing.Size(387, 208)
         Me.GroupBox3.TabIndex = 10
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = " Entrantes"
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView1.ColumnHeadersHeight = 20
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.descripcion, Me.valor})
-        Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView1.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView1.Size = New System.Drawing.Size(381, 149)
-        Me.DataGridView1.TabIndex = 0
-        '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.DataGridView2)
+        Me.GroupBox4.Controls.Add(Me.grdSalientes)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Right
         Me.GroupBox4.Location = New System.Drawing.Point(390, 16)
         Me.GroupBox4.MinimumSize = New System.Drawing.Size(424, 132)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(424, 168)
+        Me.GroupBox4.Size = New System.Drawing.Size(424, 208)
         Me.GroupBox4.TabIndex = 11
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Salientes"
@@ -149,7 +123,7 @@ Partial Class frmCierreCaja
         '
         Me.Panel7.Controls.Add(Me.Panel8)
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel7.Location = New System.Drawing.Point(3, 184)
+        Me.Panel7.Location = New System.Drawing.Point(3, 224)
         Me.Panel7.Name = "Panel7"
         Me.Panel7.Size = New System.Drawing.Size(811, 87)
         Me.Panel7.TabIndex = 9
@@ -227,7 +201,7 @@ Partial Class frmCierreCaja
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel4.Location = New System.Drawing.Point(848, 0)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(33, 274)
+        Me.Panel4.Size = New System.Drawing.Size(33, 314)
         Me.Panel4.TabIndex = 2
         '
         'Panel3
@@ -235,7 +209,7 @@ Partial Class frmCierreCaja
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(31, 274)
+        Me.Panel3.Size = New System.Drawing.Size(31, 314)
         Me.Panel3.TabIndex = 1
         '
         'Panel1
@@ -246,7 +220,7 @@ Partial Class frmCierreCaja
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 89)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(881, 169)
+        Me.Panel1.Size = New System.Drawing.Size(881, 129)
         Me.Panel1.TabIndex = 11
         '
         'GroupBox1
@@ -264,81 +238,41 @@ Partial Class frmCierreCaja
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
+        Me.GroupBox2.Controls.Add(Me.txtCajero)
         Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.TextBox6)
-        Me.GroupBox2.Controls.Add(Me.Label3)
         Me.GroupBox2.Enabled = False
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(373, 19)
+        Me.GroupBox2.Location = New System.Drawing.Point(376, 19)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(327, 101)
-        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.Size = New System.Drawing.Size(327, 51)
+        Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos de Caja"
         '
-        'TextBox1
+        'txtCajero
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(60, 45)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox1.TabIndex = 5
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label1.Location = New System.Drawing.Point(6, 22)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(43, 13)
-        Me.Label1.TabIndex = 4
-        Me.Label1.Text = "Caja N°"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(60, 71)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox2.TabIndex = 3
+        Me.txtCajero.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCajero.Location = New System.Drawing.Point(65, 22)
+        Me.txtCajero.Name = "txtCajero"
+        Me.txtCajero.Size = New System.Drawing.Size(256, 20)
+        Me.txtCajero.TabIndex = 3
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(6, 74)
+        Me.Label2.Location = New System.Drawing.Point(11, 25)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(37, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Cajero"
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox6.Location = New System.Drawing.Point(60, 19)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox6.TabIndex = 1
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(6, 48)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(48, 13)
-        Me.Label3.TabIndex = 0
-        Me.Label3.Text = "Sucursal"
         '
         'Panel5
         '
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Right
         Me.Panel5.Location = New System.Drawing.Point(848, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(33, 169)
+        Me.Panel5.Size = New System.Drawing.Size(33, 129)
         Me.Panel5.TabIndex = 3
         '
         'Panel6
@@ -346,7 +280,7 @@ Partial Class frmCierreCaja
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel6.Location = New System.Drawing.Point(0, 0)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(31, 169)
+        Me.Panel6.Size = New System.Drawing.Size(31, 129)
         Me.Panel6.TabIndex = 0
         '
         'CrtPanelBase1
@@ -373,145 +307,142 @@ Partial Class frmCierreCaja
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.DateTimePicker2)
-        Me.GroupBox6.Controls.Add(Me.Label8)
+        Me.GroupBox6.Controls.Add(Me.Label3)
+        Me.GroupBox6.Controls.Add(Me.CajaTexto1)
+        Me.GroupBox6.Controls.Add(Me.txtEfectivo)
+        Me.GroupBox6.Controls.Add(Me.Label1)
+        Me.GroupBox6.Controls.Add(Me.dteFecha)
         Me.GroupBox6.Controls.Add(Me.Label7)
-        Me.GroupBox6.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox6.Controls.Add(Me.ComboBox1)
-        Me.GroupBox6.Controls.Add(Me.Label9)
-        Me.GroupBox6.Controls.Add(Me.Label10)
-        Me.GroupBox6.Controls.Add(Me.TextBox8)
         Me.GroupBox6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox6.Location = New System.Drawing.Point(6, 19)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(361, 126)
-        Me.GroupBox6.TabIndex = 13
+        Me.GroupBox6.Size = New System.Drawing.Size(361, 101)
+        Me.GroupBox6.TabIndex = 11
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Datos de Cierre"
         '
-        'DateTimePicker2
+        'txtEfectivo
         '
-        Me.DateTimePicker2.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time
-        Me.DateTimePicker2.Location = New System.Drawing.Point(87, 98)
-        Me.DateTimePicker2.MinDate = New Date(2011, 1, 1, 0, 0, 0, 0)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.ShowUpDown = True
-        Me.DateTimePicker2.Size = New System.Drawing.Size(256, 20)
-        Me.DateTimePicker2.TabIndex = 9
+        Me.txtEfectivo.BackColor = System.Drawing.SystemColors.Window
+        Me.txtEfectivo.ColorError = System.Drawing.Color.Red
+        Me.txtEfectivo.EnterPorTab = True
+        Me.txtEfectivo.EsObligatorio = False
+        Me.txtEfectivo.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEfectivo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtEfectivo.Location = New System.Drawing.Point(86, 46)
+        Me.txtEfectivo.MaxLength = 12
+        Me.txtEfectivo.MensajeError = Nothing
+        Me.txtEfectivo.Name = "txtEfectivo"
+        Me.txtEfectivo.Size = New System.Drawing.Size(256, 20)
+        Me.txtEfectivo.TabIndex = 10
+        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtEfectivo.Texto = Nothing
+        Me.txtEfectivo.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtEfectivo.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtEfectivo.ValorInt = Nothing
+        Me.txtEfectivo.ValorLong = Nothing
         '
-        'Label8
+        'Label1
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(6, 104)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(30, 13)
-        Me.Label8.TabIndex = 8
-        Me.Label8.Text = "Hora"
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(5, 79)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Fecha"
+        '
+        'dteFecha
+        '
+        Me.dteFecha.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dteFecha.Enabled = False
+        Me.dteFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.dteFecha.Location = New System.Drawing.Point(86, 73)
+        Me.dteFecha.MinDate = New Date(2011, 1, 1, 0, 0, 0, 0)
+        Me.dteFecha.Name = "dteFecha"
+        Me.dteFecha.Size = New System.Drawing.Size(256, 20)
+        Me.dteFecha.TabIndex = 6
         '
         'Label7
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(6, 78)
+        Me.Label7.Location = New System.Drawing.Point(5, 49)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(37, 13)
-        Me.Label7.TabIndex = 7
-        Me.Label7.Text = "Fecha"
+        Me.Label7.Size = New System.Drawing.Size(45, 13)
+        Me.Label7.TabIndex = 0
+        Me.Label7.Text = "Faltante"
         '
-        'DateTimePicker1
+        'CajaTexto1
         '
-        Me.DateTimePicker1.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(87, 72)
-        Me.DateTimePicker1.MinDate = New Date(2011, 1, 1, 0, 0, 0, 0)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(256, 20)
-        Me.DateTimePicker1.TabIndex = 6
+        Me.CajaTexto1.BackColor = System.Drawing.SystemColors.Window
+        Me.CajaTexto1.ColorError = System.Drawing.Color.Red
+        Me.CajaTexto1.EnterPorTab = True
+        Me.CajaTexto1.EsObligatorio = False
+        Me.CajaTexto1.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.CajaTexto1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CajaTexto1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.CajaTexto1.Location = New System.Drawing.Point(86, 20)
+        Me.CajaTexto1.MaxLength = 12
+        Me.CajaTexto1.MensajeError = Nothing
+        Me.CajaTexto1.Name = "CajaTexto1"
+        Me.CajaTexto1.Size = New System.Drawing.Size(256, 20)
+        Me.CajaTexto1.TabIndex = 11
+        Me.CajaTexto1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.CajaTexto1.Texto = Nothing
+        Me.CajaTexto1.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.CajaTexto1.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.CajaTexto1.ValorInt = Nothing
+        Me.CajaTexto1.ValorLong = Nothing
         '
-        'ComboBox1
+        'Label3
         '
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(87, 45)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(256, 21)
-        Me.ComboBox1.TabIndex = 5
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(6, 25)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(71, 13)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Efectivo Final"
         '
-        'Label9
+        'grdEntrantes
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(6, 48)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 4
-        Me.Label9.Text = "Autoriza"
+        Me.grdEntrantes.AllowUserToAddRows = False
+        Me.grdEntrantes.AllowUserToDeleteRows = False
+        Me.grdEntrantes.BotonBuscar = False
+        Me.grdEntrantes.BotonEditar = False
+        Me.grdEntrantes.BotonEliminar = False
+        Me.grdEntrantes.CampoId = Nothing
+        Me.grdEntrantes.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdEntrantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdEntrantes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdEntrantes.Location = New System.Drawing.Point(3, 16)
+        Me.grdEntrantes.MultiSelect = False
+        Me.grdEntrantes.Name = "grdEntrantes"
+        Me.grdEntrantes.RowHeadersVisible = False
+        Me.grdEntrantes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdEntrantes.Size = New System.Drawing.Size(381, 189)
+        Me.grdEntrantes.TabIndex = 0
         '
-        'Label10
+        'grdSalientes
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Label10.Location = New System.Drawing.Point(6, 22)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(40, 13)
-        Me.Label10.TabIndex = 4
-        Me.Label10.Text = "Código"
-        '
-        'TextBox8
-        '
-        Me.TextBox8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox8.Location = New System.Drawing.Point(87, 19)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(256, 20)
-        Me.TextBox8.TabIndex = 1
-        '
-        'codigo
-        '
-        Me.codigo.HeaderText = "Código"
-        Me.codigo.Name = "codigo"
-        '
-        'descripcion
-        '
-        Me.descripcion.HeaderText = "Descripción"
-        Me.descripcion.Name = "descripcion"
-        '
-        'valor
-        '
-        Me.valor.HeaderText = "Valor"
-        Me.valor.Name = "valor"
-        '
-        'DataGridView2
-        '
-        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
-        Me.DataGridView2.ColumnHeadersHeight = 20
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
-        Me.DataGridView2.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DataGridView2.Location = New System.Drawing.Point(3, 16)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DataGridView2.Size = New System.Drawing.Size(418, 149)
-        Me.DataGridView2.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Código"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Descripción"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Valor"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.grdSalientes.AllowUserToAddRows = False
+        Me.grdSalientes.AllowUserToDeleteRows = False
+        Me.grdSalientes.BotonBuscar = False
+        Me.grdSalientes.BotonEditar = False
+        Me.grdSalientes.BotonEliminar = False
+        Me.grdSalientes.CampoId = Nothing
+        Me.grdSalientes.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
+        Me.grdSalientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.grdSalientes.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.grdSalientes.Location = New System.Drawing.Point(3, 16)
+        Me.grdSalientes.MultiSelect = False
+        Me.grdSalientes.Name = "grdSalientes"
+        Me.grdSalientes.RowHeadersVisible = False
+        Me.grdSalientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.grdSalientes.Size = New System.Drawing.Size(418, 189)
+        Me.grdSalientes.TabIndex = 1
         '
         'frmCierreCaja
         '
@@ -530,7 +461,6 @@ Partial Class frmCierreCaja
         Me.Panel2.ResumeLayout(False)
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         Me.Panel7.ResumeLayout(False)
         Me.Panel8.ResumeLayout(False)
@@ -541,7 +471,8 @@ Partial Class frmCierreCaja
         Me.GroupBox2.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdEntrantes, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.grdSalientes, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -555,7 +486,6 @@ Partial Class frmCierreCaja
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Panel4 As System.Windows.Forms.Panel
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -564,29 +494,18 @@ Partial Class frmCierreCaja
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
     Friend WithEvents CrtPanelBase1 As SICO.ctrla.ControlesPersonalizados.crtPanelBase
     Friend WithEvents PanelAccion1 As SICO.ctrla.PanelAccion
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents txtCajero As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtEfectivo As SICO.ctrla.CajaTexto
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents dteFecha As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
-    Friend WithEvents codigo As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents descripcion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents valor As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents grdEntrantes As SiCo.ctrla.Grid
+    Friend WithEvents grdSalientes As SiCo.ctrla.Grid
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents CajaTexto1 As SiCo.ctrla.CajaTexto
 End Class

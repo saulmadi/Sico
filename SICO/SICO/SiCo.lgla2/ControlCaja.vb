@@ -15,6 +15,7 @@ Public Class ControlCaja
     Public Sub New()
         MyBase.New()
 
+        Me.Fecha = Now
         Me.ComandoSelect = "ControlCaja_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("idtransacciones"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("fecha"))

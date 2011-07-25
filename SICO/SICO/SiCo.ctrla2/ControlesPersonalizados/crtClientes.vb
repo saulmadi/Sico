@@ -41,17 +41,20 @@ Public Class crtClientes
             CrtPersonaNatural1.Persona = New PersonaNatural
             If Me.Cliente.Id > 0 Then
                 If Not _cliente.PersonaJuridica Is Nothing Then
+                    TabControl1.SelectedIndex = 1
                     CrtPersonaJuridica1.Persona = value.PersonaJuridica
                     CrtPersonaNatural1.Persona = New PersonaNatural
-                    TabControl1.SelectedIndex = 1
+
                 ElseIf Not _cliente.PersonaNatural Is Nothing Then
+                    TabControl1.SelectedIndex = 0
                     CrtPersonaJuridica1.Persona = New PersonaJuridica
                     CrtPersonaNatural1.Persona = _cliente.PersonaNatural
-                    TabControl1.SelectedIndex = 0
+
                 Else
+                    TabControl1.SelectedIndex = 0
                     CrtPersonaJuridica1.Nuevo()
                     CrtPersonaNatural1.Nuevo()
-                    TabControl1.SelectedIndex = 0
+
                 End If
             Else
                 CrtPersonaJuridica1.Persona = New PersonaJuridica
