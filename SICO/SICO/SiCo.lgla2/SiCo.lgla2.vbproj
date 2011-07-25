@@ -65,6 +65,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AcumuladosControlCaja.vb" />
     <Compile Include="Clientes.vb" />
     <Compile Include="Compras.vb" />
     <Compile Include="ControlCaja.vb" />
