@@ -1,31 +1,31 @@
 ﻿DELIMITER $$
 
-DROP PROCEDURE IF EXISTS `ControlCaja_Buscar` $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ControlCaja_Buscar`(
+DROP PROCEDURE IF EXISTS `sico`.`AcumuladosControlCaja` $$
+CREATE PROCEDURE `sico`.`AcumuladosControlCaja` (
 
 /*defiicion de parametros*/
 id nvarchar(11),
 idtransacciones nvarchar(150),
 fecha nvarchar(200),
 cajero nvarchar(11),
-idsucursales nvarchar(11)
+idsucursales nvarchar(11),
+tipo nvarchar(1)
 
 )
 BEGIN
 /*defiicion de consulta*/
-set @Campos="select ";
-set @from=" ";
+set @Campos="select c.id as id, sum(c.monto) as monto, t.descripcion as descripcion ";
+set @from="  ";
 set @where=" where 1=1 ";
 set @sql="";
-
-set @campos= concat( @campos," c.*, t.descripcion as descripciontransaccion, t.tipo as tipo, fe.numerofactura as numerofactura ");
+set @group=" group by idtransaccionescaja ";
 
 set @from= concat(@from," from controlcaja c ");
 
-set @join = (" inner join transaccionescaja t on c.idtransaccionescaja=t.id");
-set @left = (" left join controlcajafactura h on h.idcontrolcaja =c.id ");
-set @left = concat(@left," left join facturaencabezado fe on h.idfacturaencabezado=fe.id ");
+set @join = (" join transaccionescaja t  on c.idtransaccionescaja=t.id");
+
 /*defiicion de filtros*/
+
 if id<>"" then
   set @where= concat(@where, " and c.id = ", id, " ");
 end if;
@@ -39,21 +39,28 @@ if idtransacciones<>"" then
 end if;
 
 if fecha<>"" then
-  set @where = concat(@where, " and ",fecha, " ");
+  set @join = concat(@join, " and ",fecha, " ");
 end if;
 
 if idsucursales<>"" then
   set @where = concat(@where, " and c.idsucursales = ",idsucursales, " ");
 end if;
 
+if tipo<>"" then
+  set @where = concat(@where, " and t.tipo = '",tipo, "' ");
+end if;
 
-set @sql = concat(@campos,@from,@join,@left,@where);
+
+set @sql = concat(@campos,@from,@join,@where,@group);
+
 
 
 /*ejecucion de consulta*/
 PREPARE stmt FROM @sql;
 EXECUTE stmt;
 DEALLOCATE PREPARE stmt;
+
+
 
 END $$
 
