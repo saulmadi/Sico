@@ -151,11 +151,11 @@ Public Class ControlCaja
 
     End Sub
 
-    Public Overloads Sub Buscar(ByVal idtransaccion As Long, ByVal cajero As Long, ByVal fecha As DateTime, ByVal sucursal As String)
+    Public Overloads Sub Buscar(ByVal idtransaccion As String, ByVal cajero As Long, ByVal fecha As DateTime, ByVal sucursal As String)
         Me.NullParametrosBusqueda()
         Me.ValorParametrosBusqueda("idtransacciones", idtransaccion.ToString)
         Me.ValorParametrosBusqueda("cajero", cajero.ToString)
-        Me.ValorParametrosBusqueda("fecha", " fecha ='" + fecha.ToString("yyyy-MM-dd") + "'")
+        Me.ValorParametrosBusqueda("fecha", " c.fecha ='" + fecha.ToString("yyyy-MM-dd") + "'")
         Me.ValorParametrosBusqueda("idsucursales", sucursal)
         Me.LlenadoTabla(ColeccionParametrosBusqueda)
     End Sub

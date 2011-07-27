@@ -69,6 +69,7 @@
     <Compile Include="Clientes.vb" />
     <Compile Include="Compras.vb" />
     <Compile Include="ControlCaja.vb" />
+    <Compile Include="ControlCajaFactura.vb" />
     <Compile Include="Departamentos.vb" />
     <Compile Include="DetalleCompras.vb" />
     <Compile Include="DetalleOrdenCompra.vb" />

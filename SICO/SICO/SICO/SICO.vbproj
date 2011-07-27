@@ -239,6 +239,24 @@
     <Compile Include="Factuacion\ControlCaja\frmRetirosEfectivo.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Factuacion\ControlCaja\Reportes\crDetalleCierre.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crDetalleCierre.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\Reportes\crListaDetalle.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crListaDetalle.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Factuacion\ControlCaja\Reportes\crResumenCierre.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crResumenCierre.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Factuacion\TransaccionesCaja\Ventas\frmBusquedaFactura.Designer.vb">
       <DependentUpon>frmBusquedaFactura.vb</DependentUpon>
     </Compile>
@@ -487,6 +505,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Factuacion\ControlCaja\frmRetirosEfectivo.resx">
       <DependentUpon>frmRetirosEfectivo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\Reportes\crDetalleCierre.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crDetalleCierre.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\Reportes\crListaDetalle.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crListaDetalle.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factuacion\ControlCaja\Reportes\crResumenCierre.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crResumenCierre.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Factuacion\TransaccionesCaja\Ventas\frmBusquedaFactura.resx">
       <DependentUpon>frmBusquedaFactura.vb</DependentUpon>

@@ -149,7 +149,7 @@ Public Class crtClientes
         Me.CrtPersonaJuridica1.Nuevo()
         Me.CrtPersonaNatural1.Nuevo()
         Me.Cliente = New Clientes
-
+        Me._premitebloquear = True
 
         Me.TabControl1.SelectedIndex = 0
     End Sub
