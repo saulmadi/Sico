@@ -171,59 +171,68 @@ Public Class frmVentas
             Dim ct As New ControlCaja
             ct.Buscar(4, Me.PanelAccion1.Usuario.Id, Now, Me.PanelAccion1.sucursal.Id)
             If ct.TotalRegistros <> 0 Then
-                Me.PanelAccion1.BarraProgreso.Value = 50
-                Me.PanelAccion1.lblEstado.Text = "Guardando..."
-                If cmbTiposFacturas.SelectedIndex > -1 Then
-                    Factura.idclientes = CrtClientes.Guardar()
-                    If Factura.idclientes = 0 Then
-                        CrtClientes.Nuevo()
-                    End If
-                    Factura.fecha = DateTimePicker1.Value
-                    Factura.Elabora = PanelAccion1.Usuario.Id
-                    Factura.idsucursales = PanelAccion1.sucursal.Id
-                    Factura.Factura = PanelAccion1.Usuario.Id
-                    Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                ct.Buscar(5, Me.PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+                If ct.TotalRegistros = 0 Then
 
-                    Factura.motoproducto = "P"
-                    Factura.IniciarTransaccion()
-                    Factura.FacturarProducto()
-                    Factura.CommitTransaccion()
-                    If Factura.idtiposfacturas = 1 Then
-                        Dim formco As New frmCobro
-                        formco.Total = Factura.total
-                        If formco.ShowDialog = Windows.Forms.DialogResult.OK Then
-                            Factura.IniciarTransaccion()
-                            For Each i In formco.ControlCaja
-                                i.Cajero = PanelAccion1.Usuario.Id
-                                i.idSucursales = PanelAccion1.sucursal.Id
-                                i.Guardar()
-                                If i.idTransaccionesCaja = 3 Then
-                                    formco.TransaccionTC.idControlCaja = i.Id
-                                    formco.TransaccionTC.idFacturaEnbezado = Factura.Id
-                                    formco.TransaccionTC.Guardar()
-
-                                End If
-                            Next
-                            Factura.CommitTransaccion()
-                        Else
-                            Factura.IniciarTransaccion()
-                            Factura.estado = "P"
-                            Factura.Guardar()
-                            Factura.CommitTransaccion()
-                            MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Me.PanelAccion1.BarraProgreso.Value = 50
+                    Me.PanelAccion1.lblEstado.Text = "Guardando..."
+                    If cmbTiposFacturas.SelectedIndex > -1 Then
+                        Factura.idclientes = CrtClientes.Guardar()
+                        If Factura.idclientes = 0 Then
+                            CrtClientes.Nuevo()
                         End If
+                        Factura.fecha = DateTimePicker1.Value
+                        Factura.Elabora = PanelAccion1.Usuario.Id
+                        Factura.idsucursales = PanelAccion1.sucursal.Id
+                        Factura.Factura = PanelAccion1.Usuario.Id
+                        Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+
+                        Factura.motoproducto = "P"
+                        'Factura.IniciarTransaccion()
+                        ''Factura.FacturarProducto()
+                        'Factura.CommitTransaccion()
+                        If Factura.idtiposfacturas = 1 Then
+                            Dim formco As New frmCobro
+                            formco.Total = Factura.total
+                            If formco.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                Factura.IniciarTransaccion()
+                                For Each i In formco.ControlCaja
+                                    i.Cajero = PanelAccion1.Usuario.Id
+                                    i.idSucursales = PanelAccion1.sucursal.Id
+                                    i.Guardar()
+                                    Dim c = New ControlCajaFactura
+                                    c.Guardar(Factura.Id, i.Id)
+                                    If i.idTransaccionesCaja = 3 Then
+                                        formco.TransaccionTC.idControlCaja = i.Id
+                                        formco.TransaccionTC.idFacturaEnbezado = Factura.Id
+                                        formco.TransaccionTC.Guardar()
+
+                                    End If
+                                Next
+                                Factura.FacturarProducto()
+                                Factura.CommitTransaccion()
+                            Else
+                                Factura.IniciarTransaccion()
+                                Factura.estado = "P"
+                                Factura.Guardar()
+                                Factura.CommitTransaccion()
+                                MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            End If
+                        Else
+
+                        End If
+
+                        _factura.Id = Me.Factura.Id
+                        Me.Factura = _factura
+                        Me.PanelAccion1.BarraProgreso.Value = 100
+                        Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
+
                     Else
 
+                        MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
-
-                    _factura.Id = Me.Factura.Id
-                    Me.Factura = _factura
-                    Me.PanelAccion1.BarraProgreso.Value = 100
-                    Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
-                
                 Else
-
-                    MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Ya se realizo el cierre para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 MessageBox.Show("No se ha abierto la caja para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
