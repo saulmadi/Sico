@@ -26,26 +26,17 @@ Partial Class frmVentaMotocicleta
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVentaMotocicleta))
         Me.Panel2 = New System.Windows.Forms.Panel
         Me.GroupBox5 = New System.Windows.Forms.GroupBox
-        Me.cmbTipoMotocicleta = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.cmbModelo = New SICO.ctrla.ListaDesplegable(Me.components)
-        Me.cmbMarca = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.Label9 = New System.Windows.Forms.Label
         Me.Label10 = New System.Windows.Forms.Label
         Me.Label11 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
-        Me.txtPrecioVenta = New SICO.ctrla.CajaTexto(Me.components)
-        Me.Button1 = New System.Windows.Forms.Button
+        Me.btnBuscar = New System.Windows.Forms.Button
         Me.Label8 = New System.Windows.Forms.Label
-        Me.txtAnio = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label12 = New System.Windows.Forms.Label
-        Me.txtCilindraje = New SICO.ctrla.CajaTexto(Me.components)
-        Me.txtChasis = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label14 = New System.Windows.Forms.Label
-        Me.txtMotor = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label15 = New System.Windows.Forms.Label
         Me.Panel7 = New System.Windows.Forms.Panel
         Me.Panel8 = New System.Windows.Forms.Panel
-        Me.txtDescuentoPor = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label2 = New System.Windows.Forms.Label
         Me.txtDescuento = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
@@ -61,16 +52,25 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.Panel9 = New System.Windows.Forms.Panel
         Me.Label17 = New System.Windows.Forms.Label
-        Me.CrtClientes = New SICO.ctrla2.crtClientes
         Me.Label7 = New System.Windows.Forms.Label
         Me.Label13 = New System.Windows.Forms.Label
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker
         Me.lblNumeroFactura = New System.Windows.Forms.Label
-        Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.chkVentaExcenta = New System.Windows.Forms.CheckBox
         Me.Label16 = New System.Windows.Forms.Label
         Me.Panel5 = New System.Windows.Forms.Panel
         Me.Panel6 = New System.Windows.Forms.Panel
+        Me.cmbTipoMotocicleta = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.cmbModelo = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.cmbMarca = New SICO.ctrla.ListaDesplegable(Me.components)
+        Me.txtPrecioVenta = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtAnio = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtCilindraje = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtChasis = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtMotor = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtDescuentoPor = New SICO.ctrla.CajaTexto(Me.components)
+        Me.CrtClientes = New SICO.ctrla2.crtClientes
+        Me.cmbTiposFacturas = New SICO.ctrla.ListaDesplegable(Me.components)
         Me.CrtPanelBase1 = New SICO.ctrla.ControlesPersonalizados.crtPanelBase
         Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.Panel2.SuspendLayout()
@@ -103,7 +103,7 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox5.Controls.Add(Me.Label11)
         Me.GroupBox5.Controls.Add(Me.Label3)
         Me.GroupBox5.Controls.Add(Me.txtPrecioVenta)
-        Me.GroupBox5.Controls.Add(Me.Button1)
+        Me.GroupBox5.Controls.Add(Me.btnBuscar)
         Me.GroupBox5.Controls.Add(Me.Label8)
         Me.GroupBox5.Controls.Add(Me.txtAnio)
         Me.GroupBox5.Controls.Add(Me.Label12)
@@ -121,54 +121,6 @@ Partial Class frmVentaMotocicleta
         Me.GroupBox5.TabIndex = 0
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Motocicleta"
-        '
-        'cmbTipoMotocicleta
-        '
-        Me.cmbTipoMotocicleta.CargarAutoCompletar = False
-        Me.cmbTipoMotocicleta.CargarComboBox = True
-        Me.cmbTipoMotocicleta.DisplayMember = "descripcion"
-        Me.cmbTipoMotocicleta.Enabled = False
-        Me.cmbTipoMotocicleta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTipoMotocicleta.FormattingEnabled = True
-        Me.cmbTipoMotocicleta.Location = New System.Drawing.Point(122, 175)
-        Me.cmbTipoMotocicleta.Name = "cmbTipoMotocicleta"
-        Me.cmbTipoMotocicleta.ParametroAutocompletar = Nothing
-        Me.cmbTipoMotocicleta.ParametroBusquedaPadre = Nothing
-        Me.cmbTipoMotocicleta.Size = New System.Drawing.Size(335, 21)
-        Me.cmbTipoMotocicleta.TabIndex = 55
-        Me.cmbTipoMotocicleta.ValueMember = "id"
-        '
-        'cmbModelo
-        '
-        Me.cmbModelo.CargarAutoCompletar = False
-        Me.cmbModelo.CargarComboBox = True
-        Me.cmbModelo.DisplayMember = "descripcion"
-        Me.cmbModelo.Enabled = False
-        Me.cmbModelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbModelo.FormattingEnabled = True
-        Me.cmbModelo.Location = New System.Drawing.Point(122, 148)
-        Me.cmbModelo.Name = "cmbModelo"
-        Me.cmbModelo.ParametroAutocompletar = Nothing
-        Me.cmbModelo.ParametroBusquedaPadre = Nothing
-        Me.cmbModelo.Size = New System.Drawing.Size(335, 21)
-        Me.cmbModelo.TabIndex = 54
-        Me.cmbModelo.ValueMember = "id"
-        '
-        'cmbMarca
-        '
-        Me.cmbMarca.CargarAutoCompletar = False
-        Me.cmbMarca.CargarComboBox = True
-        Me.cmbMarca.DisplayMember = "descripcion"
-        Me.cmbMarca.Enabled = False
-        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbMarca.FormattingEnabled = True
-        Me.cmbMarca.Location = New System.Drawing.Point(122, 122)
-        Me.cmbMarca.Name = "cmbMarca"
-        Me.cmbMarca.ParametroAutocompletar = Nothing
-        Me.cmbMarca.ParametroBusquedaPadre = Nothing
-        Me.cmbMarca.Size = New System.Drawing.Size(335, 21)
-        Me.cmbMarca.TabIndex = 53
-        Me.cmbMarca.ValueMember = "id"
         '
         'Label9
         '
@@ -210,38 +162,15 @@ Partial Class frmVentaMotocicleta
         Me.Label3.TabIndex = 52
         Me.Label3.Text = "Precio Venta"
         '
-        'txtPrecioVenta
+        'btnBuscar
         '
-        Me.txtPrecioVenta.BackColor = System.Drawing.SystemColors.Window
-        Me.txtPrecioVenta.ColorError = System.Drawing.Color.Red
-        Me.txtPrecioVenta.Enabled = False
-        Me.txtPrecioVenta.EnterPorTab = True
-        Me.txtPrecioVenta.EsObligatorio = False
-        Me.txtPrecioVenta.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtPrecioVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecioVenta.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtPrecioVenta.Location = New System.Drawing.Point(122, 204)
-        Me.txtPrecioVenta.MaxLength = 12
-        Me.txtPrecioVenta.MensajeError = Nothing
-        Me.txtPrecioVenta.Name = "txtPrecioVenta"
-        Me.txtPrecioVenta.Size = New System.Drawing.Size(335, 20)
-        Me.txtPrecioVenta.TabIndex = 51
-        Me.txtPrecioVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtPrecioVenta.Texto = Nothing
-        Me.txtPrecioVenta.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtPrecioVenta.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtPrecioVenta.ValorInt = Nothing
-        Me.txtPrecioVenta.ValorLong = Nothing
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(475, 19)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 50
-        Me.Button1.Text = "Buscar"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnBuscar.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnBuscar.Location = New System.Drawing.Point(475, 19)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(75, 23)
+        Me.btnBuscar.TabIndex = 50
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
         '
         'Label8
         '
@@ -253,26 +182,6 @@ Partial Class frmVentaMotocicleta
         Me.Label8.TabIndex = 47
         Me.Label8.Text = "Año"
         '
-        'txtAnio
-        '
-        Me.txtAnio.ColorError = System.Drawing.Color.Red
-        Me.txtAnio.Enabled = False
-        Me.txtAnio.EnterPorTab = True
-        Me.txtAnio.EsObligatorio = False
-        Me.txtAnio.ExpresionValidacion = Nothing
-        Me.txtAnio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAnio.Location = New System.Drawing.Point(122, 97)
-        Me.txtAnio.MaxLength = 255
-        Me.txtAnio.MensajeError = Nothing
-        Me.txtAnio.Name = "txtAnio"
-        Me.txtAnio.Size = New System.Drawing.Size(335, 20)
-        Me.txtAnio.TabIndex = 46
-        Me.txtAnio.Texto = Nothing
-        Me.txtAnio.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtAnio.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtAnio.ValorInt = Nothing
-        Me.txtAnio.ValorLong = Nothing
-        '
         'Label12
         '
         Me.Label12.AutoSize = True
@@ -283,46 +192,6 @@ Partial Class frmVentaMotocicleta
         Me.Label12.TabIndex = 39
         Me.Label12.Text = "Cilindraje"
         '
-        'txtCilindraje
-        '
-        Me.txtCilindraje.ColorError = System.Drawing.Color.Red
-        Me.txtCilindraje.Enabled = False
-        Me.txtCilindraje.EnterPorTab = True
-        Me.txtCilindraje.EsObligatorio = False
-        Me.txtCilindraje.ExpresionValidacion = Nothing
-        Me.txtCilindraje.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCilindraje.Location = New System.Drawing.Point(122, 71)
-        Me.txtCilindraje.MaxLength = 255
-        Me.txtCilindraje.MensajeError = Nothing
-        Me.txtCilindraje.Name = "txtCilindraje"
-        Me.txtCilindraje.Size = New System.Drawing.Size(335, 20)
-        Me.txtCilindraje.TabIndex = 38
-        Me.txtCilindraje.Texto = Nothing
-        Me.txtCilindraje.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtCilindraje.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtCilindraje.ValorInt = Nothing
-        Me.txtCilindraje.ValorLong = Nothing
-        '
-        'txtChasis
-        '
-        Me.txtChasis.ColorError = System.Drawing.Color.Red
-        Me.txtChasis.Enabled = False
-        Me.txtChasis.EnterPorTab = True
-        Me.txtChasis.EsObligatorio = False
-        Me.txtChasis.ExpresionValidacion = Nothing
-        Me.txtChasis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtChasis.Location = New System.Drawing.Point(122, 45)
-        Me.txtChasis.MaxLength = 255
-        Me.txtChasis.MensajeError = Nothing
-        Me.txtChasis.Name = "txtChasis"
-        Me.txtChasis.Size = New System.Drawing.Size(335, 20)
-        Me.txtChasis.TabIndex = 37
-        Me.txtChasis.Texto = Nothing
-        Me.txtChasis.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtChasis.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtChasis.ValorInt = Nothing
-        Me.txtChasis.ValorLong = Nothing
-        '
         'Label14
         '
         Me.Label14.AutoSize = True
@@ -332,27 +201,6 @@ Partial Class frmVentaMotocicleta
         Me.Label14.Size = New System.Drawing.Size(38, 13)
         Me.Label14.TabIndex = 36
         Me.Label14.Text = "Chasis"
-        '
-        'txtMotor
-        '
-        Me.txtMotor.ColorError = System.Drawing.Color.Red
-        Me.txtMotor.Enabled = False
-        Me.txtMotor.EnterPorTab = True
-        Me.txtMotor.EsObligatorio = False
-        Me.txtMotor.ExpresionValidacion = Nothing
-        Me.txtMotor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMotor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtMotor.Location = New System.Drawing.Point(122, 19)
-        Me.txtMotor.MaxLength = 255
-        Me.txtMotor.MensajeError = Nothing
-        Me.txtMotor.Name = "txtMotor"
-        Me.txtMotor.Size = New System.Drawing.Size(335, 20)
-        Me.txtMotor.TabIndex = 35
-        Me.txtMotor.Texto = Nothing
-        Me.txtMotor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
-        Me.txtMotor.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtMotor.ValorInt = Nothing
-        Me.txtMotor.ValorLong = Nothing
         '
         'Label15
         '
@@ -390,25 +238,6 @@ Partial Class frmVentaMotocicleta
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(317, 169)
         Me.Panel8.TabIndex = 6
-        '
-        'txtDescuentoPor
-        '
-        Me.txtDescuentoPor.BackColor = System.Drawing.SystemColors.Window
-        Me.txtDescuentoPor.ColorError = System.Drawing.Color.Red
-        Me.txtDescuentoPor.EnterPorTab = True
-        Me.txtDescuentoPor.EsObligatorio = False
-        Me.txtDescuentoPor.ExpresionValidacion = Nothing
-        Me.txtDescuentoPor.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtDescuentoPor.Location = New System.Drawing.Point(149, 36)
-        Me.txtDescuentoPor.MensajeError = Nothing
-        Me.txtDescuentoPor.Name = "txtDescuentoPor"
-        Me.txtDescuentoPor.Size = New System.Drawing.Size(165, 20)
-        Me.txtDescuentoPor.TabIndex = 10
-        Me.txtDescuentoPor.Texto = Nothing
-        Me.txtDescuentoPor.TipoTexto = SICO.ctrla.TiposTexto.Entero
-        Me.txtDescuentoPor.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtDescuentoPor.ValorInt = Nothing
-        Me.txtDescuentoPor.ValorLong = Nothing
         '
         'Label2
         '
@@ -558,16 +387,6 @@ Partial Class frmVentaMotocicleta
         Me.Label17.TabIndex = 14
         Me.Label17.Text = "Cliente"
         '
-        'CrtClientes
-        '
-        Me.CrtClientes.CargarClientePorPersona = True
-        Me.CrtClientes.Enabled = False
-        Me.CrtClientes.Location = New System.Drawing.Point(8, 50)
-        Me.CrtClientes.Name = "CrtClientes"
-        Me.CrtClientes.Size = New System.Drawing.Size(726, 233)
-        Me.CrtClientes.TabIndex = 13
-        Me.CrtClientes.VisibleDatosSecundarios = True
-        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -603,21 +422,6 @@ Partial Class frmVentaMotocicleta
         Me.lblNumeroFactura.TabIndex = 11
         Me.lblNumeroFactura.Text = "Label8"
         Me.lblNumeroFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'cmbTiposFacturas
-        '
-        Me.cmbTiposFacturas.CargarAutoCompletar = False
-        Me.cmbTiposFacturas.CargarComboBox = True
-        Me.cmbTiposFacturas.DisplayMember = "descripcion"
-        Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbTiposFacturas.FormattingEnabled = True
-        Me.cmbTiposFacturas.Location = New System.Drawing.Point(326, 12)
-        Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
-        Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
-        Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
-        Me.cmbTiposFacturas.Size = New System.Drawing.Size(129, 21)
-        Me.cmbTiposFacturas.TabIndex = 8
-        Me.cmbTiposFacturas.ValueMember = "id"
         '
         'chkVentaExcenta
         '
@@ -655,6 +459,209 @@ Partial Class frmVentaMotocicleta
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(31, 233)
         Me.Panel6.TabIndex = 0
+        '
+        'cmbTipoMotocicleta
+        '
+        Me.cmbTipoMotocicleta.CargarAutoCompletar = False
+        Me.cmbTipoMotocicleta.CargarComboBox = True
+        Me.cmbTipoMotocicleta.DisplayMember = "descripcion"
+        Me.cmbTipoMotocicleta.Enabled = False
+        Me.cmbTipoMotocicleta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTipoMotocicleta.FormattingEnabled = True
+        Me.cmbTipoMotocicleta.Location = New System.Drawing.Point(122, 175)
+        Me.cmbTipoMotocicleta.Name = "cmbTipoMotocicleta"
+        Me.cmbTipoMotocicleta.ParametroAutocompletar = Nothing
+        Me.cmbTipoMotocicleta.ParametroBusquedaPadre = Nothing
+        Me.cmbTipoMotocicleta.Size = New System.Drawing.Size(335, 21)
+        Me.cmbTipoMotocicleta.TabIndex = 55
+        Me.cmbTipoMotocicleta.ValueMember = "id"
+        '
+        'cmbModelo
+        '
+        Me.cmbModelo.CargarAutoCompletar = False
+        Me.cmbModelo.CargarComboBox = True
+        Me.cmbModelo.DisplayMember = "descripcion"
+        Me.cmbModelo.Enabled = False
+        Me.cmbModelo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbModelo.FormattingEnabled = True
+        Me.cmbModelo.Location = New System.Drawing.Point(122, 148)
+        Me.cmbModelo.Name = "cmbModelo"
+        Me.cmbModelo.ParametroAutocompletar = Nothing
+        Me.cmbModelo.ParametroBusquedaPadre = Nothing
+        Me.cmbModelo.Size = New System.Drawing.Size(335, 21)
+        Me.cmbModelo.TabIndex = 54
+        Me.cmbModelo.ValueMember = "id"
+        '
+        'cmbMarca
+        '
+        Me.cmbMarca.CargarAutoCompletar = False
+        Me.cmbMarca.CargarComboBox = True
+        Me.cmbMarca.DisplayMember = "descripcion"
+        Me.cmbMarca.Enabled = False
+        Me.cmbMarca.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbMarca.FormattingEnabled = True
+        Me.cmbMarca.Location = New System.Drawing.Point(122, 122)
+        Me.cmbMarca.Name = "cmbMarca"
+        Me.cmbMarca.ParametroAutocompletar = Nothing
+        Me.cmbMarca.ParametroBusquedaPadre = Nothing
+        Me.cmbMarca.Size = New System.Drawing.Size(335, 21)
+        Me.cmbMarca.TabIndex = 53
+        Me.cmbMarca.ValueMember = "id"
+        '
+        'txtPrecioVenta
+        '
+        Me.txtPrecioVenta.BackColor = System.Drawing.SystemColors.Window
+        Me.txtPrecioVenta.ColorError = System.Drawing.Color.Red
+        Me.txtPrecioVenta.Enabled = False
+        Me.txtPrecioVenta.EnterPorTab = True
+        Me.txtPrecioVenta.EsObligatorio = False
+        Me.txtPrecioVenta.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtPrecioVenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPrecioVenta.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtPrecioVenta.Location = New System.Drawing.Point(122, 204)
+        Me.txtPrecioVenta.MaxLength = 12
+        Me.txtPrecioVenta.MensajeError = Nothing
+        Me.txtPrecioVenta.Name = "txtPrecioVenta"
+        Me.txtPrecioVenta.Size = New System.Drawing.Size(335, 20)
+        Me.txtPrecioVenta.TabIndex = 51
+        Me.txtPrecioVenta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtPrecioVenta.Texto = Nothing
+        Me.txtPrecioVenta.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtPrecioVenta.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtPrecioVenta.ValorInt = Nothing
+        Me.txtPrecioVenta.ValorLong = Nothing
+        '
+        'txtAnio
+        '
+        Me.txtAnio.BackColor = System.Drawing.SystemColors.Window
+        Me.txtAnio.ColorError = System.Drawing.Color.Red
+        Me.txtAnio.Enabled = False
+        Me.txtAnio.EnterPorTab = True
+        Me.txtAnio.EsObligatorio = False
+        Me.txtAnio.ExpresionValidacion = Nothing
+        Me.txtAnio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAnio.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtAnio.Location = New System.Drawing.Point(122, 97)
+        Me.txtAnio.MaxLength = 255
+        Me.txtAnio.MensajeError = Nothing
+        Me.txtAnio.Name = "txtAnio"
+        Me.txtAnio.Size = New System.Drawing.Size(335, 20)
+        Me.txtAnio.TabIndex = 46
+        Me.txtAnio.Texto = Nothing
+        Me.txtAnio.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtAnio.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtAnio.ValorInt = Nothing
+        Me.txtAnio.ValorLong = Nothing
+        '
+        'txtCilindraje
+        '
+        Me.txtCilindraje.BackColor = System.Drawing.SystemColors.Window
+        Me.txtCilindraje.ColorError = System.Drawing.Color.Red
+        Me.txtCilindraje.Enabled = False
+        Me.txtCilindraje.EnterPorTab = True
+        Me.txtCilindraje.EsObligatorio = False
+        Me.txtCilindraje.ExpresionValidacion = Nothing
+        Me.txtCilindraje.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCilindraje.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtCilindraje.Location = New System.Drawing.Point(122, 71)
+        Me.txtCilindraje.MaxLength = 255
+        Me.txtCilindraje.MensajeError = Nothing
+        Me.txtCilindraje.Name = "txtCilindraje"
+        Me.txtCilindraje.Size = New System.Drawing.Size(335, 20)
+        Me.txtCilindraje.TabIndex = 38
+        Me.txtCilindraje.Texto = Nothing
+        Me.txtCilindraje.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtCilindraje.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtCilindraje.ValorInt = Nothing
+        Me.txtCilindraje.ValorLong = Nothing
+        '
+        'txtChasis
+        '
+        Me.txtChasis.BackColor = System.Drawing.SystemColors.Window
+        Me.txtChasis.ColorError = System.Drawing.Color.Red
+        Me.txtChasis.Enabled = False
+        Me.txtChasis.EnterPorTab = True
+        Me.txtChasis.EsObligatorio = False
+        Me.txtChasis.ExpresionValidacion = Nothing
+        Me.txtChasis.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtChasis.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtChasis.Location = New System.Drawing.Point(122, 45)
+        Me.txtChasis.MaxLength = 255
+        Me.txtChasis.MensajeError = Nothing
+        Me.txtChasis.Name = "txtChasis"
+        Me.txtChasis.Size = New System.Drawing.Size(335, 20)
+        Me.txtChasis.TabIndex = 37
+        Me.txtChasis.Texto = Nothing
+        Me.txtChasis.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtChasis.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtChasis.ValorInt = Nothing
+        Me.txtChasis.ValorLong = Nothing
+        '
+        'txtMotor
+        '
+        Me.txtMotor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtMotor.ColorError = System.Drawing.Color.Red
+        Me.txtMotor.Enabled = False
+        Me.txtMotor.EnterPorTab = True
+        Me.txtMotor.EsObligatorio = False
+        Me.txtMotor.ExpresionValidacion = Nothing
+        Me.txtMotor.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtMotor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtMotor.Location = New System.Drawing.Point(122, 19)
+        Me.txtMotor.MaxLength = 255
+        Me.txtMotor.MensajeError = Nothing
+        Me.txtMotor.Name = "txtMotor"
+        Me.txtMotor.Size = New System.Drawing.Size(335, 20)
+        Me.txtMotor.TabIndex = 35
+        Me.txtMotor.Texto = Nothing
+        Me.txtMotor.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtMotor.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtMotor.ValorInt = Nothing
+        Me.txtMotor.ValorLong = Nothing
+        '
+        'txtDescuentoPor
+        '
+        Me.txtDescuentoPor.BackColor = System.Drawing.SystemColors.Window
+        Me.txtDescuentoPor.ColorError = System.Drawing.Color.Red
+        Me.txtDescuentoPor.EnterPorTab = True
+        Me.txtDescuentoPor.EsObligatorio = False
+        Me.txtDescuentoPor.ExpresionValidacion = Nothing
+        Me.txtDescuentoPor.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtDescuentoPor.Location = New System.Drawing.Point(149, 36)
+        Me.txtDescuentoPor.MensajeError = Nothing
+        Me.txtDescuentoPor.Name = "txtDescuentoPor"
+        Me.txtDescuentoPor.Size = New System.Drawing.Size(165, 20)
+        Me.txtDescuentoPor.TabIndex = 10
+        Me.txtDescuentoPor.Texto = Nothing
+        Me.txtDescuentoPor.TipoTexto = SICO.ctrla.TiposTexto.Entero
+        Me.txtDescuentoPor.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtDescuentoPor.ValorInt = Nothing
+        Me.txtDescuentoPor.ValorLong = Nothing
+        '
+        'CrtClientes
+        '
+        Me.CrtClientes.CargarClientePorPersona = True
+        Me.CrtClientes.Enabled = False
+        Me.CrtClientes.Location = New System.Drawing.Point(8, 50)
+        Me.CrtClientes.Name = "CrtClientes"
+        Me.CrtClientes.Size = New System.Drawing.Size(726, 233)
+        Me.CrtClientes.TabIndex = 13
+        Me.CrtClientes.VisibleDatosSecundarios = True
+        '
+        'cmbTiposFacturas
+        '
+        Me.cmbTiposFacturas.CargarAutoCompletar = False
+        Me.cmbTiposFacturas.CargarComboBox = True
+        Me.cmbTiposFacturas.DisplayMember = "descripcion"
+        Me.cmbTiposFacturas.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbTiposFacturas.FormattingEnabled = True
+        Me.cmbTiposFacturas.Location = New System.Drawing.Point(326, 12)
+        Me.cmbTiposFacturas.Name = "cmbTiposFacturas"
+        Me.cmbTiposFacturas.ParametroAutocompletar = Nothing
+        Me.cmbTiposFacturas.ParametroBusquedaPadre = Nothing
+        Me.cmbTiposFacturas.Size = New System.Drawing.Size(129, 21)
+        Me.cmbTiposFacturas.TabIndex = 8
+        Me.cmbTiposFacturas.ValueMember = "id"
         '
         'CrtPanelBase1
         '
@@ -735,7 +742,7 @@ Partial Class frmVentaMotocicleta
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents txtMotor As SICO.ctrla.CajaTexto
     Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnBuscar As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents txtPrecioVenta As SICO.ctrla.CajaTexto
     Friend WithEvents cmbTipoMotocicleta As SICO.ctrla.ListaDesplegable

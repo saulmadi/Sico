@@ -262,6 +262,8 @@ Public Class FacturaEncabezado
                 Return "En Proceso"
             ElseIf Me.estado.ToUpper = "F" Then
                 Return "Facturada"
+            ElseIf Me.estado.ToUpper = "A" Then
+                Return "Anulada"
             Else
                 Return String.Empty
             End If
@@ -504,6 +506,56 @@ Public Class FacturaEncabezado
         Return lista
     End Function
 
+    Public Sub AnularFacturaMotocicleta()
+        Try
+            ''Me.IniciarTransaccion()
+            Me.estado = "A"
+
+            Me.Guardar()
+            If Me.Motocicleta.Id >= 0 Then
+                Me.Motocicleta.estado = "I"
+                Me.Motocicleta.GuardarTransaccion()
+            Else
+                Throw New ApplicationException("No hay motocicleta en la factura")
+            End If
+
+
+            ''Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.estado = "F"
+            ''Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
+    Public Sub AnularFactura()
+        Try
+            ''Me.IniciarTransaccion()
+            Me.estado = "A"
+
+            Me.Guardar()
+            Dim lista As List(Of FacturaDetalle) = Me.ListaDetalle
+            For Each i In lista
+
+                If i.Cantidad > 0 Then
+
+                    Dim inv As New InventarioTrigger()
+                    inv.ModificarInventario(Me.idsucursales, i.Producto.Producto.Id, i.Cantidad * 1)
+
+                Else
+                    Throw New ApplicationException("La cantidad del producto" + i.ProductoDescripcion + " no puede ser 0")
+                End If
+            Next
+
+            ''Me.CommitTransaccion()
+        Catch ex As Exception
+            Me.estado = "F"
+            ''Me.RollBackTransaccion()
+            Throw New ApplicationException(ex.Message)
+        End Try
+    End Sub
+
+
     Public Sub FacturarProducto()
         Try
             ''Me.IniciarTransaccion()
@@ -523,7 +575,7 @@ Public Class FacturaEncabezado
                         i.Value.Guardar()
                         Dim inv As New InventarioTrigger()
                         inv.ModificarInventario(Me.idsucursales, i.Value.Producto.Producto.Id, i.Value.Cantidad * -1)
-                        
+
                     Else
                         Throw New ApplicationException("La cantidad del producto" + i.Value.ProductoDescripcion + " no puede ser 0")
                     End If
@@ -533,7 +585,7 @@ Public Class FacturaEncabezado
 
             ''Me.CommitTransaccion()
         Catch ex As Exception
-            Me.estado = "E"
+            Me.estado = "P"
             ''Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try
@@ -559,7 +611,7 @@ Public Class FacturaEncabezado
 
             ''Me.CommitTransaccion()
         Catch ex As Exception
-            Me.estado = "E"
+            Me.estado = "P"
             ''Me.RollBackTransaccion()
             Throw New ApplicationException(ex.Message)
         End Try
