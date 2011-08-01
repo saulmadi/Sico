@@ -3,6 +3,7 @@ Imports SICO.ctrla
 Imports SICO.lgla
 Imports SICO.lgla2
 Public Class frmVentaMotocicleta
+
 #Region "Declaraciones"
     Private WithEvents _factura As New FacturaEncabezado
 #End Region
@@ -14,7 +15,7 @@ Public Class frmVentaMotocicleta
         End Get
         Set(ByVal value As FacturaEncabezado)
             _factura = value
-            CargarEntidad()
+            cargarentidad()
         End Set
     End Property
 #End Region
@@ -73,6 +74,29 @@ Public Class frmVentaMotocicleta
                 CrtClientes.Enabled = True
                 Me.PanelAccion1.BotonGuardar.Enabled = True
 
+            ElseIf Factura.estado.ToUpper = "F" Then
+                Me.PanelAccion1.BotonEliminar.Text = "Anular"
+                Me.PanelAccion1.BotonEliminar.Visible = True
+
+                txtDescuentoPor.Enabled = False
+                chkVentaExcenta.Enabled = False
+                cmbTiposFacturas.Enabled = False
+                CrtClientes.Enabled = True
+                Me.PanelAccion1.BotonGuardar.Enabled = False
+                btnBuscar.Enabled = False
+                txtPrecioVenta.Enabled = False
+
+            ElseIf Factura.estado.ToUpper = "A" Then
+                Me.PanelAccion1.BotonEliminar.Text = "Anular"
+                Me.PanelAccion1.BotonEliminar.Visible = False
+
+                txtDescuentoPor.Enabled = False
+                chkVentaExcenta.Enabled = False
+                cmbTiposFacturas.Enabled = False
+                CrtClientes.Enabled = False
+                Me.PanelAccion1.BotonGuardar.Enabled = False
+                btnBuscar.Enabled = False
+                txtPrecioVenta.Enabled = False
             Else
 
                 Me.PanelAccion1.BotonEliminar.Visible = False
@@ -98,7 +122,7 @@ Public Class frmVentaMotocicleta
 #End Region
 
 #Region "Eventos"
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
         Dim frm As New ctrla2.frmBusquedaMotocileta
         If frm.ShowDialog() = DialogResult.OK Then
             Factura.Motocicleta = frm.Entidad
@@ -203,74 +227,112 @@ Public Class frmVentaMotocicleta
             ct.Buscar(4, Me.PanelAccion1.Usuario.Id, Now, Me.PanelAccion1.sucursal.Id)
             If ct.TotalRegistros <> 0 Then
 
-                Me.PanelAccion1.BarraProgreso.Value = 50
-                Me.PanelAccion1.lblEstado.Text = "Guardando..."
-                If cmbTiposFacturas.SelectedIndex > -1 Then
-
-                    If Factura.Motocicleta.Id > 0 Then
+                ct.Buscar(5, Me.PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+                If ct.TotalRegistros = 0 Then
+                    If Factura.estado.ToUpper = "P" Then
 
 
-                        Factura.idclientes = CrtClientes.Guardar()
+                        Me.PanelAccion1.BarraProgreso.Value = 50
+                        Me.PanelAccion1.lblEstado.Text = "Guardando..."
+                        If cmbTiposFacturas.SelectedIndex > -1 Then
 
-                        Factura.IniciarTransaccion()
-                        If Factura.idclientes = 0 Then
-                            CrtClientes.Nuevo()
-                            Throw New ApplicationException("Ingrese un cliente")
-                        End If
-                        Factura.fecha = DateTimePicker1.Value
-                        Factura.estado = "P"
-                        Factura.idMotocicletas = Factura.Motocicleta.Id
-                        Factura.Elabora = PanelAccion1.Usuario.Id
-                        Factura.idsucursales = PanelAccion1.sucursal.Id
-                        Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
-                        Factura.numerofactura = Guid.NewGuid.ToString
-                        Factura.motoproducto = "M"
+                            If Factura.Motocicleta.Id > 0 Then
 
 
+                                Factura.idclientes = CrtClientes.Guardar()
 
-                        ''hjgjh
 
-
-                        Factura.FacturarMotocicleta()
-                        Factura.CommitTransaccion()
-                        If Factura.idtiposfacturas = 1 Then
-                            Dim formco As New frmCobro
-                            formco.Total = Factura.total
-                            If formco.ShowDialog = Windows.Forms.DialogResult.OK Then
-                                Factura.IniciarTransaccion()
-                                For Each i In formco.ControlCaja
-                                    i.Cajero = PanelAccion1.Usuario.Id
-                                    i.idSucursales = PanelAccion1.sucursal.Id
-                                    i.Guardar()
-                                    If i.idTransaccionesCaja = 3 Then
-                                        formco.TransaccionTC.idControlCaja = i.Id
-                                        formco.TransaccionTC.idFacturaEnbezado = Factura.Id
-                                        formco.TransaccionTC.Guardar()
-
-                                    End If
-                                Next
-                                Factura.CommitTransaccion()
-                            Else
-                                Factura.IniciarTransaccion()
+                                If Factura.idclientes = 0 Then
+                                    CrtClientes.Nuevo()
+                                    Throw New ApplicationException("Ingrese un cliente")
+                                End If
+                                Factura.fecha = DateTimePicker1.Value
                                 Factura.estado = "P"
-                                Factura.Guardar()
-                                Factura.CommitTransaccion()
-                                MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                Factura.idMotocicletas = Factura.Motocicleta.Id
+                                Factura.Elabora = PanelAccion1.Usuario.Id
+                                Factura.idsucursales = PanelAccion1.sucursal.Id
+                                Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
+                                Factura.numerofactura = Guid.NewGuid.ToString
+                                Factura.motoproducto = "M"
+
+
+
+                                ''hjgjh
+
+                                'Factura.IniciarTransaccion()
+                                'Factura.FacturarMotocicleta()
+                                'Factura.CommitTransaccion()
+                                If Factura.idtiposfacturas = 1 Then
+                                    Dim formco As New frmCobro
+                                    formco.Total = Factura.total
+                                    If formco.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                        Factura.IniciarTransaccion()
+                                        For Each i In formco.ControlCaja
+                                            i.Cajero = PanelAccion1.Usuario.Id
+                                            i.idSucursales = PanelAccion1.sucursal.Id
+                                            i.Guardar()
+                                            Dim c = New ControlCajaFactura
+                                            c.Guardar(Factura.Id, i.Id)
+                                            If i.idTransaccionesCaja = 3 Then
+                                                formco.TransaccionTC.idControlCaja = i.Id
+                                                formco.TransaccionTC.idFacturaEnbezado = Factura.Id
+                                                formco.TransaccionTC.Guardar()
+
+                                            End If
+                                        Next
+                                        Factura.FacturarMotocicleta()
+                                        Factura.CommitTransaccion()
+                                    Else
+                                        Factura.IniciarTransaccion()
+                                        Factura.estado = "P"
+                                        Factura.Guardar()
+                                        Factura.CommitTransaccion()
+                                        MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                    End If
+                                    ''kkkj
+                                Else
+                                    ''TODO: creacion de la cuenta corriente
+                                End If
+
+
+
+                                Factura = _factura
+                                Me.PanelAccion1.BarraProgreso.Value = 100
+                                Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
+                            Else
+                                MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                             End If
-                            ''kkkj
                         Else
+                            MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        End If
+                    ElseIf Factura.estado.ToUpper = "F" Then
+                        Dim f As New frmIniciosesion
+                        f.Autorizar = True
+                        f.ShowDialog()
+                        If f.Autorizo Then
+                            Factura.IniciarTransaccion()
+                            Dim i As New ControlCaja
+                            i.Cajero = PanelAccion1.Usuario.Id
+                            i.Descripcion = "Anulación de factura para el usuario " + PanelAccion1.Usuario.NombreUsuario
+                            i.Fecha = Now
+                            i.idSucursales = PanelAccion1.sucursal.Id
+                            i.idTransaccionesCaja = 10
+                            i.Monto = Factura.total
+                            i.Guardar()
+                            Dim c As New ControlCajaFactura
+                            c.Guardar(Factura.Id, i.Id)
+                            Factura.AnularFacturaMotocicleta()
+                            Factura.CommitTransaccion()
+                            _factura.Id = Me.Factura.Id
+                            Factura = _factura
+                        Else
+                            Throw New ApplicationException("No se realizó la anulación de la factura")
                         End If
 
-
-
-                        Factura = _factura
-                        Me.PanelAccion1.BarraProgreso.Value = 100
-                        Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
-                    Else
-                        MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     End If
+
                 Else
-                    MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("Ya se realizo el cierre para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
                 MessageBox.Show("No se ha abierto la caja para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -282,7 +344,7 @@ Public Class frmVentaMotocicleta
     End Sub
 
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
-       
+
     End Sub
 
     Private Sub PanelAccion1_Nuevo() Handles PanelAccion1.Nuevo
@@ -313,5 +375,5 @@ Public Class frmVentaMotocicleta
     End Sub
 
 #End Region
-    
+
 End Class
