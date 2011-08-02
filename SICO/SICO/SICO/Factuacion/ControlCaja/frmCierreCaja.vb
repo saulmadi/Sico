@@ -123,6 +123,7 @@ Public Class frmCierreCaja
                         c2.Guardar()
                     End If
                     c.CommitTransaccion()
+                    MessageBox.Show("Se realizon correctamente la caja", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                     Me.Close()
                 Else
                     Throw New ApplicationException("El cierre de caja no se puede realizar si el balance no es cero")
