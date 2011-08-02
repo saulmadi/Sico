@@ -20,6 +20,7 @@ Public Class frmRetirosEfectivo
                             MessageBox.Show("Se retiro correctamente el efectivo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
                             txtEfectivo.Enabled = False
                             PanelAccion1.BotonGuardar.Enabled = False
+                            Me.Close()
                         End If
 
                     Else
@@ -44,7 +45,7 @@ Public Class frmRetirosEfectivo
             txtEfectivo.Enabled = True
             If Not _controlCaja.AperturaCaja(PanelAccion1.Usuario.Id, dteFecha.Value, "") Then
                 MessageBox.Show("Este usuario no ha realizado la apertura de la caja", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                Me.Close()
+
             End If
 
 

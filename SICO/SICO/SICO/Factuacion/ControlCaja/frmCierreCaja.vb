@@ -7,9 +7,18 @@ Public Class frmCierreCaja
 
     Private totalDebitado As Decimal
     Private totalAcreditado As Decimal
-
+    Private seHizoCierre As Boolean = False
     Private Sub frmCierreCaja_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Try
+            Dim c = New ControlCaja
+            c.Buscar(4, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+            If c.TotalRegistros = 0 Then
+                MessageBox.Show("No se abierto la caja para este usuario", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                PanelAccion1.BotonGuardar.Visible = False
+                PanelAccion1.BotonGuardar.Enabled = False
+
+            End If
+
             Me.PanelAccion1.BotonNuevo.Visible = False
             Me.PanelAccion1.BotonEliminar.Text = "Resumen"
             Me.PanelAccion1.BotonImprimir.Text = "Detalle"
@@ -24,9 +33,25 @@ Public Class frmCierreCaja
 
             grdSalientes.DarFormato("descripcion", "Descripción")
             grdSalientes.DarFormato("monto", "Monto")
+
             grdSalientes.DataSource = AcumuladoDebitados.TablaAColeccion
 
             txtCajero.Text = PanelAccion1.Usuario.NombreUsuario
+
+            c.Buscar(5, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+
+            If c.TotalRegistros = 0 Then
+                PanelAccion1.BotonGuardar.Visible = True
+                seHizoCierre = False
+            Else
+                PanelAccion1.BotonGuardar.Visible = False
+                txtEfectivoFinal.Text = c.Monto
+                c.Buscar(8, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+                If c.TotalRegistros = 1 Then txtEfectivoFaltante.Text = c.Monto
+                seHizoCierre = True
+                txtEfectivoFaltante.Enabled = False
+                txtEfectivoFinal.Enabled = False
+            End If
 
             CalcularTotales()
         Catch ex As Exception
@@ -50,8 +75,8 @@ Public Class frmCierreCaja
                 Me.totalDebitado += i.Monto
             Next
 
-            If Not Me.txtEfectivoFaltante.Text = String.Empty Then Me.totalDebitado += txtEfectivoFaltante.Text
-            If Not Me.txtEfectivoFinal.Text = String.Empty Then Me.totalDebitado += txtEfectivoFinal.Text
+            If Not Me.txtEfectivoFaltante.Text = String.Empty And Not seHizoCierre Then Me.totalDebitado += txtEfectivoFaltante.Text
+            If Not Me.txtEfectivoFinal.Text = String.Empty And Not seHizoCierre Then Me.totalDebitado += txtEfectivoFinal.Text
 
             txtEntrante.Text = totalAcreditado.ToString("##########.00")
             txtSalient.Text = totalDebitado.ToString("##########.00")
@@ -70,7 +95,44 @@ Public Class frmCierreCaja
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
+        Try
+            Dim f As New frmIniciosesion
+            f.Autorizar = True
+            f.ShowDialog()
+            If f.Autorizo Then
 
+                If txtBalance.Text = 0 Then
+
+                    Dim c As New ControlCaja
+                    c.IniciarTransaccion()
+                    c.Cajero = Me.PanelAccion1.Usuario.Id
+                    c.Descripcion = "Cierre de caja para el usuario " + PanelAccion1.Usuario.NombreUsuario
+                    c.Fecha = Now
+                    c.idSucursales = PanelAccion1.sucursal.Id
+                    c.idTransaccionesCaja = 5
+                    c.Monto = txtEfectivoFinal.Text
+                    c.Guardar()
+                    If txtEfectivoFaltante.Text <> String.Empty Then
+                        Dim c2 As New ControlCaja
+                        c2.Cajero = Me.PanelAccion1.Usuario.Id
+                        c2.Descripcion = "Faltante de caja para el usuario  " + PanelAccion1.Usuario.NombreUsuario
+                        c2.Fecha = Now
+                        c2.idSucursales = PanelAccion1.sucursal.Id
+                        c2.idTransaccionesCaja = 8
+                        c2.Monto = txtEfectivoFaltante.Text
+                        c2.Guardar()
+                    End If
+                    c.CommitTransaccion()
+                    Me.Close()
+                Else
+                    Throw New ApplicationException("El cierre de caja no se puede realizar si el balance no es cero")
+                End If
+            Else
+                MessageBox.Show("No se realizo el cierre de caja", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            End If
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
@@ -103,5 +165,9 @@ Public Class frmCierreCaja
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
+    End Sub
+
+    Private Sub txtEfectivoFaltante_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEfectivoFaltante.TextChanged
+        CalcularTotales()
     End Sub
 End Class

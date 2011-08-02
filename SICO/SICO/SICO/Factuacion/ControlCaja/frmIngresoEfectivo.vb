@@ -13,6 +13,7 @@ Public Class frmIngresoEfectivo
                 MessageBox.Show("Este usuario no ha realizado la apertura de la caja", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 txtEfectivo.Enabled = False
                 PanelAccion1.BotonGuardar.Enabled = False
+
             End If
 
 
