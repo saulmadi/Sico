@@ -45,9 +45,16 @@ Public Class frmRetirosEfectivo
             txtEfectivo.Enabled = True
             If Not _controlCaja.AperturaCaja(PanelAccion1.Usuario.Id, dteFecha.Value, "") Then
                 MessageBox.Show("Este usuario no ha realizado la apertura de la caja", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                PanelAccion1.BotonGuardar.Enabled = False
+                txtEfectivo.Enabled = False
             End If
-
+            Dim c As New ControlCaja
+            c.Buscar(5, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+            If c.TotalRegistros > 0 Then
+                MessageBox.Show("Este usuario ya realizo el cierre de caja", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                txtEfectivo.Enabled = False
+                PanelAccion1.BotonGuardar.Enabled = False
+            End If
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
