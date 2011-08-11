@@ -152,7 +152,7 @@ CREATE TABLE `clientes` (
 --
 
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES  (1,4,2,'2011-07-24 12:01:15',NULL),
+INSERT INTO `clientes` VALUES  (1,4,2,'2011-07-31 20:16:20',NULL),
  (2,8,2,'2011-07-23 14:02:52',NULL),
  (3,6,2,'2011-02-07 00:00:00',NULL),
  (4,22,2,'2011-07-23 14:12:57',NULL),
@@ -234,7 +234,7 @@ CREATE TABLE `controlcaja` (
   CONSTRAINT `idsucursale_sucursales` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtrasnsacciones_transaccionse` FOREIGN KEY (`idtransaccionescaja`) REFERENCES `transaccionescaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idusuario_cajero` FOREIGN KEY (`cajero`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcaja`
@@ -254,7 +254,24 @@ INSERT INTO `controlcaja` VALUES  (1,4,'34234.00','2011-07-24',2,2,2,'2011-07-24
  (11,6,'44242.00','2011-07-26',2,2,2,'2011-07-26 22:30:35','Se retiro efectivo para el usuario saul antonio mayorquin diaz'),
  (12,3,'11454.00','2011-07-26',2,2,2,'2011-07-26 23:18:29','Pago con tarjeta de crédito en factura'),
  (13,2,'2.00','2011-07-26',2,2,2,'2011-07-26 23:50:34','Pago en efectivo en factura'),
- (14,3,'2.00','2011-07-26',2,2,2,'2011-07-26 23:50:34','Pago con tarjeta de crédito en factura');
+ (14,3,'2.00','2011-07-26',2,2,2,'2011-07-26 23:50:34','Pago con tarjeta de crédito en factura'),
+ (15,4,'2435.00','2011-07-30',2,2,2,'2011-07-30 21:37:32','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (16,2,'22908.00','2011-07-30',2,2,2,'2011-07-30 21:49:31','Pago en efectivo en factura'),
+ (17,4,'4243.00','2011-07-31',2,2,2,'2011-07-31 19:00:13','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (18,2,'11454.00','2011-07-31',2,2,2,'2011-07-31 19:00:37','Pago en efectivo en factura'),
+ (19,10,'11454.00','2011-07-31',2,2,2,'2011-07-31 19:02:44','Anulación de factura para el usuario saul antonio mayorquin diaz'),
+ (20,2,'22908.00','2011-07-31',2,2,2,'2011-07-31 19:05:15','Pago en efectivo en factura'),
+ (21,10,'22908.00','2011-07-31',2,2,2,'2011-07-31 19:05:34','Anulación de factura para el usuario saul antonio mayorquin diaz'),
+ (22,2,'34434.00','2011-07-31',2,2,2,'2011-07-31 20:08:09','Pago en efectivo en factura'),
+ (23,10,'34434.00','2011-07-31',2,2,2,'2011-07-31 20:14:47','Anulación de factura para el usuario saul antonio mayorquin diaz'),
+ (24,2,'34434.00','2011-07-31',2,2,2,'2011-07-31 20:16:28','Pago en efectivo en factura'),
+ (25,10,'34434.00','2011-07-31',2,2,2,'2011-07-31 20:17:51','Anulación de factura para el usuario saul antonio mayorquin diaz'),
+ (26,4,'12123.00','2011-08-01',2,2,2,'2011-08-01 21:27:55','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (27,2,'11454.00','2011-08-01',2,2,2,'2011-08-01 21:30:58','Pago en efectivo en factura'),
+ (28,5,'23572.00','2011-08-01',2,2,2,'2011-08-01 21:34:32','Cierre de caja para el usuario saul antonio mayorquin diaz'),
+ (29,8,'5.00','2011-08-01',2,2,2,'2011-08-01 21:34:32','Faltante de caja para el usuario  saul antonio mayorquin diaz'),
+ (30,4,'12231.00','2011-08-02',2,2,2,'2011-08-02 21:46:57','Apertura de caja para el usuario saul antonio mayorquin diaz'),
+ (31,5,'12231.00','2011-08-02',2,2,2,'2011-08-02 21:47:17','Cierre de caja para el usuario saul antonio mayorquin diaz');
 /*!40000 ALTER TABLE `controlcaja` ENABLE KEYS */;
 
 
@@ -275,7 +292,7 @@ CREATE TABLE `controlcajafactura` (
   KEY `ControlCaja_Tintermedia` (`idcontrolcaja`),
   CONSTRAINT `ControlCaja_Tintermedia` FOREIGN KEY (`idcontrolcaja`) REFERENCES `controlcaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `facturaencabezado_Tintermedia` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcajafactura`
@@ -283,8 +300,46 @@ CREATE TABLE `controlcajafactura` (
 
 /*!40000 ALTER TABLE `controlcajafactura` DISABLE KEYS */;
 INSERT INTO `controlcajafactura` VALUES  (1,50,13,2,'2011-07-26 23:50:34'),
- (2,50,14,2,'2011-07-26 23:50:34');
+ (2,50,14,2,'2011-07-26 23:50:34'),
+ (3,51,16,2,'2011-07-30 21:49:31'),
+ (4,52,18,2,'2011-07-31 19:00:37'),
+ (5,52,19,2,'2011-07-31 19:02:46'),
+ (6,53,20,2,'2011-07-31 19:05:15'),
+ (7,53,21,2,'2011-07-31 19:05:34'),
+ (8,55,22,2,'2011-07-31 20:08:09'),
+ (9,55,23,2,'2011-07-31 20:14:47'),
+ (10,56,24,2,'2011-07-31 20:16:28'),
+ (11,56,25,2,'2011-07-31 20:17:51'),
+ (12,57,27,2,'2011-08-01 21:30:58');
 /*!40000 ALTER TABLE `controlcajafactura` ENABLE KEYS */;
+
+
+--
+-- Definition of table `cuentacorriente`
+--
+
+DROP TABLE IF EXISTS `cuentacorriente`;
+CREATE TABLE `cuentacorriente` (
+  `id` int(11) NOT NULL,
+  `identidades` int(11) NOT NULL,
+  `debito` decimal(18,2) DEFAULT NULL,
+  `credito` decimal(18,2) DEFAULT NULL,
+  `descripcion` varchar(200) DEFAULT NULL,
+  `fechavencimiento` date DEFAULT NULL,
+  `fecha` date NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `entidad_cuentacorriente` (`identidades`),
+  CONSTRAINT `entidad_cuentacorriente` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cuentacorriente`
+--
+
+/*!40000 ALTER TABLE `cuentacorriente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cuentacorriente` ENABLE KEYS */;
 
 
 --
@@ -597,7 +652,7 @@ CREATE TABLE `entidades` (
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-07-24','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
+INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores tegucigalpacol. miraflores','saulmadiqg@aksdfjk.com',1,'08011988125246',2,'2011-07-31','saul antonio mayorquin diaz&','0801-1988-12524','I',96330670),
  (5,NULL,NULL,NULL,1,NULL,2,'2011-02-09','asdf asdf asdf%','34f83cac-180f-4355-89e3-f0dce27714fe','N',NULL),
  (6,4322340,'aaklsdfjakl','sad@jfsdk.com',0,'REWIE',2,'2011-03-04','Varideades Canezu','c4b7213f-8a54-4d91-ae3b-25e9a20e6f59','J',34872342),
  (7,NULL,NULL,NULL,1,NULL,1,'2011-01-27','carlos diaz@','0301-1989-12345','I',NULL),
@@ -623,6 +678,32 @@ INSERT INTO `entidades` VALUES  (4,27729729,'col. miraflores tegucigalpacol. mir
 
 
 --
+-- Definition of table `facturacuentacorriente`
+--
+
+DROP TABLE IF EXISTS `facturacuentacorriente`;
+CREATE TABLE `facturacuentacorriente` (
+  `id` int(11) NOT NULL,
+  `idfacturaencabezado` int(11) NOT NULL,
+  `idcuentacorriente` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `facturaencabezado_facuturaencabezado` (`idfacturaencabezado`),
+  KEY `cuentacorriente_facturacuentacorriente` (`idcuentacorriente`),
+  CONSTRAINT `cuentacorriente_facturacuentacorriente` FOREIGN KEY (`idcuentacorriente`) REFERENCES `cuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `facturaencabezado_facuturaencabezado` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `facturacuentacorriente`
+--
+
+/*!40000 ALTER TABLE `facturacuentacorriente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `facturacuentacorriente` ENABLE KEYS */;
+
+
+--
 -- Definition of table `facturadetalle`
 --
 
@@ -641,7 +722,7 @@ CREATE TABLE `facturadetalle` (
   KEY `fk_FacturaDetalle_Productos1` (`idproductos`),
   CONSTRAINT `fk_FacturaDetalle_FacturaEncabezado1` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaDetalle_Productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturadetalle`
@@ -674,7 +755,12 @@ INSERT INTO `facturadetalle` VALUES  (2,10,2,1,'11454.0000',2,'2011-05-24 00:46:
  (26,47,2,1,'11454.0000',2,'2011-07-24 12:48:12'),
  (27,48,2,1,'11454.0000',2,'2011-07-24 12:50:08'),
  (28,49,2,1,'11454.0000',2,'2011-07-26 23:18:10'),
- (29,50,10,2,'2.0000',2,'2011-07-26 23:50:34');
+ (29,50,10,2,'2.0000',2,'2011-07-26 23:50:34'),
+ (30,51,2,2,'11454.0000',2,'2011-07-30 21:49:31'),
+ (31,52,2,1,'11454.0000',2,'2011-07-31 19:00:37'),
+ (32,53,2,2,'11454.0000',2,'2011-07-31 19:05:15'),
+ (33,54,10,1,'2.0000',2,'2011-07-31 19:49:06'),
+ (34,57,2,1,'11454.0000',2,'2011-08-01 21:30:58');
 /*!40000 ALTER TABLE `facturadetalle` ENABLE KEYS */;
 
 
@@ -712,7 +798,7 @@ CREATE TABLE `facturaencabezado` (
   CONSTRAINT `fk_FacturaEncabezado_Clientes1` FOREIGN KEY (`idclientes`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Tiposfacturas1` FOREIGN KEY (`idtiposfacturas`) REFERENCES `tiposfacturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturaencabezado`
@@ -751,7 +837,14 @@ INSERT INTO `facturaencabezado` VALUES  (10,'FE-002-20110519-002-0000001',2,'2',
  (47,'FE-002-20110724-002-0000030',2,'47',NULL,'2011-07-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-07-24',2,2,NULL),
  (48,'FE-002-20110724-002-0000031',2,'48',NULL,'2011-07-24',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-07-24',2,2,NULL),
  (49,'FE-002-20110726-002-0000032',2,'49',NULL,'2011-07-26',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-07-26',2,2,NULL),
- (50,'FE-002-20110726-002-0000033',2,'50',NULL,'2011-07-26',1,'4.0000','0.4800','4.0000','0.0000',0,0,'F','P',2,'2011-07-26',2,2,NULL);
+ (50,'FE-002-20110726-002-0000033',2,'50',NULL,'2011-07-26',1,'4.0000','0.4800','4.0000','0.0000',0,0,'F','P',2,'2011-07-26',2,2,NULL),
+ (51,'FE-002-20110730-002-0000034',2,'51',NULL,'2011-07-30',1,'22908.0000','2748.9600','22908.0000','0.0000',0,0,'F','P',2,'2011-07-30',2,2,NULL),
+ (52,'FE-002-20110731-002-0000035',2,'52',NULL,'2011-07-31',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'A','P',2,'2011-07-31',2,2,NULL),
+ (53,'FE-002-20110731-002-0000036',2,'53',NULL,'2011-07-31',1,'22908.0000','2748.9600','22908.0000','0.0000',0,0,'A','P',2,'2011-07-31',2,2,NULL),
+ (54,'FE-002-20110731-002-0000037',2,'ed83da7d-d075-4011-969f-c616e64eda66',NULL,'2011-07-31',1,'2.0000','0.2400','2.0000','0.0000',0,0,'P','P',2,'2011-07-31',2,NULL,NULL),
+ (55,'FE-002-20110731-002-0000038',2,'54',1,'2011-07-31',1,'34434.0000','4132.0800','34434.0000','0.0000',0,0,'A','M',2,'2011-07-31',2,NULL,1),
+ (56,'FE-002-20110731-002-0000039',2,'55',1,'2011-07-31',1,'34434.0000','4132.0800','34434.0000','0.0000',0,0,'A','M',2,'2011-07-31',2,NULL,1),
+ (57,'FE-002-20110801-002-0000040',2,'56',NULL,'2011-08-01',1,'11454.0000','1374.4800','11454.0000','0.0000',0,0,'F','P',2,'2011-08-01',2,2,NULL);
 /*!40000 ALTER TABLE `facturaencabezado` ENABLE KEYS */;
 
 
@@ -787,7 +880,7 @@ INSERT INTO `inventario` VALUES  (8,2,1,2522,2,'2011-05-23 23:25:59'),
  (14,9,2,149,2,'2011-04-04 22:13:58'),
  (15,6,2,24,2,'2011-04-04 22:13:58'),
  (16,10,2,1758,2,'2011-07-26 23:50:34'),
- (17,2,2,31,2,'2011-07-26 23:18:10');
+ (17,2,2,28,2,'2011-08-01 21:30:58');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -887,7 +980,7 @@ CREATE TABLE `motocicletas` (
 --
 
 /*!40000 ALTER TABLE `motocicletas` DISABLE KEYS */;
-INSERT INTO `motocicletas` VALUES  (1,'jdfk33kjfd3','kdkj43d34',10,2,10,1,434,3343,'34434.00','0.00','2011-04-04',2,'2011-07-23 00:53:31','I',334,1),
+INSERT INTO `motocicletas` VALUES  (1,'jdfk33kjfd3','kdkj43d34',10,2,10,1,434,3343,'34434.00','0.00','2011-04-04',2,'2011-07-31 20:17:57','I',334,1),
  (2,'kdie43dki3','kdk43',10,2,10,2,343,343,'578548754.00','433.00','2011-04-04',2,'2011-04-04 23:56:54','I',343,1),
  (3,'432r34e','432d232dd43',11,1,11,1,234,2222,'3424.00','424234.00','2011-04-05',2,'2011-07-22 20:55:42','F',343,1),
  (4,'jd9j349k','kjkd93jk',11,1,10,1,933,3333,'4323.00','4234.00','2011-04-06',2,'2011-07-22 20:58:06','F',343,1),
@@ -1276,7 +1369,7 @@ CREATE TABLE `sucursales` (
 
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
 INSERT INTO `sucursales` VALUES  (1,18,3,NULL,2,'2011-02-11 00:02:07',1,1),
- (2,19,2,NULL,2,'2011-02-02 22:29:15',1,50);
+ (2,19,2,NULL,2,'2011-02-02 22:29:15',1,56);
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 
 
@@ -1368,7 +1461,7 @@ CREATE TABLE `transaccionescaja` (
   `fmodif` datetime DEFAULT NULL,
   `tipo` varchar(3) DEFAULT NULL COMMENT 'C=credito\nD=debito\nN=neutral\n',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaccionescaja`
@@ -1383,7 +1476,7 @@ INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:0
  (6,'Retiro Efectivo',1,'2011-06-19 00:00:00','D'),
  (7,'Ingreso Efectivo',1,'2011-06-19 00:00:00','C'),
  (8,'Faltante Caja',1,'2011-06-19 00:00:00','D'),
- (9,'Cierre Caja',1,'2011-06-19 00:00:00','D');
+ (10,'Anulacion Factura',1,'2011-06-19 00:00:00','D');
 /*!40000 ALTER TABLE `transaccionescaja` ENABLE KEYS */;
 
 
