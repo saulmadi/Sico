@@ -96,6 +96,7 @@
     <Compile Include="OrdenSalida.vb" />
     <Compile Include="Productos.vb" />
     <Compile Include="ProductosInventario.vb" />
+    <Compile Include="Propietario.vb" />
     <Compile Include="Proveedores.vb" />
     <Compile Include="TablasTipo.vb" />
     <Compile Include="Mantenimientos.vb" />
