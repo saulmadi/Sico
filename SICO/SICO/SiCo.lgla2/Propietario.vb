@@ -29,6 +29,7 @@ Public Class Propietario
         End Set
     End Property
 #End Region
+
 #Region "Metodos"
     Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
         Me.idEntidades = Registro(Indice, "identidades")

@@ -4,6 +4,8 @@ using System.Text;
 using System.Data;
 using MySql.Data.MySqlClient; 
 using SiCo.dtla;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace SiCo.lgla
 {
@@ -515,43 +517,58 @@ namespace SiCo.lgla
 
         protected void ValorParametrosBusqueda(string Nombre, object valor)
         {
-            
-            foreach (Parametro i in this.ColeccionParametrosBusqueda)
+            var para = ColeccionParametrosBusqueda.FirstOrDefault(c => c.Nombre.ToLower().Equals(Nombre.ToLower() ));
+            if (para != null)
             {
-                if (i.Nombre.ToLower() == Nombre.ToLower())
-                {
-                    i.Valor = valor;
-                    return; 
-                } 
+                para.Valor = valor;
+                return;
             }
+            //foreach (Parametro i in this.ColeccionParametrosBusqueda)
+            //{
+            //    if (i.Nombre.ToLower() == Nombre.ToLower())
+            //    {
+            //        i.Valor = valor;
+            //        return; 
+            //    } 
+            //}
             throw new ApplicationException("El parámetro no se encuentra en la colección");
             
         }
 
         protected void ValorParametrosMantenimiento(string Nombre, object valor)
         {
-            foreach (Parametro i in this.ColeccionParametrosMantenimiento)
+            Parametro para = this._ColeccionParametrosMantenimiento.FirstOrDefault(c => c.Nombre.ToLower().Equals(Nombre.ToLower()));
+            if (para != null)
             {
-                if (i.Nombre.ToLower() == Nombre.ToLower())
-                {
-                    i.Valor = valor;
-                    return; 
-                } 
+                 para.Valor=valor ;
+                 return;
             }
+            //foreach (Parametro i in this.ColeccionParametrosMantenimiento)
+            //{
+            //    if (i.Nombre.ToLower() == Nombre.ToLower())
+            //    {
+            //        i.Valor = valor;
+            //        return; 
+            //    } 
+            //}
             
             throw new ApplicationException("El parámetro no se encuentra en la colección");
         }
 
         protected object  ValorParametrosMantenimiento(string Nombre)
         {
-            foreach (Parametro i in this.ColeccionParametrosMantenimiento)
-            {
-                if (i.Nombre.ToLower() == Nombre.ToLower())
-                {
-                    return i.Valor;
+            Parametro para = this._ColeccionParametrosMantenimiento.FirstOrDefault(c => c.Nombre.ToLower().Equals(Nombre.ToLower()));
+            if (para != null)
+                return para.Valor;
+
+            //foreach (Parametro i in this.ColeccionParametrosMantenimiento)
+            //{
+            //    if (i.Nombre.ToLower() == Nombre.ToLower())
+            //    {
+            //        return i.Valor;
                     
-                }
-            }
+            //    }
+            //}
 
             throw new ApplicationException("El parámetro no se encuentra en la colección");
         }

@@ -84,6 +84,7 @@ Partial Class frmMenuPrincipal
         Me.CambiarDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CerrarSesesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.PropietarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip.SuspendLayout()
         Me.MenuPrinci.SuspendLayout()
         Me.SuspendLayout()
@@ -404,7 +405,7 @@ Partial Class frmMenuPrincipal
         '
         'SICOToolStripMenuItem
         '
-        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem, Me.TarjetasCreditoToolStripMenuItem})
+        Me.SICOToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PropietarioToolStripMenuItem, Me.MunicipiosToolStripMenuItem, Me.DepartamentosToolStripMenuItem, Me.TiposDeFacturaToolStripMenuItem, Me.TipoDeMotocicletasToolStripMenuItem, Me.MarcasToolStripMenuItem, Me.ModelosToolStripMenuItem, Me.TarjetasCreditoToolStripMenuItem})
         Me.SICOToolStripMenuItem.Name = "SICOToolStripMenuItem"
         Me.SICOToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SICOToolStripMenuItem.Text = "SICO"
@@ -478,6 +479,12 @@ Partial Class frmMenuPrincipal
         Me.SalirToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
+        '
+        'PropietarioToolStripMenuItem
+        '
+        Me.PropietarioToolStripMenuItem.Name = "PropietarioToolStripMenuItem"
+        Me.PropietarioToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
+        Me.PropietarioToolStripMenuItem.Text = "Propietario"
         '
         'frmMenuPrincipal
         '
@@ -569,5 +576,6 @@ Partial Class frmMenuPrincipal
     Friend WithEvents OrdenesEntrantesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CambiarDeUsuarioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TarjetasCreditoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents PropietarioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

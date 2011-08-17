@@ -131,6 +131,12 @@
     <Compile Include="Administrativo\frmUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmPropietario.Designer.vb">
+      <DependentUpon>frmPropietario.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Mantenimietos\frmPropietario.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Administrativo\Mantenimietos\frmTarjetaCredito.Designer.vb">
       <DependentUpon>frmTarjetaCredito.vb</DependentUpon>
     </Compile>
@@ -448,6 +454,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\frmUsuario.resx">
       <DependentUpon>frmUsuario.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrativo\Mantenimietos\frmPropietario.resx">
+      <DependentUpon>frmPropietario.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Administrativo\Mantenimietos\frmTarjetaCredito.resx">
       <DependentUpon>frmTarjetaCredito.vb</DependentUpon>

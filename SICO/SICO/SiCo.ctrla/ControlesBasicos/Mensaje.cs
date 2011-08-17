@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;  
+namespace SiCo.ctrla.ControlesBasicos
+{
+    public class Mensaje
+    {
+        
+        public static DialogResult  MensajeError(string Msj)
+        {
+            return MessageBox.Show(Msj, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+    }
+}
