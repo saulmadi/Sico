@@ -244,7 +244,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>ggChXASJkSBQAIAACAAEIQIgBAgAIEOQRW0JJACQEAA=</HashCode>
+      <HashCode>ggChXASJkSBQAIIACAAEIQIgBAgAIEOURW0JJACQEAA=</HashCode>
       <FileName>FacturaEncabezado.vb</FileName>
     </TypeIdentifier>
   </Class>
@@ -258,8 +258,15 @@
   <Class Name="SiCo.lgla2.TransaccionesTrajetaCredito">
     <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAQAEAAAAAAIAAARARAAAAIAAAAAIQBAAACAQ=</HashCode>
       <FileName>TransaccionesTrajetaCredito.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SiCo.lgla2.Propietario">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAABAIQAAA=</HashCode>
+      <FileName>Propietario.vb</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="SiCo.lgla2.ModulosTablasTipo" Collapsed="true">
