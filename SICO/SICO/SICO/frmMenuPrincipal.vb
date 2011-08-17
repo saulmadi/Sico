@@ -47,6 +47,12 @@ Public Class frmMenuPrincipal
         frm.Show()
     End Sub
 
+    Private Sub PropietarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PropietarioToolStripMenuItem.Click
+        Dim frm As New frmPropietario
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+
 #End Region
 
 #Region "Personas"
@@ -237,6 +243,7 @@ Public Class frmMenuPrincipal
 
 #End Region
 
+    
     
     
 End Class

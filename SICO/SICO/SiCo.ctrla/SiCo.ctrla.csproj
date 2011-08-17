@@ -79,6 +79,7 @@
     <Compile Include="ControlesBasicos\ListaSucursales.Designer.cs">
       <DependentUpon>ListaSucursales.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesBasicos\Mensaje.cs" />
     <Compile Include="ControlesPersonalizados\crtImagen.cs">
       <SubType>UserControl</SubType>
     </Compile>
