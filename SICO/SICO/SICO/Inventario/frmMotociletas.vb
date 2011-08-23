@@ -109,7 +109,7 @@ Public Class frmMotociletas
             cmbSucursales.SelectedIndex = -1
             CrtImagen1.limpiar()
         Else
-            CrtImagen1.Descargar(Motocicletas.Id)
+            CrtImagen1.Descargar(Motocicletas.idmodelos)
             If Me.cmbMarca.Items.Count = 0 Then
                 cmbMarca.IncializarCarga()
             End If
@@ -205,7 +205,7 @@ Public Class frmMotociletas
                     Me.Motocicletas.idSucursales = cmbSucursales.SelectedItem.Id
                     Me.Motocicletas.idProveedor = cmbProveedor.SelectedValue
                     Motocicletas.Guardar()
-                    Me.CrtImagen1.Guardar(Motocicletas.Id)
+                    ''Me.CrtImagen1.Guardar(Motocicletas.Id)
 
                 Else
                     PanelAccion1.EstadoMensaje = valida.MensajesError

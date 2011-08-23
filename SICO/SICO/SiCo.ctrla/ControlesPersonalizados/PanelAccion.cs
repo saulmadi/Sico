@@ -139,13 +139,19 @@ namespace SiCo.ctrla
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (this.Guardar != null)
+            {
+                this.BarraEstado.Text = "Guardando....";
+                this.BarraProgreso.Value = 50;
                 this.Guardar();
+                this.BarraEstado.Text = "";
+                this.BarraProgreso.Value = 100;
+            }
             
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            switch (MessageBox.Show("¿Esta seguro de cancelar la transacción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            switch (MessageBox.Show("¿Esta seguro de salir de la transacción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
                 case DialogResult.Yes :
                     if (this.Cancelar != null)

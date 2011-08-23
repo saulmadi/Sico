@@ -111,7 +111,7 @@ namespace SiCo.dtla
         {
             get
             {
-                return _ClavesRegistro.Instalacion  + "Cnx.sco";
+                return AppDomain.CurrentDomain.BaseDirectory   + "Cnx.sco";
             }
         }
 

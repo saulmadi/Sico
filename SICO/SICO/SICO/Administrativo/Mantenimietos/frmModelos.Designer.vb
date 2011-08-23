@@ -32,6 +32,7 @@ Partial Class frmModelos
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmModelos))
         Me.CrtTablaTipoDerivada = New SICO.ctrla2.crtTablaTipoDerivada
+        Me.CrtImagen1 = New SICO.ctrla.ControlesPersonalizados.crtImagen
         Me.SuspendLayout()
         '
         'CrtTablaTipoDerivada
@@ -45,11 +46,20 @@ Partial Class frmModelos
         Me.CrtTablaTipoDerivada.Titulo = "Modelos"
         Me.CrtTablaTipoDerivada.TituloDerivado = "Marca"
         '
+        'CrtImagen1
+        '
+        Me.CrtImagen1.Location = New System.Drawing.Point(369, 275)
+        Me.CrtImagen1.Name = "CrtImagen1"
+        Me.CrtImagen1.Size = New System.Drawing.Size(191, 186)
+        Me.CrtImagen1.TabIndex = 1
+        Me.CrtImagen1.Tabla = "motocicletasimagenes"
+        '
         'frmModelos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(782, 524)
+        Me.Controls.Add(Me.CrtImagen1)
         Me.Controls.Add(Me.CrtTablaTipoDerivada)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -61,4 +71,5 @@ Partial Class frmModelos
 
     End Sub
     Friend WithEvents CrtTablaTipoDerivada As SICO.ctrla2.crtTablaTipoDerivada
+    Friend WithEvents CrtImagen1 As SICO.ctrla.ControlesPersonalizados.crtImagen
 End Class
