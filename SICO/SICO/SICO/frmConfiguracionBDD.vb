@@ -62,7 +62,9 @@ Public Class frmConfiguracionBDD
                     config.Config.Guardar()
 
                     If Not Me.ListaSucursales1.SelectedItem Is Nothing Then
+
                         Me.ListaSucursales1.SelectedItem.Serializar()
+                        Me.CrtPanelBase1.sucursal = New Sucursales
                         Me.CrtPanelBase1.sucursal.Cargar()
                     End If
                     MessageBox.Show("Se guardado correctamente la configuración", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
@@ -83,5 +85,7 @@ Public Class frmConfiguracionBDD
 
     Private Sub frmConfiguracionBDD_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         cmbpuerto.SelectedIndex = 0
+        System.IO.File.Delete("Cnx.sco")
+        System.IO.File.Delete("Usx.sco")
     End Sub
 End Class

@@ -10,6 +10,7 @@ Public Class crtTablaTipo
     Protected _Nombre As New NombresModuloTablasTipo(_Modulo)
     Protected _TipoControl As TipoControl = TipoControl.TablaTipo
     Public Event CambioTablaTipo()
+    Public Event GuardoCorrectamente()
 #End Region
 
 #Region "Constructores"
@@ -103,6 +104,7 @@ Public Class crtTablaTipo
                 Me.TablaTipo.habilitado = CType(cmbEstado.SelectedItem, Estado).valor
 
                 Me.TablaTipo.Guardar()
+                RaiseEvent GuardoCorrectamente()
                 PanelAccion.lblEstado.Text = Me._Nombre.Nombre + " " + Me.TablaTipo.descripcion + " guardado(a) correctamente."
                 Me.TablaTipo = _Nombre.Instancias
                 txtDescripcion.Focus()

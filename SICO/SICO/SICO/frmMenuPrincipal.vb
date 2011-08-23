@@ -1,6 +1,7 @@
 ﻿Imports System.Windows.Forms
 
 Public Class frmMenuPrincipal
+    Public isShow As Boolean = False
 #Region "Eventos"
 
 #Region "Administrativo"
@@ -227,7 +228,7 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Sesion"
-    Private Sub CerrarSesesiónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CerrarSesesiónToolStripMenuItem.Click
+    Private Sub CerrarSesesiónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim frm As New frmIniciosesion
         frm.Show()
         Me.Close()
@@ -238,12 +239,17 @@ Public Class frmMenuPrincipal
         frm.ShowDialog()
     End Sub
 
+    Private Sub frmMenuPrincipal_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+        isShow = True
+    End Sub
+
 #End Region
 
 
 #End Region
 
-    
-    
-    
+
+
+
+
 End Class

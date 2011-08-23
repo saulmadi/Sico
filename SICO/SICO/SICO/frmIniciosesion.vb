@@ -43,7 +43,10 @@ Public Class frmIniciosesion
 
 
             _Autorizo = False
-            Dim forma As New frmMenuPrincipal
+            If Contendor.MenuPrincipalSingelton Is Nothing Then
+                Contendor.MenuPrincipalSingelton = New frmMenuPrincipal
+            End If
+
             Dim u As New SICO.lgla.Usuario
             Dim pa As New Parametro("idrol")
             If Autorizar Then
@@ -59,9 +62,14 @@ Public Class frmIniciosesion
             End If
             If u.Autenticar(txtusuario.Text.Trim, txtcontrasena.Text.Trim, pa) Then
                 If Not Autorizar Then
+                    System.IO.File.Delete("Usx.sco")
                     u.Serializar()
-
-                    forma.Show()
+                    Dim p = New SICO.ctrla.PanelAccion
+                    p.Usuario = New Usuario
+                    p.Usuario.Cargar()
+                    If Not Contendor.MenuPrincipalSingelton.isShow Then
+                        Contendor.MenuPrincipalSingelton.Show()
+                    End If
 
                 End If
                 Autorizo = True
