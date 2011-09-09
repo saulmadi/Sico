@@ -144,7 +144,12 @@ namespace SiCo.ctrla
                 this.BarraProgreso.Value = 50;
                 this.Guardar();
                 this.BarraEstado.Text = "";
-                this.BarraProgreso.Value = 100;
+                try
+                { this.BarraProgreso.Value = 100; }
+                catch (Exception ex) { };
+
+
+                    
             }
             
         }

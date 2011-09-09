@@ -28,8 +28,6 @@ Partial Class frmCobro
         Me.Label2 = New System.Windows.Forms.Label
         Me.Label3 = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
-        Me.Label5 = New System.Windows.Forms.Label
-        Me.txtBalance = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtCambio = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtTC = New SICO.ctrla.CajaTexto(Me.components)
         Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
@@ -76,39 +74,6 @@ Partial Class frmCobro
         Me.Label4.Size = New System.Drawing.Size(107, 31)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Cambio"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(26, 301)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(112, 31)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "Balance"
-        '
-        'txtBalance
-        '
-        Me.txtBalance.BackColor = System.Drawing.SystemColors.Window
-        Me.txtBalance.ColorError = System.Drawing.Color.Red
-        Me.txtBalance.Enabled = False
-        Me.txtBalance.EnterPorTab = True
-        Me.txtBalance.EsObligatorio = False
-        Me.txtBalance.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtBalance.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBalance.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtBalance.Location = New System.Drawing.Point(156, 295)
-        Me.txtBalance.MaxLength = 12
-        Me.txtBalance.MensajeError = Nothing
-        Me.txtBalance.Name = "txtBalance"
-        Me.txtBalance.Size = New System.Drawing.Size(325, 44)
-        Me.txtBalance.TabIndex = 10
-        Me.txtBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtBalance.Texto = Nothing
-        Me.txtBalance.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtBalance.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
-        Me.txtBalance.ValorInt = Nothing
-        Me.txtBalance.ValorLong = Nothing
         '
         'txtCambio
         '
@@ -207,7 +172,7 @@ Partial Class frmCobro
         Me.PanelAccion1.EstadoMensaje = ""
         Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
         Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(503, 409)
+        Me.PanelAccion1.Size = New System.Drawing.Size(503, 351)
         Me.PanelAccion1.TabIndex = 0
         Me.PanelAccion1.Titulo = "Cobro Factura"
         Me.PanelAccion1.VisiblePanelPrincipal = True
@@ -216,13 +181,11 @@ Partial Class frmCobro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(503, 409)
-        Me.Controls.Add(Me.txtBalance)
+        Me.ClientSize = New System.Drawing.Size(503, 351)
         Me.Controls.Add(Me.txtCambio)
         Me.Controls.Add(Me.txtTC)
         Me.Controls.Add(Me.txtEfectivo)
         Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -246,10 +209,8 @@ Partial Class frmCobro
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtTotal As SICO.ctrla.CajaTexto
     Friend WithEvents txtEfectivo As SICO.ctrla.CajaTexto
     Friend WithEvents txtTC As SICO.ctrla.CajaTexto
     Friend WithEvents txtCambio As SICO.ctrla.CajaTexto
-    Friend WithEvents txtBalance As SICO.ctrla.CajaTexto
 End Class
