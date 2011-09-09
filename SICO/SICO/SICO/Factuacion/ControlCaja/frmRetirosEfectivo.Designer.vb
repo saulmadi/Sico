@@ -24,33 +24,25 @@ Partial Class frmRetirosEfectivo
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmRetirosEfectivo))
-        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox2 = New System.Windows.Forms.GroupBox
-        Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
         Me.Label6 = New System.Windows.Forms.Label
         Me.dteFecha = New System.Windows.Forms.DateTimePicker
         Me.Label7 = New System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox
         Me.txtCajero = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
+        Me.Label1 = New System.Windows.Forms.Label
+        Me.txtDescripcion = New SICO.ctrla.CajaTexto(Me.components)
+        Me.txtEfectivo = New SICO.ctrla.CajaTexto(Me.components)
+        Me.PanelAccion1 = New SICO.ctrla.PanelAccion
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'PanelAccion1
-        '
-        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
-        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.PanelAccion1.EstadoMensaje = ""
-        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
-        Me.PanelAccion1.Name = "PanelAccion1"
-        Me.PanelAccion1.Size = New System.Drawing.Size(723, 230)
-        Me.PanelAccion1.TabIndex = 0
-        Me.PanelAccion1.Titulo = "Retiro Efectivo"
-        Me.PanelAccion1.VisiblePanelPrincipal = True
-        '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.Label1)
+        Me.GroupBox2.Controls.Add(Me.txtDescripcion)
         Me.GroupBox2.Controls.Add(Me.txtEfectivo)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.dteFecha)
@@ -58,31 +50,10 @@ Partial Class frmRetirosEfectivo
         Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(12, 94)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(361, 74)
+        Me.GroupBox2.Size = New System.Drawing.Size(361, 104)
         Me.GroupBox2.TabIndex = 8
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Datos de Retiro"
-        '
-        'txtEfectivo
-        '
-        Me.txtEfectivo.BackColor = System.Drawing.SystemColors.Window
-        Me.txtEfectivo.ColorError = System.Drawing.Color.Red
-        Me.txtEfectivo.EnterPorTab = True
-        Me.txtEfectivo.EsObligatorio = False
-        Me.txtEfectivo.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
-        Me.txtEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEfectivo.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.txtEfectivo.Location = New System.Drawing.Point(86, 19)
-        Me.txtEfectivo.MaxLength = 12
-        Me.txtEfectivo.MensajeError = Nothing
-        Me.txtEfectivo.Name = "txtEfectivo"
-        Me.txtEfectivo.Size = New System.Drawing.Size(256, 20)
-        Me.txtEfectivo.TabIndex = 10
-        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.txtEfectivo.Texto = Nothing
-        Me.txtEfectivo.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
-        Me.txtEfectivo.ValorInt = Nothing
-        Me.txtEfectivo.ValorLong = Nothing
         '
         'Label6
         '
@@ -146,11 +117,75 @@ Partial Class frmRetirosEfectivo
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Cajero"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(6, 74)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(63, 13)
+        Me.Label1.TabIndex = 12
+        Me.Label1.Text = "Descripción"
+        '
+        'txtDescripcion
+        '
+        Me.txtDescripcion.BackColor = System.Drawing.SystemColors.Window
+        Me.txtDescripcion.ColorError = System.Drawing.Color.Red
+        Me.txtDescripcion.EnterPorTab = True
+        Me.txtDescripcion.EsObligatorio = True
+        Me.txtDescripcion.ExpresionValidacion = ""
+        Me.txtDescripcion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescripcion.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtDescripcion.Location = New System.Drawing.Point(86, 71)
+        Me.txtDescripcion.MensajeError = "Ingrese la descripción del retiro"
+        Me.txtDescripcion.Name = "txtDescripcion"
+        Me.txtDescripcion.Size = New System.Drawing.Size(256, 20)
+        Me.txtDescripcion.TabIndex = 11
+        Me.txtDescripcion.Texto = Nothing
+        Me.txtDescripcion.TipoTexto = SICO.ctrla.TiposTexto.Alfanumerico
+        Me.txtDescripcion.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtDescripcion.ValorInt = Nothing
+        Me.txtDescripcion.ValorLong = Nothing
+        '
+        'txtEfectivo
+        '
+        Me.txtEfectivo.BackColor = System.Drawing.SystemColors.Window
+        Me.txtEfectivo.ColorError = System.Drawing.Color.Red
+        Me.txtEfectivo.EnterPorTab = True
+        Me.txtEfectivo.EsObligatorio = False
+        Me.txtEfectivo.ExpresionValidacion = "^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,3})?$"
+        Me.txtEfectivo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtEfectivo.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.txtEfectivo.Location = New System.Drawing.Point(86, 19)
+        Me.txtEfectivo.MaxLength = 12
+        Me.txtEfectivo.MensajeError = Nothing
+        Me.txtEfectivo.Name = "txtEfectivo"
+        Me.txtEfectivo.Size = New System.Drawing.Size(256, 20)
+        Me.txtEfectivo.TabIndex = 10
+        Me.txtEfectivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtEfectivo.Texto = Nothing
+        Me.txtEfectivo.TipoTexto = SICO.ctrla.TiposTexto.[Decimal]
+        Me.txtEfectivo.ValorDecimal = New Decimal(New Integer() {0, 0, 0, 0})
+        Me.txtEfectivo.ValorInt = Nothing
+        Me.txtEfectivo.ValorLong = Nothing
+        '
+        'PanelAccion1
+        '
+        Me.PanelAccion1.BackColor = System.Drawing.SystemColors.Control
+        Me.PanelAccion1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.PanelAccion1.EstadoMensaje = ""
+        Me.PanelAccion1.Location = New System.Drawing.Point(0, 0)
+        Me.PanelAccion1.Name = "PanelAccion1"
+        Me.PanelAccion1.Size = New System.Drawing.Size(723, 264)
+        Me.PanelAccion1.TabIndex = 0
+        Me.PanelAccion1.Titulo = "Retiro Efectivo"
+        Me.PanelAccion1.VisiblePanelPrincipal = True
+        '
         'frmRetirosEfectivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(723, 230)
+        Me.ClientSize = New System.Drawing.Size(723, 264)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PanelAccion1)
@@ -176,4 +211,6 @@ Partial Class frmRetirosEfectivo
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents txtCajero As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtDescripcion As SICO.ctrla.CajaTexto
 End Class

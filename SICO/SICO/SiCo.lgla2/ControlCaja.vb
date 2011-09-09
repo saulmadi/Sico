@@ -194,10 +194,10 @@ Public Class ControlCaja
         End Try
     End Function
 
-    Public Function RealizarRetiroEfectivo(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario)
+    Public Function RealizarRetiroEfectivo(ByVal cajero As Long, ByVal monto As Decimal, ByVal fecha As DateTime, ByVal sucursal As Long, ByVal usuario As Usuario, ByVal descripcion As String)
         Try
             Me.IniciarTransaccion()
-            Me.IngresarTransaccion(6, sucursal, monto, fecha, cajero, "Se retiro efectivo para el usuario " + usuario.NombreUsuario)
+            Me.IngresarTransaccion(6, sucursal, monto, fecha, cajero, descripcion)
             Me.CommitTransaccion()
             Return True
         Catch ex As Exception

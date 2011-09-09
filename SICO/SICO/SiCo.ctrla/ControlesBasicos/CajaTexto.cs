@@ -247,12 +247,8 @@ namespace SiCo.ctrla
             }
             set
             {
-                if (value == null)
-                {
-                    this.Text = string.Empty;
-                }
-                else
-                {
+               
+               {
                     this.Text = value.ToString();
                 }
             }
