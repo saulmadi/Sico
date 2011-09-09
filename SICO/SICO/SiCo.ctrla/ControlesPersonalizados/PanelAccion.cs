@@ -146,7 +146,7 @@ namespace SiCo.ctrla
                 this.BarraEstado.Text = "";
                 try
                 { this.BarraProgreso.Value = 100; }
-                catch (Exception ex) { };
+                catch (Exception ex) { ex.ToString(); }
 
 
                     
