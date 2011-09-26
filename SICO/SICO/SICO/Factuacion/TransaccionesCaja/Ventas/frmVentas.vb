@@ -1,6 +1,7 @@
 ﻿Imports SICO.lgla
 Imports SICO.lgla2
 Imports SICO.ctrla
+Imports SICO.ctrla.ControlesBasicos
 Public Class frmVentas
 
 #Region "Declaraciones"
@@ -254,7 +255,35 @@ Public Class frmVentas
                                     MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                 End If
                             Else
-                               
+
+                                If Factura.idclientes > 0 Then
+                                    Factura.IniciarTransaccion()
+                                    Dim c = New ControlCaja
+                                    c.Cajero = Me.PanelAccion1.Usuario.Id
+                                    c.Descripcion = "Pago de factura al crédito para número de cliente " + CrtClientes.Cliente.Id
+                                    c.Fecha = Now
+                                    c.idSucursales = Me.PanelAccion1.sucursal.Id
+                                    c.idTransaccionesCaja = 1
+                                    c.Monto = Factura.total
+                                    c.Guardar()
+                                    Dim cf = New ControlCajaFactura
+                                    cf.Guardar(Factura.Id, c.Id)
+
+                                    Dim frmCre As New frmCreditoVencimiento
+                                    If frmCre.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                        Dim cuent = New Cuentacorriente
+                                        cuent.AgragrarDebitoMovimientoProductos(CrtClientes.Cliente.idEntidades, Factura.total, frmCre.txtDescripcion.Text, frmCre.dteFechaVencimiento.Value, Me.PanelAccion1.sucursal.Id)
+                                    Else
+                                        Throw New ApplicationException("Canceló los terminos del plazo")
+                                    End If
+                                    
+                                    
+                                    Factura.FacturarProducto()
+
+                                    Factura.CommitTransaccion()
+                                Else
+                                    Mensaje.MensajeError("Debe seleccionar cliente para agregar cuenta corriente")
+                                End If
 
                             End If
 
