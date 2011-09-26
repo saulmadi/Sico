@@ -1,12 +1,10 @@
-﻿DELIMITER $$
+DROP PROCEDURE IF EXISTS sico.CuentaCorriente_Mant;
+CREATE PROCEDURE sico.`CuentaCorriente_Mant`(
 
-DROP PROCEDURE IF EXISTS `sico`.`CuentaCorriente_Mant` $$
-CREATE PROCEDURE `CuentaCorriente_Mant`(
 
-/*definicion de parametros*/
 
-inout id int(11),
-inout codigo nvarchar(70),
+INOUT id int(11),
+INOUT codigo nvarchar(70),
 identidaddeudora int(11),
 identidadbeneficiaria int(11),
 estado nvarchar(5),
@@ -19,26 +17,35 @@ fmodif datetime
 BEGIN
 
 
-set @conteo =0;
-select count(id) from cuentacorriente m where m.id=id into @conteo;
+SET @conteo =0;
+SELECT count(id) FROM cuentacorriente m WHERE m.id=id INTO @conteo;
+IF @conteo =0 THEN
 
-if @conteo =0 then
+    SELECT count(id) FROM cuentacorriente m
+    WHERE m.identidadbeneficiaria = identidadbeneficiaria AND m.identidaddeudora = identidaddeudora INTO @conteo;
 
-  set @correlativo=0;
+    IF @conteo >0 THEN
+      SELECT id FROM cuentacorriente m
+      WHERE m.identidadbeneficiaria = identidadbeneficiaria AND m.identidaddeudora = identidaddeudora INTO id;
+    END IF;
 
-  select count(id)+1 from cuentacorriente into @correlativo;
 
-  select CrearCorrelativoCodigo("CC",idsucursal,elaboradopor,@correlativo) into codigo;
+END IF;
+
+IF @conteo =0 THEN
+
+
+  SELECT CrearCorrelativoCodigo("CC",idsucursal,elaboradopor) INTO codigo;
 
   INSERT INTO cuentacorriente(codigo,identidaddeudora,identidadbeneficiaria,estado,idsucursales,fecha,habilitado,usu,fmodif)
 
   VALUES(codigo,identidaddeudora,identidadbeneficiaria,estado,idsucursales,fecha,habilitado,usu,fmodif);
 
-  select last_insert_id() into id;
+  SELECT last_insert_id() INTO id;
 
-else
+ELSE
 
-  UPDATE cuentacorriente c set
+  UPDATE cuentacorriente c SET
         c.identidaddeudora=identidaddeudora,
         c.identidadbeneficiaria=identidadbeneficiaria,
         c.estado=estado,
@@ -47,9 +54,8 @@ else
         c.habilitado=habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where c.id= id;
+  WHERE c.id= id;
 
-end if;
-END $$
+END IF;
 
-DELIMITER ;
+END;

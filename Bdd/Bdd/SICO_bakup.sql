@@ -208,7 +208,7 @@ CREATE TABLE `controlcaja` (
   CONSTRAINT `idsucursale_sucursales` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtrasnsacciones_transaccionse` FOREIGN KEY (`idtransaccionescaja`) REFERENCES `transaccionescaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idusuario_cajero` FOREIGN KEY (`cajero`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcaja`
@@ -220,7 +220,9 @@ INSERT INTO `controlcaja` VALUES  (1,4,'12342.00','2011-08-20',1,2,1,'2011-08-20
  (3,3,'9.00','2011-08-20',1,2,1,'2011-08-20 13:15:06','Pago con tarjeta de crédito en factura'),
  (4,2,'6.00','2011-08-20',1,2,1,'2011-08-20 13:16:50','Pago en efectivo en factura'),
  (5,6,'21.00','2011-08-20',1,2,1,'2011-08-20 13:18:16','Se retiro efectivo para el usuario Saúl Antonio Mayorquin Díaz'),
- (6,5,'12339.00','2011-08-20',1,2,1,'2011-08-20 13:20:13','Cierre de caja para el usuario Saúl Antonio Mayorquin Díaz');
+ (6,5,'12339.00','2011-08-20',1,2,1,'2011-08-20 13:20:13','Cierre de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (7,4,'435.00','2011-08-24',1,1,1,'2011-08-24 21:40:59','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (8,6,'452345.00','2011-08-24',1,1,1,'2011-08-24 21:43:50','Se retiro efectivo para el usuario Saúl Antonio Mayorquin Díaz');
 /*!40000 ALTER TABLE `controlcaja` ENABLE KEYS */;
 
 
@@ -252,6 +254,28 @@ INSERT INTO `controlcajafactura` VALUES  (1,1,2,1,'2011-08-20 13:12:09'),
  (2,2,3,1,'2011-08-20 13:15:06'),
  (3,3,4,1,'2011-08-20 13:16:50');
 /*!40000 ALTER TABLE `controlcajafactura` ENABLE KEYS */;
+
+
+--
+-- Definition of table `correlativocodigo`
+--
+
+DROP TABLE IF EXISTS `correlativocodigo`;
+CREATE TABLE `correlativocodigo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` varchar(4) NOT NULL,
+  `correlativo` mediumtext NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `correlativocodigo`
+--
+
+/*!40000 ALTER TABLE `correlativocodigo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `correlativocodigo` ENABLE KEYS */;
 
 
 --
@@ -547,7 +571,7 @@ CREATE TABLE `facturadetalle` (
   KEY `fk_FacturaDetalle_Productos1` (`idproductos`),
   CONSTRAINT `fk_FacturaDetalle_FacturaEncabezado1` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaDetalle_Productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturadetalle`
@@ -556,7 +580,8 @@ CREATE TABLE `facturadetalle` (
 /*!40000 ALTER TABLE `facturadetalle` DISABLE KEYS */;
 INSERT INTO `facturadetalle` VALUES  (1,1,1,1,'3.0000',1,'2011-08-20 13:12:09'),
  (2,2,1,3,'3.0000',1,'2011-08-20 13:15:06'),
- (3,3,1,2,'3.0000',1,'2011-08-20 13:16:50');
+ (3,3,1,2,'3.0000',1,'2011-08-20 13:16:50'),
+ (4,4,1,1,'3.0000',1,'2011-08-24 21:49:17');
 /*!40000 ALTER TABLE `facturadetalle` ENABLE KEYS */;
 
 
@@ -594,7 +619,7 @@ CREATE TABLE `facturaencabezado` (
   CONSTRAINT `fk_FacturaEncabezado_Clientes1` FOREIGN KEY (`idclientes`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Tiposfacturas1` FOREIGN KEY (`idtiposfacturas`) REFERENCES `tiposfacturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturaencabezado`
@@ -603,7 +628,8 @@ CREATE TABLE `facturaencabezado` (
 /*!40000 ALTER TABLE `facturaencabezado` DISABLE KEYS */;
 INSERT INTO `facturaencabezado` VALUES  (1,'FE-002-20110820-001-0000001',2,'3124',NULL,'2011-08-20',1,'3.0000','0.3600','3.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
  (2,'FE-002-20110820-001-0000002',2,'3125',1,'2011-08-20',1,'9.0000','1.0800','9.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
- (3,'FE-002-20110820-001-0000003',2,'3126',NULL,'2011-08-20',1,'6.0000','0.7200','6.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL);
+ (3,'FE-002-20110820-001-0000003',2,'3126',NULL,'2011-08-20',1,'6.0000','0.7200','6.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
+ (4,'FE-001-20110824-001-0000004',1,'b38ee6bd-0c60-40e0-9b06-745ff851053e',NULL,'2011-08-24',1,'3.0000','0.3600','3.0000','0.0000',0,0,'P','P',1,'2011-08-24',1,1,NULL);
 /*!40000 ALTER TABLE `facturaencabezado` ENABLE KEYS */;
 
 
@@ -625,14 +651,15 @@ CREATE TABLE `inventario` (
   KEY `fk_Inventario_Sucursales1` (`idsucursales`),
   CONSTRAINT `fk_Inventario_Productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Inventario_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `inventario`
 --
 
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-INSERT INTO `inventario` VALUES  (1,1,2,9994,1,'2011-08-20 13:16:50');
+INSERT INTO `inventario` VALUES  (1,1,2,9994,1,'2011-08-20 13:16:50'),
+ (2,1,1,234,1,'2011-08-24 21:46:10');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -778,10 +805,13 @@ CREATE TABLE `movimientoscuentacorriente` (
   `fecha` date NOT NULL,
   `usu` int(11) NOT NULL,
   `fmodif` datetime NOT NULL,
+  `idrubro` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `tipomontocuenta_moviemientocuenta` (`idtipomovimiento`),
   KEY `cuentacorriente_movimientoscuentacorriente` (`idcuentacorriente`),
+  KEY `rubroscuentacorriente_moviemitoscuetacorriente` (`idrubro`),
   CONSTRAINT `cuentacorriente_movimientoscuentacorriente` FOREIGN KEY (`idcuentacorriente`) REFERENCES `cuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `rubroscuentacorriente_moviemitoscuetacorriente` FOREIGN KEY (`idrubro`) REFERENCES `rubroscuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tipomontocuenta_moviemientocuenta` FOREIGN KEY (`idtipomovimiento`) REFERENCES `tipomontocuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -954,7 +984,7 @@ CREATE TABLE `productos` (
 --
 
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES  (1,'026470','ABRAZADERA PLASTICA',NULL,'3.00',1,'2011-08-20 13:07:25');
+INSERT INTO `productos` VALUES  (1,'026470','ABRAZADERA PLASTICA',NULL,'3.00',1,'2011-08-24 21:46:10');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 
@@ -1049,8 +1079,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1059,6 +1089,25 @@ CREATE TABLE `proveeedorproducto` (
 
 /*!40000 ALTER TABLE `proveeedorproducto` DISABLE KEYS */;
 /*!40000 ALTER TABLE `proveeedorproducto` ENABLE KEYS */;
+
+
+--
+-- Definition of table `rubroscuentacorriente`
+--
+
+DROP TABLE IF EXISTS `rubroscuentacorriente`;
+CREATE TABLE `rubroscuentacorriente` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rubroscuentacorriente`
+--
+
+/*!40000 ALTER TABLE `rubroscuentacorriente` DISABLE KEYS */;
+/*!40000 ALTER TABLE `rubroscuentacorriente` ENABLE KEYS */;
 
 
 --
@@ -1287,6 +1336,48 @@ INSERT INTO `usuarios` VALUES  (1,1,'3P5lX3oURN2l1isXbJVY4ROiJ6H19iLSu3BaH9919Uw
 
 
 --
+-- Definition of function `CargarCorrelativoCodigo`
+--
+
+DROP FUNCTION IF EXISTS `CargarCorrelativoCodigo`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CargarCorrelativoCodigo`(
+
+codigo nvarchar(4)
+
+) RETURNS mediumtext CHARSET latin1
+BEGIN
+
+set  @correlativocodigo =0;
+
+select count(*) from correlativocodigo t where upper(t.codigo)=upper(codigo) into @correlativo;
+
+if @correlativo=0 then
+    insert into correlativocodigo(codigo,correlativo) values(upper(codigo),1);
+    return 1;
+else
+    select t.correlativo+1 from correlativocodigo t where upper(t.codigo)=upper(codigo) into @correlativo;
+
+    update correlativocodigo t set
+      t.correlativo=@correlativo
+    where upper(t.codigo)=upper(codigo);
+    return @correlativo;
+
+end if;
+
+return 0;
+
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of function `CrearCorrelativoCodigo`
 --
 
@@ -1295,10 +1386,11 @@ DROP FUNCTION IF EXISTS `CrearCorrelativoCodigo`;
 DELIMITER $$
 
 /*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
-CREATE DEFINER=`root`@`localhost` FUNCTION `CrearCorrelativoCodigo`(iniciales nvarchar(2),sucursal int(11), usuario int(11), correlativo int) RETURNS varchar(70) CHARSET utf8
+CREATE DEFINER=`root`@`localhost` FUNCTION `CrearCorrelativoCodigo`(iniciales nvarchar(2),sucursal int(11), usuario int(11)) RETURNS varchar(70) CHARSET utf8
 BEGIN
-
-return concat(upper(iniciales),"-",repeat("0",3-CHARACTER_LENGTH(sucursal)),upper(sucursal),"-", upper(year(now())),repeat("0",2-CHARACTER_LENGTH(upper(month(now())))) , upper(month(now())), repeat("0",2-CHARACTER_LENGTH(upper(day(now())))), upper(day(now())),"-",repeat("0",3-CHARACTER_LENGTH(usuario)),upper(usuario),"-", repeat("0",7-CHARACTER_LENGTH(correlativo)),upper(correlativo) );
+set @correlativoc=0;
+select CargarCorrelativoCodigo(iniciales) into @correlativoc;
+return concat(upper(iniciales),"-",repeat("0",3-CHARACTER_LENGTH(sucursal)),upper(sucursal),"-", upper(year(now())),repeat("0",2-CHARACTER_LENGTH(upper(month(now())))) , upper(month(now())), repeat("0",2-CHARACTER_LENGTH(upper(day(now())))), upper(day(now())),"-",repeat("0",3-CHARACTER_LENGTH(usuario)),upper(usuario),"-", repeat("0",7-CHARACTER_LENGTH(@correlativoc)),upper(@correlativoc) );
 
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
