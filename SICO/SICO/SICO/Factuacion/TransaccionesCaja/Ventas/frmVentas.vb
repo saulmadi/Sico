@@ -212,6 +212,7 @@ Public Class frmVentas
                         Me.PanelAccion1.lblEstado.Text = "Guardando..."
                         If cmbTiposFacturas.SelectedIndex > -1 Then
                             Factura.idclientes = CrtClientes.Guardar()
+
                             If Factura.idclientes = 0 Then
                                 CrtClientes.Nuevo()
                             End If
@@ -253,7 +254,7 @@ Public Class frmVentas
                                     MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                                 End If
                             Else
-                                
+                               
 
                             End If
 
@@ -310,6 +311,7 @@ Public Class frmVentas
             Me.PanelAccion1.lblEstado.Text = "Guardando..."
             If cmbTiposFacturas.SelectedIndex > -1 Then
                 Factura.idclientes = CrtClientes.Guardar()
+                Dim s = CrtClientes.Cliente.idEntidades
                 If Factura.idclientes = 0 Then
                     CrtClientes.Nuevo()
                 End If

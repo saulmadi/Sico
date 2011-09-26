@@ -230,7 +230,7 @@
       <FileName>FacturaDetalle.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.FacturaEncabezado">
+  <Class Name="SiCo.lgla2.FacturaEncabezado" Collapsed="true">
     <Position X="11" Y="4.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -255,7 +255,7 @@
       <FileName>ControlCaja.vb</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="SiCo.lgla2.TransaccionesTrajetaCredito">
+  <Class Name="SiCo.lgla2.TransaccionesTrajetaCredito" Collapsed="true">
     <Position X="0.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAEAAAAAAIAAARARAAAAIAAAAAIQBAAACAQ=</HashCode>
