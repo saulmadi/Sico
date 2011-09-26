@@ -274,7 +274,7 @@ Public Class frmVentas
                                         Dim cuent = New Cuentacorriente
                                         cuent.AgragrarDebitoMovimientoProductos(CrtClientes.Cliente.idEntidades, Factura.total, frmCre.txtDescripcion.Text, frmCre.dteFechaVencimiento.Value, Me.PanelAccion1.sucursal.Id)
                                     Else
-                                        Throw New ApplicationException("Canceló los terminos del plazo")
+                                        Throw New ApplicationException("Canceló los terminos del plazo de la deuda")
                                     End If
                                     
                                     
