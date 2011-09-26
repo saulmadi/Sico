@@ -138,6 +138,8 @@ Public Class crtClientes
 
                 Me.Cliente.idEntidades = ident
                 Me.Cliente.Guardar()
+            Else
+                Return 0
             End If
             Return Cliente.Id
         Catch ex As Exception
@@ -212,4 +214,5 @@ Public Class crtClientes
     End Sub
 #End Region
 
+   
 End Class

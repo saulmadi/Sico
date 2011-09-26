@@ -384,7 +384,7 @@ namespace SiCo.lgla
                 _Comando.CommandType = CommandType.Text ;
                 _Comando.CommandText = comando ;               
                 _Comando.Connection = _Conexion.Conexion;
-                _Conexion.AbrirConexion();
+                _Conexion.AbrirConexion();                
                 o = _Comando.ExecuteScalar ();
                 _Conexion.CerrarConexion();
                 return o;     
@@ -590,6 +590,54 @@ namespace SiCo.lgla
             }
         }
 
+        public  T CargarClase<T>(int indice, T obj) where T:Entidad 
+        {
+            try
+            {
+                var type = typeof(T);
+                
+                var campos = type.GetProperties()  ;
+                var v = obj;
+                if (campos.Count() == 0)
+                    return null;
+                foreach (var i in campos)
+                {
+                    try
+                    {
+                        var d = Registro(indice, i.Name.ToLower());
+                        if (d != null)
+                        {
+                            if (i.Name.ToLower() =="id")
+                                
+                                obj._Id = (int)d;
+                            else 
+                                i.SetValue(obj,d,null);
+                             
+                        }
+                        
+                            
+                    }
+                    catch { }
+                }
+                return v;
+            }
+            catch
+            { return null;}
+            
+        }
+
+        public  List<T> CaragarColeccion<T>() where T : Entidad, new()
+        {
+            var l = new List<T>();
+            for (int x = 0; x < this.TotalRegistros  ; x++)            
+            {
+                var valor = CargarClase<T>(x, new T());
+                if (valor!=null ) l.Add (valor);
+            }
+            return l;
+ 
+        }
+       
         public Boolean Eliminar()
         {
             try

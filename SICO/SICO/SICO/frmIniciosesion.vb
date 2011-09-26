@@ -38,10 +38,6 @@ Public Class frmIniciosesion
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         Try
-            
-
-
-
             _Autorizo = False
             If Contendor.MenuPrincipalSingelton Is Nothing Then
                 Contendor.MenuPrincipalSingelton = New frmMenuPrincipal

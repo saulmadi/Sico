@@ -680,6 +680,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Resources\logo transparente.png" />
     <None Include="Resources\Logo nombre .png" />
     <None Include="Resources\NUEVO LOGO COLMOTOS.jpg" />
