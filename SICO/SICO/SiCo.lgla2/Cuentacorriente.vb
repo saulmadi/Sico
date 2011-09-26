@@ -46,6 +46,7 @@ Partial Public Class Cuentacorriente
 
 #End Region
     Public Sub New()
+        MyBase.New()
         OnCreated()
 
         Me.ComandoMantenimiento = "CuentaCorriente_Mant"
@@ -186,8 +187,27 @@ Partial Public Class Cuentacorriente
         Return MyBase.EjecutaFuncion("select CalcularSaldo(" + idrubro.ToString + "," + identidad.ToString + ") ")
     End Function
 
-#End Region
+    Public Sub AgragrarDebitoMovimientoProductos(ByVal identidad As Long, ByVal monto As Decimal, ByVal descripcion As String, ByVal fechavencimiento As Date, ByVal idsucursal As Long)
+        Dim agragar = New AgregarCuentaPropietario
+        agragar.Guardar(identidad, 1, fechavencimiento, monto, descripcion, 1, idsucursal)
+    End Sub
 
+    Public Sub AgragrarCreditoMovimientoProductos(ByVal identidad As Long, ByVal monto As Decimal, ByVal descripcion As String, ByVal fechavencimiento As Date, ByVal idsucursal As Long)
+        Dim agragar = New AgregarCuentaPropietario
+        agragar.Guardar(identidad, 2, fechavencimiento, monto, descripcion, 1, idsucursal)
+    End Sub
+
+    Public Sub AgragrarDebitoMovimientoMotocicletas(ByVal identidad As Long, ByVal monto As Decimal, ByVal descripcion As String, ByVal fechavencimiento As Date, ByVal idsucursal As Long)
+        Dim agragar = New AgregarCuentaPropietario
+        agragar.Guardar(identidad, 1, fechavencimiento, monto, descripcion, 2, idsucursal)
+    End Sub
+
+    Public Sub AgragrarCreditoMovimientoMotocicletas(ByVal identidad As Long, ByVal monto As Decimal, ByVal descripcion As String, ByVal fechavencimiento As Date, ByVal idsucursal As Long)
+        Dim agragar = New AgregarCuentaPropietario
+        agragar.Guardar(identidad, 2, fechavencimiento, monto, descripcion, 2, idsucursal)
+    End Sub
+
+#End Region
 
 End Class
 
