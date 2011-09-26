@@ -5,7 +5,8 @@ CREATE PROCEDURE sico.`AgregarCuentaPropietario`(identidad           int(11),
                                           descripcion         nvarchar(250),
                                           idrubro             int(11),
                                           idsucursal          int(11),
-                                          usu                 int(11),
+                                          idtipomonto         int(11),
+                                          usu                 int(11),                                          
                                           INOUT idcuentacorriente int(11),
                                           INOUT codigoCuentaCorriente nvarchar(70),
                                           INOUT idmovimento int(11))
@@ -35,7 +36,7 @@ BEGIN
 
               call MovimientoCuentaCorriente_Mant( idmovimento,
                                                   idcuentacorriente,
-                                                  1,
+                                                  idtipomonto,
                                                   monto,
                                                   fechavencimiento,
                                                   fecha,
