@@ -72,8 +72,7 @@ Public Class frmVentas
             Me.grdDetalle.DarFormato("Precio", "Precio", True)
             Me.grdDetalle.DarFormato("CantidadEditable", "Cantidad", True)
 
-            Me.txtDesc.Text = Factura.descuento
-
+            
             lblNumeroFactura.Text = Factura.NumeroFacturaS
             Dim cliente As New Clientes
             cliente.Buscar("id", Factura.idclientes)
@@ -139,7 +138,8 @@ Public Class frmVentas
                 CrtClientes.Enabled = True
                 Me.PanelAccion1.BotonGuardar.Enabled = False
             End If
-
+            Me.txtDesc.Text = Factura.descuentovalor
+            Me.txtDescPor.Text = Factura.descuento
             grdDetalle.DataSource = Factura.ListaDetalle
             calculartotales()
 
@@ -260,7 +260,7 @@ Public Class frmVentas
                                     Factura.IniciarTransaccion()
                                     Dim c = New ControlCaja
                                     c.Cajero = Me.PanelAccion1.Usuario.Id
-                                    c.Descripcion = "Pago de factura al crédito para número de cliente " + CrtClientes.Cliente.Id
+                                    c.Descripcion = "Pago de factura al crédito para el cliente " + CrtClientes.Cliente.NombreMantenimiento
                                     c.Fecha = Now
                                     c.idSucursales = Me.PanelAccion1.sucursal.Id
                                     c.idTransaccionesCaja = 1
@@ -272,12 +272,16 @@ Public Class frmVentas
                                     Dim frmCre As New frmCreditoVencimiento
                                     If frmCre.ShowDialog = Windows.Forms.DialogResult.OK Then
                                         Dim cuent = New Cuentacorriente
+                                        Dim saldo = cuent.CalcularSaldo(1, CrtClientes.Cliente.idEntidades)
+                                        If saldo > 0 Then
+                                            Throw New ApplicationException("Este cliente tiene un saldo pendiente")
+                                        End If
                                         cuent.AgragrarDebitoMovimientoProductos(CrtClientes.Cliente.idEntidades, Factura.total, frmCre.txtDescripcion.Text, frmCre.dteFechaVencimiento.Value, Me.PanelAccion1.sucursal.Id)
                                     Else
                                         Throw New ApplicationException("Canceló los terminos del plazo de la deuda")
                                     End If
-                                    
-                                    
+
+
                                     Factura.FacturarProducto()
 
                                     Factura.CommitTransaccion()
@@ -350,6 +354,8 @@ Public Class frmVentas
                 Factura.idsucursales = PanelAccion1.sucursal.Id
                 Factura.idtiposfacturas = cmbTiposFacturas.SelectedValue
                 Factura.numerofactura = Guid.NewGuid.ToString
+
+
                 Factura.motoproducto = "P"
                 Factura.GuardarFacturaProducto()
                 Factura = _factura
@@ -382,6 +388,7 @@ Public Class frmVentas
     Private Sub txtDescPor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescPor.TextChanged
         If txtDescPor.Text <> String.Empty Then
             Me.Factura.descuento = txtDescPor.Text
+
         Else
             Me.Factura.descuento = 0
         End If

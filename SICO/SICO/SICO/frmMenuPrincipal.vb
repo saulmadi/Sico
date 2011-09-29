@@ -93,6 +93,15 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Clientes"
+#Region "Cuentas por Cobrar"
+
+    Private Sub AbonosACuentaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AbonosACuentaToolStripMenuItem.Click
+        Dim frm As New frmAbonos
+        frm.rubro = 1
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
+#End Region
     Private Sub RegistroDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeClientesToolStripMenuItem.Click
         Dim frm As New frmRegistroClientes
         frm.MdiParent = Me
@@ -248,8 +257,5 @@ Public Class frmMenuPrincipal
 
 #End Region
 
-
-
-
-
+    
 End Class

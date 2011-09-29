@@ -13,7 +13,7 @@ Public Class AgregarCuentaPropietario
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idrubro"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idsucursal"))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idcuentacorriente", 0, ParameterDirection.InputOutput))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigoCuentaCorriente", 0, ParameterDirection.InputOutput))
+        Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigoCuentaCorriente", "", ParameterDirection.InputOutput))
         Me.ColeccionParametrosMantenimiento.Add(New Parametro("idmovimento", 0, ParameterDirection.InputOutput))
 
 
@@ -25,16 +25,17 @@ Public Class AgregarCuentaPropietario
         Me.ValorParametrosMantenimiento("idrubro", idrubro)
         Me.ValorParametrosMantenimiento("idsucursal", idsucursal)
         Me.ValorParametrosMantenimiento("fechavencimiento", fechavencimiento)
-        Me.ValorParametrosBusqueda("idtipomonto", idtipomonto)
+        Me.ValorParametrosMantenimiento("idtipomonto", idtipomonto)
 
+        MyBase.Guardar(True)
         If Me.ValorParametrosMantenimiento("idcuentacorriente") = 0 Then
             Throw New ApplicationException("Error al generar la cuenta corriente")
         End If
-        If Me.ValorParametrosMantenimiento("idmovimiento") = 0 Then
+        If Me.ValorParametrosMantenimiento("idmovimento") = 0 Then
             Throw New ApplicationException("Error al generar el movimiento de la cuenta corriente")
         End If
 
-        MyBase.Guardar(True)
+
     End Sub
 #End Region
     

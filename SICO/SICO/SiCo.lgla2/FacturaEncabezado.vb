@@ -412,7 +412,7 @@ Public Class FacturaEncabezado
         ValorParametrosMantenimiento("isv", Me.isv)
         ValorParametrosMantenimiento("subtotal", Me.subtotal)
         ValorParametrosMantenimiento("descuentovalor", Me.descuentovalor)
-        ValorParametrosMantenimiento("descuento", Me.descuentovalor)
+        ValorParametrosMantenimiento("descuento", Me.descuento)
         ValorParametrosMantenimiento("idtiposfacturas", Me.idtiposfacturas)
         ValorParametrosMantenimiento("estado", Me.estado)
         ValorParametrosMantenimiento("motoproducto", Me.motoproducto)
