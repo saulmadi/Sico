@@ -19,7 +19,7 @@ Public Class frmCreditoVencimiento
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
 
-        If Mensaje.SioNo("¿Esta seguro del plazo de pago de la deuda?") = Windows.Forms.DialogResult.OK Then
+        If Mensaje.SioNo("¿Esta seguro del plazo de pago de la deuda?") = Windows.Forms.DialogResult.Yes Then
             Me.Close()
             Me.DialogResult = Windows.Forms.DialogResult.OK
         End If

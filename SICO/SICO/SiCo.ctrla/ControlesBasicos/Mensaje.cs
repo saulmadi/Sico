@@ -16,5 +16,9 @@ namespace SiCo.ctrla.ControlesBasicos
         {
             return MessageBox.Show(Msj, "Advertencia", MessageBoxButtons.YesNo , MessageBoxIcon.Question);
         }
+        public static DialogResult Informacion(string Msj)
+        {
+            return MessageBox.Show(Msj, "Información",MessageBoxButtons.OK , MessageBoxIcon.Information );
+        }
     }
 }
