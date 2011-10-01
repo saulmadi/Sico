@@ -89,6 +89,33 @@ CREATE TABLE `ventidades` (
 );
 
 --
+-- Temporary table structure for view `vmovimientoscuentacorriente`
+--
+DROP TABLE IF EXISTS `vmovimientoscuentacorriente`;
+DROP VIEW IF EXISTS `vmovimientoscuentacorriente`;
+CREATE TABLE `vmovimientoscuentacorriente` (
+  `id` int(11),
+  `idcuentacorriente` int(11),
+  `idtipomovimiento` int(11),
+  `monto` decimal(18,2),
+  `descripcion` varchar(200),
+  `fechavencimiento` date,
+  `fecha` date,
+  `usu` int(11),
+  `fmodif` datetime,
+  `idrubro` int(11),
+  `codigo` varchar(70),
+  `identidaddeudora` int(11),
+  `identidadbeneficiaria` int(11),
+  `estado` varchar(5),
+  `fechacreacion` date,
+  `idsucursales` int(11),
+  `habilitado` int(1) unsigned,
+  `debito` decimal(18,2),
+  `credito` decimal(18,2)
+);
+
+--
 -- Temporary table structure for view `vproductos`
 --
 DROP TABLE IF EXISTS `vproductos`;
@@ -145,14 +172,17 @@ CREATE TABLE `clientes` (
   UNIQUE KEY `Entidad_Unica` (`identidades`),
   KEY `fk_Clientes_Entidades1` (`identidades`),
   CONSTRAINT `fk_Clientes_Entidades1` FOREIGN KEY (`identidades`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `clientes`
 --
 
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES  (1,8,1,'2011-08-20 13:14:41',NULL);
+INSERT INTO `clientes` VALUES  (1,8,1,'2011-08-20 13:14:41',NULL),
+ (2,1,1,'2011-10-01 08:13:26',NULL),
+ (3,9,1,'2011-09-27 22:52:45',NULL),
+ (4,10,1,'2011-09-30 22:45:48',NULL);
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 
 
@@ -208,7 +238,7 @@ CREATE TABLE `controlcaja` (
   CONSTRAINT `idsucursale_sucursales` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtrasnsacciones_transaccionse` FOREIGN KEY (`idtransaccionescaja`) REFERENCES `transaccionescaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idusuario_cajero` FOREIGN KEY (`cajero`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcaja`
@@ -222,7 +252,20 @@ INSERT INTO `controlcaja` VALUES  (1,4,'12342.00','2011-08-20',1,2,1,'2011-08-20
  (5,6,'21.00','2011-08-20',1,2,1,'2011-08-20 13:18:16','Se retiro efectivo para el usuario Saúl Antonio Mayorquin Díaz'),
  (6,5,'12339.00','2011-08-20',1,2,1,'2011-08-20 13:20:13','Cierre de caja para el usuario Saúl Antonio Mayorquin Díaz'),
  (7,4,'435.00','2011-08-24',1,1,1,'2011-08-24 21:40:59','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
- (8,6,'452345.00','2011-08-24',1,1,1,'2011-08-24 21:43:50','Se retiro efectivo para el usuario Saúl Antonio Mayorquin Díaz');
+ (8,6,'452345.00','2011-08-24',1,1,1,'2011-08-24 21:43:50','Se retiro efectivo para el usuario Saúl Antonio Mayorquin Díaz'),
+ (9,4,'332.00','2011-09-08',1,1,1,'2011-09-08 18:27:35','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (10,4,'123312.00','2011-09-26',1,1,1,'2011-09-26 18:32:50','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (36,1,'9.00','2011-09-26',1,1,1,'2011-09-26 21:00:12','Pago de factura al crédito para número de cliente 2'),
+ (39,1,'2.97','2011-09-26',1,1,1,'2011-09-26 22:55:39','Pago de factura al crédito para número de cliente 2'),
+ (40,4,'133.00','2011-09-27',1,1,1,'2011-09-27 20:41:00','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (41,4,'123132.00','2011-09-28',1,1,1,'2011-09-28 20:48:45','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (42,3,'30.00','2011-09-28',1,1,1,'2011-09-28 20:49:12','Pago con tarjeta de crédito en factura'),
+ (43,11,'1.00','2011-09-28',1,1,1,'2011-09-28 21:29:14','Abono a cuenta  a cliente Saúl Antonio Mayorquin Díaz'),
+ (44,12,'1.00','2011-09-28',1,1,1,'2011-09-28 21:29:14','Abono a cuenta  a cliente Saúl Antonio Mayorquin Díaz'),
+ (45,4,'4654.00','2011-09-30',1,1,1,'2011-09-30 21:10:35','Apertura de caja para el usuario Saúl Antonio Mayorquin Díaz'),
+ (47,1,'60.00','2011-09-30',1,1,1,'2011-09-30 22:39:52','Pago de factura al crédito para el cliente Javier Eduardo Atala'),
+ (48,1,'60.00','2011-09-30',1,1,1,'2011-09-30 22:43:32','Pago de factura al crédito para el cliente Javier Eduardo Atala'),
+ (49,11,'10.00','2011-09-30',1,1,1,'2011-09-30 22:44:28','Abono a cuenta  a cliente Javier Eduardo Atala');
 /*!40000 ALTER TABLE `controlcaja` ENABLE KEYS */;
 
 
@@ -243,7 +286,7 @@ CREATE TABLE `controlcajafactura` (
   KEY `ControlCaja_Tintermedia` (`idcontrolcaja`),
   CONSTRAINT `ControlCaja_Tintermedia` FOREIGN KEY (`idcontrolcaja`) REFERENCES `controlcaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `facturaencabezado_Tintermedia` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `controlcajafactura`
@@ -252,8 +295,39 @@ CREATE TABLE `controlcajafactura` (
 /*!40000 ALTER TABLE `controlcajafactura` DISABLE KEYS */;
 INSERT INTO `controlcajafactura` VALUES  (1,1,2,1,'2011-08-20 13:12:09'),
  (2,2,3,1,'2011-08-20 13:15:06'),
- (3,3,4,1,'2011-08-20 13:16:50');
+ (3,3,4,1,'2011-08-20 13:16:50'),
+ (29,9,36,1,'2011-09-26 21:00:12'),
+ (32,10,39,1,'2011-09-26 22:55:39'),
+ (33,12,42,1,'2011-09-28 20:49:12'),
+ (35,13,47,1,'2011-09-30 22:39:55'),
+ (36,13,48,1,'2011-09-30 22:43:32');
 /*!40000 ALTER TABLE `controlcajafactura` ENABLE KEYS */;
+
+
+--
+-- Definition of table `controlcajamoviemiento`
+--
+
+DROP TABLE IF EXISTS `controlcajamoviemiento`;
+CREATE TABLE `controlcajamoviemiento` (
+  `id` int(11) NOT NULL,
+  `idmovimientoscuentacorriente` int(11) NOT NULL,
+  `idcontrolcaja` int(11) NOT NULL,
+  `usu` int(11) NOT NULL,
+  `fmodif` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_controlcajamoviemiento_movimientoscuentacorriente1` (`idmovimientoscuentacorriente`),
+  KEY `fk_controlcaja_controlmovimientos` (`idcontrolcaja`),
+  CONSTRAINT `fk_controlcajamoviemiento_movimientoscuentacorriente1` FOREIGN KEY (`idmovimientoscuentacorriente`) REFERENCES `movimientoscuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_controlcaja_controlmovimientos` FOREIGN KEY (`idcontrolcaja`) REFERENCES `controlcaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `controlcajamoviemiento`
+--
+
+/*!40000 ALTER TABLE `controlcajamoviemiento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `controlcajamoviemiento` ENABLE KEYS */;
 
 
 --
@@ -268,13 +342,18 @@ CREATE TABLE `correlativocodigo` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `codigo_UNIQUE` (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `correlativocodigo`
 --
 
 /*!40000 ALTER TABLE `correlativocodigo` DISABLE KEYS */;
+INSERT INTO `correlativocodigo` VALUES  (2,'OC','1'),
+ (3,'OR','1'),
+ (4,'OS','1'),
+ (6,'FE','8'),
+ (16,'CC','4');
 /*!40000 ALTER TABLE `correlativocodigo` ENABLE KEYS */;
 
 
@@ -300,13 +379,15 @@ CREATE TABLE `cuentacorriente` (
   KEY `entidadbeneficiaria_cuentacorriente` (`identidadbeneficiaria`),
   CONSTRAINT `entidadbeneficiaria_cuentacorriente` FOREIGN KEY (`identidadbeneficiaria`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `entidaddeudora_cuentacorriente` FOREIGN KEY (`identidaddeudora`) REFERENCES `entidades` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `cuentacorriente`
 --
 
 /*!40000 ALTER TABLE `cuentacorriente` DISABLE KEYS */;
+INSERT INTO `cuentacorriente` VALUES  (3,'CC-001-20110926-001-0000003',1,4,'A',1,'2011-09-26',1,'2011-09-26 21:00:31',1),
+ (5,'CC-001-20110930-001-0000004',10,4,'A',1,'2011-09-30',1,'2011-09-30 22:40:10',1);
 /*!40000 ALTER TABLE `cuentacorriente` ENABLE KEYS */;
 
 
@@ -420,13 +501,14 @@ CREATE TABLE `detalleorden` (
   KEY `Orden_Detalle` (`idordencompra`),
   CONSTRAINT `Orden_Detalle` FOREIGN KEY (`idordencompra`) REFERENCES `ordenescompras` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Producto_Detalle` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detalleorden`
 --
 
 /*!40000 ALTER TABLE `detalleorden` DISABLE KEYS */;
+INSERT INTO `detalleorden` VALUES  (1,2,1,8,1,'2011-09-05 20:03:00');
 /*!40000 ALTER TABLE `detalleorden` ENABLE KEYS */;
 
 
@@ -449,13 +531,14 @@ CREATE TABLE `detallerequisicion` (
   KEY `idrequicion_detalle` (`idrequisicion`),
   CONSTRAINT `idproducto_productos_requiscion` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idrequicion_detalle` FOREIGN KEY (`idrequisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallerequisicion`
 --
 
 /*!40000 ALTER TABLE `detallerequisicion` DISABLE KEYS */;
+INSERT INTO `detallerequisicion` VALUES  (1,1,1,41,'2011-09-05 20:33:29',1);
 /*!40000 ALTER TABLE `detallerequisicion` ENABLE KEYS */;
 
 
@@ -477,13 +560,14 @@ CREATE TABLE `detallesalida` (
   KEY `detalles_productos` (`idproducto`),
   CONSTRAINT `detalles_productos` FOREIGN KEY (`idproducto`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `detalles_salida` FOREIGN KEY (`idsalida`) REFERENCES `ordenessalida` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detallesalida`
 --
 
 /*!40000 ALTER TABLE `detallesalida` DISABLE KEYS */;
+INSERT INTO `detallesalida` VALUES  (1,1,1,4,'2011-09-05 20:33:58',1);
 /*!40000 ALTER TABLE `detallesalida` ENABLE KEYS */;
 
 
@@ -508,21 +592,23 @@ CREATE TABLE `entidades` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `Identificacion` (`identificacion`,`tipoidentidad`) USING BTREE,
   UNIQUE KEY `Nombre` (`entidadnombre`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `entidades`
 --
 
 /*!40000 ALTER TABLE `entidades` DISABLE KEYS */;
-INSERT INTO `entidades` VALUES  (1,27729729,'Col. Piedras Bonitas','saulmadi@gmail.com',1,'08011988125246',1,'2011-08-20','Saúl Antonio Mayorquin Díaz&','0801-1988-12524','I',96330670),
+INSERT INTO `entidades` VALUES  (1,27729729,'Col. Piedras Bonitas','saulmadi@gmail.com',1,'08011988125246',1,'2011-10-01','Saúl Antonio Mayorquin Díaz&','0801-1988-12524','I',96330670),
  (2,27724816,'Col. INVA, bajos del hotel morales','colmotos@yahoo.com',0,NULL,1,'2011-08-20','Colmotos Principal','4e46eed3-4671-44fc-80bc-ffa407c384c6','J',NULL),
  (3,NULL,'Bo Cabañas, edificio roble, Comayagua,Comayagua','colmotos.g@gmail.com',1,NULL,1,'2011-08-20','Gustavo Adolfo Carvajal Calvo&','2403200602445','R',33517473),
  (4,NULL,NULL,'colmotos_@hotmail.com',1,'08018009213851',1,'2011-08-20','Luis Fernando Carvajal Castro&','0208200500330','R',NULL),
  (5,22214131,NULL,'ventas@intermotos.net',1,NULL,1,'2011-08-20','Manuel Paz@','44a406d3-5f93-4dcf-afd2-c4df1bd6b9af','N',98923713),
  (6,22214131,NULL,'ventas@intermotos.net',0,NULL,1,'2011-08-20','Intermotos','ee165b7d-eaf3-4972-9012-d16e9122fa36','J',22214131),
  (7,27723621,'Blv Cuarto Centenario,  bajos del hotel emperador',NULL,0,NULL,1,'2011-08-20','Colmotos Sucursal','536d4254-864c-4292-b262-6526a6852701','J',27723621),
- (8,NULL,NULL,NULL,1,NULL,1,'2011-08-20','Carlos Bogran@','387adf61-0154-4340-93ac-014d46047ab5','N',NULL);
+ (8,NULL,NULL,NULL,1,NULL,1,'2011-08-20','Carlos Bogran@','387adf61-0154-4340-93ac-014d46047ab5','N',NULL),
+ (9,NULL,NULL,NULL,1,NULL,1,'2011-09-27','carlos villa corta maldonado&','0301-1988-00001','I',NULL),
+ (10,NULL,NULL,NULL,1,NULL,1,'2011-09-30','Javier Eduardo Atala%','0801-1122-12112','I',NULL);
 /*!40000 ALTER TABLE `entidades` ENABLE KEYS */;
 
 
@@ -571,7 +657,7 @@ CREATE TABLE `facturadetalle` (
   KEY `fk_FacturaDetalle_Productos1` (`idproductos`),
   CONSTRAINT `fk_FacturaDetalle_FacturaEncabezado1` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaDetalle_Productos1` FOREIGN KEY (`idproductos`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturadetalle`
@@ -581,7 +667,15 @@ CREATE TABLE `facturadetalle` (
 INSERT INTO `facturadetalle` VALUES  (1,1,1,1,'3.0000',1,'2011-08-20 13:12:09'),
  (2,2,1,3,'3.0000',1,'2011-08-20 13:15:06'),
  (3,3,1,2,'3.0000',1,'2011-08-20 13:16:50'),
- (4,4,1,1,'3.0000',1,'2011-08-24 21:49:17');
+ (4,4,1,1,'3.0000',1,'2011-08-24 21:49:17'),
+ (5,6,1,4,'3.0000',1,'2011-09-05 20:34:34'),
+ (6,7,1,2,'3.0000',1,'2011-09-08 18:28:02'),
+ (7,8,1,1,'3.0000',1,'2011-09-16 23:10:37'),
+ (8,9,1,3,'3.0000',1,'2011-09-26 21:01:31'),
+ (9,10,1,1,'3.0000',1,'2011-09-26 22:55:50'),
+ (10,11,1,1,'3.0000',1,'2011-09-27 20:56:59'),
+ (11,12,1,10,'3.0000',1,'2011-09-28 20:49:12'),
+ (12,13,1,20,'3.0000',1,'2011-09-30 22:43:37');
 /*!40000 ALTER TABLE `facturadetalle` ENABLE KEYS */;
 
 
@@ -619,7 +713,7 @@ CREATE TABLE `facturaencabezado` (
   CONSTRAINT `fk_FacturaEncabezado_Clientes1` FOREIGN KEY (`idclientes`) REFERENCES `clientes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Sucursales1` FOREIGN KEY (`idsucursales`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_FacturaEncabezado_Tiposfacturas1` FOREIGN KEY (`idtiposfacturas`) REFERENCES `tiposfacturas` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `facturaencabezado`
@@ -629,8 +723,41 @@ CREATE TABLE `facturaencabezado` (
 INSERT INTO `facturaencabezado` VALUES  (1,'FE-002-20110820-001-0000001',2,'3124',NULL,'2011-08-20',1,'3.0000','0.3600','3.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
  (2,'FE-002-20110820-001-0000002',2,'3125',1,'2011-08-20',1,'9.0000','1.0800','9.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
  (3,'FE-002-20110820-001-0000003',2,'3126',NULL,'2011-08-20',1,'6.0000','0.7200','6.0000','0.0000',0,0,'F','P',1,'2011-08-20',1,1,NULL),
- (4,'FE-001-20110824-001-0000004',1,'b38ee6bd-0c60-40e0-9b06-745ff851053e',NULL,'2011-08-24',1,'3.0000','0.3600','3.0000','0.0000',0,0,'P','P',1,'2011-08-24',1,1,NULL);
+ (4,'FE-001-20110824-001-0000004',1,'b38ee6bd-0c60-40e0-9b06-745ff851053e',NULL,'2011-08-24',1,'3.0000','0.3600','3.0000','0.0000',0,0,'P','P',1,'2011-08-24',1,1,NULL),
+ (6,'FE-001-20110905-001-0000001',1,'f493820e-e8ea-4de7-9ea8-6c52b0ad5450',NULL,'2011-09-05',1,'12.0000','1.4400','12.0000','0.0000',0,0,'P','P',1,'2011-09-05',1,NULL,NULL),
+ (7,'FE-001-20110908-001-0000002',1,'1d982ba2-6e95-4a28-85d6-abcba7f9bdef',NULL,'2011-09-08',1,'6.0000','0.7200','6.0000','0.0000',0,0,'P','P',1,'2011-09-08',1,1,NULL),
+ (8,'FE-001-20110916-001-0000003',1,'1f6f7848-f44d-4bbb-a275-eb7691fe4101',NULL,'2011-09-16',1,'3.0000','0.3600','3.0000','0.0000',0,0,'P','P',1,'2011-09-16',1,NULL,NULL),
+ (9,'FE-001-20110926-001-0000004',1,'143',2,'2011-09-26',2,'9.0000','1.0800','9.0000','0.0000',0,0,'F','P',1,'2011-09-26',1,1,NULL),
+ (10,'FE-001-20110926-001-0000005',1,'144',2,'2011-09-26',2,'2.9700','0.3564','3.0000','0.0300',0,0,'F','P',1,'2011-09-26',1,1,NULL),
+ (11,'FE-001-20110926-001-0000006',1,'ae349a91-49a1-423d-bed9-df032699308d',3,'2011-09-27',2,'2.5608','0.0000','3.0000','0.0900',3,1,'P','P',1,'2011-09-27',1,NULL,NULL),
+ (12,'FE-001-20110928-001-0000007',1,'145',NULL,'2011-09-28',1,'30.0000','3.6000','30.0000','0.0000',0,0,'F','P',1,'2011-09-28',1,1,NULL),
+ (13,'FE-001-20110930-001-0000008',1,'146',4,'2011-09-30',2,'60.0000','7.2000','60.0000','0.0000',0,0,'F','P',1,'2011-09-30',1,1,NULL);
 /*!40000 ALTER TABLE `facturaencabezado` ENABLE KEYS */;
+
+
+--
+-- Definition of table `facturatransaccionestarjetacredito`
+--
+
+DROP TABLE IF EXISTS `facturatransaccionestarjetacredito`;
+CREATE TABLE `facturatransaccionestarjetacredito` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idfacturaencabezado` int(11) NOT NULL,
+  `idtransaccionestarjetacredito` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_facturatransaccionestarjetacredito_facturaencabezado1` (`idfacturaencabezado`),
+  KEY `fk_facturatransaccionestarjetacredito_transaccionestarjetacre1` (`idtransaccionestarjetacredito`),
+  CONSTRAINT `fk_facturatransaccionestarjetacredito_facturaencabezado1` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_facturatransaccionestarjetacredito_transaccionestarjetacre1` FOREIGN KEY (`idtransaccionestarjetacredito`) REFERENCES `transaccionestarjetacredito` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `facturatransaccionestarjetacredito`
+--
+
+/*!40000 ALTER TABLE `facturatransaccionestarjetacredito` DISABLE KEYS */;
+INSERT INTO `facturatransaccionestarjetacredito` VALUES  (1,12,2);
+/*!40000 ALTER TABLE `facturatransaccionestarjetacredito` ENABLE KEYS */;
 
 
 --
@@ -659,7 +786,7 @@ CREATE TABLE `inventario` (
 
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
 INSERT INTO `inventario` VALUES  (1,1,2,9994,1,'2011-08-20 13:16:50'),
- (2,1,1,234,1,'2011-08-24 21:46:10');
+ (2,1,1,200,1,'2011-09-30 22:43:37');
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 
 
@@ -796,7 +923,7 @@ INSERT INTO `motocicletasimagenes` VALUES  (5,0xFFD8FFE000104A464946000101010060
 
 DROP TABLE IF EXISTS `movimientoscuentacorriente`;
 CREATE TABLE `movimientoscuentacorriente` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `idcuentacorriente` int(11) NOT NULL,
   `idtipomovimiento` int(11) NOT NULL,
   `monto` decimal(18,2) NOT NULL,
@@ -813,13 +940,19 @@ CREATE TABLE `movimientoscuentacorriente` (
   CONSTRAINT `cuentacorriente_movimientoscuentacorriente` FOREIGN KEY (`idcuentacorriente`) REFERENCES `cuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `rubroscuentacorriente_moviemitoscuetacorriente` FOREIGN KEY (`idrubro`) REFERENCES `rubroscuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tipomontocuenta_moviemientocuenta` FOREIGN KEY (`idtipomovimiento`) REFERENCES `tipomontocuentacorriente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `movimientoscuentacorriente`
 --
 
 /*!40000 ALTER TABLE `movimientoscuentacorriente` DISABLE KEYS */;
+INSERT INTO `movimientoscuentacorriente` VALUES  (3,3,1,'9.00','gjh','2011-10-26','2011-09-26',1,'2011-09-26 21:00:31',1),
+ (4,3,2,'9.00',NULL,'2011-10-26','2011-09-26',1,'2011-09-26 21:00:31',1),
+ (5,3,1,'2.97','GD','2011-10-26','2011-09-26',1,'2011-09-26 22:55:50',1),
+ (6,3,2,'2.00','Abono a cuenta  a cliente Saúl Antonio Mayorquin Díaz','2011-09-28','2011-09-28',1,'2011-09-28 21:29:17',1),
+ (7,5,1,'60.00','fadfasf','2011-10-30','2011-09-30',1,'2011-09-30 22:43:36',1),
+ (8,5,2,'10.00','Abono a cuenta  a cliente Javier Eduardo Atala','2011-09-30','2011-09-30',1,'2011-09-30 22:44:28',1);
 /*!40000 ALTER TABLE `movimientoscuentacorriente` ENABLE KEYS */;
 
 
@@ -875,13 +1008,14 @@ CREATE TABLE `ordenescompras` (
   CONSTRAINT `Proveedor_Orden` FOREIGN KEY (`idproveedor`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Sucursal_Orden` FOREIGN KEY (`idsucursal`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `Usuario_Orden` FOREIGN KEY (`elaboradopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenescompras`
 --
 
 /*!40000 ALTER TABLE `ordenescompras` DISABLE KEYS */;
+INSERT INTO `ordenescompras` VALUES  (2,'OC-001-20110905-001-0000001',1,1,'2011-09-05',1,1,'2011-09-05 20:03:00');
 /*!40000 ALTER TABLE `ordenescompras` ENABLE KEYS */;
 
 
@@ -912,13 +1046,14 @@ CREATE TABLE `ordenesrequisicion` (
   CONSTRAINT `recibido_usuario` FOREIGN KEY (`recibidopor`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalenvia_usuario` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `sucursalrecibe_usuario` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenesrequisicion`
 --
 
 /*!40000 ALTER TABLE `ordenesrequisicion` DISABLE KEYS */;
+INSERT INTO `ordenesrequisicion` VALUES  (1,'OR-001-20110905-001-0000001','2011-09-05',1,NULL,1,1,'E','2011-09-05 20:33:29',1);
 /*!40000 ALTER TABLE `ordenesrequisicion` ENABLE KEYS */;
 
 
@@ -951,13 +1086,14 @@ CREATE TABLE `ordenessalida` (
   CONSTRAINT `salida_requisicion` FOREIGN KEY (`requisicion`) REFERENCES `ordenesrequisicion` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalenvia` FOREIGN KEY (`sucursalenvia`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `salida_sucursalrecibe` FOREIGN KEY (`sucursalrecibe`) REFERENCES `sucursales` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ordenessalida`
 --
 
 /*!40000 ALTER TABLE `ordenessalida` DISABLE KEYS */;
+INSERT INTO `ordenessalida` VALUES  (1,'OS-001-20110905-001-0000001',1,NULL,1,1,'P',NULL,'2011-09-05 20:33:58',1,'2011-09-05');
 /*!40000 ALTER TABLE `ordenessalida` ENABLE KEYS */;
 
 
@@ -977,14 +1113,15 @@ CREATE TABLE `productos` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `Codigo_unico` (`codigo`),
   UNIQUE KEY `Descripcion_Unica` (`descripcion`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `productos`
 --
 
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES  (1,'026470','ABRAZADERA PLASTICA',NULL,'3.00',1,'2011-08-24 21:46:10');
+INSERT INTO `productos` VALUES  (1,'026470','ABRAZADERA PLASTICA',NULL,'3.00',1,'2011-08-24 21:46:10'),
+ (2,'4545','ABRAZADER METALICA',NULL,'12.22',1,'2011-08-24 21:46:10');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 
@@ -1079,8 +1216,8 @@ CREATE TABLE `proveeedorproducto` (
   UNIQUE KEY `LLave_Primaria` (`proveedores_id`,`productos_id`),
   KEY `fk_ProveeedorProducto_proveedores1` (`proveedores_id`),
   KEY `fk_ProveeedorProducto_productos1` (`productos_id`),
-  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_ProveeedorProducto_productos1` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ProveeedorProducto_proveedores1` FOREIGN KEY (`proveedores_id`) REFERENCES `proveedores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1107,6 +1244,8 @@ CREATE TABLE `rubroscuentacorriente` (
 --
 
 /*!40000 ALTER TABLE `rubroscuentacorriente` DISABLE KEYS */;
+INSERT INTO `rubroscuentacorriente` VALUES  (1,'Productos'),
+ (2,'Motocicletas');
 /*!40000 ALTER TABLE `rubroscuentacorriente` ENABLE KEYS */;
 
 
@@ -1138,7 +1277,7 @@ CREATE TABLE `sucursales` (
 --
 
 /*!40000 ALTER TABLE `sucursales` DISABLE KEYS */;
-INSERT INTO `sucursales` VALUES  (1,2,1,1,1,'2011-08-20 11:27:49',1,142),
+INSERT INTO `sucursales` VALUES  (1,2,1,1,1,'2011-08-20 11:27:49',1,146),
  (2,7,2,1,1,'2011-08-20 12:32:39',1,3126);
 /*!40000 ALTER TABLE `sucursales` ENABLE KEYS */;
 
@@ -1174,7 +1313,7 @@ INSERT INTO `tarjetacredito` VALUES  (1,'VISA',1,1,'2011-08-20 00:00:00'),
 
 DROP TABLE IF EXISTS `tipomontocuentacorriente`;
 CREATE TABLE `tipomontocuentacorriente` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -1184,6 +1323,8 @@ CREATE TABLE `tipomontocuentacorriente` (
 --
 
 /*!40000 ALTER TABLE `tipomontocuentacorriente` DISABLE KEYS */;
+INSERT INTO `tipomontocuentacorriente` VALUES  (1,'Debito'),
+ (2,'Credito');
 /*!40000 ALTER TABLE `tipomontocuentacorriente` ENABLE KEYS */;
 
 
@@ -1208,7 +1349,7 @@ CREATE TABLE `tiposfacturas` (
 
 /*!40000 ALTER TABLE `tiposfacturas` DISABLE KEYS */;
 INSERT INTO `tiposfacturas` VALUES  (1,'Contado',1,1,'2011-01-09 00:00:00'),
- (2,'Crédito',0,1,'2011-08-20 00:00:00');
+ (2,'Crédito',1,1,'2011-09-26 00:00:00');
 /*!40000 ALTER TABLE `tiposfacturas` ENABLE KEYS */;
 
 
@@ -1248,7 +1389,7 @@ CREATE TABLE `transaccionescaja` (
   `fmodif` datetime DEFAULT NULL,
   `tipo` varchar(3) DEFAULT NULL COMMENT 'C=credito\nD=debito\nN=neutral\n',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaccionescaja`
@@ -1263,7 +1404,9 @@ INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:0
  (6,'Retiro Efectivo',1,'2011-06-19 00:00:00','D'),
  (7,'Ingreso Efectivo',1,'2011-06-19 00:00:00','C'),
  (8,'Faltante Caja',1,'2011-06-19 00:00:00','D'),
- (10,'Anulacion Factura',1,'2011-06-19 00:00:00','D');
+ (10,'Anulacion Factura',1,'2011-06-19 00:00:00','D'),
+ (11,'Abono Contado Cuenta Corriente',1,'2011-06-19 00:00:00','C'),
+ (12,'Abono Tarjeta Credito Cuenta Corriente',1,'2011-06-19 00:00:00','C');
 /*!40000 ALTER TABLE `transaccionescaja` ENABLE KEYS */;
 
 
@@ -1274,7 +1417,6 @@ INSERT INTO `transaccionescaja` VALUES  (1,'Venta Credito',1,'2011-06-19 00:00:0
 DROP TABLE IF EXISTS `transaccionestarjetacredito`;
 CREATE TABLE `transaccionestarjetacredito` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idfacturaencabezado` int(11) NOT NULL,
   `numerotarjeta` varchar(45) DEFAULT NULL,
   `codigoaprobacion` varchar(45) DEFAULT NULL,
   `vencimiento` varchar(45) DEFAULT NULL,
@@ -1283,20 +1425,20 @@ CREATE TABLE `transaccionestarjetacredito` (
   `fmodif` varchar(45) NOT NULL,
   `idcontrolcaja` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `idfacturaencabezado_transcaciontarjetacredito` (`idfacturaencabezado`),
   KEY `idtarejtacredit_transaccionestarjetacredito` (`idtarjetacredito`),
   KEY `idtranasccionestarjetacredito_idcontrolcaja` (`idcontrolcaja`),
-  CONSTRAINT `idfacturaencabezado_transcaciontarjetacredito` FOREIGN KEY (`idfacturaencabezado`) REFERENCES `facturaencabezado` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtarejtacredit_transaccionestarjetacredito` FOREIGN KEY (`idtarjetacredito`) REFERENCES `tarjetacredito` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `idtranasccionestarjetacredito_idcontrolcaja` FOREIGN KEY (`idcontrolcaja`) REFERENCES `controlcaja` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `transaccionestarjetacredito`
 --
 
 /*!40000 ALTER TABLE `transaccionestarjetacredito` DISABLE KEYS */;
-INSERT INTO `transaccionestarjetacredito` VALUES  (1,2,'34234243','23412341324','1221',3,1,'2011-08-20',3);
+INSERT INTO `transaccionestarjetacredito` VALUES  (1,'34234243','23412341324','1221',3,1,'2011-08-20',3),
+ (2,'131321','1231231321','1111',3,1,'2011-09-28',42),
+ (3,'12112','1212','1221',3,1,'2011-09-28',44);
 /*!40000 ALTER TABLE `transaccionestarjetacredito` ENABLE KEYS */;
 
 
@@ -1334,6 +1476,37 @@ INSERT INTO `usuarios` VALUES  (1,1,'3P5lX3oURN2l1isXbJVY4ROiJ6H19iLSu3BaH9919Uw
  (2,3,'OMKo9I4+ikzQp9ahaG2jINHeUAQpJ5eK','gcarvajal',1,1,1,'2011-08-20 12:04:47',5);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
+
+--
+-- Definition of function `CalcularSaldo`
+--
+
+DROP FUNCTION IF EXISTS `CalcularSaldo`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` FUNCTION `CalcularSaldo`(
+idrubro int(11),
+identidad int(11)
+) RETURNS double
+BEGIN
+declare saldo double;
+
+set saldo =0.00;
+
+select  sum(case t.idtipomovimiento when 1 then t.monto when 2 then t.monto*-1 else 0 end)  saldo1
+from movimientoscuentacorriente t
+join cuentacorriente c on t.idcuentacorriente=c.id
+where t.idrubro=idrubro and  c.identidaddeudora=identidad
+group by t.idrubro,t.idcuentacorriente into saldo ;
+
+return saldo;
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
 
 --
 -- Definition of function `CargarCorrelativoCodigo`
@@ -1494,6 +1667,83 @@ DEALLOCATE PREPARE stmt;
 
 
 
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `AgregarCuentaPropietario`
+--
+
+DROP PROCEDURE IF EXISTS `AgregarCuentaPropietario`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AgregarCuentaPropietario`(identidad           int(11),
+                                          fechavencimiento    date,
+                                          monto               decimal(18,2),
+                                          descripcion         nvarchar(200),
+                                          idrubro             int(11),
+                                          idsucursal          int(11),
+                                          idtipomonto         int(11),
+                                          usu                 int(11),
+                                          INOUT idcuentacorriente int(11),
+                                          INOUT codigoCuentaCorriente nvarchar(70),
+                                          INOUT idmovimento int(11))
+BEGIN
+      DECLARE idpropietario           int(11) DEFAULT 0;
+      DECLARE esnatural           int(1) DEFAULT 0;
+      SET codigoCuentaCorriente='';
+      SET idcuentacorriente = 0;
+      SET idmovimento=0;
+
+      SELECT t.identidades
+        FROM propietario t LIMIT 1
+        INTO idpropietario ;
+
+      SELECT e.espersonanatural
+      FROM entidades e
+      WHERE e.id = identidad INTO  esnatural;
+
+      IF esnatural=1 THEN
+
+        IF idpropietario>0 THEN
+          SELECT id FROM cuentacorriente cuenta
+            WHERE cuenta.identidaddeudora=identidad AND cuenta.identidadbeneficiaria= idpropietario
+            INTO idcuentacorriente;
+
+          IF idcuentacorriente=0 THEN
+            CALL CuentaCorriente_Mant(idcuentacorriente,
+                                      codigoCuentaCorriente,
+                                      identidad,
+                                      idpropietario,
+                                      'A',
+                                      idsucursal,
+                                      curdate(),
+                                      1,
+                                       usu,
+                                      now());
+        END IF;
+
+          IF idcuentacorriente>0 THEN
+
+              CALL MovimientoCuentaCorriente_Mant(idmovimento,
+                                                  idcuentacorriente,
+                                                  idtipomonto,
+                                                  monto,
+                                                  fechavencimiento,
+                                                  curdate(),
+                                                  descripcion,
+                                                  idrubro,
+                                                  usu,
+                                                  now());
+        END IF;
+
+        END IF;
+
+      END IF;
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
@@ -1990,8 +2240,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `CuentaCorriente_Mant`(
 
 
 
-inout id int(11),
-inout codigo nvarchar(70),
+INOUT id int(11),
+INOUT codigo nvarchar(70),
 identidaddeudora int(11),
 identidadbeneficiaria int(11),
 estado nvarchar(5),
@@ -2004,37 +2254,47 @@ fmodif datetime
 BEGIN
 
 
-set @conteo =0;
-select count(id) from cuentacorriente m where m.id=id into @conteo;
+SET @conteo =0;
+SELECT count(id) FROM cuentacorriente m WHERE m.id=id INTO @conteo;
+IF @conteo =0 THEN
 
-if @conteo =0 then
+    SELECT count(id) FROM cuentacorriente m
+    WHERE m.identidadbeneficiaria = identidadbeneficiaria AND m.identidaddeudora = identidaddeudora INTO @conteo;
 
-  set @correlativo=0;
+    IF @conteo >0 THEN
+      SELECT id FROM cuentacorriente m
+      WHERE m.identidadbeneficiaria = identidadbeneficiaria AND m.identidaddeudora = identidaddeudora INTO id;
+    END IF;
 
-  select count(id)+1 from cuentacorriente into @correlativo;
 
-  select CrearCorrelativoCodigo("CC",idsucursal,elaboradopor,@correlativo) into codigo;
+END IF;
+
+IF @conteo =0 THEN
+
+
+  SELECT CrearCorrelativoCodigo("CC",idsucursales,usu) INTO codigo;
 
   INSERT INTO cuentacorriente(codigo,identidaddeudora,identidadbeneficiaria,estado,idsucursales,fecha,habilitado,usu,fmodif)
 
   VALUES(codigo,identidaddeudora,identidadbeneficiaria,estado,idsucursales,fecha,habilitado,usu,fmodif);
 
-  select last_insert_id() into id;
+  SELECT last_insert_id() INTO id;
 
-else
+ELSE
 
-  UPDATE cuentacorriente c set
+  UPDATE cuentacorriente c SET
         c.identidaddeudora=identidaddeudora,
         c.identidadbeneficiaria=identidadbeneficiaria,
         c.estado=estado,
         c.idsucursales=idsucursales,
-        c.fech=fecha,
+        c.fecha=fecha,
         c.habilitado=habilitado,
         c.usu=usu,
         c.fmodif=fmodif
-  where c.id= id;
+  WHERE c.id= id;
 
-end if;
+END IF;
+
 END $$
 /*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
 
@@ -2772,11 +3032,10 @@ select count(id) from facturaencabezado m where m.id=id into @conteo;
 
 if @conteo =0 then
 
-  set @correlativo=0;
+  
+  
 
-  select count(id)+1 from facturaencabezado into @correlativo;
-
-  select CrearCorrelativoCodigo("FE",idsucursales,elabora,@correlativo) into codigo;
+  select CrearCorrelativoCodigo("FE",idsucursales,elabora) into codigo;
 
 
 
@@ -3673,6 +3932,159 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `MoviemientosCuentaCorriente_Buscar`
+--
+
+DROP PROCEDURE IF EXISTS `MoviemientosCuentaCorriente_Buscar`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MoviemientosCuentaCorriente_Buscar`(
+   id                      nvarchar(11),
+   identidadbenficiaria    nvarchar(11),
+   identidaddeudora        nvarchar(11),
+   idrubro nvarchar(1),
+   propietario             int(1))
+BEGIN
+      DECLARE idpropietario   int(11) DEFAULT 0;
+      SET @Campos = "select ";
+      SET @from = " ";
+      SET @where = " where 1=1 ";
+      SET @orden = "order by id ";
+      SET @sql = "";
+
+      SET @campos = concat(@campos, " o.* ");
+
+      SET @from = concat(@from, " from vmovimientoscuentacorriente o");
+
+
+      IF propietario = 1
+      THEN
+         SELECT p.identidades
+           FROM propietario p
+           INTO idpropietario;
+
+         SET @where =
+                concat(@where,
+                       " and o.identidadbeneficiaria = ",
+                       idpropietario,
+                       " ");
+      ELSE
+         SET @where =
+                concat(@where,
+                       " and o.identidadbenficiaria = ",
+                       identidadbenficiaria,
+                       " ");
+      END IF;
+
+      IF id <> ""
+      THEN
+         SET @where =
+                concat(@where,
+                       " and o.id = ",
+                       id,
+                       " ");
+      END IF;
+
+      IF identidaddeudora <> ""
+      THEN
+         SET @where =
+                concat(@where,
+                       " and o.identidaddeudora = ",
+                       identidaddeudora,
+                       " ");
+      END IF;
+      
+      IF idrubro <> ""
+      THEN
+         SET @where =
+                concat(@where,
+                       " and o.idrubro = ",
+                       idrubro,
+                       " ");
+      END IF;
+        
+      
+
+
+      SET @sql =
+             concat(@campos,
+                    @from,
+                    @where,
+                    @orden);
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;
+   END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
+-- Definition of procedure `MovimientoCuentaCorriente_Mant`
+--
+
+DROP PROCEDURE IF EXISTS `MovimientoCuentaCorriente_Mant`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `MovimientoCuentaCorriente_Mant`(
+
+INOUT id int(11),
+idcuentacorriente int(11),
+idtipomovimiento int(11),
+monto decimal(18,2),
+fechavencimiento date,
+fecha date,
+descripcion nvarchar(200),
+idrubro int(11),
+usu int(11),
+fmodif datetime
+)
+BEGIN
+
+DECLARE habil int(1) DEFAULT 0;
+SET @conteo =0;
+SELECT count(id) FROM movimientoscuentacorriente m WHERE m.id=id INTO @conteo;
+
+SELECT c.habilitado FROM cuentacorriente c where c.id=idcuentacorriente INTO habil;
+IF habil =1 THEN
+  IF @conteo =0 THEN
+
+    INSERT INTO movimientoscuentacorriente(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
+                                           fecha, descripcion, idrubro,usu,fmodif)
+
+    VALUES(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
+                                           fecha, descripcion,idrubro,usu,fmodif);
+
+    SELECT last_insert_id() INTO id;
+
+  ELSE
+
+    UPDATE movimientoscuentacorriente c SET
+          c.idcuentacorriente=idcuentacorriente,
+          c.idtipomovimiento=idtipomovimiento,
+          c.monto=monto,
+          c.fechavencimiento=fechavencimiento,
+          c.fecha=fecha,
+          c.descripcion=descripcion,
+          c.idrubro=idrubro,
+          c.usu=usu,
+          c.fmodif=fmodif
+    WHERE c.id= id;
+   END IF;
+else 
+  set id=0;
+END IF;
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Municipios_Buscar`
 --
 
@@ -3910,11 +4322,8 @@ select count(id) from ordenescompras m where m.id=id into @conteo;
 
 if @conteo =0 then
 
-  set @correlativo=0;
 
-  select count(id)+1 from ordenescompras into @correlativo;
-
-  select CrearCorrelativoCodigo("oc",idsucursal,elaboradopor,@correlativo) into codigo;
+  select CrearCorrelativoCodigo("oc",idsucursal,elaboradopor) into codigo;
 
   INSERT INTO ordenescompras(codigo,idproveedor,fechaorden,idsucursal,elaboradopor,usu,fmodif)
 
@@ -4051,11 +4460,7 @@ select count(id) from ordenesrequisicion m where m.id=id into @conteo;
 
 if @conteo =0 then
 
-  set @correlativo=0;
-
-  select count(id)+1 from ordenesrequisicion into @correlativo;
-
-  select CrearCorrelativoCodigo("OR",sucursalenvia,enviadopor,@correlativo) into codigo;
+  select CrearCorrelativoCodigo("OR",sucursalenvia,enviadopor) into codigo;
 
   INSERT INTO ordenesrequisicion(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,usu,fmodif)
 
@@ -4193,11 +4598,8 @@ select count(id) from ordenessalida m where m.id=id into @conteo;
 
 if @conteo =0 then
 
-  set @correlativo=0;
 
-  select count(id)+1 from ordenessalida into @correlativo;
-
-  select CrearCorrelativoCodigo("OS",sucursalenvia,enviadopor,@correlativo) into codigo;
+  select CrearCorrelativoCodigo("OS",sucursalenvia,enviadopor) into codigo;
 
   INSERT INTO ordenessalida(codigo,fechaemision,enviadopor,recibidopor,sucursalenvia,sucursalrecibe,estado,requisicion,usu,fmodif)
 
@@ -4785,6 +5187,34 @@ END $$
 DELIMITER ;
 
 --
+-- Definition of procedure `SaldoCuentaCorriente`
+--
+
+DROP PROCEDURE IF EXISTS `SaldoCuentaCorriente`;
+
+DELIMITER $$
+
+/*!50003 SET @TEMP_SQL_MODE=@@SQL_MODE, SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ $$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SaldoCuentaCorriente`(
+id int(11),
+idrubro int(11),
+idcuentacorriente int(11)
+)
+BEGIN
+
+select t.id, sum(case t.idtipomovimiento when 1 then t.monto when 2 then t.monto*-1 else 0 end)  saldo
+from movimientoscuentacorriente t
+where t.idrubro=idrubro and  t.idcuentacorriente=idcuentacorriente
+group by t.idrubro,t.idcuentacorriente;
+
+
+
+END $$
+/*!50003 SET SESSION SQL_MODE=@TEMP_SQL_MODE */  $$
+
+DELIMITER ;
+
+--
 -- Definition of procedure `Sucursales_Mant`
 --
 
@@ -5278,12 +5708,16 @@ select count(id) from transaccionestarjetacredito d where d.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO transaccionestarjetacredito(idfacturaencabezado,codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif)
+  INSERT INTO transaccionestarjetacredito(codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif)
 
-  VALUES(idfacturaencabezado,codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif);
+  VALUES(codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif);
 
   select last_insert_id() into id;
-
+  if idfacturaencabezado>0 then
+    insert into facturatransaccionestarjetacredito(idfacturaencabezado,idtransaccionestarjetacredito)
+      values(idfacturaencabezado,id);
+    
+  end if;
 else
 
   UPDATE transaccionestarjetacredito c set
@@ -5391,6 +5825,14 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `ventidades`;
 DROP VIEW IF EXISTS `ventidades`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `ventidades` AS select `entidades`.`id` AS `IdEntidad`,`entidades`.`telefono` AS `telefono`,`entidades`.`direccion` AS `direccion`,`entidades`.`correo` AS `correo`,`entidades`.`espersonanatural` AS `espersonanatural`,`entidades`.`RTN` AS `rtn`,`entidades`.`entidadnombre` AS `entidadnombre`,`entidades`.`identificacion` AS `identificacion`,`entidades`.`tipoidentidad` AS `tipoidentidad`,`entidades`.`telefono2` AS `telefono2` from `entidades`;
+
+--
+-- Definition of view `vmovimientoscuentacorriente`
+--
+
+DROP TABLE IF EXISTS `vmovimientoscuentacorriente`;
+DROP VIEW IF EXISTS `vmovimientoscuentacorriente`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vmovimientoscuentacorriente` AS select `m`.`id` AS `id`,`m`.`idcuentacorriente` AS `idcuentacorriente`,`m`.`idtipomovimiento` AS `idtipomovimiento`,`m`.`monto` AS `monto`,`m`.`descripcion` AS `descripcion`,`m`.`fechavencimiento` AS `fechavencimiento`,`m`.`fecha` AS `fecha`,`m`.`usu` AS `usu`,`m`.`fmodif` AS `fmodif`,`m`.`idrubro` AS `idrubro`,`c`.`codigo` AS `codigo`,`c`.`identidaddeudora` AS `identidaddeudora`,`c`.`identidadbeneficiaria` AS `identidadbeneficiaria`,`c`.`estado` AS `estado`,`c`.`fecha` AS `fechacreacion`,`c`.`idsucursales` AS `idsucursales`,`c`.`habilitado` AS `habilitado`,(case `m`.`idtipomovimiento` when 1 then `m`.`monto` else NULL end) AS `debito`,(case `m`.`idtipomovimiento` when 2 then `m`.`monto` else NULL end) AS `credito` from (`movimientoscuentacorriente` `m` join `cuentacorriente` `c` on((`m`.`idcuentacorriente` = `c`.`id`)));
 
 --
 -- Definition of view `vproductos`

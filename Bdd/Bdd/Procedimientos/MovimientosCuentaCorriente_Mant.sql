@@ -1,49 +1,50 @@
-﻿DELIMITER $$
+DROP PROCEDURE IF EXISTS sico.MovimientoCuentaCorriente_Mant;
+CREATE PROCEDURE sico.`MovimientoCuentaCorriente_Mant`(
 
-DROP PROCEDURE IF EXISTS `sico`.`MovimientoCuentaCorriente_Mant` $$
-CREATE PROCEDURE `sico`.`MovimientoCuentaCorriente_Mant` (
-
-inout id int(11),
-idcuentacorriente nvarchar(18),
+INOUT id int(11),
+idcuentacorriente int(11),
 idtipomovimiento int(11),
 monto decimal(18,2),
 fechavencimiento date,
-fecha datetime,
-descripcion nvarchar(500),
+fecha date,
+descripcion nvarchar(200),
 idrubro int(11),
 usu int(11),
 fmodif datetime
 )
 BEGIN
 
+DECLARE habil int(1) DEFAULT 0;
+SET @conteo =0;
+SELECT count(id) FROM movimientoscuentacorriente m WHERE m.id=id INTO @conteo;
 
-set @conteo =0;
-select count(id) from movimientoscuentacorriente m where m.id=id into @conteo;
+SELECT c.habilitado FROM cuentacorriente c where c.id=idcuentacorriente INTO habil;
+IF habil =1 THEN
+  IF @conteo =0 THEN
 
-if @conteo =0 then
+    INSERT INTO movimientoscuentacorriente(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
+                                           fecha, descripcion, idrubro,usu,fmodif)
 
-  INSERT INTO movimientoscuentacorriente(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
-                                         fecha, descripcion, idrubro,usu,fmodif)
+    VALUES(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
+                                           fecha, descripcion,idrubro,usu,fmodif);
 
-  VALUES(idcuentacorriente,idtipomovimiento,monto,fechavencimiento,
-                                         fecha, descripcion,idrubro,usu,fmodif);
+    SELECT last_insert_id() INTO id;
 
-  select last_insert_id() into id;
+  ELSE
 
-else
-
-  UPDATE movimientoscuentacorriente c set
-        c.idcuentacorriente=idcuentacorriente,
-        c.idtipomovimiento=idtipomovimiento,
-        c.monto=monto,
-        c.fechavencimiento=fechavencimiento,
-        c.fecha=fecha,
-        c.descripcion=descripcion,
-        c.idrubro=idrubro,
-        c.usu=usu,
-        c.fmodif=fmodif
-  where c.id= id;
-end if;
-END $$
-
-DELIMITER ;
+    UPDATE movimientoscuentacorriente c SET
+          c.idcuentacorriente=idcuentacorriente,
+          c.idtipomovimiento=idtipomovimiento,
+          c.monto=monto,
+          c.fechavencimiento=fechavencimiento,
+          c.fecha=fecha,
+          c.descripcion=descripcion,
+          c.idrubro=idrubro,
+          c.usu=usu,
+          c.fmodif=fmodif
+    WHERE c.id= id;
+   END IF;
+else 
+  set id=0;
+END IF;
+END;

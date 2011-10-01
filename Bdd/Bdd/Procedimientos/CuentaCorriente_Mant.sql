@@ -35,7 +35,7 @@ END IF;
 IF @conteo =0 THEN
 
 
-  SELECT CrearCorrelativoCodigo("CC",idsucursal,elaboradopor) INTO codigo;
+  SELECT CrearCorrelativoCodigo("CC",idsucursales,usu) INTO codigo;
 
   INSERT INTO cuentacorriente(codigo,identidaddeudora,identidadbeneficiaria,estado,idsucursales,fecha,habilitado,usu,fmodif)
 
@@ -50,7 +50,7 @@ ELSE
         c.identidadbeneficiaria=identidadbeneficiaria,
         c.estado=estado,
         c.idsucursales=idsucursales,
-        c.fech=fecha,
+        c.fecha=fecha,
         c.habilitado=habilitado,
         c.usu=usu,
         c.fmodif=fmodif

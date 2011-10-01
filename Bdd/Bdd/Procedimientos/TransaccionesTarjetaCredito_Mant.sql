@@ -1,9 +1,7 @@
-﻿DELIMITER $$
+DROP PROCEDURE IF EXISTS sico.TransaccionesTarjetaCredito_Mant;
+CREATE PROCEDURE sico.`TransaccionesTarjetaCredito_Mant`(
 
-DROP PROCEDURE IF EXISTS `TransaccionesTarjetaCredito_Mant` $$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `TransaccionesTarjetaCredito_Mant`(
 
-/*definicion de parametros*/
 
 inout id int(11),
 idfacturaencabezado int(11),
@@ -23,12 +21,16 @@ select count(id) from transaccionestarjetacredito d where d.id=id into @conteo;
 
 if @conteo =0 then
 
-  INSERT INTO transaccionestarjetacredito(idfacturaencabezado,codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif)
+  INSERT INTO transaccionestarjetacredito(codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif)
 
-  VALUES(idfacturaencabezado,codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif);
+  VALUES(codigoaprobacion,vencimiento,idtarjetacredito,numerotarjeta,idcontrolcaja,usu,fmodif);
 
   select last_insert_id() into id;
-
+  if idfacturaencabezado>0 then
+    insert into facturatransaccionestarjetacredito(idfacturaencabezado,idtransaccionestarjetacredito)
+      values(idfacturaencabezado,id);
+    
+  end if;
 else
 
   UPDATE transaccionestarjetacredito c set
@@ -43,6 +45,4 @@ else
   where c.id= id;
 
 end if;
-END $$
-
-DELIMITER ;
+END;
