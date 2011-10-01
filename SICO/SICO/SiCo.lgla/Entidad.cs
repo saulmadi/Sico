@@ -589,6 +589,12 @@ namespace SiCo.lgla
                 i.Valor = null;
             }
         }
+        private bool TieneColumna(string ColumnaNombre)
+        {
+            
+
+            return Tabla.Columns.OfType<DataColumn>().Where(c => c.ColumnName.ToLower().Equals(ColumnaNombre.ToLower())).Count() == 1;
+        }
 
         public  T CargarClase<T>(int indice, T obj) where T:Entidad 
         {
@@ -604,15 +610,20 @@ namespace SiCo.lgla
                 {
                     try
                     {
-                        var d = Registro(indice, i.Name.ToLower());
-                        if (d != null)
+                        if (TieneColumna(i.Name.ToLower()))
                         {
-                            if (i.Name.ToLower() =="id")
-                                
-                                obj._Id = (int)d;
-                            else 
-                                i.SetValue(obj,d,null);
-                             
+
+                            var d = Registro(indice, i.Name.ToLower());
+                            if (d != null)
+                            {
+                                if (i.Name.ToLower() == "id")
+
+                                    obj._Id = (int)d;
+                                else
+                                    if (i.CanWrite )
+                                        i.SetValue(obj, d, null)  ;
+
+                            }
                         }
                         
                             

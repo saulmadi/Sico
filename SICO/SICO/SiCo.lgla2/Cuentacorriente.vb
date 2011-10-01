@@ -207,6 +207,17 @@ Partial Public Class Cuentacorriente
         agragar.Guardar(identidad, 2, fechavencimiento, monto, descripcion, 2, idsucursal)
     End Sub
 
+    Public Function EstadoCuentaProductos(ByVal identidad As Long) As Movimientoscuentacorriente
+        Dim movimientos As New Movimientoscuentacorriente
+        movimientos.Buscar(identidad, 0, 1, 1)
+        Return movimientos
+    End Function
+    Public Function EstadoCuentaMotocicleta(ByVal identidad As Long) As Movimientoscuentacorriente
+        Dim movimientos As New Movimientoscuentacorriente
+        movimientos.Buscar(identidad, 0, 1, 2)
+        Return movimientos
+    End Function
+
 #End Region
 
 End Class

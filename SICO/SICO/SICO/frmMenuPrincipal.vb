@@ -2,6 +2,7 @@
 
 Public Class frmMenuPrincipal
     Public isShow As Boolean = False
+
 #Region "Eventos"
 
 #Region "Administrativo"
@@ -100,6 +101,14 @@ Public Class frmMenuPrincipal
         frm.rubro = 1
         frm.MdiParent = Me
         frm.Show()
+    End Sub
+
+    Private Sub EstadosDeCuentaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadosDeCuentaToolStripMenuItem.Click
+        Dim frm As New frmEstadoCuenta
+        frm.idrubro = 1
+        frm.MdiParent = Me
+        frm.Show()
+
     End Sub
 #End Region
     Private Sub RegistroDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeClientesToolStripMenuItem.Click
@@ -257,5 +266,4 @@ Public Class frmMenuPrincipal
 
 #End Region
 
-    
 End Class

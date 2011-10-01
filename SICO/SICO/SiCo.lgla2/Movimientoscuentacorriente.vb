@@ -30,10 +30,12 @@ Public Class Movimientoscuentacorriente
 
 #Region "Constructor"
     Public Sub New()
-        Me.ComandoSelect = "MovimientosCuentaCorriente_Buscar"
+        Me.ComandoSelect = "MoviemientosCuentaCorriente_Buscar"
         Me.ColeccionParametrosBusqueda.Add(New Parametro("identidadbenficiaria"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("identidaddeudora"))
         Me.ColeccionParametrosBusqueda.Add(New Parametro("propietario"))
+        Me.ColeccionParametrosBusqueda.Add(New Parametro("idrubro"))
+
 
     End Sub
 #End Region
@@ -145,11 +147,12 @@ Public Class Movimientoscuentacorriente
         Return Me.CaragarColeccion(Of Movimientoscuentacorriente)()
     End Function
 
-    Public Overloads Sub Buscar(ByVal identidaddudora As Long, ByVal identidadbenecifiarias As Long, ByVal propietario As Integer)
+    Public Overloads Sub Buscar(ByVal identidaddudora As Long, ByVal identidadbenecifiarias As Long, ByVal propietario As Integer, ByVal idrubro As Integer)
         Me.NullParametrosBusqueda()
-        Me.ValorParametrosBusqueda("identidaddudora", identidaddudora.ToString)
+        Me.ValorParametrosBusqueda("identidaddeudora", identidaddudora.ToString)
         Me.ValorParametrosBusqueda("identidadbenficiaria", identidadbenecifiarias.ToString)
         Me.ValorParametrosBusqueda("propietario", propietario)
+        Me.ValorParametrosBusqueda("idrubro", idrubro.ToString)
         Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
 
     End Sub

@@ -185,6 +185,18 @@
     <Compile Include="Clientes\CuentasPorCobrar\frmAbonos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Clientes\CuentasPorCobrar\frmEstadoCuenta.Designer.vb">
+      <DependentUpon>frmEstadoCuenta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\CuentasPorCobrar\frmEstadoCuenta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\CuentasPorCobrar\Reporte\crEstadoCuenta.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crEstadoCuenta.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Clientes\frmRegistroClientes.Designer.vb">
       <DependentUpon>frmRegistroClientes.vb</DependentUpon>
     </Compile>
@@ -488,6 +500,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\CuentasPorCobrar\frmAbonos.resx">
       <DependentUpon>frmAbonos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\CuentasPorCobrar\frmEstadoCuenta.resx">
+      <DependentUpon>frmEstadoCuenta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\CuentasPorCobrar\Reporte\crEstadoCuenta.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crEstadoCuenta.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmRegistroClientes.resx">
       <DependentUpon>frmRegistroClientes.vb</DependentUpon>
