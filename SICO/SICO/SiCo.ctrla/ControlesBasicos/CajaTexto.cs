@@ -1,28 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using System.Drawing;
 using Microsoft.VisualBasic;
 
 namespace SiCo.ctrla
 {
-    
     public partial class CajaTexto : TextBox
     {
         #region Declaraciones
 
         private Color _ColorError = Color.Red;
-        private bool _EsObligatorio = false;
-        protected Regex _Validador;
         protected string _ExpresionValidacion;
         protected string _MensajeError;
-        private TiposTexto _tipotexto= TiposTexto.Alfanumerico;
+        protected Regex _Validador;
         private Color _backcolor;
+        private TiposTexto _tipotexto = TiposTexto.Alfanumerico;
+
         #endregion
 
         #region Construtores
@@ -31,7 +26,6 @@ namespace SiCo.ctrla
         {
             InitializeComponent();
             InicializacionDelegados();
-         
         }
 
         public CajaTexto(IContainer container)
@@ -39,45 +33,26 @@ namespace SiCo.ctrla
             container.Add(this);
             InitializeComponent();
             InicializacionDelegados();
-         
         }
-
 
         #endregion
 
         #region Propiedades
 
-        public bool EsObligatorio
+        public bool EsObligatorio { get; set; }
+
+        public Color ColorError
         {
-            get { return _EsObligatorio; }
-            set { _EsObligatorio = value; }
+            get { return _ColorError; }
+            set { _ColorError = value; }
         }
 
-        public System.Drawing.Color ColorError
-        {
-            get
-            {
-                return _ColorError;
-            }
-            set
-            {
-                _ColorError = value;
-            }
-        }
-
-        public bool EnterPorTab
-        {
-            get;
-            set;
-        }
+        public bool EnterPorTab { get; set; }
 
         public string ExpresionValidacion
         {
-             get
-            {
-                return _ExpresionValidacion;
-            }
-             set
+            get { return _ExpresionValidacion; }
+            set
             {
                 if (value != null)
                     _Validador = new Regex(value);
@@ -88,55 +63,45 @@ namespace SiCo.ctrla
 
         public string MensajeError
         {
-            get
-            {
-                return _MensajeError;
-            }
-            set
-            {
-                _MensajeError = value;
-            }
+            get { return _MensajeError; }
+            set { _MensajeError = value; }
         }
 
         public TiposTexto TipoTexto
         {
-            get 
-            {
-                return _tipotexto;
-            }
+            get { return _tipotexto; }
             set
             {
-                switch (value )
+                switch (value)
                 {
                     case TiposTexto.Alfanumerico:
-                        this.Text = "";                       
-                       
+                        Text = "";
+
                         break;
                     case TiposTexto.Parrafo:
-                        this.Text = "";
-                        this.Multiline = true;                      
+                        Text = "";
+                        Multiline = true;
                         break;
-                    case TiposTexto.Entero:                                                             
-                               break;
+                    case TiposTexto.Entero:
+                        break;
                     case TiposTexto.Decimal:
-                        this.Text = "0.00";
-                        this.ExpresionValidacion = "^(?!^0*$)(?!^0*\\.0*$)^\\d{1,9}(\\.\\d{1,3})?$";
-                        this.MaxLength = 12; 
-                        this.TextAlign=HorizontalAlignment.Right;
+                        Text = "0.00";
+                        ExpresionValidacion = "^(?!^0*$)(?!^0*\\.0*$)^\\d{1,9}(\\.\\d{1,3})?$";
+                        MaxLength = 12;
+                        TextAlign = HorizontalAlignment.Right;
                         break;
 
                     case TiposTexto.Alfabetico:
-                        
-                        this.Text = "";
-                        this.ExpresionValidacion = string.Empty;
+
+                        Text = "";
+                        ExpresionValidacion = string.Empty;
                         break;
                     default:
                         break;
-                }  
-                
+                }
+
                 _tipotexto = value;
             }
-                
         }
 
         public string Texto
@@ -146,11 +111,11 @@ namespace SiCo.ctrla
                 if (base.Text == string.Empty)
                     return null;
                 else
-                    return base.Text.Trim() ;
+                    return base.Text.Trim();
             }
 
             set { base.Text = value; }
-        }       
+        }
 
         public int? ValorInt
         {
@@ -158,7 +123,7 @@ namespace SiCo.ctrla
             {
                 try
                 {
-                    Int32 d=0;
+                    Int32 d = 0;
                     if (Int32.TryParse(base.Text, out d))
                     {
                         return d;
@@ -168,32 +133,31 @@ namespace SiCo.ctrla
                         return null;
                     }
                 }
-                catch 
+                catch
                 {
                     return null;
-                    
-                } 
+                }
             }
             set
             {
                 if (value == null)
                 {
-                    this.Text = string.Empty;
+                    Text = string.Empty;
                 }
                 else
                 {
-                    this.Text = value.ToString();
+                    Text = value.ToString();
                 }
             }
         }
 
-        public long?  ValorLong
+        public long? ValorLong
         {
             get
             {
                 try
                 {
-                    long  d = 0;
+                    long d = 0;
                     if (Int64.TryParse(base.Text, out d))
                     {
                         return d;
@@ -206,18 +170,17 @@ namespace SiCo.ctrla
                 catch
                 {
                     return null;
-
                 }
             }
             set
             {
                 if (value == null)
                 {
-                    this.Text = string.Empty;
+                    Text = string.Empty;
                 }
                 else
                 {
-                    this.Text = value.ToString();
+                    Text = value.ToString();
                 }
             }
         }
@@ -229,7 +192,7 @@ namespace SiCo.ctrla
             {
                 try
                 {
-                    Decimal  d = 0;
+                    Decimal d = 0;
                     if (Decimal.TryParse(base.Text, out d))
                     {
                         return d;
@@ -242,34 +205,33 @@ namespace SiCo.ctrla
                 catch
                 {
                     return 0;
-
                 }
             }
             set
             {
-               
-               {
-                    this.Text = value.ToString();
+
+                {
+                    Text = value.ToString();
                 }
             }
         }
 
-        #endregion        
+        #endregion
 
         #region Eventos
-        void CajaTexto_TextChanged(object sender, EventArgs e)
-        {
-            this.ForeColor = DefaultForeColor;
-            this.BackColor=_backcolor ;
 
+        private void CajaTexto_TextChanged(object sender, EventArgs e)
+        {
+            ForeColor = DefaultForeColor;
+            BackColor = _backcolor;
         }
 
-        void CajaTexto_KeyPress(object sender, KeyPressEventArgs e)
+        private void CajaTexto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            switch (TipoTexto )
+            switch (TipoTexto)
             {
                 case TiposTexto.Alfanumerico:
-                    
+
                     break;
 
                 case TiposTexto.Parrafo:
@@ -278,7 +240,7 @@ namespace SiCo.ctrla
                 case TiposTexto.Entero:
                     if (!char.IsNumber(e.KeyChar))
                         e.Handled = true;
-                       
+
 
                     if (char.IsControl(e.KeyChar))
                         e.Handled = false;
@@ -288,33 +250,32 @@ namespace SiCo.ctrla
 
                     if (!char.IsNumber(e.KeyChar))
                         e.Handled = true;
-                    else 
+                    else
                     {
-                        if (this.Text.Contains("."))
+                        if (Text.Contains("."))
                         {
-                            string [] val = this.Text.Split('.') ;
+                            string[] val = Text.Split('.');
                             if (val[1].Length == 2)
                             {
-                                if(this.Text.IndexOf(".")  < SelectionStart)  
-                                e.Handled = true;  
+                                if (Text.IndexOf(".") < SelectionStart)
+                                    e.Handled = true;
                             }
-                            
                         }
                     }
-                    
+
                     if (e.KeyChar == '.')
                     {
-                        bool flag = false  ;
-                        int contador=0;
-                        for (int x = 0; x < this.Text.Length; x++)
+                        bool flag = false;
+                        int contador = 0;
+                        for (int x = 0; x < Text.Length; x++)
                         {
-                            if (Text.Substring(x, 1)== ".")
-                                contador++; 
+                            if (Text.Substring(x, 1) == ".")
+                                contador++;
                         }
                         if (contador >= 1)
                             flag = true;
 
-                        e.Handled = flag; 
+                        e.Handled = flag;
                     }
 
                     if (char.IsControl(e.KeyChar))
@@ -323,112 +284,102 @@ namespace SiCo.ctrla
                     break;
 
                 case TiposTexto.Alfabetico:
-                    
-                    if( !char.IsLetter(e.KeyChar))
-                        e.Handled=true ;
+
+                    if (!char.IsLetter(e.KeyChar))
+                        e.Handled = true;
 
                     if (char.IsControl(e.KeyChar))
                         e.Handled = false;
 
                     if (char.IsWhiteSpace(e.KeyChar))
-                        e.Handled = false; 
+                        e.Handled = false;
 
                     break;
                 default:
                     break;
-
-                  
             }
-            if (Microsoft.VisualBasic.Strings.Asc(e.KeyChar) == 13 && this.EnterPorTab)
+            if (Strings.Asc(e.KeyChar) == 13 && EnterPorTab)
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
-            
-
         }
 
-        void CajaTexto_KeyUp(object sender, KeyEventArgs e)
+        private void CajaTexto_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 13 && this.EnterPorTab )
+            if (e.KeyValue == 13 && EnterPorTab)
             {
-                if (this.EsObligatorio)
+                if (EsObligatorio)
                 {
-                    if (this.Text != string.Empty)
+                    if (Text != string.Empty)
                         SendKeys.Send("{TAB}");
                 }
                 else
                 {
                     SendKeys.Send("{TAB}");
-                }               
+                }
             }
         }
 
-        void CajaTexto_KeyDown(object sender, KeyEventArgs e)
+        private void CajaTexto_KeyDown(object sender, KeyEventArgs e)
         {
-           
         }
 
         #endregion
 
         #region Metodos
 
-        protected override void OnValidated(System.EventArgs e)
+        protected override void OnValidated(EventArgs e)
         {
-            if (!this.EsValido())
-                this.ForeColor = ColorError;
+            if (!EsValido())
+                ForeColor = ColorError;
             else
-                this.ForeColor = DefaultForeColor;
+                ForeColor = DefaultForeColor;
 
 
             base.OnValidated(e);
         }
 
-        private void  InicializacionDelegados()
+        private void InicializacionDelegados()
         {
-            this.KeyDown += new KeyEventHandler(CajaTexto_KeyDown);
-            this.TextChanged += new EventHandler(CajaTexto_TextChanged);
-            this.KeyPress += new KeyPressEventHandler(CajaTexto_KeyPress);
-            this.KeyUp += new KeyEventHandler(CajaTexto_KeyUp); 
-            _backcolor = this.BackColor;
-            this.EnterPorTab = true;
-        }            
+            KeyDown += CajaTexto_KeyDown;
+            TextChanged += CajaTexto_TextChanged;
+            KeyPress += CajaTexto_KeyPress;
+            KeyUp += CajaTexto_KeyUp;
+            _backcolor = BackColor;
+            EnterPorTab = true;
+        }
 
         public bool EsValido()
         {
-            
-                bool flag = true;
-                if (this.Text== string.Empty)
-                { 
-                    return true;
-                }
-                
-                if (_Validador != null)
-                {
-                    flag = _Validador.IsMatch(this.Text);
-                }
-               
-                return flag;
-            
-        }
-        
-        public bool EsVacio()
-        {           
-                bool flag = false ;
-                if (EsObligatorio)
-                {
-                    if (this.Text == string.Empty)
-                    {
-                        this.BackColor = this.ColorError;
-                        flag = true;
-                    }
-                }
+            bool flag = true;
+            if (Text == string.Empty)
+            {
+                return true;
+            }
 
-                return flag;
-            
+            if (_Validador != null)
+            {
+                flag = _Validador.IsMatch(Text);
+            }
+
+            return flag;
         }
-        
+
+        public bool EsVacio()
+        {
+            bool flag = false;
+            if (EsObligatorio)
+            {
+                if (Text == string.Empty)
+                {
+                    BackColor = ColorError;
+                    flag = true;
+                }
+            }
+
+            return flag;
+        }
 
         #endregion
-       
     }
 }

@@ -1,7 +1,10 @@
-﻿Imports SiCo.lgla
+﻿Imports SiCo.ctrla
+Imports SiCo.lgla
 
 Public Class crtPanelBusqueda
+
 #Region "Declaraciones"
+
     Private WithEvents _Entidad As Entidad
 
     Public Event Nuevo()
@@ -9,14 +12,15 @@ Public Class crtPanelBusqueda
     Public Event Buscar()
     Public Event Editar()
     Public Event Eliminar()
+
 #End Region
 
 #Region "Propiedades"
-    Public ReadOnly Property GridResultados() As SiCo.ctrla.Grid
+
+    Public ReadOnly Property GridResultados() As Grid
         Get
             Return _GridResultados
         End Get
-
     End Property
 
     Public ReadOnly Property BarraHerramientas() As ToolStrip
@@ -35,34 +39,40 @@ Public Class crtPanelBusqueda
         Get
             Return _Entidad
         End Get
-        Set(ByVal value As Entidad)
+        Set (ByVal value As Entidad)
             _Entidad = value
         End Set
     End Property
+
 #End Region
 
 #Region "Metodos"
-    Public Sub Cargar(ByVal ColeccionParametros As List(Of SiCo.lgla.Parametro))
+
+    Public Sub Cargar (ByVal ColeccionParametros As List(Of Parametro))
         Try
             Me.GridResultados.DataSource = Nothing
 
-            Me.Entidad.Buscar(ColeccionParametros)
+            Me.Entidad.Buscar (ColeccionParametros)
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    Public Sub cargar(ByVal Parametro As String, ByVal valorBusqueda As String)
+
+    Public Sub cargar (ByVal Parametro As String, ByVal valorBusqueda As String)
         Try
             Me.GridResultados.DataSource = Nothing
-            Me.Entidad.Buscar(Parametro, valorBusqueda)
+            Me.Entidad.Buscar (Parametro, valorBusqueda)
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 #End Region
 
 #Region "Eventos"
-    Private Sub NuevoToolStripButton_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles NuevoToolStripButton.Click
+
+    Private Sub NuevoToolStripButton_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles NuevoToolStripButton.Click
         RaiseEvent Nuevo()
     End Sub
 
@@ -73,12 +83,13 @@ Public Class crtPanelBusqueda
         End If
     End Sub
 
-    Private Sub ImprimirToolStripButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ImprimirToolStripButton.Click
+    Private Sub ImprimirToolStripButton_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles ImprimirToolStripButton.Click
         RaiseEvent Imprimir()
     End Sub
 
 
-    Private Sub _GridResultados_Editar(ByVal EditarArg As ctrla.GridEditarEventArg) Handles _GridResultados.Editar
+    Private Sub _GridResultados_Editar (ByVal EditarArg As GridEditarEventArg) Handles _GridResultados.Editar
         RaiseEvent Editar()
     End Sub
 
@@ -86,9 +97,9 @@ Public Class crtPanelBusqueda
         RaiseEvent Buscar()
     End Sub
 
-    Private Sub _GridResultados_Eliminar(ByVal EliminarArg As ctrla.GridEliminarEventArg) Handles _GridResultados.Eliminar
+    Private Sub _GridResultados_Eliminar (ByVal EliminarArg As GridEliminarEventArg) Handles _GridResultados.Eliminar
         RaiseEvent Eliminar()
     End Sub
-#End Region
 
+#End Region
 End Class

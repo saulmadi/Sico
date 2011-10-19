@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+using SiCo.lgla;
 
 namespace SiCo.ctrla.ControlesBasicos
 {
-    public partial class ListaSucursales : ListaDesplegable 
+    public partial class ListaSucursales : ListaDesplegable
     {
         public ListaSucursales()
         {
@@ -21,31 +18,25 @@ namespace SiCo.ctrla.ControlesBasicos
             InitializeComponent();
         }
 
+        public new Sucursales SelectedItem
+        {
+            get { return (Sucursales) base.SelectedItem; }
+            set { base.SelectedItem = value; }
+        }
+
         public void Inicialiazar()
         {
             try
             {
-                this.Entidad = new SiCo.lgla.Sucursales();
-                this.CargarEntidad();
-                this.DisplayMember = "NombreMantenimiento";
-                this.ValueMember = "Id";
-                this.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-                this.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+                Entidad = new Sucursales();
+                CargarEntidad();
+                DisplayMember = "NombreMantenimiento";
+                ValueMember = "Id";
+                AutoCompleteSource = AutoCompleteSource.ListItems;
+                AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             }
             catch
-            { 
-            }
-        }
-
-        public new SiCo.lgla.Sucursales  SelectedItem
-        {
-            get
             {
-                return (SiCo.lgla.Sucursales)  base.SelectedItem ;
-            }
-            set 
-            {
-                base.SelectedItem =value;  
             }
         }
     }

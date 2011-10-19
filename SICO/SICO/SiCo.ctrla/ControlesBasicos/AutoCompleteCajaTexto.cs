@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using SiCo.lgla;
 using System.Windows.Forms;
+using SiCo.lgla;
 
 namespace SiCo.ctrla.ControlesBasicos
 {
-    public partial class AutoCompleteCajaTexto : SiCo.ctrla.CajaTexto
+    public partial class AutoCompleteCajaTexto : CajaTexto
     {
         #region Declaraciones
+
         //private Entidad _Entidad;
-        private string _ParametroBusqueda = string.Empty;
-        private string _CampoMostrar = string.Empty;
-        private Entidad _Entidad;                
         private List<string> ListaAutoCompletado = new List<string>();
-        private int _CaracteresInicio=3;
+        private string _CampoMostrar = string.Empty;
+        private int _CaracteresInicio = 3;
+        private string _ParametroBusqueda = string.Empty;
+
         #endregion
 
         #region Constructor
@@ -37,40 +35,30 @@ namespace SiCo.ctrla.ControlesBasicos
         }
 
         #endregion
-       
+
         #region Propiedades
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public  System.Collections.Generic.List<SiCo.lgla.Parametro> ColeccionParametros
-	        {
-            get { return null ; }
-	            set  {
-	                
-	                
-	            }
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<Parametro> ColeccionParametros
+        {
+            get { return null; }
+            set { }
         }
 
         public string ParameteroBusqueda
         {
             get { return _ParametroBusqueda; }
-            set 
-            {
-                
-                    _ParametroBusqueda = value; 
-            }
+            set { _ParametroBusqueda = value; }
         }
 
         public string CampoMostrar
         {
             get { return _CampoMostrar; }
             set { _CampoMostrar = value; }
-        }        
-
-        public bool AutoCompletar
-        {
-            get;
-            set;
         }
+
+        public bool AutoCompletar { get; set; }
 
         public int CaracteresInicio
         {
@@ -78,58 +66,48 @@ namespace SiCo.ctrla.ControlesBasicos
             set { _CaracteresInicio = value; }
         }
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced),DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden) ]
-        public Entidad Entidad
-        {
-            get { return _Entidad; }
-            set { _Entidad = value; }
-        }
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Advanced),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Entidad Entidad { get; set; }
 
-        public string Procedimiento
-        {
-            get;
-            set;
-        }        
-        
+        public string Procedimiento { get; set; }
+
         #endregion
 
         #region Metodos
 
         private void InicializarComponente()
         {
-            this.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.TextChanged += new EventHandler(AutoCompleteCajaTexto_TextChanged);
-            this.AutoCompletar = true;          
-        }            
-
+            AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            AutoCompleteSource = AutoCompleteSource.CustomSource;
+            TextChanged += AutoCompleteCajaTexto_TextChanged;
+            AutoCompletar = true;
+        }
 
         #endregion
 
         #region Eventos
 
-        void AutoCompleteCajaTexto_TextChanged(object sender, EventArgs e)
+        private void AutoCompleteCajaTexto_TextChanged(object sender, EventArgs e)
         {
             try
             {
-                if(this.AutoCompletar)
+                if (AutoCompletar)
                 {
-                    
-                    if (this.Text.Length == this.CaracteresInicio)
+                    if (Text.Length == CaracteresInicio)
                     {
                         if (!SubProceso.IsBusy)
                         {
-                            Argumento arg = new Argumento(this.Entidad, this.ParameteroBusqueda, this.Text);
-                            this.Cursor = Cursors.WaitCursor; 
+                            var arg = new Argumento(Entidad, ParameteroBusqueda, Text);
+                            Cursor = Cursors.WaitCursor;
                             if (!SubProceso.IsBusy) SubProceso.RunWorkerAsync(arg);
                         }
-                    }                    
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);     
-                
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -137,49 +115,49 @@ namespace SiCo.ctrla.ControlesBasicos
         {
             if (e.Argument != null)
             {
-                Argumento  en = (Argumento)e.Argument;
-                en._Entidad.Buscar(en.ParaBusqueda, en.valor);    
+                var en = (Argumento) e.Argument;
+                en._Entidad.Buscar(en.ParaBusqueda, en.valor);
             }
         }
 
         private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-     {
-            this.Cursor = Cursors.Default;
+        {
+            Cursor = Cursors.Default;
             if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return; 
+                return;
             }
 
             if (Entidad.TotalRegistros > 0)
             {
-                
-                this.AutoCompleteCustomSource.Clear();
+                AutoCompleteCustomSource.Clear();
                 for (int x = 0; x < Entidad.TotalRegistros; x++)
-                { 
-                    if ((string)Entidad.Registro(x,CampoMostrar) !="")
-                        this.AutoCompleteCustomSource.Add((string)Entidad.Registro(x, CampoMostrar));
-                }                
+                {
+                    if ((string) Entidad.Registro(x, CampoMostrar) != "")
+                        AutoCompleteCustomSource.Add((string) Entidad.Registro(x, CampoMostrar));
+                }
             }
-            
         }
 
         #endregion
 
         #region ClaseArgumento
+
         private class Argumento
         {
-            public Entidad _Entidad;
-            public string ParaBusqueda;
-            public string valor;
+            public readonly string ParaBusqueda;
+            public readonly Entidad _Entidad;
+            public readonly string valor;
+
             public Argumento(Entidad entidad, string parametro, string val)
             {
-                this._Entidad = entidad;
-                this.ParaBusqueda = parametro;
-                this.valor = val;
+                _Entidad = entidad;
+                ParaBusqueda = parametro;
+                valor = val;
             }
-        }        
-        #endregion        
-    }
+        }
 
+        #endregion
+    }
 }

@@ -1,4 +1,4 @@
-﻿Imports System.Windows.Forms
+﻿
 
 Public Class frmMenuPrincipal
     Public isShow As Boolean = False
@@ -8,48 +8,63 @@ Public Class frmMenuPrincipal
 #Region "Administrativo"
 
 #Region "SICO"
-    Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SalirToolStripMenuItem.Click
+
+    Private Sub SalirToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles SalirToolStripMenuItem.Click
         Me.Close()
     End Sub
-    Private Sub MarcasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MarcasToolStripMenuItem.Click
+
+    Private Sub MarcasToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles MarcasToolStripMenuItem.Click
         Dim frm As New frmMarcas
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub TipoDeMotocicletasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TipoDeMotocicletasToolStripMenuItem.Click
+    Private Sub TipoDeMotocicletasToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles TipoDeMotocicletasToolStripMenuItem.Click
         Dim frm As New frmTiposMotocicletas
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub MunicipiosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MunicipiosToolStripMenuItem.Click
+    Private Sub MunicipiosToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles MunicipiosToolStripMenuItem.Click
         Dim frm As New frmMunicipios
         frm.MdiParent = Me
         frm.Show()
     End Sub
-    Private Sub DepartamentosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DepartamentosToolStripMenuItem.Click
+
+    Private Sub DepartamentosToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles DepartamentosToolStripMenuItem.Click
         Dim frm As New frmDepartamentos
         frm.MdiParent = Me
         frm.Show()
     End Sub
-    Private Sub TiposDeFacturaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TiposDeFacturaToolStripMenuItem.Click
+
+    Private Sub TiposDeFacturaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles TiposDeFacturaToolStripMenuItem.Click
         Dim frm As New frmTiposFacturas
         frm.MdiParent = Me
         frm.Show()
     End Sub
-    Private Sub ModelosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ModelosToolStripMenuItem.Click
+
+    Private Sub ModelosToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles ModelosToolStripMenuItem.Click
         Dim frm As New frmModelos
         frm.MdiParent = Me
         frm.Show()
     End Sub
-    Private Sub TarjetasCreditoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TarjetasCreditoToolStripMenuItem.Click
+
+    Private Sub TarjetasCreditoToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles TarjetasCreditoToolStripMenuItem.Click
         Dim frm As New frmTarjetaCredito
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub PropietarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PropietarioToolStripMenuItem.Click
+    Private Sub PropietarioToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles PropietarioToolStripMenuItem.Click
         Dim frm As New frmPropietario
         frm.MdiParent = Me
         frm.Show()
@@ -58,26 +73,32 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Personas"
-    Private Sub PersonasNaturlaesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PersonasNaturlaesToolStripMenuItem.Click
+
+    Private Sub PersonasNaturlaesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles PersonasNaturlaesToolStripMenuItem.Click
         Dim frm As New frmPersonaNatural
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub PersonasJurídicasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PersonasJurídicasToolStripMenuItem.Click
+    Private Sub PersonasJurídicasToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles PersonasJurídicasToolStripMenuItem.Click
         Dim frm As New frmPersonaJuridica
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
 #End Region
 
-    Private Sub SucursalesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SucursalesToolStripMenuItem.Click
+    Private Sub SucursalesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles SucursalesToolStripMenuItem.Click
         Dim frm As New frmSucursales
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub UsuariosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UsuariosToolStripMenuItem.Click
+    Private Sub UsuariosToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles UsuariosToolStripMenuItem.Click
         Dim frm As New frmUsuario
         frm.MdiParent = Me
         frm.Show()
@@ -86,62 +107,80 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Proveedores"
-    Private Sub RegistroDeProveedoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeProveedoresToolStripMenuItem.Click
+
+    Private Sub RegistroDeProveedoresToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles RegistroDeProveedoresToolStripMenuItem.Click
         Dim frm As New frmRegistroProveedores
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
 #End Region
 
 #Region "Clientes"
+
 #Region "Cuentas por Cobrar"
 
-    Private Sub AbonosACuentaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AbonosACuentaToolStripMenuItem.Click
+    Private Sub AbonosACuentaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles AbonosACuentaToolStripMenuItem.Click
         Dim frm As New frmAbonos
         frm.rubro = 1
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub EstadosDeCuentaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadosDeCuentaToolStripMenuItem.Click
+    Private Sub EstadosDeCuentaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles EstadosDeCuentaToolStripMenuItem.Click
         Dim frm As New frmEstadoCuenta
         frm.idrubro = 1
         frm.MdiParent = Me
         frm.Show()
 
     End Sub
+
 #End Region
-    Private Sub RegistroDeClientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RegistroDeClientesToolStripMenuItem.Click
+
+    Private Sub RegistroDeClientesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles RegistroDeClientesToolStripMenuItem.Click
         Dim frm As New frmRegistroClientes
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
 #End Region
 
 #Region "Inventario"
+
 #Region "ControlCompras"
-    Private Sub OrdenesDeCompraToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesDeCompraToolStripMenuItem.Click
+
+    Private Sub OrdenesDeCompraToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles OrdenesDeCompraToolStripMenuItem.Click
         Dim frm As New frmBusquedaOrdenesCompra
         frm.MdiParent = Me
         frm.Show()
     End Sub
-    Private Sub ComprasToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComprasToolStripMenuItem1.Click
+
+    Private Sub ComprasToolStripMenuItem1_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles ComprasToolStripMenuItem1.Click
         Dim frm As New frmBusquedaCompras
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
 #End Region
 
 #Region "Requisiciones"
 
-    Private Sub RequisicionesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesSalientesToolStripMenuItem.Click
+    Private Sub RequisicionesSalientesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles RequisicionesSalientesToolStripMenuItem.Click
         Dim frm As New frmBusquedaRequsicion
         frm.MdiParent = Me
         frm.Enviadas = True
         frm.Show()
     End Sub
 
-    Private Sub RequisicionesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RequisicionesEntrantesToolStripMenuItem.Click
+    Private Sub RequisicionesEntrantesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles RequisicionesEntrantesToolStripMenuItem.Click
         Dim frm As New frmBusquedaRequsicion
         frm.MdiParent = Me
         frm.Enviadas = False
@@ -151,14 +190,17 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Ordenes de salida"
-    Private Sub OrdenesSalientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesSalientesToolStripMenuItem.Click
+
+    Private Sub OrdenesSalientesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles OrdenesSalientesToolStripMenuItem.Click
         Dim frm As New frmBusquedaOrdenSalida
         frm.MdiParent = Me
         frm.Enviadas = True
         frm.Show()
     End Sub
 
-    Private Sub OrdenesEntrantesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdenesEntrantesToolStripMenuItem.Click
+    Private Sub OrdenesEntrantesToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles OrdenesEntrantesToolStripMenuItem.Click
         Dim frm As New frmBusquedaOrdenSalida
         frm.MdiParent = Me
         frm.Enviadas = False
@@ -167,48 +209,58 @@ Public Class frmMenuPrincipal
 
 #End Region
 
-    Private Sub ProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem.Click
+    Private Sub ProductosToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles ProductosToolStripMenuItem.Click
         Dim frm As New frmProductosBusqueda
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub MotocicletasToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MotocicletasToolStripMenuItem1.Click
+    Private Sub MotocicletasToolStripMenuItem1_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles MotocicletasToolStripMenuItem1.Click
         Dim frm As New frmMotocicletasBusqueda
         frm.MdiParent = Me
         frm.Show()
     End Sub
+
 #End Region
 
 #Region "Manejo de la aplicacion"
-    Private Sub frmMenuPrincipal_FormClosing(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+
+    Private Sub frmMenuPrincipal_FormClosing (ByVal sender As Object, ByVal e As FormClosingEventArgs) _
+        Handles MyBase.FormClosing
         End
     End Sub
+
 #End Region
 
 #Region "Facturación"
 
 #Region "Control de caja"
 
-    Private Sub AperturaDeCajaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AperturaDeCajaToolStripMenuItem.Click
+    Private Sub AperturaDeCajaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles AperturaDeCajaToolStripMenuItem.Click
         Dim frm As New frmAperturaCaja
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub IngresosDeEfectivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IngresosDeEfectivoToolStripMenuItem.Click
+    Private Sub IngresosDeEfectivoToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles IngresosDeEfectivoToolStripMenuItem.Click
         Dim frm As New frmIngresoEfectivo
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub RetirosDeEfectivoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RetirosDeEfectivoToolStripMenuItem.Click
+    Private Sub RetirosDeEfectivoToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles RetirosDeEfectivoToolStripMenuItem.Click
         Dim frm As New frmRetirosEfectivo
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
-    Private Sub CierreDeCajaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CierreDeCajaToolStripMenuItem.Click
+    Private Sub CierreDeCajaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles CierreDeCajaToolStripMenuItem.Click
         Dim frm As New frmCierreCaja
         frm.MdiParent = Me
         frm.Show()
@@ -220,14 +272,16 @@ Public Class frmMenuPrincipal
 
 #Region "Ventas"
 
-    Private Sub ProductosToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProductosToolStripMenuItem1.Click
+    Private Sub ProductosToolStripMenuItem1_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles ProductosToolStripMenuItem1.Click
         Dim frm As New frmVentas
         frm.MdiParent = Me
         frm.Show()
     End Sub
 
 
-    Private Sub MotocicletasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MotocicletasToolStripMenuItem.Click
+    Private Sub MotocicletasToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles MotocicletasToolStripMenuItem.Click
         Dim frm As New frmVentaMotocicleta
         frm.MdiParent = Me
         frm.Show()
@@ -235,7 +289,8 @@ Public Class frmMenuPrincipal
 
 #End Region
 
-    Private Sub FacturaciónToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FacturaciónToolStripMenuItem1.Click
+    Private Sub FacturaciónToolStripMenuItem1_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles FacturaciónToolStripMenuItem1.Click
         Dim frm As New frmBusquedaFactura
         frm.MdiParent = Me
         frm.Show()
@@ -246,18 +301,20 @@ Public Class frmMenuPrincipal
 #End Region
 
 #Region "Sesion"
-    Private Sub CerrarSesesiónToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+    Private Sub CerrarSesesiónToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs)
         Dim frm As New frmIniciosesion
         frm.Show()
         Me.Close()
     End Sub
 
-    Private Sub CambiarDeUsuarioToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CambiarDeUsuarioToolStripMenuItem.Click
+    Private Sub CambiarDeUsuarioToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles CambiarDeUsuarioToolStripMenuItem.Click
         Dim frm As New frmIniciosesion
         frm.ShowDialog()
     End Sub
 
-    Private Sub frmMenuPrincipal_Shown(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Shown
+    Private Sub frmMenuPrincipal_Shown (ByVal sender As Object, ByVal e As EventArgs) Handles Me.Shown
         isShow = True
     End Sub
 
@@ -265,5 +322,4 @@ Public Class frmMenuPrincipal
 
 
 #End Region
-
 End Class

@@ -1,10 +1,11 @@
-﻿Imports SiCo.lgla
-Imports System.ComponentModel
-Imports System.Diagnostics
+﻿Imports System.ComponentModel
+Imports SiCo.ctrla
+Imports SiCo.lgla
 
 Public Class crtPersonaJuridica
 
 #Region "Declaraciones"
+
     Private WithEvents _Persona As PersonaJuridica
     Private _PersonaBusqueda As PersonaJuridica
     Private _etiquetaError As New ToolStripStatusLabel
@@ -15,18 +16,21 @@ Public Class crtPersonaJuridica
     Private _size As Size
 
     Public Event CambioPersona()
+
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
-        _size = New Size(Me.Size)
+        _size = New Size (Me.Size)
 
     End Sub
+
 #End Region
 
 #Region "Propiedades"
@@ -35,17 +39,18 @@ Public Class crtPersonaJuridica
         Get
             Return lblRazonSocial.Text
         End Get
-        Set(ByVal value As String)
+        Set (ByVal value As String)
             lblRazonSocial.Text = value
         End Set
     End Property
 
-    <DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), Browsable(False), EditorBrowsable(EditorBrowsableState.Advanced)> _
+    <DesignerSerializationVisibility (DesignerSerializationVisibility.Hidden), Browsable (False), _
+        EditorBrowsable (EditorBrowsableState.Advanced)> _
     Public Property Persona() As PersonaJuridica
         Get
             Return _Persona
         End Get
-        Set(ByVal value As PersonaJuridica)
+        Set (ByVal value As PersonaJuridica)
             _Persona = value
             RaiseEvent CambioPersona()
         End Set
@@ -56,7 +61,7 @@ Public Class crtPersonaJuridica
             Return _SoloLectura
         End Get
 
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             Try
                 _SoloLectura = value
                 txtrazonsocial.ReadOnly = value
@@ -76,7 +81,7 @@ Public Class crtPersonaJuridica
         Get
             Return _etiquetaError
         End Get
-        Set(ByVal value As ToolStripStatusLabel)
+        Set (ByVal value As ToolStripStatusLabel)
             _etiquetaError = value
         End Set
     End Property
@@ -85,7 +90,7 @@ Public Class crtPersonaJuridica
         Get
             Return _RealizarBusquedaAutomatica
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             _RealizarBusquedaAutomatica = value
         End Set
     End Property
@@ -94,7 +99,7 @@ Public Class crtPersonaJuridica
         Get
             Return _HabilitarRTN
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             _HabilitarRTN = value
             txtrtn.Enabled = value
         End Set
@@ -104,7 +109,7 @@ Public Class crtPersonaJuridica
         Get
             Return txtrazonsocial.Enabled
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             txtrazonsocial.Enabled = value
             txttelefono.Enabled = value
             txtfax.Enabled = value
@@ -122,19 +127,19 @@ Public Class crtPersonaJuridica
         Get
             Return Panel3.Visible
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             Panel3.Visible = value
             If Not value Then
                 If Me.Size.Height > (Me.Panel1.Size.Height + Me.Panel2.Size.Height) Then
-                    Me.Size = New System.Drawing.Size(Me.Width, System.Drawing.Size.Subtract(Me.Size, Panel3.Size).Height)
+                    Me.Size = New Size (Me.Width, Size.Subtract (Me.Size, Panel3.Size).Height)
                 Else
-                    Me.Size = New Size(_size)
+                    Me.Size = New Size (_size)
                 End If
             Else
                 If Me.Size.Height < (Me.Panel3.Size.Height + Me.Panel2.Size.Height + Me.Panel1.Size.Height) Then
-                    Me.Size = New Size(Me.Width, System.Drawing.Size.Add(Me.Size, Panel3.Size).Height)
+                    Me.Size = New Size (Me.Width, Size.Add (Me.Size, Panel3.Size).Height)
                 Else
-                    Me.Size = New Size(_size)
+                    Me.Size = New Size (_size)
                 End If
             End If
         End Set
@@ -148,17 +153,20 @@ Public Class crtPersonaJuridica
         Try
             Dim flag As Boolean = True
             If Persona.Id > 0 Then
-                Select Case MessageBox.Show("La persona jurídica " + Me.Persona.RazonSocial + " ya está registrada en el sistema. " + vbCrLf _
-                                           + "¿Desea realizar modificar el registro?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                Select Case _
+                    MessageBox.Show ( _
+                        "La persona jurídica " + Me.Persona.RazonSocial + " ya está registrada en el sistema. " + vbCrLf _
+                        + "¿Desea realizar modificar el registro?", "Confirmación", MessageBoxButtons.YesNo, _
+                        MessageBoxIcon.Question)
                     Case DialogResult.No
                         flag = False
                 End Select
             End If
             If flag Then
-                Dim validador As New SiCo.ctrla.Validador
-                validador.ColecionCajasTexto.Add(txtrazonsocial)
-                validador.ColecionCajasTexto.Add(txtrtn)
-                validador.ColecionCajasTexto.Add(txtcorreo)
+                Dim validador As New Validador
+                validador.ColecionCajasTexto.Add (txtrazonsocial)
+                validador.ColecionCajasTexto.Add (txtrtn)
+                validador.ColecionCajasTexto.Add (txtcorreo)
                 If validador.PermitirIngresar Then
                     Me.Persona.RazonSocial = txtrazonsocial.Text
                     Me.Persona.rtn = txtrtn.Texto
@@ -177,7 +185,7 @@ Public Class crtPersonaJuridica
                 Return Persona.Id
             End If
         Catch ex As Exception
-            Throw New ApplicationException(ex.Message)
+            Throw New ApplicationException (ex.Message)
         End Try
 
     End Function
@@ -186,6 +194,7 @@ Public Class crtPersonaJuridica
         Me.Persona = New PersonaJuridica
         txtrazonsocial.Focus()
     End Sub
+
 #End Region
 
 #Region "Eventos"
@@ -210,25 +219,25 @@ Public Class crtPersonaJuridica
             Me.Persona = New PersonaJuridica
 
         End If
-        
+
     End Sub
 
-    Private Sub crtPersonaJuridica_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub crtPersonaJuridica_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         lblEstado.Text = ""
         Try
             _Persona = New PersonaJuridica
             txtrazonsocial.Entidad = New PersonaJuridica()
 
-            Dim tool As New ToolTip(Me.components)
-            tool.SetToolTip(btnModificar, "Modificar")
+            Dim tool As New ToolTip (Me.components)
+            tool.SetToolTip (btnModificar, "Modificar")
             tool.Active = True
 
-            Dim tool2 As New ToolTip(Me.components)
-            tool2.SetToolTip(btnNueva, "Nuevo")
+            Dim tool2 As New ToolTip (Me.components)
+            tool2.SetToolTip (btnNueva, "Nuevo")
             tool2.Active = True
 
-            Dim tool3 As New ToolTip(Me.components)
-            tool3.SetToolTip(btnbuscar, "Buscar")
+            Dim tool3 As New ToolTip (Me.components)
+            tool3.SetToolTip (btnbuscar, "Buscar")
             tool3.Active = True
 
         Catch ex As Exception
@@ -236,19 +245,19 @@ Public Class crtPersonaJuridica
         End Try
     End Sub
 
-    Private Sub btnbuscar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnbuscar.Click
-        Dim f As New frmBusqueda(New PersonaJuridica)
+    Private Sub btnbuscar_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnbuscar.Click
+        Dim f As New frmBusqueda (New PersonaJuridica)
         f.Grid.AutoGenerateColumns = True
-        f.Grid.DarFormato("razonsocial", "Razón Social", True)
-        f.Grid.DarFormato("rtn", "RTN", True)
-        f.Grid.DarFormato("telefono", "Télefono", True)
-        f.Grid.DarFormato("telefono2", "Fax", True)
-        f.Grid.DarFormato("correo", "Correo", True)
+        f.Grid.DarFormato ("razonsocial", "Razón Social", True)
+        f.Grid.DarFormato ("rtn", "RTN", True)
+        f.Grid.DarFormato ("telefono", "Télefono", True)
+        f.Grid.DarFormato ("telefono2", "Fax", True)
+        f.Grid.DarFormato ("correo", "Correo", True)
         f.VerParametros = False
 
 
         If txtrazonsocial.Text <> String.Empty Then
-            f.cargar("razonsocial", txtrazonsocial.Text)
+            f.cargar ("razonsocial", txtrazonsocial.Text)
             If f.ShowDialog() = DialogResult.OK Then
                 Me.Persona = f.Entidad
             End If
@@ -258,7 +267,7 @@ Public Class crtPersonaJuridica
         End If
     End Sub
 
-    Private Sub txtNombre_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtrazonsocial.Leave
+    Private Sub txtNombre_Leave (ByVal sender As Object, ByVal e As EventArgs) Handles txtrazonsocial.Leave
         If Me.RealizarBusquedaAutomarita Then
             If txtrazonsocial.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.RazonSocial Then
                 If Not SubProceso.IsBusy Then
@@ -267,22 +276,23 @@ Public Class crtPersonaJuridica
                     Me.RealizarBusquedaAutomarita = False
                     Me.SoloLectura = True
                     _PersonaBusqueda = New PersonaJuridica
-                    Dim ar As New Argumento(_PersonaBusqueda, txtrazonsocial.Text, "razonsocialigual")
+                    Dim ar As New Argumento (_PersonaBusqueda, txtrazonsocial.Text, "razonsocialigual")
                     Me.Cursor = Cursors.WaitCursor
-                    If Not SubProceso.IsBusy Then SubProceso.RunWorkerAsync(ar)
+                    If Not SubProceso.IsBusy Then SubProceso.RunWorkerAsync (ar)
                 End If
             End If
         End If
     End Sub
 
-    Private Sub SubProceso_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles SubProceso.DoWork
-        Dim argument As Argumento = CType(e.Argument, Argumento)
+    Private Sub SubProceso_DoWork (ByVal sender As Object, ByVal e As DoWorkEventArgs) Handles SubProceso.DoWork
+        Dim argument As Argumento = CType (e.Argument, Argumento)
 
-        argument.persona.Buscar(argument.parametro, argument.nombre)
+        argument.persona.Buscar (argument.parametro, argument.nombre)
 
     End Sub
 
-    Private Sub SubProceso_RunWorkerCompleted(ByVal sender As Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles SubProceso.RunWorkerCompleted
+    Private Sub SubProceso_RunWorkerCompleted (ByVal sender As Object, ByVal e As RunWorkerCompletedEventArgs) _
+        Handles SubProceso.RunWorkerCompleted
         Me.Cursor = Cursors.Default
         Me.SoloLectura = False
         lblEstado.Text = ""
@@ -293,25 +303,26 @@ Public Class crtPersonaJuridica
                 Me.Persona = _PersonaBusqueda
             End If
         Else
-            MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
     End Sub
 
-    Private Sub txtrazonsocial_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtrazonsocial.KeyPress
-        If Char.IsLetter(e.KeyChar) Then
+    Private Sub txtrazonsocial_KeyPress (ByVal sender As Object, ByVal e As KeyPressEventArgs) _
+        Handles txtrazonsocial.KeyPress
+        If Char.IsLetter (e.KeyChar) Then
             _RealizarBusquedaPor = BusquedaPor.RazonSocial
         End If
     End Sub
 
-    Private Sub txtrtn_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
-        If Char.IsLetter(e.KeyChar) Or Char.IsNumber(e.KeyChar) Then
+    Private Sub txtrtn_KeyPress (ByVal sender As Object, ByVal e As KeyPressEventArgs)
+        If Char.IsLetter (e.KeyChar) Or Char.IsNumber (e.KeyChar) Then
             _RealizarBusquedaPor = BusquedaPor.rtn
         End If
 
     End Sub
 
-    Private Sub txtrtn_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtrtn_Leave (ByVal sender As Object, ByVal e As EventArgs)
         If Me.RealizarBusquedaAutomarita Then
             If txtrtn.Text <> String.Empty And _RealizarBusquedaPor = BusquedaPor.rtn Then
                 If Not SubProceso.IsBusy Then
@@ -320,19 +331,19 @@ Public Class crtPersonaJuridica
                     Me.RealizarBusquedaAutomarita = False
                     Me.SoloLectura = True
                     _PersonaBusqueda = New PersonaJuridica
-                    Dim ar As New Argumento(_PersonaBusqueda, txtrtn.Text, "rtn")
+                    Dim ar As New Argumento (_PersonaBusqueda, txtrtn.Text, "rtn")
                     Me.Cursor = Cursors.WaitCursor
-                    If Not SubProceso.IsBusy Then SubProceso.RunWorkerAsync(ar)
+                    If Not SubProceso.IsBusy Then SubProceso.RunWorkerAsync (ar)
                 End If
             End If
         End If
     End Sub
 
-    Private Sub btnNueva_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNueva.Click
+    Private Sub btnNueva_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnNueva.Click
         Me.Nuevo()
     End Sub
 
-    Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
+    Private Sub btnModificar_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnModificar.Click
         Me.Enabled = True
     End Sub
 
@@ -345,26 +356,28 @@ Public Class crtPersonaJuridica
 #End Region
 
 #Region "ClaseArgumento"
+
     Private Class Argumento
         Public persona As New PersonaJuridica
         Public nombre As String
         Public parametro As String
-        Public Sub New(ByRef persona As PersonaJuridica, ByVal nombre As String, ByVal parametro As String)
+
+        Public Sub New (ByRef persona As PersonaJuridica, ByVal nombre As String, ByVal parametro As String)
             Me.persona = persona
             Me.nombre = nombre
             Me.parametro = parametro
         End Sub
-
     End Class
+
 #End Region
 
 #Region "Enumerador"
+
     Protected Enum BusquedaPor
         RazonSocial = 0
         rtn = 1
         Nada = 2
     End Enum
+
 #End Region
-
-
 End Class

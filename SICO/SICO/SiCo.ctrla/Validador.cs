@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SiCo.ctrla
 
@@ -8,46 +6,45 @@ namespace SiCo.ctrla
     public class Validador
     {
         #region Declaraciones
-        List<CajaTexto> _ColecionCajasTexto = new List<CajaTexto>();
+
+        private readonly List<CajaTexto> _ColecionCajasTexto = new List<CajaTexto>();
+
         #endregion
 
         #region Propiedades
-        public  List<CajaTexto> ColecionCajasTexto
+
+        public List<CajaTexto> ColecionCajasTexto
         {
             get { return _ColecionCajasTexto; }
-            
         }
 
         public bool PermitirIngresar
         {
-            get { return this.Validar(); }           
+            get { return Validar(); }
         }
 
-        public string MensajesError
-        {
-            get;
-            set;
-        }
+        public string MensajesError { get; set; }
 
-        #endregion 
+        #endregion
 
         #region Metodos
+
         private bool Validar()
         {
             bool flag = false;
-            foreach( CajaTexto  txt in this.ColecionCajasTexto   )
+            foreach (CajaTexto  txt in ColecionCajasTexto)
             {
                 flag = txt.EsValido();
                 if (!flag)
                 {
-                    this.MensajesError = txt.MensajeError;
+                    MensajesError = txt.MensajeError;
                     txt.Focus();
                     return flag;
                 }
                 flag = !txt.EsVacio();
                 if (!flag)
                 {
-                    this.MensajesError=  txt.MensajeError  ;
+                    MensajesError = txt.MensajeError;
                     txt.Focus();
                     return flag;
                 }
@@ -55,8 +52,7 @@ namespace SiCo.ctrla
 
             return flag;
         }
-        #endregion
 
+        #endregion
     }
 }
-

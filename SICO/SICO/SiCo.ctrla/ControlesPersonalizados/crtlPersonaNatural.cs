@@ -1,21 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using SiCo.lgla; 
-
+using SiCo.lgla;
 
 namespace SiCo.ctrla.ControlesPersonalizados
 {
     public partial class crtlPersonaNatural : UserControl
     {
         #region Declaraciones
-        private lgla.PersonaNatural _PersonaNatural;
-        private List<lgla.TipoIdentidad> _ColeccionTipoIdentidad = new List<lgla.TipoIdentidad>();
+
+        private readonly List<TipoIdentidad> _ColeccionTipoIdentidad = new List<TipoIdentidad>();
+        private PersonaNatural _PersonaNatural;
         public event ErroresEventsHandler Errores;
 
         #endregion
@@ -47,16 +42,13 @@ namespace SiCo.ctrla.ControlesPersonalizados
             //txtApellidos.ColeccionParametros.Add(new Parametro("rtn", string.Empty));
             //txtApellidos.ColeccionParametros.Add(new Parametro("NombreCompleto", string.Empty));
             //txtApellidos.ColeccionParametros.Add(new Parametro("apellidos", string.Empty));
-
-
-
         }
 
         #endregion
 
         #region Propiedad
 
-        public List<lgla.TipoIdentidad> ColeccionTipoIdentidad
+        public List<TipoIdentidad> ColeccionTipoIdentidad
         {
             get { return _ColeccionTipoIdentidad; }
         }
@@ -64,7 +56,6 @@ namespace SiCo.ctrla.ControlesPersonalizados
         public Int32 Id
         {
             get { return Guadar(); }
-
         }
 
         #endregion
@@ -75,7 +66,7 @@ namespace SiCo.ctrla.ControlesPersonalizados
         {
             Int32 i = 0;
             InicializarPersonaNatural();
-            Validador Validador = new Validador();
+            var Validador = new Validador();
             Validador.ColecionCajasTexto.Add(txtNombre);
             Validador.ColecionCajasTexto.Add(txtdireccion);
             Validador.ColecionCajasTexto.Add(txtCorreo);
@@ -94,20 +85,17 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 _PersonaNatural.rtn = txtrtn.Texto;
                 _PersonaNatural.telefono = txttelefono.ValorInt;
                 _PersonaNatural.Guardar();
-                i = (Int32)_PersonaNatural.Id;
-
+                i = (Int32) _PersonaNatural.Id;
             }
             else
             {
-                if (this.Errores != null)
+                if (Errores != null)
                 {
-                    this.Errores(Validador.MensajesError);
+                    Errores(Validador.MensajesError);
                 }
-
             }
 
             return i;
-
         }
 
         public void Cargar(Int32 Id)
@@ -119,13 +107,11 @@ namespace SiCo.ctrla.ControlesPersonalizados
             }
             catch (Exception ex)
             {
-                if (this.Errores != null)
+                if (Errores != null)
                 {
-                    this.Errores(ex.Message);
+                    Errores(ex.Message);
                 }
             }
-
-
         }
 
         private void InicializarPersonaNatural()
@@ -133,8 +119,8 @@ namespace SiCo.ctrla.ControlesPersonalizados
             if (_PersonaNatural == null)
             {
                 _PersonaNatural = new PersonaNatural();
-                _PersonaNatural.CambioId += new CambioIdEventHandler(_PersonaNatural_CambioId);
-                _PersonaNatural.Errores += new ErroresEventHandler(_PersonaNatural_Errores);
+                _PersonaNatural.CambioId += _PersonaNatural_CambioId;
+                _PersonaNatural.Errores += _PersonaNatural_Errores;
             }
         }
 
@@ -184,24 +170,20 @@ namespace SiCo.ctrla.ControlesPersonalizados
             {
                 if (cmbTipoIdentidad.SelectedItem != null)
                 {
-                    txtidentifiacion.TipoIdentificacion = (TipoIdentidad)cmbTipoIdentidad.SelectedItem;
+                    txtidentifiacion.TipoIdentificacion = (TipoIdentidad) cmbTipoIdentidad.SelectedItem;
                 }
-
             }
             catch
             {
-
             }
         }
 
         private void _PersonaNatural_Errores(string Mensaje)
         {
-
         }
 
         private void crtlPersonaNatural_Load(object sender, EventArgs e)
         {
-
         }
 
         private void txtNombre_Leave(object sender, EventArgs e)
@@ -209,9 +191,6 @@ namespace SiCo.ctrla.ControlesPersonalizados
             BuscarTextbox();
         }
 
-        #endregion       
-
-        
-
+        #endregion
     }
 }

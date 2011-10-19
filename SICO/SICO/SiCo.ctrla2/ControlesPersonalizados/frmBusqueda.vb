@@ -1,11 +1,17 @@
-﻿Imports SiCo.lgla
+﻿Imports SiCo.ctrla
+Imports SiCo.lgla
+
 Public Class frmBusqueda
+
 #Region "Declaraciones"
-    Private WithEvents _entidad As SiCo.lgla.Entidad
+
+    Private WithEvents _entidad As Entidad
+
 #End Region
 
 #Region "constructor"
-    Public Sub New(ByVal Entdiad As Entidad)
+
+    Public Sub New (ByVal Entdiad As Entidad)
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
         InitializeComponent()
@@ -14,6 +20,7 @@ Public Class frmBusqueda
 
         Me.Entidad = Entdiad
     End Sub
+
 #End Region
 
 #Region "Propiedades"
@@ -24,18 +31,17 @@ Public Class frmBusqueda
             Return _entidad
         End Get
 
-        Set(ByVal value As Entidad)
+        Set (ByVal value As Entidad)
             _entidad = value
         End Set
-
     End Property
 
-    Public Property Grid() As SiCo.ctrla.Grid
+    Public Property Grid() As Grid
         Get
             Return grdbusqueda
         End Get
 
-        Set(ByVal value As SiCo.ctrla.Grid)
+        Set (ByVal value As Grid)
             grdbusqueda = value
         End Set
     End Property
@@ -44,7 +50,7 @@ Public Class frmBusqueda
         Get
             Return panelparametros.Visible
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             panelparametros.Visible = value
         End Set
     End Property
@@ -52,23 +58,24 @@ Public Class frmBusqueda
 #End Region
 
 #Region "Metodos"
-    Public Sub cargar(ByVal Parametros As List(Of SiCo.lgla.Parametro))
+
+    Public Sub cargar (ByVal Parametros As List(Of Parametro))
         Try
             If Entidad.TotalRegistros = 0 Then
                 btnAceptar.Enabled = False
             End If
 
-            Me.Entidad.Buscar(Parametros)
+            Me.Entidad.Buscar (Parametros)
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Public Sub cargar(ByVal Parametro As String, ByVal valorBusqueda As String)
+    Public Sub cargar (ByVal Parametro As String, ByVal valorBusqueda As String)
         Try
-            Me.Entidad.Buscar(Parametro, valorBusqueda)
+            Me.Entidad.Buscar (Parametro, valorBusqueda)
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -84,11 +91,11 @@ Public Class frmBusqueda
         End If
     End Sub
 
-    Private Sub btnCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancelar.Click
+    Private Sub btnCancelar_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnCancelar.Click
         Me.Close()
     End Sub
 
-    Private Sub btnAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAceptar.Click
+    Private Sub btnAceptar_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnAceptar.Click
         Me.Close()
         Grid.Focus()
         Me.Entidad = Grid.Item()

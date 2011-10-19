@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics; 
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+using System.Drawing.Imaging;
 using System.IO;
+using System.Windows.Forms;
+using SiCo.lgla2;
 
 namespace SiCo.ctrla.ControlesPersonalizados
 {
@@ -15,83 +12,81 @@ namespace SiCo.ctrla.ControlesPersonalizados
     {
         #region Declaraciones
 
-        private SiCo.lgla2.Imagenes _imagenes;
-
-        private Boolean _Cambio = false; 
+        private Boolean _Cambio;
+        private Imagenes _imagenes;
 
         #endregion
 
         #region Constructor
+
         public crtImagen()
         {
             InitializeComponent();
-            this.Tabla = "";
+            Tabla = "";
             try
-            { 
-                _imagenes = new SiCo.lgla2.Imagenes(); 
+            {
+                _imagenes = new Imagenes();
             }
-            catch { }
-
+            catch
+            {
+            }
         }
+
         #endregion
 
         #region  Propiedades
-        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden )]
-        public SiCo.lgla2.Imagenes Imagenes
+
+        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false),
+         DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public Imagenes Imagenes
         {
-            get
-            {
-                return _imagenes;
-            }
+            get { return _imagenes; }
             set { _imagenes = value; }
         }
 
-        public string Tabla
-        {
-            get;
-            set;
-        }
-        #endregion 
+        public string Tabla { get; set; }
+
+        #endregion
 
         #region Metodos
+
         public void Descargar(long id)
         {
-            this._imagenes.TablaBusqueda = this.Tabla;
-            Argumento arg = new Argumento(this._imagenes,id );
-            tread.RunWorkerAsync(arg); 
+            _imagenes.TablaBusqueda = Tabla;
+            var arg = new Argumento(_imagenes, id);
+            tread.RunWorkerAsync(arg);
         }
 
         public void Guardar(long id)
         {
-            this.Imagenes.TablaBusqueda = this.Tabla;
+            Imagenes.TablaBusqueda = Tabla;
             if (_Cambio)
-            { 
+            {
                 if (pictureBox1.Image != null)
                 {
-                    MemoryStream m = new MemoryStream();
-                    this.pictureBox1.Image.Save(m, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    this._imagenes.ImagenBinaria = m.GetBuffer();
+                    var m = new MemoryStream();
+                    pictureBox1.Image.Save(m, ImageFormat.Jpeg);
+                    _imagenes.ImagenBinaria = m.GetBuffer();
                 }
-                else 
+                else
                 {
-                    this._imagenes.ImagenBinaria = null;
-                  
+                    _imagenes.ImagenBinaria = null;
                 }
-                this._imagenes.IdImagenes = id;
-                this._imagenes.Guardar(); 
+                _imagenes.IdImagenes = id;
+                _imagenes.Guardar();
             }
-
-        }   
-    
-        public void  limpiar()
-        {
-            pictureBox1.Image=null;
-            this.Imagenes=new SiCo.lgla2.Imagenes ();
         }
-        
+
+        public void limpiar()
+        {
+            pictureBox1.Image = null;
+            Imagenes = new Imagenes();
+        }
+
         #endregion
 
         #region Eventos
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (DialagoArchivo.ShowDialog() == DialogResult.OK)
@@ -100,9 +95,9 @@ namespace SiCo.ctrla.ControlesPersonalizados
                 txtArchivo.Select(txtArchivo.Text.Length + 2, txtArchivo.Text.Length - 1);
                 txtArchivo.SelectionLength = 0;
 
-                Bitmap b = new Bitmap(new Bitmap( DialagoArchivo.FileName),new Size(320,288));
+                var b = new Bitmap(new Bitmap(DialagoArchivo.FileName), new Size(320, 288));
 
-                pictureBox1.Image =b;
+                pictureBox1.Image = b;
 
                 _Cambio = true;
             }
@@ -111,82 +106,79 @@ namespace SiCo.ctrla.ControlesPersonalizados
         private void button1_Click(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
-                _Cambio = true; 
+                _Cambio = true;
             pictureBox1.Image = null;
             txtArchivo.Text = string.Empty;
-            
         }
 
         private void tread_DoWork(object sender, DoWorkEventArgs e)
         {
-            Argumento ar = (Argumento)e.Argument;
-            ar._imagen.Buscar(ar._id);  
+            var ar = (Argumento) e.Argument;
+            ar._imagen.Buscar(ar._id);
         }
 
         private void tread_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Error != null)
                 MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else 
+            else
             {
-                if (this._imagenes.TotalRegistros > 0)
+                if (_imagenes.TotalRegistros > 0)
                 {
-                    if (this._imagenes.Id > 0)
+                    if (_imagenes.Id > 0)
                     {
-                        this.pictureBox1.Image = _imagenes.Imagen;
+                        pictureBox1.Image = _imagenes.Imagen;
                     }
                     else
                     {
-                        this.pictureBox1.Image = null;
+                        pictureBox1.Image = null;
                     }
                 }
-                else 
+                else
                 {
-                    this.pictureBox1.Image = null;
+                    pictureBox1.Image = null;
                 }
             }
-
         }
-        
+
         private void crtImagen_Load(object sender, EventArgs e)
         {
             try
             {
-                _imagenes = new SiCo.lgla2.Imagenes();
-               
-                
+                _imagenes = new Imagenes();
             }
-            catch 
+            catch
             {
             }
-        
         }
 
         private void pictureBox1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            frmImagen f = new frmImagen();
+            var f = new frmImagen();
             if (pictureBox1.Image != null)
             {
                 f.Imagen = pictureBox1.Image;
                 f.ShowDialog();
             }
-
         }
 
         #endregion
 
+        #region Nested type: Argumento
+
         public class Argumento
         {
-            public  SiCo.lgla2.Imagenes _imagen;
-            public long  _id;
-            public Argumento(SiCo.lgla2 .Imagenes imagen,long id)
-            {
+            public long _id;
+            public Imagenes _imagen;
 
+            public Argumento(Imagenes imagen, long id)
+            {
                 _imagen = imagen;
-                
+
                 _id = id;
             }
-        }        
+        }
 
+        #endregion
     }
 }

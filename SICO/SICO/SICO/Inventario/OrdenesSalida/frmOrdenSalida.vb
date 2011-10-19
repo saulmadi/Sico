@@ -1,29 +1,36 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
-Imports SICO.ctrla
+﻿Imports SiCo.ctrla2
+Imports SiCo.lgla
+Imports SiCo.ctrla
+Imports SiCo.lgla2
+
 Public Class frmOrdenSalida
 
 #Region "Declaraciones"
+
     Private _OrdenSalida As New OrdenSalida
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property OrdenSalidas() As OrdenSalida
         Get
             Return _OrdenSalida
         End Get
-        Set(ByVal value As OrdenSalida)
+        Set (ByVal value As OrdenSalida)
             _OrdenSalida = value
             cargarentidad()
         End Set
     End Property
+
 #End Region
 
 #Region "Metodos"
-    Private Sub limpiar(ByVal crt As Control)
+
+    Private Sub limpiar (ByVal crt As Control)
         For Each i In crt.Controls
-            Dim g As Control = CType(i, Control)
-            limpiar(i)
+            Dim g As Control = CType (i, Control)
+            limpiar (i)
             If TypeOf i Is TextBox Then
                 i.clear()
             End If
@@ -36,16 +43,16 @@ Public Class frmOrdenSalida
     End Sub
 
     Private Sub cargarentidad()
-        limpiar(Me)
+        limpiar (Me)
 
         If Me.OrdenSalidas.Id = 0 Then
 
             Me.Grid.ListaFormatos.Clear()
 
-            Me.Grid.DarFormato("codigo", "Código", True)
-            Me.Grid.DarFormato("ProductoDescripcion", "Descripción", True)
-            Me.Grid.DarFormato("Existencia", "Existencia", True)
-            Me.Grid.DarFormato("CantidadEditable", "Cantidad", True)
+            Me.Grid.DarFormato ("codigo", "Código", True)
+            Me.Grid.DarFormato ("ProductoDescripcion", "Descripción", True)
+            Me.Grid.DarFormato ("Existencia", "Existencia", True)
+            Me.Grid.DarFormato ("CantidadEditable", "Cantidad", True)
             PanelAccion1.BotonEliminar.Enabled = False
             PanelAccion1.BotonEliminar.Visible = False
             PanelAccion1.BotonImprimir.Visible = False
@@ -66,20 +73,19 @@ Public Class frmOrdenSalida
             dteFechaemision.Value = Now
             OrdenSalidas.Listadetalle.Clear()
             For i As Integer = 0 To 49
-                OrdenSalidas.Listadetalle.Add(New DetalleOrdenSalida(PanelAccion1.sucursal.Id))
+                OrdenSalidas.Listadetalle.Add (New DetalleOrdenSalida (PanelAccion1.sucursal.Id))
 
             Next
             Grid.DataSource = OrdenSalidas.Listadetalle
             Grid.ReadOnly = False
         Else
 
-            
 
             Me.Grid.ListaFormatos.Clear()
 
-            Me.Grid.DarFormato("codigo", "Código", True)
-            Me.Grid.DarFormato("ProductoDescripcion", "Descripción", True)
-            Me.Grid.DarFormato("CantidadEditable", "Cantidad", True)
+            Me.Grid.DarFormato ("codigo", "Código", True)
+            Me.Grid.DarFormato ("ProductoDescripcion", "Descripción", True)
+            Me.Grid.DarFormato ("CantidadEditable", "Cantidad", True)
 
             TextBox6.Text = Me.OrdenSalidas.codigo
 
@@ -112,24 +118,24 @@ Public Class frmOrdenSalida
             End If
 
 
-
             Dim usu As New Usuario()
             If Not Me.OrdenSalidas.recibidopor = Nothing Then
-                usu.Buscar("id", Me.OrdenSalidas.enviadopor.ToString + " or c.id = " + Me.OrdenSalidas.recibidopor.ToString)
+                usu.Buscar ("id", _
+                            Me.OrdenSalidas.enviadopor.ToString + " or c.id = " + Me.OrdenSalidas.recibidopor.ToString)
             Else
-                usu.Buscar(Me.OrdenSalidas.enviadopor)
+                usu.Buscar (Me.OrdenSalidas.enviadopor)
             End If
             Dim l As List(Of Usuario) = usu.TablaAColeccion
 
             If usu.TotalRegistros > 0 Then
                 For i As Integer = 0 To usu.TotalRegistros - 1
-                    If l(i).Id = OrdenSalidas.recibidopor Then
-                        txtrecibidopor.Text = l(i).NombreMantenimiento
-                        txtcorreorecibidopor.Text = l(i).PersonaNatural.correo
+                    If l (i).Id = OrdenSalidas.recibidopor Then
+                        txtrecibidopor.Text = l (i).NombreMantenimiento
+                        txtcorreorecibidopor.Text = l (i).PersonaNatural.correo
                     End If
-                    If l(i).Id = OrdenSalidas.enviadopor Then
-                        txtenviadopor.Text = l(i).NombreMantenimiento
-                        txtcorreoenviadopor.Text = l(i).PersonaNatural.correo
+                    If l (i).Id = OrdenSalidas.enviadopor Then
+                        txtenviadopor.Text = l (i).NombreMantenimiento
+                        txtcorreoenviadopor.Text = l (i).PersonaNatural.correo
                     End If
                 Next
             End If
@@ -143,10 +149,10 @@ Public Class frmOrdenSalida
                     cmbSucursales.DataSource = s.TablaAColeccion
                 End If
 
-                Me.Grid.DarFormato("codigo", "Código", True)
-                Me.Grid.DarFormato("ProductoDescripcion", "Descripción", True)
-                Me.Grid.DarFormato("Existencia", "Existencia", True)
-                Me.Grid.DarFormato("CantidadEditable", "Cantidad", True)
+                Me.Grid.DarFormato ("codigo", "Código", True)
+                Me.Grid.DarFormato ("ProductoDescripcion", "Descripción", True)
+                Me.Grid.DarFormato ("Existencia", "Existencia", True)
+                Me.Grid.DarFormato ("CantidadEditable", "Cantidad", True)
                 Me.Grid.BotonEliminar = True
                 Me.Grid.BotonBuscar = True
                 PanelAccion1.BotonEliminar.Enabled = True
@@ -167,7 +173,7 @@ Public Class frmOrdenSalida
             Me.OrdenSalidas.CargarDetalle()
             If OrdenSalidas.estado.ToUpper = "P" Then
                 For i As Integer = OrdenSalidas.Listadetalle.Count To 50
-                    OrdenSalidas.Listadetalle.Add(New DetalleOrdenSalida(PanelAccion1.sucursal.Id))
+                    OrdenSalidas.Listadetalle.Add (New DetalleOrdenSalida (PanelAccion1.sucursal.Id))
                 Next
             End If
 
@@ -175,13 +181,15 @@ Public Class frmOrdenSalida
 
             calculartotales()
 
-            End If
+        End If
     End Sub
+
 #End Region
 
 #Region "Eventos"
-    Private Sub frmOrdenSalida_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        
+
+    Private Sub frmOrdenSalida_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+
 
         PanelAccion1.BotonEliminar.Text = "Recibir"
         PanelAccion1.BotonEliminar.Visible = False
@@ -193,25 +201,26 @@ Public Class frmOrdenSalida
         lblestado.Text = ""
     End Sub
 
-    Private Sub grid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles Grid.CellEndEdit
+    Private Sub grid_CellEndEdit (ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles Grid.CellEndEdit
         calculartotales()
     End Sub
 
     Private Sub grid_Buscar() Handles Grid.Buscar
-        Dim f As New SICO.ctrla2.frmBusquedaProductos
+        Dim f As New frmBusquedaProductos
         f.Entidad = New Productos
-        If f.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If f.ShowDialog() = DialogResult.OK Then
             Dim d As New DetalleCompras
             d.Producto = f.Entidad
-            Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index).Producto = New ProductosInventario(PanelAccion1.sucursal.Id)
-            Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index).Producto.Producto = f.Entidad
+            Me.OrdenSalidas.Listadetalle (Grid.CurrentRow.Index).Producto = _
+                New ProductosInventario (PanelAccion1.sucursal.Id)
+            Me.OrdenSalidas.Listadetalle (Grid.CurrentRow.Index).Producto.Producto = f.Entidad
             grid.Refresh()
         End If
         calculartotales()
     End Sub
 
-    Private Sub grid_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles Grid.Eliminar
-        Me.OrdenSalidas.Listadetalle(Grid.CurrentRow.Index) = New DetalleOrdenSalida(PanelAccion1.sucursal.Id)
+    Private Sub grid_Eliminar (ByVal EliminarArg As GridEliminarEventArg) Handles Grid.Eliminar
+        Me.OrdenSalidas.Listadetalle (Grid.CurrentRow.Index) = New DetalleOrdenSalida (PanelAccion1.sucursal.Id)
         grid.Refresh()
         calculartotales()
     End Sub
@@ -262,11 +271,11 @@ Public Class frmOrdenSalida
 
                 End If
             Else
-                MessageBox.Show("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show ("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 PanelAccion1.lblEstado.Text = "Eliga una sucursal"
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.lblEstado.Text = "Error al guardar"
             PanelAccion1.BarraProgreso.Value = 0
         End Try
@@ -292,28 +301,26 @@ Public Class frmOrdenSalida
             'End If
 
 
-
-
             If Me.OrdenSalidas.estado = "P" Then
-                If Not cmbSucursales.SelectedIndex = -1 Then
+                If Not cmbSucursales.SelectedIndex = - 1 Then
                     OrdenSalidas.enviadopor = PanelAccion1.Usuario.Id
                     OrdenSalidas.sucursalrecibe = cmbSucursales.SelectedItem.Id
                     OrdenSalidas.EnviarSalida()
                 Else
-                    MessageBox.Show("Seleccione una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show ("Seleccione una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
-                
+
             Else
                 OrdenSalidas.recibidopor = PanelAccion1.Usuario.Id
                 OrdenSalidas.RecibirSalida()
             End If
 
-            
+
             Me.OrdenSalidas.Id = _OrdenSalida.Id
             Me.OrdenSalidas = OrdenSalidas
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
 
@@ -326,26 +333,30 @@ Public Class frmOrdenSalida
             Dim d As New DetalleOrdenSalida
             Dim cr As New crOrdenRequisicion
 
-            d.Buscar(Me.OrdenSalidas.Id, "", Me.OrdenSalidas.sucursalenvia)
+            d.Buscar (Me.OrdenSalidas.Id, "", Me.OrdenSalidas.sucursalenvia)
 
 
+            cr.DataDefinition.FormulaFields ("codigo").Text = "'" + Me.OrdenSalidas.codigo + "'"
+            cr.DataDefinition.FormulaFields ("sucursalenvia").Text = "'" + _
+                                                                     Me.OrdenSalidas.SucursalEn.NombreMantenimiento + _
+                                                                     "'"
+            cr.DataDefinition.FormulaFields ("sucursalrecibe").Text = "'" + _
+                                                                      Me.OrdenSalidas.SucursalRec.NombreMantenimiento + _
+                                                                      "'"
+            cr.DataDefinition.FormulaFields ("fechaemision").Text = "'" + _
+                                                                    Me.OrdenSalidas.fechaemision.ToString ("dd/MM/yyyy") + _
+                                                                    "'"
+            cr.DataDefinition.FormulaFields ("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
+            cr.DataDefinition.FormulaFields ("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
+            cr.DataDefinition.FormulaFields ("orden").Text = "'Salida'"
 
-            cr.DataDefinition.FormulaFields("codigo").Text = "'" + Me.OrdenSalidas.codigo + "'"
-            cr.DataDefinition.FormulaFields("sucursalenvia").Text = "'" + Me.OrdenSalidas.SucursalEn.NombreMantenimiento + "'"
-            cr.DataDefinition.FormulaFields("sucursalrecibe").Text = "'" + Me.OrdenSalidas.SucursalRec.NombreMantenimiento + "'"
-            cr.DataDefinition.FormulaFields("fechaemision").Text = "'" + Me.OrdenSalidas.fechaemision.ToString("dd/MM/yyyy") + "'"
-            cr.DataDefinition.FormulaFields("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
-            cr.DataDefinition.FormulaFields("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
-            cr.DataDefinition.FormulaFields("orden").Text = "'Salida'"
+            cr.SetDataSource (d.Tabla)
 
-            cr.SetDataSource(d.Tabla)
-
-            f.Show(cr, "Orden de Salida")
+            f.Show (cr, "Orden de Salida")
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
 #End Region
-
 End Class

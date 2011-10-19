@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms ;
+using System.Windows.Forms;
 
 namespace SiCo.ctrla
 {
@@ -12,16 +9,13 @@ namespace SiCo.ctrla
     {
         #region Declaraciones
 
+        private readonly List<GridFormatoColumnas> _ListaFormatos = new List<GridFormatoColumnas>();
+        private bool _BotoElimar;
+        private bool _BotonBuscar;
+        private bool _BotonEditar;
         public event GridEditarEventHandler Editar;
         public event GridEliminarEventHandler Eliminar;
         public event GridBuscarEventHandler Buscar;
-
-        private bool _BotonEditar = false;
-        private bool _BotoElimar = false;
-        private bool _BotonBuscar = false;
-        
-        
-        private List<GridFormatoColumnas> _ListaFormatos= new List<GridFormatoColumnas> ();
 
         #endregion
 
@@ -32,7 +26,6 @@ namespace SiCo.ctrla
             InitializeComponent();
             InicializarDelegados();
             FormatoDefectoGeneral();
-
         }
 
         public Grid(IContainer container)
@@ -47,34 +40,23 @@ namespace SiCo.ctrla
 
         #region Propiedades
 
-        public string CampoId
-        {
-            get;
-            set;
-        }
+        public string CampoId { get; set; }
 
         public bool BotonEditar
         {
-            get 
-            {
-                return _BotonEditar; 
-            }
-            set 
+            get { return _BotonEditar; }
+            set
             {
                 _BotonEditar = value;
 
-                VisiblesColumnasEditarEliminar(); 
-
+                VisiblesColumnasEditarEliminar();
             }
         }
 
         public bool BotonEliminar
         {
-            get 
-            {
-                return _BotoElimar;
-            }
-            set 
+            get { return _BotoElimar; }
+            set
             {
                 _BotoElimar = value;
 
@@ -96,13 +78,12 @@ namespace SiCo.ctrla
         {
             get
             {
-                if(this.CurrentRow !=null)
-                if(this.CurrentRow.DataBoundItem !=null)
-                return this.CurrentRow.DataBoundItem;
+                if (CurrentRow != null)
+                    if (CurrentRow.DataBoundItem != null)
+                        return CurrentRow.DataBoundItem;
 
                 return null;
             }
-            
         }
 
         public List<GridFormatoColumnas> ListaFormatos
@@ -114,14 +95,14 @@ namespace SiCo.ctrla
 
         #region Eventos
 
-        void Grid_DataSourceChanged(object sender, EventArgs e)
+        private void Grid_DataSourceChanged(object sender, EventArgs e)
         {
-            if (this.DataSource != null)
+            if (DataSource != null)
             {
                 FormatoColumnas();
-                if (this.BotonEditar )
+                if (BotonEditar)
                 {
-                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    var columna = new DataGridViewButtonColumn();
                     columna.Text = "Ver";
                     columna.HeaderText = "Ver";
                     columna.Name = "BtnEditar";
@@ -130,14 +111,12 @@ namespace SiCo.ctrla
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
                     columna.Visible = true;
-                    this.Columns.Add(columna);
-                    
-
+                    Columns.Add(columna);
                 }
 
-                if (this.BotonBuscar)
+                if (BotonBuscar)
                 {
-                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    var columna = new DataGridViewButtonColumn();
                     columna.Text = "Buscar";
                     columna.HeaderText = "Buscar";
                     columna.Name = "BtnBuscar";
@@ -146,14 +125,12 @@ namespace SiCo.ctrla
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
                     columna.Visible = true;
-                    this.Columns.Add(columna);
-                    
-
+                    Columns.Add(columna);
                 }
 
-                if (this.BotonEliminar)
+                if (BotonEliminar)
                 {
-                    DataGridViewButtonColumn columna = new DataGridViewButtonColumn();
+                    var columna = new DataGridViewButtonColumn();
                     columna.Text = "Eliminar";
                     columna.HeaderText = "Eliminar";
                     columna.Name = "BtnEliminar";
@@ -162,32 +139,29 @@ namespace SiCo.ctrla
                     columna.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                     columna.UseColumnTextForButtonValue = true;
                     columna.Visible = true;
-                    this.Columns.Add(columna);
-
-
+                    Columns.Add(columna);
                 }
             }
         }
 
-        void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void Grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            if (this.Columns[e.ColumnIndex].Name == "BtnEditar")
+            if (Columns[e.ColumnIndex].Name == "BtnEditar")
             {
                 if (e.RowIndex >= 0)
                 {
-                    GridEditarEventArg h = new GridEditarEventArg();
+                    var h = new GridEditarEventArg();
                     try
                     {
                         if (CampoId != null)
                         {
-                            h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].ToString());
+                            h.Id = Convert.ToInt32(Rows[e.RowIndex].Cells[CampoId].ToString());
                         }
                         {
                             h.Id = 0;
                         }
                         if (e.RowIndex > 0)
-                            h.Fila = this.Rows[e.RowIndex];
+                            h.Fila = Rows[e.RowIndex];
                     }
                     catch
                     {
@@ -201,31 +175,30 @@ namespace SiCo.ctrla
                         Editar(h);
                 }
             }
-            if (this.Columns[e.ColumnIndex].Name == "BtnBuscar")
+            if (Columns[e.ColumnIndex].Name == "BtnBuscar")
             {
                 if (e.RowIndex >= 0)
-                if (Buscar  != null)
-                    Buscar();
+                    if (Buscar != null)
+                        Buscar();
             }
 
-            if (this.Columns[e.ColumnIndex].Name == "BtnEliminar")
+            if (Columns[e.ColumnIndex].Name == "BtnEliminar")
             {
                 if (e.RowIndex >= 0)
                 {
-                    GridEliminarEventArg h = new GridEliminarEventArg();
+                    var h = new GridEliminarEventArg();
 
-                    h.Fila = this.Rows[e.RowIndex];
+                    h.Fila = Rows[e.RowIndex];
                     if (CampoId != null)
                     {
                         try
                         {
-                            h.Id = Convert.ToInt32(this.Rows[e.RowIndex].Cells[CampoId].Value.ToString());
+                            h.Id = Convert.ToInt32(Rows[e.RowIndex].Cells[CampoId].Value.ToString());
                         }
                         catch
                         {
                             h.Id = 0;
                         }
-
                     }
                     else
                     {
@@ -239,89 +212,81 @@ namespace SiCo.ctrla
                         Eliminar(h);
                 }
 
-                this.Refresh();
-                
+                Refresh();
             }
-
-
         }
 
-        void Grid_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        private void Grid_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
             MessageBox.Show(e.Exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void Grid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            this.Refresh();
-            
+            Refresh();
         }
+
         #endregion
 
         #region Metodos
 
         private void InicializarDelegados()
         {
-            
-            this.DataSourceChanged += new EventHandler(Grid_DataSourceChanged);
-            this.CellContentClick += new DataGridViewCellEventHandler(Grid_CellContentClick);
-            this.DataError += new DataGridViewDataErrorEventHandler(Grid_DataError);
-            this.CellEndEdit += new DataGridViewCellEventHandler(Grid_CellEndEdit); 
+            DataSourceChanged += Grid_DataSourceChanged;
+            CellContentClick += Grid_CellContentClick;
+            DataError += Grid_DataError;
+            CellEndEdit += Grid_CellEndEdit;
         }
 
-       
 
         private void FormatoDefectoGeneral()
-        {            
-            this.AllowUserToAddRows = false;
-            this.AllowUserToDeleteRows = false;
-            this.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
-            this.MultiSelect = false;
-            this.RowHeadersVisible = false;
+        {
+            AllowUserToAddRows = false;
+            AllowUserToDeleteRows = false;
+            SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            MultiSelect = false;
+            RowHeadersVisible = false;
         }
 
         private void FormatoColumnas()
         {
-            foreach (DataGridViewColumn i in this.Columns)
+            foreach (DataGridViewColumn i in Columns)
             {
                 i.Visible = false;
             }
 
             foreach (GridFormatoColumnas f in _ListaFormatos)
             {
-                if (this.Columns.Contains(f.ColumnaNombre))
+                if (Columns.Contains(f.ColumnaNombre))
                 {
-
-                    DataGridViewTextBoxColumn c = new DataGridViewTextBoxColumn();
-                    c.HeaderText=f.ColumnaTitulo ;
+                    var c = new DataGridViewTextBoxColumn();
+                    c.HeaderText = f.ColumnaTitulo;
                     c.Name = f.ColumnaNombre;
                     c.DataPropertyName = f.ColumnaNombre;
-                    c.Visible = f.Visible;                    
-                     this.Columns.Add(c);
-                    
-                }     
-            }            
-        }        
+                    c.Visible = f.Visible;
+                    Columns.Add(c);
+                }
+            }
+        }
 
         private void VisiblesColumnasEditarEliminar()
         {
-            if(this.Columns.Contains("BtnEditar"))
+            if (Columns.Contains("BtnEditar"))
             {
-                this.Columns["BtnEditar"].Visible = this.BotonEditar;
+                Columns["BtnEditar"].Visible = BotonEditar;
             }
 
-            if (this.Columns.Contains("BtnEliminar"))
+            if (Columns.Contains("BtnEliminar"))
             {
-                this.Columns["BtnEliminar"].Visible = this.BotonEliminar;
+                Columns["BtnEliminar"].Visible = BotonEliminar;
             }
-            if (this.Columns.Contains("BtnBuscar"))
+            if (Columns.Contains("BtnBuscar"))
             {
-                this.Columns["BtnBuscar"].Visible = this.BotonEliminar;
+                Columns["BtnBuscar"].Visible = BotonEliminar;
             }
-            
         }
-        
+
         public void DarFormato(GridFormatoColumnas ColumnaFormato)
         {
             _ListaFormatos.Add(ColumnaFormato);
@@ -330,7 +295,7 @@ namespace SiCo.ctrla
 
         public void DarFormato(GridFormatoColumnas[] ColumnaFormato)
         {
-            foreach(GridFormatoColumnas f in ColumnaFormato )
+            foreach (GridFormatoColumnas f in ColumnaFormato)
             {
                 _ListaFormatos.Add(f);
             }
@@ -343,20 +308,18 @@ namespace SiCo.ctrla
             FormatoColumnas();
         }
 
-        public void DarFormato(string ColumnaNombre, string ColumnaTitulo,bool SoloLectura)
+        public void DarFormato(string ColumnaNombre, string ColumnaTitulo, bool SoloLectura)
         {
-            _ListaFormatos.Add(new GridFormatoColumnas(ColumnaNombre, ColumnaTitulo,SoloLectura));
+            _ListaFormatos.Add(new GridFormatoColumnas(ColumnaNombre, ColumnaTitulo, SoloLectura));
             FormatoColumnas();
         }
 
         public void DarFormato(string ColumnaNombre, string ColumnaTitulo, bool SoloLectura, bool Visible)
         {
-            _ListaFormatos .Add(new GridFormatoColumnas (ColumnaNombre,ColumnaTitulo,SoloLectura,Visible));
+            _ListaFormatos.Add(new GridFormatoColumnas(ColumnaNombre, ColumnaTitulo, SoloLectura, Visible));
             FormatoColumnas();
-        }        
+        }
 
-
-        #endregion           
-
+        #endregion
     }
 }
