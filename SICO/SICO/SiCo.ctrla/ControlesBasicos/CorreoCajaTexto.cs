@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel;
 
 namespace SiCo.ctrla
 {
@@ -11,7 +6,6 @@ namespace SiCo.ctrla
     {
         public CorreoCajaTexto()
         {
-            
             InitializeComponent();
             DarValidacion();
         }
@@ -19,16 +13,17 @@ namespace SiCo.ctrla
         public CorreoCajaTexto(IContainer container)
         {
             container.Add(this);
-            
+
             InitializeComponent();
             DarValidacion();
-           
         }
+
         private void DarValidacion()
         {
-            base.ExpresionValidacion = "^([a-zA-Z0-9_\\-])([a-zA-Z0-9_\\-\\.]*)@(\\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}|((([a-zA-Z0-9\\-]+)\\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\])$";
-            this.MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com";
-            this.TipoTexto = TiposTexto.Alfanumerico;             
+            base.ExpresionValidacion =
+                "^([a-zA-Z0-9_\\-])([a-zA-Z0-9_\\-\\.]*)@(\\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\.){3}|((([a-zA-Z0-9\\-]+)\\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\\])$";
+            MensajeError = "El correo electrónico debe tener este formato: abc@dominio.com";
+            TipoTexto = TiposTexto.Alfanumerico;
         }
     }
 }

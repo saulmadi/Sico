@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using SiCo.lgla;
 
-
 namespace SiCo.ctrla
 {
-    public partial class ListaDesplegable : System.Windows.Forms.ComboBox 
+    public partial class ListaDesplegable : ComboBox
     {
-
         #region Declaraciones
+
+        private List<ParametrosListaDesplegable> _ColeccionParametros = new List<ParametrosListaDesplegable>();
         private ComboBox _ComboBoxPadre = new ComboBox();
-       
-        private List<ParametrosListaDesplegable> _ColeccionParametros = new List<ParametrosListaDesplegable> ();
-       [NonSerialized()]  private Entidad _Entidad;
-        
-        
+        [NonSerialized] private Entidad _Entidad;
+
         #endregion
 
         #region Construtores
@@ -27,7 +21,7 @@ namespace SiCo.ctrla
         public ListaDesplegable()
         {
             InitializeComponent();
-            this.CargarComboBox = true; 
+            CargarComboBox = true;
         }
 
         public ListaDesplegable(IContainer container)
@@ -35,7 +29,7 @@ namespace SiCo.ctrla
             container.Add(this);
 
             InitializeComponent();
-            this.CargarComboBox = true; 
+            CargarComboBox = true;
         }
 
         #endregion
@@ -44,97 +38,64 @@ namespace SiCo.ctrla
 
         public ComboBox ListaDesplegablePadre
         {
-            get
-            {
-                return _ComboBoxPadre ;
-            }
+            get { return _ComboBoxPadre; }
             set
             {
                 _ComboBoxPadre = value;
                 if (value != null)
                 {
-                    _ComboBoxPadre.SelectedIndexChanged += new EventHandler(_ListaDesplegable_SelectedIndexChanged);
-                    _ComboBoxPadre.TextChanged += new EventHandler(_ComboBoxPadre_TextChanged);
+                    _ComboBoxPadre.SelectedIndexChanged += _ListaDesplegable_SelectedIndexChanged;
+                    _ComboBoxPadre.TextChanged += _ComboBoxPadre_TextChanged;
                 }
-                    
             }
-        }        
+        }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden), EditorBrowsable(EditorBrowsableState.Advanced)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+         EditorBrowsable(EditorBrowsableState.Advanced)]
         public Entidad Entidad
         {
             get { return _Entidad; }
-            
-            set 
-            {
-                _Entidad = value;
-               
-            }
 
+            set { _Entidad = value; }
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public string Comando
-        {
-            get;
-            set;
-        }
+        public string Comando { get; set; }
 
 
-        public string ParametroAutocompletar
-        {
-            get;
-            set;
-        }
+        public string ParametroAutocompletar { get; set; }
 
-        public Boolean CargarAutoCompletar
-        {
-            get;
-            set;
-        }
+        public Boolean CargarAutoCompletar { get; set; }
 
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),EditorBrowsable(EditorBrowsableState.Advanced) ]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden),
+         EditorBrowsable(EditorBrowsableState.Advanced)]
         public List<ParametrosListaDesplegable> ColeccionParametros
         {
-            get
-            {
-                return _ColeccionParametros;
-            }
-            set
-            {
-                _ColeccionParametros = value;
-            }
+            get { return _ColeccionParametros; }
+            set { _ColeccionParametros = value; }
         }
 
-        public string ParametroBusquedaPadre
-        {
-            get;
-            set;
-        }
+        public string ParametroBusquedaPadre { get; set; }
 
-        public Boolean CargarComboBox
-        {
-            get;
-            set;
-        }
+        public Boolean CargarComboBox { get; set; }
 
-       
-        #endregion       
+        #endregion
 
         #region Eventos
 
-        void _ListaDesplegable_SelectedIndexChanged(object sender, EventArgs e)
+        private void _ListaDesplegable_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                this.Cursor = Cursors.WaitCursor;
-                if (this.CargarComboBox)
+                Cursor = Cursors.WaitCursor;
+                if (CargarComboBox)
                 {
                     if (_ComboBoxPadre.SelectedValue != null && _ComboBoxPadre.SelectedIndex > -1)
                     {
-                        Argumento arg = new Argumento(this.Entidad, this.ColeccionParametros, this.ParametroBusquedaPadre, _ComboBoxPadre.SelectedValue.ToString());
+                        var arg = new Argumento(Entidad, ColeccionParametros, ParametroBusquedaPadre,
+                                                _ComboBoxPadre.SelectedValue.ToString());
 
-                        List<Parametro> p = new List<Parametro>();
+                        var p = new List<Parametro>();
                         foreach (ParametrosListaDesplegable i in arg.Coleccion)
                         {
                             p.Add(i);
@@ -143,74 +104,71 @@ namespace SiCo.ctrla
                         arg.Entidad.Buscar(p);
                         string d = DisplayMember;
                         string v = ValueMember;
-                        this.DataSource = null;
-                        this.DataSource = Entidad.TablaAColeccion();
-                        this.DisplayMember = d;
-                        this.ValueMember = v;
-                        this.Cursor = Cursors.Default;
-                        this.SelectedIndex = -1;  
+                        DataSource = null;
+                        DataSource = Entidad.TablaAColeccion();
+                        DisplayMember = d;
+                        ValueMember = v;
+                        Cursor = Cursors.Default;
+                        SelectedIndex = -1;
                     }
                 }
 
-                this.Cursor = Cursors.Default ;
-
+                Cursor = Cursors.Default;
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error)  ;
-
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        void _ComboBoxPadre_TextChanged(object sender, EventArgs e)
+        private void _ComboBoxPadre_TextChanged(object sender, EventArgs e)
         {
-            if ( _ComboBoxPadre.SelectedIndex == -1)
+            if (_ComboBoxPadre.SelectedIndex == -1)
             {
                 string d = DisplayMember;
                 string v = ValueMember;
-                this.DataSource = null;
-                this.DisplayMember = d;
-                this.ValueMember = v;
- 
+                DataSource = null;
+                DisplayMember = d;
+                ValueMember = v;
             }
         }
 
         private void SubProceso_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (e.Error !=null)
+            if (e.Error != null)
             {
                 MessageBox.Show(e.Error.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Cursor = Cursors.Default;
-                return;                
+                Cursor = Cursors.Default;
+                return;
             }
 
             if (Entidad.TotalRegistros > 0)
             {
                 string d = DisplayMember;
                 string v = ValueMember;
-                this.DataSource = null;
-                this.DataSource = Entidad.TablaAColeccion();
-                this.DisplayMember = d;
-                this.ValueMember = v;
-                this.Cursor = Cursors.Default;
-                this.SelectedIndex = -1;
+                DataSource = null;
+                DataSource = Entidad.TablaAColeccion();
+                DisplayMember = d;
+                ValueMember = v;
+                Cursor = Cursors.Default;
+                SelectedIndex = -1;
             }
             else
             {
                 string d = DisplayMember;
                 string v = ValueMember;
-                this.DataSource = null;
-                this.DisplayMember = d;
-                this.ValueMember = v;
+                DataSource = null;
+                DisplayMember = d;
+                ValueMember = v;
             }
-            this.Cursor = Cursors.Default; 
+            Cursor = Cursors.Default;
         }
 
         private void SubProceso_DoWork(object sender, DoWorkEventArgs e)
         {
-            Argumento a = (Argumento)e.Argument;
+            var a = (Argumento) e.Argument;
 
-            if (a.Coleccion == null && a.NombreParametro.Length==0 )
+            if (a.Coleccion == null && a.NombreParametro.Length == 0)
             {
                 a.Entidad.Buscar();
             }
@@ -218,7 +176,7 @@ namespace SiCo.ctrla
             {
                 if (a.Coleccion != null && a.NombreParametro.Length == 0)
                 {
-                    List<Parametro> p = new List<Parametro>();
+                    var p = new List<Parametro>();
                     foreach (ParametrosListaDesplegable i in a.Coleccion)
                     {
                         p.Add(i);
@@ -230,7 +188,7 @@ namespace SiCo.ctrla
                 {
                     if (a.Coleccion != null)
                     {
-                        List<Parametro> p = new List<Parametro>();
+                        var p = new List<Parametro>();
                         foreach (ParametrosListaDesplegable i in a.Coleccion)
                         {
                             p.Add(i);
@@ -248,8 +206,7 @@ namespace SiCo.ctrla
 
         public void ValorParametros(string Nombre, object valor)
         {
-
-            foreach (Parametro i in this.ColeccionParametros)
+            foreach (Parametro i in ColeccionParametros)
             {
                 if (i.Nombre.ToLower() == Nombre.ToLower())
                 {
@@ -262,37 +219,36 @@ namespace SiCo.ctrla
 
         public void NullParametros()
         {
-            foreach (Parametro i in this.ColeccionParametros)
+            foreach (Parametro i in ColeccionParametros)
             {
                 i.Valor = null;
             }
         }
 
-        public  void CargarEntidad()
+        public void CargarEntidad()
         {
-            this.Cursor = Cursors.WaitCursor;
-           if (Entidad !=null)
+            Cursor = Cursors.WaitCursor;
+            if (Entidad != null)
             {
                 if (!SubProceso.IsBusy)
                 {
-
-                    this.Cursor = Cursors.WaitCursor;
-                    Argumento o = new Argumento(Entidad);
-                    SubProceso.RunWorkerAsync(o); 
+                    Cursor = Cursors.WaitCursor;
+                    var o = new Argumento(Entidad);
+                    SubProceso.RunWorkerAsync(o);
                 }
             }
         }
 
         public void CargarParametros()
         {
-            this.Cursor = Cursors.WaitCursor;
+            Cursor = Cursors.WaitCursor;
             if (Entidad != null)
             {
                 if (!SubProceso.IsBusy)
                 {
-                    Argumento o = new Argumento(Entidad, ColeccionParametros);
+                    var o = new Argumento(Entidad, ColeccionParametros);
                     SubProceso.RunWorkerAsync(o);
-                } 
+                }
             }
         }
 
@@ -300,16 +256,16 @@ namespace SiCo.ctrla
         {
             try
             {
-                if (this.ColeccionParametros.Count == 0)
+                if (ColeccionParametros.Count == 0)
                     Entidad.Buscar();
                 else
                 {
-                    List<Parametro> p = new List<Parametro>();
-                    foreach (ParametrosListaDesplegable i in this.ColeccionParametros )
+                    var p = new List<Parametro>();
+                    foreach (ParametrosListaDesplegable i in ColeccionParametros)
                     {
                         p.Add(i);
                     }
-                   ;
+                    ;
                     Entidad.Buscar(p);
                 }
 
@@ -317,25 +273,25 @@ namespace SiCo.ctrla
                 {
                     string d = DisplayMember;
                     string v = ValueMember;
-                    this.DataSource = null;
-                    this.DataSource = Entidad.TablaAColeccion();
-                    this.DisplayMember = d;
-                    this.ValueMember = v;
-                    this.Cursor = Cursors.Default;
+                    DataSource = null;
+                    DataSource = Entidad.TablaAColeccion();
+                    DisplayMember = d;
+                    ValueMember = v;
+                    Cursor = Cursors.Default;
                     //this.SelectedIndex = -1;
                 }
                 else
                 {
                     string d = DisplayMember;
                     string v = ValueMember;
-                    this.DataSource = null;
-                    this.DisplayMember = d;
-                    this.ValueMember = v;
+                    DataSource = null;
+                    DisplayMember = d;
+                    ValueMember = v;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -343,66 +299,69 @@ namespace SiCo.ctrla
         {
             try
             {
-                if (this.SubProceso.IsBusy)
+                if (SubProceso.IsBusy)
                 {
-                    this.SubProceso.CancelAsync();
-                    while( this.SubProceso.CancellationPending);    
+                    SubProceso.CancelAsync();
+                    while (SubProceso.CancellationPending) ;
                 }
 
- 
+
                 string d = DisplayMember;
                 string v = ValueMember;
-                this.DataSource = null;
-                this.DisplayMember = d;
-                this.ValueMember = v;
+                DataSource = null;
+                DisplayMember = d;
+                ValueMember = v;
             }
-            catch 
-            { 
+            catch
+            {
             }
         }
 
         #endregion
 
         #region ClaseParametros
-        [Serializable() ]
-        public class ParametrosListaDesplegable : SiCo.lgla.Parametro
+
+        [Serializable]
+        public class ParametrosListaDesplegable : Parametro
         {
             public ParametrosListaDesplegable(string nombre, object valor)
                 : base(nombre, valor)
             {
- 
             }
-
         }
 
         #endregion
 
         #region ClaseArgumento
+
         private class Argumento
         {
-            public List<ParametrosListaDesplegable> Coleccion = null ;
-            public Entidad Entidad;
-            public string NombreParametro=string.Empty ;
-            public string ValorParametro = string.Empty;
+            public readonly List<ParametrosListaDesplegable> Coleccion;
+            public readonly Entidad Entidad;
+            public readonly string NombreParametro = string.Empty;
+            public readonly string ValorParametro = string.Empty;
 
-            public Argumento( Entidad entidad)
+            public Argumento(Entidad entidad)
             {
                 Entidad = entidad;
             }
+
             public Argumento(Entidad entidad, List<ParametrosListaDesplegable> coleccion)
             {
                 Coleccion = coleccion;
                 Entidad = entidad;
             }
-            public Argumento(Entidad entidad,List<ParametrosListaDesplegable> coleccion, String nombreParametro, string valorParametro)
+
+            public Argumento(Entidad entidad, List<ParametrosListaDesplegable> coleccion, String nombreParametro,
+                             string valorParametro)
             {
-                this.Entidad = entidad;
-                this.NombreParametro = nombreParametro;
-                this.ValorParametro = valorParametro;
-                this.Coleccion = coleccion;  
+                Entidad = entidad;
+                NombreParametro = nombreParametro;
+                ValorParametro = valorParametro;
+                Coleccion = coleccion;
             }
         }
-        #endregion      
 
+        #endregion
     }
 }

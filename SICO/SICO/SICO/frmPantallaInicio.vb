@@ -1,10 +1,11 @@
-﻿Public NotInheritable Class frmPantallaInicio
+﻿Imports System.IO
 
+Public NotInheritable Class frmPantallaInicio
     'TODO: Este formulario se puede establecer fácilmente como pantalla de bienvenida para la aplicación desde la ficha "Aplicación"
     '  del Diseñador de proyectos ("Propiedades" bajo el menú "Proyecto").
 
 
-    Private Sub frmPantallaInicio_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub frmPantallaInicio_Load (ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         'Configure el texto del cuadro de diálogo en tiempo de ejecución según la información del ensamblado de la aplicación.  
 
         'TODO: Personalice la información del ensamblado de la aplicación en el panel "Aplicación" del cuadro de diálogo 
@@ -15,7 +16,7 @@
             ApplicationTitle.Text = My.Application.Info.Title
         Else
             'Si falta el título de la aplicación, utilice el nombre de la aplicación sin la extensión
-            ApplicationTitle.Text = System.IO.Path.GetFileNameWithoutExtension(My.Application.Info.AssemblyName)
+            ApplicationTitle.Text = Path.GetFileNameWithoutExtension (My.Application.Info.AssemblyName)
         End If
 
         'Dé formato a la información de versión usando el texto establecido en el control de versiones en tiempo de diseño como
@@ -26,10 +27,9 @@
         '
         '    Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor, My.Application.Info.Version.Build, My.Application.Info.Version.Revision)
 
-        Version.Text = System.String.Format(Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor)
+        Version.Text = String.Format (Version.Text, My.Application.Info.Version.Major, My.Application.Info.Version.Minor)
 
         'Información de Copyright
         Copyright.Text = "Sistema de inventario COLMOTOS"
     End Sub
-
 End Class

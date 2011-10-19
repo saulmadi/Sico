@@ -1,56 +1,59 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
+﻿Imports SiCo.lgla2
+Imports SiCo.lgla
 
 Public Class frmBusquedaOrdenSalida
     Dim WithEvents frm As New frmOrdenSalida
 
     Dim _enviadas As Boolean = True
+
     Public Property Enviadas() As Boolean
         Get
             Return _enviadas
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             _enviadas = value
         End Set
     End Property
 
     Private Sub cargar()
         Try
-            Dim p As New List(Of SICO.lgla.Parametro)
+            Dim p As New List(Of Parametro)
 
-            p.Add(New Parametro("fechaemision", " fechaemision >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' and fechaemision <= '" + fechahasta.Value.ToString("yyyy-MM-dd") + "' "))
+            p.Add (New Parametro ("fechaemision", _
+                                  " fechaemision >= '" + fecha.Value.ToString ("yyyy-MM-dd") + "' and fechaemision <= '" + _
+                                  fechahasta.Value.ToString ("yyyy-MM-dd") + "' "))
 
             If txtcodigo.Text.Length > 0 Then
-                p.Add(New Parametro("codigoparecido", txtcodigo.Text))
+                p.Add (New Parametro ("codigoparecido", txtcodigo.Text))
             End If
 
 
             If Enviadas Then
                 If cmbSucursalSolicitante.SelectedItem Is Nothing Then
-                    p.Add(New Parametro("sucursalenvia", Me.CrtPanelBusqueda1.sucursal.Id))
+                    p.Add (New Parametro ("sucursalenvia", Me.CrtPanelBusqueda1.sucursal.Id))
                 Else
-                    p.Add(New Parametro("sucursalenvia", cmbSucursalSolicitante.SelectedItem.Id))
+                    p.Add (New Parametro ("sucursalenvia", cmbSucursalSolicitante.SelectedItem.Id))
                 End If
                 If Not cmbSucursalDestinatario.SelectedItem Is Nothing Then
-                    p.Add(New Parametro("sucursalrecibe", cmbSucursalDestinatario.SelectedItem.Id))
+                    p.Add (New Parametro ("sucursalrecibe", cmbSucursalDestinatario.SelectedItem.Id))
                 End If
             Else
                 If Not cmbSucursalSolicitante.SelectedItem Is Nothing Then
 
-                    p.Add(New Parametro("sucursalenvia", cmbSucursalSolicitante.SelectedItem.Id))
+                    p.Add (New Parametro ("sucursalenvia", cmbSucursalSolicitante.SelectedItem.Id))
                 End If
                 If cmbSucursalDestinatario.SelectedItem Is Nothing Then
-                    p.Add(New Parametro("sucursalrecibe", CrtPanelBusqueda1.sucursal.Id))
+                    p.Add (New Parametro ("sucursalrecibe", CrtPanelBusqueda1.sucursal.Id))
                 Else
-                    p.Add(New Parametro("sucursalrecibe", cmbSucursalDestinatario.SelectedItem.Id))
+                    p.Add (New Parametro ("sucursalrecibe", cmbSucursalDestinatario.SelectedItem.Id))
                 End If
             End If
 
-            CrtPanelBusqueda1.Cargar(p)
+            CrtPanelBusqueda1.Cargar (p)
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -62,15 +65,15 @@ Public Class frmBusquedaOrdenSalida
         frm.Show()
     End Sub
 
-    Private Sub frm_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frm.FormClosed
+    Private Sub frm_FormClosed (ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles frm.FormClosed
         Me.Show()
     End Sub
 
-    Private Sub frmBusquedaRequsicion_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmBusquedaRequsicion_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.CrtPanelBusqueda1.Entidad = New OrdenSalida
 
 
-        Me.CrtPanelBusqueda1.SeccionParametros.Size = New Size(Me.CrtPanelBusqueda1.SeccionParametros.Size.Width, 80)
+        Me.CrtPanelBusqueda1.SeccionParametros.Size = New Size (Me.CrtPanelBusqueda1.SeccionParametros.Size.Width, 80)
 
         CrtPanelBusqueda1.GridResultados.BotonEditar = True
 
@@ -83,22 +86,22 @@ Public Class frmBusquedaOrdenSalida
         cmbSucursalDestinatario.DataSource = s.TablaAColeccion
         cmbSucursalSolicitante.DataSource = s.TablaAColeccion
 
-        cmbSucursalDestinatario.SelectedIndex = -1
-        cmbSucursalSolicitante.SelectedIndex = -1
+        cmbSucursalDestinatario.SelectedIndex = - 1
+        cmbSucursalSolicitante.SelectedIndex = - 1
 
 
-        CrtPanelBusqueda1.GridResultados.DarFormato("codigo", "Número de Orden", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalEnvia", "Sucursal Proveedora", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionSucursalRecibe", "Sucursal Destinataria", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("fechaemision", "Fecha de Orden", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionEstado", "Estado", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("codigo", "Número de Orden", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("DescripcionSucursalEnvia", "Sucursal Proveedora", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("DescripcionSucursalRecibe", "Sucursal Destinataria", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("fechaemision", "Fecha de Orden", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("DescripcionEstado", "Estado", True)
 
-        fecha.Value = Now.AddDays(-30)
+        fecha.Value = Now.AddDays (- 30)
 
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click (ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
         cargar()
     End Sub
 
@@ -111,5 +114,4 @@ Public Class frmBusquedaOrdenSalida
         frm.Show()
         frm.OrdenSalidas = CrtPanelBusqueda1.GridResultados.Item()
     End Sub
-
 End Class

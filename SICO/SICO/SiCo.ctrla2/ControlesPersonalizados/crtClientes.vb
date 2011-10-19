@@ -1,19 +1,21 @@
-﻿Imports SiCo.lgla
+﻿Imports System.ComponentModel
+Imports SiCo.lgla
 Imports SiCo.lgla2
-Imports System.ComponentModel
-Imports System.Diagnostics
 
 Public Class crtClientes
 
 #Region "Declaraciones"
+
     Private WithEvents _cliente As Clientes
-   
+
     Private _CargarClientePorPersona As Boolean = False
     Private _premitebloquear As Boolean = True
     Private _size As Size
+
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -21,19 +23,22 @@ Public Class crtClientes
 
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         Me.VisibleDatosSecundarios = True
-        Me.Size = New Size(Me.Size)
+        Me.Size = New Size (Me.Size)
 
     End Sub
+
 #End Region
 
 #Region "Propiedades"
-    <Browsable(False), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+
+    <Browsable (False), EditorBrowsableAttribute (EditorBrowsableState.Advanced), _
+        DesignerSerializationVisibility (DesignerSerializationVisibility.Hidden)> _
     Public Property Cliente() As Clientes
         Get
             Return _cliente
         End Get
 
-        Set(ByVal value As Clientes)
+        Set (ByVal value As Clientes)
             _cliente = New Clientes
             _cliente = value
             Me._premitebloquear = False
@@ -69,19 +74,21 @@ Public Class crtClientes
         Get
             Return _CargarClientePorPersona
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             _CargarClientePorPersona = value
         End Set
     End Property
 
-    <Browsable(True), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    <Browsable (True), EditorBrowsableAttribute (EditorBrowsableState.Advanced), _
+        DesignerSerializationVisibility (DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property ControlPersonaNatural() As crtPersonaNatural
         Get
             Return CrtPersonaNatural1
         End Get
     End Property
 
-    <Browsable(True), EditorBrowsableAttribute(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+    <Browsable (True), EditorBrowsableAttribute (EditorBrowsableState.Advanced), _
+        DesignerSerializationVisibility (DesignerSerializationVisibility.Hidden)> _
     Public ReadOnly Property ControlPersonaJuridicas() As crtPersonaJuridica
         Get
             Return CrtPersonaJuridica1
@@ -92,10 +99,10 @@ Public Class crtClientes
         Get
             Return CrtPersonaNatural1.VisibleDatosSecundarios
         End Get
-        Set(ByVal value As Boolean)
+        Set (ByVal value As Boolean)
             CrtPersonaNatural1.VisibleDatosSecundarios = value
             CrtPersonaJuridica1.VisiblesDatosSecundarios = value
-            Me.Size = New Size(Me.Width, CrtPersonaNatural1.Size.Height + 20)
+            Me.Size = New Size (Me.Width, CrtPersonaNatural1.Size.Height + 20)
             'If Not value Then
             '    If Me.CrtPersonaJuridica1.Size.Height > System.Drawing.Size.Subtract(Me.Size, CrtPersonaNatural1.Size).Height Then
             '        Me.Size = New Size(Me.Width, CrtPersonaNatural1.Size.Height + 20)
@@ -118,6 +125,7 @@ Public Class crtClientes
             'End If
         End Set
     End Property
+
 #End Region
 
 #Region "Metodos"
@@ -131,7 +139,7 @@ Public Class crtClientes
             End If
             If Me.Cliente.idEntidades > 0 Then
                 Dim ident As Integer = Me.Cliente.idEntidades
-                Me.Cliente.Buscar("identidades", Me.Cliente.idEntidades.ToString)
+                Me.Cliente.Buscar ("identidades", Me.Cliente.idEntidades.ToString)
                 If Me.Cliente.TotalRegistros = 0 Then
                     _cliente = New Clientes
                 End If
@@ -143,7 +151,7 @@ Public Class crtClientes
             End If
             Return Cliente.Id
         Catch ex As Exception
-            Throw New ApplicationException(ex.Message)
+            Throw New ApplicationException (ex.Message)
         End Try
     End Function
 
@@ -159,12 +167,14 @@ Public Class crtClientes
 #End Region
 
 #Region "Eventos"
-    Private Sub _cliente_CambioId() Handles _cliente.CambioId, CrtPersonaJuridica1.CambioPersona, CrtPersonaNatural1.CambioPersona
+
+    Private Sub _cliente_CambioId() _
+        Handles _cliente.CambioId, CrtPersonaJuridica1.CambioPersona, CrtPersonaNatural1.CambioPersona
         If Me.CargarClientePorPersona Then
             If TabControl1.SelectedIndex = 0 Then
                 If CrtPersonaNatural1.Persona.Id > 0 Then
                     _cliente = New Clientes
-                    _cliente.Buscar("identidades", CrtPersonaNatural1.Persona.Id)
+                    _cliente.Buscar ("identidades", CrtPersonaNatural1.Persona.Id)
                     If _cliente.TotalRegistros = 0 Then
                         _cliente = New Clientes
                     End If
@@ -172,7 +182,7 @@ Public Class crtClientes
             Else
                 If CrtPersonaJuridica1.Persona.Id > 0 Then
                     _cliente = New Clientes
-                    _cliente.Buscar("identidades", CrtPersonaJuridica1.Persona.Id)
+                    _cliente.Buscar ("identidades", CrtPersonaJuridica1.Persona.Id)
                     If _cliente.TotalRegistros = 0 Then
                         _cliente = New Clientes
                     End If
@@ -185,7 +195,7 @@ Public Class crtClientes
         End If
     End Sub
 
-    Private Sub crtClientes_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub crtClientes_Load (ByVal sender As Object, ByVal e As EventArgs) Handles Me.Load
         Try
             _cliente = New Clientes
             _size = Me.Size
@@ -194,14 +204,17 @@ Public Class crtClientes
         End Try
     End Sub
 
-    Private Sub TabControl1_Selecting(ByVal sender As System.Object, ByVal e As System.Windows.Forms.TabControlCancelEventArgs) Handles TabControl1.Selecting
+    Private Sub TabControl1_Selecting (ByVal sender As Object, ByVal e As TabControlCancelEventArgs) _
+        Handles TabControl1.Selecting
         If Me._premitebloquear Then
             If Me.Cliente.Id > 0 Then
                 e.Cancel = True
                 Exit Sub
             End If
 
-            Select Case MessageBox.Show("¿Realmente desea cambiar de ficha? si cambia de ficha perdera la información actual.", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            Select Case _
+                MessageBox.Show ("¿Realmente desea cambiar de ficha? si cambia de ficha perdera la información actual.", _
+                                 "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 Case DialogResult.Yes
                     CrtPersonaJuridica1.Persona = New PersonaJuridica
                     CrtPersonaNatural1.Persona = New PersonaNatural
@@ -212,7 +225,6 @@ Public Class crtClientes
 
 
     End Sub
-#End Region
 
-   
+#End Region
 End Class

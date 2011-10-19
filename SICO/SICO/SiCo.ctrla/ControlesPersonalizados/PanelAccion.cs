@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using SiCo.ctrla ;
+using SiCo.ctrla.ControlesPersonalizados;
 
 namespace SiCo.ctrla
 {
-    public partial class PanelAccion : SiCo.ctrla.ControlesPersonalizados.crtPanelBase  
+    public partial class PanelAccion : crtPanelBase
     {
         #region Declaraciones
 
@@ -30,144 +24,112 @@ namespace SiCo.ctrla
         #endregion
 
         #region Constructor
+
         public PanelAccion()
         {
             InitializeComponent();
             EstadoMensaje = "";
-            lblfecha .Text = DateTime.Now.ToLongDateString ();
-            
+            lblfecha.Text = DateTime.Now.ToLongDateString();
         }
+
         #endregion
 
         #region Propiedades
+
         public string EstadoMensaje
         {
-            get
-            {
-                return lblEstado.Text;
-            }
-            set
-            {
-                lblEstado.Text = value;
-            }
+            get { return lblEstado.Text; }
+            set { lblEstado.Text = value; }
         }
 
-        public Button  BotonNuevo
+        public Button BotonNuevo
         {
-            get
-            {
-                return btnNuevo ;
-            }
-            set
-            {
-                btnNuevo = value;
-            }
+            get { return btnNuevo; }
+            set { btnNuevo = value; }
         }
 
         public Button BotonGuardar
         {
-            get
-            {
-                return btnGuardar ;
-            }
-            set
-            {
-                btnGuardar = value;
-            }
+            get { return btnGuardar; }
+            set { btnGuardar = value; }
         }
 
         public Button BotonEliminar
         {
-            get
-            {
-                return btnEliminar ;
-            }
-            set
-            {
-                btnEliminar = value;
-            }
+            get { return btnEliminar; }
+            set { btnEliminar = value; }
         }
 
         public Button BotonCancelar
         {
-            get
-            {
-                return btnCancelar;
-            }
-            set
-            {
-                btnCancelar= value;
-            }
+            get { return btnCancelar; }
+            set { btnCancelar = value; }
         }
 
         public Button BotonImprimir
         {
-            get
-            {
-                return BtnImprimir;
-            }
-            set
-            {
-                BtnImprimir  = value;
-            }
+            get { return BtnImprimir; }
+            set { BtnImprimir = value; }
         }
 
-        
         #endregion
 
         #region Eventos
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (this.Eliminar != null)
-                this.Eliminar();
+            if (Eliminar != null)
+                Eliminar();
         }
 
         private void BtnImprimir_Click(object sender, EventArgs e)
         {
-            if (this.Imprimir != null)
-                this.Imprimir();
+            if (Imprimir != null)
+                Imprimir();
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            if (this.Nuevo != null)
-                this.Nuevo();
-            this.BarraProgreso.Value = 0;
+            if (Nuevo != null)
+                Nuevo();
+            BarraProgreso.Value = 0;
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (this.Guardar != null)
+            if (Guardar != null)
             {
-                this.BarraEstado.Text = "Guardando....";
-                this.BarraProgreso.Value = 50;
-                this.Guardar();
-                this.BarraEstado.Text = "";
+                BarraEstado.Text = "Guardando....";
+                BarraProgreso.Value = 50;
+                Guardar();
+                BarraEstado.Text = "";
                 try
-                { this.BarraProgreso.Value = 100; }
-                catch (Exception ex) { ex.ToString(); }
-
-
-                    
+                {
+                    BarraProgreso.Value = 100;
+                }
+                catch (Exception ex)
+                {
+                    ex.ToString();
+                }
             }
-            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            switch (MessageBox.Show("¿Esta seguro de salir de la transacción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            switch (
+                MessageBox.Show("¿Esta seguro de salir de la transacción?", "Confirmación", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question))
             {
-                case DialogResult.Yes :
-                    if (this.Cancelar != null)
-                        this.Cancelar();            
-                    break ;
+                case DialogResult.Yes:
+                    if (Cancelar != null)
+                        Cancelar();
+                    break;
             }
         }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnEliminar_Click(sender, e); 
+            btnEliminar_Click(sender, e);
         }
 
         private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -177,13 +139,12 @@ namespace SiCo.ctrla
 
         private void nuevoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnNuevo_Click(sender, e); 
-        
+            btnNuevo_Click(sender, e);
         }
 
         private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnGuardar_Click(sender, e);  
+            btnGuardar_Click(sender, e);
         }
 
         private void cancelarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,10 +154,8 @@ namespace SiCo.ctrla
 
         private void PanelAccion_Load(object sender, EventArgs e)
         {
-
         }
 
-        #endregion                      
-        
+        #endregion
     }
 }
