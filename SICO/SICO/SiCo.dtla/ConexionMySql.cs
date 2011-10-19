@@ -1,97 +1,68 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Data;
 using MySql.Data.MySqlClient;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime;
-using System.Windows.Forms; 
 
 namespace SiCo.dtla
 {
     [Serializable]
-    public  class ConexionMySql 
-    { 
+    public class ConexionMySql
+    {
         #region Declaraciones
-            [NonSerialized]private Serializador  _Serializador = new Serializador();
-            [NonSerialized]private static  MySqlConnection _Conexion = new MySqlConnection();            
-            [NonSerialized]private ConexionMySql _Instancia;
-            [NonSerialized]private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
-            [NonSerialized]private MySqlTransaction _Transaccion;  
-        #endregion                 
+
+        [NonSerialized] private static MySqlConnection _Conexion = new MySqlConnection();
+        [NonSerialized] private readonly Serializador _Serializador = new Serializador();
+        [NonSerialized] private ClavesRegistro _ClavesRegistro = new ClavesRegistro();
+        [NonSerialized] private ConexionMySql _Instancia;
+        [NonSerialized] private MySqlTransaction _Transaccion;
+
+        #endregion
 
         #region Construtor
 
-            /// <summary>
-            /// Constructor de la conexión
-            /// </summary>
-            /// <param name="Cargar">Indica se van a cargar los datos del archivo de configuración</param>
-         public ConexionMySql(bool Cargar)
+        /// <summary>
+        /// Constructor de la conexión
+        /// </summary>
+        /// <param name="Cargar">Indica se van a cargar los datos del archivo de configuración</param>
+        public ConexionMySql(bool Cargar)
         {
-            
-            _Instancia = this; 
+            _Instancia = this;
             if (Cargar)
                 this.Cargar();
- 
- 
         }
 
-         public ConexionMySql()
-         {
-             
-             _Instancia = this;
- 
-         }
+        public ConexionMySql()
+        {
+            _Instancia = this;
+        }
 
         #endregion
 
         #region Propiedades
 
-         /// <summary>
-         /// Dirección del servidor en la red
-         /// </summary>
-        public string Servidor
-        {
-            get;
-            set;
-        }
+        /// <summary>
+        /// Dirección del servidor en la red
+        /// </summary>
+        public string Servidor { get; set; }
 
         /// <summary>
         /// Puerto por el que corre el servidor de base de datos
         /// </summary>
-        public int Puerto
-        {
-            get;
-            set;
-
-        }
+        public int Puerto { get; set; }
 
         /// <summary>
         /// Usuario de autetificacón en el servidor de base de datos
         /// </summary>
-        public string Usuario
-        {
-            get;
-            set;
-        }
+        public string Usuario { get; set; }
 
         /// <summary>
         /// Contraseña de acceso del usuario de base de datos
         /// </summary>
-        public string Contrasena
-        {
-            get;
-            set;
-        }
+        public string Contrasena { get; set; }
 
         /// <summary>
         /// Base de Datos selecionada segun el archivo de conexión
         /// </summary>
-        public string BaseDatos
-        {
-            get;
-            set;
-        }
+        public string BaseDatos { get; set; }
 
         /// <summary>
         /// Devuelve la cadena de conexion
@@ -100,7 +71,8 @@ namespace SiCo.dtla
         {
             get
             {
-                return "Server=" + Servidor + ";Port=" + Puerto.ToString() + "; database=" + BaseDatos + ";Uid=" + Usuario + ";Pwd=" + Contrasena + ";";
+                return "Server=" + Servidor + ";Port=" + Puerto.ToString() + "; database=" + BaseDatos + ";Uid=" +
+                       Usuario + ";Pwd=" + Contrasena + ";";
             }
         }
 
@@ -109,30 +81,23 @@ namespace SiCo.dtla
         /// </summary>
         public string Archivo
         {
-            get
-            {
-                return AppDomain.CurrentDomain.BaseDirectory   + "Cnx.sco";
-            }
+            get { return AppDomain.CurrentDomain.BaseDirectory + "Cnx.sco"; }
         }
 
         /// <summary>
         /// Objeto de conexión al servidor
         /// </summary>
-       public MySql.Data.MySqlClient.MySqlConnection Conexion
+        public MySqlConnection Conexion
         {
-            get
-            {
-                return _Conexion;
-            }
+            get { return _Conexion; }
         }
 
-        #endregion      
-        
+        #endregion
+
         #region Eventos
 
-        void _Serializador_Errores(string Mensaje)
+        private void _Serializador_Errores(string Mensaje)
         {
-          
         }
 
         #endregion
@@ -144,33 +109,28 @@ namespace SiCo.dtla
         /// </summary>
         public bool AbrirConexion()
         {
-            bool flag =false;
+            bool flag = false;
             try
             {
-                 
-               
-                if (this.Conexion.State  != System.Data.ConnectionState.Open )
+                if (Conexion.State != ConnectionState.Open)
                 {
-                   _Conexion = new MySqlConnection(CadenaConexion);
-                    this.Conexion.ConnectionString = CadenaConexion;
-                    this.Conexion.Open();                                        
+                    _Conexion = new MySqlConnection(CadenaConexion);
+                    Conexion.ConnectionString = CadenaConexion;
+                    Conexion.Open();
                 }
-               
-                if (this.Conexion.State==System.Data.ConnectionState.Open)
+
+                if (Conexion.State == ConnectionState.Open)
                 {
-                   
                     flag = true;
                 }
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
-
-                
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-              "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
             }
-            return flag;  
-
+            return flag;
         }
 
         /// <summary>
@@ -181,21 +141,20 @@ namespace SiCo.dtla
             bool flag = false;
             try
             {
-                if (this.Conexion.State != System.Data.ConnectionState.Closed )
+                if (Conexion.State != ConnectionState.Closed)
                 {
-                    
                     //this.Conexion.Close(); 
                 }
-                if (this.Conexion.State == System.Data.ConnectionState.Closed )
+                if (Conexion.State == ConnectionState.Closed)
                 {
                     flag = true;
                 }
             }
             catch (Exception ex)
             {
-                
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n       Contacte al administador de Sistema  ", ex);  
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n       Contacte al administador de Sistema  ", ex);
             }
             return flag;
         }
@@ -205,20 +164,20 @@ namespace SiCo.dtla
             bool flag = false;
             try
             {
-                if (this.Conexion.State != System.Data.ConnectionState.Closed)
+                if (Conexion.State != ConnectionState.Closed)
                 {
-                    this.Conexion.Close(); 
+                    Conexion.Close();
                 }
-                if (this.Conexion.State == System.Data.ConnectionState.Closed)
+                if (Conexion.State == ConnectionState.Closed)
                 {
                     flag = true;
                 }
             }
             catch (Exception ex)
             {
-
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n       Contacte al administador de Sistema  ", ex);
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n       Contacte al administador de Sistema  ", ex);
             }
             return flag;
         }
@@ -232,12 +191,12 @@ namespace SiCo.dtla
             {
                 _Serializador.Directorio = Archivo;
                 _Serializador.Objeto = _Instancia;
-                _Serializador.Guardar(); 
+                _Serializador.Guardar();
             }
-            catch(Exception ex) 
+            catch (Exception ex)
             {
-                throw new ApplicationException(ex.Message,ex); 
-            }           
+                throw new ApplicationException(ex.Message, ex);
+            }
         }
 
         /// <summary>
@@ -251,20 +210,17 @@ namespace SiCo.dtla
 
                 _Serializador.Objeto = _Instancia;
                 _Serializador.Directorio = Archivo;
-                _Instancia = (ConexionMySql)_Serializador.Cargar();
-                this.BaseDatos = _Instancia.BaseDatos;
-                this.Servidor = _Instancia.Servidor;
-                this.Usuario = _Instancia.Usuario;
-                this.Contrasena = _Instancia.Contrasena;
-                this.Puerto = _Instancia.Puerto;
-           
+                _Instancia = (ConexionMySql) _Serializador.Cargar();
+                BaseDatos = _Instancia.BaseDatos;
+                Servidor = _Instancia.Servidor;
+                Usuario = _Instancia.Usuario;
+                Contrasena = _Instancia.Contrasena;
+                Puerto = _Instancia.Puerto;
             }
             catch (Exception ex)
             {
-                throw new ArgumentException(ex.Message, ex); 
+                throw new ArgumentException(ex.Message, ex);
             }
-            
-          
         }
 
         /// <summary>
@@ -273,31 +229,28 @@ namespace SiCo.dtla
         /// <returns>Devuelve True si es sactifactoria la conexión y False si no</returns>
         public bool ProbarConexion()
         {
-            bool flag = AbrirConexion();             
+            bool flag = AbrirConexion();
             CerrarConexion();
             return flag;
-             
         }
 
         public bool InciarTransaccion()
-        {            
-            try 
+        {
+            try
             {
                 CerrarConexionVerdadero();
-                this.AbrirConexion ();
-                _Transaccion = null  ;
+                AbrirConexion();
+                _Transaccion = null;
                 _Transaccion = _Conexion.BeginTransaction();
 
-                
-                
+
                 if (_Transaccion == null)
                 {
                     _Transaccion = null;
-                    this.AbrirConexion();
+                    AbrirConexion();
                     _Transaccion = _Conexion.BeginTransaction();
                     if (_Transaccion != null)
                     {
-                     
                         return true;
                     }
                 }
@@ -305,18 +258,18 @@ namespace SiCo.dtla
                 {
                     return true;
                 }
-                
 
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n        Contacte al administador de Sistema o intente más tarde.");
+
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.");
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                 "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
-                 
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
             }
-            
         }
 
         public bool ComitTransaccion()
@@ -326,20 +279,19 @@ namespace SiCo.dtla
                 if (_Transaccion != null)
                 {
                     _Transaccion.Commit();
-                    this.CerrarConexion();
+                    CerrarConexion();
                     return true;
                 }
 
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n        Contacte al administador de Sistema o intente más tarde.  ");
-                
-            }            
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  ");
+            }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
                     "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
-                
-            
             }
         }
 
@@ -350,21 +302,22 @@ namespace SiCo.dtla
                 if (_Transaccion != null)
                 {
                     _Transaccion.Rollback();
-                    this.CerrarConexion();
+                    CerrarConexion();
                     return true;
                 }
 
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-                     "\n        Contacte al administador de Sistema o intente más tarde.  ");
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  ");
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error en la conexión con el servidor, revise la configuración de conexión. " +
-      "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
-                
+                throw new ApplicationException(
+                    "Error en la conexión con el servidor, revise la configuración de conexión. " +
+                    "\n        Contacte al administador de Sistema o intente más tarde.  " + ex.Message, ex);
             }
         }
 
-        #endregion        
+        #endregion
     }
 }

@@ -1,8 +1,10 @@
 ﻿Imports SiCo.lgla
+
 Public Class OrdenRequiscion
-    Inherits SiCo.lgla.Entidad
+    Inherits Entidad
 
 #Region "Declaraciones"
+
     Private _codigo As String
     Private _enviadopor As Long
     Private _estado As String
@@ -20,31 +22,34 @@ Public Class OrdenRequiscion
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
         MyBase.New()
 
         Me.ComandoSelect = "OrdenRequisicion_Buscar"
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("codigo"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("codigoparecido"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("sucursalenvia"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("sucursalrecibe"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("estado"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("fechaemision"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("codigo"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("codigoparecido"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("sucursalenvia"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("sucursalrecibe"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("estado"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("fechaemision"))
 
 
         Me.ComandoMantenimiento = "OrdenRequisicion_Mant"
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("codigo", Nothing, ParameterDirection.InputOutput))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("enviadopor"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("recibidopor"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("fechaemision"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("sucursalenvia"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("sucursalrecibe"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("estado"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("codigo", Nothing, ParameterDirection.InputOutput))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("enviadopor"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("recibidopor"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("fechaemision"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("sucursalenvia"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("sucursalrecibe"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("estado"))
 
 
     End Sub
 
-    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String)
+    Public Sub New (ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, _
+                    ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, _
+                    ByVal estado As String)
         Me.New()
         Me.codigo = codigo
         Me._Id = id
@@ -56,7 +61,9 @@ Public Class OrdenRequiscion
         Me.estado = estado
     End Sub
 
-    Public Sub New(ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, ByVal estado As String, ByVal sucen As Sucursales, ByVal sucre As Sucursales)
+    Public Sub New (ByVal id As Long, ByVal codigo As String, ByVal fechaemision As Date, ByVal enviadopor As Long, _
+                    ByVal recibidopor As Long, ByVal sucursalenvia As Long, ByVal sucursalrecibe As Long, _
+                    ByVal estado As String, ByVal sucen As Sucursales, ByVal sucre As Sucursales)
         Me.New()
         Me._Id = id
         Me.codigo = codigo
@@ -70,14 +77,16 @@ Public Class OrdenRequiscion
         Me.SucursalEn = sucen
         Me.SucursalRec = sucre
     End Sub
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property codigo() As String
         Get
             Return _codigo
         End Get
-        Set(ByVal value As String)
+        Set (ByVal value As String)
             _codigo = value
         End Set
     End Property
@@ -86,7 +95,7 @@ Public Class OrdenRequiscion
         Get
             Return _fechaemision
         End Get
-        Set(ByVal value As Date)
+        Set (ByVal value As Date)
             _fechaemision = value
         End Set
     End Property
@@ -95,7 +104,7 @@ Public Class OrdenRequiscion
         Get
             Return _enviadopor
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _enviadopor = value
         End Set
     End Property
@@ -104,7 +113,7 @@ Public Class OrdenRequiscion
         Get
             Return _recibidopor
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _recibidopor = value
         End Set
     End Property
@@ -113,7 +122,7 @@ Public Class OrdenRequiscion
         Get
             Return _sucursalenvia
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _sucursalenvia = value
         End Set
     End Property
@@ -122,7 +131,7 @@ Public Class OrdenRequiscion
         Get
             Return _sucursalrecibe
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _sucursalrecibe = value
         End Set
     End Property
@@ -131,7 +140,7 @@ Public Class OrdenRequiscion
         Get
             Return _estado
         End Get
-        Set(ByVal value As String)
+        Set (ByVal value As String)
             _estado = value
         End Set
     End Property
@@ -140,7 +149,7 @@ Public Class OrdenRequiscion
         Get
             Return _ListaDetalle
         End Get
-        Set(ByVal value As List(Of DetalleRequisicion))
+        Set (ByVal value As List(Of DetalleRequisicion))
             _ListaDetalle = value
         End Set
     End Property
@@ -181,7 +190,7 @@ Public Class OrdenRequiscion
             End If
             Return _sucursalEn
         End Get
-        Set(ByVal value As Sucursales)
+        Set (ByVal value As Sucursales)
             _sucursalEn = value
         End Set
     End Property
@@ -197,7 +206,7 @@ Public Class OrdenRequiscion
             End If
             Return _sucursalRe
         End Get
-        Set(ByVal value As Sucursales)
+        Set (ByVal value As Sucursales)
             _sucursalRe = value
         End Set
     End Property
@@ -230,23 +239,26 @@ Public Class OrdenRequiscion
 #End Region
 
 #Region "Metodos"
-    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
-        Me.codigo = Registro(Indice, "codigo")
-        Me.fechaemision = Registro(Indice, "fechaemision")
-        Me.enviadopor = Registro(Indice, "enviadopor")
-        Me.recibidopor = Registro(Indice, "recibidopor")
-        Me.sucursalenvia = Registro(Indice, "sucursalenvia")
-        Me.sucursalrecibe = Registro(Indice, "sucursalrecibe")
-        Me.estado = Registro(Indice, "estado")
+
+    Protected Overrides Sub CargadoPropiedades (ByVal Indice As Integer)
+        Me.codigo = Registro (Indice, "codigo")
+        Me.fechaemision = Registro (Indice, "fechaemision")
+        Me.enviadopor = Registro (Indice, "enviadopor")
+        Me.recibidopor = Registro (Indice, "recibidopor")
+        Me.sucursalenvia = Registro (Indice, "sucursalenvia")
+        Me.sucursalrecibe = Registro (Indice, "sucursalrecibe")
+        Me.estado = Registro (Indice, "estado")
         If Not sucursalenvia = Nothing Then
-            Me._sucursalEn = New Sucursales(sucursalenvia, Convert.ToInt64(Registro(Indice, "identidadesenvia")), Registro(Indice, "descripcionenvia").ToString)
+            Me._sucursalEn = New Sucursales (sucursalenvia, Convert.ToInt64 (Registro (Indice, "identidadesenvia")), _
+                                             Registro (Indice, "descripcionenvia").ToString)
         End If
 
         If Not sucursalrecibe = Nothing Then
-            Me._sucursalRe = New Sucursales(sucursalrecibe, Convert.ToInt64(Registro(Indice, "identidadesrecibe")), Registro(Indice, "descripcionrecibe").ToString)
+            Me._sucursalRe = New Sucursales (sucursalrecibe, Convert.ToInt64 (Registro (Indice, "identidadesrecibe")), _
+                                             Registro (Indice, "descripcionrecibe").ToString)
         End If
 
-        MyBase.CargadoPropiedades(Indice)
+        MyBase.CargadoPropiedades (Indice)
     End Sub
 
     Private Function CalcularDetalle() As Long
@@ -254,13 +266,13 @@ Public Class OrdenRequiscion
         Dim cantot As Long = 0
 
         For g As Integer = 0 To Me.Listadetalle.Count - 1
-            Dim i As DetalleRequisicion = Listadetalle(g)
+            Dim i As DetalleRequisicion = Listadetalle (g)
             If i.idproducto > 0 Then
-                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+                If Me._diccionariodetalle.ContainsKey (i.idproducto) Then
                     'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
                     cantot += i.Cantidad
                 Else
-                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    Me._diccionariodetalle.Add (i.idproducto, i)
                     cantot += i.Cantidad
                 End If
             End If
@@ -276,19 +288,19 @@ Public Class OrdenRequiscion
         Dim cantot As Long = 0
 
         For g As Integer = 0 To Me.Listadetalle.Count - 1
-            Dim i As DetalleRequisicion = Listadetalle(g)
+            Dim i As DetalleRequisicion = Listadetalle (g)
             If i.idproducto > 0 Then
-                If Me._diccionariodetalle.ContainsKey(i.idproducto) Then
+                If Me._diccionariodetalle.ContainsKey (i.idproducto) Then
                     'Me._diccionariodetalle(i.idproducto).Cantidad += i.Cantidad
                     cantot += i.Cantidad
                 Else
-                    Me._diccionariodetalle.Add(i.idproducto, i)
+                    Me._diccionariodetalle.Add (i.idproducto, i)
                     cantot += i.Cantidad
                 End If
             End If
         Next
         If Me._diccionariodetalle.Count = 0 Then
-            Throw New ApplicationException("Debe de ingresar un producto, para realizar la orden de requisición")
+            Throw New ApplicationException ("Debe de ingresar un producto, para realizar la orden de requisición")
         End If
         Return cantot
     End Function
@@ -297,7 +309,7 @@ Public Class OrdenRequiscion
         _listaDetalle.Clear()
         If Me.Id > 0 Then
             Dim d As New DetalleRequisicion
-            d.Buscar(Me.Id.ToString)
+            d.Buscar (Me.Id.ToString)
             _listaDetalle = d.TablaAColeccion
         End If
     End Sub
@@ -305,22 +317,22 @@ Public Class OrdenRequiscion
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
         Me.codigo = " "
-        Me.ValorParametrosMantenimiento("codigo", Me.codigo)
-        Me.ValorParametrosMantenimiento("enviadopor", Me.enviadopor)
+        Me.ValorParametrosMantenimiento ("codigo", Me.codigo)
+        Me.ValorParametrosMantenimiento ("enviadopor", Me.enviadopor)
         If Me.estado = "R" Then
-            Me.ValorParametrosMantenimiento("recibidopor", Me.recibidopor)
+            Me.ValorParametrosMantenimiento ("recibidopor", Me.recibidopor)
         Else
-            Me.ValorParametrosMantenimiento("recibidopor", Nothing)
+            Me.ValorParametrosMantenimiento ("recibidopor", Nothing)
         End If
 
-        Me.ValorParametrosMantenimiento("fechaemision", Me.fechaemision)
-        Me.ValorParametrosMantenimiento("sucursalenvia", Me.sucursalenvia)
-        Me.ValorParametrosMantenimiento("sucursalrecibe", Me.sucursalrecibe)
-        Me.ValorParametrosMantenimiento("estado", Me.estado)
+        Me.ValorParametrosMantenimiento ("fechaemision", Me.fechaemision)
+        Me.ValorParametrosMantenimiento ("sucursalenvia", Me.sucursalenvia)
+        Me.ValorParametrosMantenimiento ("sucursalrecibe", Me.sucursalrecibe)
+        Me.ValorParametrosMantenimiento ("estado", Me.estado)
 
 
-        MyBase.Guardar(True)
-        Me.codigo = Me.ValorParametrosMantenimiento("codigo")
+        MyBase.Guardar (True)
+        Me.codigo = Me.ValorParametrosMantenimiento ("codigo")
     End Sub
 
     Public Sub GuardarOrdenRequisicion()
@@ -335,7 +347,9 @@ Public Class OrdenRequiscion
                     If i.Value.Cantidad > 0 Then
                         i.Value.Guardar()
                     Else
-                        Throw New ApplicationException("La cantidad del producto" + i.Value.Descripcion + " no puede ser 0")
+                        Throw _
+                            New ApplicationException ( _
+                                "La cantidad del producto" + i.Value.Descripcion + " no puede ser 0")
                     End If
                 End If
             Next
@@ -343,7 +357,7 @@ Public Class OrdenRequiscion
 
         Catch ex As Exception
             Me.RollBackTransaccion()
-            Throw New ApplicationException(ex.Message)
+            Throw New ApplicationException (ex.Message)
         End Try
     End Sub
 
@@ -351,10 +365,13 @@ Public Class OrdenRequiscion
         Dim lista As New List(Of OrdenRequiscion)
 
         For i As Integer = 0 To Me.TotalRegistros - 1
-            Me.CargadoPropiedades(i)
-            Dim tmpr As New OrdenRequiscion(Me.Id, Me.codigo, Me.fechaemision, Me.enviadopor, Me.recibidopor, Me.sucursalenvia, Me.sucursalrecibe, Me.estado, Me.SucursalEn, Me.SucursalRec)
+            Me.CargadoPropiedades (i)
+            Dim _
+                tmpr As _
+                    New OrdenRequiscion (Me.Id, Me.codigo, Me.fechaemision, Me.enviadopor, Me.recibidopor, _
+                                         Me.sucursalenvia, Me.sucursalrecibe, Me.estado, Me.SucursalEn, Me.SucursalRec)
 
-            lista.Add(tmpr)
+            lista.Add (tmpr)
         Next
 
 
@@ -362,5 +379,4 @@ Public Class OrdenRequiscion
     End Function
 
 #End Region
-
 End Class

@@ -1,16 +1,16 @@
-﻿Imports SICO.lgla2
-Imports SICO.lgla
+﻿Imports SiCo.lgla2
+
 Public Class frmRegistroClientes
     Public Property Cliente() As Clientes
         Get
             Return CrtClientes1.Cliente
         End Get
-        Set(ByVal value As Clientes)
+        Set (ByVal value As Clientes)
             CrtClientes1.Cliente = value
         End Set
     End Property
 
-    Private Sub frmRegistroClientes_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmRegistroClientes_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         CrtListadoMantenimiento1.Entidad = New Clientes
         CrtListadoMantenimiento1.lblDescripcion.Text = "Cliente"
         CrtClientes1.ControlPersonaNatural.EtiquetaError = PanelAccion1.lblEstado
@@ -20,7 +20,7 @@ Public Class frmRegistroClientes
         PanelAccion1.BotonEliminar.Visible = False
     End Sub
 
-   
+
     Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
         Me.Close()
     End Sub
@@ -36,7 +36,7 @@ Public Class frmRegistroClientes
 
         Catch ex As Exception
             PanelAccion1.lblEstado.Text = "Error al guardar el cliente"
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.BarraProgreso.Value = 0
         End Try
 
@@ -48,7 +48,7 @@ Public Class frmRegistroClientes
         PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
-    Private Sub PanelAccion1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PanelAccion1.Load
+    Private Sub PanelAccion1_Load (ByVal sender As Object, ByVal e As EventArgs) Handles PanelAccion1.Load
 
     End Sub
 
@@ -57,7 +57,8 @@ Public Class frmRegistroClientes
 
     End Sub
 
-    Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
+    Private Sub CrtListadoMantenimiento1_SeleccionItem (ByVal Item As Object) _
+        Handles CrtListadoMantenimiento1.SeleccionItem
         Me.Cliente = Item
     End Sub
 End Class

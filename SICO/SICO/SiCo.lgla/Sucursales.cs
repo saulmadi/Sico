@@ -1,96 +1,82 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using SiCo.dtla;
 
 namespace SiCo.lgla
 {
-    public class Sucursales:Mantenimientos
+    public class Sucursales : Mantenimientos
     {
         #region "Declaraciones"
+
         public string NombreSucursal;
         public string PieSucursal;
+
         #endregion
 
         #region Constructor
+
         public Sucursales()
         {
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
 
-            this.TablaBusqueda = "Sucursales";
-            this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
+            TablaBusqueda = "Sucursales";
+            ColeccionParametrosBusqueda.Add(new Parametro("tabla", TablaBusqueda));
 
-            this.ComandoMantenimiento = "Sucursales_Mant";
-            this.TablaEliminar = "Sucursales";
-
+            ComandoMantenimiento = "Sucursales_Mant";
+            TablaEliminar = "Sucursales";
         }
 
         public Sucursales(long? id, long? identidad, int Estado, long? idusuario, long? idmunicipios)
             : base(id, identidad, Estado)
         {
-            this.idUsuario  = idusuario;
-            this.idMunicipio = idmunicipios;
+            idUsuario = idusuario;
+            idMunicipio = idmunicipios;
 
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
 
-            this.TablaBusqueda = "Sucursales";
-            this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
-            this.ComandoMantenimiento = "Sucursales_Mant";
-            this.TablaEliminar = "Sucursales";
+            TablaBusqueda = "Sucursales";
+            ColeccionParametrosBusqueda.Add(new Parametro("tabla", TablaBusqueda));
+            ComandoMantenimiento = "Sucursales_Mant";
+            TablaEliminar = "Sucursales";
         }
 
         public Sucursales(long? id, long? identidad, string descripcion)
             : base(id, identidad, 1)
         {
-
             PersonaJuridica = new PersonaJuridica(identidad, descripcion);
 
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idusuario", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("idmunicipio", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("numerofactura", null));
 
-            this.TablaBusqueda = "Sucursales";
-            this.ColeccionParametrosBusqueda.Add(new Parametro("tabla", this.TablaBusqueda));
-            this.ComandoMantenimiento = "Sucursales_Mant";
-            this.TablaEliminar = "Sucursales";
+            TablaBusqueda = "Sucursales";
+            ColeccionParametrosBusqueda.Add(new Parametro("tabla", TablaBusqueda));
+            ComandoMantenimiento = "Sucursales_Mant";
+            TablaEliminar = "Sucursales";
         }
 
         #endregion
 
         #region "Propiedades"
 
-        public long? idUsuario
-        {
-            get;
-            set;
-        }
+        public long? idUsuario { get; set; }
 
-        public long? idMunicipio
-        {
-            get;
-            set;
-        }
+        public long? idMunicipio { get; set; }
 
         public string Archivo
         {
-
             get
             {
-                SiCo.dtla.ClavesRegistro c = new SiCo.dtla.ClavesRegistro();
+                var c = new ClavesRegistro();
                 return c.Instalacion + "Scx.sco";
             }
         }
 
-        public Int64 NumeroFactura
-        {
-            get;
-            set;
-        }
-
+        public Int64 NumeroFactura { get; set; }
 
         #endregion
 
@@ -98,39 +84,39 @@ namespace SiCo.lgla
 
         protected override void CargadoPropiedades(int Indice)
         {
-            this.idUsuario =Convert.ToInt64(Registro(Indice, "idusuario"));   
-            this.idMunicipio = Convert.ToInt64 (Registro(Indice,"idmunicipio"));
-            this.NumeroFactura = Convert.ToInt64(Registro(Indice, "numerofactura"));
+            idUsuario = Convert.ToInt64(Registro(Indice, "idusuario"));
+            idMunicipio = Convert.ToInt64(Registro(Indice, "idmunicipio"));
+            NumeroFactura = Convert.ToInt64(Registro(Indice, "numerofactura"));
             base.CargadoPropiedades(Indice);
         }
 
         public override void Guardar()
         {
-            this.NullParametrosMantenimiento();
-            this.ValorParametrosMantenimiento("idusuario", this.idUsuario);
-            this.ValorParametrosMantenimiento("idmunicipio", this.idMunicipio );
-            this.ValorParametrosMantenimiento("numerofactura", this.NumeroFactura); 
+            NullParametrosMantenimiento();
+            ValorParametrosMantenimiento("idusuario", idUsuario);
+            ValorParametrosMantenimiento("idmunicipio", idMunicipio);
+            ValorParametrosMantenimiento("numerofactura", NumeroFactura);
             base.Guardar();
         }
 
         public override object TablaAColeccion()
         {
-            List<Sucursales> lista = new List<Sucursales>();
-            if (this.TotalRegistros > 0)
+            var lista = new List<Sucursales>();
+            if (TotalRegistros > 0)
             {
-                for (int x = 0; x < this.TotalRegistros; x++)
+                for (int x = 0; x < TotalRegistros; x++)
                 {
-                    this.CargadoPropiedades(x);
-                    Sucursales tempsucu = new Sucursales(this.Id, this.idEntidades,this.Estado , this.idUsuario,this.idMunicipio );
-                    tempsucu.NumeroFactura = this.NumeroFactura; 
-                    tempsucu.PersonaJuridica = this.PersonaJuridica;
-                    tempsucu.PersonaNatural = this.PersonaNatural;
+                    CargadoPropiedades(x);
+                    var tempsucu = new Sucursales(Id, idEntidades, Estado, idUsuario, idMunicipio);
+                    tempsucu.NumeroFactura = NumeroFactura;
+                    tempsucu.PersonaJuridica = PersonaJuridica;
+                    tempsucu.PersonaNatural = PersonaNatural;
 
                     lista.Add(tempsucu);
                 }
 
-                this.CargadoPropiedades(0);
-            }            
+                CargadoPropiedades(0);
+            }
             return lista;
         }
 
@@ -138,46 +124,43 @@ namespace SiCo.lgla
         {
             try
             {
-                Serializador s = new Serializador();
-                
+                var s = new Serializador();
 
-                SucursalSerializable  usu = new SucursalSerializable (0,0,"",PieSucursal);
+
+                var usu = new SucursalSerializable(0, 0, "", PieSucursal);
                 s.Objeto = usu;
-                s.Directorio = this.Archivo;
+                s.Directorio = Archivo;
                 s.Cargar();
-                usu = (SucursalSerializable )s.Objeto;
-                this._Id = usu.id;
-                this.PieSucursal = usu.PieReporte;
-                this.idUsuario = usu.idusuario;
-                this.NombreSucursal = usu.NombreSucursal;
-
+                usu = (SucursalSerializable) s.Objeto;
+                _Id = usu.id;
+                PieSucursal = usu.PieReporte;
+                idUsuario = usu.idusuario;
+                NombreSucursal = usu.NombreSucursal;
             }
             catch (Exception ex)
             {
                 throw new ApplicationException("Error al cargar el usuario favor volver a iniciar sesión", ex);
             }
-
         }
 
         public void Serializar()
         {
             try
             {
-                Serializador s = new Serializador();
-                PieSucursal = this.PersonaJuridica.RazonSocial.Trim() + ";";
-                if (this.PersonaJuridica.telefono != null)
-                    PieSucursal += " Teléfonos: " + this.PersonaJuridica.telefono.ToString();
+                var s = new Serializador();
+                PieSucursal = PersonaJuridica.RazonSocial.Trim() + ";";
+                if (PersonaJuridica.telefono != null)
+                    PieSucursal += " Teléfonos: " + PersonaJuridica.telefono.ToString();
 
-                if (this.PersonaJuridica.telefono2 != null)
-                    PieSucursal += "/ " + this.PersonaJuridica.telefono2;
+                if (PersonaJuridica.telefono2 != null)
+                    PieSucursal += "/ " + PersonaJuridica.telefono2;
 
-                if (this.PersonaJuridica.direccion != null)
-                    PieSucursal += "; " + this.PersonaJuridica.direccion;
-                SucursalSerializable  usu = new SucursalSerializable (this.Id, this.idUsuario,this.NombreMantenimiento,PieSucursal);
+                if (PersonaJuridica.direccion != null)
+                    PieSucursal += "; " + PersonaJuridica.direccion;
+                var usu = new SucursalSerializable(Id, idUsuario, NombreMantenimiento, PieSucursal);
                 s.Objeto = usu;
-                s.Directorio = this.Archivo;
+                s.Directorio = Archivo;
                 s.Guardar();
-
             }
             catch (Exception ex)
             {
@@ -188,25 +171,28 @@ namespace SiCo.lgla
         #endregion
 
         #region "Eventos"
+
         #endregion
 
         #region ClaseSerializable
-        [Serializable()]
+
+        [Serializable]
         public class SucursalSerializable
         {
-            public long? id;
-            public long? idusuario;
             public string NombreSucursal;
             public string PieReporte;
-            public SucursalSerializable(long? id, long? usuario,string nombresucursal,string  PieReporte)
+            public long? id;
+            public long? idusuario;
+
+            public SucursalSerializable(long? id, long? usuario, string nombresucursal, string PieReporte)
             {
                 this.id = id;
-                this.idusuario = usuario;
-                this.NombreSucursal = nombresucursal;
+                idusuario = usuario;
+                NombreSucursal = nombresucursal;
                 this.PieReporte = PieReporte;
             }
-
         }
-        #endregion        
+
+        #endregion
     }
 }

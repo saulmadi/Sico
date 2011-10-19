@@ -1,30 +1,35 @@
-﻿Imports SICO.ctrla2
-Imports SICO.ctrla
-Imports SICO.lgla
-Imports SICO.lgla2
+﻿Imports SiCo.ctrla2
+Imports SiCo.ctrla
+Imports SiCo.lgla2
+
 Public Class frmVentaMotocicleta
 
 #Region "Declaraciones"
+
     Private WithEvents _factura As New FacturaEncabezado
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property Factura() As FacturaEncabezado
         Get
             Return _factura
         End Get
-        Set(ByVal value As FacturaEncabezado)
+        Set (ByVal value As FacturaEncabezado)
             _factura = value
             cargarentidad()
         End Set
     End Property
+
 #End Region
 
 #Region "Metodos"
+
     Private Sub cargarentidad()
         If cmbTiposFacturas.Items.Count = 0 Then
             cmbTiposFacturas.Entidad = New TiposFacturas
-            cmbTiposFacturas.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+            cmbTiposFacturas.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("habilitado", "1"))
             cmbTiposFacturas.IncializarCarga()
 
         End If
@@ -35,7 +40,7 @@ Public Class frmVentaMotocicleta
         If Factura.Id = 0 Then
             CrtClientes.Nuevo()
 
-            cmbTiposFacturas.SelectedIndex = -1
+            cmbTiposFacturas.SelectedIndex = - 1
             chkVentaExcenta.Checked = False
             chkVentaExcenta.Enabled = True
             cmbTiposFacturas.Enabled = True
@@ -51,7 +56,7 @@ Public Class frmVentaMotocicleta
 
             lblNumeroFactura.Text = Factura.NumeroFacturaS
             Dim cliente As New Clientes
-            cliente.Buscar("id", Factura.idclientes)
+            cliente.Buscar ("id", Factura.idclientes)
             If cliente.Id > 0 Then
                 CrtClientes.Cliente = cliente
             Else
@@ -61,7 +66,7 @@ Public Class frmVentaMotocicleta
             cmbTiposFacturas.SelectedValue = Factura.idtiposfacturas
             chkVentaExcenta.Checked = Factura.ventaexcenta
             Dim m = New Motocicletas
-            m.Buscar("id", Factura.idMotocicletas)
+            m.Buscar ("id", Factura.idMotocicletas)
             Factura.Motocicleta = m
             txtPrecioVenta.Enabled = True
             If Factura.estado.ToUpper = "P" Then
@@ -114,16 +119,18 @@ Public Class frmVentaMotocicleta
 
     Private Sub calculartotales()
         Factura.CalcularValoreMotocicleta()
-        txtSubtotal.Text = Factura.subtotal.ToString("#######0.00")
-        txtDescuento.Text = Factura.descuentovalor.ToString("#########0.00")
-        txtImpuesto.Text = Factura.isv.ToString("########0.00")
-        txtTotal.Text = Factura.total.ToString("########0.00")
+        txtSubtotal.Text = Factura.subtotal.ToString ("#######0.00")
+        txtDescuento.Text = Factura.descuentovalor.ToString ("#########0.00")
+        txtImpuesto.Text = Factura.isv.ToString ("########0.00")
+        txtTotal.Text = Factura.total.ToString ("########0.00")
     End Sub
+
 #End Region
 
 #Region "Eventos"
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBuscar.Click
-        Dim frm As New ctrla2.frmBusquedaMotocileta
+
+    Private Sub Button1_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnBuscar.Click
+        Dim frm As New frmBusquedaMotocileta
         If frm.ShowDialog() = DialogResult.OK Then
             Factura.Motocicleta = frm.Entidad
             txtPrecioVenta.Enabled = True
@@ -131,7 +138,7 @@ Public Class frmVentaMotocicleta
 
     End Sub
 
-    Private Sub frmVentaMotocicleta_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmVentaMotocicleta_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.cmbMarca.Entidad = New Marcas
         Me.cmbModelo.Entidad = New Modelos
         Me.cmbTipoMotocicleta.Entidad = New TiposMotocicletas
@@ -164,14 +171,15 @@ Public Class frmVentaMotocicleta
             txtChasis.Clear()
             txtCilindraje.Clear()
             txtAnio.Clear()
-            cmbMarca.SelectedIndex = -1
-            cmbModelo.SelectedIndex = -1
-            cmbTipoMotocicleta.SelectedIndex = -1
+            cmbMarca.SelectedIndex = - 1
+            cmbModelo.SelectedIndex = - 1
+            cmbTipoMotocicleta.SelectedIndex = - 1
             txtPrecioVenta.Text = "0.00"
         End If
     End Sub
 
-    Private Sub chkVentaExcenta_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkVentaExcenta.CheckedChanged
+    Private Sub chkVentaExcenta_CheckedChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles chkVentaExcenta.CheckedChanged
         If chkVentaExcenta.Checked Then
             Factura.ventaexcenta = 1
         Else
@@ -188,14 +196,14 @@ Public Class frmVentaMotocicleta
         Try
             Me.PanelAccion1.BarraProgreso.Value = 50
             Me.PanelAccion1.lblEstado.Text = "Guardando..."
-            If cmbTiposFacturas.SelectedIndex > -1 Then
+            If cmbTiposFacturas.SelectedIndex > - 1 Then
                 If Factura.Motocicleta.Id > 0 Then
 
 
                     Factura.idclientes = CrtClientes.Guardar()
                     If Factura.idclientes = 0 Then
                         CrtClientes.Nuevo()
-                        Throw New ApplicationException("Ingrese un cliente")
+                        Throw New ApplicationException ("Ingrese un cliente")
                     End If
                     Factura.fecha = DateTimePicker1.Value
                     Factura.estado = "P"
@@ -211,30 +219,30 @@ Public Class frmVentaMotocicleta
                     Me.PanelAccion1.BarraProgreso.Value = 100
                     Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
                 Else
-                    MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show ("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
-                MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show ("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Eliminar
         Try
             Dim ct As New ControlCaja
-            ct.Buscar(4, Me.PanelAccion1.Usuario.Id, Now, Me.PanelAccion1.sucursal.Id)
+            ct.Buscar (4, Me.PanelAccion1.Usuario.Id, Now, Me.PanelAccion1.sucursal.Id)
             If ct.TotalRegistros <> 0 Then
 
-                ct.Buscar(5, Me.PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
+                ct.Buscar (5, Me.PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
                 If ct.TotalRegistros = 0 Then
                     If Factura.estado.ToUpper = "P" Then
 
 
                         Me.PanelAccion1.BarraProgreso.Value = 50
                         Me.PanelAccion1.lblEstado.Text = "Guardando..."
-                        If cmbTiposFacturas.SelectedIndex > -1 Then
+                        If cmbTiposFacturas.SelectedIndex > - 1 Then
 
                             If Factura.Motocicleta.Id > 0 Then
 
@@ -244,7 +252,7 @@ Public Class frmVentaMotocicleta
 
                                 If Factura.idclientes = 0 Then
                                     CrtClientes.Nuevo()
-                                    Throw New ApplicationException("Ingrese un cliente")
+                                    Throw New ApplicationException ("Ingrese un cliente")
                                 End If
                                 Factura.fecha = DateTimePicker1.Value
                                 Factura.estado = "P"
@@ -256,7 +264,6 @@ Public Class frmVentaMotocicleta
                                 Factura.motoproducto = "M"
 
 
-
                                 ''hjgjh
 
                                 'Factura.IniciarTransaccion()
@@ -265,14 +272,14 @@ Public Class frmVentaMotocicleta
                                 If Factura.idtiposfacturas = 1 Then
                                     Dim formco As New frmCobro
                                     formco.Total = Factura.total
-                                    If formco.ShowDialog = Windows.Forms.DialogResult.OK Then
+                                    If formco.ShowDialog = DialogResult.OK Then
                                         Factura.IniciarTransaccion()
                                         For Each i In formco.ControlCaja
                                             i.Cajero = PanelAccion1.Usuario.Id
                                             i.idSucursales = PanelAccion1.sucursal.Id
                                             i.Guardar()
                                             Dim c = New ControlCajaFactura
-                                            c.Guardar(Factura.Id, i.Id)
+                                            c.Guardar (Factura.Id, i.Id)
                                             If i.idTransaccionesCaja = 3 Then
                                                 formco.TransaccionTC.idControlCaja = i.Id
                                                 formco.TransaccionTC.idFacturaEnbezado = Factura.Id
@@ -287,7 +294,8 @@ Public Class frmVentaMotocicleta
                                         Factura.estado = "P"
                                         Factura.Guardar()
                                         Factura.CommitTransaccion()
-                                        MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                        MessageBox.Show ("El cancelo el cobro", "Error", MessageBoxButtons.OK, _
+                                                         MessageBoxIcon.Error)
                                     End If
                                     ''kkkj
                                 Else
@@ -295,15 +303,16 @@ Public Class frmVentaMotocicleta
                                 End If
 
 
-
                                 Factura = _factura
                                 Me.PanelAccion1.BarraProgreso.Value = 100
                                 Me.PanelAccion1.lblEstado.Text = "Factura guardada correctamente"
                             Else
-                                MessageBox.Show("Selecione una motocicleta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                                MessageBox.Show ("Selecione una motocicleta", "Error", MessageBoxButtons.OK, _
+                                                 MessageBoxIcon.Error)
                             End If
                         Else
-                            MessageBox.Show("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                            MessageBox.Show ("Selecione un tipo de factura", "Error", MessageBoxButtons.OK, _
+                                             MessageBoxIcon.Error)
                         End If
                     ElseIf Factura.estado.ToUpper = "F" Then
                         Dim f As New frmIniciosesion
@@ -320,26 +329,28 @@ Public Class frmVentaMotocicleta
                             i.Monto = Factura.total
                             i.Guardar()
                             Dim c As New ControlCajaFactura
-                            c.Guardar(Factura.Id, i.Id)
+                            c.Guardar (Factura.Id, i.Id)
                             Factura.AnularFacturaMotocicleta()
                             Factura.CommitTransaccion()
                             _factura.Id = Me.Factura.Id
                             Factura = _factura
                         Else
-                            Throw New ApplicationException("No se realizó la anulación de la factura")
+                            Throw New ApplicationException ("No se realizó la anulación de la factura")
                         End If
 
                     End If
 
                 Else
-                    MessageBox.Show("Ya se realizo el cierre para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show ("Ya se realizo el cierre para este usuario", "Error", MessageBoxButtons.OK, _
+                                     MessageBoxIcon.Error)
                 End If
             Else
-                MessageBox.Show("No se ha abierto la caja para este usuario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show ("No se ha abierto la caja para este usuario", "Error", MessageBoxButtons.OK, _
+                                 MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             Factura.RollBackTransaccion()
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -351,7 +362,8 @@ Public Class frmVentaMotocicleta
         Me.Factura = New FacturaEncabezado
     End Sub
 
-    Private Sub txtDescuentoPor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDescuentoPor.TextChanged
+    Private Sub txtDescuentoPor_TextChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles txtDescuentoPor.TextChanged
         If txtDescuentoPor.Text <> String.Empty Then
             Me.Factura.descuento = txtDescuentoPor.Text
         Else
@@ -360,7 +372,8 @@ Public Class frmVentaMotocicleta
         calculartotales()
     End Sub
 
-    Private Sub txtPrecioVenta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPrecioVenta.TextChanged
+    Private Sub txtPrecioVenta_TextChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles txtPrecioVenta.TextChanged
         If txtPrecioVenta.Text <> String.Empty Then
             If Factura.Motocicleta.Id > 0 Then
                 Factura.Motocicleta.precioventa = txtPrecioVenta.Text
@@ -375,5 +388,4 @@ Public Class frmVentaMotocicleta
     End Sub
 
 #End Region
-
 End Class

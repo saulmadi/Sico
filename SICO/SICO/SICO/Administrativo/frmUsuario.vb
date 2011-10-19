@@ -1,4 +1,5 @@
-﻿Imports SICO.lgla
+﻿Imports SiCo.ctrla
+Imports SiCo.lgla
 
 Public Class frmUsuario
     Private _Usuario As New Usuario
@@ -7,7 +8,7 @@ Public Class frmUsuario
         Get
             Return _Usuario
         End Get
-        Set(ByVal value As Usuario)
+        Set (ByVal value As Usuario)
             _Usuario = value
             txtusuario.Text = value.usuario
             cmbrol.SelectedValue = value.rol
@@ -26,7 +27,7 @@ Public Class frmUsuario
             If Not value.sucursal Is Nothing Then
                 cmbSucursal.SelectedValue = value.sucursal
             Else
-                cmbSucursal.SelectedIndex = -1
+                cmbSucursal.SelectedIndex = - 1
             End If
             If Not value.PersonaNatural Is Nothing Then
                 CrtPersonaNatural1.Persona = value.PersonaNatural
@@ -34,15 +35,19 @@ Public Class frmUsuario
         End Set
     End Property
 
-    Private Sub CrtPersonaNatural1_Leave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CrtPersonaNatural1.Leave
+    Private Sub CrtPersonaNatural1_Leave (ByVal sender As Object, ByVal e As EventArgs) Handles CrtPersonaNatural1.Leave
         Try
-            If CrtPersonaNatural1.PrimerApellido.Length > 0 And CrtPersonaNatural1.PrimerNombre.Length > 0 And Me.Usuario.Id = 0 Then
-                txtusuario.Text = Usuario.CrearUsuario(Char.ToLower(CrtPersonaNatural1.PrimerNombre.First) + CrtPersonaNatural1.PrimerApellido.ToLower)
+            If _
+                CrtPersonaNatural1.PrimerApellido.Length > 0 And CrtPersonaNatural1.PrimerNombre.Length > 0 And _
+                Me.Usuario.Id = 0 Then
+                txtusuario.Text = _
+                    Usuario.CrearUsuario ( _
+                        Char.ToLower (CrtPersonaNatural1.PrimerNombre.First) + CrtPersonaNatural1.PrimerApellido.ToLower)
             End If
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show (ex.Message)
         End Try
     End Sub
 
@@ -52,12 +57,13 @@ Public Class frmUsuario
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
-    Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
-        Me.Usuario = CType(Item, Usuario)
+    Private Sub CrtListadoMantenimiento1_SeleccionItem (ByVal Item As Object) _
+        Handles CrtListadoMantenimiento1.SeleccionItem
+        Me.Usuario = CType (Item, Usuario)
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
-    Private Sub frmUsuario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmUsuario_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         CrtListadoMantenimiento1.Entidad = _Usuario
         CrtPersonaNatural1.EtiquetaError = Me.PanelAccion1.lblEstado
         CrtListadoMantenimiento1.lblDescripcion.Text = "Usuario"
@@ -77,8 +83,10 @@ Public Class frmUsuario
         Try
             Dim flag As Boolean = True
             If Me.Usuario.Id > 0 Then
-                Select Case MessageBox.Show("¿Esta seguro de modificar el usuario " + Me.Usuario.NombreMantenimiento + "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    Case Windows.Forms.DialogResult.No
+                Select Case _
+                    MessageBox.Show ("¿Esta seguro de modificar el usuario " + Me.Usuario.NombreMantenimiento + "?", _
+                                     "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    Case DialogResult.No
                         flag = False
 
                 End Select
@@ -87,16 +95,16 @@ Public Class frmUsuario
             If flag Then
                 Me.PanelAccion1.lblEstado.Text = "Guardando..."
                 Me.PanelAccion1.BarraProgreso.Value = 50
-                Dim validador As New SICO.ctrla.Validador()
+                Dim validador As New Validador()
                 If Me.Usuario.Id = 0 Then
                     txtcontrasena.EsObligatorio = True
                     txtConfirmar.EsObligatorio = True
                 End If
                 Me.Usuario.idEntidades = CrtPersonaNatural1.Guardar()
 
-                validador.ColecionCajasTexto.Add(txtusuario)
-                validador.ColecionCajasTexto.Add(txtcontrasena)
-                validador.ColecionCajasTexto.Add(txtConfirmar)
+                validador.ColecionCajasTexto.Add (txtusuario)
+                validador.ColecionCajasTexto.Add (txtcontrasena)
+                validador.ColecionCajasTexto.Add (txtConfirmar)
 
 
                 If txtConfirmar.Text.Trim = txtcontrasena.Text.Trim Then
@@ -110,7 +118,7 @@ Public Class frmUsuario
                                 If Not txtcontrasena.Text.Trim = String.Empty Then
                                     Me.Usuario.contrasena = txtcontrasena.Texto
                                 End If
-                                Me.Usuario.rol = CType(cmbrol.SelectedItem, SICO.lgla.Tipo).Valor
+                                Me.Usuario.rol = CType (cmbrol.SelectedItem, Tipo).Valor
                                 Me.Usuario.Estado = cmbhabilitado.SelectedItem.valor
                                 If Me.cmbSucursal.SelectedItem Is Nothing Then
                                     Me.Usuario.sucursal = Nothing
@@ -120,7 +128,8 @@ Public Class frmUsuario
 
                                 Me.Usuario.Guardar()
                                 Me.PanelAccion1.BarraProgreso.Value = 100
-                                Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + Me.Usuario.NombreMantenimiento
+                                Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente el usuario " + _
+                                                                 Me.Usuario.NombreMantenimiento
                             Else
                                 Me.PanelAccion1.lblEstado.Text = validador.MensajesError
                             End If
@@ -140,7 +149,7 @@ Public Class frmUsuario
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show (ex.Message)
             Me.PanelAccion1.lblEstado.Text = ("Error al guardar el Usuario")
             Me.PanelAccion1.BarraProgreso.Value = 0
         End Try
@@ -151,6 +160,4 @@ Public Class frmUsuario
         CrtPersonaNatural1.Nuevo()
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
-   
-   
 End Class

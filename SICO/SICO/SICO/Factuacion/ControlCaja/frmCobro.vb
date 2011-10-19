@@ -1,6 +1,6 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
-Imports SICO.ctrla.ControlesBasicos
+﻿Imports SiCo.ctrla.ControlesBasicos
+Imports SiCo.lgla2
+
 Public Class frmCobro
     Private _controlCaja As New List(Of ControlCaja)
     Private _transacionTC As New TransaccionesTrajetaCredito
@@ -12,7 +12,7 @@ Public Class frmCobro
         Get
             Return _transacionTC
         End Get
-        Set(ByVal value As TransaccionesTrajetaCredito)
+        Set (ByVal value As TransaccionesTrajetaCredito)
             _transacionTC = value
         End Set
     End Property
@@ -21,12 +21,12 @@ Public Class frmCobro
         Get
             Return _controlCaja
         End Get
-        Set(ByVal value As List(Of ControlCaja))
+        Set (ByVal value As List(Of ControlCaja))
             _controlCaja = value
         End Set
     End Property
 
-    Private Sub frmAperturaCaja_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmAperturaCaja_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Try
             ''Me.DialogResult = Windows.Forms.DialogResult.Cancel
             Me.PanelAccion1.BotonEliminar.Visible = False
@@ -36,7 +36,7 @@ Public Class frmCobro
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
@@ -59,7 +59,7 @@ Public Class frmCobro
                         .Monto = txtEfectivo.ValorDecimal - txtCambio.ValorDecimal
                         .Descripcion = "Pago en efectivo en factura"
                     End With
-                    ControlCaja.Add(control)
+                    ControlCaja.Add (control)
                 End If
 
                 If txtTC.Text <> String.Empty Then
@@ -71,29 +71,30 @@ Public Class frmCobro
                     End With
                     Dim forma As New frmTC
                     forma.total = txtTC.Text
-                    If forma.ShowDialog = Windows.Forms.DialogResult.OK Then
+                    If forma.ShowDialog = DialogResult.OK Then
 
-                        ControlCaja.Add(control)
+                        ControlCaja.Add (control)
                         Me.TransaccionTC = forma.TransaccionTarjetaCredito
 
                     Else
-                        Throw New ApplicationException("La transacción de tarjeta de crédito no se realizo")
+                        Throw New ApplicationException ("La transacción de tarjeta de crédito no se realizo")
                     End If
                 End If
 
-                Me.DialogResult = Windows.Forms.DialogResult.OK
+                Me.DialogResult = DialogResult.OK
 
             Else
-                Mensaje.MensajeError("Revise los montos ingresados")
+                Mensaje.MensajeError ("Revise los montos ingresados")
             End If
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub txtEfectivo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEfectivo.TextChanged, txtTC.TextChanged
-        Dim d = (Total - txtEfectivo.ValorDecimal - txtTC.ValorDecimal) * -1
+    Private Sub txtEfectivo_TextChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles txtEfectivo.TextChanged, txtTC.TextChanged
+        Dim d = (Total - txtEfectivo.ValorDecimal - txtTC.ValorDecimal)*- 1
         totalIngresado = txtEfectivo.ValorDecimal + txtTC.ValorDecimal
 
         If d > 0 Then

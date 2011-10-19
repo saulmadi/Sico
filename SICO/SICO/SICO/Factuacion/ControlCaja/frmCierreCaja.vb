@@ -1,19 +1,20 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
+﻿Imports SiCo.lgla2
+
 Public Class frmCierreCaja
+    Private ReadOnly _acumuladoDebitados As New AcumuladosControlCaja
+    Private ReadOnly _acumuladoAcreditados As New AcumuladosControlCaja
 
-    Private AcumuladoDebitados As New AcumuladosControlCaja
-    Private AcumuladoAcreditados As New AcumuladosControlCaja
+    Private _totalDebitado As Decimal
+    Private _totalAcreditado As Decimal
+    Private _seHizoCierre As Boolean = False
 
-    Private totalDebitado As Decimal
-    Private totalAcreditado As Decimal
-    Private seHizoCierre As Boolean = False
-    Private Sub frmCierreCaja_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmCierreCaja_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Try
             Dim c = New ControlCaja
             c.Buscar(4, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
             If c.TotalRegistros = 0 Then
-                MessageBox.Show("No se abierto la caja para este usuario", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("No se abierto la caja para este usuario", "Información", MessageBoxButtons.OK, _
+                                 MessageBoxIcon.Information)
                 PanelAccion1.BotonGuardar.Visible = False
                 PanelAccion1.BotonGuardar.Enabled = False
 
@@ -22,19 +23,19 @@ Public Class frmCierreCaja
             Me.PanelAccion1.BotonNuevo.Visible = False
             Me.PanelAccion1.BotonEliminar.Text = "Resumen"
             Me.PanelAccion1.BotonImprimir.Text = "Detalle"
-            AcumuladoAcreditados.Buscar(String.Empty, Me.PanelAccion1.Usuario.Id, Me.PanelAccion1.sucursal.Id, "C", Now)
+            _acumuladoAcreditados.Buscar(String.Empty, Me.PanelAccion1.Usuario.Id, Me.PanelAccion1.sucursal.Id, "C", Now)
 
-            AcumuladoDebitados.Buscar(String.Empty, Me.PanelAccion1.Usuario.Id, Me.PanelAccion1.sucursal.Id, "D", Now)
+            _acumuladoDebitados.Buscar(String.Empty, Me.PanelAccion1.Usuario.Id, Me.PanelAccion1.sucursal.Id, "D", Now)
 
             grdEntrantes.DarFormato("descripcion", "Descripción")
             grdEntrantes.DarFormato("monto", "Monto")
 
-            grdEntrantes.DataSource = AcumuladoAcreditados.TablaAColeccion
+            grdEntrantes.DataSource = _acumuladoAcreditados.TablaAColeccion
 
             grdSalientes.DarFormato("descripcion", "Descripción")
             grdSalientes.DarFormato("monto", "Monto")
 
-            grdSalientes.DataSource = AcumuladoDebitados.TablaAColeccion
+            grdSalientes.DataSource = _acumuladoDebitados.TablaAColeccion
 
             txtCajero.Text = PanelAccion1.Usuario.NombreUsuario
 
@@ -42,13 +43,13 @@ Public Class frmCierreCaja
 
             If c.TotalRegistros = 0 Then
                 PanelAccion1.BotonGuardar.Visible = True
-                seHizoCierre = False
+                _seHizoCierre = False
             Else
                 PanelAccion1.BotonGuardar.Visible = False
                 txtEfectivoFinal.Text = c.Monto
                 c.Buscar(8, PanelAccion1.Usuario.Id, Now, PanelAccion1.sucursal.Id)
                 If c.TotalRegistros = 1 Then txtEfectivoFaltante.Text = c.Monto
-                seHizoCierre = True
+                _seHizoCierre = True
                 txtEfectivoFaltante.Enabled = False
                 txtEfectivoFinal.Enabled = False
             End If
@@ -61,35 +62,38 @@ Public Class frmCierreCaja
 
     Public Sub CalcularTotales()
         Try
-            Dim listaAcre As List(Of AcumuladosControlCaja) = AcumuladoAcreditados.TablaAColeccion
-            Dim listaDebi As List(Of AcumuladosControlCaja) = AcumuladoDebitados.TablaAColeccion
+            Dim listaAcre As List(Of AcumuladosControlCaja) = _acumuladoAcreditados.TablaAColeccion
+            Dim listaDebi As List(Of AcumuladosControlCaja) = _acumuladoDebitados.TablaAColeccion
 
-            Me.totalAcreditado = 0
-            Me.totalDebitado = 0
+            Me._totalAcreditado = 0
+            Me._totalDebitado = 0
 
             For Each i In listaAcre
-                Me.totalAcreditado += i.Monto
+                Me._totalAcreditado += i.Monto
             Next
 
             For Each i In listaDebi
-                Me.totalDebitado += i.Monto
+                Me._totalDebitado += i.Monto
             Next
 
-            If Not Me.txtEfectivoFaltante.Text = String.Empty And Not seHizoCierre Then Me.totalDebitado += txtEfectivoFaltante.Text
-            If Not Me.txtEfectivoFinal.Text = String.Empty And Not seHizoCierre Then Me.totalDebitado += txtEfectivoFinal.Text
+            If Not Me.txtEfectivoFaltante.Text = String.Empty And Not _seHizoCierre Then _
+                Me._totalDebitado += txtEfectivoFaltante.Text
+            If Not Me.txtEfectivoFinal.Text = String.Empty And Not _seHizoCierre Then _
+                Me._totalDebitado += txtEfectivoFinal.Text
 
-            txtEntrante.Text = totalAcreditado.ToString("##########.00")
-            txtSalient.Text = totalDebitado.ToString("##########.00")
-            txtBalance.Text = (totalAcreditado - totalDebitado).ToString("##########.00")
+            txtEntrante.Text = _totalAcreditado.ToString("##########.00")
+            txtSalient.Text = _totalDebitado.ToString("##########.00")
+            txtBalance.Text = (_totalAcreditado - _totalDebitado).ToString("##########.00")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
-    Private Sub CajaTexto1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEfectivoFinal.TextChanged
+    Private Sub CajaTexto1_TextChanged(ByVal sender As Object, ByVal e As EventArgs) _
+        Handles txtEfectivoFinal.TextChanged
         CalcularTotales()
     End Sub
-    
+
     Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
 
     End Sub
@@ -123,8 +127,9 @@ Public Class frmCierreCaja
                         c2.Guardar()
                     End If
                     c.CommitTransaccion()
-                    MessageBox.Show("Se cerro correctamente la caja", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Me.frmCierreCaja_Load(Me, New System.EventArgs)
+                    MessageBox.Show("Se cerro correctamente la caja", "Información", MessageBoxButtons.OK, _
+                                     MessageBoxIcon.Information)
+                    Me.frmCierreCaja_Load(Me, New EventArgs)
                 Else
                     Throw New ApplicationException("El cierre de caja no se puede realizar si el balance no es cero")
                 End If
@@ -144,7 +149,7 @@ Public Class frmCierreCaja
             con.Buscar(String.Empty, Me.PanelAccion1.Usuario.Id, Now, Me.PanelAccion1.sucursal.Id)
             rpt.SetDataSource(con.Tabla)
             rpt.DataDefinition.FormulaFields("usuario").Text = "'" + txtCajero.Text + "'"
-            
+
             f.Show(rpt, "Cierre Caja Detalle")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -155,20 +160,25 @@ Public Class frmCierreCaja
         Try
             Dim f = New frmVistaPrevia
             Dim rpt = New crResumenCierre
-            rpt.Subreports("crListaDetalle.rpt").SetDataSource(AcumuladoAcreditados.Tabla)
-            rpt.Subreports("crListaDetalle01.rpt").SetDataSource(AcumuladoDebitados.Tabla)
+            rpt.Subreports("crListaDetalle.rpt").SetDataSource(_acumuladoAcreditados.Tabla)
+            rpt.Subreports("crListaDetalle01.rpt").SetDataSource(_acumuladoDebitados.Tabla)
             rpt.DataDefinition.FormulaFields("balance").Text = "tonumber('" + txtBalance.Text + "')"
             rpt.DataDefinition.FormulaFields("usuario").Text = "'" + txtCajero.Text + "'"
-            rpt.DataDefinition.FormulaFields("efectivofinal").Text = "tonumber('" + IIf(txtEfectivoFinal.Text = String.Empty, "0.00", txtEfectivoFinal.Text) + "')"
-            rpt.DataDefinition.FormulaFields("efectivofaltante").Text = "tonumber('" + IIf(txtEfectivoFaltante.Text = String.Empty, "0.00", txtEfectivoFaltante.Text) + "')"
-            f.Show(rpt,"Cierre Caja Resumen")
+            rpt.DataDefinition.FormulaFields("efectivofinal").Text = "tonumber('" + _
+                                                                      IIf(txtEfectivoFinal.Text = String.Empty, "0.00", _
+                                                                           txtEfectivoFinal.Text) + "')"
+            rpt.DataDefinition.FormulaFields("efectivofaltante").Text = "tonumber('" + _
+                                                                         IIf(txtEfectivoFaltante.Text = String.Empty, _
+                                                                              "0.00", txtEfectivoFaltante.Text) + "')"
+            f.Show(rpt, "Cierre Caja Resumen")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
     End Sub
 
-    Private Sub txtEfectivoFaltante_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtEfectivoFaltante.TextChanged
+    Private Sub txtEfectivoFaltante_TextChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles txtEfectivoFaltante.TextChanged
         CalcularTotales()
     End Sub
 End Class

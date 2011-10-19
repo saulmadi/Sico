@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace SiCo.ctrla
 {
@@ -9,30 +6,14 @@ namespace SiCo.ctrla
     {
         #region Propiedades
 
-        public int Id
-        {
-            get;
-            set;
-        }
+        public int Id { get; set; }
 
-        public DataGridViewRow Fila
-        {
-            get;
-            set;
-        }
+        public DataGridViewRow Fila { get; set; }
 
-        public int IndiceFila
-        {
-            get;
-            set;
-        }
+        public int IndiceFila { get; set; }
 
-        public int IndiceColumna
-        {
-            get;
-            set;
-        }
+        public int IndiceColumna { get; set; }
 
-        #endregion        
+        #endregion
     }
 }

@@ -1,6 +1,6 @@
-﻿Public Class frmPersonaJuridica
+﻿Imports SiCo.lgla
 
-   
+Public Class frmPersonaJuridica
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
             PanelAccion1.lblEstado.Text = "Guardando..."
@@ -11,7 +11,7 @@
             End If
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.lblEstado.Text = "Error al guardar la persona jurídica"
         End Try
     End Sub
@@ -25,15 +25,16 @@
     End Sub
 
     Private Sub CrtListadoMantenimiento1_Limpio() Handles CrtListadoMantenimiento1.Limpio
-        CrtPersonaJuridica1.Persona = New SICO.lgla.PersonaJuridica
+        CrtPersonaJuridica1.Persona = New PersonaJuridica
     End Sub
 
-    Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
+    Private Sub CrtListadoMantenimiento1_SeleccionItem (ByVal Item As Object) _
+        Handles CrtListadoMantenimiento1.SeleccionItem
         CrtPersonaJuridica1.Persona = Item
     End Sub
 
-    Private Sub frmPersonaJuridica_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        CrtListadoMantenimiento1.Entidad = New SICO.lgla.PersonaJuridica
+    Private Sub frmPersonaJuridica_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        CrtListadoMantenimiento1.Entidad = New PersonaJuridica
         CrtListadoMantenimiento1.lblDescripcion.Text = "Razón Social"
         CrtPersonaJuridica1.EtiquetaError = PanelAccion1.lblEstado
         PanelAccion1.BotonEliminar.Enabled = False

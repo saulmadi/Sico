@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiCo.ctrla
+﻿namespace SiCo.ctrla
 {
     public class GridFormatoColumnas
     {
@@ -12,16 +8,16 @@ namespace SiCo.ctrla
         {
             this.ColumnaNombre = ColumnaNombre;
             this.ColumnaTitulo = ColumnaTitulo;
-            this.SoloLectura = true;
-            this.Visible = true;
+            SoloLectura = true;
+            Visible = true;
         }
 
-        public GridFormatoColumnas(string ColumnaNombre, string ColumnaTitulo,bool SoloLectura)
+        public GridFormatoColumnas(string ColumnaNombre, string ColumnaTitulo, bool SoloLectura)
         {
             this.ColumnaNombre = ColumnaNombre;
             this.ColumnaTitulo = ColumnaTitulo;
             this.SoloLectura = SoloLectura;
-            this.Visible = true;
+            Visible = true;
         }
 
         public GridFormatoColumnas(string ColumnaNombre, string ColumnaTitulo, bool SoloLectura, bool Visible)
@@ -30,39 +26,20 @@ namespace SiCo.ctrla
             this.ColumnaTitulo = ColumnaTitulo;
             this.SoloLectura = SoloLectura;
             this.Visible = Visible;
-             
         }
 
         #endregion
 
         #region Propiedades
 
-        public string ColumnaNombre
-        {
-            get;
-            set;
-        }
+        public string ColumnaNombre { get; set; }
 
-        public string ColumnaTitulo
-        {
-            get;
-            set;
-        }
+        public string ColumnaTitulo { get; set; }
 
-        public bool Visible
-        {
-            get;
-            set;
-        }
+        public bool Visible { get; set; }
 
-        public bool SoloLectura
-        {
-            get;
-            set;
-        }
+        public bool SoloLectura { get; set; }
 
         #endregion
-
-
     }
 }

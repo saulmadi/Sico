@@ -1,29 +1,37 @@
-﻿Imports SiCo.lgla
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
+Imports SiCo.lgla
+
 Public MustInherit Class DetallesProductos
-    Inherits SiCo.lgla.Entidad
+    Inherits Entidad
+
 #Region "Declaraciones"
+
     Protected _Producto As New Productos
     Protected _cantidad As Long
+
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
         MyBase.New()
     End Sub
-    Public Sub New(ByVal producto As Productos, ByVal cantidad As Long)
+
+    Public Sub New (ByVal producto As Productos, ByVal cantidad As Long)
         MyBase.New()
         Me.Producto = producto
         Me.Cantidad = cantidad
     End Sub
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property idproducto() As Long
         Get
             Return _Producto.Id
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _Producto.Id = value
         End Set
     End Property
@@ -38,7 +46,7 @@ Public MustInherit Class DetallesProductos
         Get
             Return _cantidad
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _cantidad = value
         End Set
     End Property
@@ -47,7 +55,7 @@ Public MustInherit Class DetallesProductos
         Get
             Return _Producto
         End Get
-        Set(ByVal value As Productos)
+        Set (ByVal value As Productos)
             _Producto = value
         End Set
     End Property
@@ -59,7 +67,7 @@ Public MustInherit Class DetallesProductos
             End If
             Return Me.Producto.Codigo
         End Get
-        Set(ByVal value As String)
+        Set (ByVal value As String)
             Me._Producto = New Productos
             Me._Producto.CodigoParaBusqueda = value
             If Me._Producto.TotalRegistros = 0 Then
@@ -76,13 +84,13 @@ Public MustInherit Class DetallesProductos
             End If
             Return Cantidad.ToString
         End Get
-        Set(ByVal value As String)
-            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
-            If reg.IsMatch(value) Then
+        Set (ByVal value As String)
+            Dim reg As New Regex ("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
+            If reg.IsMatch (value) Then
 
                 Dim s As Long = value
                 If s < 0 Then
-                    Throw New ApplicationException("La cantidad tiene que ser mayor a 0")
+                    Throw New ApplicationException ("La cantidad tiene que ser mayor a 0")
                     Me.Cantidad = 1
                 ElseIf Me.Producto.Id > 0 Then
                     Me.Cantidad = s
@@ -90,19 +98,20 @@ Public MustInherit Class DetallesProductos
                     Me.Cantidad = 0
                 End If
             Else
-                Throw New ApplicationException("El número no tiene el formato correcto")
+                Throw New ApplicationException ("El número no tiene el formato correcto")
             End If
         End Set
-
     End Property
+
 #End Region
 
 #Region "Metodos"
 
-    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
-        Me._Producto = New Productos(Registro(Indice, "idproducto"), Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, Registro(Indice, "precioventa"))
+    Protected Overrides Sub CargadoPropiedades (ByVal Indice As Integer)
+        Me._Producto = New Productos (Registro (Indice, "idproducto"), Registro (Indice, "codigo"), _
+                                      Registro (Indice, "descripcion"), 0, Registro (Indice, "precioventa"))
 
-        MyBase.CargadoPropiedades(Indice)
+        MyBase.CargadoPropiedades (Indice)
     End Sub
 
 #End Region

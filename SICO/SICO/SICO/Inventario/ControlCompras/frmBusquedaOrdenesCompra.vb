@@ -1,5 +1,6 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
+﻿Imports SiCo.lgla
+Imports SiCo.lgla2
+
 Public Class frmBusquedaOrdenesCompra
     Public WithEvents frm As New frmOrdenesCompra
 
@@ -11,7 +12,7 @@ Public Class frmBusquedaOrdenesCompra
 
     End Sub
 
-    Private Sub frm_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles frm.FormClosed
+    Private Sub frm_FormClosed (ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles frm.FormClosed
         Me.Show()
     End Sub
 
@@ -26,44 +27,46 @@ Public Class frmBusquedaOrdenesCompra
 
     End Sub
 
-    Private Sub frmBusquedaOrdenesCompra_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmBusquedaOrdenesCompra_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         cmbProveedor.DisplayMember = "NombreMantenimiento"
         cmbProveedor.ValueMember = "Id"
         CrtPanelBusqueda1.GridResultados.BotonEditar = True
         CrtPanelBusqueda1.Entidad = New OrdenCompra
 
-        CrtPanelBusqueda1.GridResultados.DarFormato("codigo", "Número de Orden", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("DescripcionProveedor", "Proveedor", True)
-        CrtPanelBusqueda1.GridResultados.DarFormato("fechaorden", "Fecha de Orden", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("codigo", "Número de Orden", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("DescripcionProveedor", "Proveedor", True)
+        CrtPanelBusqueda1.GridResultados.DarFormato ("fechaorden", "Fecha de Orden", True)
 
 
         cmbProveedor.Entidad = New Proveedores
 
         cmbProveedor.CargarEntidad()
-        CrtPanelBusqueda1.SeccionParametros.Size = New Size(CrtPanelBusqueda1.SeccionParametros.Size.Width, 80)
+        CrtPanelBusqueda1.SeccionParametros.Size = New Size (CrtPanelBusqueda1.SeccionParametros.Size.Width, 80)
 
-        fecha.Value = Now.AddDays(-30)
+        fecha.Value = Now.AddDays (- 30)
     End Sub
 
     Public Sub Cargar()
         Try
-            Dim p As New List(Of SICO.lgla.Parametro)
+            Dim p As New List(Of Parametro)
 
-            p.Add(New Parametro("fechaorden", " fechaorden >= '" + fecha.Value.ToString("yyyy-MM-dd") + "' and fechaorden <= '" + fechahasta.Value.ToString("yyyy-MM-dd") + "' "))
+            p.Add (New Parametro ("fechaorden", _
+                                  " fechaorden >= '" + fecha.Value.ToString ("yyyy-MM-dd") + "' and fechaorden <= '" + _
+                                  fechahasta.Value.ToString ("yyyy-MM-dd") + "' "))
 
-            p.Add(New Parametro("codigoparecido", txtcodigo.Text))
+            p.Add (New Parametro ("codigoparecido", txtcodigo.Text))
             If Not cmbProveedor.SelectedItem Is Nothing Then
-                p.Add(New Parametro("idproveedor", cmbProveedor.SelectedValue))
+                p.Add (New Parametro ("idproveedor", cmbProveedor.SelectedValue))
             End If
 
-            CrtPanelBusqueda1.Cargar(p)
+            CrtPanelBusqueda1.Cargar (p)
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click (ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
         Cargar()
 
     End Sub
