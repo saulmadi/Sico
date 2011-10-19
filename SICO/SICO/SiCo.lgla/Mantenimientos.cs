@@ -1,82 +1,77 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SiCo.lgla
 {
-    [Serializable()]
-    public abstract class Mantenimientos : SiCo.lgla.Entidad
+    [Serializable]
+    public abstract class Mantenimientos : Entidad
     {
         #region Declaraciones
+
+        private int _Estado;
+        private PersonaJuridica _PersonaJuridica = new PersonaJuridica();
+        private PersonaNatural _PersonaNatural = new PersonaNatural();
         private long? _idEntidades;
-        private PersonaNatural  _PersonaNatural= new PersonaNatural () ;
-        private PersonaJuridica  _PersonaJuridica = new PersonaJuridica() ;
-        private int _Estado = 0;
+
         #endregion
 
         #region Constructor
+
         public Mantenimientos()
         {
-            this.ColeccionParametrosBusqueda.Add(new Parametro("identidades", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("entidadnombre", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("identidades", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("entidadnombre", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
 
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
 
-            this.ComandoSelect = "MantenimientosComplejos_Buscar";
-            
+            ComandoSelect = "MantenimientosComplejos_Buscar";
         }
-        public Mantenimientos(long? id, long? idEntidades,int estado)
+
+        public Mantenimientos(long? id, long? idEntidades, int estado)
         {
-            this.ColeccionParametrosBusqueda.Add(new Parametro("identidades", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("entidadnombre", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("identidades", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("entidadnombre", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("espersonanatural", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("usuario", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("contrasena", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("estado", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("idrol", null));
 
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("identidades", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("estado", null));
 
-            this.ComandoSelect = "MantenimientosComplejos_Buscar";
-            this._Id = id;
-            this. _idEntidades=idEntidades;
-            this.Estado = estado;
-
+            ComandoSelect = "MantenimientosComplejos_Buscar";
+            _Id = id;
+            _idEntidades = idEntidades;
+            Estado = estado;
         }
 
         #endregion
 
         #region Propiedades
+
         public long? idEntidades
         {
-            get
-            {
-                return _idEntidades;
-            }
-            set
-            {
-                _idEntidades = value;
-            }
+            get { return _idEntidades; }
+            set { _idEntidades = value; }
         }
 
         public string NombreMantenimiento
         {
             get
             {
-                if (this.PersonaJuridica != null)
+                if (PersonaJuridica != null)
                 {
-                    return this.PersonaJuridica.RazonSocial; 
+                    return PersonaJuridica.RazonSocial;
                 }
-                if (this.PersonaNatural != null)
+                if (PersonaNatural != null)
                 {
-                    return this.PersonaNatural.NombreCompletoMostrar ;
+                    return PersonaNatural.NombreCompletoMostrar;
                 }
                 return string.Empty;
             }
@@ -88,18 +83,14 @@ namespace SiCo.lgla
             {
                 if (_PersonaNatural != null)
                 {
-                    if (_PersonaNatural.Id  > 0)
+                    if (_PersonaNatural.Id > 0)
                         return _PersonaNatural;
-                                         
                 }
                 _PersonaNatural = CrearPersonaNatural(0);
                 return _PersonaNatural;
             }
 
-            set 
-            {
-                _PersonaNatural = value;
-            }
+            set { _PersonaNatural = value; }
         }
 
         public PersonaJuridica PersonaJuridica
@@ -109,103 +100,100 @@ namespace SiCo.lgla
                 if (_PersonaJuridica != null)
                 {
                     if (_PersonaJuridica.Id > 0)
-                        return _PersonaJuridica; 
- 
+                        return _PersonaJuridica;
                 }
-                _PersonaJuridica = CrearPersonaJuridica(0); 
-                return _PersonaJuridica; 
-            }   
-            set 
-            {
-                _PersonaJuridica = value;
+                _PersonaJuridica = CrearPersonaJuridica(0);
+                return _PersonaJuridica;
             }
+            set { _PersonaJuridica = value; }
         }
 
-        public string TablaBusqueda
-        {
-            get;
-            set;
-        }
+        public string TablaBusqueda { get; set; }
 
         public int Estado
         {
-            get { return _Estado ;}
+            get { return _Estado; }
             set { _Estado = value; }
         }
 
         #endregion
 
         #region Metodos
+
         public override void Guardar()
         {
-            this.ValorParametrosMantenimiento("estado", this.Estado); 
-            this.ValorParametrosMantenimiento("identidades", this.idEntidades);
+            ValorParametrosMantenimiento("estado", Estado);
+            ValorParametrosMantenimiento("identidades", idEntidades);
             base.Guardar();
         }
 
         public void Buscar(int identidades)
         {
-            this.NullParametrosBusqueda();
-            this.ValorParametrosBusqueda("identidades", identidades);
-            this.LlenadoTabla(ColeccionParametrosBusqueda);
+            NullParametrosBusqueda();
+            ValorParametrosBusqueda("identidades", identidades);
+            LlenadoTabla(ColeccionParametrosBusqueda);
         }
 
         public void Buscar(string EntidadNombre)
         {
-            this.NullParametrosBusqueda();
-            this.ValorParametrosBusqueda("entidadnombre", EntidadNombre);            
-            this.LlenadoTabla(this.ColeccionParametrosBusqueda);
+            NullParametrosBusqueda();
+            ValorParametrosBusqueda("entidadnombre", EntidadNombre);
+            LlenadoTabla(ColeccionParametrosBusqueda);
         }
 
         protected override void CargadoPropiedades(int Indice)
         {
-            this.Estado = Convert.ToInt32( this.Registro(Indice, "estado")); 
-            this.idEntidades = Convert.ToInt64(  (  this.Registro(Indice, "identidades")));
-            this._PersonaJuridica = CrearPersonaJuridica(Indice );
-            this._PersonaNatural = CrearPersonaNatural(Indice ); 
+            Estado = Convert.ToInt32(Registro(Indice, "estado"));
+            idEntidades = Convert.ToInt64((Registro(Indice, "identidades")));
+            _PersonaJuridica = CrearPersonaJuridica(Indice);
+            _PersonaNatural = CrearPersonaNatural(Indice);
 
             base.CargadoPropiedades(Indice);
         }
 
-        protected   PersonaNatural CrearPersonaNatural(int Indice)
+        protected PersonaNatural CrearPersonaNatural(int Indice)
         {
-            if (this.TotalRegistros > 0)
+            if (TotalRegistros > 0)
             {
-                
-                PersonaNatural p = new PersonaNatural();
-                if (!(this.idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 1)
+                var p = new PersonaNatural();
+                if (!(idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 1)
                 {
-
-                    p = new PersonaNatural(this.idEntidades, (string)Registro(Indice, "entidadnombre"), new TipoIdentidad((string)Registro(Indice, "tipoidentidad")), (string)Registro(Indice, "identificacion"), (string)Registro(Indice, "correo"), (string)Registro(Indice, "direccion"), (string)Registro(Indice, "rtn"), (int?)Registro(Indice, "telefono"), (int?)Registro(Indice, "telefono2"));
+                    p = new PersonaNatural(idEntidades, (string) Registro(Indice, "entidadnombre"),
+                                           new TipoIdentidad((string) Registro(Indice, "tipoidentidad")),
+                                           (string) Registro(Indice, "identificacion"),
+                                           (string) Registro(Indice, "correo"), (string) Registro(Indice, "direccion"),
+                                           (string) Registro(Indice, "rtn"), (int?) Registro(Indice, "telefono"),
+                                           (int?) Registro(Indice, "telefono2"));
                 }
                 else
                     p = null;
 
-                
-                return p;                
-            
-            }
-            return null;
-        }
 
-        protected  PersonaJuridica CrearPersonaJuridica(int Indice)
-        {
-            if (this.TotalRegistros > 0)
-            {
-                
-                PersonaJuridica p = new PersonaJuridica();
-                if (!(this.idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 0)
-                {
-                    p = new PersonaJuridica(this.idEntidades, (string)Registro(Indice, "entidadnombre"), (string)Registro(Indice, "correo"), (string)Registro(Indice, "direccion"), (string)Registro(Indice, "rtn"), (int?)Registro(Indice, "telefono"), (int?)Registro(Indice, "telefono2"));
-                }
-                else
-                    p = null;
-                
                 return p;
             }
             return null;
         }
 
-        #endregion           
+        protected PersonaJuridica CrearPersonaJuridica(int Indice)
+        {
+            if (TotalRegistros > 0)
+            {
+                var p = new PersonaJuridica();
+                if (!(idEntidades == null) && Convert.ToInt32(Registro(Indice, "espersonanatural")) == 0)
+                {
+                    p = new PersonaJuridica(idEntidades, (string) Registro(Indice, "entidadnombre"),
+                                            (string) Registro(Indice, "correo"), (string) Registro(Indice, "direccion"),
+                                            (string) Registro(Indice, "rtn"), (int?) Registro(Indice, "telefono"),
+                                            (int?) Registro(Indice, "telefono2"));
+                }
+                else
+                    p = null;
+
+                return p;
+            }
+            return null;
+        }
+
+        #endregion
     }
 }

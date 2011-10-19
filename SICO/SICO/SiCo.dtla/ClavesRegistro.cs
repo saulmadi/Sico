@@ -1,50 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Win32;
-using System.Windows.Forms;
 using Microsoft.VisualBasic.Devices;
+using Microsoft.Win32;
 
 namespace SiCo.dtla
 {
     public class ClavesRegistro
     {
-        private RegistryKey _RegistryKey; 
+        private readonly RegistryKey _RegistryKey;
+
         public ClavesRegistro()
         {
-            _RegistryKey = Registry.LocalMachine.OpenSubKey("Software\\SicoSW", RegistryKeyPermissionCheck.ReadWriteSubTree);
+            _RegistryKey = Registry.LocalMachine.OpenSubKey("Software\\SicoSW",
+                                                            RegistryKeyPermissionCheck.ReadWriteSubTree);
             if (_RegistryKey == null)
             {
-                RegistryKey T = Registry.LocalMachine.CreateSubKey("Software\\SicoSW", RegistryKeyPermissionCheck.ReadWriteSubTree);
+                RegistryKey T = Registry.LocalMachine.CreateSubKey("Software\\SicoSW",
+                                                                   RegistryKeyPermissionCheck.ReadWriteSubTree);
                 _RegistryKey = T;
-                _RegistryKey.SetValue("Instl", System.AppDomain.CurrentDomain.BaseDirectory);
+                _RegistryKey.SetValue("Instl", AppDomain.CurrentDomain.BaseDirectory);
             }
-            else 
+            else
             {
-                Microsoft.VisualBasic.Devices.Computer c = new Computer() ;
-                if (! c.FileSystem.DirectoryExists(this.Instalacion) || this.Instalacion != AppDomain.CurrentDomain.BaseDirectory )
+                var c = new Computer();
+                if (! c.FileSystem.DirectoryExists(Instalacion) || Instalacion != AppDomain.CurrentDomain.BaseDirectory)
                 {
-                    this.Instalacion = System.AppDomain.CurrentDomain.BaseDirectory;
- 
+                    Instalacion = AppDomain.CurrentDomain.BaseDirectory;
                 }
-   
             }
-            
- 
         }
-    
+
         public string Instalacion
         {
-            get
-            {
-                
-                return  _RegistryKey.GetValue("Instl","").ToString ()    ;
-                
-            }
-            set
-            {
-                _RegistryKey.SetValue("Instl", value); 
-            }
+            get { return _RegistryKey.GetValue("Instl", "").ToString(); }
+            set { _RegistryKey.SetValue("Instl", value); }
         }
     }
 }

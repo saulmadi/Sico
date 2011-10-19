@@ -1,110 +1,106 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace SiCo.lgla
 {
-    public class PersonaJuridica:Entidades 
+    public class PersonaJuridica : Entidades
     {
-       
         #region Declaraciones
+
         #endregion
 
         #region Constructor
-        public PersonaJuridica():base()
+
+        public PersonaJuridica()
         {
-            this.ComandoSelect = "PersonaJuridica_Buscar";
-            this._espersonanatural = false;
+            ComandoSelect = "PersonaJuridica_Buscar";
+            _espersonanatural = false;
 
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial",null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));  
-            
-
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
         }
 
-        public PersonaJuridica(long? id, string RazonSocial,string correo, string direccion, string rtn , int? Telefono,int? Telefono2 ):base()         
+        public PersonaJuridica(long? id, string RazonSocial, string correo, string direccion, string rtn, int? Telefono,
+                               int? Telefono2)
         {
-            this.ComandoSelect = "PersonaJuridica_Buscar";
-            this._espersonanatural = false;
+            ComandoSelect = "PersonaJuridica_Buscar";
+            _espersonanatural = false;
 
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
 
-            this._Id=id;
-            this.RazonSocial=RazonSocial ;            
+            _Id = id;
+            this.RazonSocial = RazonSocial;
             this.correo = correo;
             this.direccion = direccion;
             this.rtn = rtn;
-            this.telefono = Telefono;
-            this.telefono2 = Telefono2;
+            telefono = Telefono;
+            telefono2 = Telefono2;
         }
 
         public PersonaJuridica(long? id, string RazonSocial)
-            : base()
         {
-            this.ComandoSelect = "PersonaJuridica_Buscar";
-            this._espersonanatural = false;
+            ComandoSelect = "PersonaJuridica_Buscar";
+            _espersonanatural = false;
 
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
-            this.ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocial", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("razonsocialigual", null));
+            ColeccionParametrosBusqueda.Add(new Parametro("rtn", null));
 
-            this._Id = id;
+            _Id = id;
             this.RazonSocial = RazonSocial;
-       
         }
+
         #endregion
 
         #region Propiedades
-        public string RazonSocial
-        {
-            get;
-            set;
-        }
+
+        public string RazonSocial { get; set; }
+
         #endregion
-        
+
         #region Metodos
+
         protected override void CargadoPropiedades(int Indice)
         {
-            this.RazonSocial = this.Registro(Indice,"razonsocial").ToString() ; 
-            
-            base.CargadoPropiedades( Indice);
+            RazonSocial = Registro(Indice, "razonsocial").ToString();
+
+            base.CargadoPropiedades(Indice);
         }
 
         public override void Guardar()
         {
-            this.NullParametrosMantenimiento();
-            this.ValorParametrosMantenimiento("entidadnombre", this.RazonSocial.Trim());
-            this.ValorParametrosMantenimiento("identificacion",  Guid.NewGuid().ToString() );
-            this.ValorParametrosMantenimiento("tipoIdentidad", "J");
+            NullParametrosMantenimiento();
+            ValorParametrosMantenimiento("entidadnombre", RazonSocial.Trim());
+            ValorParametrosMantenimiento("identificacion", Guid.NewGuid().ToString());
+            ValorParametrosMantenimiento("tipoIdentidad", "J");
 
             base.Guardar();
         }
 
-        public  void Buscar(string RazonSocial,string rtn,bool t) 
+        public void Buscar(string RazonSocial, string rtn, bool t)
         {
-            this.NullParametrosBusqueda();
-            this.ValorParametrosBusqueda("razonsocial", RazonSocial);
-            this.ValorParametrosBusqueda("rtn", rtn); 
+            NullParametrosBusqueda();
+            ValorParametrosBusqueda("razonsocial", RazonSocial);
+            ValorParametrosBusqueda("rtn", rtn);
             base.Buscar();
         }
 
         public override object TablaAColeccion()
         {
             base.TablaAColeccion();
-            List<PersonaJuridica> lista = new List<PersonaJuridica>();
-            for (int i = 0; i < this.TotalRegistros; i++)
+            var lista = new List<PersonaJuridica>();
+            for (int i = 0; i < TotalRegistros; i++)
             {
-                this.CargadoPropiedades(i);
-                PersonaJuridica pntemp = new PersonaJuridica(this._Id, this.RazonSocial, this.correo, this.direccion, this.rtn, this.telefono,this.telefono2 ); 
+                CargadoPropiedades(i);
+                var pntemp = new PersonaJuridica(_Id, RazonSocial, correo, direccion, rtn, telefono, telefono2);
                 lista.Add(pntemp);
             }
-            return lista; 
+            return lista;
         }
 
         #endregion
-        
     }
 }

@@ -1,10 +1,11 @@
-﻿Imports SiCo.lgla
-Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions
+Imports SiCo.lgla
 
 Public Class DetalleCompras
-    Inherits SiCo.lgla.Entidad
+    Inherits Entidad
 
 #Region "Declaraciones"
+
     Private _idcompras As Long
     Private _idprodcutos As Long
     Private _cantidad As Long
@@ -16,24 +17,27 @@ Public Class DetalleCompras
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
         MyBase.New()
 
         Me.ComandoSelect = "DetalleCompras_Buscar"
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("idcompras"))
-        Me.ColeccionParametrosBusqueda.Add(New Parametro("idproducto"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("idcompras"))
+        Me.ColeccionParametrosBusqueda.Add (New Parametro ("idproducto"))
 
         Me.ComandoMantenimiento = "DetalleCompras_Mant"
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idcompras"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idproducto"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("cantidad"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("preciocompra"))
-        Me.ColeccionParametrosMantenimiento.Add(New Parametro("idsucursal"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("idcompras"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("idproducto"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("cantidad"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("preciocompra"))
+        Me.ColeccionParametrosMantenimiento.Add (New Parametro ("idsucursal"))
 
         Me.TablaEliminar = "DetalleCompras"
 
     End Sub
-    Public Sub New(ByVal id As Long, ByVal idcompras As Long, ByVal idproductos As Long, ByVal cantidad As Long, ByVal preciocompra As Decimal, ByVal idsucursal As Long)
+
+    Public Sub New (ByVal id As Long, ByVal idcompras As Long, ByVal idproductos As Long, ByVal cantidad As Long, _
+                    ByVal preciocompra As Decimal, ByVal idsucursal As Long)
         Me.New()
 
         Me._Id = id
@@ -50,12 +54,13 @@ Public Class DetalleCompras
 #End Region
 
 #Region "Propiedades"
+
     Public Property idcompras() As Long
         Get
             Return _idcompras
         End Get
 
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _idcompras = value
         End Set
     End Property
@@ -64,7 +69,7 @@ Public Class DetalleCompras
         Get
             Return _idprodcutos
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _idprodcutos = value
         End Set
     End Property
@@ -73,7 +78,7 @@ Public Class DetalleCompras
         Get
             Return _cantidad
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _cantidad = value
         End Set
     End Property
@@ -82,7 +87,7 @@ Public Class DetalleCompras
         Get
             Return _preciocompra
         End Get
-        Set(ByVal value As Decimal)
+        Set (ByVal value As Decimal)
             _preciocompra = value
         End Set
     End Property
@@ -91,7 +96,7 @@ Public Class DetalleCompras
         Get
             Return _idsucursal
         End Get
-        Set(ByVal value As Long)
+        Set (ByVal value As Long)
             _idsucursal = value
         End Set
     End Property
@@ -103,7 +108,7 @@ Public Class DetalleCompras
             End If
             Return _Producto
         End Get
-        Set(ByVal value As Productos)
+        Set (ByVal value As Productos)
             _Producto = value
 
             Me._idprodcutos = value.Id
@@ -126,7 +131,7 @@ Public Class DetalleCompras
             End If
             Return Me.Producto.Codigo
         End Get
-        Set(ByVal value As String)
+        Set (ByVal value As String)
             Me._Producto = New Productos
             Me._Producto.CodigoParaBusqueda = value
             If Me._Producto.TotalRegistros = 0 Then
@@ -143,21 +148,20 @@ Public Class DetalleCompras
             End If
             Return cantidad.ToString
         End Get
-        Set(ByVal value As String)
-            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
-            If reg.IsMatch(value) Then
+        Set (ByVal value As String)
+            Dim reg As New Regex ("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}")
+            If reg.IsMatch (value) Then
                 Dim s As Long = value
                 If s < 0 Then
-                    Throw New ApplicationException("La cantidad tiene que ser mayor a 0")
+                    Throw New ApplicationException ("La cantidad tiene que ser mayor a 0")
                     Me.cantidad = 1
                 Else
                     Me.cantidad = s
                 End If
             Else
-                Throw New ApplicationException("El número no tiene el formato correcto")
+                Throw New ApplicationException ("El número no tiene el formato correcto")
             End If
         End Set
-
     End Property
 
     Public Property PrecioEditable() As String
@@ -167,24 +171,24 @@ Public Class DetalleCompras
             End If
             Return Me.preciocompra.ToString
         End Get
-        Set(ByVal value As String)
-            Dim reg As New Regex("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,2})?$")
-            If reg.IsMatch(value) Then
+        Set (ByVal value As String)
+            Dim reg As New Regex ("^(?!^0*$)(?!^0*\.0*$)^\d{1,9}(\.\d{1,2})?$")
+            If reg.IsMatch (value) Then
                 Dim d As Decimal = value
                 If d > 0 Then
                     Me.preciocompra = d
                 Else
-                    Throw New ApplicationException("El precio de compra tiene que ser mayor a 0")
+                    Throw New ApplicationException ("El precio de compra tiene que ser mayor a 0")
                 End If
             Else
-                Throw New ApplicationException("El número no tiene el formato correcto")
+                Throw New ApplicationException ("El número no tiene el formato correcto")
             End If
         End Set
     End Property
 
     Public ReadOnly Property Subtotal() As Decimal
         Get
-            Return Me.cantidad * Me.preciocompra
+            Return Me.cantidad*Me.preciocompra
         End Get
     End Property
 
@@ -201,31 +205,31 @@ Public Class DetalleCompras
 
 #Region "Metodos"
 
-    Protected Overrides Sub CargadoPropiedades(ByVal Indice As Integer)
-        Me.idcompras = Registro(Indice, "idcompras")
-        Me.idproducto = Registro(Indice, "idproducto")
-        Me.cantidad = Registro(Indice, "cantidad")
-        Me.preciocompra = Registro(Indice, "preciocompra")
-        Me.idsucursal = Registro(Indice, "idsucursal")
+    Protected Overrides Sub CargadoPropiedades (ByVal Indice As Integer)
+        Me.idcompras = Registro (Indice, "idcompras")
+        Me.idproducto = Registro (Indice, "idproducto")
+        Me.cantidad = Registro (Indice, "cantidad")
+        Me.preciocompra = Registro (Indice, "preciocompra")
+        Me.idsucursal = Registro (Indice, "idsucursal")
 
-        Me._Producto = New Productos(Me.idproducto, Registro(Indice, "codigo"), Registro(Indice, "descripcion"), 0, 0)
+        Me._Producto = New Productos (Me.idproducto, Registro (Indice, "codigo"), Registro (Indice, "descripcion"), 0, 0)
 
 
-        MyBase.CargadoPropiedades(Indice)
+        MyBase.CargadoPropiedades (Indice)
     End Sub
 
     Public Overrides Sub Guardar()
         NullParametrosMantenimiento()
-        Me.ValorParametrosMantenimiento("idcompras", Me.idcompras)
-        Me.ValorParametrosMantenimiento("idproducto", Me.idproducto)
-        Me.ValorParametrosMantenimiento("cantidad", Me.cantidad)
-        Me.ValorParametrosMantenimiento("preciocompra", Me.preciocompra)
-        Me.ValorParametrosMantenimiento("idsucursal", Me.idsucursal)
-        MyBase.Guardar(True)
+        Me.ValorParametrosMantenimiento ("idcompras", Me.idcompras)
+        Me.ValorParametrosMantenimiento ("idproducto", Me.idproducto)
+        Me.ValorParametrosMantenimiento ("cantidad", Me.cantidad)
+        Me.ValorParametrosMantenimiento ("preciocompra", Me.preciocompra)
+        Me.ValorParametrosMantenimiento ("idsucursal", Me.idsucursal)
+        MyBase.Guardar (True)
     End Sub
 
-    <Obsolete("El metodo no se puede utilizar", True)> _
-    Public Overrides Sub Guardar(ByVal transaccion As Boolean)
+    <Obsolete ("El metodo no se puede utilizar", True)> _
+    Public Overrides Sub Guardar (ByVal transaccion As Boolean)
 
     End Sub
 
@@ -233,29 +237,33 @@ Public Class DetalleCompras
         Dim lista As New List(Of DetalleCompras)
 
         For i As Integer = 0 To Me.TotalRegistros - 1
-            Me.CargadoPropiedades(i)
-            Dim tempd As New DetalleCompras(Me.Id, Me.idcompras, Me.idproducto, Me.cantidad, Me.preciocompra, Me.idsucursal)
-            lista.Add(tempd)
+            Me.CargadoPropiedades (i)
+            Dim _
+                tempd As _
+                    New DetalleCompras (Me.Id, Me.idcompras, Me.idproducto, Me.cantidad, Me.preciocompra, Me.idsucursal)
+            lista.Add (tempd)
         Next
         Return lista
     End Function
 
-    Public Overloads Sub Buscar(ByVal idcompras As String, ByVal idproducto As String)
+    Public Overloads Sub Buscar (ByVal idcompras As String, ByVal idproducto As String)
         Me.NullParametrosBusqueda()
-        Me.ValorParametrosBusqueda("idcompras", idcompras)
-        Me.ValorParametrosBusqueda("idproducto", idproducto)
+        Me.ValorParametrosBusqueda ("idcompras", idcompras)
+        Me.ValorParametrosBusqueda ("idproducto", idproducto)
 
-        Me.LlenadoTabla(Me.ColeccionParametrosBusqueda)
+        Me.LlenadoTabla (Me.ColeccionParametrosBusqueda)
 
     End Sub
+
 #End Region
 
 #Region "Eventos"
+
     Private Sub _Producto_CambioCodigo() Handles _Producto.CambioCodigo
         If Me._Producto.TotalRegistros > 0 Then
             Me.idproducto = Me._Producto.Id
         End If
     End Sub
-#End Region
 
+#End Region
 End Class

@@ -1,111 +1,78 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SiCo.lgla
+﻿namespace SiCo.lgla
 {
     public abstract class Entidades : Entidad
     {
-        
         #region Declaraciones
-        protected bool _espersonanatural= true ;
+
+        protected bool _espersonanatural = true;
 
         #endregion
 
         #region Constructores
 
-        public Entidades():base()
+        public Entidades()
         {
-            this.ComandoMantenimiento = "Entidades_Mant";  
+            ComandoMantenimiento = "Entidades_Mant";
 
-            this.ColeccionParametrosMantenimiento.Add (new Parametro("telefono",null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("direccion", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("correo", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("espersonanatural", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("rtn", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("entidadnombre", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("identificacion", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));
-            this.ColeccionParametrosMantenimiento.Add(new Parametro("telefono2", null));
-            this.TablaEliminar = "entidades";
-            
-        }       
+            ColeccionParametrosMantenimiento.Add(new Parametro("telefono", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("direccion", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("correo", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("espersonanatural", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("rtn", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("entidadnombre", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("identificacion", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("tipoIdentidad", null));
+            ColeccionParametrosMantenimiento.Add(new Parametro("telefono2", null));
+            TablaEliminar = "entidades";
+        }
 
         #endregion
 
         #region Propiedades
 
-        public int? telefono
-        {
-            get;
-            set;
-        }
+        public int? telefono { get; set; }
 
-        public string direccion
-        {
-            get;
-            set;
-        }
+        public string direccion { get; set; }
 
-        public string correo
-        {
-            get;
-            set;
-        }
+        public string correo { get; set; }
 
-        public string  rtn
-        {
-            get;
-            set;
-        }
+        public string rtn { get; set; }
 
-        public int? telefono2
-        {
-            get;
-            set;
-        }
+        public int? telefono2 { get; set; }
 
         public bool espersonanatural
         {
-            get
-            {
-                return _espersonanatural;
-            }
+            get { return _espersonanatural; }
         }
 
-        #endregion                
+        #endregion
 
         #region Metodos
 
-        protected override  void CargadoPropiedades(int indice)
+        protected override void CargadoPropiedades(int indice)
         {
-            if (this.TotalRegistros > 0)
+            if (TotalRegistros > 0)
             {
-               
-                telefono = (int?) Registro (indice ,"telefono");                
-                direccion =(string)Registro(indice ,"direccion");
-                correo =(string)  Registro(indice,"correo");
-                rtn = (string)Registro(indice,"RTN");
-                telefono2 = (int?)Registro(indice, "telefono2"); 
+                telefono = (int?) Registro(indice, "telefono");
+                direccion = (string) Registro(indice, "direccion");
+                correo = (string) Registro(indice, "correo");
+                rtn = (string) Registro(indice, "RTN");
+                telefono2 = (int?) Registro(indice, "telefono2");
                 base.CargadoPropiedades(indice);
             }
-           
-
- 
-        }       
+        }
 
         public override void Guardar()
         {
-            this.ValorParametrosMantenimiento("telefono", this.telefono);
-            this.ValorParametrosMantenimiento("direccion", this.direccion);
-            this.ValorParametrosMantenimiento("correo", this.correo);
-            this.ValorParametrosMantenimiento("rtn", this.rtn);
-            this.ValorParametrosMantenimiento("espersonanatural", this.espersonanatural);
-            this.ValorParametrosMantenimiento("telefono2", this.telefono2); 
-            base.Guardar(); 
+            ValorParametrosMantenimiento("telefono", telefono);
+            ValorParametrosMantenimiento("direccion", direccion);
+            ValorParametrosMantenimiento("correo", correo);
+            ValorParametrosMantenimiento("rtn", rtn);
+            ValorParametrosMantenimiento("espersonanatural", espersonanatural);
+            ValorParametrosMantenimiento("telefono2", telefono2);
+            base.Guardar();
         }
 
-        #endregion       
-
+        #endregion
     }
 }

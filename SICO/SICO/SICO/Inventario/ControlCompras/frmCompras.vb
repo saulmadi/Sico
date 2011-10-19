@@ -1,12 +1,18 @@
-﻿Imports SICO.lgla2
-Imports SICO.ctrla
+﻿Imports SiCo.ctrla2
+Imports SiCo.lgla
+Imports SiCo.ctrla
+Imports SiCo.lgla2
+
 Public Class frmCompras
 
 #Region "Declaraciones"
+
     Private _compras As New Compras
+
 #End Region
 
 #Region "Constructor"
+
     Public Sub New()
 
         ' Llamada necesaria para el Diseñador de Windows Forms.
@@ -15,25 +21,25 @@ Public Class frmCompras
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().       
 
     End Sub
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property Compras() As Compras
         Get
             Return _compras
         End Get
-        Set(ByVal value As Compras)
+        Set (ByVal value As Compras)
             _compras = value
             grpCompra.Enabled = True
             cmbProveedor.Enabled = True
 
             txtTelefono.Clear()
-            
+
 
             txtFacturCompra.Text = ""
-            
 
-         
 
             If value.Id = 0 Then
                 If cmbProveedor.Items.Count = 0 Then
@@ -55,8 +61,8 @@ Public Class frmCompras
                 Me.grdDetalle.BotonEliminar = True
                 Me.grdDetalle.BotonBuscar = True
 
-                cmbProveedor.SelectedIndex = -1
-                cmbSucursales.SelectedIndex = -1
+                cmbProveedor.SelectedIndex = - 1
+                cmbSucursales.SelectedIndex = - 1
                 PanelAccion1.BotonGuardar.Enabled = True
                 PanelAccion1.BotonImprimir.Enabled = False
 
@@ -65,14 +71,14 @@ Public Class frmCompras
                 value.ListaDetalle.Clear()
                 txtFacturCompra.Enabled = True
                 For i As Integer = 1 To 50
-                    value.ListaDetalle.Add(New DetalleCompras)
+                    value.ListaDetalle.Add (New DetalleCompras)
                 Next
 
                 grdDetalle.DataSource = value.ListaDetalle
                 grdDetalle.ReadOnly = False
                 PanelAccion1.BotonNuevo.Enabled = True
                 lblEstado.Text = value.DescripcionEstado
-                
+
                 PanelAccion1.BotonEliminar.Visible = False
             Else
                 If cmbProveedor.Items.Count = 0 Then
@@ -84,7 +90,7 @@ Public Class frmCompras
                 End If
 
                 If cmbSucursales.Items.Count = 0 Then
-                    cmbSucursales.Entidad = New SICO.lgla.Sucursales
+                    cmbSucursales.Entidad = New Sucursales
                     cmbSucursales.IncializarCarga()
                     cmbSucursales.DisplayMember = "NombreMantenimiento"
                     cmbSucursales.ValueMember = "Id"
@@ -99,7 +105,7 @@ Public Class frmCompras
 
                 Me.grdDetalle.BotonEliminar = False
                 Me.grdDetalle.BotonBuscar = False
-                
+
                 lblEstado.Text = value.DescripcionEstado
                 If value.Estado.ToUpper = "P" Then
                     Me.grdDetalle.BotonBuscar = True
@@ -108,12 +114,12 @@ Public Class frmCompras
                     PanelAccion1.BotonEliminar.Visible = True
                     PanelAccion1.BotonEliminar.Text = "Confirmar"
 
-                    BloquearDesbloquarControles(Me, True, (New ComboBox).GetType)
-                    BloquearDesbloquarControles(Me, True, (New CajaTexto).GetType)
+                    BloquearDesbloquarControles (Me, True, (New ComboBox).GetType)
+                    BloquearDesbloquarControles (Me, True, (New CajaTexto).GetType)
 
                 Else
-                    BloquearDesbloquarControles(Me, False, (New ListaDesplegable).GetType)
-                    BloquearDesbloquarControles(Me, False, (New CajaTexto).GetType)
+                    BloquearDesbloquarControles (Me, False, (New ListaDesplegable).GetType)
+                    BloquearDesbloquarControles (Me, False, (New CajaTexto).GetType)
                     grdDetalle.ReadOnly = True
                     PanelAccion1.BotonEliminar.Visible = False
 
@@ -124,7 +130,7 @@ Public Class frmCompras
                 value.CargarDetalle()
                 If value.Estado.ToUpper = "P" Then
                     For i As Integer = value.ListaDetalle.Count To 50
-                        value.ListaDetalle.Add(New DetalleCompras())
+                        value.ListaDetalle.Add (New DetalleCompras())
                     Next
                 End If
                 grdDetalle.DataSource = _compras.ListaDetalle
@@ -134,10 +140,12 @@ Public Class frmCompras
             txttotal.Text = value.CalcularTotal
         End Set
     End Property
+
 #End Region
 
 #Region "Eventos"
-    Private Sub frmCompras_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    Private Sub frmCompras_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         lblEstado.Text = ""
         Me.WindowState = FormWindowState.Normal
 
@@ -148,30 +156,30 @@ Public Class frmCompras
         grdDetalle.BotonBuscar = True
         grdDetalle.BotonEliminar = True
         grdDetalle.RowHeadersVisible = True
-        grdDetalle.DarFormato("codigo", "Código", False)
-        grdDetalle.DarFormato("descripcion", "Descripción", True)
-        grdDetalle.DarFormato("CantidadEditable", "Cantidad", False)
-        grdDetalle.DarFormato("PrecioEditable", "Precio de Compra", False)
-        grdDetalle.DarFormato("SubtotalString", "Subtotal", True)
+        grdDetalle.DarFormato ("codigo", "Código", False)
+        grdDetalle.DarFormato ("descripcion", "Descripción", True)
+        grdDetalle.DarFormato ("CantidadEditable", "Cantidad", False)
+        grdDetalle.DarFormato ("PrecioEditable", "Precio de Compra", False)
+        grdDetalle.DarFormato ("SubtotalString", "Subtotal", True)
 
-       
 
     End Sub
 
     Private Sub grdDetalle_Buscar() Handles grdDetalle.Buscar
-        Dim f As New SICO.ctrla2.frmBusquedaProductos
+        Dim f As New frmBusquedaProductos
         f.Entidad = New Productos
-        If f.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If f.ShowDialog() = DialogResult.OK Then
             Dim d As New DetalleCompras
             d.Producto = f.Entidad
 
-            Me.Compras.ListaDetalle(grdDetalle.CurrentRow.Index).Producto = f.Entidad
+            Me.Compras.ListaDetalle (grdDetalle.CurrentRow.Index).Producto = f.Entidad
             grdDetalle.Refresh()
         End If
 
     End Sub
 
-    Private Sub grdDetalle_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grdDetalle.CellEndEdit
+    Private Sub grdDetalle_CellEndEdit (ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) _
+        Handles grdDetalle.CellEndEdit
         txtimpuesto.Text = Me.Compras.Impuesto
         txtsubtotal.Text = Me.Compras.CalcularTotal
         txttotal.Text = Me.Compras.CalcularTotal
@@ -181,11 +189,12 @@ Public Class frmCompras
         Me.Compras = New Compras
     End Sub
 
-    Private Sub cmbProveedor_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbProveedor.SelectedIndexChanged
+    Private Sub cmbProveedor_SelectedIndexChanged (ByVal sender As Object, ByVal e As EventArgs) _
+        Handles cmbProveedor.SelectedIndexChanged
         Try
             If Not cmbProveedor.SelectedItem Is Nothing Then
-                Dim en As SICO.lgla.PersonaJuridica = CType(cmbProveedor.SelectedItem, Proveedores).PersonaJuridica
-                txtTelefono.Text = Convert.ToString(en.telefono)
+                Dim en As PersonaJuridica = CType (cmbProveedor.SelectedItem, Proveedores).PersonaJuridica
+                txtTelefono.Text = Convert.ToString (en.telefono)
             End If
 
 
@@ -194,7 +203,7 @@ Public Class frmCompras
         End Try
     End Sub
 
-    Private Sub cmbProveedor_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmbProveedor.TextChanged
+    Private Sub cmbProveedor_TextChanged (ByVal sender As Object, ByVal e As EventArgs) Handles cmbProveedor.TextChanged
         txtTelefono.Clear()
     End Sub
 
@@ -205,7 +214,7 @@ Public Class frmCompras
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
         Try
             Dim vali As New Validador
-            vali.ColecionCajasTexto.Add(txtFacturCompra)
+            vali.ColecionCajasTexto.Add (txtFacturCompra)
             If vali.PermitirIngresar Then
                 If Not cmbProveedor.SelectedItem Is Nothing Then
                     If Not cmbSucursales.SelectedItem Is Nothing Then
@@ -234,14 +243,14 @@ Public Class frmCompras
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.lblEstado.Text = "Error..."
             Me.PanelAccion1.BarraProgreso.Value = 0
         End Try
     End Sub
 
-    Private Sub grdDetalle_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles grdDetalle.Eliminar
-        Me.Compras.ListaDetalle(grdDetalle.CurrentRow.Index) = New DetalleCompras
+    Private Sub grdDetalle_Eliminar (ByVal EliminarArg As GridEliminarEventArg) Handles grdDetalle.Eliminar
+        Me.Compras.ListaDetalle (grdDetalle.CurrentRow.Index) = New DetalleCompras
     End Sub
 
     Private Sub PanelAccion1_Imprimir() Handles PanelAccion1.Imprimir
@@ -251,28 +260,31 @@ Public Class frmCompras
         _compras.Id = Me.Compras.Id
         cmbProveedor.SelectedValue = Me.Compras.idproveedor
         cmbSucursales.SelectedValue = Me.Compras.idsucursal
-        re.Subreports("crProveedor.rpt").DataDefinition.FormulaFields("Proveedor").Text = "'" + Me.Compras.DescripcionProveedor + "'"
-        re.Subreports("crProveedor.rpt").DataDefinition.FormulaFields("Telefono").Text = "'" + txtTelefono.Text + "'"
+        re.Subreports ("crProveedor.rpt").DataDefinition.FormulaFields ("Proveedor").Text = "'" + _
+                                                                                            Me.Compras. _
+                                                                                                DescripcionProveedor + _
+                                                                                            "'"
+        re.Subreports ("crProveedor.rpt").DataDefinition.FormulaFields ("Telefono").Text = "'" + txtTelefono.Text + "'"
 
-        re.DataDefinition.FormulaFields("Sucursal").Text = "'" + cmbSucursales.SelectedItem.NombreMantenimiento + "'"
-        re.DataDefinition.FormulaFields("Fecha").Text = "'" + Me.Compras.fechacompra.ToString("dd/MM/yyyy") + "'"
-        re.DataDefinition.FormulaFields("Factura").Text = "'" + Me.Compras.facturacompra.ToString + "'"
+        re.DataDefinition.FormulaFields ("Sucursal").Text = "'" + cmbSucursales.SelectedItem.NombreMantenimiento + "'"
+        re.DataDefinition.FormulaFields ("Fecha").Text = "'" + Me.Compras.fechacompra.ToString ("dd/MM/yyyy") + "'"
+        re.DataDefinition.FormulaFields ("Factura").Text = "'" + Me.Compras.facturacompra.ToString + "'"
 
         Dim d As New DetalleCompras
-        d.Buscar(Me.Compras.Id.ToString, Nothing)
+        d.Buscar (Me.Compras.Id.ToString, Nothing)
 
-        re.SetDataSource(d.Tabla)
-        
+        re.SetDataSource (d.Tabla)
+
         f.MdiParent = Me.MdiParent
         Me.WindowState = FormWindowState.Minimized
-        f.Show(re, "Compras")
+        f.Show (re, "Compras")
 
     End Sub
 
     Private Sub PanelAccion1_Eliminar() Handles PanelAccion1.Eliminar
         Try
             Dim vali As New Validador
-            vali.ColecionCajasTexto.Add(txtFacturCompra)
+            vali.ColecionCajasTexto.Add (txtFacturCompra)
             If vali.PermitirIngresar Then
                 If Not cmbProveedor.SelectedItem Is Nothing Then
                     If Not cmbSucursales.SelectedItem Is Nothing Then
@@ -300,9 +312,9 @@ Public Class frmCompras
             End If
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 #End Region
-    
 End Class

@@ -1,4 +1,4 @@
-﻿Imports SiCo.lgla
+﻿
 'Public MustInherit Class Mantenimientos
 '    Inherits SiCo.lgla.Entidad
 

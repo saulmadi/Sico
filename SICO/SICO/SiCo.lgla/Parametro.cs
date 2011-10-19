@@ -1,73 +1,71 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MySql.Data.MySqlClient;
-using System.Runtime.Serialization;
+using System.Data;
 
 namespace SiCo.lgla
 {
-    [Serializable() ]
+    [Serializable]
     public class Parametro
     {
         #region Declaraciones
+
         private string _Nombre = string.Empty;
+        [NonSerialized] private ParameterDirection _TipoParametro;
         private object _valor = new object();
-        [NonSerialized()]private System.Data.ParameterDirection _TipoParametro = new System.Data.ParameterDirection();
+
         #endregion
 
         #region Constructor
+
         public Parametro()
         {
-            this.TipoParametro = System.Data.ParameterDirection.Input;
-            this.Valor = null;
-            this.Nombre = string.Empty;
+            TipoParametro = ParameterDirection.Input;
+            Valor = null;
+            Nombre = string.Empty;
         }
 
         public Parametro(string Nombre)
         {
-            this.TipoParametro = System.Data.ParameterDirection.Input;
-            this.Valor = null;
-            this.Nombre = Nombre ;
+            TipoParametro = ParameterDirection.Input;
+            Valor = null;
+            this.Nombre = Nombre;
         }
 
         public Parametro(string Nombre, object Valor)
-        {                      
-
+        {
             this.Nombre = Nombre;
             this.Valor = Valor;
-            this.TipoParametro = System.Data.ParameterDirection.Input; 
+            TipoParametro = ParameterDirection.Input;
         }
 
-        public Parametro(string Nombre, object Valor, System.Data.ParameterDirection  Tipo)
+        public Parametro(string Nombre, object Valor, ParameterDirection Tipo)
         {
-
             this.Nombre = Nombre;
             this.Valor = Valor;
-            this.TipoParametro = Tipo;
+            TipoParametro = Tipo;
         }
 
         #endregion
 
         #region Propiedes
-        
+
         public string Nombre
         {
             get { return _Nombre; }
             set { _Nombre = value; }
         }
-        
+
         public object Valor
         {
             get { return _valor; }
-            set { _valor = value;}
+            set { _valor = value; }
         }
-        
-        public System.Data.ParameterDirection  TipoParametro
+
+        public ParameterDirection TipoParametro
         {
             get { return _TipoParametro; }
             set { _TipoParametro = value; }
         }
-        
-        #endregion        
+
+        #endregion
     }
 }

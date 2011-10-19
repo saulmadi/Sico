@@ -1,5 +1,4 @@
-﻿Imports System
-Imports System.Reflection
+﻿Imports System.Reflection
 Imports System.Runtime.InteropServices
 
 ' General Information about an assembly is controlled through the following 
@@ -8,17 +7,17 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("SICO")> 
-<Assembly: AssemblyDescription("Sistema de inventario Colmotos")> 
-<Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("SICO")> 
-<Assembly: AssemblyCopyright("Copyright ©2010-2011 COLMOTOS")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyTitle ("SICO")>
+<Assembly: AssemblyDescription ("Sistema de inventario Colmotos")>
+<Assembly: AssemblyCompany ("")>
+<Assembly: AssemblyProduct ("SICO")>
+<Assembly: AssemblyCopyright ("Copyright ©2010-2011 COLMOTOS")>
+<Assembly: AssemblyTrademark ("")>
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible (False)>
 
 'The following GUID is for the ID of the typelib if this project is exposed to COM
-<Assembly: Guid("6f9aa23b-7c6c-4ce0-8ebb-b04c11eee0d3")> 
+<Assembly: Guid ("6f9aa23b-7c6c-4ce0-8ebb-b04c11eee0d3")>
 
 ' Version information for an assembly consists of the following four values:
 '
@@ -31,5 +30,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion ("1.0.0.0")>
+<Assembly: AssemblyFileVersion ("1.0.0.0")>

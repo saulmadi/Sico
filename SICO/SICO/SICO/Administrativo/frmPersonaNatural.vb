@@ -1,7 +1,8 @@
-﻿Public Class frmPersonaNatural
+﻿Imports SiCo.lgla
 
-    Private Sub frmPersonaNatural_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        crtBusqueda.Entidad = New SICO.lgla.PersonaNatural
+Public Class frmPersonaNatural
+    Private Sub frmPersonaNatural_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        crtBusqueda.Entidad = New PersonaNatural
         crtBusqueda.lblDescripcion.Text = "Nombre"
         CrtPersonaNatural.EtiquetaError = PanelAccion1.lblEstado
         PanelAccion1.BotonEliminar.Enabled = False
@@ -10,8 +11,8 @@
         PanelAccion1.BotonImprimir.Enabled = False
 
     End Sub
-   
-    Private Sub crtBusqueda_SeleccionItem(ByVal Item As System.Object) Handles crtBusqueda.SeleccionItem
+
+    Private Sub crtBusqueda_SeleccionItem (ByVal Item As Object) Handles crtBusqueda.SeleccionItem
         CrtPersonaNatural.Persona = Item
     End Sub
 
@@ -27,9 +28,9 @@
                 CrtPersonaNatural.Nuevo()
                 PanelAccion1.lblEstado.Text = "Persona natural guardada correctamente"
             End If
-            
+
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.lblEstado.Text = "Error al guardar la persona natural"
         End Try
     End Sub
@@ -40,10 +41,8 @@
 
     Private Sub crtBusqueda_Limpio() Handles crtBusqueda.Limpio
         If CrtPersonaNatural.Persona.Id > 0 Then
-            CrtPersonaNatural.Persona = New SICO.lgla.PersonaNatural
+            CrtPersonaNatural.Persona = New PersonaNatural
         End If
 
     End Sub
-
-   
 End Class

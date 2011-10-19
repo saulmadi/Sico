@@ -1,47 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Collections;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Collections;
 
 namespace SiCo.lgla
 {
     public class Ticket
     {
         #region Declaraciones
-        ArrayList headerLines = new ArrayList();
-        ArrayList subHeaderLines = new ArrayList();
-        ArrayList items = new ArrayList();
-        ArrayList totales = new ArrayList();
-        ArrayList footerLines = new ArrayList();
-        private Image headerImage = null;
-        int count = 0;
-        int maxChar = 35;
-        int maxCharDescription = 20;
-        int imageHeight = 0;
-        float leftMargin = 0;
-        float topMargin = 3;
 
-        string fontName = "Lucida Console";
-        int fontSize = 9;
+        private readonly ArrayList footerLines = new ArrayList();
+        private readonly ArrayList headerLines = new ArrayList();
+        private readonly ArrayList items = new ArrayList();
+        private readonly SolidBrush myBrush = new SolidBrush(Color.Black);
+        private readonly ArrayList subHeaderLines = new ArrayList();
+        private readonly ArrayList totales = new ArrayList();
+        private int count;
 
-        Font printFont = null;
-        SolidBrush myBrush = new SolidBrush(Color.Black);
+        private string fontName = "Lucida Console";
+        private int fontSize = 9;
 
-        Graphics gfx = null;
+        private Graphics gfx;
+        private Image headerImage;
+        private int imageHeight;
+        private float leftMargin;
 
-        string line = null;
+        private string line;
+        private int maxChar = 35;
+        private int maxCharDescription = 20;
+        private Font printFont;
+        private float topMargin = 3;
+
         #endregion
 
         #region Constructor
-        public Ticket()
-        {
 
-        }
         #endregion
 
         #region Propiedades
+
         public Image HeaderImage
         {
             get { return headerImage; }
@@ -71,9 +68,11 @@ namespace SiCo.lgla
             get { return fontName; }
             set { if (value != fontName) fontName = value; }
         }
+
         #endregion
 
         #region Metodos
+
         public void AddHeaderLine(string line)
         {
             headerLines.Add(line);
@@ -86,13 +85,13 @@ namespace SiCo.lgla
 
         public void AddItem(string cantidad, string item, string price)
         {
-            OrderItem newItem = new OrderItem('?');
+            var newItem = new OrderItem('?');
             items.Add(newItem.GenerateItem(cantidad, item, price));
         }
 
         public void AddTotal(string name, string price)
         {
-            OrderTotal newTotal = new OrderTotal('?');
+            var newTotal = new OrderTotal('?');
             totales.Add(newTotal.GenerateTotal(name, price));
         }
 
@@ -131,13 +130,13 @@ namespace SiCo.lgla
         public void PrintTicket(string impresora)
         {
             printFont = new Font(fontName, fontSize, FontStyle.Regular);
-            PrintDocument pr = new PrintDocument();
+            var pr = new PrintDocument();
             pr.PrinterSettings.PrinterName = impresora;
-            pr.PrintPage += new PrintPageEventHandler(pr_PrintPage);
+            pr.PrintPage += pr_PrintPage;
             pr.Print();
         }
 
-        private void pr_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        private void pr_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.PageUnit = GraphicsUnit.Millimeter;
             gfx = e.Graphics;
@@ -158,7 +157,7 @@ namespace SiCo.lgla
 
         private float YPosition()
         {
-            return topMargin + (count * printFont.GetHeight(gfx) + imageHeight);
+            return topMargin + (count*printFont.GetHeight(gfx) + imageHeight);
         }
 
         private void DrawImage()
@@ -167,9 +166,9 @@ namespace SiCo.lgla
             {
                 try
                 {
-                    gfx.DrawImage(headerImage, new Point((int)leftMargin, (int)YPosition()));
-                    double height = ((double)headerImage.Height / 58) * 15;
-                    imageHeight = (int)Math.Round(height) + 3;
+                    gfx.DrawImage(headerImage, new Point((int) leftMargin, (int) YPosition()));
+                    double height = ((double) headerImage.Height/58)*15;
+                    imageHeight = (int) Math.Round(height) + 3;
                 }
                 catch (Exception)
                 {
@@ -196,7 +195,8 @@ namespace SiCo.lgla
                         headerLenght -= maxChar;
                     }
                     line = header;
-                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush,
+                                   leftMargin, YPosition(), new StringFormat());
                     count++;
                 }
                 else
@@ -222,14 +222,16 @@ namespace SiCo.lgla
                     while (subHeaderLenght > maxChar)
                     {
                         line = subHeader;
-                        gfx.DrawString(line.Substring(currentChar, maxChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                        gfx.DrawString(line.Substring(currentChar, maxChar), printFont, myBrush, leftMargin, YPosition(),
+                                       new StringFormat());
 
                         count++;
                         currentChar += maxChar;
                         subHeaderLenght -= maxChar;
                     }
                     line = subHeader;
-                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush,
+                                   leftMargin, YPosition(), new StringFormat());
                     count++;
                 }
                 else
@@ -252,9 +254,10 @@ namespace SiCo.lgla
 
         private void DrawItems()
         {
-            OrderItem ordIt = new OrderItem('?');
+            var ordIt = new OrderItem('?');
 
-            gfx.DrawString("CANT  DESCRIPCION           IMPORTE", printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+            gfx.DrawString("CANT  DESCRIPCION           IMPORTE", printFont, myBrush, leftMargin, YPosition(),
+                           new StringFormat());
 
             count++;
             DrawEspacio();
@@ -281,7 +284,8 @@ namespace SiCo.lgla
                     while (itemLenght > maxCharDescription)
                     {
                         line = ordIt.GetItemName(item);
-                        gfx.DrawString("      " + line.Substring(currentChar, maxCharDescription), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                        gfx.DrawString("      " + line.Substring(currentChar, maxCharDescription), printFont, myBrush,
+                                       leftMargin, YPosition(), new StringFormat());
 
                         count++;
                         currentChar += maxCharDescription;
@@ -289,12 +293,14 @@ namespace SiCo.lgla
                     }
 
                     line = ordIt.GetItemName(item);
-                    gfx.DrawString("      " + line.Substring(currentChar, line.Length - currentChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                    gfx.DrawString("      " + line.Substring(currentChar, line.Length - currentChar), printFont, myBrush,
+                                   leftMargin, YPosition(), new StringFormat());
                     count++;
                 }
                 else
                 {
-                    gfx.DrawString("      " + ordIt.GetItemName(item), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                    gfx.DrawString("      " + ordIt.GetItemName(item), printFont, myBrush, leftMargin, YPosition(),
+                                   new StringFormat());
 
                     count++;
                 }
@@ -312,7 +318,7 @@ namespace SiCo.lgla
 
         private void DrawTotales()
         {
-            OrderTotal ordTot = new OrderTotal('?');
+            var ordTot = new OrderTotal('?');
 
             foreach (string total in totales)
             {
@@ -343,14 +349,16 @@ namespace SiCo.lgla
                     while (footerLenght > maxChar)
                     {
                         line = footer;
-                        gfx.DrawString(line.Substring(currentChar, maxChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                        gfx.DrawString(line.Substring(currentChar, maxChar), printFont, myBrush, leftMargin, YPosition(),
+                                       new StringFormat());
 
                         count++;
                         currentChar += maxChar;
                         footerLenght -= maxChar;
                     }
                     line = footer;
-                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush, leftMargin, YPosition(), new StringFormat());
+                    gfx.DrawString(line.Substring(currentChar, line.Length - currentChar), printFont, myBrush,
+                                   leftMargin, YPosition(), new StringFormat());
                     count++;
                 }
                 else
@@ -373,16 +381,17 @@ namespace SiCo.lgla
 
             count++;
         }
-        #endregion        
+
+        #endregion
     }
 
     public class OrderItem
     {
-        char[] delimitador = new char[] { '?' };
+        private readonly char[] delimitador = new[] {'?'};
 
         public OrderItem(char delimit)
         {
-            delimitador = new char[] { delimit };
+            delimitador = new[] {delimit};
         }
 
         public string GetItemCantidad(string orderItem)
@@ -411,11 +420,11 @@ namespace SiCo.lgla
 
     public class OrderTotal
     {
-        char[] delimitador = new char[] { '?' };
+        private readonly char[] delimitador = new[] {'?'};
 
         public OrderTotal(char delimit)
         {
-            delimitador = new char[] { delimit };
+            delimitador = new[] {delimit};
         }
 
         public string GetTotalName(string totalItem)
@@ -435,9 +444,4 @@ namespace SiCo.lgla
             return totalName + delimitador[0] + price;
         }
     }
-
 }
-
-
-
-

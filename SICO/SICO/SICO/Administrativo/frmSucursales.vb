@@ -1,5 +1,7 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
+﻿Imports SiCo.ctrla
+Imports SiCo.lgla2
+Imports SiCo.lgla
+
 Public Class frmSucursales
     Private _Sucursal As New Sucursales
 
@@ -9,9 +11,10 @@ Public Class frmSucursales
             Return _Sucursal
         End Get
 
-        Set(ByVal value As Sucursales)
+        Set (ByVal value As Sucursales)
             _Sucursal = value
-            If Not value.idUsuario Is Nothing Then cmbAdmon.SelectedValue = value.idUsuario Else cmbAdmon.SelectedIndex = -1
+            If Not value.idUsuario Is Nothing Then cmbAdmon.SelectedValue = value.idUsuario Else _
+                cmbAdmon.SelectedIndex = - 1
 
             Dim m As New Municipios
             txtnumerofactura.Text = value.NumeroFactura
@@ -21,7 +24,7 @@ Public Class frmSucursales
                 txtnumerofactura.Enabled = True
             End If
             cmbMunicipio.Limpiar()
-            cmbDepartamento.SelectedIndex = -1
+            cmbDepartamento.SelectedIndex = - 1
             If value.idMunicipio > 0 Then
                 m.Id = value.idMunicipio
 
@@ -31,16 +34,14 @@ Public Class frmSucursales
             End If
 
 
-
             cmbestado.SelectedIndex = value.Estado
 
             CrtPersonaJuridica1.Persona = value.PersonaJuridica
 
         End Set
-
     End Property
 
-    Private Sub frmSucursales_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmSucursales_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.CrtListadoMantenimiento1.lblDescripcion.Text = "Sucursal"
         Me.CrtListadoMantenimiento1.Entidad = New Sucursales
 
@@ -51,21 +52,20 @@ Public Class frmSucursales
         Me.PanelAccion1.BotonImprimir.Enabled = False
 
         cmbDepartamento.Entidad = New Departamentos
-        cmbDepartamento.ColeccionParametros.Add(New SICO.ctrla.ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+        cmbDepartamento.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("habilitado", "1"))
         cmbDepartamento.CargarParametros()
 
         cmbMunicipio.Entidad = New Municipios
-        cmbMunicipio.ColeccionParametros.Add(New SICO.ctrla.ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+        cmbMunicipio.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("habilitado", "1"))
         cmbMunicipio.ParametroBusquedaPadre = "idderivada"
         cmbMunicipio.ListaDesplegablePadre = cmbDepartamento
 
-        cmbAdmon.ColeccionParametros.Add(New SICO.ctrla.ListaDesplegable.ParametrosListaDesplegable("idrol", " > 3 "))
-        cmbAdmon.ColeccionParametros.Add(New SICO.ctrla.ListaDesplegable.ParametrosListaDesplegable("estado", "1"))
+        cmbAdmon.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("idrol", " > 3 "))
+        cmbAdmon.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("estado", "1"))
         cmbAdmon.Entidad = New Usuario
         cmbMunicipio.CargarComboBox = False
         cmbAdmon.CargarParametros()
         cmbMunicipio.CargarComboBox = True
-
 
 
         cmbMunicipio.Limpiar()
@@ -79,8 +79,9 @@ Public Class frmSucursales
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
-    Private Sub CrtListadoMantenimiento1_SeleccionItem(ByVal Item As System.Object) Handles CrtListadoMantenimiento1.SeleccionItem
-        Me.Sucursal = CType(Item, Sucursales)
+    Private Sub CrtListadoMantenimiento1_SeleccionItem (ByVal Item As Object) _
+        Handles CrtListadoMantenimiento1.SeleccionItem
+        Me.Sucursal = CType (Item, Sucursales)
         Me.PanelAccion1.BarraProgreso.Value = 0
     End Sub
 
@@ -92,16 +93,18 @@ Public Class frmSucursales
         Try
             Dim flag As Boolean = True
             If Me.Sucursal.Id > 0 Then
-                Select Case MessageBox.Show("¿Esta seguro de modificar la sucursal " + Me.Sucursal.NombreMantenimiento + "?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                    Case Windows.Forms.DialogResult.No
+                Select Case _
+                    MessageBox.Show ("¿Esta seguro de modificar la sucursal " + Me.Sucursal.NombreMantenimiento + "?", _
+                                     "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    Case DialogResult.No
                         flag = False
 
                 End Select
             End If
 
             If flag And Not cmbAdmon.SelectedItem Is Nothing And Not cmbMunicipio.SelectedValue Is Nothing Then
-                Dim v As New SICO.ctrla.Validador
-                v.ColecionCajasTexto.Add(txtnumerofactura)
+                Dim v As New Validador
+                v.ColecionCajasTexto.Add (txtnumerofactura)
                 If v.PermitirIngresar Then
 
 
@@ -114,12 +117,13 @@ Public Class frmSucursales
 
 
                         Me.Sucursal.Estado = cmbestado.SelectedItem.valor
-                        Me.Sucursal.idUsuario = CType(cmbAdmon.SelectedItem, Usuario).Id
+                        Me.Sucursal.idUsuario = CType (cmbAdmon.SelectedItem, Usuario).Id
                         Me.Sucursal.idMunicipio = cmbMunicipio.SelectedValue
                         Me.Sucursal.NumeroFactura = Me.txtnumerofactura.Text
                         Me.Sucursal.Guardar()
                         Me.PanelAccion1.BarraProgreso.Value = 100
-                        Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente la sucursal " + Me.Sucursal.NombreMantenimiento
+                        Me.PanelAccion1.lblEstado.Text = "Se guardo correctamente la sucursal " + _
+                                                         Me.Sucursal.NombreMantenimiento
 
 
                     End If
@@ -134,7 +138,7 @@ Public Class frmSucursales
                 End If
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message)
+            MessageBox.Show (ex.Message)
             Me.PanelAccion1.lblEstado.Text = ("Error al guardar la sucursal")
             Me.PanelAccion1.BarraProgreso.Value = 0
         End Try
@@ -145,14 +149,15 @@ Public Class frmSucursales
         Me.CrtPersonaJuridica1.Nuevo()
     End Sub
 
-    Private Sub btnModificar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnModificar.Click
-        Select Case MessageBox.Show("Cambiar el número de factura puede provocar la perdida del correlativo de facturas." + vbCrLf + "¿Realmente desea cambiar el número de factura actual?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            Case Windows.Forms.DialogResult.Yes
+    Private Sub btnModificar_Click (ByVal sender As Object, ByVal e As EventArgs) Handles btnModificar.Click
+        Select Case _
+            MessageBox.Show ( _
+                "Cambiar el número de factura puede provocar la perdida del correlativo de facturas." + vbCrLf + _
+                "¿Realmente desea cambiar el número de factura actual?", "Confirmación", MessageBoxButtons.YesNo, _
+                MessageBoxIcon.Question)
+            Case DialogResult.Yes
                 Me.txtnumerofactura.Enabled = True
                 txtnumerofactura.Focus()
         End Select
     End Sub
-
- 
-
 End Class

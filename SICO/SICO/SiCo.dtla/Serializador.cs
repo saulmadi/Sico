@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SiCo.dtla
 {
     public class Serializador
     {
         #region Declaraciones
-        private BinaryFormatter _Serializador = new BinaryFormatter();
+
+        private readonly BinaryFormatter _Serializador = new BinaryFormatter();
         private object _Objeto = new object();
-        
-        #endregion 
-        
+
+        #endregion
+
         #region Propiedades
 
         public object Objeto
@@ -23,21 +21,10 @@ namespace SiCo.dtla
             set { _Objeto = value; }
         }
 
-        public string  Directorio
-        {
-            get;
-            set;
-        }    
-
+        public string Directorio { get; set; }
 
         #endregion
 
-        public Serializador() 
-        {
-            
-        }
-
-        
         #region Metodos
 
         /// <summary>
@@ -45,22 +32,17 @@ namespace SiCo.dtla
         /// </summary>
         public object Cargar()
         {
-            
             try
             {
-                Stream _Archivo = new FileStream(Directorio, FileMode.Open , FileAccess.ReadWrite, FileShare.ReadWrite);
-                _Objeto= _Serializador.Deserialize(_Archivo);
-                _Archivo.Close();                
-                
+                Stream _Archivo = new FileStream(Directorio, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                _Objeto = _Serializador.Deserialize(_Archivo);
+                _Archivo.Close();
             }
             catch (Exception ex)
             {
-              
-               throw new ApplicationException("Error en la configuración del sistema. \n Vuelva a configurar.",ex);  
-
+                throw new ApplicationException("Error en la configuración del sistema. \n Vuelva a configurar.", ex);
             }
-            return _Objeto;            
-
+            return _Objeto;
         }
 
         /// <summary>
@@ -70,19 +52,16 @@ namespace SiCo.dtla
         {
             try
             {
-                Stream _Archivo = new FileStream(Directorio, FileMode.Create , FileAccess.ReadWrite, FileShare.ReadWrite);
-                _Serializador.Serialize (_Archivo,Objeto);
+                Stream _Archivo = new FileStream(Directorio, FileMode.Create, FileAccess.ReadWrite, FileShare.ReadWrite);
+                _Serializador.Serialize(_Archivo, Objeto);
                 _Archivo.Close();
             }
             catch (Exception ex)
             {
-               
-                throw new ApplicationException("Error al guardar el archivo. \n la configuración no se realizó", ex);  
+                throw new ApplicationException("Error al guardar el archivo. \n la configuración no se realizó", ex);
             }
         }
 
-
         #endregion
-        
     }
 }

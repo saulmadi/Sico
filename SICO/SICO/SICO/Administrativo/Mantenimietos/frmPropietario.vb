@@ -1,17 +1,19 @@
-﻿Imports SICO.ctrla
-Imports SICO.lgla2
-Imports SICO.lgla
+﻿Imports SiCo.lgla
+Imports SiCo.lgla2
+
 Public Class frmPropietario
     Private _propietario As New Propietario
+
     Public Property Propietario() As Propietario
         Get
             Return _propietario
         End Get
-        Set(ByVal value As Propietario)
+        Set (ByVal value As Propietario)
             _propietario = value
         End Set
     End Property
-    Private Sub frmPropietario_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+    Private Sub frmPropietario_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Try
             PanelAccion1.BotonImprimir.Visible = False
             PanelAccion1.BotonNuevo.Visible = False
@@ -23,7 +25,7 @@ Public Class frmPropietario
                 CrtPersonaNatural1.Persona = p
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
@@ -42,7 +44,7 @@ Public Class frmPropietario
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 End Class

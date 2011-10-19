@@ -1,29 +1,36 @@
-﻿Imports SICO.lgla2
-Imports SICO.lgla
+﻿Imports SiCo.ctrla2
+Imports SiCo.lgla
+Imports SiCo.ctrla
+Imports SiCo.lgla2
 
 Public Class frmRequesicionProducto
 
 #Region "Declaraciones"
+
     Private _OrdenRequisicion As New OrdenRequiscion
+
 #End Region
 
 #Region "Propiedades"
+
     Public Property OrdenRequisicion() As OrdenRequiscion
         Get
             Return _OrdenRequisicion
         End Get
-        Set(ByVal value As OrdenRequiscion)
+        Set (ByVal value As OrdenRequiscion)
             _OrdenRequisicion = value
             cargarentidad()
         End Set
     End Property
+
 #End Region
 
 #Region "Metodos"
-    Private Sub limpiar(ByVal crt As Control)
+
+    Private Sub limpiar (ByVal crt As Control)
         For Each i In crt.Controls
-            Dim g As Control = CType(i, Control)
-            limpiar(i)
+            Dim g As Control = CType (i, Control)
+            limpiar (i)
             If TypeOf i Is TextBox Then
                 i.clear()
             End If
@@ -31,7 +38,7 @@ Public Class frmRequesicionProducto
     End Sub
 
     Private Sub cargarentidad()
-        limpiar(Me)
+        limpiar (Me)
 
         If Me.OrdenRequisicion.Id = 0 Then
 
@@ -56,7 +63,7 @@ Public Class frmRequesicionProducto
             dteFechaemision.Value = Now
             OrdenRequisicion.Listadetalle.Clear()
             For i As Integer = 0 To 49
-                OrdenRequisicion.Listadetalle.Add(New DetalleRequisicion)
+                OrdenRequisicion.Listadetalle.Add (New DetalleRequisicion)
 
             Next
             grid.DataSource = OrdenRequisicion.Listadetalle
@@ -93,21 +100,23 @@ Public Class frmRequesicionProducto
             Dim usu As New Usuario()
             If Not Me.OrdenRequisicion.recibidopor = Nothing Then
 
-                usu.Buscar("id", Me.OrdenRequisicion.enviadopor.ToString + " or c.id = " + Me.OrdenRequisicion.recibidopor.ToString)
+                usu.Buscar ("id", _
+                            Me.OrdenRequisicion.enviadopor.ToString + " or c.id = " + _
+                            Me.OrdenRequisicion.recibidopor.ToString)
             Else
-                usu.Buscar(Me.OrdenRequisicion.enviadopor)
+                usu.Buscar (Me.OrdenRequisicion.enviadopor)
             End If
             Dim l As List(Of Usuario) = usu.TablaAColeccion
 
             If usu.TotalRegistros > 0 Then
                 For i As Integer = 0 To usu.TotalRegistros - 1
-                    If l(i).Id = OrdenRequisicion.recibidopor Then
-                        txtrecibidopor.Text = l(i).NombreMantenimiento
-                        txtcorreorecibidopor.Text = l(i).PersonaNatural.correo
+                    If l (i).Id = OrdenRequisicion.recibidopor Then
+                        txtrecibidopor.Text = l (i).NombreMantenimiento
+                        txtcorreorecibidopor.Text = l (i).PersonaNatural.correo
                     End If
-                    If l(i).Id = OrdenRequisicion.enviadopor Then
-                        txtenviadopor.Text = l(i).NombreMantenimiento
-                        txtcorreoenviadopor.Text = l(i).PersonaNatural.correo
+                    If l (i).Id = OrdenRequisicion.enviadopor Then
+                        txtenviadopor.Text = l (i).NombreMantenimiento
+                        txtcorreoenviadopor.Text = l (i).PersonaNatural.correo
                     End If
                 Next
             End If
@@ -123,13 +132,15 @@ Public Class frmRequesicionProducto
         txtTotalItems.Text = Me.OrdenRequisicion.TotalItems
         txtTotalProductos.Text = Me.OrdenRequisicion.CantidadTotalProductos
     End Sub
+
 #End Region
 
 #Region "Eventos"
-    Private Sub frmRequesicionProducto_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.grid.DarFormato("codigo", "Código", True)
-        Me.grid.DarFormato("descripcion", "Descripción", True)
-        Me.grid.DarFormato("CantidadEditable", "Cantidad", True)
+
+    Private Sub frmRequesicionProducto_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
+        Me.grid.DarFormato ("codigo", "Código", True)
+        Me.grid.DarFormato ("descripcion", "Descripción", True)
+        Me.grid.DarFormato ("CantidadEditable", "Cantidad", True)
 
         PanelAccion1.BotonEliminar.Text = "Recibir"
         PanelAccion1.BotonEliminar.Visible = False
@@ -142,25 +153,25 @@ Public Class frmRequesicionProducto
 
     End Sub
 
-    Private Sub grid_CellEndEdit(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles grid.CellEndEdit
+    Private Sub grid_CellEndEdit (ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles grid.CellEndEdit
         calculartotales()
     End Sub
 
     Private Sub grid_Buscar() Handles grid.Buscar
-        Dim f As New SICO.ctrla2.frmBusquedaProductos
+        Dim f As New frmBusquedaProductos
         f.Entidad = New Productos
-        If f.ShowDialog() = Windows.Forms.DialogResult.OK Then
+        If f.ShowDialog() = DialogResult.OK Then
             Dim d As New DetalleCompras
             d.Producto = f.Entidad
-            Me.OrdenRequisicion.Listadetalle(grid.CurrentRow.Index).Producto = New Productos
-            Me.OrdenRequisicion.Listadetalle(grid.CurrentRow.Index).Producto = f.Entidad
+            Me.OrdenRequisicion.Listadetalle (grid.CurrentRow.Index).Producto = New Productos
+            Me.OrdenRequisicion.Listadetalle (grid.CurrentRow.Index).Producto = f.Entidad
             grid.Refresh()
         End If
         calculartotales()
     End Sub
 
-    Private Sub grid_Eliminar(ByVal EliminarArg As SICO.ctrla.GridEliminarEventArg) Handles grid.Eliminar
-        Me.OrdenRequisicion.Listadetalle(grid.CurrentRow.Index) = New DetalleRequisicion
+    Private Sub grid_Eliminar (ByVal EliminarArg As GridEliminarEventArg) Handles grid.Eliminar
+        Me.OrdenRequisicion.Listadetalle (grid.CurrentRow.Index) = New DetalleRequisicion
         grid.Refresh()
         calculartotales()
     End Sub
@@ -206,11 +217,11 @@ Public Class frmRequesicionProducto
 
                 End If
             Else
-                MessageBox.Show("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show ("Eliga una sucursal", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 PanelAccion1.lblEstado.Text = "Eliga una sucursal"
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             PanelAccion1.lblEstado.Text = "Error al guardar"
             PanelAccion1.BarraProgreso.Value = 0
         End Try
@@ -239,7 +250,7 @@ Public Class frmRequesicionProducto
 
             End If
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
 
         End Try
     End Sub
@@ -250,28 +261,30 @@ Public Class frmRequesicionProducto
             Dim d As New DetalleRequisicion
             Dim cr As New crOrdenRequisicion
 
-            d.Buscar(Me.OrdenRequisicion.Id.ToString)
+            d.Buscar (Me.OrdenRequisicion.Id.ToString)
 
 
+            cr.DataDefinition.FormulaFields ("codigo").Text = "'" + Me.OrdenRequisicion.codigo + "'"
+            cr.DataDefinition.FormulaFields ("sucursalenvia").Text = "'" + _
+                                                                     Me.OrdenRequisicion.SucursalEn.NombreMantenimiento + _
+                                                                     "'"
+            cr.DataDefinition.FormulaFields ("sucursalrecibe").Text = "'" + _
+                                                                      Me.OrdenRequisicion.SucursalRec. _
+                                                                          NombreMantenimiento + "'"
+            cr.DataDefinition.FormulaFields ("fechaemision").Text = "'" + _
+                                                                    Me.OrdenRequisicion.fechaemision.ToString ( _
+                                                                        "dd/MM/yyyy") + "'"
+            cr.DataDefinition.FormulaFields ("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
+            cr.DataDefinition.FormulaFields ("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
+            cr.DataDefinition.FormulaFields ("orden").Text = "'Requisición'"
 
-            cr.DataDefinition.FormulaFields("codigo").Text = "'" + Me.OrdenRequisicion.codigo + "'"
-            cr.DataDefinition.FormulaFields("sucursalenvia").Text = "'" + Me.OrdenRequisicion.SucursalEn.NombreMantenimiento + "'"
-            cr.DataDefinition.FormulaFields("sucursalrecibe").Text = "'" + Me.OrdenRequisicion.SucursalRec.NombreMantenimiento + "'"
-            cr.DataDefinition.FormulaFields("fechaemision").Text = "'" + Me.OrdenRequisicion.fechaemision.ToString("dd/MM/yyyy") + "'"
-            cr.DataDefinition.FormulaFields("usuarioenvia").Text = "'" + Me.txtenviadopor.Text + "'"
-            cr.DataDefinition.FormulaFields("usuariorecibe").Text = "'" + Me.txtrecibidopor.Text + "'"
-            cr.DataDefinition.FormulaFields("orden").Text = "'Requisición'"
+            cr.SetDataSource (d.Tabla)
 
-            cr.SetDataSource(d.Tabla)
-
-            f.Show(cr, "Orden de Requisición")
+            f.Show (cr, "Orden de Requisición")
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 
 #End Region
-
-
-
 End Class

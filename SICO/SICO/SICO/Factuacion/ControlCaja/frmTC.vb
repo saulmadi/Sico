@@ -1,7 +1,6 @@
-﻿Imports SICO.lgla
-Imports SICO.lgla2
-Imports SICO.ctrla2
-Imports SICO.ctrla
+﻿Imports SiCo.ctrla
+Imports SiCo.lgla2
+
 Public Class frmTC
     Private _TransaccionTarjetaCredito As New TransaccionesTrajetaCredito
 
@@ -11,14 +10,13 @@ Public Class frmTC
         Get
             Return _TransaccionTarjetaCredito
         End Get
-        Set(ByVal value As TransaccionesTrajetaCredito)
+        Set (ByVal value As TransaccionesTrajetaCredito)
             _TransaccionTarjetaCredito = value
         End Set
     End Property
 
-    Private Sub frmAperturaCaja_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub frmAperturaCaja_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Try
-
 
 
             Me.PanelAccion1.BotonEliminar.Visible = False
@@ -30,41 +28,42 @@ Public Class frmTC
 
             cmbTarjetaCredito.DisplayMember = "descripcion"
             cmbTarjetaCredito.ValueMember = "id"
-            cmbTarjetaCredito.ColeccionParametros.Add(New ListaDesplegable.ParametrosListaDesplegable("habilitado", "1"))
+            cmbTarjetaCredito.ColeccionParametros.Add (New ListaDesplegable.ParametrosListaDesplegable ("habilitado", _
+                                                                                                        "1"))
             cmbTarjetaCredito.CargarParametros()
 
 
         Catch ex As Exception
-            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
     End Sub
 
     Private Sub PanelAccion1_Cancelar() Handles PanelAccion1.Cancelar
-        Me.DialogResult = Windows.Forms.DialogResult.Cancel
+        Me.DialogResult = DialogResult.Cancel
         Me.Close()
     End Sub
 
     Private Sub PanelAccion1_Guardar() Handles PanelAccion1.Guardar
 
-        If cmbTarjetaCredito.SelectedIndex <> -1 Then
+        If cmbTarjetaCredito.SelectedIndex <> - 1 Then
             Dim valida = New Validador
-            valida.ColecionCajasTexto.Add(txtNumeroTarjeta)
-            valida.ColecionCajasTexto.Add(txtExpira)
-            valida.ColecionCajasTexto.Add(txtExpira)
+            valida.ColecionCajasTexto.Add (txtNumeroTarjeta)
+            valida.ColecionCajasTexto.Add (txtExpira)
+            valida.ColecionCajasTexto.Add (txtExpira)
             If valida.PermitirIngresar Then
                 Me.TransaccionTarjetaCredito.idTarjetaCredito = cmbTarjetaCredito.SelectedValue
                 Me.TransaccionTarjetaCredito.numeroTarjeta = txtNumeroTarjeta.Text
                 Me.TransaccionTarjetaCredito.CodigoAprobacion = txtAprobacion.Text
                 Me.TransaccionTarjetaCredito.Vencimiento = txtExpira.Text
-                Me.DialogResult = Windows.Forms.DialogResult.OK
+                Me.DialogResult = DialogResult.OK
                 Me.Close()
             Else
-                MessageBox.Show(valida.MensajesError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show (valida.MensajesError, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
 
         Else
-            MessageBox.Show("Selecione una tarjeta de crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show ("Selecione una tarjeta de crédito", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
 
