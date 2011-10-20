@@ -1,7 +1,8 @@
-﻿Imports SiCo.lgla
-Imports System.ComponentModel
-Imports System.Diagnostics
+﻿Imports System.ComponentModel
+Imports SiCo.lgla
+
 Public Class ListaRoles
+
 #Region "Declaraciones"
 
 #End Region
@@ -19,11 +20,11 @@ Public Class ListaRoles
         Try
 
 
-            MyBase.Items.Add(New ListaTipo(1, "Cajero"))
-            MyBase.Items.Add(New ListaTipo(2, "Vendedor Repuestos"))
-            MyBase.Items.Add(New ListaTipo(3, "Vendedor Motocicletas"))
-            MyBase.Items.Add(New ListaTipo(4, "Administrador Sucursal"))
-            MyBase.Items.Add(New ListaTipo(5, "Administrador General"))
+            MyBase.Items.Add (New ListaTipo (1, "Cajero"))
+            MyBase.Items.Add (New ListaTipo (2, "Vendedor Repuestos"))
+            MyBase.Items.Add (New ListaTipo (3, "Vendedor Motocicletas"))
+            MyBase.Items.Add (New ListaTipo (4, "Administrador Sucursal"))
+            MyBase.Items.Add (New ListaTipo (5, "Administrador General"))
 
 
             MyBase.DisplayMember = "Descripcion"
@@ -34,7 +35,9 @@ Public Class ListaRoles
         End Try
 
     End Sub
-    <Browsable(False), EditorBrowsable(EditorBrowsableState.Advanced), DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)> _
+
+    <Browsable (False), EditorBrowsable (EditorBrowsableState.Advanced), _
+        DesignerSerializationVisibility (DesignerSerializationVisibility.Hidden)> _
     Public Shadows ReadOnly Property Items()
         Get
             Return MyBase.Items
@@ -45,22 +48,22 @@ Public Class ListaRoles
         Get
             Return MyBase.SelectedItem
         End Get
-        Set(ByVal value As ListaTipo)
+        Set (ByVal value As ListaTipo)
             MyBase.SelectedItem = value
         End Set
     End Property
+
 #End Region
 
 #Region "ClaseListaTipo"
+
     Public Class ListaTipo
-        Inherits SiCo.lgla.Tipo
-        Public Sub New(ByVal valor As String, ByVal descripcion As String)
-            MyBase.New(descripcion, valor)
+        Inherits Tipo
+
+        Public Sub New (ByVal valor As String, ByVal descripcion As String)
+            MyBase.New (descripcion, valor)
         End Sub
-
     End Class
+
 #End Region
-
-
-
 End Class
