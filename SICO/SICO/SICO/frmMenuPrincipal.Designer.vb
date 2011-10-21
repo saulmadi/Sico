@@ -57,6 +57,7 @@ Partial Class frmMenuPrincipal
         Me.AbonosACuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.AbnosACuentaMotocicletasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.EstadosDeCuentaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
+        Me.EstadoDeCuentaMotociletasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.ProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.RegistroDeProveedoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CuentasPorPagarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
@@ -81,7 +82,6 @@ Partial Class frmMenuPrincipal
         Me.SesiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.CambiarDeUsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.SalirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
-        Me.EstadoDeCuentaMotociletasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem
         Me.StatusStrip.SuspendLayout()
         Me.MenuPrinci.SuspendLayout()
         Me.SuspendLayout()
@@ -305,6 +305,12 @@ Partial Class frmMenuPrincipal
         Me.EstadosDeCuentaToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
         Me.EstadosDeCuentaToolStripMenuItem.Text = "Estados de cuenta Productos"
         '
+        'EstadoDeCuentaMotociletasToolStripMenuItem
+        '
+        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Name = "EstadoDeCuentaMotociletasToolStripMenuItem"
+        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
+        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Text = "Estado de Cuenta Motociletas"
+        '
         'ProveedoresToolStripMenuItem
         '
         Me.ProveedoresToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistroDeProveedoresToolStripMenuItem, Me.CuentasPorPagarToolStripMenuItem})
@@ -456,12 +462,6 @@ Partial Class frmMenuPrincipal
         Me.SalirToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
-        '
-        'EstadoDeCuentaMotociletasToolStripMenuItem
-        '
-        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Name = "EstadoDeCuentaMotociletasToolStripMenuItem"
-        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Size = New System.Drawing.Size(231, 22)
-        Me.EstadoDeCuentaMotociletasToolStripMenuItem.Text = "Estado de Cuenta Motociletas"
         '
         'frmMenuPrincipal
         '

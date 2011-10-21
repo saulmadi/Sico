@@ -1,4 +1,5 @@
-﻿Imports SiCo.ctrla2
+﻿Imports SICO.ctrla.ControlesBasicos
+Imports SICO.ctrla2
 Imports SiCo.ctrla
 Imports SiCo.lgla2
 
@@ -139,17 +140,17 @@ Public Class frmVentaMotocicleta
     End Sub
 
     Private Sub frmVentaMotocicleta_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
-        Me.cmbMarca.Entidad = New Marcas
-        Me.cmbModelo.Entidad = New Modelos
-        Me.cmbTipoMotocicleta.Entidad = New TiposMotocicletas
+        cmbMarca.Entidad = New Marcas
+        cmbModelo.Entidad = New Modelos
+        cmbTipoMotocicleta.Entidad = New TiposMotocicletas
 
-        Me.cmbMarca.IncializarCarga()
-        Me.cmbModelo.IncializarCarga()
-        Me.cmbTipoMotocicleta.IncializarCarga()
+        cmbMarca.IncializarCarga()
+        cmbModelo.IncializarCarga()
+        cmbTipoMotocicleta.IncializarCarga()
 
-        Me.PanelAccion1.BotonGuardar.Enabled = False
-        Me.PanelAccion1.BotonImprimir.Visible = False
-        Me.PanelAccion1.BotonEliminar.Visible = False
+        PanelAccion1.BotonGuardar.Enabled = False
+        PanelAccion1.BotonImprimir.Visible = False
+        PanelAccion1.BotonEliminar.Visible = False
 
 
     End Sub
@@ -269,38 +270,76 @@ Public Class frmVentaMotocicleta
                                 'Factura.IniciarTransaccion()
                                 'Factura.FacturarMotocicleta()
                                 'Factura.CommitTransaccion()
-                                If Factura.idtiposfacturas = 1 Then
-                                    Dim formco As New frmCobro
-                                    formco.Total = Factura.total
-                                    If formco.ShowDialog = DialogResult.OK Then
-                                        Factura.IniciarTransaccion()
-                                        For Each i In formco.ControlCaja
-                                            i.Cajero = PanelAccion1.Usuario.Id
-                                            i.idSucursales = PanelAccion1.sucursal.Id
-                                            i.Guardar()
-                                            Dim c = New ControlCajaFactura
-                                            c.Guardar (Factura.Id, i.Id)
-                                            If i.idTransaccionesCaja = 3 Then
-                                                formco.TransaccionTC.idControlCaja = i.Id
-                                                formco.TransaccionTC.idFacturaEnbezado = Factura.Id
-                                                formco.TransaccionTC.Guardar()
+                                Select Case Factura.idtiposfacturas
+                                    Case 1
+                                        Dim formco As New frmCobro
+                                        formco.Total = Factura.total
+                                        If formco.ShowDialog = DialogResult.OK Then
+                                            Factura.IniciarTransaccion()
+                                            For Each i In formco.ControlCaja
+                                                i.Cajero = PanelAccion1.Usuario.Id
+                                                i.idSucursales = PanelAccion1.sucursal.Id
+                                                i.Guardar()
+                                                Dim c = New ControlCajaFactura
+                                                c.Guardar(Factura.Id, i.Id)
+                                                If i.idTransaccionesCaja = 3 Then
+                                                    formco.TransaccionTC.idControlCaja = i.Id
+                                                    formco.TransaccionTC.idFacturaEnbezado = Factura.Id
+                                                    formco.TransaccionTC.Guardar()
 
+                                                End If
+                                            Next
+                                            Factura.FacturarMotocicleta()
+                                            Factura.CommitTransaccion()
+                                        Else
+                                            Factura.IniciarTransaccion()
+                                            Factura.estado = "P"
+                                            Factura.Guardar()
+                                            Factura.CommitTransaccion()
+                                            MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, _
+                                                             MessageBoxIcon.Error)
+                                        End If
+                                        ''kkkj
+                                    Case 2
+                                        ''TODO: creacion de la cuenta corriente
+                                        If Factura.idclientes > 0 Then
+                                            Factura.IniciarTransaccion()
+                                            Dim c = New ControlCaja
+                                            c.Cajero = Me.PanelAccion1.Usuario.Id
+                                            c.Descripcion = "Pago de factura al crédito para el cliente " + _
+                                                            CrtClientes.Cliente.NombreMantenimiento
+                                            c.Fecha = Now
+                                            c.idSucursales = Me.PanelAccion1.sucursal.Id
+                                            c.idTransaccionesCaja = 1
+                                            c.Monto = Factura.total
+                                            c.Guardar()
+                                            Dim cf = New ControlCajaFactura
+                                            cf.Guardar(Factura.Id, c.Id)
+
+                                            Dim frmCre As New frmCreditoVencimiento
+                                            If frmCre.ShowDialog = DialogResult.OK Then
+                                                Dim cuent = New Cuentacorriente
+                                                Dim saldo = cuent.CalcularSaldo(2, CrtClientes.Cliente.idEntidades)
+                                                If saldo > 0 Then
+                                                    Throw New ApplicationException("Este cliente tiene un saldo pendiente")
+                                                End If
+                                                cuent.AgragrarDebitoMovimientoMotocicletas(CrtClientes.Cliente.idEntidades, _
+                                                                                        Factura.total, _
+                                                                                        frmCre.txtDescripcion.Text, _
+                                                                                        frmCre.dteFechaVencimiento.Value, _
+                                                                                        Me.PanelAccion1.sucursal.Id)
+                                            Else
+                                                Throw New ApplicationException("Canceló los terminos del plazo de la deuda")
                                             End If
-                                        Next
-                                        Factura.FacturarMotocicleta()
-                                        Factura.CommitTransaccion()
-                                    Else
-                                        Factura.IniciarTransaccion()
-                                        Factura.estado = "P"
-                                        Factura.Guardar()
-                                        Factura.CommitTransaccion()
-                                        MessageBox.Show ("El cancelo el cobro", "Error", MessageBoxButtons.OK, _
-                                                         MessageBoxIcon.Error)
-                                    End If
-                                    ''kkkj
-                                Else
-                                    ''TODO: creacion de la cuenta corriente
-                                End If
+
+
+                                            Factura.FacturarMotocicleta()
+
+                                            Factura.CommitTransaccion()
+                                        Else
+                                            Mensaje.MensajeError("Debe seleccionar cliente para agregar cuenta corriente")
+                                        End If
+                                End Select
 
 
                                 Factura = _factura
@@ -335,7 +374,8 @@ Public Class frmVentaMotocicleta
                             _factura.Id = Me.Factura.Id
                             Factura = _factura
                         Else
-                            Throw New ApplicationException ("No se realizó la anulación de la factura")
+
+                            Throw New ApplicationException("No se realizó la anulación de la factura")
                         End If
 
                     End If
@@ -349,8 +389,13 @@ Public Class frmVentaMotocicleta
                                  MessageBoxIcon.Error)
             End If
         Catch ex As Exception
-            Factura.RollBackTransaccion()
-            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Try
+                Factura.RollBackTransaccion()
+            Catch ex2 As Exception
+
+            End Try
+
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

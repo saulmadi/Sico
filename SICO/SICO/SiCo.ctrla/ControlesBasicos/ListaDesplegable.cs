@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using SiCo.lgla;
 
@@ -260,19 +261,14 @@ namespace SiCo.ctrla
                     Entidad.Buscar();
                 else
                 {
-                    var p = new List<Parametro>();
-                    foreach (ParametrosListaDesplegable i in ColeccionParametros)
-                    {
-                        p.Add(i);
-                    }
-                    ;
+                    var p = ColeccionParametros.Cast<Parametro>().ToList();
                     Entidad.Buscar(p);
                 }
 
                 if (Entidad.TotalRegistros > 0)
                 {
-                    string d = DisplayMember;
-                    string v = ValueMember;
+                    var d = DisplayMember;
+                    var v = ValueMember;
                     DataSource = null;
                     DataSource = Entidad.TablaAColeccion();
                     DisplayMember = d;
@@ -282,8 +278,8 @@ namespace SiCo.ctrla
                 }
                 else
                 {
-                    string d = DisplayMember;
-                    string v = ValueMember;
+                    var d = DisplayMember;
+                    var v = ValueMember;
                     DataSource = null;
                     DisplayMember = d;
                     ValueMember = v;
@@ -291,7 +287,7 @@ namespace SiCo.ctrla
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

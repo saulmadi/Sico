@@ -86,7 +86,7 @@ Public Class frmAbonos
                                                                    CrtClientes1.Cliente.NombreMantenimiento, Now, _
                                                                    PanelAccion1.sucursal.Id)
                     If rubro = 2 Then _
-                        cuenta.AgragrarDebitoMovimientoMotocicletas (CrtClientes1.Cliente.idEntidades, txtAbono.Text, _
+                        cuenta.AgragrarCreditoMovimientoMotocicletas(CrtClientes1.Cliente.idEntidades, txtAbono.Text, _
                                                                      "Abono a cuenta  a cliente " + _
                                                                      CrtClientes1.Cliente.NombreMantenimiento, Now, _
                                                                      PanelAccion1.sucursal.Id)
