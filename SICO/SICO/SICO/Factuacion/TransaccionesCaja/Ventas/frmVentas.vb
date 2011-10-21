@@ -231,75 +231,76 @@ Public Class frmVentas
                             'Factura.IniciarTransaccion()
                             ''Factura.FacturarProducto()
                             'Factura.CommitTransaccion()
-                            If Factura.idtiposfacturas = 1 Then
-                                Dim formco As New frmCobro
-                                formco.Total = Factura.total
-                                If formco.ShowDialog = DialogResult.OK Then
-                                    Factura.IniciarTransaccion()
-                                    For Each i In formco.ControlCaja
-                                        i.Cajero = PanelAccion1.Usuario.Id
-                                        i.idSucursales = PanelAccion1.sucursal.Id
-                                        i.Guardar()
-                                        Dim c = New ControlCajaFactura
-                                        c.Guardar (Factura.Id, i.Id)
-                                        If i.idTransaccionesCaja = 3 Then
-                                            formco.TransaccionTC.idControlCaja = i.Id
-                                            formco.TransaccionTC.idFacturaEnbezado = Factura.Id
-                                            formco.TransaccionTC.Guardar()
+                            Select Case Factura.idtiposfacturas
+                                Case 1
+                                    Dim formco As New frmCobro
+                                    formco.Total = Factura.total
+                                    If formco.ShowDialog = DialogResult.OK Then
+                                        Factura.IniciarTransaccion()
+                                        For Each i In formco.ControlCaja
+                                            i.Cajero = PanelAccion1.Usuario.Id
+                                            i.idSucursales = PanelAccion1.sucursal.Id
+                                            i.Guardar()
+                                            Dim c = New ControlCajaFactura
+                                            c.Guardar(Factura.Id, i.Id)
+                                            If i.idTransaccionesCaja = 3 Then
+                                                formco.TransaccionTC.idControlCaja = i.Id
+                                                formco.TransaccionTC.idFacturaEnbezado = Factura.Id
+                                                formco.TransaccionTC.Guardar()
 
-                                        End If
-                                    Next
-                                    Factura.FacturarProducto()
-                                    Factura.CommitTransaccion()
-                                Else
-                                    Factura.IniciarTransaccion()
-                                    Factura.estado = "P"
-                                    Factura.Guardar()
-                                    Factura.CommitTransaccion()
-                                    MessageBox.Show ("El cancelo el cobro", "Error", MessageBoxButtons.OK, _
-                                                     MessageBoxIcon.Error)
-                                End If
-                            Else
-
-                                If Factura.idclientes > 0 Then
-                                    Factura.IniciarTransaccion()
-                                    Dim c = New ControlCaja
-                                    c.Cajero = Me.PanelAccion1.Usuario.Id
-                                    c.Descripcion = "Pago de factura al crédito para el cliente " + _
-                                                    CrtClientes.Cliente.NombreMantenimiento
-                                    c.Fecha = Now
-                                    c.idSucursales = Me.PanelAccion1.sucursal.Id
-                                    c.idTransaccionesCaja = 1
-                                    c.Monto = Factura.total
-                                    c.Guardar()
-                                    Dim cf = New ControlCajaFactura
-                                    cf.Guardar (Factura.Id, c.Id)
-
-                                    Dim frmCre As New frmCreditoVencimiento
-                                    If frmCre.ShowDialog = DialogResult.OK Then
-                                        Dim cuent = New Cuentacorriente
-                                        Dim saldo = cuent.CalcularSaldo (1, CrtClientes.Cliente.idEntidades)
-                                        If saldo > 0 Then
-                                            Throw New ApplicationException ("Este cliente tiene un saldo pendiente")
-                                        End If
-                                        cuent.AgragrarDebitoMovimientoProductos (CrtClientes.Cliente.idEntidades, _
-                                                                                 Factura.total, _
-                                                                                 frmCre.txtDescripcion.Text, _
-                                                                                 frmCre.dteFechaVencimiento.Value, _
-                                                                                 Me.PanelAccion1.sucursal.Id)
+                                            End If
+                                        Next
+                                        Factura.FacturarProducto()
+                                        Factura.CommitTransaccion()
                                     Else
-                                        Throw New ApplicationException ("Canceló los terminos del plazo de la deuda")
+                                        Factura.IniciarTransaccion()
+                                        Factura.estado = "P"
+                                        Factura.Guardar()
+                                        Factura.CommitTransaccion()
+                                        MessageBox.Show("El cancelo el cobro", "Error", MessageBoxButtons.OK, _
+                                                         MessageBoxIcon.Error)
+                                    End If
+                                Case 2
+
+                                    If Factura.idclientes > 0 Then
+                                        Factura.IniciarTransaccion()
+                                        Dim c = New ControlCaja
+                                        c.Cajero = Me.PanelAccion1.Usuario.Id
+                                        c.Descripcion = "Pago de factura al crédito para el cliente " + _
+                                                        CrtClientes.Cliente.NombreMantenimiento
+                                        c.Fecha = Now
+                                        c.idSucursales = Me.PanelAccion1.sucursal.Id
+                                        c.idTransaccionesCaja = 1
+                                        c.Monto = Factura.total
+                                        c.Guardar()
+                                        Dim cf = New ControlCajaFactura
+                                        cf.Guardar(Factura.Id, c.Id)
+
+                                        Dim frmCre As New frmCreditoVencimiento
+                                        If frmCre.ShowDialog = DialogResult.OK Then
+                                            Dim cuent = New Cuentacorriente
+                                            Dim saldo = cuent.CalcularSaldo(1, CrtClientes.Cliente.idEntidades)
+                                            If saldo > 0 Then
+                                                Throw New ApplicationException("Este cliente tiene un saldo pendiente")
+                                            End If
+                                            cuent.AgragrarDebitoMovimientoProductos(CrtClientes.Cliente.idEntidades, _
+                                                                                    Factura.total, _
+                                                                                    frmCre.txtDescripcion.Text, _
+                                                                                    frmCre.dteFechaVencimiento.Value, _
+                                                                                    Me.PanelAccion1.sucursal.Id)
+                                        Else
+                                            Throw New ApplicationException("Canceló los terminos del plazo de la deuda")
+                                        End If
+
+
+                                        Factura.FacturarProducto()
+
+                                        Factura.CommitTransaccion()
+                                    Else
+                                        Mensaje.MensajeError("Debe seleccionar cliente para agregar cuenta corriente")
                                     End If
 
-
-                                    Factura.FacturarProducto()
-
-                                    Factura.CommitTransaccion()
-                                Else
-                                    Mensaje.MensajeError ("Debe seleccionar cliente para agregar cuenta corriente")
-                                End If
-
-                            End If
+                            End Select
 
                             _factura.Id = Me.Factura.Id
                             Me.Factura = _factura
@@ -346,8 +347,12 @@ Public Class frmVentas
             End If
 
         Catch ex As Exception
-            Factura.RollBackTransaccion()
-            MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Try
+                Factura.RollBackTransaccion()
+            Catch ex2 As Exception
+            End Try
+
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

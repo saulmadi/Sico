@@ -128,6 +128,12 @@ Public Class frmMenuPrincipal
         frm.MdiParent = Me
         frm.Show()
     End Sub
+    Private Sub AbnosACuentaMotocicletasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AbnosACuentaMotocicletasToolStripMenuItem.Click
+        Dim frm As New frmAbonos
+        frm.rubro = 2
+        frm.MdiParent = Me
+        frm.Show()
+    End Sub
 
     Private Sub EstadosDeCuentaToolStripMenuItem_Click (ByVal sender As Object, ByVal e As EventArgs) _
         Handles EstadosDeCuentaToolStripMenuItem.Click
@@ -136,6 +142,12 @@ Public Class frmMenuPrincipal
         frm.MdiParent = Me
         frm.Show()
 
+    End Sub
+    Private Sub EstadoDeCuentaMotociletasToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EstadoDeCuentaMotociletasToolStripMenuItem.Click
+        Dim frm As New frmEstadoCuenta
+        frm.idrubro = 2
+        frm.MdiParent = Me
+        frm.Show()
     End Sub
 
 #End Region
@@ -322,4 +334,7 @@ Public Class frmMenuPrincipal
 
 
 #End Region
+
+    
+    
 End Class

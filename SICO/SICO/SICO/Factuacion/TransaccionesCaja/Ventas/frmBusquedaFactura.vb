@@ -7,7 +7,7 @@ Public Class frmBusquedaFactura
 
 
     Private Sub frm_FormClosed (ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles frm.FormClosed
-        Me.Show()
+        ''Me.Show()
     End Sub
 
     Private Sub frmBusquedaFactura_Load (ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -69,7 +69,7 @@ Public Class frmBusquedaFactura
                 frmm.Factura = itema
                 frm = frmm
             End If
-
+            ''Me.Close()
         Catch ex As Exception
             MessageBox.Show (ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
