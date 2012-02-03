@@ -1,0 +1,40 @@
+﻿@using SicoWeb.Plumbing
+@model IEnumerable<SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades.IEntidadServicioMantenimiento>
+@Html.Partial("_Titulo")
+<p>
+    @{
+        if ((bool) ViewData [ViewDataVariables.MantenimientoAgregable])
+        {
+              @Html.ActionLink("Agregar nuevo", "Create")
+        }
+      
+    }
+    
+</p>
+<table>
+    <tr>
+        <th>
+            Descripción
+        </th>
+        <th>
+            Habilitado
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habilitado)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { item.Id })            
+        </td>
+    </tr>
+}
+
+</table>

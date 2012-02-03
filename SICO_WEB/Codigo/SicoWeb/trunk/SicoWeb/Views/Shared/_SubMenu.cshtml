@@ -1,0 +1,20 @@
+﻿@using SicoWeb.Aplicacion.ServiceLayer
+@model IEnumerable<IEntidadServicio>
+
+@{
+    if (Model == null)
+    {
+        return;
+    }
+    
+    <h2>@ViewBag.SubTitleMenu</h2>
+   <ul class="f12">      
+             
+               @foreach (var item in Model)
+               {
+                   <li>
+                       @Html.ActionLink(item.ToString(), "Index", "Basic Controler")
+                   </li>
+               }
+    </ul>
+  }
