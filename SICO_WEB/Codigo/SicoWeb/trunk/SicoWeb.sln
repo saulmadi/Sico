@@ -1,0 +1,185 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{091C55BA-4CCA-4314-AB87-3B4D67E0F0CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructura", "Infraestructura", "{4FEEE7AA-4393-4FD1-9EC8-0FA909B57560}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacion", "Aplicacion", "{DCE11E37-2FF5-4909-AC35-6EE2B275FD57}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{4AEC1D5E-69CC-4565-B74F-99AD3596C208}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extras", "Extras", "{5402013A-7BD9-4EE3-BF11-C9FE3EB5D1F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Terceros", "Terceros", "{F9A421B0-07A8-4E67-BD62-AE02954F7250}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Dominio.Core", "SicoWeb.Dominio.Core\SicoWeb.Dominio.Core.csproj", "{A2A90F7B-6F83-4819-B347-155E756D10BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Dominio.Core.Test", "SicoWeb.Dominio.Core.Test\SicoWeb.Dominio.Core.Test.csproj", "{261A95AB-476F-437C-975C-8646903A46B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CastleWindsor", "CastleWindsor", "{52B67308-A133-40F1-8706-B22E10C43F77}"
+	ProjectSection(SolutionItems) = preProject
+		Terceros\CastleWindsor\Castle.Core.dll = Terceros\CastleWindsor\Castle.Core.dll
+		Terceros\CastleWindsor\Castle.Core.pdb = Terceros\CastleWindsor\Castle.Core.pdb
+		Terceros\CastleWindsor\Castle.Core.xml = Terceros\CastleWindsor\Castle.Core.xml
+		Terceros\CastleWindsor\Castle.Windsor.dll = Terceros\CastleWindsor\Castle.Windsor.dll
+		Terceros\CastleWindsor\Castle.Windsor.pdb = Terceros\CastleWindsor\Castle.Windsor.pdb
+		Terceros\CastleWindsor\Castle.Windsor.xml = Terceros\CastleWindsor\Castle.Windsor.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nhibernate", "Nhibernate", "{98332236-D9FE-41D7-8E34-DD2E3B56239E}"
+	ProjectSection(SolutionItems) = preProject
+		Terceros\Nhibernate\FluentNHibernate.dll = Terceros\Nhibernate\FluentNHibernate.dll
+		Terceros\Nhibernate\FluentNHibernate.pdb = Terceros\Nhibernate\FluentNHibernate.pdb
+		Terceros\Nhibernate\Iesi.Collections.dll = Terceros\Nhibernate\Iesi.Collections.dll
+		Terceros\Nhibernate\Iesi.Collections.pdb = Terceros\Nhibernate\Iesi.Collections.pdb
+		Terceros\Nhibernate\Iesi.Collections.xml = Terceros\Nhibernate\Iesi.Collections.xml
+		Terceros\Nhibernate\NHibernate.ByteCode.Castle.dll = Terceros\Nhibernate\NHibernate.ByteCode.Castle.dll
+		Terceros\Nhibernate\NHibernate.ByteCode.Castle.pdb = Terceros\Nhibernate\NHibernate.ByteCode.Castle.pdb
+		Terceros\Nhibernate\NHibernate.ByteCode.Castle.xml = Terceros\Nhibernate\NHibernate.ByteCode.Castle.xml
+		Terceros\Nhibernate\NHibernate.dll = Terceros\Nhibernate\NHibernate.dll
+		Terceros\Nhibernate\NHibernate.pdb = Terceros\Nhibernate\NHibernate.pdb
+		Terceros\Nhibernate\NHibernate.xml = Terceros\Nhibernate\NHibernate.xml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Infraestructura.DataLayer", "SicoWeb.Infraestructura.DataLayer\SicoWeb.Infraestructura.DataLayer.csproj", "{FFE79F55-4951-435F-8AF1-842E06AE1883}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Infraestructura.DataLayer.Test", "SicoWeb.Infraestructura.DataLayer.Test\SicoWeb.Infraestructura.DataLayer.Test.csproj", "{69502364-3C3F-412C-A665-64BA4915F82E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Installers", "Installers", "{26BA75C6-5198-4E45-9C7F-D9369355DB46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoCInstallers.Core", "YoCInstallers.Repositorios\YoCInstallers.Core.csproj", "{C4E7E39F-A857-449A-AAAE-D8B668BF912B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YocInstallers.Repositorios.Test", "YocInstallers.Repositorios.Test\YocInstallers.Repositorios.Test.csproj", "{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoCInstallers.Test", "YoCInstallers\YoCInstallers.Test.csproj", "{56E6F400-2613-4C63-8B57-CDFFAD30A95E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{1C263BA8-D6D5-49C2-8C20-4358502C4C97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductionCode", "ProductionCode", "{2676F234-9553-41F7-973F-1E618B4CA990}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb", "SicoWeb\SicoWeb.csproj", "{DF742DF7-138C-4C63-BAF2-A9FB04059107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YocInstallers.Helper", "YocInstallers.Helper\YocInstallers.Helper.csproj", "{D5AA3643-ADCB-4425-9846-05593DEEBA42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Aplicacion.ServiceLayer", "SicoWeb.Aplicacion.ServiceLayer\SicoWeb.Aplicacion.ServiceLayer.csproj", "{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Aplicacion.ServiceLayer.Test", "SicoWeb.Aplicacion.ServiceLayer.Test\SicoWeb.Aplicacion.ServiceLayer.Test.csproj", "{695EDDE9-1AC5-4753-9B89-F30573F74A18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoCInstallers.Service", "YoCInstallers.Service\YoCInstallers.Service.csproj", "{F9BED805-7042-4204-9034-92315950AFF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MvcContrib", "MvcContrib", "{5CCECC6E-4979-48B4-8F12-DE00A70FD907}"
+	ProjectSection(SolutionItems) = preProject
+		Terceros\MVCContrib\MvcContrib.dll = Terceros\MVCContrib\MvcContrib.dll
+		Terceros\MVCContrib\MvcContrib.FluentHtml.dll = Terceros\MVCContrib\MvcContrib.FluentHtml.dll
+		Terceros\MVCContrib\MvcContrib.FluentHtml.xml = Terceros\MVCContrib\MvcContrib.FluentHtml.xml
+		Terceros\MVCContrib\MvcContrib.TestHelper.dll = Terceros\MVCContrib\MvcContrib.TestHelper.dll
+		Terceros\MVCContrib\MvcContrib.TestHelper.xml = Terceros\MVCContrib\MvcContrib.TestHelper.xml
+		Terceros\MVCContrib\MvcContrib.WatiN.dll = Terceros\MVCContrib\MvcContrib.WatiN.dll
+		Terceros\MVCContrib\MvcContrib.XML = Terceros\MVCContrib\MvcContrib.XML
+		Terceros\MVCContrib\T4MVC\readme.txt = Terceros\MVCContrib\T4MVC\readme.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWebTest", "SicoWebTest\SicoWebTest.csproj", "{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RinoMocks", "RinoMocks", "{092668D9-9D53-4117-9979-F726E0096594}"
+	ProjectSection(SolutionItems) = preProject
+		Terceros\RinoMocks\Rhino.Mocks.dll = Terceros\RinoMocks\Rhino.Mocks.dll
+		Terceros\RinoMocks\Rhino.Mocks.xml = Terceros\RinoMocks\Rhino.Mocks.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microsoft", "Microsoft", "{22D1E4A1-CF43-4415-A213-6D69E7C0C5C9}"
+	ProjectSection(SolutionItems) = preProject
+		Terceros\Mvc Microsoft\Microsoft.Web.Mvc.dll = Terceros\Mvc Microsoft\Microsoft.Web.Mvc.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2A90F7B-6F83-4819-B347-155E756D10BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A90F7B-6F83-4819-B347-155E756D10BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A90F7B-6F83-4819-B347-155E756D10BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A90F7B-6F83-4819-B347-155E756D10BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{261A95AB-476F-437C-975C-8646903A46B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{261A95AB-476F-437C-975C-8646903A46B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{261A95AB-476F-437C-975C-8646903A46B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{261A95AB-476F-437C-975C-8646903A46B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFE79F55-4951-435F-8AF1-842E06AE1883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE79F55-4951-435F-8AF1-842E06AE1883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE79F55-4951-435F-8AF1-842E06AE1883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE79F55-4951-435F-8AF1-842E06AE1883}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69502364-3C3F-412C-A665-64BA4915F82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69502364-3C3F-412C-A665-64BA4915F82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69502364-3C3F-412C-A665-64BA4915F82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69502364-3C3F-412C-A665-64BA4915F82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4E7E39F-A857-449A-AAAE-D8B668BF912B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4E7E39F-A857-449A-AAAE-D8B668BF912B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4E7E39F-A857-449A-AAAE-D8B668BF912B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4E7E39F-A857-449A-AAAE-D8B668BF912B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56E6F400-2613-4C63-8B57-CDFFAD30A95E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56E6F400-2613-4C63-8B57-CDFFAD30A95E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56E6F400-2613-4C63-8B57-CDFFAD30A95E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56E6F400-2613-4C63-8B57-CDFFAD30A95E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF742DF7-138C-4C63-BAF2-A9FB04059107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF742DF7-138C-4C63-BAF2-A9FB04059107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF742DF7-138C-4C63-BAF2-A9FB04059107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF742DF7-138C-4C63-BAF2-A9FB04059107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5AA3643-ADCB-4425-9846-05593DEEBA42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5AA3643-ADCB-4425-9846-05593DEEBA42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5AA3643-ADCB-4425-9846-05593DEEBA42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5AA3643-ADCB-4425-9846-05593DEEBA42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{695EDDE9-1AC5-4753-9B89-F30573F74A18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695EDDE9-1AC5-4753-9B89-F30573F74A18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695EDDE9-1AC5-4753-9B89-F30573F74A18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695EDDE9-1AC5-4753-9B89-F30573F74A18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9BED805-7042-4204-9034-92315950AFF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9BED805-7042-4204-9034-92315950AFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9BED805-7042-4204-9034-92315950AFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9BED805-7042-4204-9034-92315950AFF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DF742DF7-138C-4C63-BAF2-A9FB04059107} = {091C55BA-4CCA-4314-AB87-3B4D67E0F0CC}
+		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4} = {091C55BA-4CCA-4314-AB87-3B4D67E0F0CC}
+		{FFE79F55-4951-435F-8AF1-842E06AE1883} = {4FEEE7AA-4393-4FD1-9EC8-0FA909B57560}
+		{69502364-3C3F-412C-A665-64BA4915F82E} = {4FEEE7AA-4393-4FD1-9EC8-0FA909B57560}
+		{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0} = {DCE11E37-2FF5-4909-AC35-6EE2B275FD57}
+		{695EDDE9-1AC5-4753-9B89-F30573F74A18} = {DCE11E37-2FF5-4909-AC35-6EE2B275FD57}
+		{A2A90F7B-6F83-4819-B347-155E756D10BA} = {4AEC1D5E-69CC-4565-B74F-99AD3596C208}
+		{261A95AB-476F-437C-975C-8646903A46B4} = {4AEC1D5E-69CC-4565-B74F-99AD3596C208}
+		{26BA75C6-5198-4E45-9C7F-D9369355DB46} = {5402013A-7BD9-4EE3-BF11-C9FE3EB5D1F2}
+		{52B67308-A133-40F1-8706-B22E10C43F77} = {F9A421B0-07A8-4E67-BD62-AE02954F7250}
+		{98332236-D9FE-41D7-8E34-DD2E3B56239E} = {F9A421B0-07A8-4E67-BD62-AE02954F7250}
+		{5CCECC6E-4979-48B4-8F12-DE00A70FD907} = {F9A421B0-07A8-4E67-BD62-AE02954F7250}
+		{092668D9-9D53-4117-9979-F726E0096594} = {F9A421B0-07A8-4E67-BD62-AE02954F7250}
+		{22D1E4A1-CF43-4415-A213-6D69E7C0C5C9} = {F9A421B0-07A8-4E67-BD62-AE02954F7250}
+		{2676F234-9553-41F7-973F-1E618B4CA990} = {26BA75C6-5198-4E45-9C7F-D9369355DB46}
+		{1C263BA8-D6D5-49C2-8C20-4358502C4C97} = {26BA75C6-5198-4E45-9C7F-D9369355DB46}
+		{C4E7E39F-A857-449A-AAAE-D8B668BF912B} = {2676F234-9553-41F7-973F-1E618B4CA990}
+		{D5AA3643-ADCB-4425-9846-05593DEEBA42} = {2676F234-9553-41F7-973F-1E618B4CA990}
+		{F9BED805-7042-4204-9034-92315950AFF6} = {2676F234-9553-41F7-973F-1E618B4CA990}
+		{56E6F400-2613-4C63-8B57-CDFFAD30A95E} = {1C263BA8-D6D5-49C2-8C20-4358502C4C97}
+		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A} = {1C263BA8-D6D5-49C2-8C20-4358502C4C97}
+	EndGlobalSection
+EndGlobal

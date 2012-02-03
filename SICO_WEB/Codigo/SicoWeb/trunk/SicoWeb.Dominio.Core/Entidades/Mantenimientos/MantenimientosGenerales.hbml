@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping default-cascade="save-update" namespace="SicoWeb.Dominio.Core.Entidades.Mantenimientos" p1:Guid="dc53cdc9-fc6e-4222-a610-82f0341f7351" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Mantenimientos" table="" discriminator-value="AMantenimientos" p1:Guid="3b700ae6-7d7d-4b58-8488-eca08985517d">
+    <id name="Id" type="Int32" p1:Guid="ddab5a81-0fa7-49dc-9f3f-5b4fc271dc40">
+      <column name="" />
+    </id>
+    <discriminator>
+      <column name="" not-null="true" />
+    </discriminator>
+    <property name="Descripcion" type="String" p1:Guid="02a7c83f-b688-4a7d-9135-4b87506363bc">
+      <column name="" />
+    </property>
+    <property name="Habilitado" type="Boolean" p1:Guid="476f695c-0054-40bf-b06e-a9d362d9c0d4">
+      <column name="" />
+    </property>
+    <property name="Usu" type="Int32" p1:Guid="603ad469-0866-46d1-ac5f-dcdf8a9681b8">
+      <column name="" />
+    </property>
+    <property name="Fmodif" type="DateTime" p1:Guid="b598fbf4-3061-4292-9efa-c27ee7402569">
+      <column name="" />
+    </property>
+    <subclass name="EntiDepartamentos" p1:Guid="dc5e0d88-6761-40ea-b429-5a4948fd3bf1" p1:EntityBase="">
+      <bag name="EntiMunicipios" inverse="true" generic="true" p1:AssociationGuid="9161634a-5e8d-453c-89ab-28fa973e300a" p1:Guid="4ffd1022-88ed-4eaf-9067-21f2ae332a80">
+        <key>
+          <column name="IdMantenimientos" />
+        </key>
+        <one-to-many class="EntiMunicipio" />
+      </bag>
+    </subclass>
+    <subclass name="EntiMarcas" p1:Guid="d110f800-6c55-40b3-b441-78201b5548a0" p1:EntityBase="">
+      <bag name="EntiModelos" inverse="true" generic="true" p1:AssociationGuid="0b00a7c8-152c-44f1-96db-70b73098547f" p1:Guid="c7bc75f2-2fd7-4e00-86d3-c6e30811f4bb">
+        <key>
+          <column name="IdMantenimientos" />
+        </key>
+        <one-to-many class="EntiModelos" />
+      </bag>
+    </subclass>
+    <subclass name="EntiTarjetacredito" p1:Guid="81c0f9be-808d-42b9-8167-06e5894402d8" p1:EntityBase="IEntiMantenimientos" />
+    <subclass name="EntiTiposfacturas" p1:Guid="5e2c2432-9c1d-4e68-9fc8-290cf7bcbc01" p1:EntityBase="IEntiMantenimientos" />
+    <subclass name="EntiTiposmotocicletas" p1:Guid="6f813467-a2df-4d97-a4f9-acf3d420387c" p1:EntityBase="IEntiMantenimientos" />
+    <subclass name="EntiMunicipio" p1:Guid="1f349470-85ab-4a16-84c4-038e25b187ed">
+      <many-to-one name="EntiDepartamentos" class="EntiDepartamentos" p1:AssociationGuid="9161634a-5e8d-453c-89ab-28fa973e300a" p1:Guid="78e8db6f-9631-4e0c-9e7a-e2c2bb4e22b3">
+        <column name="IdMantenimientos" />
+      </many-to-one>
+    </subclass>
+    <subclass name="EntiModelos" p1:Guid="567afeab-44fc-4649-a1a9-eb707b130d4c">
+      <many-to-one name="EntiMarcas" class="EntiMarcas" p1:AssociationGuid="0b00a7c8-152c-44f1-96db-70b73098547f" p1:Guid="a8e12421-8a2f-433c-b6f3-4e195f82ee2d">
+        <column name="IdMantenimientos" />
+      </many-to-one>
+    </subclass>
+  </class>
+</hibernate-mapping>
