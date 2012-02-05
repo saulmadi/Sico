@@ -8,10 +8,12 @@ using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using SicoWeb.Dominio.Core.Querys;
 using SicoWeb.Dominio.Core.Repositorio.Mantenimientos;
 using SicoWeb.Dominio.Core.Transaction;
+using SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos;
 
 namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
 {
-    public class AServicioMantenimiento<TEntidadServicio, TEntidadMantenimiento> : AServicio<TEntidadServicio>,IServicioMantenimiento<TEntidadServicio>
+    public class AServicioMantenimiento<TEntidadServicio, TEntidadMantenimiento> :
+        AServicio<TEntidadServicio, TEntidadMantenimiento>, IServicioMantenimiento<TEntidadServicio>
         where TEntidadServicio : IEntidadServicioMantenimiento, new()
         where TEntidadMantenimiento : IEntiMantenimientos, new()
     {
@@ -19,32 +21,30 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
         private readonly IEntiMantenimientosFactory _entiMantenimientosFactory;
         private readonly IQuery _queryDeshabilitado;
         private readonly IQuery _queryHabilitado;
-        private readonly IUnitOfWork _unitOfWork;
-        
 
 
         public AServicioMantenimiento(IRepositorioMantimientos<TEntidadMantenimiento> repositorioMantimientos,
                                       IEntiMantenimientosFactory entiMantenimientosFactory,
                                       IQuery queryDeshabilitado,
                                       IQuery queryHabilitado,
-                                      IUnitOfWork unitOfWork
-                                     
+                                      IUnitOfWork unitOfWork,
+                                      IBuisnessRulesMannagerMantenimientos<TEntidadMantenimiento>
+                                          buisnessRulesMannagerMantenimientos
 
             )
+            : base(buisnessRulesMannagerMantenimientos,unitOfWork)
         {
             if (repositorioMantimientos == null) throw new ArgumentNullException("repositorioMantimientos");
             if (entiMantenimientosFactory == null) throw new ArgumentNullException("entiMantenimientosFactory");
             if (queryDeshabilitado == null) throw new ArgumentNullException("queryDeshabilitado");
             if (queryHabilitado == null) throw new ArgumentNullException("queryHabilitado");
-           
+
             _repositorioMantimientos = repositorioMantimientos;
             _entiMantenimientosFactory = entiMantenimientosFactory;
             _queryDeshabilitado = queryDeshabilitado;
             _queryHabilitado = queryHabilitado;
-            _unitOfWork = unitOfWork;
-            
         }
-        
+
 
         public IList<TEntidadServicio> GetHabilitados()
         {
@@ -68,12 +68,9 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
 
         public void AgregarMantenimiento(TEntidadServicio mantenimiento)
         {
-            using (var transaccion = _unitOfWork.BeginTransaction())
-            {
-                var entiMatenimiento = Convert(mantenimiento);
-                _repositorioMantimientos.SaveOrUpdate(entiMatenimiento);
-                transaccion.Commit();
-            }
+            var entiMatenimiento = Convert(mantenimiento);
+            SetCambios(() => _repositorioMantimientos.SaveOrUpdate(entiMatenimiento));
+            RunRules(entiMatenimiento);
         }
 
         private ICollection<TEntidadMantenimiento> RunQuery(IQuery query)
@@ -98,5 +95,6 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
             return _entiMantenimientosFactory.CreateEnti<TEntidadMantenimiento>();
         }
 
+       
     }
 }
