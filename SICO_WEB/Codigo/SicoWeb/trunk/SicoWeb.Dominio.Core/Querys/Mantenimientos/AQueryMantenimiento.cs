@@ -13,6 +13,6 @@ namespace SicoWeb.Dominio.Core.Querys.Mantenimientos
             return DetachedCriteria.For<TEnti>().Add( new Disjunction().Add(Where));
         }
         
-        public abstract Expression<Func<TEnti, bool>> Where { get; }
+        public abstract Expression<Func<TEnti, bool>> Where { get; protected set; }
     }
 }

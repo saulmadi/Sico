@@ -8,6 +8,8 @@ using NHibernateRepository;
 using SicoWeb.Dominio.Core.Entidades;
 using SicoWeb.Dominio.Core.Repositorio;
 
+using NHibernate.Linq;
+
 namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 {
     public abstract class  ARepository<T> : IRepository<T> where T:IEntiBase
@@ -36,7 +38,6 @@ namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 
         public T Get(object id)
         {
-            
             return (T)Session.Get(typeof(T), id);
         }
 

@@ -52,6 +52,8 @@
     <Compile Include="Repositorio\ARepository.cs" />
     <Compile Include="Repositorio\Departamentos\RepositorioEntiDepartamentos.cs" />
     <Compile Include="Repositorio\ARepositorioMantenimientosComplejos.cs" />
+    <Compile Include="Repositorio\Errores\RepositorioEntiErrores.cs" />
+    <Compile Include="Repositorio\IRepositorioEntiGenerico.cs" />
     <Compile Include="Repositorio\Marcas\RepositorioEntiMarcas.cs" />
     <Compile Include="Repositorio\RepositoryHelper.cs" />
     <Compile Include="Repositorio\TarjetaCredito\RepositorioEntiTarjetaCredito.cs" />

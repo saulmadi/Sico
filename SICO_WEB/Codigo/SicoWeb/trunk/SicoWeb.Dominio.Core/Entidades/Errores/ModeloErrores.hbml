@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="SicoWeb.Dominio.Core.Entidades.Errores" p1:Guid="7d31fd0a-462c-47a7-8e56-f242ce8390ba" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EntiErrores" table="errores" schema="sicoweb" p1:Guid="e948c94c-28ec-4590-b180-851aea1d3881" p1:EntityBase="IEntiBase">
+    <id name="Id" type="Int32" p1:Guid="045a7642-7578-45bf-9620-d9b2c6be0ee5">
+      <column name="Id" not-null="true" precision="10" scale="0" sql-type="int" />
+      <generator class="identity" />
+    </id>
+    <property name="Descripcion" type="String" p1:Guid="7657d533-eb05-47ea-88cb-683957f1f6e7">
+      <column name="Descripcion" length="500" not-null="true" sql-type="varchar" />
+    </property>
+  </class>
+</hibernate-mapping>

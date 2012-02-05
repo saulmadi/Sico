@@ -31,6 +31,8 @@ namespace YoCInstallers.Core
                             .LifestyleTransient()));
 
             container.Register(
+                Component.For(typeof(IRepository<>),typeof (RepositorioEntiGenerico<>)));
+            container.Register(
                 Component.For<IEntiMantenimientosFactory>().
                     AsFactory().
                     LifestyleTransient());

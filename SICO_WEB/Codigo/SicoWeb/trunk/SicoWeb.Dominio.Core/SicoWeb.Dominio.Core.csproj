@@ -55,6 +55,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuisnessRules\ABuisnessRule.cs" />
+    <Compile Include="BuisnessRules\IBuisnessRulesMannager.cs" />
+    <Compile Include="BuisnessRules\IBuisnessRule.cs" />
+    <Compile Include="BuisnessRules\ISicoWebExceptionFactory.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\ABuisnessRuleMantenimiento.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\BuisnessRuleMantenimientosSinDescripcionRepetida.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\IBuisnessRuleMantenimiento.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\IBuisnessRuleMantenimientosSinDescripcionRepetida.cs" />
+    <Compile Include="BuisnessRules\SicoWebCoreException.cs" />
+    <Compile Include="Entidades\Errores\EntiErrores.cs" />
+    <Compile Include="Entidades\Errores\ModeloErrores.EntiErrores.cs">
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </Compile>
+    <Compile Include="Entidades\Errores\ModeloErrores.FluentMapping.EntiErrores.cs">
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </Compile>
     <Compile Include="Entidades\IEntiBase.cs" />
     <Compile Include="Entidades\IEntiBaseComplejosHijo.cs" />
     <Compile Include="Entidades\IEntiBaseComplejosPadre.cs" />
@@ -131,6 +147,8 @@
     <Compile Include="Querys\Mantenimientos\IQueryDeshabilitado.cs" />
     <Compile Include="Querys\Mantenimientos\IQueryFindByDescripcion.cs" />
     <Compile Include="Querys\Mantenimientos\Marcas\QueryFindByDescripcionMarcas.cs" />
+    <Compile Include="Querys\Mantenimientos\TiposMotocicletas\QueryFindByDescripcionTiposMotocicletas.cs" />
+    <Compile Include="Querys\Mantenimientos\TiposFacturas\QueryFindByDescripcionTiposFacturas.cs" />
     <Compile Include="Querys\Mantenimientos\TarjetasCredito\QueryFindByDescripcionTarjetasCredito.cs" />
     <Compile Include="Querys\Mantenimientos\TarjetasCredito\IQueryFindByDescripcionTarjetasCredito.cs" />
     <Compile Include="Querys\Mantenimientos\TiposMotocicletas\IQueryFindByDescripcionTiposMotocicletas.cs" />
@@ -154,6 +172,7 @@
     <Compile Include="Querys\Mantenimientos\TiposMotocicletas\QueryHabilitadoTiposMotocicletas.cs" />
     <Compile Include="Querys\Mantenimientos\TiposMotocicletas\IQueryDeshabilitadoTiposMotocicletas.cs" />
     <Compile Include="Querys\Mantenimientos\TiposMotocicletas\QueryDeshabilitadoTiposMotocicletas.cs" />
+    <Compile Include="Repositorio\Errores\IRepositorioErrores.cs" />
     <Compile Include="Repositorio\IRepository.cs" />
     <Compile Include="Repositorio\IRepositoryComplejo.cs" />
     <Compile Include="Repositorio\Mantenimientos\Departamentos\IRepositorioEntiDepartamentos.cs" />
@@ -168,6 +187,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Entidades\Errores\ModeloErrores.Diagram1.view">
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </None>
+    <None Include="Entidades\Errores\ModeloErrores.edps">
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </None>
+    <None Include="Entidades\Errores\ModeloErrores.hbml">
+      <Generator>DevartHibernateGenerator</Generator>
+      <LastGenOutput>ModeloErrores.info</LastGenOutput>
+    </None>
+    <None Include="Entidades\Errores\ModeloErrores.info">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </None>
     <None Include="Entidades\Mantenimientos\MantenimientosGenerales.Diagram1.view">
       <DependentUpon>MantenimientosGenerales.hbml</DependentUpon>
     </None>
@@ -232,7 +266,11 @@
       <DependentUpon>MantenimientosGenerales.hbml</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Entidades\Errores\ModeloErrores.EntiErrores.hbm.xml">
+      <DependentUpon>ModeloErrores.hbml</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -18,7 +18,7 @@ namespace YoCInstallers.Core
 			
 				Kernel.Register(
 				Component.For<ISessionFactory>()
-					.UsingFactoryMethod(_ => config.BuildSessionFactory()),
+					.UsingFactoryMethod(x=> config.BuildSessionFactory()),
 				Component.For<ISession>()
 					.UsingFactoryMethod(k => k.Resolve<ISessionFactory>().OpenSession())
 					.LifestylePerWebRequest()

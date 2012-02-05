@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping namespace="SicoWeb.Dominio.Core.Entidades.Errores" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="EntiErrores" table="errores" schema="sicoweb">
+    <id name="Id" type="Int32">
+      <column name="Id" not-null="true" precision="10" scale="0" sql-type="int" />
+      <generator class="identity" />
+    </id>
+    <property name="Descripcion" type="String">
+      <column name="Descripcion" length="500" not-null="true" sql-type="varchar" />
+    </property>
+  </class>
+</hibernate-mapping>
