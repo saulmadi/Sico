@@ -43,12 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AServicio.cs" />
     <Compile Include="EntityServicioHelper.cs" />
     <Compile Include="IEntidadServicio.cs" />
+    <Compile Include="IServicio.cs" />
     <Compile Include="Mantenimiento\Entidades\EntidadServicioMantenimiento.cs" />
     <Compile Include="Mantenimiento\Entidades\IEntidadServicioMantenimiento.cs" />
     <Compile Include="EntidadServicio.cs" />
     <Compile Include="Mantenimiento\EntityServicioMantenimientoHelper.cs" />
+    <Compile Include="IError.cs" />
     <Compile Include="Mantenimiento\Servicios\AServicioMantenimiento.cs" />
     <Compile Include="Mantenimiento\Servicios\IServicioMantenimiento.cs" />
     <Compile Include="Mantenimiento\Servicios\TarjetaCredito\IServicioMantenimientosTarjetaCredito.cs" />
@@ -58,6 +61,7 @@
     <Compile Include="Mantenimiento\Servicios\TiposMotocicletas\IServicioMantenimientosTiposMotocicletas.cs" />
     <Compile Include="Mantenimiento\Servicios\TiposMotocicletas\ServicioMantenimientosTiposMotocicletas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SiCoWebAplicattionException.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SicoWeb.Dominio.Core\SicoWeb.Dominio.Core.csproj">

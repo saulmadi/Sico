@@ -2,9 +2,8 @@
 using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades;
 namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
 {
-    public interface IServicioMantenimiento<T> where T:IEntidadServicioMantenimiento
+    public interface IServicioMantenimiento<T>: IServicio  where T:IEntidadServicioMantenimiento
     {
-        
         IList<T> GetHabilitados();
         IList<T> GetDesHabilitados();
         IList<T> GetTodos();

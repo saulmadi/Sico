@@ -10,6 +10,7 @@ namespace SicoWeb.Dominio.Core.Querys.Mantenimientos
         public override Expression<Func<TEntiMantenimiento, bool>> Where
         {
             get { return c=> c.Habilitado==true; }
+            protected set { }
         }
     }
 }

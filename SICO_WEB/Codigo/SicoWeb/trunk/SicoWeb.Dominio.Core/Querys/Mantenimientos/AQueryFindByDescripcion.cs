@@ -8,24 +8,14 @@ namespace SicoWeb.Dominio.Core.Querys.Mantenimientos
     public abstract class AQueryFindByDescripcion<TEnti>:AQueryMantenimiento<TEnti>,IQueryFindByDescripcion<TEnti>
         where TEnti :IEntiMantenimientos
     {
-
-        private Expression<Func<TEnti, bool>> _where;
-
+        
         public DetachedCriteria GetQueryByDescripcion(string descripcion)  
         {
-            _where = c => c.Descripcion == descripcion;
+            Where = c => c.Descripcion.ToLower() == descripcion.ToLower();
             return base.GetQuery();
         }
+       
+        public override Expression<Func<TEnti, bool>> Where { get; protected set; }
 
-        [Obsolete]
-        public  new DetachedCriteria  GetQuery()
-        {
-            return null;
-        }
-
-        public override Expression<Func<TEnti, bool>> Where
-        {
-            get { return _where ; }
-        }
     }
 }

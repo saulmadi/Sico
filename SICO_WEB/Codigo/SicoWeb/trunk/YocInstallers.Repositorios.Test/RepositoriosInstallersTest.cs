@@ -5,6 +5,7 @@ using Castle.Facilities.TypedFactory;
 using Castle.Windsor;
 using NUnit.Framework;
 using SicoWeb.Dominio.Core.Entidades;
+using SicoWeb.Dominio.Core.Entidades.Errores;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using SicoWeb.Dominio.Core.Repositorio;
 using SicoWeb.Dominio.Core.Repositorio.Mantenimientos.Marcas;
@@ -56,6 +57,7 @@ namespace YocInstallers.Repositorios.Test
             _containerWithControllers.AddFacility<PersistenceFacility>();
             
             var repositorio  = _containerWithControllers.Resolve<IRepositorioEntiMarcas>();
+            var repo = _containerWithControllers.Resolve<IRepository<EntiDepartamentos>>();
             var factory = _containerWithControllers.Resolve<IEntiMantenimientosFactory>();
             var entiDepto = factory.CreateEnti<EntiDepartamentos>();
           
