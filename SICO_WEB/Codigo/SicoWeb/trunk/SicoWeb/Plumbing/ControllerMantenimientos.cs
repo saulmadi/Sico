@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
 using System.Web.Mvc;
 using SicoWeb.Aplicacion.ServiceLayer;
@@ -78,16 +78,33 @@ namespace SicoWeb.Plumbing
                 if (ModelState.IsValid)
                 {
                     _servicio.AgregarMantenimiento(entidadServicioMantenimiento);
+                    ActionResult view;
+                    if (ActionResult(entidadServicioMantenimiento, out view)) return view;
+
                     Message = "Creado Correctamente";
                     return RedirectToAction("Index");
                 }
                 return View(entidadServicioMantenimiento);
             }
-            catch (Exception ex)
+            catch (SiCoWebAplicattionException ex)
             {
                 Message = ex.Message;
                 return View(entidadServicioMantenimiento);
             }
+        }
+
+        private bool ActionResult(T entidadServicioMantenimiento, out ActionResult view)
+        {
+            if (_servicio.HasError())
+            {
+                _servicio.Errores.ForEach(c => Message = c.ToString());
+                {
+                    view = View(entidadServicioMantenimiento);
+                    return true;
+                }
+            }
+            view = null;
+            return false;
         }
 
         //
@@ -110,12 +127,15 @@ namespace SicoWeb.Plumbing
                 if (ModelState.IsValid)
                 {
                     _servicio.AgregarMantenimiento(entidadServicioMantenimiento);
+                    ActionResult view;
+                    if (ActionResult(entidadServicioMantenimiento, out view)) return view;
+
                     Message = "Guardado Correctamente";
                     return RedirectToAction("Index");
                 }
                 return View(entidadServicioMantenimiento);
             }
-            catch (Exception ex)
+            catch (SiCoWebAplicattionException ex)
             {
                 Message = ex.Message;
                 return View(entidadServicioMantenimiento);

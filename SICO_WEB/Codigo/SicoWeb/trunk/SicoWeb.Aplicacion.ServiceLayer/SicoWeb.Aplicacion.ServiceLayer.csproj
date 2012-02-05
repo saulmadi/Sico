@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AServicio.cs" />
+    <Compile Include="CollectionHelper.cs" />
     <Compile Include="EntityServicioHelper.cs" />
     <Compile Include="IEntidadServicio.cs" />
     <Compile Include="IServicio.cs" />

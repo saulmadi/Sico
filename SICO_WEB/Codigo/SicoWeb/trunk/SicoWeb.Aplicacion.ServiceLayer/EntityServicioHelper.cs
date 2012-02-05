@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using SicoWeb.Dominio.Core.Entidades;
 
-namespace SicoWeb.Aplicacion.ServiceLayer
+namespace SicoWeb.Aplicacion.ServiceLayer.Helpers
 {
-    public static class EntityServicioHelper
+    public  static class EntityServicioHelper
     {
-        public static T ToEntidadServicio<T>(this IEntiBase entiBase)  where T: IEntidadServicio, new()
+        public  static T ToEntidadServicio<T>(this IEntiBase entiBase)  where T: IEntidadServicio, new()
         {
 
             return new T().Asignador(c => c.Fmodif = entiBase.Fmodif,
@@ -21,7 +20,7 @@ namespace SicoWeb.Aplicacion.ServiceLayer
                                                 l => l.Usu = entidadServicio.Usu);
         }
 
-        public static T Asignador<T>(this T obj, params Action<T>[] actions)
+        public  static T Asignador<T>(this T obj, params Action<T>[] actions)
         {
         
             foreach (var action in actions)
@@ -29,13 +28,6 @@ namespace SicoWeb.Aplicacion.ServiceLayer
             return obj;
         }
 
-        public static ICollection<T> ForEach<T>(this ICollection<T> list, Action<T> action)
-        {
-            foreach (var variable in list)
-            {
-               action(variable) ;
-            }
-            return list;
-        }
+        
     }
 }

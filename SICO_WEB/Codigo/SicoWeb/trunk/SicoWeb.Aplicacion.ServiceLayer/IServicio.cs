@@ -6,6 +6,6 @@ namespace SicoWeb.Aplicacion.ServiceLayer
     {
         IList<IError> Errores { get; set; }
         bool HasError();
-        void CommitCambios();
+        
     }
 }

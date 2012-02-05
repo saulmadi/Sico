@@ -4,6 +4,7 @@ using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using SicoWeb.Dominio.Core.Querys.Mantenimientos.TarjetasCredito;
 using SicoWeb.Dominio.Core.Repositorio.Mantenimientos.TarjetaCredito;
 using SicoWeb.Dominio.Core.Transaction;
+using SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos;
 
 namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios.TarjetaCredito
 {
@@ -14,10 +15,16 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios.TarjetaCredito
                                                      IEntiMantenimientosFactory entiMantenimientosFactory,
                                                      IQueryDeshabilitadoTarjetaCredito queryDeshabilitado,
                                                      IQueryHabilitadoTarjetaCredito queryHabilitado,
-                                                     IUnitOfWork unitOfWork) :
-                                                         base(
-                                                         repositorioMantimientos, entiMantenimientosFactory,
-                                                         queryDeshabilitado, queryHabilitado, unitOfWork)
+                                                     IUnitOfWork unitOfWork,
+                                                     IBuisnessRulesMannagerMantenimientos<EntiTarjetacredito>
+                                                         buisnessRulesMannagerMantenimientos) :
+                                                             base(
+                                                             repositorioMantimientos,
+                                                             entiMantenimientosFactory,
+                                                             queryDeshabilitado,
+                                                             queryHabilitado,
+                                                             unitOfWork,
+                                                             buisnessRulesMannagerMantenimientos)
         {
         }
     }

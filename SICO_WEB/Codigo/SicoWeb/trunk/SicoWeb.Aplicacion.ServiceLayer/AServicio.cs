@@ -1,28 +1,80 @@
 ﻿using System;
 using System.Collections.Generic;
+using SicoWeb.Dominio.Core.Entidades;
+using SicoWeb.Dominio.Core.BuisnessRules;
+using SicoWeb.Dominio.Core.Transaction;
 
 namespace SicoWeb.Aplicacion.ServiceLayer
 {
-    public class AServicio<T>:IServicio
+    public abstract class AServicio<TEntidadServicio,TEntidadMantenimiento>:IServicio 
+        where TEntidadServicio :IEntidadServicio 
+        where TEntidadMantenimiento :IEntiBase 
     {
+        private readonly IBuisnessRulesMannager<TEntidadMantenimiento> _buisnessRulesMannager;
+        private readonly IUnitOfWork _unitOfWork;
+
+        protected AServicio( IBuisnessRulesMannager< TEntidadMantenimiento>  buisnessRulesMannager,IUnitOfWork unitOfWork  )
+        {
+            _buisnessRulesMannager = buisnessRulesMannager;
+            _unitOfWork = unitOfWork;
+            Errores = new List<IError>();
+            Cambios = new List<Func<TEntidadMantenimiento>>();
+        }
+
         public IList<IError> Errores { get; set; }
-        public IList<Func<T>> Cambios { get; set; }
+        private IList<Func<TEntidadMantenimiento>> Cambios { get; set; }
 
         public bool HasError()
         {
             return Errores.Count > 0;
         }
 
-        public void CommitCambios()
+        protected  void SetCambios(Func<TEntidadMantenimiento> cambio )
         {
-            if (!HasError())
+            Cambios.Add(cambio);
+        }
 
-                foreach (var cambio in Cambios)
+        private void ComitCambios()
+        {
+               foreach (var cambio in Cambios)
                 {
                     cambio();
                 }
-            else
-                throw new SiCoWebAplicattionException(Errores);
+            
         }
+
+        protected void RunRules(TEntidadMantenimiento entidadMantenimiento )
+        {
+            try
+            {
+                using (var transacion = _unitOfWork.BeginTransaction())
+                {
+                    try
+                    {
+                        _buisnessRulesMannager.RunComportamiento(entidadMantenimiento);
+                        ComitCambios();
+                        transacion.Commit();
+                    }
+                    catch (SicoWebCoreException coreException)
+                    {
+                        transacion.Rollback();
+                        Errores.Add(new Error
+                        {
+                            CodigoError = coreException.ErrorCode,
+                            Descripcion = coreException.ErrorDescripcion
+                        });
+                    }
+                }
+
+            }
+            catch (Exception exception )
+            {
+                
+                throw new SiCoWebAplicattionException(exception) ;
+            } 
+
+            
+        }
+        
     }
 }
