@@ -56,13 +56,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuisnessRules\ABuisnessRule.cs" />
+    <Compile Include="BuisnessRules\ABuisnessRuleMannager.cs" />
     <Compile Include="BuisnessRules\IBuisnessRulesMannager.cs" />
     <Compile Include="BuisnessRules\IBuisnessRule.cs" />
     <Compile Include="BuisnessRules\ISicoWebExceptionFactory.cs" />
     <Compile Include="BuisnessRules\Mantenimientos\ABuisnessRuleMantenimiento.cs" />
     <Compile Include="BuisnessRules\Mantenimientos\BuisnessRuleMantenimientosSinDescripcionRepetida.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\BuisnessRulesMannagerMantenimientos.cs" />
     <Compile Include="BuisnessRules\Mantenimientos\IBuisnessRuleMantenimiento.cs" />
     <Compile Include="BuisnessRules\Mantenimientos\IBuisnessRuleMantenimientosSinDescripcionRepetida.cs" />
+    <Compile Include="BuisnessRules\Mantenimientos\IBuisnessRulesMannagerMantenimientos.cs" />
     <Compile Include="BuisnessRules\SicoWebCoreException.cs" />
     <Compile Include="Entidades\Errores\EntiErrores.cs" />
     <Compile Include="Entidades\Errores\ModeloErrores.EntiErrores.cs">
