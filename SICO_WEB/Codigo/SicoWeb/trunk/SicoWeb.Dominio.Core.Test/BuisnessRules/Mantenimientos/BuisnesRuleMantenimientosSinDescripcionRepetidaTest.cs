@@ -15,7 +15,7 @@ namespace SicoWeb.Dominio.Core.Test.BuisnessRules.Mantenimientos
     public class BuisnesRuleMantenimientosSinDescripcionRepetidaTest
     {
         private IBuisnessRuleMantenimiento<FackeEnti> _buisnessRuleMantenimiento;
-        private ISicoWebExceptionFactory _exceptionFactory;
+        private ISicoWebCoreExceptionFactory _coreExceptionFactory;
         private IRepositorioEntiErrores _repositorioEntiErrores;
         private IRepository<FackeEnti> _repository;
         private IQueryFindByDescripcion<FackeEnti> _queryFindByDescripcion;
@@ -24,7 +24,7 @@ namespace SicoWeb.Dominio.Core.Test.BuisnessRules.Mantenimientos
         [SetUp]
         public void Init()
         {
-            _exceptionFactory = MockRepository.GenerateMock<ISicoWebExceptionFactory>();
+            _coreExceptionFactory = MockRepository.GenerateMock<ISicoWebCoreExceptionFactory>();
             _repositorioEntiErrores = MockRepository.GenerateMock<IRepositorioEntiErrores>();
             _repository = MockRepository.GenerateMock<IRepository<FackeEnti>>();
             _queryFindByDescripcion = MockRepository.GenerateMock<IQueryFindByDescripcion<FackeEnti>>();
@@ -34,7 +34,7 @@ namespace SicoWeb.Dominio.Core.Test.BuisnessRules.Mantenimientos
 
 
             _buisnessRuleMantenimiento =
-                new BuisnessRuleMantenimientosSinDescripcionRepetida<FackeEnti>(_exceptionFactory,
+                new BuisnessRuleMantenimientosSinDescripcionRepetida<FackeEnti>(_coreExceptionFactory,
                                                                                 _repositorioEntiErrores, _repository,
                                                                                 _queryFindByDescripcion);
         }
@@ -52,7 +52,7 @@ namespace SicoWeb.Dominio.Core.Test.BuisnessRules.Mantenimientos
                 _coreException.ErrorDescripcion = descripcion;
                 _repository.Expect(c => c.FindAll(_queryFindByDescripcion.GetQueryByDescripcion(descripcion))).Return(
                     _list);
-                _exceptionFactory.Expect(f => f.CreateSicoWebCoreException(errorCode, _repositorioEntiErrores)).Return(
+                _coreExceptionFactory.Expect(f => f.CreateSicoWebCoreException(errorCode, _repositorioEntiErrores)).Return(
                    _coreException  );
             }
             using (mockery.Playback())
@@ -74,7 +74,7 @@ namespace SicoWeb.Dominio.Core.Test.BuisnessRules.Mantenimientos
                 _coreException.ErrorDescripcion = "descripcion error";
                 _repository.Expect(c => c.FindAll(_queryFindByDescripcion.GetQueryByDescripcion(descripcion))).Return(
                     _list);
-                _exceptionFactory.Expect(f => f.CreateSicoWebCoreException(errorCode, _repositorioEntiErrores)).Return(
+                _coreExceptionFactory.Expect(f => f.CreateSicoWebCoreException(errorCode, _repositorioEntiErrores)).Return(
                    _coreException);
             }
             using (mockery.Playback())
