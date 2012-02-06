@@ -12,7 +12,7 @@ using NHibernate.Linq;
 
 namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 {
-    public abstract class  ARepository<T> : IRepository<T> where T:IEntiBase
+    public abstract class  ARepository<T> : IRepository<T> where T: class, IEntiBase
 
     {
         private readonly ISession _session;
@@ -58,7 +58,7 @@ namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 
         public void DeleteAll(DetachedCriteria where)
         {
-            foreach (object entity in where.GetExecutableCriteria(Session).List())
+            foreach (var entity in where.GetExecutableCriteria(Session).List())
             {
                 Session.Delete(entity);
             }
@@ -72,7 +72,8 @@ namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 
         public T SaveOrUpdate(T entity)
         {
-            Session.SaveOrUpdate(entity);
+         
+           Session.SaveOrUpdate(entity);
             return entity;
         }
 
