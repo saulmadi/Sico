@@ -2,8 +2,8 @@
 
 namespace SicoWeb.Dominio.Core.BuisnessRules
 {
-    public interface ISicoWebExceptionFactory
+    public interface ISicoWebCoreExceptionFactory
     {
-        SicoWebCoreException CreateSicoWebCoreException(int erroCode, IRepositorioEntiErrores repositorioEntiErrores);
+        SicoWebCoreException CreateSicoWebCoreException(int errorCode, IRepositorioEntiErrores repositorioErrores);
     }
 }

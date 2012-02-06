@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
@@ -17,11 +18,11 @@ namespace SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos
         private readonly IRepository<TEnti> _repository;
 
 
-        public BuisnessRuleMantenimientosSinDescripcionRepetida(ISicoWebExceptionFactory coreExceptionFactory,
+        public BuisnessRuleMantenimientosSinDescripcionRepetida(ISicoWebCoreExceptionFactory coreCoreExceptionFactory,
                                                                  IRepositorioEntiErrores repositorioEntiErrores,
                                                                  IRepository<TEnti> repository,
                                                                  IQueryFindByDescripcion<TEnti> byDescripcion)
-            : base(coreExceptionFactory, repositorioEntiErrores)
+            : base(coreCoreExceptionFactory, repositorioEntiErrores)
         {
             _repository = repository;
             _byDescripcion = byDescripcion;
@@ -31,30 +32,27 @@ namespace SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos
 
         public override void SetRules(TEnti entidad)
         {
+            if (entidad == null) throw new ArgumentNullException("entidad");
             var listaItems = GetItemsDescripciones(entidad);
             SetRule(c => HasMultipleItems(listaItems), 1);
-            SetRule(c => HasOnlyOneItemWithDifId(c, listaItems), 1);
         }
-        
-
-        private static bool HasOnlyOneItemWithDifId(TEnti entidad, ICollection<TEnti> listaItems)
-        {
-            return listaItems.Count ==1 && listaItems.FirstOrDefault(c=>c.Id == entidad.Id) == default(TEnti);
-        }
-
-        private ICollection<TEnti> GetItemsDescripciones(TEnti entidad)
+       
+        private IEnumerable<TEnti> GetItemsDescripciones(TEnti entidad)
         {
             return _repository.FindAll(GetQuery(entidad)) ;
         }
 
         private DetachedCriteria GetQuery(TEnti entidad)
         {
-            return _byDescripcion.GetQueryByDescripcion(entidad.Descripcion);
+            var query = _byDescripcion.GetQueryByDescripcion(entidad.Descripcion);
+            return query.Add(new Disjunction().Add<TEnti>(c => c.Id != entidad.Id));
         }
 
-        private bool HasMultipleItems(ICollection<TEnti> listaDescripciones)
+
+        private static bool HasMultipleItems(IEnumerable<TEnti> listaDescripciones)
         {
-            return listaDescripciones.Count > 1;
+            if (listaDescripciones == null) throw new ArgumentNullException("listaDescripciones");
+            return listaDescripciones.Count() > 0;
         }
 
         #endregion

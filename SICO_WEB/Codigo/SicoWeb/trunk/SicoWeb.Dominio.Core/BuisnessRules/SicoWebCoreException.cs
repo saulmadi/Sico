@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using SicoWeb.Dominio.Core.Repositorio.Errores;
 
 namespace SicoWeb.Dominio.Core.BuisnessRules
@@ -19,7 +20,14 @@ namespace SicoWeb.Dominio.Core.BuisnessRules
 
         public override string Message
         {
-            get { return string.Format("Error {0}# \n {1}", ErrorCode, ErrorDescripcion); }
+            
+            get
+            {
+                var stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine(string.Format("Error # {0}", ErrorCode));
+                stringBuilder.AppendLine(string.Format(ErrorDescripcion));
+                return stringBuilder.ToString();
+            }
         }
 
         private void SetErrorDescripcion()
@@ -31,7 +39,7 @@ namespace SicoWeb.Dominio.Core.BuisnessRules
         {
             var error = _repositorioErrores.Get(ErrorCode);
             if (error != null)
-                return string.IsNullOrEmpty(error.Descripcion) ? error.Descripcion : "El error no tiene una descripción";
+                return !string.IsNullOrEmpty(error.Descripcion) ? error.Descripcion : "El error no tiene una descripción";
             return "Error desconocido";
         }
     }

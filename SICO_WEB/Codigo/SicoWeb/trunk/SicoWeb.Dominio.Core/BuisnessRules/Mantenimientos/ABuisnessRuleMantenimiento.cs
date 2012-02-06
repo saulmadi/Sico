@@ -9,9 +9,9 @@ namespace SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos
     public abstract class ABuisnessRuleMantenimiento<TEnti> : ABuisnessRule<TEnti>, IBuisnessRuleMantenimiento<TEnti>
         where TEnti : IEntiMantenimientos
     {
-        protected ABuisnessRuleMantenimiento(ISicoWebExceptionFactory coreExceptionFactory,
+        protected ABuisnessRuleMantenimiento(ISicoWebCoreExceptionFactory coreCoreExceptionFactory,
                                              IRepositorioEntiErrores repositorioEntiErrores)
-            : base(coreExceptionFactory, repositorioEntiErrores)
+            : base(coreCoreExceptionFactory, repositorioEntiErrores)
         {
             
         }

@@ -11,7 +11,7 @@ namespace SicoWeb.Dominio.Core.Querys.Mantenimientos
         
         public DetachedCriteria GetQueryByDescripcion(string descripcion)  
         {
-            Where = c => c.Descripcion.ToLower() == descripcion.ToLower();
+            Where = c =>c.Descripcion == descripcion;
             return base.GetQuery();
         }
        

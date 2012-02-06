@@ -4,14 +4,14 @@ namespace SicoWeb.Dominio.Core.BuisnessRules
 {
     public abstract class ABuisnessRule<TEnti> : IBuisnessRule<TEnti>
     {
-        private readonly ISicoWebExceptionFactory _coreExceptionFactory;
+        private readonly ISicoWebCoreExceptionFactory _coreCoreExceptionFactory;
         private readonly IRepositorioEntiErrores _repositorioEntiErrores;
 
 
-        protected ABuisnessRule(ISicoWebExceptionFactory coreExceptionFactory,
+        protected ABuisnessRule(ISicoWebCoreExceptionFactory coreCoreExceptionFactory,
                                 IRepositorioEntiErrores repositorioEntiErrores)
         {
-            _coreExceptionFactory = coreExceptionFactory;
+            _coreCoreExceptionFactory = coreCoreExceptionFactory;
             _repositorioEntiErrores = repositorioEntiErrores;
         }
 
@@ -23,7 +23,7 @@ namespace SicoWeb.Dominio.Core.BuisnessRules
 
         protected void ThrowError(int erroCode)
         {
-            throw _coreExceptionFactory.CreateSicoWebCoreException(erroCode, _repositorioEntiErrores);
+            throw _coreCoreExceptionFactory.CreateSicoWebCoreException(erroCode, _repositorioEntiErrores);
         }
     }
 }
