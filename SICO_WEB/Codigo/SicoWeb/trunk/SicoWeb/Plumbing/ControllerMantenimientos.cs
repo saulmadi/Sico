@@ -97,7 +97,7 @@ namespace SicoWeb.Plumbing
         {
             if (_servicio.HasError())
             {
-                _servicio.Errores.ForEach(c => Message = c.ToString());
+                _servicio.Errores.ForEach(c => Message =  c.ToString());
                 {
                     view = View(entidadServicioMantenimiento);
                     return true;
