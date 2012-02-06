@@ -4,7 +4,7 @@ using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 {
     public abstract class ARepositorioMantenimientosComplejos<TPadre,THijo>:ARepository<TPadre>,IRepositorioMantenimientosComplejos<TPadre,THijo> 
-        where TPadre:IEntiMantenimientosComplejosPadres 
+        where TPadre: class, IEntiMantenimientosComplejosPadres 
         where THijo:IEntiMantenimientosClomplejosHijos  
     {
         protected ARepositorioMantenimientosComplejos(ISession session, ISessionFactory factory) : base(session, factory)
