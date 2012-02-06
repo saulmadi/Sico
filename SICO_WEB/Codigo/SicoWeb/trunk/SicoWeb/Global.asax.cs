@@ -57,7 +57,8 @@ namespace SicoWeb
                 .Install(new RepositoryInstallers())
                 .Install(new QueryInstaller())
                 .Install( new ServiceInstaller())
-                .Install(new UnitOfWorkInstaller());
+                .Install(new UnitOfWorkInstaller())
+                .Install( new BuisnessRulesInstallers());
                 
                 
             var controllerFactory = new WindsorControllerFactory(_container.Kernel);
