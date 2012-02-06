@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuisnesRuleInstallerTest.cs" />
     <Compile Include="NhibernateInstallerTest.cs" />
     <Compile Include="QueryInstallerTest.cs" />
     <Compile Include="RepositoriosInstallersTest.cs" />
