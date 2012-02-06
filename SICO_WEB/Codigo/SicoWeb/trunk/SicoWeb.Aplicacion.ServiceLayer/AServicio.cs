@@ -54,12 +54,15 @@ namespace SicoWeb.Aplicacion.ServiceLayer
                         _buisnessRulesMannager.RunComportamiento(entidadMantenimiento);
                         ComitCambios();
                         transacion.Commit();
+                        _unitOfWork.Flush();
                     }
                     catch (SicoWebCoreException coreException)
                     {
                         transacion.Rollback();
+                       _unitOfWork.Flush();
                         Errores.Add(new Error
                         {
+                            Excepcion=coreException,
                             CodigoError = coreException.ErrorCode,
                             Descripcion = coreException.ErrorDescripcion
                         });
@@ -69,6 +72,7 @@ namespace SicoWeb.Aplicacion.ServiceLayer
             }
             catch (Exception exception )
             {
+                _unitOfWork.Flush();
                 
                 throw new SiCoWebAplicattionException(exception) ;
             } 

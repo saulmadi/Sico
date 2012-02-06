@@ -69,8 +69,15 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
         public void AgregarMantenimiento(TEntidadServicio mantenimiento)
         {
             var entiMatenimiento = Convert(mantenimiento);
-            SetCambios(() => _repositorioMantimientos.SaveOrUpdate(entiMatenimiento));
+
+            SetCambios(() => GuardarMantenimiento(entiMatenimiento));
             RunRules(entiMatenimiento);
+        }
+
+        private TEntidadMantenimiento GuardarMantenimiento(TEntidadMantenimiento entiMatenimiento)
+        {
+            
+            return _repositorioMantimientos.SaveOrUpdate(entiMatenimiento);
         }
 
         private ICollection<TEntidadMantenimiento> RunQuery(IQuery query)
