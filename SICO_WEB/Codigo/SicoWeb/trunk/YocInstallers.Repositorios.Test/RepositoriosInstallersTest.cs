@@ -60,7 +60,8 @@ namespace YocInstallers.Repositorios.Test
             var repo = _containerWithControllers.Resolve<IRepository<EntiDepartamentos>>();
             var factory = _containerWithControllers.Resolve<IEntiMantenimientosFactory>();
             var entiDepto = factory.CreateEnti<EntiDepartamentos>();
-          
+
+            Assert.IsNotNull(repo);
             Assert.IsNotNull(repositorio);
             Assert.IsNotNull(factory);
             Assert.IsNotNull(entiDepto);
