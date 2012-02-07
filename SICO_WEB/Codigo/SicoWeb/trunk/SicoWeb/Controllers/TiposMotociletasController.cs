@@ -13,7 +13,7 @@ namespace SicoWeb.Controllers
 
         public override string Title()
         {
-            return "Tipos Motocicletas";
+            return "Tipos de Motocicletas";
         }
     }
 }

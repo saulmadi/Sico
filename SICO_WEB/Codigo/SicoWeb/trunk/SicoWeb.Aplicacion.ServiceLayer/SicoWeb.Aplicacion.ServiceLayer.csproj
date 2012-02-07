@@ -57,6 +57,8 @@
     <Compile Include="IError.cs" />
     <Compile Include="Mantenimiento\Servicios\AServicioMantenimiento.cs" />
     <Compile Include="Mantenimiento\Servicios\IServicioMantenimiento.cs" />
+    <Compile Include="Mantenimiento\Servicios\Marcas\IServicioMantenimientosMarcas.cs" />
+    <Compile Include="Mantenimiento\Servicios\Marcas\ServicioMantenimientosTarjetaCreditos.cs" />
     <Compile Include="Mantenimiento\Servicios\TarjetaCredito\IServicioMantenimientosTarjetaCredito.cs" />
     <Compile Include="Mantenimiento\Servicios\TarjetaCredito\ServicioMantenimientosTarjetaCreditos.cs" />
     <Compile Include="Mantenimiento\Servicios\TiposFacturas\IServicioMantenimientosTiposMotocicletas.cs" />

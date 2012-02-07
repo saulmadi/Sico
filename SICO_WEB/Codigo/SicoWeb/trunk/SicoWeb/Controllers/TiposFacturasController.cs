@@ -21,7 +21,7 @@ namespace SicoWeb.Controllers
 
         public override string Title()
         {
-            return "Tipos Facturas";
+            return "Tipos de Facturas";
         }
       
     }
