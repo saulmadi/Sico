@@ -1,0 +1,16 @@
+﻿@*@using MvcContrib.UI.Grid
+@using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades
+@model IEnumerable<EntidadServicioMantenimiento>
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Agregar Nuevo", "Create")
+</p>
+
+    @Html.Grid(Model).AutoGenerateColumns().Columns(column=>column.For(x=>Html.ActionLink("Editar","Edit",new {x.Id}) )) 
+
+
+*@
+
+@Html.Partial( "Mantenimientos/_MantenimientosIndex")

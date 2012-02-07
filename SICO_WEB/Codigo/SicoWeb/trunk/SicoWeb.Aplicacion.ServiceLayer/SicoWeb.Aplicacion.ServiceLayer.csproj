@@ -56,6 +56,8 @@
     <Compile Include="Mantenimiento\EntityServicioMantenimientoHelper.cs" />
     <Compile Include="IError.cs" />
     <Compile Include="Mantenimiento\Servicios\AServicioMantenimiento.cs" />
+    <Compile Include="Mantenimiento\Servicios\Departamentos\IServicioMantenimientosDepartamentos.cs" />
+    <Compile Include="Mantenimiento\Servicios\Departamentos\ServicioMantenimientosDepartamentos.cs" />
     <Compile Include="Mantenimiento\Servicios\IServicioMantenimiento.cs" />
     <Compile Include="Mantenimiento\Servicios\Marcas\IServicioMantenimientosMarcas.cs" />
     <Compile Include="Mantenimiento\Servicios\Marcas\ServicioMantenimientosTarjetaCreditos.cs" />
