@@ -47,18 +47,23 @@
   <ItemGroup>
     <Compile Include="AServicio.cs" />
     <Compile Include="CollectionHelper.cs" />
-    <Compile Include="EntityServicioHelper.cs" />
+    <Compile Include="Helper\EntityServicioHelper.cs" />
     <Compile Include="IEntidadServicio.cs" />
     <Compile Include="IServicio.cs" />
     <Compile Include="Mantenimiento\Entidades\EntidadServicioMantenimiento.cs" />
+    <Compile Include="Mantenimiento\Entidades\EntidadServicioMantenimientoHijo.cs" />
     <Compile Include="Mantenimiento\Entidades\IEntidadServicioMantenimiento.cs" />
     <Compile Include="EntidadServicio.cs" />
-    <Compile Include="Mantenimiento\EntityServicioMantenimientoHelper.cs" />
+    <Compile Include="Mantenimiento\Entidades\IEntidadServicioMantenimientoHijo.cs" />
     <Compile Include="IError.cs" />
+    <Compile Include="Mantenimiento\Helper\EntityServicioMantenimientoHelper.cs" />
     <Compile Include="Mantenimiento\Servicios\AServicioMantenimiento.cs" />
+    <Compile Include="Mantenimiento\Servicios\AServicioMantenimientoHijo.cs" />
     <Compile Include="Mantenimiento\Servicios\Departamentos\IServicioMantenimientosDepartamentos.cs" />
     <Compile Include="Mantenimiento\Servicios\Departamentos\ServicioMantenimientosDepartamentos.cs" />
     <Compile Include="Mantenimiento\Servicios\IServicioMantenimiento.cs" />
+    <Compile Include="Mantenimiento\Servicios\IServicioMantenimientoHijo.cs" />
+    <Compile Include="Mantenimiento\Servicios\Modelos\IServicioMantenimientoHijoModelos.cs" />
     <Compile Include="Mantenimiento\Servicios\Marcas\IServicioMantenimientosMarcas.cs" />
     <Compile Include="Mantenimiento\Servicios\Marcas\ServicioMantenimientosTarjetaCreditos.cs" />
     <Compile Include="Mantenimiento\Servicios\TarjetaCredito\IServicioMantenimientosTarjetaCredito.cs" />

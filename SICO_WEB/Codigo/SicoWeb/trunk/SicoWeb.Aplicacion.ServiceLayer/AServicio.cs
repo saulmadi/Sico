@@ -6,9 +6,7 @@ using SicoWeb.Dominio.Core.Transaction;
 
 namespace SicoWeb.Aplicacion.ServiceLayer
 {
-    public abstract class AServicio<TEntidadServicio,TEntidadMantenimiento>:IServicio 
-        where TEntidadServicio :IEntidadServicio 
-        where TEntidadMantenimiento :IEntiBase 
+    public abstract class AServicio<TEntidadMantenimiento>:IServicio where TEntidadMantenimiento :IEntiBase 
     {
         private readonly IBuisnessRulesMannager<TEntidadMantenimiento> _buisnessRulesMannager;
         private readonly IUnitOfWork _unitOfWork;

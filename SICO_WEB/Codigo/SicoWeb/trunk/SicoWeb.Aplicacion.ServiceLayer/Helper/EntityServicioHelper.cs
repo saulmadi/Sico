@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using SicoWeb.Dominio.Core.Entidades;
 
-namespace SicoWeb.Aplicacion.ServiceLayer.Helpers
+namespace SicoWeb.Aplicacion.ServiceLayer.Helper
 {
     public  static class EntityServicioHelper
     {

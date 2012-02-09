@@ -1,9 +1,9 @@
 ﻿using System;
 using NUnit.Framework;
-using SicoWeb.Aplicacion.ServiceLayer.Helpers;
+using SicoWeb.Aplicacion.ServiceLayer.Helper;
 using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades;
+using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Helper;
 using SicoWeb.Dominio.Core.Entidades;
-using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 
 namespace SicoWeb.Aplicacion.ServiceLayer.Test

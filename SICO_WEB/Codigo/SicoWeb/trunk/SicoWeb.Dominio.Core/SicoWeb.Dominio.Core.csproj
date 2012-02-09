@@ -152,7 +152,9 @@
     <Compile Include="Querys\Mantenimientos\IQueryDeshabilitado.cs" />
     <Compile Include="Querys\Mantenimientos\IQueryFindByDescripcion.cs" />
     <Compile Include="Querys\Mantenimientos\Marcas\QueryFindByDescripcionMarcas.cs" />
+    <Compile Include="Querys\Mantenimientos\QueryDeshabilitado.cs" />
     <Compile Include="Querys\Mantenimientos\QueryFindByDescripcion.cs" />
+    <Compile Include="Querys\Mantenimientos\QueryHabilitado.cs" />
     <Compile Include="Querys\Mantenimientos\TiposMotocicletas\QueryFindByDescripcionTiposMotocicletas.cs" />
     <Compile Include="Querys\Mantenimientos\TiposFacturas\QueryFindByDescripcionTiposFacturas.cs" />
     <Compile Include="Querys\Mantenimientos\TarjetasCredito\QueryFindByDescripcionTarjetasCredito.cs" />
