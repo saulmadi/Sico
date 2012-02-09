@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using NHibernate.Criterion;
-
 using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades;
-
+using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Helper;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using SicoWeb.Dominio.Core.Querys;
 using SicoWeb.Dominio.Core.Repositorio.Mantenimientos;
@@ -13,8 +12,8 @@ using SicoWeb.Dominio.Core.BuisnessRules.Mantenimientos;
 namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
 {
     public class AServicioMantenimiento<TEntidadServicio, TEntidadMantenimiento> :
-        AServicio<TEntidadServicio, TEntidadMantenimiento>, IServicioMantenimiento<TEntidadServicio>
-        where TEntidadServicio : IEntidadServicioMantenimiento, new()
+        AServicio<TEntidadMantenimiento>, IServicioMantenimiento<TEntidadServicio>
+        where TEntidadServicio :  IEntidadServicioMantenimiento, new()
         where TEntidadMantenimiento : IEntiMantenimientos, new()
     {
         private readonly IRepositorioMantimientos<TEntidadMantenimiento> _repositorioMantimientos;
@@ -32,7 +31,7 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
                                           buisnessRulesMannagerMantenimientos
 
             )
-            : base(buisnessRulesMannagerMantenimientos,unitOfWork)
+            : base(buisnessRulesMannagerMantenimientos, unitOfWork)
         {
             if (repositorioMantimientos == null) throw new ArgumentNullException("repositorioMantimientos");
             if (entiMantenimientosFactory == null) throw new ArgumentNullException("entiMantenimientosFactory");
@@ -74,20 +73,20 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
             RunRules(entiMatenimiento);
         }
 
-        private TEntidadMantenimiento GuardarMantenimiento(TEntidadMantenimiento entiMatenimiento)
+        protected TEntidadMantenimiento GuardarMantenimiento(TEntidadMantenimiento entiMatenimiento)
         {
-            
+
             return _repositorioMantimientos.SaveOrUpdate(entiMatenimiento);
         }
 
-        private ICollection<TEntidadMantenimiento> RunQuery(IQuery query)
+        protected ICollection<TEntidadMantenimiento> RunQuery(IQuery query)
         {
             return query == null
                        ? _repositorioMantimientos.FindAll((DetachedCriteria) null, null)
                        : _repositorioMantimientos.FindAll(query.GetQuery());
         }
 
-        private IList<TEntidadServicio> GetList(ICollection<TEntidadMantenimiento> collection)
+        protected virtual IList<TEntidadServicio> GetList(ICollection<TEntidadMantenimiento> collection)
         {
             return collection.ToListOfEntidadMantenimiento<TEntidadServicio, TEntidadMantenimiento>();
         }
@@ -102,6 +101,6 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
             return _entiMantenimientosFactory.CreateEnti<TEntidadMantenimiento>();
         }
 
-       
+
     }
 }
