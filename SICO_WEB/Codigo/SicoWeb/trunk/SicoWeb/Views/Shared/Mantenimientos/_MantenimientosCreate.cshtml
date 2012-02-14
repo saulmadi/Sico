@@ -1,5 +1,5 @@
 ﻿@model SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades.IEntidadServicioMantenimiento
-
+@using MvcContrib.FluentHtml 
  
 <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
@@ -17,7 +17,8 @@
             @Html.LabelFor(model => model.Descripcion)
         </div>
         <div class="editor-field">  
-                      
+            
+            @this.TextBox("").        
             @Html.EditorFor(model => model.Descripcion)
             @Html.ValidationMessageFor(model => model.Descripcion)
         </div>
