@@ -61,15 +61,16 @@ namespace SicoWeb.Plumbing
 
         //
         // GET: /TiposFacturas/Create
-
+        [ChildActionOnly]
         public ActionResult Create()
         {
-            return View();
+
+            return PartialView();
         }
 
         //
         // POST: /TiposFacturas/Create
-
+        [ChildActionOnly]
         [HttpPost]
         public ActionResult Create(T entidadServicioMantenimiento)
         {
@@ -82,13 +83,13 @@ namespace SicoWeb.Plumbing
                     if (ActionResult(entidadServicioMantenimiento, out view)) return view;
 
                     Message = "Creado Correctamente";
-                    return RedirectToAction("Index");
+                    return PartialView();
                 }
-                return View(entidadServicioMantenimiento);
+                return PartialView( entidadServicioMantenimiento);
             }
             catch (SiCoWebAplicattionException ex)
             {
-                Message = ex.Message;
+                ErrorMessage = ex.Message;
                 return View(entidadServicioMantenimiento);
             }
         }
@@ -97,9 +98,9 @@ namespace SicoWeb.Plumbing
         {
             if (_servicio.HasError())
             {
-                _servicio.Errores.ForEach(c => Message =  c.ToString());
+                _servicio.Errores.ForEach(c => ErrorMessage  =  c.ToString());
                 {
-                    view = View(entidadServicioMantenimiento);
+                    view = PartialView(entidadServicioMantenimiento);
                     return true;
                 }
             }
@@ -137,7 +138,7 @@ namespace SicoWeb.Plumbing
             }
             catch (SiCoWebAplicattionException ex)
             {
-                Message = ex.Message;
+                ErrorMessage = ex.Message;
                 return View(entidadServicioMantenimiento);
             }
         }
