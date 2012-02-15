@@ -40,6 +40,11 @@ namespace SicoWeb.Plumbing
             get { return TempData["message"] as string; }
             set { TempData["message"] = value; }
         }
+        public string ErrorMessage
+        {
+            get { return TempData["errormessage"] as string; }
+            set { TempData["errormessage"] = value; }
+        }
 
         protected override void OnException(ExceptionContext filterContext)
         {
