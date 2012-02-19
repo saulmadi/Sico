@@ -6,11 +6,22 @@
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
      <link href="@Url.Content("~/Content/Style.css")" rel="stylesheet" type="text/css" />
-     <link href="@Url.Content("~/Content/themes/ui-darkness/jquery-ui-1.8.17.custom.css")" rel="stylesheet" type="text/css" />
+     <link href="@Url.Content("~/Content/themes/ui-darkness/jquery-ui-1.8.17.custom.css")" rel="stylesheet" type="text/css" />    
+ 
+    
     <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.8.17.custom.min.js")" type="text/javascript"></script>
+    <script src=" @Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+    
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    
+
     <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
-    <script src="../../Scripts/js/UiControls.js" type="text/javascript"></script>
+    
+
+    
+    @*<script src="../../Scripts/js/UiControls.js" type="text/javascript"></script>*@
 </head>
 
 
@@ -68,7 +79,7 @@
                         }
                         if (TempData["errormessage"] != null)
                         {
-                            <div class="ui-widget">
+                            <div class="ui-widget" >
 			<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
 				<p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
                             @TempData["errormessage"]

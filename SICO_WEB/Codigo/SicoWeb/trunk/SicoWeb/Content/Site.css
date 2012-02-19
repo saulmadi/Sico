@@ -193,6 +193,7 @@ ul#menu li.selected a
     color:Red;
 }
 
+.invisible { display: none;}
 #menucontainer
 {
     margin-top:40px;

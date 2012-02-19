@@ -16,7 +16,8 @@ namespace SicoWeb.Plumbing
         {
             ViewBag.Title = Title();
             ViewBag.SubTitleMenu = SubTitleMenu();
-            ViewData["SubMenuItmes"] = SubMenuItems(); 
+            ViewData["SubMenuItmes"] = SubMenuItems();
+            ViewBag.ControllerName = GetControllerName();
             base.OnActionExecuted(filterContext);
         }
 

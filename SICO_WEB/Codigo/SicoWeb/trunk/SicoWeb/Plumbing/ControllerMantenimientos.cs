@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using SicoWeb.Aplicacion.ServiceLayer;
@@ -61,7 +62,7 @@ namespace SicoWeb.Plumbing
 
         //
         // GET: /TiposFacturas/Create
-        [ChildActionOnly]
+        
         public ActionResult Create()
         {
 
@@ -70,7 +71,7 @@ namespace SicoWeb.Plumbing
 
         //
         // POST: /TiposFacturas/Create
-        [ChildActionOnly]
+        
         [HttpPost]
         public ActionResult Create(T entidadServicioMantenimiento)
         {
@@ -83,14 +84,14 @@ namespace SicoWeb.Plumbing
                     if (ActionResult(entidadServicioMantenimiento, out view)) return view;
 
                     Message = "Creado Correctamente";
-                    return PartialView();
+                    return Content(Boolean.TrueString );
                 }
-                return PartialView( entidadServicioMantenimiento);
+                return Content("Revise el formulario" );
             }
             catch (SiCoWebAplicattionException ex)
             {
                 ErrorMessage = ex.Message;
-                return View(entidadServicioMantenimiento);
+                return PartialView();
             }
         }
 
