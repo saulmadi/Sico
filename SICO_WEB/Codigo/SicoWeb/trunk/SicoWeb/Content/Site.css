@@ -185,11 +185,15 @@ ul#menu li.selected a
 ----------------------------------------------------------*/
 .clear
 {
+   
     clear: both;
 }
 
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
+
 .error
 {
+    
     color:Red;
 }
 
