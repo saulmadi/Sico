@@ -9,24 +9,25 @@
 
 <script src="../../../Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
 @using (AjaxExtensions.BeginForm(Ajax, "Create", ViewBag.ControllerName, null, 
-    new AjaxOptions { UpdateTargetId = "update-message", InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "updateSuccess" },
-    new { @id = "createForm" }))
+	new AjaxOptions { UpdateTargetId = "createMesage", InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "updateSuccess" },
+	new { @id = "createForm" }))
 {
    
-    @Html.ValidationSummary(true)
-     <div id="update-message" class="error invisible"></div>
-    <fieldset>
-        <legend>@ViewBag.Title</legend>
+	@Html.ValidationSummary(true)
+	 <div id="createMesage" class="error  invisible" >
+     </div>
+	<fieldset>
+		<legend>@ViewBag.Title</legend>
 		<div>
-            @Html.LabelFor(model => model.Descripcion ) 
-            @Html.EditorFor( x=>x.Descripcion)
-            @Html.ValidationMessageFor( x=>x.Descripcion)          
+			@Html.LabelFor(model => model.Descripcion ) 
+			@Html.EditorFor( x=>x.Descripcion)
+			@Html.ValidationMessageFor( x=>x.Descripcion)          
 
-        </div>		
-        
-        <div>@this.CheckBox(x => x.Habilitado).AutoLabel()</div>		
+		</div>		
 		
-    </fieldset>
+		<div>@this.CheckBox(x => x.Habilitado).AutoLabel()</div>		
+		
+	</fieldset>
  
    
 }

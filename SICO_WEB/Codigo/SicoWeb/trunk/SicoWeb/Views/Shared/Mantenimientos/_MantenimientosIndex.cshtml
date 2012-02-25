@@ -5,88 +5,60 @@
 @inherits SicoWeb.Plumbing.ViewPage<IEnumerable<EntidadServicioMantenimiento>>
 
 @Html.Partial("_Titulo")
-
+<script src="../../../Scripts/js/FormDialog.js" type="text/javascript"></script>
 <P>
 	@{
 		if (((bool) ViewData[ViewDataVariables.MantenimientoAgregable]))
 		{
 			
-            @this.Button("Agregar").Class("ShowButton").Attr("href",@Url.Action("Create"))
-        }
+			@this.Button("Agregar").Class("createButton").Attr("href",@Url.Action("Create"))
+		}
    
 	}
 	
 </P>
 
-<div id="updateDialog" title="Agregar"></div>
+<div id="createDialog" title="Agregar" ></div>
+<div id="editDialog" title="Editar"></div>
 
 @Html.Partial("Mantenimientos/_GridMantenimientos")
 
 <script type="text/javascript">
-	var linkObj;
-	$(function () {
-		$(".ShowButton, button").button();
 
-		$('#updateDialog').dialog({
-			autoOpen: false,
-			width: 600,
-			resizable: false,
-			modal: true,
-			show: "drop",
-			hide: "drop",
-			buttons: {
-				"Guardar": function () {
-					$("#update-message").html(''); //make sure there is nothing on the message before we continue                         
-					$("#createForm").submit();
-					
-				},
-				"Cancelar": function () {
-					$(this).dialog("close");
-				}
-			}
-		});
-
-		$(".ShowButton").click(function () {
-			//change the title of the dialgo
-			linkObj = $(this);
-			var dialogDiv = $('#updateDialog');
-			var viewUrl = linkObj.attr('href');
-			$.get(viewUrl, function (data) {
-				dialogDiv.html(data);
-				//validation
-				var $form = $("#createForm");
-				// Unbind existing validation
-				$form.unbind();
-				$form.data("validator", null);
-				// Check document for changes
-				$.validator.unobtrusive.parse(document);
-				// Re add validation with changes
-				$form.validate($form.data("unobtrusiveValidation").options);
-				//open dialog
-				dialogDiv.dialog('open');
-			});
-			return false;
-		});
-
-	});
+    $("#editDialog").CreateDialogWindow("editButton", "editDialog", "editMessage", "editForm");
+  
+    $("#createDialog").CreateDialogWindow("createButton", "createDialog", "createMesage", "createForm");
 
 
 	function updateSuccess() {
-		if ($("#update-message").html() == "True") {
+	    if ($("#createMesage").html() == "True") {
 			//we update the table's info
-			var parent = linkObj.closest("tr");
-			parent.find(".carName").html($("#Name").val());
-			parent.find(".carDescription").html($("#Description").val());
+		
 			//now we can close the dialog
-			$('#updateDialog').dialog('close');
-			//twitter type notification
-//			$('#commonMessage').html("Update Complete");
-//			$('#commonMessage').delay(400).slideDown(400).delay(3000).slideUp(400);
+	        $('#createDialog').dialog('close');
+
+		    window.location.reload();
+			
 		}
 		else {
-			$("#update-message").show();
+		    $("#createMesage").show();
 		}
 	}
 
+
+	function editSuccess() {
+	    if ($("#editMessage").html() == "True") {
+	        //we update the table's info
+
+	        //now we can close the dialog
+	        $('#editDialog').dialog('close');
+
+	        window.location.reload();
+
+	    }
+	    else {
+	        $("#editMessage").show();
+	    }
+	}
 	
 </script>

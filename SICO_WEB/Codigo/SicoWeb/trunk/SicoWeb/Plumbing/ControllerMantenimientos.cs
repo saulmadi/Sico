@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using SicoWeb.Aplicacion.ServiceLayer;
 using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades;
 using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios;
-
+using System.Linq;
 namespace SicoWeb.Plumbing
 {
     public abstract class ControllerMantenimientos<T> : ControllerBase<T> where T:IEntidadServicioMantenimiento 
@@ -80,8 +80,9 @@ namespace SicoWeb.Plumbing
                 if (ModelState.IsValid)
                 {
                     _servicio.AgregarMantenimiento(entidadServicioMantenimiento);
-                    ActionResult view;
-                    if (ActionResult(entidadServicioMantenimiento, out view)) return view;
+
+                    if(HasErrors(_servicio))
+                        return Content(Message);
 
                     Message = "Creado Correctamente";
                     return Content(Boolean.TrueString );
@@ -91,23 +92,21 @@ namespace SicoWeb.Plumbing
             catch (SiCoWebAplicattionException ex)
             {
                 ErrorMessage = ex.Message;
-                return PartialView();
+                return Content(ex.Message);
             }
         }
 
-        private bool ActionResult(T entidadServicioMantenimiento, out ActionResult view)
+        private bool HasErrors(IServicio servicioMantenimiento)
         {
-            if (_servicio.HasError())
+            if (servicioMantenimiento.HasError())
             {
-                _servicio.Errores.ForEach(c => ErrorMessage  =  c.ToString());
-                {
-                    view = PartialView(entidadServicioMantenimiento);
-                    return true;
-                }
+                var first = _servicio.Errores.FirstOrDefault();
+                Message = first != null ? first.ToString() : Boolean.FalseString;
+                return true;
             }
-            view = null;
             return false;
         }
+
 
         //
         // GET: /TiposFacturas/Edit/5
@@ -115,7 +114,7 @@ namespace SicoWeb.Plumbing
         public ActionResult Edit(int id)
         {
             var tipo = _servicio.GetById(id);
-            return View(tipo);
+            return PartialView(tipo);
         }
 
         //
@@ -129,18 +128,18 @@ namespace SicoWeb.Plumbing
                 if (ModelState.IsValid)
                 {
                     _servicio.AgregarMantenimiento(entidadServicioMantenimiento);
-                    ActionResult view;
-                    if (ActionResult(entidadServicioMantenimiento, out view)) return view;
-
+                    if (HasErrors(_servicio))
+                        return Content(Message);
                     Message = "Guardado Correctamente";
-                    return RedirectToAction("Index");
+
+                    return Content(Boolean.TrueString);
                 }
-                return View(entidadServicioMantenimiento);
+                return Content("Revise el formulario");
             }
             catch (SiCoWebAplicattionException ex)
             {
                 ErrorMessage = ex.Message;
-                return View(entidadServicioMantenimiento);
+                return Content( ex.Message);
             }
         }
 

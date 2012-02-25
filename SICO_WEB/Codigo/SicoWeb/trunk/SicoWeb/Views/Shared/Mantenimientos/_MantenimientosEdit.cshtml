@@ -1,14 +1,24 @@
-﻿@using SicoWeb.Plumbing
-@model SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades.IEntidadServicioMantenimiento
+﻿@using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Entidades
+@using SicoWeb.Plumbing
+@using MvcContrib.FluentHtml
+@inherits SicoWeb.Plumbing.ViewPage<EntidadServicioMantenimiento>
 
-<script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
-<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="../../../Scripts/jquery.validate.js" type="text/javascript"></script>
 
-<h2>Editar</h2>
-@using (Html.BeginForm()) {
+
+<script src="../../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+
+<script src="../../../Scripts/jquery.validate.unobtrusive.js" type="text/javascript"></script>
+
+
+@using (AjaxExtensions.BeginForm(Ajax, "Edit", ViewBag.ControllerName, null,
+    new AjaxOptions { UpdateTargetId = "editMessage", InsertionMode = InsertionMode.Replace, HttpMethod = "POST", OnSuccess = "editSuccess" },
+    new { @id = "editForm" }))
+{
+    <div id="editMessage" class="error  invisible"></div>
     @Html.ValidationSummary(true)
     <fieldset>
+     
         <legend>@ViewBag.Title</legend>
             @Html.Hidden("Id",Model.Id) 
             @Html.Hidden( "Usu",Model.Usu)
@@ -16,41 +26,32 @@
             @{ 
                 if( (bool) ViewData[ViewDataVariables.MantenimientoEditable] )
                 {
-                     <div class="editor-label">
-                         @Html.LabelFor(model => model.Descripcion)
-                       </div>
                 
-                     <div class="editor-field">
-                      @Html.EditorFor(model => model.Descripcion)
-                      @Html.ValidationMessageFor(model => model.Descripcion)
-                    </div>
+                   <div>
+                      @Html.LabelFor(model => model.Descripcion)
+                      @Html.EditorFor(x => x.Descripcion)
+                      @Html.ValidationMessageFor(x => x.Descripcion)
+                   </div>
                     
                 }
                 else
                 {
-                     <div class="display-label">Descripción</div>
-                     <div class="display-field">
-                     <h3 >
+                    
+                     @Html.Display("Descripción")
+                    
+
                         @Html.DisplayFor(model => model.Descripcion)
                         @Html.Hidden("Descripcion",Model.Descripcion)
-                        </h3>
-                      </div>
+                     
                 }
             }
             
-     
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Habilitado)
-        </div>
-        <div class="editor-field">
+            <div>
+         @Html.LabelFor(model => model.Habilitado)
             @Html.EditorFor(model => model.Habilitado)
-            @Html.ValidationMessageFor(model => model.Habilitado)
+            
         </div>
-
-        <p>
-            <input type="submit" value="Guardar" />
-        </p>
+        
     </fieldset>
 }
-@Html.Partial( "_BackToIndex")
+
