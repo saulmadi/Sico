@@ -2,6 +2,8 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SicoWeb.Dominio.Core.Querys;
+using SicoWeb.Dominio.Core.Querys.Mantenimientos;
+
 namespace YoCInstallers.Core
 {
     public class QueryInstaller : IWindsorInstaller
@@ -12,6 +14,7 @@ namespace YoCInstallers.Core
                 Classes.FromAssemblyContaining<IQuery>().Pick().If(
                     t => t.Namespace != null && t.Namespace.Contains("SicoWeb.Dominio.Core.Querys")).WithServiceDefaultInterfaces().
                     LifestyleTransient());
+
         }
     }
 }

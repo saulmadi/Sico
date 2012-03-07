@@ -56,6 +56,10 @@
       <Project>{EDD02158-D2D4-4D32-B459-7C2A6D3BDBC0}</Project>
       <Name>SicoWeb.Aplicacion.ServiceLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SicoWeb.Dominio.Core\SicoWeb.Dominio.Core.csproj">
+      <Project>{A2A90F7B-6F83-4819-B347-155E756D10BA}</Project>
+      <Name>SicoWeb.Dominio.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

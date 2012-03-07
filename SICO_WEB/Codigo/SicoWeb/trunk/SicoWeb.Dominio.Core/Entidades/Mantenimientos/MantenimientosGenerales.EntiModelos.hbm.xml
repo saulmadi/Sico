@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping default-cascade="save-update" namespace="SicoWeb.Dominio.Core.Entidades.Mantenimientos" xmlns="urn:nhibernate-mapping-2.2">
+<hibernate-mapping namespace="SicoWeb.Dominio.Core.Entidades.Mantenimientos" xmlns="urn:nhibernate-mapping-2.2">
   <subclass name="EntiModelos" extends="Mantenimientos">
+    <property name="Imagen" type="String">
+      <column name="imagen" />
+    </property>
     <many-to-one name="EntiMarcas" class="EntiMarcas">
       <column name="IdMantenimientos" />
     </many-to-one>

@@ -6,6 +6,7 @@ using Castle.Windsor;
 using SicoWeb.Dominio.Core.Entidades;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using SicoWeb.Dominio.Core.Repositorio;
+using SicoWeb.Dominio.Core.Repositorio.Mantenimientos;
 using SicoWeb.Infraestructura.DataLayer.Repositorio;
 using YocInstallers.Helper;
 
@@ -32,6 +33,9 @@ namespace YoCInstallers.Core
 
             container.Register(
                 Component.For(typeof(IRepository<>),typeof (RepositorioEntiGenerico<>)).LifestyleTransient());
+            container.Register(Component.For(typeof (IRepositorioMantimientos<>),
+                                             (typeof (RepositorioEntiGenericoManenimientos<>))).LifestyleTransient());
+
             container.Register(
                 Component.For<IEntiMantenimientosFactory>().
                     AsFactory().

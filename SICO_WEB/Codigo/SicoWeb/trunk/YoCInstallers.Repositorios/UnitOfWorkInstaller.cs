@@ -15,8 +15,8 @@ namespace YoCInstallers.Core
             container.Register(Component.For<IGenericTransactionFactory>().AsFactory())
                 .Register(
                     Component.For<IGenericTransaction>().ImplementedBy<GenericTransaction>().Named("GenericTransaction")
-                        .LifestyleTransient())
-                .Register(Component.For<IUnitOfWork>().ImplementedBy<UnitOfWork>().LifestyleTransient());
+                        .LifestylePerWebRequest())
+                .Register(Component.For<IUnitOfWork>().ImplementedBy<UnitOfWork>().LifestylePerWebRequest());
         }
     }
 }

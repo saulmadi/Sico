@@ -47,25 +47,25 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
 
         public IList<TEntidadServicio> GetHabilitados()
         {
-            return GetList(RunQuery(_queryHabilitado));
+            return GetListaWithTransaction(() => GetList(RunQuery(_queryHabilitado)));
         }
 
         public IList<TEntidadServicio> GetDesHabilitados()
         {
-            return GetList(RunQuery(_queryDeshabilitado));
+            return GetListaWithTransaction(() => GetList(RunQuery(_queryDeshabilitado)));
         }
 
         public IList<TEntidadServicio> GetTodos()
         {
-            return GetList(RunQuery(null));
+            return GetListaWithTransaction( ()=> GetList(RunQuery(null)));
         }
 
         public TEntidadServicio GetById(int id)
         {
-            return _repositorioMantimientos.Get(id).ToEntidadServicioMantenimiento<TEntidadServicio>();
+            return id == 0 ? Activator.CreateInstance<TEntidadServicio>() : GetEntidadWithTransaction(() => _repositorioMantimientos.Get(id).ToEntidadServicioMantenimiento<TEntidadServicio>());
         }
-
-        public void AgregarMantenimiento(TEntidadServicio mantenimiento)
+        
+        public virtual  void AgregarMantenimiento(TEntidadServicio mantenimiento)
         {
             var entiMatenimiento = Convert(mantenimiento);
 
@@ -91,7 +91,7 @@ namespace SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios
             return collection.ToListOfEntidadMantenimiento<TEntidadServicio, TEntidadMantenimiento>();
         }
 
-        private TEntidadMantenimiento Convert(TEntidadServicio entidadServicio)
+        protected virtual TEntidadMantenimiento Convert(TEntidadServicio entidadServicio)
         {
             return entidadServicio.ToEntiMantenimientos<TEntidadMantenimiento>();
         }

@@ -1,10 +1,8 @@
 ﻿using System.Linq;
-using Castle.Core;
-using Castle.Core.Internal;
+using Castle.Facilities.TypedFactory;
 using Castle.Windsor;
 using NHibernate;
 using NUnit.Framework;
-using SicoWeb.Dominio.Core.Entidades;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
 using YoCInstallers.Core;
 using YoCInstallers.Test;
@@ -19,7 +17,7 @@ namespace YocInstallers.Repositorios.Test
         [SetUp]
         public void Init()
         {
-            _containerWithControllers = new WindsorContainer().AddFacility<PersistenceFacility>();
+            _containerWithControllers = new WindsorContainer().AddFacility<TypedFactoryFacility>().AddFacility<PersistenceFacility>();
 
         }
 
@@ -27,11 +25,21 @@ namespace YocInstallers.Repositorios.Test
         public void Resolve_Componet()
         {
             var valor = _containerWithControllers.Resolve<ISession>();
-            
-            var lista =valor.QueryOver<Mantenimientos>().Where(d => d.Id > 0).List<IEntiBase>();
 
+            
+            //var lista =valor.QueryOver<Mantenimientos>().Where(d => d.Id > 0).List<IEntiBase>();
+
+            using (var tra =valor.BeginTransaction())
+            {
+                var muni = new EntiMunicipio {Descripcion = "ddssdds", Habilitado = true, Padre = {Id = 1}};
+                valor.SaveOrUpdate(muni);
+                tra.Commit();
+            }
+            
+
+            
             Assert.IsNotNull(valor);
-            CollectionAssert.IsNotEmpty(lista);
+            //CollectionAssert.IsNotEmpty(lista);
         }
        
     }

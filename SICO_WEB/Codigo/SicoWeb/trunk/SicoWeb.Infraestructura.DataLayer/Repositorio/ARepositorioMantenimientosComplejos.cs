@@ -1,13 +1,16 @@
 ﻿using NHibernate;
 using SicoWeb.Dominio.Core.Repositorio.Mantenimientos;
 using SicoWeb.Dominio.Core.Entidades.Mantenimientos;
+using SicoWeb.Dominio.Core.Transaction;
+
 namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 {
     public abstract class ARepositorioMantenimientosComplejos<TPadre,THijo>:ARepository<TPadre>,IRepositorioMantenimientosComplejos<TPadre,THijo> 
         where TPadre: class, IEntiMantenimientosComplejosPadres 
         where THijo:IEntiMantenimientosClomplejosHijos  
     {
-        protected ARepositorioMantenimientosComplejos(ISession session, ISessionFactory factory) : base(session, factory)
+        protected ARepositorioMantenimientosComplejos(ISessionMannager sessionMannager)
+            : base(sessionMannager)
         {
         }
         

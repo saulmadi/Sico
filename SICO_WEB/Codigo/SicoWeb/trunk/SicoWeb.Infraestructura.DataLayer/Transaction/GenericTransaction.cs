@@ -14,7 +14,8 @@ namespace SicoWeb.Infraestructura.DataLayer.Transaction
 
         public void Commit()
         {
-            _transaction.Commit();
+            if (_transaction.IsActive)
+                _transaction.Commit();
         }
 
         public void Rollback()

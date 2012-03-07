@@ -21,10 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CastleWindsor", "CastleWind
 	ProjectSection(SolutionItems) = preProject
 		Terceros\CastleWindsor\Castle.Core.dll = Terceros\CastleWindsor\Castle.Core.dll
 		Terceros\CastleWindsor\Castle.Core.pdb = Terceros\CastleWindsor\Castle.Core.pdb
-		Terceros\CastleWindsor\Castle.Core.xml = Terceros\CastleWindsor\Castle.Core.xml
 		Terceros\CastleWindsor\Castle.Windsor.dll = Terceros\CastleWindsor\Castle.Windsor.dll
 		Terceros\CastleWindsor\Castle.Windsor.pdb = Terceros\CastleWindsor\Castle.Windsor.pdb
-		Terceros\CastleWindsor\Castle.Windsor.xml = Terceros\CastleWindsor\Castle.Windsor.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nhibernate", "Nhibernate", "{98332236-D9FE-41D7-8E34-DD2E3B56239E}"
@@ -33,13 +31,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nhibernate", "Nhibernate", 
 		Terceros\Nhibernate\FluentNHibernate.pdb = Terceros\Nhibernate\FluentNHibernate.pdb
 		Terceros\Nhibernate\Iesi.Collections.dll = Terceros\Nhibernate\Iesi.Collections.dll
 		Terceros\Nhibernate\Iesi.Collections.pdb = Terceros\Nhibernate\Iesi.Collections.pdb
-		Terceros\Nhibernate\Iesi.Collections.xml = Terceros\Nhibernate\Iesi.Collections.xml
 		Terceros\Nhibernate\NHibernate.ByteCode.Castle.dll = Terceros\Nhibernate\NHibernate.ByteCode.Castle.dll
 		Terceros\Nhibernate\NHibernate.ByteCode.Castle.pdb = Terceros\Nhibernate\NHibernate.ByteCode.Castle.pdb
-		Terceros\Nhibernate\NHibernate.ByteCode.Castle.xml = Terceros\Nhibernate\NHibernate.ByteCode.Castle.xml
 		Terceros\Nhibernate\NHibernate.dll = Terceros\Nhibernate\NHibernate.dll
 		Terceros\Nhibernate\NHibernate.pdb = Terceros\Nhibernate\NHibernate.pdb
-		Terceros\Nhibernate\NHibernate.xml = Terceros\Nhibernate\NHibernate.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SicoWeb.Infraestructura.DataLayer", "SicoWeb.Infraestructura.DataLayer\SicoWeb.Infraestructura.DataLayer.csproj", "{FFE79F55-4951-435F-8AF1-842E06AE1883}"
@@ -72,11 +67,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MvcContrib", "MvcContrib", 
 	ProjectSection(SolutionItems) = preProject
 		Terceros\MVCContrib\MvcContrib.dll = Terceros\MVCContrib\MvcContrib.dll
 		Terceros\MVCContrib\MvcContrib.FluentHtml.dll = Terceros\MVCContrib\MvcContrib.FluentHtml.dll
-		Terceros\MVCContrib\MvcContrib.FluentHtml.xml = Terceros\MVCContrib\MvcContrib.FluentHtml.xml
 		Terceros\MVCContrib\MvcContrib.TestHelper.dll = Terceros\MVCContrib\MvcContrib.TestHelper.dll
-		Terceros\MVCContrib\MvcContrib.TestHelper.xml = Terceros\MVCContrib\MvcContrib.TestHelper.xml
 		Terceros\MVCContrib\MvcContrib.WatiN.dll = Terceros\MVCContrib\MvcContrib.WatiN.dll
-		Terceros\MVCContrib\MvcContrib.XML = Terceros\MVCContrib\MvcContrib.XML
 		Terceros\MVCContrib\T4MVC\readme.txt = Terceros\MVCContrib\T4MVC\readme.txt
 	EndProjectSection
 EndProject
@@ -85,7 +77,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RinoMocks", "RinoMocks", "{092668D9-9D53-4117-9979-F726E0096594}"
 	ProjectSection(SolutionItems) = preProject
 		Terceros\RinoMocks\Rhino.Mocks.dll = Terceros\RinoMocks\Rhino.Mocks.dll
-		Terceros\RinoMocks\Rhino.Mocks.xml = Terceros\RinoMocks\Rhino.Mocks.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microsoft", "Microsoft", "{22D1E4A1-CF43-4415-A213-6D69E7C0C5C9}"
@@ -98,6 +89,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F38039
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoCInstaller.Servicios.Test", "YoCInstaller.Servicios.Test\YoCInstaller.Servicios.Test.csproj", "{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -161,6 +154,10 @@ Global
 		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92620EC9-75E3-4E24-BF80-D6DF24B8C5E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -187,5 +184,6 @@ Global
 		{F9BED805-7042-4204-9034-92315950AFF6} = {2676F234-9553-41F7-973F-1E618B4CA990}
 		{56E6F400-2613-4C63-8B57-CDFFAD30A95E} = {1C263BA8-D6D5-49C2-8C20-4358502C4C97}
 		{438BB9BF-EEA2-46BC-8DFD-569E423A8C6A} = {1C263BA8-D6D5-49C2-8C20-4358502C4C97}
+		{9F7DE8CF-B0CB-41CB-A5D0-BD3CB89C664F} = {1C263BA8-D6D5-49C2-8C20-4358502C4C97}
 	EndGlobalSection
 EndGlobal
