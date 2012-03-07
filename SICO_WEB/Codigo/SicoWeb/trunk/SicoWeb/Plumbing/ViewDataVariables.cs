@@ -6,5 +6,6 @@
         public const string SubMenuItems = "SubMenuItmes";
         public const string MantenimientoEliminable = "MantenimientoEliminable";
         public const string MantenimientoAgregable = "MantenimientoAgregable";
+        public const string MantenimientoHIjoListaPadre = "MantenimientoHIjoListaPadre";
     }
 }

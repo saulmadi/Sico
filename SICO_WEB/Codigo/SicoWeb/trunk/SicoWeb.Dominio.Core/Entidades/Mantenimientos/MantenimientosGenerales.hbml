@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<hibernate-mapping default-cascade="save-update" namespace="SicoWeb.Dominio.Core.Entidades.Mantenimientos" p1:Guid="dc53cdc9-fc6e-4222-a610-82f0341f7351" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0" xmlns="urn:nhibernate-mapping-2.2">
+<hibernate-mapping namespace="SicoWeb.Dominio.Core.Entidades.Mantenimientos" p1:Guid="dc53cdc9-fc6e-4222-a610-82f0341f7351" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0" xmlns="urn:nhibernate-mapping-2.2">
   <class name="Mantenimientos" table="" discriminator-value="AMantenimientos" p1:Guid="3b700ae6-7d7d-4b58-8488-eca08985517d">
     <id name="Id" type="Int32" p1:Guid="ddab5a81-0fa7-49dc-9f3f-5b4fc271dc40">
       <column name="" />
@@ -20,7 +20,7 @@
       <column name="" />
     </property>
     <subclass name="EntiDepartamentos" p1:Guid="dc5e0d88-6761-40ea-b429-5a4948fd3bf1" p1:EntityBase="">
-      <bag name="EntiMunicipios" inverse="true" generic="true" p1:AssociationGuid="9161634a-5e8d-453c-89ab-28fa973e300a" p1:Guid="4ffd1022-88ed-4eaf-9067-21f2ae332a80">
+      <bag name="EntiMunicipios" inverse="true" generic="true" p1:AssociationGuid="79c712c6-b028-4cbb-b961-87d47fb555e8" p1:Guid="4ffd1022-88ed-4eaf-9067-21f2ae332a80">
         <key>
           <column name="IdMantenimientos" />
         </key>
@@ -28,7 +28,7 @@
       </bag>
     </subclass>
     <subclass name="EntiMarcas" p1:Guid="d110f800-6c55-40b3-b441-78201b5548a0" p1:EntityBase="">
-      <bag name="EntiModelos" inverse="true" generic="true" p1:AssociationGuid="0b00a7c8-152c-44f1-96db-70b73098547f" p1:Guid="c7bc75f2-2fd7-4e00-86d3-c6e30811f4bb">
+      <bag name="EntiModelos" inverse="true" generic="true" p1:AssociationGuid="89785ea7-ed55-4b47-98c2-df90ee68a59a" p1:Guid="c7bc75f2-2fd7-4e00-86d3-c6e30811f4bb">
         <key>
           <column name="IdMantenimientos" />
         </key>
@@ -39,12 +39,15 @@
     <subclass name="EntiTiposfacturas" p1:Guid="5e2c2432-9c1d-4e68-9fc8-290cf7bcbc01" p1:EntityBase="IEntiMantenimientos" />
     <subclass name="EntiTiposmotocicletas" p1:Guid="6f813467-a2df-4d97-a4f9-acf3d420387c" p1:EntityBase="IEntiMantenimientos" />
     <subclass name="EntiMunicipio" p1:Guid="1f349470-85ab-4a16-84c4-038e25b187ed">
-      <many-to-one name="EntiDepartamentos" class="EntiDepartamentos" p1:AssociationGuid="9161634a-5e8d-453c-89ab-28fa973e300a" p1:Guid="78e8db6f-9631-4e0c-9e7a-e2c2bb4e22b3">
+      <many-to-one name="EntiDepartamentos" class="EntiDepartamentos" p1:AssociationGuid="79c712c6-b028-4cbb-b961-87d47fb555e8" p1:Guid="78e8db6f-9631-4e0c-9e7a-e2c2bb4e22b3">
         <column name="IdMantenimientos" />
       </many-to-one>
     </subclass>
     <subclass name="EntiModelos" p1:Guid="567afeab-44fc-4649-a1a9-eb707b130d4c">
-      <many-to-one name="EntiMarcas" class="EntiMarcas" p1:AssociationGuid="0b00a7c8-152c-44f1-96db-70b73098547f" p1:Guid="a8e12421-8a2f-433c-b6f3-4e195f82ee2d">
+      <property name="Imagen" type="String" p1:Guid="2a15ba98-ad08-4b06-ac16-a86cef52a9e4">
+        <column name="imagen" />
+      </property>
+      <many-to-one name="EntiMarcas" class="EntiMarcas" p1:AssociationGuid="89785ea7-ed55-4b47-98c2-df90ee68a59a" p1:Guid="a8e12421-8a2f-433c-b6f3-4e195f82ee2d">
         <column name="IdMantenimientos" />
       </many-to-one>
     </subclass>

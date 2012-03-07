@@ -566,22 +566,42 @@
                   <OID>31</OID>
                   <Parent>30</Parent>
                 </CustomProperties>
-                <Children />
+                <Children>
+                  <Model xsi:type="PropertyVwModel">
+                    <CustomProperties>
+                      <OID>32</OID>
+                      <Parent>31</Parent>
+                    </CustomProperties>
+                    <Children />
+                    <Size>
+                      <Width>136 px</Width>
+                      <Height>18 px</Height>
+                    </Size>
+                    <Oid xsi:type="SchemaModelOID">
+                      <Path>2a15ba98-ad08-4b06-ac16-a86cef52a9e4</Path>
+                      <TypeName>EntityDeveloper.NHibernate.HibernateProperty</TypeName>
+                    </Oid>
+                  </Model>
+                </Children>
                 <Size>
                   <Width>136 px</Width>
-                  <Height>37 px</Height>
+                  <Height>19 px</Height>
                 </Size>
+                <MaxSize>
+                  <Width>0 px</Width>
+                  <Height>19 px</Height>
+                </MaxSize>
               </Model>
               <Model xsi:type="RelationPropertiesVwModel">
                 <CustomProperties>
-                  <OID>32</OID>
+                  <OID>33</OID>
                   <Parent>30</Parent>
                 </CustomProperties>
                 <Children>
                   <Model xsi:type="RelationPropertyVwModel">
                     <CustomProperties>
-                      <OID>33</OID>
-                      <Parent>32</Parent>
+                      <OID>34</OID>
+                      <Parent>33</Parent>
                     </CustomProperties>
                     <Children />
                     <Size>
@@ -594,6 +614,10 @@
                     </Oid>
                   </Model>
                 </Children>
+                <Location>
+                  <X>0 px</X>
+                  <Y>19 px</Y>
+                </Location>
                 <Size>
                   <Width>136 px</Width>
                   <Height>37 px</Height>
@@ -611,15 +635,15 @@
             </Location>
             <Size>
               <Width>142 px</Width>
-              <Height>87 px</Height>
+              <Height>106 px</Height>
             </Size>
             <MinSize>
               <Width>120 px</Width>
-              <Height>87 px</Height>
+              <Height>106 px</Height>
             </MinSize>
             <MaxSize>
               <Width>300 px</Width>
-              <Height>87 px</Height>
+              <Height>106 px</Height>
             </MaxSize>
             <Ports />
             <Oid xsi:type="SchemaModelOID">
@@ -630,11 +654,11 @@
           </Model>
           <Model xsi:type="AssociationVwModel">
             <CustomProperties>
-              <OID>34</OID>
+              <OID>35</OID>
               <OutModel>1</OutModel>
               <InModel>26</InModel>
-              <OutPort>35</OutPort>
-              <InPort>36</InPort>
+              <OutPort>36</OutPort>
+              <InPort>37</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
@@ -646,7 +670,7 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
                 <CustomProperties>
-                  <OID>35</OID>
+                  <OID>36</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -658,126 +682,106 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
                 <CustomProperties>
-                  <OID>36</OID>
+                  <OID>37</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>9161634a-5e8d-453c-89ab-28fa973e300a</Path>
+              <Path>79c712c6-b028-4cbb-b961-87d47fb555e8</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateAssociation</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="AssociationVwModel">
             <CustomProperties>
-              <OID>37</OID>
+              <OID>38</OID>
               <OutModel>5</OutModel>
               <InModel>30</InModel>
-              <OutPort>38</OutPort>
-              <InPort>39</InPort>
+              <OutPort>39</OutPort>
+              <InPort>40</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>83 px</X>
+                  <X>87 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
-                <CustomProperties>
-                  <OID>38</OID>
-                  <PortType>FloatAnchor</PortType>
-                </CustomProperties>
-              </Port>
-              <Port>
-                <Location>
-                  <X>63.4266666666667 px</X>
-                  <Y>0 px</Y>
-                </Location>
-                <Anchors>Left Right</Anchors>
-                <Align>Top</Align>
                 <CustomProperties>
                   <OID>39</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
-            </PortAnchors>
-            <BendPoints>
-              <PointD>
-                <X>747 px</X>
-                <Y>363 px</Y>
-              </PointD>
-              <PointD>
-                <X>751.426666666667 px</X>
-                <Y>363 px</Y>
-              </PointD>
-            </BendPoints>
-            <IsManuallyRouted>false</IsManuallyRouted>
-            <Oid xsi:type="SchemaModelOID">
-              <Path>0b00a7c8-152c-44f1-96db-70b73098547f</Path>
-              <TypeName>EntityDeveloper.NHibernate.HibernateAssociation</TypeName>
-            </Oid>
-          </Model>
-          <Model xsi:type="InheritanceVwModel">
-            <CustomProperties>
-              <OID>40</OID>
-              <OutModel>1</OutModel>
-              <InModel>18</InModel>
-              <OutPort>41</OutPort>
-              <InPort>42</InPort>
-              <Parent>0</Parent>
-            </CustomProperties>
-            <PortAnchors>
               <Port>
                 <Location>
-                  <X>106 px</X>
+                  <X>63 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
                 <CustomProperties>
-                  <OID>41</OID>
+                  <OID>40</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
+            </PortAnchors>
+            <IsManuallyRouted>false</IsManuallyRouted>
+            <Oid xsi:type="SchemaModelOID">
+              <Path>89785ea7-ed55-4b47-98c2-df90ee68a59a</Path>
+              <TypeName>EntityDeveloper.NHibernate.HibernateAssociation</TypeName>
+            </Oid>
+          </Model>
+          <Model xsi:type="InheritanceVwModel">
+            <CustomProperties>
+              <OID>41</OID>
+              <OutModel>1</OutModel>
+              <InModel>18</InModel>
+              <OutPort>42</OutPort>
+              <InPort>43</InPort>
+              <Parent>0</Parent>
+            </CustomProperties>
+            <PortAnchors>
               <Port>
                 <Location>
-                  <X>44 px</X>
+                  <X>110 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
-                <Align>Bottom</Align>
+                <Align>Top</Align>
                 <CustomProperties>
                   <OID>42</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
+              <Port>
+                <Location>
+                  <X>40 px</X>
+                  <Y>0 px</Y>
+                </Location>
+                <Anchors>Left Right</Anchors>
+                <Align>Bottom</Align>
+                <CustomProperties>
+                  <OID>43</OID>
+                  <PortType>FloatAnchor</PortType>
+                </CustomProperties>
+              </Port>
             </PortAnchors>
-            <BendPoints>
-              <PointD>
-                <X>280 px</X>
-                <Y>385 px</Y>
-              </PointD>
-              <PointD>
-                <X>288 px</X>
-                <Y>385 px</Y>
-              </PointD>
-            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>27dfec6e-87ab-4583-8d74-2d301e41da3b</Path>
+              <Path>ee435bdc-e503-46de-9c2b-c4e03d498c5a</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>43</OID>
+              <OID>44</OID>
               <OutModel>5</OutModel>
               <InModel>18</InModel>
-              <OutPort>44</OutPort>
-              <InPort>45</InPort>
+              <OutPort>45</OutPort>
+              <InPort>46</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
@@ -789,7 +793,7 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
                 <CustomProperties>
-                  <OID>44</OID>
+                  <OID>45</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -801,24 +805,24 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
                 <CustomProperties>
-                  <OID>45</OID>
+                  <OID>46</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>c0ca242d-fb9c-48c7-9883-9c9b9b18c473</Path>
+              <Path>be712a42-dcbd-4e6d-ba64-d65c965623d2</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>46</OID>
+              <OID>47</OID>
               <OutModel>9</OutModel>
               <InModel>18</InModel>
-              <OutPort>47</OutPort>
-              <InPort>48</InPort>
+              <OutPort>48</OutPort>
+              <InPort>49</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
@@ -830,7 +834,7 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
                 <CustomProperties>
-                  <OID>47</OID>
+                  <OID>48</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -842,24 +846,24 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
                 <CustomProperties>
-                  <OID>48</OID>
+                  <OID>49</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>35c0acc6-042e-46f4-96e5-2d5d5362d8c2</Path>
+              <Path>b69b42e7-f2c0-4161-a5ca-cd0e9082bd9d</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>49</OID>
+              <OID>50</OID>
               <OutModel>12</OutModel>
               <InModel>18</InModel>
-              <OutPort>50</OutPort>
-              <InPort>51</InPort>
+              <OutPort>51</OutPort>
+              <InPort>52</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
@@ -871,7 +875,7 @@
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
                 <CustomProperties>
-                  <OID>50</OID>
+                  <OID>51</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -883,24 +887,24 @@
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
                 <CustomProperties>
-                  <OID>51</OID>
+                  <OID>52</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>4c35fafa-a725-4376-a910-8a73d0b37b6e</Path>
+              <Path>61686999-d8c5-416e-b987-2ab00bd09d3c</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>52</OID>
+              <OID>53</OID>
               <OutModel>15</OutModel>
               <InModel>18</InModel>
-              <OutPort>53</OutPort>
-              <InPort>54</InPort>
+              <OutPort>54</OutPort>
+              <InPort>55</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
@@ -912,7 +916,7 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
                 <CustomProperties>
-                  <OID>53</OID>
+                  <OID>54</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -924,87 +928,77 @@
                 <Anchors>Top Bottom</Anchors>
                 <Align>Right</Align>
                 <CustomProperties>
-                  <OID>54</OID>
+                  <OID>55</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>d47bab1c-2982-4fb1-b0fa-62b8adf727cd</Path>
+              <Path>ecf20741-a27d-4ecb-9a4a-0ca49d02fe48</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>55</OID>
+              <OID>56</OID>
               <OutModel>26</OutModel>
               <InModel>18</InModel>
-              <OutPort>56</OutPort>
-              <InPort>57</InPort>
+              <OutPort>57</OutPort>
+              <InPort>58</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
               <Port>
                 <Location>
-                  <X>8 px</X>
+                  <X>20 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Top</Align>
                 <CustomProperties>
-                  <OID>56</OID>
+                  <OID>57</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
               <Port>
                 <Location>
-                  <X>164 px</X>
+                  <X>168 px</X>
                   <Y>0 px</Y>
                 </Location>
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
                 <CustomProperties>
-                  <OID>57</OID>
+                  <OID>58</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
-            <BendPoints>
-              <PointD>
-                <X>400 px</X>
-                <Y>420 px</Y>
-              </PointD>
-              <PointD>
-                <X>408 px</X>
-                <Y>420 px</Y>
-              </PointD>
-            </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>793e9e87-5863-4d77-a7a5-97303bd52157</Path>
+              <Path>cc71caa4-7a85-402b-a7b1-0650e5bcf1f1</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
           <Model xsi:type="InheritanceVwModel">
             <CustomProperties>
-              <OID>58</OID>
+              <OID>59</OID>
               <OutModel>30</OutModel>
               <InModel>18</InModel>
-              <OutPort>59</OutPort>
-              <InPort>60</InPort>
+              <OutPort>60</OutPort>
+              <InPort>61</InPort>
               <Parent>0</Parent>
             </CustomProperties>
             <PortAnchors>
               <Port>
                 <Location>
                   <X>0 px</X>
-                  <Y>43.5 px</Y>
+                  <Y>53 px</Y>
                 </Location>
                 <Anchors>Top Bottom</Anchors>
                 <Align>Left</Align>
                 <CustomProperties>
-                  <OID>59</OID>
+                  <OID>60</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
@@ -1016,28 +1010,28 @@
                 <Anchors>Left Right</Anchors>
                 <Align>Bottom</Align>
                 <CustomProperties>
-                  <OID>60</OID>
+                  <OID>61</OID>
                   <PortType>FloatAnchor</PortType>
                 </CustomProperties>
               </Port>
             </PortAnchors>
             <BendPoints>
               <PointD>
-                <X>660 px</X>
-                <Y>443.5 px</Y>
+                <X>668 px</X>
+                <Y>453 px</Y>
               </PointD>
               <PointD>
-                <X>660 px</X>
-                <Y>421 px</Y>
+                <X>668 px</X>
+                <Y>381 px</Y>
               </PointD>
               <PointD>
                 <X>338 px</X>
-                <Y>421 px</Y>
+                <Y>381 px</Y>
               </PointD>
             </BendPoints>
             <IsManuallyRouted>false</IsManuallyRouted>
             <Oid xsi:type="SchemaModelOID">
-              <Path>676cc1ef-fe2e-44ce-998e-96b4426bbd01</Path>
+              <Path>ff925b91-86b2-4ef6-bb36-856a1d8fb55c</Path>
               <TypeName>EntityDeveloper.NHibernate.HibernateInheritance</TypeName>
             </Oid>
           </Model>
@@ -1048,7 +1042,7 @@
           <Scale>0.7</Scale>
           <Location>
             <X>-17.1428574347983 px</X>
-            <Y>194.28571759438 px</Y>
+            <Y>102.85714460879 px</Y>
           </Location>
         </ViewPort>
         <Oid xsi:type="SchemaModelOID">

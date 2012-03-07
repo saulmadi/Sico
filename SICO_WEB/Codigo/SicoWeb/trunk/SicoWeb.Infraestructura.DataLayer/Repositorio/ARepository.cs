@@ -4,36 +4,31 @@ using System.Collections.Generic;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Transform;
-using NHibernateRepository;
 using SicoWeb.Dominio.Core.Entidades;
 using SicoWeb.Dominio.Core.Repositorio;
-
-using NHibernate.Linq;
+using SicoWeb.Dominio.Core.Transaction;
 
 namespace SicoWeb.Infraestructura.DataLayer.Repositorio
 {
     public abstract class  ARepository<T> : IRepository<T> where T: class, IEntiBase
 
     {
-        private readonly ISession _session;
-        private readonly ISessionFactory _factory;
+        private readonly ISessionMannager _sessionMannager;
 
-        protected ARepository(ISession session, ISessionFactory factory   )
+        protected ARepository(ISessionMannager sessionMannager )
         {
-            if (session == null) throw new ArgumentNullException("session");
-            if (factory == null) throw new ArgumentNullException("factory");
-            _session = session;
-            _factory = factory;
+            if (sessionMannager == null) throw new ArgumentNullException("sessionMannager");
+            _sessionMannager = sessionMannager;
         }
 
         protected virtual ISession Session
         {
-            get { return _session; }
+            get { return _sessionMannager.GetSession(); }
         }
 
         protected virtual ISessionFactory SessionFactory
         {
-            get { return _factory; }
+            get { return _sessionMannager.GetSessionFactory(); }
         }
 
         public T Get(object id)

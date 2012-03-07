@@ -63,7 +63,7 @@ namespace SicoWeb.Plumbing
         //
         // GET: /TiposFacturas/Create
         
-        public ActionResult Create()
+        public virtual  ActionResult Create()
         {
 
             return PartialView();
@@ -96,7 +96,7 @@ namespace SicoWeb.Plumbing
             }
         }
 
-        private bool HasErrors(IServicio servicioMantenimiento)
+        protected bool HasErrors(IServicio servicioMantenimiento)
         {
             if (servicioMantenimiento.HasError())
             {

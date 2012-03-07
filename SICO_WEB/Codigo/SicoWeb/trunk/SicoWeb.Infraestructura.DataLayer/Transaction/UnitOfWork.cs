@@ -1,6 +1,4 @@
-using System;
 using System.Data;
-using NHibernate;
 using SicoWeb.Dominio.Core.Transaction;
 
 namespace SicoWeb.Infraestructura.DataLayer.Transaction
@@ -8,12 +6,14 @@ namespace SicoWeb.Infraestructura.DataLayer.Transaction
     public class UnitOfWork : IUnitOfWork 
     {
         private readonly IGenericTransactionFactory _factory;
-        private readonly ISession _session;
+        private readonly ISessionMannager _sessionMannager;
+        
 
-        public UnitOfWork(IGenericTransactionFactory  factory, ISession session)
+        public UnitOfWork(IGenericTransactionFactory  factory, ISessionMannager sessionMannager )
         {
             _factory = factory;
-            _session = session;
+            _sessionMannager = sessionMannager;
+         
         }
 
         public void Dispose()
@@ -24,25 +24,22 @@ namespace SicoWeb.Infraestructura.DataLayer.Transaction
 
         public void Flush()
         {
-            _session.Flush();
+            _sessionMannager.GetSession().Flush();
         }
 
         public bool IsInActiveTransaction
         {
-            get
-            {
-                return _session.Transaction.IsActive;
-            }
+            get { return _sessionMannager.GetSession().Transaction.IsActive; }
         }
         
         public IGenericTransaction BeginTransaction()
         {
-            return _factory.GetGenericTransaction(_session.BeginTransaction());
+            return _factory.GetGenericTransaction(_sessionMannager.GetSession().BeginTransaction());
         }
 
         public IGenericTransaction BeginTransaction(IsolationLevel isolationLevel)
         {
-            return _factory.GetGenericTransaction(_session.BeginTransaction(isolationLevel));
+            return _factory.GetGenericTransaction(_sessionMannager.GetSession().BeginTransaction(isolationLevel));
         }
 
         public void TransactionalFlush()

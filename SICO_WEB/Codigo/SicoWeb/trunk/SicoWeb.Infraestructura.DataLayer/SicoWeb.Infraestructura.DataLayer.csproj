@@ -64,6 +64,8 @@
     <Compile Include="Repositorio\TiposMotocicletas\RepositorioEntiTiposFacturas.cs" />
     <Compile Include="Transaction\GenericTransaction.cs" />
     <Compile Include="Transaction\IGenericTransactionFactory.cs" />
+    <Compile Include="Transaction\ISessionResolver.cs" />
+    <Compile Include="Transaction\SessionMannager.cs" />
     <Compile Include="Transaction\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>

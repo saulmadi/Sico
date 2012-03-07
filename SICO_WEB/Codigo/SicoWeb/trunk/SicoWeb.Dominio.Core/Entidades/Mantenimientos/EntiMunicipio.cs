@@ -4,7 +4,7 @@
     {
         public virtual IEntiMantenimientosComplejosPadres Padre
         {
-            get { return EntiDepartamentos; }
+            get { return EntiDepartamentos ?? (EntiDepartamentos = new EntiDepartamentos()); }
             set { EntiDepartamentos = (EntiDepartamentos) value; }
         }
     }

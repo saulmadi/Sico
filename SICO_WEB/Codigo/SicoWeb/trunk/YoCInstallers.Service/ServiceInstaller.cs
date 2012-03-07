@@ -2,6 +2,8 @@
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using SicoWeb.Aplicacion.ServiceLayer;
+using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios.Modelos;
+using SicoWeb.Aplicacion.ServiceLayer.Mantenimiento.Servicios.Municipios;
 
 namespace YoCInstallers.Service
 {
@@ -14,6 +16,7 @@ namespace YoCInstallers.Service
                     c => c.Namespace != null && c.Namespace.Contains("Servicios"))
                     .WithServiceDefaultInterfaces()
                     .LifestyleTransient());
+          
         }
     }
 }

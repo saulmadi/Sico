@@ -27,6 +27,21 @@ namespace SicoWeb.Aplicacion.ServiceLayer
             return Errores.Count > 0;
         }
 
+        protected T GetEntidadWithTransaction<T>(Func<T> ejecucionQuery  )
+        {
+            using (var transaccion = _unitOfWork.BeginTransaction())
+            {
+                var entidad = ejecucionQuery();
+                transaccion.Commit();
+                return entidad;
+            }
+        }
+
+        protected IList<TLista> GetListaWithTransaction<TLista>(Func<IList<TLista>> ejecucionQuery)
+        {
+            return GetEntidadWithTransaction(ejecucionQuery);
+        }
+
         protected  void SetCambios(Func<TEntidadMantenimiento> cambio )
         {
             Cambios.Add(cambio);
@@ -52,12 +67,12 @@ namespace SicoWeb.Aplicacion.ServiceLayer
                         _buisnessRulesMannager.RunComportamiento(entidadMantenimiento);
                         ComitCambios();
                         transacion.Commit();
-                        _unitOfWork.Flush();
+                        
                     }
                     catch (SicoWebCoreException coreException)
                     {
                         transacion.Rollback();
-                       _unitOfWork.Flush();
+                       
                         Errores.Add(new Error
                         {
                             Excepcion=coreException,
@@ -70,7 +85,7 @@ namespace SicoWeb.Aplicacion.ServiceLayer
             }
             catch (Exception exception )
             {
-                _unitOfWork.Flush();
+                
                 
                 throw new SiCoWebAplicattionException(exception) ;
             } 
